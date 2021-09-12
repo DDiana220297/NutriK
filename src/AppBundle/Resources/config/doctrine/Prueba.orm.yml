@@ -1,0 +1,20 @@
+AppBundle\Entity\Prueba:
+    type: entity
+    table: pruebas
+    repositoryClass: AppBundle\Repository\PruebaRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        titulo:
+            type: string
+            length: 255
+        descripcion:
+            type: string
+            length: 255
+        precio:
+            type: float
+    lifecycleCallbacks: {  }

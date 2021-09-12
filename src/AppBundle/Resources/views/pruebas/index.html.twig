@@ -1,0 +1,26 @@
+{# app/Resources/views/blog/layout.html.twig #}
+{% extends 'layout.html.twig' %}
+
+{% block container %}
+    {{ parent() }}
+    {{ texto }}
+    <hr/>
+    {{ frutas.manzana }}
+
+    {% set variable = "Hello darkness ma old fren" %}
+
+    {{ variable }}
+
+    <hr/>
+    <h1>Recorremos el array de productos que hemos mandado desde el controlador</h1>
+    <ul>
+        {% if productos|length > 10 %}
+            {% for i in productos %}
+                <li>{{ i.producto }} - {{ i.precio }}</li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+
+    <h3>Probando include</h3>
+    {{ include('@App/pruebas/partial.html.twig') }}
+{% endblock %}
