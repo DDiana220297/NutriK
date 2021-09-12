@@ -33,3 +33,9 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    app.twig_extension:
+        class: AppBundle\Twig\Helper
+        public: true
+        tags:
+            - { name: twig.extension }

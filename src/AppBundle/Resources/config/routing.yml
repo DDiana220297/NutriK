@@ -1,0 +1,11 @@
+pruebas_form:
+  path: /pruebas/form
+  defaults: {_controller: AppBundle:Pruebas:form}
+
+pruebas_create:
+  path: /pruebas/add
+  defaults: {_controller: AppBundle:Pruebas:add}
+
+pruebas_validate:
+  path: /pruebas/validarEmail/{email}
+  defaults: { _controller: AppBundle:Pruebas:validarEmail }
