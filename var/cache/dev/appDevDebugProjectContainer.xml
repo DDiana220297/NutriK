@@ -17,6 +17,7 @@
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
+      <parameter key="CustomsBundle">CustomsBundle\CustomsBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -63,6 +64,11 @@
         <parameter key="parent">null</parameter>
         <parameter key="path">/shared/httpd/nutrik/src/AppBundle</parameter>
         <parameter key="namespace">AppBundle</parameter>
+      </parameter>
+      <parameter key="CustomsBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">/shared/httpd/nutrik/src/CustomsBundle</parameter>
+        <parameter key="namespace">CustomsBundle</parameter>
       </parameter>
       <parameter key="DebugBundle" type="collection">
         <parameter key="parent">null</parameter>
@@ -512,6 +518,10 @@
     <service id="AppBundle\Twig\Helper" class="AppBundle\Twig\Helper" public="false" autowire="true" autoconfigure="true">
       <tag name="twig.extension"/>
     </service>
+    <service id="CustomsBundle\Controller\DefaultController" class="CustomsBundle\Controller\DefaultController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+    </service>
+    <service id="CustomsBundle\CustomsBundle" class="CustomsBundle\CustomsBundle" public="false" autowire="true" autoconfigure="true"/>
     <service id="app.twig_extension" class="AppBundle\Twig\Helper" public="true" autowire="true" autoconfigure="true">
       <tag name="twig.extension"/>
     </service>
@@ -2735,6 +2745,14 @@
         <argument>!App</argument>
       </call>
       <call method="addPath">
+        <argument>/shared/httpd/nutrik/src/CustomsBundle/Resources/views</argument>
+        <argument>Customs</argument>
+      </call>
+      <call method="addPath">
+        <argument>/shared/httpd/nutrik/src/CustomsBundle/Resources/views</argument>
+        <argument>!Customs</argument>
+      </call>
+      <call method="addPath">
         <argument>/shared/httpd/nutrik/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
@@ -3326,6 +3344,7 @@
       <call method="setEntityNamespaces">
         <argument type="collection">
           <argument key="AppBundle">AppBundle\Entity</argument>
+          <argument key="CustomsBundle">CustomsBundle\Entity</argument>
         </argument>
       </call>
       <call method="setMetadataCacheImpl">
@@ -3371,6 +3390,7 @@
     <service id="doctrine.orm.default_yml_metadata_driver" class="Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver" public="false">
       <argument type="collection">
         <argument key="/shared/httpd/nutrik/src/AppBundle/Resources/config/doctrine">AppBundle\Entity</argument>
+        <argument key="/shared/httpd/nutrik/src/CustomsBundle/Resources/config/doctrine">CustomsBundle\Entity</argument>
       </argument>
       <call method="setGlobalBasename">
         <argument>mapping</argument>
@@ -3380,6 +3400,10 @@
       <call method="addDriver">
         <argument type="service" id="doctrine.orm.default_yml_metadata_driver"/>
         <argument>AppBundle\Entity</argument>
+      </call>
+      <call method="addDriver">
+        <argument type="service" id="doctrine.orm.default_yml_metadata_driver"/>
+        <argument>CustomsBundle\Entity</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_metadata_cache" class="Doctrine\Common\Cache\ArrayCache" public="true">
@@ -3639,6 +3663,8 @@
     <service id="instanceof.Twig_ExtensionInterface.0.AppBundle\Twig\Helper" class="AppBundle\Twig\Helper" public="false" autowire="true" abstract="true"/>
     <service id="instanceof.Twig\Extension\ExtensionInterface.0.AppBundle\Twig\Helper" class="AppBundle\Twig\Helper" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.AppBundle\Twig\Helper" class="AppBundle\Twig\Helper" public="false" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.CustomsBundle\Controller\DefaultController" class="CustomsBundle\Controller\DefaultController" public="true" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.CustomsBundle\Controller\DefaultController" class="CustomsBundle\Controller\DefaultController" public="true" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Twig_ExtensionInterface.0.app.twig_extension" class="AppBundle\Twig\Helper" public="true" autowire="true" abstract="true"/>
     <service id="instanceof.Twig\Extension\ExtensionInterface.0.app.twig_extension" class="AppBundle\Twig\Helper" public="true" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.app.twig_extension" class="AppBundle\Twig\Helper" public="true" autowire="true" autoconfigure="true" abstract="true"/>

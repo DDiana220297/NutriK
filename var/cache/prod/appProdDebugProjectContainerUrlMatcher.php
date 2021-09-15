@@ -28,6 +28,21 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
             $canonicalMethod = 'GET';
         }
 
+        // customs_homepage
+        if ('' === $trimmedPathinfo) {
+            $ret = array (  '_controller' => 'CustomsBundle\\Controller\\DefaultController::indexAction',  '_route' => 'customs_homepage',);
+            if ('/' === substr($pathinfo, -1)) {
+                // no-op
+            } elseif ('GET' !== $canonicalMethod) {
+                goto not_customs_homepage;
+            } else {
+                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'customs_homepage'));
+            }
+
+            return $ret;
+        }
+        not_customs_homepage:
+
         if (0 === strpos($pathinfo, '/pruebas')) {
             // pruebas_form
             if ('/pruebas/form' === $pathinfo) {

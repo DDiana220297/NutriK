@@ -6,8 +6,23 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexOldAction()
     {
-        return $this->render('CustomsBundle:Default:index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository("CustomsBundle:Category");
+        $categories = $repo->findAll();
+        foreach ($categories as $category){
+            echo "<p>" . $category->getName() . "</p>";
+            $entries = $category->getEntries();
+            foreach ($entries as $entry){
+                echo $entry->getTitle().", ";
+            }
+        }
+
+        return $this->render('@Customs/Default/index.html.twig');
+    }
+
+    public function indexAction(){
+        return $this->render('@Customs/Default/index.html.twig');
     }
 }

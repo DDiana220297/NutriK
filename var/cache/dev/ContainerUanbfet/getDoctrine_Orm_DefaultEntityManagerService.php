@@ -30,12 +30,13 @@ $a = new \Doctrine\ORM\Configuration();
 
 $b = new \Doctrine\Common\Persistence\Mapping\Driver\MappingDriverChain();
 
-$c = new \Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver([($this->targetDirs[3].'/src/AppBundle/Resources/config/doctrine') => 'AppBundle\\Entity']);
+$c = new \Doctrine\ORM\Mapping\Driver\SimplifiedYamlDriver([($this->targetDirs[3].'/src/AppBundle/Resources/config/doctrine') => 'AppBundle\\Entity', ($this->targetDirs[3].'/src/CustomsBundle/Resources/config/doctrine') => 'CustomsBundle\\Entity']);
 $c->setGlobalBasename('mapping');
 
 $b->addDriver($c, 'AppBundle\\Entity');
+$b->addDriver($c, 'CustomsBundle\\Entity');
 
-$a->setEntityNamespaces(['AppBundle' => 'AppBundle\\Entity']);
+$a->setEntityNamespaces(['AppBundle' => 'AppBundle\\Entity', 'CustomsBundle' => 'CustomsBundle\\Entity']);
 $a->setMetadataCacheImpl(${($_ = isset($this->services['doctrine_cache.providers.doctrine.orm.default_metadata_cache']) ? $this->services['doctrine_cache.providers.doctrine.orm.default_metadata_cache'] : $this->load('getDoctrineCache_Providers_Doctrine_Orm_DefaultMetadataCacheService.php')) && false ?: '_'});
 $a->setQueryCacheImpl(${($_ = isset($this->services['doctrine_cache.providers.doctrine.orm.default_query_cache']) ? $this->services['doctrine_cache.providers.doctrine.orm.default_query_cache'] : $this->load('getDoctrineCache_Providers_Doctrine_Orm_DefaultQueryCacheService.php')) && false ?: '_'});
 $a->setResultCacheImpl(${($_ = isset($this->services['doctrine_cache.providers.doctrine.orm.default_result_cache']) ? $this->services['doctrine_cache.providers.doctrine.orm.default_result_cache'] : $this->load('getDoctrineCache_Providers_Doctrine_Orm_DefaultResultCacheService.php')) && false ?: '_'});

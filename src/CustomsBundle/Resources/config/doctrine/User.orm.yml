@@ -1,0 +1,82 @@
+CustomsBundle\Entity\User:
+    type: entity
+    table: user
+    id:
+        idUser:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_user
+            generator:
+                strategy: IDENTITY
+    fields:
+        idGender:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            column: id_gender
+        age:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        firstname:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: false
+        lastname:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: false
+        email:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: false
+        password:
+            type: string
+            nullable: false
+            length: 32
+            options:
+                fixed: false
+        lastPasswordGen:
+            type: datetime
+            nullable: false
+            options:
+                default: CURRENT_TIMESTAMP
+            column: last_password_gen
+        birthday:
+            type: date
+            nullable: true
+        sms:
+            type: boolean
+            nullable: true
+            options:
+                default: '1'
+        active:
+            type: boolean
+            nullable: true
+            options:
+                default: '1'
+        deleted:
+            type: boolean
+            nullable: true
+            options:
+                default: '0'
+        dateAdd:
+            type: datetime
+            nullable: true
+            column: date_add
+        dateUpd:
+            type: datetime
+            nullable: true
+            column: date_upd
+    lifecycleCallbacks: {  }

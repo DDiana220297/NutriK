@@ -10,7 +10,9 @@ include_once $this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Component
 include_once $this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Component/Form/FormExtensionInterface.php';
 include_once $this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Component/Form/Extension/DependencyInjection/DependencyInjectionExtension.php';
 
-return $this->services['form.registry'] = new \Symfony\Component\Form\FormRegistry([0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension(new \Symfony\Component\DependencyInjection\ServiceLocator(['Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType' => function () {
+return $this->services['form.registry'] = new \Symfony\Component\Form\FormRegistry([0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension(new \Symfony\Component\DependencyInjection\ServiceLocator(['AppBundle\\Form\\PruebaType' => function () {
+    return ${($_ = isset($this->services['AppBundle\\Form\\PruebaType']) ? $this->services['AppBundle\\Form\\PruebaType'] : ($this->services['AppBundle\\Form\\PruebaType'] = new \AppBundle\Form\PruebaType())) && false ?: '_'};
+}, 'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType' => function () {
     return ${($_ = isset($this->services['form.type.entity']) ? $this->services['form.type.entity'] : $this->load('getForm_Type_EntityService.php')) && false ?: '_'};
 }, 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType' => function () {
     return ${($_ = isset($this->services['form.type.choice']) ? $this->services['form.type.choice'] : $this->load('getForm_Type_ChoiceService.php')) && false ?: '_'};

@@ -31,6 +31,7 @@ if ($this->has('translator')) {
 }
 $instance->setTranslationDomain('validators');
 $instance->addXmlMappings([0 => ($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml')]);
+$instance->addYamlMappings([0 => ($this->targetDirs[3].'/src/AppBundle/Resources/config/validation.yml')]);
 $instance->enableAnnotationMapping(${($_ = isset($this->services['annotation_reader']) ? $this->services['annotation_reader'] : $this->getAnnotationReaderService()) && false ?: '_'});
 $instance->addMethodMapping('loadValidatorMetadata');
 $instance->addObjectInitializers([0 => ${($_ = isset($this->services['doctrine.orm.validator_initializer']) ? $this->services['doctrine.orm.validator_initializer'] : $this->load('getDoctrine_Orm_ValidatorInitializerService.php')) && false ?: '_'}]);

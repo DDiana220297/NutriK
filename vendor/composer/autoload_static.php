@@ -79,6 +79,7 @@ class ComposerStaticInitcf41400f01ecb4c93173cce47fa743b0
         ),
         'C' => 
         array (
+            'CustomsBundle\\' => 14,
             'Composer\\CaBundle\\' => 18,
         ),
         'A' => 
@@ -231,6 +232,10 @@ class ComposerStaticInitcf41400f01ecb4c93173cce47fa743b0
         'Doctrine\\Bundle\\DoctrineBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/doctrine-bundle',
+        ),
+        'CustomsBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/CustomsBundle',
         ),
         'Composer\\CaBundle\\' => 
         array (

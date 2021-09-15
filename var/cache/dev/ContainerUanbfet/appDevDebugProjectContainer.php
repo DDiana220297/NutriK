@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerRxzsguj;
+namespace ContainerUanbfet;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -38,6 +38,7 @@ class appDevDebugProjectContainer extends Container
             'appbundle\\controller\\defaultcontroller' => 'AppBundle\\Controller\\DefaultController',
             'appbundle\\controller\\pruebascontroller' => 'AppBundle\\Controller\\PruebasController',
             'appbundle\\form\\pruebatype' => 'AppBundle\\Form\\PruebaType',
+            'customsbundle\\controller\\defaultcontroller' => 'CustomsBundle\\Controller\\DefaultController',
             'symfony\\bundle\\frameworkbundle\\controller\\redirectcontroller' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController',
             'symfony\\bundle\\frameworkbundle\\controller\\templatecontroller' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController',
         ];
@@ -130,6 +131,7 @@ class appDevDebugProjectContainer extends Container
             'AppBundle\\Controller\\DefaultController' => 'getDefaultControllerService.php',
             'AppBundle\\Controller\\PruebasController' => 'getPruebasControllerService.php',
             'AppBundle\\Form\\PruebaType' => 'getPruebaTypeService.php',
+            'CustomsBundle\\Controller\\DefaultController' => 'getDefaultController2Service.php',
             'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController' => 'getRedirectControllerService.php',
             'Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController' => 'getTemplateControllerService.php',
             'annotations.cache' => 'getAnnotations_CacheService.php',
@@ -1874,6 +1876,8 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath(($this->targetDirs[3].'/vendor/doctrine/doctrine-bundle/Resources/views'), '!Doctrine');
         $instance->addPath(($this->targetDirs[3].'/src/AppBundle/Resources/views'), 'App');
         $instance->addPath(($this->targetDirs[3].'/src/AppBundle/Resources/views'), '!App');
+        $instance->addPath(($this->targetDirs[3].'/src/CustomsBundle/Resources/views'), 'Customs');
+        $instance->addPath(($this->targetDirs[3].'/src/CustomsBundle/Resources/views'), '!Customs');
         $instance->addPath(($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views'), 'Debug');
         $instance->addPath(($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views'), '!Debug');
         $instance->addPath(($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views'), 'WebProfiler');
@@ -2097,6 +2101,11 @@ class appDevDebugProjectContainer extends Container
                     'path' => ($this->targetDirs[3].'/src/AppBundle'),
                     'namespace' => 'AppBundle',
                 ],
+                'CustomsBundle' => [
+                    'parent' => NULL,
+                    'path' => ($this->targetDirs[3].'/src/CustomsBundle'),
+                    'namespace' => 'CustomsBundle',
+                ],
                 'DebugBundle' => [
                     'parent' => NULL,
                     'path' => ($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle'),
@@ -2174,6 +2183,7 @@ class appDevDebugProjectContainer extends Container
                 'DoctrineBundle' => 'Doctrine\\Bundle\\DoctrineBundle\\DoctrineBundle',
                 'SensioFrameworkExtraBundle' => 'Sensio\\Bundle\\FrameworkExtraBundle\\SensioFrameworkExtraBundle',
                 'AppBundle' => 'AppBundle\\AppBundle',
+                'CustomsBundle' => 'CustomsBundle\\CustomsBundle',
                 'DebugBundle' => 'Symfony\\Bundle\\DebugBundle\\DebugBundle',
                 'WebProfilerBundle' => 'Symfony\\Bundle\\WebProfilerBundle\\WebProfilerBundle',
                 'SensioDistributionBundle' => 'Sensio\\Bundle\\DistributionBundle\\SensioDistributionBundle',
