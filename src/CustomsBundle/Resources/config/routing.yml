@@ -1,0 +1,3 @@
+customs_homepage:
+    path:     /
+    defaults: { _controller: CustomsBundle:Default:index }

@@ -506,6 +506,9 @@
     <service id="AppBundle\Controller\PruebasController" class="AppBundle\Controller\PruebasController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
     </service>
+    <service id="AppBundle\Form\PruebaType" class="AppBundle\Form\PruebaType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="AppBundle\Twig\Helper" class="AppBundle\Twig\Helper" public="false" autowire="true" autoconfigure="true">
       <tag name="twig.extension"/>
     </service>
@@ -774,9 +777,11 @@
       <argument type="service" id="form.registry"/>
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
+        <argument>AppBundle\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>AppBundle\Form\PruebaType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -999,7 +1004,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id="service_locator.hnwz.wz"/>
+      <argument type="service" id="service_locator.xggiwvq"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1234,6 +1239,11 @@
       <call method="addXmlMappings">
         <argument type="collection">
           <argument>/shared/httpd/nutrik/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml</argument>
+        </argument>
+      </call>
+      <call method="addYamlMappings">
+        <argument type="collection">
+          <argument>/shared/httpd/nutrik/src/AppBundle/Resources/config/validation.yml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">
@@ -3624,6 +3634,8 @@
     <service id="abstract.instanceof.AppBundle\Controller\DefaultController" class="AppBundle\Controller\DefaultController" public="true" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.AppBundle\Controller\PruebasController" class="AppBundle\Controller\PruebasController" public="true" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.AppBundle\Controller\PruebasController" class="AppBundle\Controller\PruebasController" public="true" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.AppBundle\Form\PruebaType" class="AppBundle\Form\PruebaType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.AppBundle\Form\PruebaType" class="AppBundle\Form\PruebaType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Twig_ExtensionInterface.0.AppBundle\Twig\Helper" class="AppBundle\Twig\Helper" public="false" autowire="true" abstract="true"/>
     <service id="instanceof.Twig\Extension\ExtensionInterface.0.AppBundle\Twig\Helper" class="AppBundle\Twig\Helper" public="false" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.AppBundle\Twig\Helper" class="AppBundle\Twig\Helper" public="false" autowire="true" autoconfigure="true" abstract="true"/>
@@ -3653,9 +3665,10 @@
         <argument key="inline" type="service" id="fragment.renderer.inline"/>
       </argument>
     </service>
-    <service id="service_locator.hnwz.wz" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.xggiwvq" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="AppBundle\Form\PruebaType" type="service" id="AppBundle\Form\PruebaType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service" id="form.type.file"/>

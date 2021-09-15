@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerPfaysgx;
+namespace ContainerRxzsguj;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -37,6 +37,7 @@ class appDevDebugProjectContainer extends Container
         $this->normalizedIds = [
             'appbundle\\controller\\defaultcontroller' => 'AppBundle\\Controller\\DefaultController',
             'appbundle\\controller\\pruebascontroller' => 'AppBundle\\Controller\\PruebasController',
+            'appbundle\\form\\pruebatype' => 'AppBundle\\Form\\PruebaType',
             'symfony\\bundle\\frameworkbundle\\controller\\redirectcontroller' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController',
             'symfony\\bundle\\frameworkbundle\\controller\\templatecontroller' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController',
         ];
@@ -128,6 +129,7 @@ class appDevDebugProjectContainer extends Container
         $this->fileMap = [
             'AppBundle\\Controller\\DefaultController' => 'getDefaultControllerService.php',
             'AppBundle\\Controller\\PruebasController' => 'getPruebasControllerService.php',
+            'AppBundle\\Form\\PruebaType' => 'getPruebaTypeService.php',
             'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController' => 'getRedirectControllerService.php',
             'Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController' => 'getTemplateControllerService.php',
             'annotations.cache' => 'getAnnotations_CacheService.php',
@@ -333,6 +335,7 @@ class appDevDebugProjectContainer extends Container
             'swiftmailer.spool' => true,
             'swiftmailer.transport' => true,
             'swiftmailer.transport.real' => true,
+            'AppBundle\\Form\\PruebaType' => true,
             'annotation_reader' => true,
             'annotations.cache' => true,
             'annotations.cache_warmer' => true,
@@ -1940,6 +1943,7 @@ class appDevDebugProjectContainer extends Container
         }
         $instance->setTranslationDomain('validators');
         $instance->addXmlMappings([0 => ($this->targetDirs[3].'/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml')]);
+        $instance->addYamlMappings([0 => ($this->targetDirs[3].'/src/AppBundle/Resources/config/validation.yml')]);
         $instance->enableAnnotationMapping(${($_ = isset($this->services['annotation_reader']) ? $this->services['annotation_reader'] : $this->getAnnotationReaderService()) && false ?: '_'});
         $instance->addMethodMapping('loadValidatorMetadata');
         $instance->addObjectInitializers([0 => ${($_ = isset($this->services['doctrine.orm.validator_initializer']) ? $this->services['doctrine.orm.validator_initializer'] : $this->getDoctrine_Orm_ValidatorInitializerService()) && false ?: '_'}]);
