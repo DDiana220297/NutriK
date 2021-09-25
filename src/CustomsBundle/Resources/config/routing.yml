@@ -1,3 +1,7 @@
 customs_homepage:
-    path:     /
+    path:     /home/{role}
     defaults: { _controller: CustomsBundle:Default:index }
+
+customs_loginpage:
+    path:     /login
+    defaults: { _controller: CustomsBundle:Default:loginpage }

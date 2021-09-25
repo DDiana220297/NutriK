@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="es">
+    <head>
+        <meta charset="utf-8"/>
+        <title>
+            {% block title %} NutriK {% endblock %}
+        </title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css">
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <!-- Header stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/header.css') }}" />
+
+        <!-- Menu component javascript -->
+        <script src="{{ asset('bundles/framework/js/MenuComponent.js') }}"></script>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default global-header">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li class="dropdown">
+                                <a href="#" class="header-dropdown-icon" id="header-lateral-menu-button" data-toggle="dropdown" role="button" style="padding: 0px; padding-right: 15px"
+                                onclick="showLateralMenu()">
+                                    <i class="glyphicon glyphicon-th-large" style="font-size: 50px"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="navbar-brand header-title" href="#">NutriK</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><p style="padding-top: 15px; padding-bottom: 15px">Hola :)</p></li>
+                            <li><a href="#">Inicia Sesion</a></li>
+                            <li><i style="padding: 15px" class="glyphicon glyphicon-user"></i></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </header>
+        {% include 'lateralmenu.html.twig' %}
+    </body>
+</html>
+
+

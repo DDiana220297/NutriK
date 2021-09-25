@@ -3,6 +3,7 @@
 namespace CustomsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -22,7 +23,15 @@ class DefaultController extends Controller
         return $this->render('@Customs/Default/index.html.twig');
     }
 
-    public function indexAction(){
-        return $this->render('@Customs/Default/index.html.twig');
+    public function indexAction(Request $request, $role){
+        return $this->render('@Customs/Default/index.html.twig',
+            [
+                "role" => $role
+            ]
+        );
+    }
+
+    public function loginpageAction(){
+        return $this->render('loginpagemodal.html.twig');
     }
 }

@@ -29,19 +29,19 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
         }
 
         // customs_homepage
-        if ('' === $trimmedPathinfo) {
-            $ret = array (  '_controller' => 'CustomsBundle\\Controller\\DefaultController::indexAction',  '_route' => 'customs_homepage',);
-            if ('/' === substr($pathinfo, -1)) {
-                // no-op
-            } elseif ('GET' !== $canonicalMethod) {
-                goto not_customs_homepage;
-            } else {
-                return array_replace($ret, $this->redirect($rawPathinfo.'/', 'customs_homepage'));
-            }
-
-            return $ret;
+        if (0 === strpos($pathinfo, '/home') && preg_match('#^/home/(?P<role>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'customs_homepage']), array (  '_controller' => 'CustomsBundle\\Controller\\DefaultController::indexAction',));
         }
-        not_customs_homepage:
+
+        // helloWorld
+        if ('/hello-world' === $pathinfo) {
+            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::helloWorldAction',  '_route' => 'helloWorld',);
+        }
+
+        // customs_loginpage
+        if ('/login' === $pathinfo) {
+            return array (  '_controller' => 'CustomsBundle\\Controller\\DefaultController::loginpageAction',  '_route' => 'customs_loginpage',);
+        }
 
         if (0 === strpos($pathinfo, '/pruebas')) {
             // pruebas_form
@@ -75,11 +75,6 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
             return $ret;
         }
         not_homepage:
-
-        // helloWorld
-        if ('/hello-world' === $pathinfo) {
-            return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::helloWorldAction',  '_route' => 'helloWorld',);
-        }
 
         if ('/' === $pathinfo && !$allow) {
             throw new Symfony\Component\Routing\Exception\NoConfigurationException();

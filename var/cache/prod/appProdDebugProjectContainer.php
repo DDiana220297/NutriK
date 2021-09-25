@@ -16,6 +16,6 @@ if (!\class_exists(appProdDebugProjectContainer::class, false)) {
 
 return new \Container0xlam3f\appProdDebugProjectContainer([
     'container.build_hash' => '0xlam3f',
-    'container.build_id' => '4cccb424',
-    'container.build_time' => 1631738268,
+    'container.build_id' => 'a391e0f7',
+    'container.build_time' => 1632586592,
 ], __DIR__.\DIRECTORY_SEPARATOR.'Container0xlam3f');
