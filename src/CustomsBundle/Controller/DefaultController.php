@@ -23,15 +23,7 @@ class DefaultController extends Controller
         return $this->render('@Customs/Default/index.html.twig');
     }
 
-    public function indexAction(Request $request, $role){
-        return $this->render('@Customs/Default/index.html.twig',
-            [
-                "role" => $role
-            ]
-        );
-    }
-
-    public function loginpageAction(){
-        return $this->render('loginpagemodal.html.twig');
+    public function indexAction(){
+        return $this->render('@Customs/Default/index.html.twig');
     }
 }

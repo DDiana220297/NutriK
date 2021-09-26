@@ -87,57 +87,11 @@ class __TwigTemplate_d689ec4fd78e82d12ccf61c0c70b2a5ce8b1dcd4c7c5a6eca4fb5695b8d
             </div>
             <div class=\"row logincarousel\">
                 <div class=\"col-sm-12\">
-                    <div id=\"carouselLoginPage\" class=\"carousel slide\" data-ride=\"carousel\">
-                        <ol class=\"carousel-indicators\">
-                            <li data-target=\"#carouselLoginPage\" data-slide-to=\"0\" class=\"active\"></li>
-                            <li data-target=\"#carouselLoginPage\" data-slide-to=\"1\"></li>
-                            <li data-target=\"#carouselLoginPage\" data-slide-to=\"2\"></li>
-                            <li data-target=\"#carouselLoginPage\" data-slide-to=\"3\"></li>
-                        </ol>
-                        <div class=\"carousel-inner\">
-                            <div class=\"carousel-item active\">
-                                <img src=\"";
-        // line 41
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img1.jpg"), "html", null, true);
-        echo "\" class=\"d-block w-100\" alt=\"...\">
-                                ";
-        // line 43
-        echo "                                ";
-        // line 44
-        echo "                                ";
-        // line 45
-        echo "                                ";
-        // line 46
-        echo "                            </div>
-                            <div class=\"carousel-item\">
-                                <img src=\"";
-        // line 48
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img2.jpeg"), "html", null, true);
-        echo "\" class=\"d-block w-100\" alt=\"...\">
-                            </div>
-                            <div class=\"carousel-item\">
-                                <img src=\"";
-        // line 51
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img3.jpg"), "html", null, true);
-        echo "\" class=\"d-block w-100\" alt=\"...\">
-                            </div>
-                            <div class=\"carousel-item\">
-                                <img src=\"";
-        // line 54
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img4.jpg"), "html", null, true);
-        echo "\" class=\"d-block w-100\" alt=\"...\">
-                            </div>
-                        </div>
-                        <a class=\"carousel-control-prev\" href=\"#carouselLoginPage\" role=\"button\" data-slide=\"prev\">
-                            <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>
-                            <span class=\"sr-only\">Previous</span>
-                        </a>
-                        <a class=\"carousel-control-next\" href=\"#carouselLoginPage\" role=\"button\" data-slide=\"next\">
-                            <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
-                            <span class=\"sr-only\">Next</span>
-                        </a>
-                    </div>
-                </div>
+                    ";
+        // line 32
+        $this->loadTemplate("carousel.html.twig", "loginpagemodal.html.twig", 32)->display($context);
+        // line 33
+        echo "                </div>
             </div>
             <div class=\"row webdescription\">
                 <p>
@@ -188,7 +142,7 @@ class __TwigTemplate_d689ec4fd78e82d12ccf61c0c70b2a5ce8b1dcd4c7c5a6eca4fb5695b8d
 
     public function getDebugInfo()
     {
-        return array (  168 => 6,  127 => 54,  121 => 51,  115 => 48,  111 => 46,  109 => 45,  107 => 44,  105 => 43,  101 => 41,  79 => 22,  75 => 21,  70 => 20,  66 => 17,  61 => 14,  55 => 11,  51 => 10,  47 => 9,  43 => 7,  41 => 6,  34 => 1,);
+        return array (  122 => 6,  94 => 33,  92 => 32,  79 => 22,  75 => 21,  70 => 20,  66 => 17,  61 => 14,  55 => 11,  51 => 10,  47 => 9,  43 => 7,  41 => 6,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -232,40 +186,7 @@ class __TwigTemplate_d689ec4fd78e82d12ccf61c0c70b2a5ce8b1dcd4c7c5a6eca4fb5695b8d
             </div>
             <div class=\"row logincarousel\">
                 <div class=\"col-sm-12\">
-                    <div id=\"carouselLoginPage\" class=\"carousel slide\" data-ride=\"carousel\">
-                        <ol class=\"carousel-indicators\">
-                            <li data-target=\"#carouselLoginPage\" data-slide-to=\"0\" class=\"active\"></li>
-                            <li data-target=\"#carouselLoginPage\" data-slide-to=\"1\"></li>
-                            <li data-target=\"#carouselLoginPage\" data-slide-to=\"2\"></li>
-                            <li data-target=\"#carouselLoginPage\" data-slide-to=\"3\"></li>
-                        </ol>
-                        <div class=\"carousel-inner\">
-                            <div class=\"carousel-item active\">
-                                <img src=\"{{ asset('img1.jpg') }}\" class=\"d-block w-100\" alt=\"...\">
-                                {#                    <div class=\"carousel-caption d-none d-md-block\">#}
-                                {#                        <h5>My Caption Title (1st Image)</h5>#}
-                                {#                        <p>The whole caption will only show up if the screen is at least medium size.</p>#}
-                                {#                    </div>#}
-                            </div>
-                            <div class=\"carousel-item\">
-                                <img src=\"{{ asset('img2.jpeg') }}\" class=\"d-block w-100\" alt=\"...\">
-                            </div>
-                            <div class=\"carousel-item\">
-                                <img src=\"{{ asset('img3.jpg') }}\" class=\"d-block w-100\" alt=\"...\">
-                            </div>
-                            <div class=\"carousel-item\">
-                                <img src=\"{{ asset('img4.jpg') }}\" class=\"d-block w-100\" alt=\"...\">
-                            </div>
-                        </div>
-                        <a class=\"carousel-control-prev\" href=\"#carouselLoginPage\" role=\"button\" data-slide=\"prev\">
-                            <span class=\"carousel-control-prev-icon\" aria-hidden=\"true\"></span>
-                            <span class=\"sr-only\">Previous</span>
-                        </a>
-                        <a class=\"carousel-control-next\" href=\"#carouselLoginPage\" role=\"button\" data-slide=\"next\">
-                            <span class=\"carousel-control-next-icon\" aria-hidden=\"true\"></span>
-                            <span class=\"sr-only\">Next</span>
-                        </a>
-                    </div>
+                    {% include 'carousel.html.twig' %}
                 </div>
             </div>
             <div class=\"row webdescription\">

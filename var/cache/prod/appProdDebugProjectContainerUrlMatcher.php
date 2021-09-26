@@ -29,8 +29,8 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
         }
 
         // customs_homepage
-        if (0 === strpos($pathinfo, '/home') && preg_match('#^/home/(?P<role>[^/]++)$#sD', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, ['_route' => 'customs_homepage']), array (  '_controller' => 'CustomsBundle\\Controller\\DefaultController::indexAction',));
+        if ('/home' === $pathinfo) {
+            return array (  '_controller' => 'CustomsBundle\\Controller\\DefaultController::indexAction',  '_route' => 'customs_homepage',);
         }
 
         // helloWorld
@@ -38,9 +38,27 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
             return array (  '_controller' => 'AppBundle\\Controller\\DefaultController::helloWorldAction',  '_route' => 'helloWorld',);
         }
 
-        // customs_loginpage
-        if ('/login' === $pathinfo) {
-            return array (  '_controller' => 'CustomsBundle\\Controller\\DefaultController::loginpageAction',  '_route' => 'customs_loginpage',);
+        if (0 === strpos($pathinfo, '/login')) {
+            // login
+            if ('/login' === $pathinfo) {
+                return array (  '_controller' => 'CustomsBundle\\Controller\\AuthController::loginAction',  '_route' => 'login',);
+            }
+
+            // login_check
+            if ('/login_check' === $pathinfo) {
+                return ['_route' => 'login_check'];
+            }
+
+        }
+
+        // logout
+        if ('/logout' === $pathinfo) {
+            return ['_route' => 'logout'];
+        }
+
+        // register
+        if ('/register' === $pathinfo) {
+            return array (  '_controller' => 'CustomsBundle\\Controller\\AuthController::registerAction',  '_route' => 'register',);
         }
 
         if (0 === strpos($pathinfo, '/pruebas')) {

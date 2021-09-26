@@ -1,0 +1,15 @@
+CustomsBundle\Entity\User:
+  properties:
+    firstname:
+      - NotBlank: {message: "El titulo no puede estar vacio"}
+      - Length:
+          min: 2
+          minMessage: "El titulo debe tener más de dos caracteres"
+    lastname:
+      - NotBlank: { message: "La descripcion no puede estar vacia" }
+    email:
+      - Type:
+          type: numeric
+          message: "El precio debe ser numerico"
+    password:
+

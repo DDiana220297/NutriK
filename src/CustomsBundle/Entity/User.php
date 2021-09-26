@@ -1,11 +1,12 @@
 <?php
 
 namespace CustomsBundle\Entity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var integer
@@ -45,7 +46,7 @@ class User
     /**
      * @var \DateTime
      */
-    private $lastPasswordGen = 'CURRENT_TIMESTAMP';
+    private $lastPasswordGen;
 
     /**
      * @var \DateTime
@@ -77,6 +78,10 @@ class User
      */
     private $dateUpd;
 
+    /**
+     * @var string
+     */
+    private $role = 'ROLE_GUEST';
 
     /**
      * Get idUser
@@ -399,5 +404,55 @@ class User
     {
         return $this->dateUpd;
     }
+
+    /**
+     * Set role
+     *
+     * @param $role
+     * @return $this
+     */
+    public function setRole($role)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return string
+     */
+    public function getRole(){
+        return $this->role;
+    }
+
+    /*
+     * AUTH
+     */
+
+    public function getRoles()
+    {
+        return array($this->getRole());
+    }
+
+    public function getSalt()
+    {
+        return null;
+    }
+
+    public function getUsername()
+    {
+        return $this->email;
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    /*
+     * END AUTH
+     */
 }
 
