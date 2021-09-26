@@ -42,16 +42,25 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
         // line 7
         echo "        </title>
         <!-- Latest compiled and minified CSS -->
-        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\">
+        <link rel=\"stylesheet\" href=\"";
+        // line 9
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/css/bootstrap.css"), "html", null, true);
+        echo "\">
 
         <!-- Optional theme -->
-        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css\">
+        <link rel=\"stylesheet\" href=\"";
+        // line 12
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/css/bootstrap-theme.css"), "html", null, true);
+        echo "\">
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
 
         <!-- Latest compiled and minified JavaScript -->
-        <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js\"></script>
+        <script src=\"";
+        // line 18
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/js/bootstrap.js"), "html", null, true);
+        echo "\"></script>
 
         <!-- Header stylesheet-->
         <link rel=\"stylesheet\" href=\"";
@@ -132,7 +141,7 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
 
     public function getDebugInfo()
     {
-        return array (  112 => 6,  101 => 56,  99 => 55,  65 => 24,  59 => 21,  43 => 7,  41 => 6,  34 => 1,);
+        return array (  121 => 6,  110 => 56,  108 => 55,  74 => 24,  68 => 21,  62 => 18,  53 => 12,  47 => 9,  43 => 7,  41 => 6,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -153,16 +162,16 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
             {% block title %} NutriK {% endblock %}
         </title>
         <!-- Latest compiled and minified CSS -->
-        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css\">
+        <link rel=\"stylesheet\" href=\"{{ asset('public/css/bootstrap.css') }}\">
 
         <!-- Optional theme -->
-        <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css\">
+        <link rel=\"stylesheet\" href=\"{{ asset('public/css/bootstrap-theme.css') }}\">
 
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
 
         <!-- Latest compiled and minified JavaScript -->
-        <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js\"></script>
+        <script src=\"{{ asset('public/js/bootstrap.js') }}\"></script>
 
         <!-- Header stylesheet-->
         <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/header.css') }}\" />

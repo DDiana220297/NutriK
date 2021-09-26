@@ -2,12 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90679569-6512-4917-b454-f5ba0a5de6e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Resources/views/header.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/views/lateralmenu.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Resources/views/loginpagemodal.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Resources/views/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomsBundle/Resources/views/layout.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htdocs/web/bundles/framework/css/loginpage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/web/bundles/framework/css/loginpage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/nutrik.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/nutrik.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/loginpagemodal.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/loginpagemodal.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/.idea/jsLibraryMappings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/.idea/nutrik.iml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/.idea/nutrik.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/app/Resources/views/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/app/Resources/views/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/app/Resources/views/loginpagemodal.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/app/Resources/views/loginpagemodal.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/45/45a5a74d06840913e3b42d4dfb1f16acd0b8e58c80108664e03203be8f41a51c.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/45/45a5a74d06840913e3b42d4dfb1f16acd0b8e58c80108664e03203be8f41a51c.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/7f/7f8c35e1add2d5a979084702feb19c88ac03cc2bce26f1d0c48b409a17b3afbf.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/7f/7f8c35e1add2d5a979084702feb19c88ac03cc2bce26f1d0c48b409a17b3afbf.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/logs/prod.log" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/logs/prod.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/45/45a5a74d06840913e3b42d4dfb1f16acd0b8e58c80108664e03203be8f41a51c.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/45/45a5a74d06840913e3b42d4dfb1f16acd0b8e58c80108664e03203be8f41a51c.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/7f/7f8c35e1add2d5a979084702feb19c88ac03cc2bce26f1d0c48b409a17b3afbf.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/7f/7f8c35e1add2d5a979084702feb19c88ac03cc2bce26f1d0c48b409a17b3afbf.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/logs/prod.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/logs/prod.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,6 +29,13 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -122,6 +140,7 @@
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Resources/views" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
