@@ -13,13 +13,16 @@
     <!-- Login Page stylesheet-->
     <link rel="stylesheet" href="{{ asset('bundles/framework/css/loginpage.css') }}" />
 
-    {#    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->#}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-    {#    <!-- Latest compiled and minified JavaScript -->#}
+    <!-- Latest compiled and minified JavaScript -->
     <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('public/js/jquery-3.2.1.slim.min.js') }}"></script>
     <script src="{{ asset('public/js/popper.min.js') }}"></script>
+
+    <!-- Customs JS -->
+    <script src="{{ asset('bundles/framework//js/customs.js') }}"></script>
 
 </head>
     <body>
@@ -39,13 +42,13 @@
             </div>
             <div class="row loginactions">
                 <div class="login-button-item">
-                    <button class="btn btn-primary login-button" type="button">Visita NutriK</button>
+                    <button class="btn btn-primary login-button" type="button" onclick="redirectTo('home')">Visita NutriK</button>
                 </div>
                 <div class="login-button-item">
-                    <button class="btn btn-primary login-button-grey" type="button">Iniciar Sesión</button>
+                    <button class="btn btn-primary login-button-grey" type="button" onclick="redirectTo('login')">Iniciar Sesión</button>
                 </div>
                 <div class="login-button-item">
-                    <button class="btn btn-primary login-button" type="button">Registrarse</button>
+                    <button class="btn btn-primary login-button" type="button" onclick="redirectTo('register')">Registrarse</button>
                 </div>
             </div>
         </div>

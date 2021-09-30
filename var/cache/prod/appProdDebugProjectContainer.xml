@@ -1149,6 +1149,7 @@
       <call method="addYamlMappings">
         <argument type="collection">
           <argument>/shared/httpd/nutrik/src/AppBundle/Resources/config/validation.yml</argument>
+          <argument>/shared/httpd/nutrik/src/CustomsBundle/Resources/config/validation.yml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">

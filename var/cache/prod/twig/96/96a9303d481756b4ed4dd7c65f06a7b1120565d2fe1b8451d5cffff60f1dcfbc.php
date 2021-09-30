@@ -53,7 +53,7 @@ class __TwigTemplate_bf6a48f16e122a1e9b8da870c314dde88c5bce26fcec8f06a07210f3d1b
 ";
         // line 13
         $this->displayBlock('content', $context, $blocks);
-        // line 36
+        // line 43
         echo "</body>
 
 ";
@@ -93,25 +93,38 @@ class __TwigTemplate_bf6a48f16e122a1e9b8da870c314dde88c5bce26fcec8f06a07210f3d1b
         // line 21
         echo "            </div>
         </div>
+
         ";
-        // line 23
-        if (($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []) != null)) {
-            // line 24
-            echo "            ";
-            echo twig_var_dump($this->env, $context, [0 => $this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", [])]);
+        // line 24
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "statusKOMessage"], "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 25
+            echo "            <div class=\"row\" style=\"justify-content: center\">
+                <div class=\"col-sm-6\">
+                    <div class=\"alert alert-danger\" role=\"alert\">
+                        ";
+            // line 28
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
             echo "
+                    </div>
+                </div>
+            </div>
         ";
         }
-        // line 26
-        echo "        <div class=\"row registerform\">
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 33
+        echo "
+        <div class=\"row registerform\">
             <div class=\"col-sm-6\">
-                <h2>Registrate</h2>
                 ";
-        // line 29
+        // line 36
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form"] ?? $this->getContext($context, "form")), 'form_start');
         echo "
                 ";
-        // line 30
+        // line 37
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form"] ?? $this->getContext($context, "form")), 'form_end');
         echo "
             </div>
@@ -136,7 +149,7 @@ class __TwigTemplate_bf6a48f16e122a1e9b8da870c314dde88c5bce26fcec8f06a07210f3d1b
 
     public function getDebugInfo()
     {
-        return array (  115 => 30,  111 => 29,  106 => 26,  100 => 24,  98 => 23,  94 => 21,  92 => 20,  84 => 14,  78 => 13,  66 => 7,  57 => 36,  55 => 13,  49 => 10,  45 => 8,  43 => 7,  35 => 1,);
+        return array (  128 => 37,  124 => 36,  119 => 33,  108 => 28,  103 => 25,  99 => 24,  94 => 21,  92 => 20,  84 => 14,  78 => 13,  66 => 7,  57 => 43,  55 => 13,  49 => 10,  45 => 8,  43 => 7,  35 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -171,12 +184,19 @@ class __TwigTemplate_bf6a48f16e122a1e9b8da870c314dde88c5bce26fcec8f06a07210f3d1b
                 {% include 'carousel.html.twig' %}
             </div>
         </div>
-        {% if app.user != null %}
-            {{ dump(app.user) }}
-        {% endif %}
+
+        {% for message in  app.session.flashbag().get('statusKOMessage') %}
+            <div class=\"row\" style=\"justify-content: center\">
+                <div class=\"col-sm-6\">
+                    <div class=\"alert alert-danger\" role=\"alert\">
+                        {{ message }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
         <div class=\"row registerform\">
             <div class=\"col-sm-6\">
-                <h2>Registrate</h2>
                 {{ form_start(form) }}
                 {{ form_end(form) }}
             </div>

@@ -15,3 +15,7 @@ logout:
 register:
     path:   /register
     defaults: { _controller: CustomsBundle:Auth:register }
+
+fullloginpage:
+    path: /loginpage
+    defaults: { _controller: CustomsBundle:Auth:index }

@@ -61,13 +61,12 @@ class __TwigTemplate_d689ec4fd78e82d12ccf61c0c70b2a5ce8b1dcd4c7c5a6eca4fb5695b8d
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/loginpage.css"), "html", null, true);
         echo "\" />
 
-    ";
-        // line 17
-        echo "    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
 
-    ";
+    <!-- Latest compiled and minified JavaScript -->
+    <script src=\"";
         // line 20
-        echo "    <script src=\"";
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/js/bootstrap.min.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
@@ -79,6 +78,12 @@ class __TwigTemplate_d689ec4fd78e82d12ccf61c0c70b2a5ce8b1dcd4c7c5a6eca4fb5695b8d
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/js/popper.min.js"), "html", null, true);
         echo "\"></script>
 
+    <!-- Customs JS -->
+    <script src=\"";
+        // line 25
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework//js/customs.js"), "html", null, true);
+        echo "\"></script>
+
 </head>
     <body>
         <div class=\"container\">
@@ -88,9 +93,9 @@ class __TwigTemplate_d689ec4fd78e82d12ccf61c0c70b2a5ce8b1dcd4c7c5a6eca4fb5695b8d
             <div class=\"row logincarousel\">
                 <div class=\"col-sm-12\">
                     ";
-        // line 32
-        $this->loadTemplate("carousel.html.twig", "loginpagemodal.html.twig", 32)->display($context);
-        // line 33
+        // line 35
+        $this->loadTemplate("carousel.html.twig", "loginpagemodal.html.twig", 35)->display($context);
+        // line 36
         echo "                </div>
             </div>
             <div class=\"row webdescription\">
@@ -100,13 +105,13 @@ class __TwigTemplate_d689ec4fd78e82d12ccf61c0c70b2a5ce8b1dcd4c7c5a6eca4fb5695b8d
             </div>
             <div class=\"row loginactions\">
                 <div class=\"login-button-item\">
-                    <button class=\"btn btn-primary login-button\" type=\"button\">Visita NutriK</button>
+                    <button class=\"btn btn-primary login-button\" type=\"button\" onclick=\"redirectTo('home')\">Visita NutriK</button>
                 </div>
                 <div class=\"login-button-item\">
-                    <button class=\"btn btn-primary login-button-grey\" type=\"button\">Iniciar Sesión</button>
+                    <button class=\"btn btn-primary login-button-grey\" type=\"button\" onclick=\"redirectTo('login')\">Iniciar Sesión</button>
                 </div>
                 <div class=\"login-button-item\">
-                    <button class=\"btn btn-primary login-button\" type=\"button\">Registrarse</button>
+                    <button class=\"btn btn-primary login-button\" type=\"button\" onclick=\"redirectTo('register')\">Registrarse</button>
                 </div>
             </div>
         </div>
@@ -142,7 +147,7 @@ class __TwigTemplate_d689ec4fd78e82d12ccf61c0c70b2a5ce8b1dcd4c7c5a6eca4fb5695b8d
 
     public function getDebugInfo()
     {
-        return array (  122 => 6,  94 => 33,  92 => 32,  79 => 22,  75 => 21,  70 => 20,  66 => 17,  61 => 14,  55 => 11,  51 => 10,  47 => 9,  43 => 7,  41 => 6,  34 => 1,);
+        return array (  127 => 6,  99 => 36,  97 => 35,  84 => 25,  78 => 22,  74 => 21,  70 => 20,  61 => 14,  55 => 11,  51 => 10,  47 => 9,  43 => 7,  41 => 6,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -170,13 +175,16 @@ class __TwigTemplate_d689ec4fd78e82d12ccf61c0c70b2a5ce8b1dcd4c7c5a6eca4fb5695b8d
     <!-- Login Page stylesheet-->
     <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/loginpage.css') }}\" />
 
-    {#    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->#}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
 
-    {#    <!-- Latest compiled and minified JavaScript -->#}
+    <!-- Latest compiled and minified JavaScript -->
     <script src=\"{{ asset('public/js/bootstrap.min.js') }}\"></script>
     <script src=\"{{ asset('public/js/jquery-3.2.1.slim.min.js') }}\"></script>
     <script src=\"{{ asset('public/js/popper.min.js') }}\"></script>
+
+    <!-- Customs JS -->
+    <script src=\"{{ asset('bundles/framework//js/customs.js') }}\"></script>
 
 </head>
     <body>
@@ -196,13 +204,13 @@ class __TwigTemplate_d689ec4fd78e82d12ccf61c0c70b2a5ce8b1dcd4c7c5a6eca4fb5695b8d
             </div>
             <div class=\"row loginactions\">
                 <div class=\"login-button-item\">
-                    <button class=\"btn btn-primary login-button\" type=\"button\">Visita NutriK</button>
+                    <button class=\"btn btn-primary login-button\" type=\"button\" onclick=\"redirectTo('home')\">Visita NutriK</button>
                 </div>
                 <div class=\"login-button-item\">
-                    <button class=\"btn btn-primary login-button-grey\" type=\"button\">Iniciar Sesión</button>
+                    <button class=\"btn btn-primary login-button-grey\" type=\"button\" onclick=\"redirectTo('login')\">Iniciar Sesión</button>
                 </div>
                 <div class=\"login-button-item\">
-                    <button class=\"btn btn-primary login-button\" type=\"button\">Registrarse</button>
+                    <button class=\"btn btn-primary login-button\" type=\"button\" onclick=\"redirectTo('register')\">Registrarse</button>
                 </div>
             </div>
         </div>

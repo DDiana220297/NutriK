@@ -95,18 +95,37 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
                         <ul class=\"nav navbar-nav navbar-right\">
-                            <li><p style=\"padding-top: 15px; padding-bottom: 15px\">Hola :)</p></li>
-                            <li><a href=\"#\">Inicia Sesion</a></li>
-                            <li><i style=\"padding: 15px\" class=\"glyphicon glyphicon-user\"></i></li>
+
+                            ";
+        // line 48
+        if (($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []) != null)) {
+            // line 49
+            echo "                                <li><p style=\"padding-top: 15px; padding-bottom: 15px\">Hola :) ";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "firstname", []), "html", null, true);
+            echo " ";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "lastname", []), "html", null, true);
+            echo "</p></li>
+                            ";
+        } else {
+            // line 51
+            echo "                                <li><p style=\"padding-top: 15px; padding-bottom: 15px\">Hola :)</p></li>
+                                <li><a href=\"";
+            // line 52
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("login");
+            echo "\">Inicia Sesion</a></li>
+                            ";
+        }
+        // line 54
+        echo "                            <li><i style=\"padding: 15px\" class=\"glyphicon glyphicon-user\"></i></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
             </nav>
         </header>
         ";
-        // line 55
-        $this->loadTemplate("lateralmenu.html.twig", "header.html.twig", 55)->display($context);
-        // line 56
+        // line 60
+        $this->loadTemplate("lateralmenu.html.twig", "header.html.twig", 60)->display($context);
+        // line 61
         echo "    </body>
 </html>
 
@@ -141,7 +160,7 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
 
     public function getDebugInfo()
     {
-        return array (  121 => 6,  110 => 56,  108 => 55,  74 => 24,  68 => 21,  62 => 18,  53 => 12,  47 => 9,  43 => 7,  41 => 6,  34 => 1,);
+        return array (  140 => 6,  129 => 61,  127 => 60,  119 => 54,  114 => 52,  111 => 51,  103 => 49,  101 => 48,  74 => 24,  68 => 21,  62 => 18,  53 => 12,  47 => 9,  43 => 7,  41 => 6,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -200,8 +219,13 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
                         <ul class=\"nav navbar-nav navbar-right\">
-                            <li><p style=\"padding-top: 15px; padding-bottom: 15px\">Hola :)</p></li>
-                            <li><a href=\"#\">Inicia Sesion</a></li>
+
+                            {% if app.user != null %}
+                                <li><p style=\"padding-top: 15px; padding-bottom: 15px\">Hola :) {{ app.user.firstname }} {{ app.user.lastname }}</p></li>
+                            {% else %}
+                                <li><p style=\"padding-top: 15px; padding-bottom: 15px\">Hola :)</p></li>
+                                <li><a href=\"{{ path('login') }}\">Inicia Sesion</a></li>
+                            {% endif %}
                             <li><i style=\"padding: 15px\" class=\"glyphicon glyphicon-user\"></i></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->

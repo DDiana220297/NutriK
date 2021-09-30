@@ -60,16 +60,31 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
     <!-- Lateral Menu -->
     <div class=\"lateral-dropdown-menu\" style=\"display: none\">
         <div class=\"lateral-dropdown-menu-user-account-top\">
-            <ul style=\"margin-top: 10px;\">
+            <ul style=\"margin-top: 30px;\">
                 <li style=\"display: inline-block\"><span>Hola :)</span></li>
-                <li style=\"display: inline-block\"><a href=\"#\" style=\"color: white\">Identificate</a></li>
-            </ul>
+                ";
+        // line 16
+        if (($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []) != null)) {
+            // line 17
+            echo "                    <li style=\"display: inline-block\"><p style=\"color: white\">";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "firstname", []), "html", null, true);
+            echo " ";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "lastname", []), "html", null, true);
+            echo "</p></li>
+                ";
+        } else {
+            // line 19
+            echo "                    <li style=\"display: inline-block\"><a href=\"#\" style=\"color: white\">Identificate</a></li>
+                ";
+        }
+        // line 21
+        echo "            </ul>
         </div>
         <div class=\"lateral-dropdown-menu-content\">
             ";
-        // line 20
+        // line 24
         if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_NUTR")) {
-            // line 21
+            // line 25
             echo "                <ul>
                     <li>
                         <a href=\"#\">
@@ -144,10 +159,10 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
                 </ul>
             ";
         }
-        // line 94
+        // line 98
         echo "            ";
         if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_GUEST")) {
-            // line 95
+            // line 99
             echo "                <ul>
                     <li>
                         <a href=\"#\">
@@ -202,26 +217,26 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
                 </ul>
             ";
         }
-        // line 148
+        // line 152
         echo "        </div>
         <div class=\"lateral-dropdown-menu-user-account-bottom\">
             <ul>
                 ";
-        // line 151
+        // line 155
         if (($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []) != null)) {
-            // line 152
+            // line 156
             echo "                    <li style=\"color: #00766c; height: 4vh; margin-top: 12px\"><a href=\"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("logout");
             echo "\" style=\"color: white\">Cerrar Sesión</a></li>
                 ";
         } else {
-            // line 154
+            // line 158
             echo "                    <li style=\"color: #00766c; height: 4vh; margin-top: 12px\"><a href=\"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("login");
             echo "\" style=\"color: white\">Iniciar Sesión</a></li>
                 ";
         }
-        // line 156
+        // line 160
         echo "                <li style=\"color: #00766c\"><a href=\"#\" style=\"color: white\">Ayuda y preguntas frecuentes</a></li>
             </ul>
         </div>
@@ -249,7 +264,7 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
 
     public function getDebugInfo()
     {
-        return array (  225 => 156,  219 => 154,  213 => 152,  211 => 151,  206 => 148,  151 => 95,  148 => 94,  73 => 21,  71 => 20,  56 => 8,  49 => 3,  37 => 2,  34 => 1,);
+        return array (  240 => 160,  234 => 158,  228 => 156,  226 => 155,  221 => 152,  166 => 99,  163 => 98,  88 => 25,  86 => 24,  81 => 21,  77 => 19,  69 => 17,  67 => 16,  56 => 8,  49 => 3,  37 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -275,9 +290,13 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
     <!-- Lateral Menu -->
     <div class=\"lateral-dropdown-menu\" style=\"display: none\">
         <div class=\"lateral-dropdown-menu-user-account-top\">
-            <ul style=\"margin-top: 10px;\">
+            <ul style=\"margin-top: 30px;\">
                 <li style=\"display: inline-block\"><span>Hola :)</span></li>
-                <li style=\"display: inline-block\"><a href=\"#\" style=\"color: white\">Identificate</a></li>
+                {% if app.user != null %}
+                    <li style=\"display: inline-block\"><p style=\"color: white\">{{ app.user.firstname }} {{ app.user.lastname }}</p></li>
+                {% else %}
+                    <li style=\"display: inline-block\"><a href=\"#\" style=\"color: white\">Identificate</a></li>
+                {% endif %}
             </ul>
         </div>
         <div class=\"lateral-dropdown-menu-content\">

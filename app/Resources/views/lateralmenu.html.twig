@@ -11,9 +11,13 @@
     <!-- Lateral Menu -->
     <div class="lateral-dropdown-menu" style="display: none">
         <div class="lateral-dropdown-menu-user-account-top">
-            <ul style="margin-top: 10px;">
+            <ul style="margin-top: 30px;">
                 <li style="display: inline-block"><span>Hola :)</span></li>
-                <li style="display: inline-block"><a href="#" style="color: white">Identificate</a></li>
+                {% if app.user != null %}
+                    <li style="display: inline-block"><p style="color: white">{{ app.user.firstname }} {{ app.user.lastname }}</p></li>
+                {% else %}
+                    <li style="display: inline-block"><a href="#" style="color: white">Identificate</a></li>
+                {% endif %}
             </ul>
         </div>
         <div class="lateral-dropdown-menu-content">

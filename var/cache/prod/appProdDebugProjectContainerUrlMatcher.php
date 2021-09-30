@@ -49,6 +49,11 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
                 return ['_route' => 'login_check'];
             }
 
+            // fullloginpage
+            if ('/loginpage' === $pathinfo) {
+                return array (  '_controller' => 'CustomsBundle\\Controller\\AuthController::indexAction',  '_route' => 'fullloginpage',);
+            }
+
         }
 
         // logout
