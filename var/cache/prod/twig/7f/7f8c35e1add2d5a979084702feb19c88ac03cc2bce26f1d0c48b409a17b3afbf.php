@@ -21,7 +21,6 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
         $this->parent = false;
 
         $this->blocks = [
-            'title' => [$this, 'block_title'],
         ];
     }
 
@@ -33,47 +32,6 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
         // line 1
         echo "<!DOCTYPE HTML>
 <html lang=\"es\">
-    <head>
-        <meta charset=\"utf-8\"/>
-        <title>
-            ";
-        // line 6
-        $this->displayBlock('title', $context, $blocks);
-        // line 7
-        echo "        </title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel=\"stylesheet\" href=\"";
-        // line 9
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/css/bootstrap.css"), "html", null, true);
-        echo "\">
-
-        <!-- Optional theme -->
-        <link rel=\"stylesheet\" href=\"";
-        // line 12
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/css/bootstrap-theme.css"), "html", null, true);
-        echo "\">
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src=\"";
-        // line 18
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/js/bootstrap.js"), "html", null, true);
-        echo "\"></script>
-
-        <!-- Header stylesheet-->
-        <link rel=\"stylesheet\" href=\"";
-        // line 21
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/header.css"), "html", null, true);
-        echo "\" />
-
-        <!-- Menu component javascript -->
-        <script src=\"";
-        // line 24
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/js/MenuComponent.js"), "html", null, true);
-        echo "\"></script>
-    </head>
     <body>
         <header>
             <nav class=\"navbar navbar-default global-header\">
@@ -97,9 +55,9 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
                         <ul class=\"nav navbar-nav navbar-right\">
 
                             ";
-        // line 48
+        // line 25
         if (($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []) != null)) {
-            // line 49
+            // line 26
             echo "                                <li><p style=\"padding-top: 15px; padding-bottom: 15px\">Hola :) ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "firstname", []), "html", null, true);
             echo " ";
@@ -107,15 +65,15 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
             echo "</p></li>
                             ";
         } else {
-            // line 51
+            // line 28
             echo "                                <li><p style=\"padding-top: 15px; padding-bottom: 15px\">Hola :)</p></li>
                                 <li><a href=\"";
-            // line 52
+            // line 29
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("login");
             echo "\">Inicia Sesion</a></li>
                             ";
         }
-        // line 54
+        // line 31
         echo "                            <li><i style=\"padding: 15px\" class=\"glyphicon glyphicon-user\"></i></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
@@ -123,26 +81,14 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
             </nav>
         </header>
         ";
-        // line 60
-        $this->loadTemplate("lateralmenu.html.twig", "header.html.twig", 60)->display($context);
-        // line 61
+        // line 37
+        $this->loadTemplate("lateralmenu.html.twig", "header.html.twig", 37)->display($context);
+        // line 38
         echo "    </body>
 </html>
 
 
 ";
-        
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
-
-    }
-
-    // line 6
-    public function block_title($context, array $blocks = [])
-    {
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
-
-        echo " NutriK ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -160,7 +106,7 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
 
     public function getDebugInfo()
     {
-        return array (  140 => 6,  129 => 61,  127 => 60,  119 => 54,  114 => 52,  111 => 51,  103 => 49,  101 => 48,  74 => 24,  68 => 21,  62 => 18,  53 => 12,  47 => 9,  43 => 7,  41 => 6,  34 => 1,);
+        return array (  87 => 38,  85 => 37,  77 => 31,  72 => 29,  69 => 28,  61 => 26,  59 => 25,  33 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -175,29 +121,6 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
     {
         return new Source("<!DOCTYPE HTML>
 <html lang=\"es\">
-    <head>
-        <meta charset=\"utf-8\"/>
-        <title>
-            {% block title %} NutriK {% endblock %}
-        </title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel=\"stylesheet\" href=\"{{ asset('public/css/bootstrap.css') }}\">
-
-        <!-- Optional theme -->
-        <link rel=\"stylesheet\" href=\"{{ asset('public/css/bootstrap-theme.css') }}\">
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src=\"{{ asset('public/js/bootstrap.js') }}\"></script>
-
-        <!-- Header stylesheet-->
-        <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/header.css') }}\" />
-
-        <!-- Menu component javascript -->
-        <script src=\"{{ asset('bundles/framework/js/MenuComponent.js') }}\"></script>
-    </head>
     <body>
         <header>
             <nav class=\"navbar navbar-default global-header\">

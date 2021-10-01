@@ -18,6 +18,7 @@
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="CustomsBundle">CustomsBundle\CustomsBundle</parameter>
+      <parameter key="CustomerBundle">CustomerBundle\CustomerBundle</parameter>
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
@@ -64,6 +65,11 @@
         <parameter key="parent">null</parameter>
         <parameter key="path">/shared/httpd/nutrik/src/CustomsBundle</parameter>
         <parameter key="namespace">CustomsBundle</parameter>
+      </parameter>
+      <parameter key="CustomerBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">/shared/httpd/nutrik/src/CustomerBundle</parameter>
+        <parameter key="namespace">CustomerBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
@@ -2534,6 +2540,14 @@
       <call method="addPath">
         <argument>/shared/httpd/nutrik/src/CustomsBundle/Resources/views</argument>
         <argument>!Customs</argument>
+      </call>
+      <call method="addPath">
+        <argument>/shared/httpd/nutrik/src/CustomerBundle/Resources/views</argument>
+        <argument>Customer</argument>
+      </call>
+      <call method="addPath">
+        <argument>/shared/httpd/nutrik/src/CustomerBundle/Resources/views</argument>
+        <argument>!Customer</argument>
       </call>
       <call method="addPath">
         <argument>/shared/httpd/nutrik/app/Resources/views</argument>

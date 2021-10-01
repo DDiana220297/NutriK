@@ -18,6 +18,7 @@
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="CustomsBundle">CustomsBundle\CustomsBundle</parameter>
+      <parameter key="CustomerBundle">CustomerBundle\CustomerBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -69,6 +70,11 @@
         <parameter key="parent">null</parameter>
         <parameter key="path">/shared/httpd/nutrik/src/CustomsBundle</parameter>
         <parameter key="namespace">CustomsBundle</parameter>
+      </parameter>
+      <parameter key="CustomerBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">/shared/httpd/nutrik/src/CustomerBundle</parameter>
+        <parameter key="namespace">CustomerBundle</parameter>
       </parameter>
       <parameter key="DebugBundle" type="collection">
         <parameter key="parent">null</parameter>
@@ -525,6 +531,9 @@
       <tag name="controller.service_arguments"/>
     </service>
     <service id="CustomsBundle\CustomsBundle" class="CustomsBundle\CustomsBundle" public="false" autowire="true" autoconfigure="true"/>
+    <service id="CustomsBundle\Form\UserType" class="CustomsBundle\Form\UserType" public="false" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="app.twig_extension" class="AppBundle\Twig\Helper" public="true" autowire="true" autoconfigure="true">
       <tag name="twig.extension"/>
     </service>
@@ -791,10 +800,12 @@
       <argument type="collection">
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
         <argument>AppBundle\Form</argument>
+        <argument>CustomsBundle\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
         <argument>AppBundle\Form\PruebaType</argument>
+        <argument>CustomsBundle\Form\UserType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -1017,7 +1028,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id="service_locator.xggiwvq"/>
+      <argument type="service" id="service_locator.942xi7m"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1257,6 +1268,7 @@
       <call method="addYamlMappings">
         <argument type="collection">
           <argument>/shared/httpd/nutrik/src/AppBundle/Resources/config/validation.yml</argument>
+          <argument>/shared/httpd/nutrik/src/CustomsBundle/Resources/config/validation.yml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">
@@ -2865,6 +2877,14 @@
         <argument>!Customs</argument>
       </call>
       <call method="addPath">
+        <argument>/shared/httpd/nutrik/src/CustomerBundle/Resources/views</argument>
+        <argument>Customer</argument>
+      </call>
+      <call method="addPath">
+        <argument>/shared/httpd/nutrik/src/CustomerBundle/Resources/views</argument>
+        <argument>!Customer</argument>
+      </call>
+      <call method="addPath">
         <argument>/shared/httpd/nutrik/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
@@ -3779,6 +3799,8 @@
     <service id="abstract.instanceof.CustomsBundle\Controller\AuthController" class="CustomsBundle\Controller\AuthController" public="true" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Symfony\Bundle\FrameworkBundle\Controller\Controller.0.CustomsBundle\Controller\DefaultController" class="CustomsBundle\Controller\DefaultController" public="true" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.CustomsBundle\Controller\DefaultController" class="CustomsBundle\Controller\DefaultController" public="true" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id="instanceof.Symfony\Component\Form\FormTypeInterface.0.CustomsBundle\Form\UserType" class="CustomsBundle\Form\UserType" public="false" autowire="true" abstract="true"/>
+    <service id="abstract.instanceof.CustomsBundle\Form\UserType" class="CustomsBundle\Form\UserType" public="false" autowire="true" autoconfigure="true" abstract="true"/>
     <service id="instanceof.Twig_ExtensionInterface.0.app.twig_extension" class="AppBundle\Twig\Helper" public="true" autowire="true" abstract="true"/>
     <service id="instanceof.Twig\Extension\ExtensionInterface.0.app.twig_extension" class="AppBundle\Twig\Helper" public="true" autowire="true" abstract="true"/>
     <service id="abstract.instanceof.app.twig_extension" class="AppBundle\Twig\Helper" public="true" autowire="true" autoconfigure="true" abstract="true"/>
@@ -3805,10 +3827,11 @@
         <argument key="inline" type="service" id="fragment.renderer.inline"/>
       </argument>
     </service>
-    <service id="service_locator.xggiwvq" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.942xi7m" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="AppBundle\Form\PruebaType" type="service" id="AppBundle\Form\PruebaType"/>
+        <argument key="CustomsBundle\Form\UserType" type="service" id="CustomsBundle\Form\UserType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service" id="form.type.file"/>

@@ -1,0 +1,17 @@
+customer_news:
+  path:   /news
+  defaults: { _controller: CustomerBundle:Customer:news }
+
+customer_about:
+  path:   /about
+  defaults: { _controller: CustomerBundle:Customer:about }
+
+customer_didactic_content:
+    path: /content
+    defaults: { _controller: CustomerBundle:Customer:didacticContent }
+
+customer_services:
+  path: /services
+  defaults: { _controller: CustomerBundle:Customer:services }
+
+

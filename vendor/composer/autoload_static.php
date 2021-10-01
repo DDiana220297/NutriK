@@ -80,6 +80,7 @@ class ComposerStaticInitcf41400f01ecb4c93173cce47fa743b0
         'C' => 
         array (
             'CustomsBundle\\' => 14,
+            'CustomerBundle\\' => 15,
             'Composer\\CaBundle\\' => 18,
         ),
         'A' => 
@@ -236,6 +237,10 @@ class ComposerStaticInitcf41400f01ecb4c93173cce47fa743b0
         'CustomsBundle\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/CustomsBundle',
+        ),
+        'CustomerBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/CustomerBundle',
         ),
         'Composer\\CaBundle\\' => 
         array (

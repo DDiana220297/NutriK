@@ -19,3 +19,4 @@ register:
 fullloginpage:
     path: /loginpage
     defaults: { _controller: CustomsBundle:Auth:index }
+

@@ -8,12 +8,14 @@
     </title>
     <!-- Login Page stylesheet-->
     <link rel="stylesheet" href="{{ asset('bundles/framework/css/loginpage.css') }}" />
+
+    <!-- Customs JS -->
+    <script src="{{ asset('bundles/framework//js/customs.js') }}"></script>
 </head>
 <body>
     {% block content %}
         {% if app.user != null %}
-{#            {{ dump(app.user) }}#}
-            {{ render('/home') }}
+            {{ render('home') }}
         {% else %}
             <div class="container">
                 <div class="row title">

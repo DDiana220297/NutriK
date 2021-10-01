@@ -1,0 +1,43 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <meta charset="utf-8"/>
+        <title>
+            {% block title %} NutriK {% endblock %}
+        </title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="{{ asset('public/css/bootstrap.css') }}">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="{{ asset('public/css/bootstrap-theme.css') }}">
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="{{ asset('public/js/bootstrap.js') }}"></script>
+
+        <!-- Header stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/header.css') }}" />
+
+        <!-- Menu component javascript -->
+        <script src="{{ asset('bundles/framework/js/MenuComponent.js') }}"></script>
+
+        <!-- Customs JS -->
+        <script src="{{ asset('bundles/framework//js/customs.js') }}"></script>
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    <section id="customer-header">
+        {% include 'customerheader.html.twig' %}
+    </section>
+    <section id="content">
+        Content Default
+    </section>
+    <footer>
+        Trabajo de fin de grado Nutrik
+    </footer>
+    </html>
+{% endblock %}
