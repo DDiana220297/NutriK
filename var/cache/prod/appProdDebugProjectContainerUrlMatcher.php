@@ -28,6 +28,26 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
             $canonicalMethod = 'GET';
         }
 
+        // customer_news
+        if ('/news' === $pathinfo) {
+            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::newsAction',  '_route' => 'customer_news',);
+        }
+
+        // customer_about
+        if ('/about' === $pathinfo) {
+            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::aboutAction',  '_route' => 'customer_about',);
+        }
+
+        // customer_didactic_content
+        if ('/content' === $pathinfo) {
+            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::didacticContentAction',  '_route' => 'customer_didactic_content',);
+        }
+
+        // customer_services
+        if ('/services' === $pathinfo) {
+            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::servicesAction',  '_route' => 'customer_services',);
+        }
+
         // customs_homepage
         if ('/home' === $pathinfo) {
             return array (  '_controller' => 'CustomsBundle\\Controller\\DefaultController::indexAction',  '_route' => 'customs_homepage',);
@@ -64,26 +84,6 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
         // register
         if ('/register' === $pathinfo) {
             return array (  '_controller' => 'CustomsBundle\\Controller\\AuthController::registerAction',  '_route' => 'register',);
-        }
-
-        // customer_news
-        if ('/news' === $pathinfo) {
-            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::newsAction',  '_route' => 'customer_news',);
-        }
-
-        // customer_about
-        if ('/about' === $pathinfo) {
-            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::aboutAction',  '_route' => 'customer_about',);
-        }
-
-        // customer_didactic_content
-        if ('/content' === $pathinfo) {
-            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::didacticContentAction',  '_route' => 'customer_didactic_content',);
-        }
-
-        // customer_services
-        if ('/services' === $pathinfo) {
-            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::servicesAction',  '_route' => 'customer_services',);
         }
 
         if (0 === strpos($pathinfo, '/pruebas')) {

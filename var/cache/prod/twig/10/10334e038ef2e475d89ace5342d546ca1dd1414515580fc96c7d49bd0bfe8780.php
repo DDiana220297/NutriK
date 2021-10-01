@@ -32,6 +32,12 @@ class __TwigTemplate_b5eb8dbafac79e7c320c6a68b1557ad119f390e36af161100562afa2cee
         // line 1
         echo "<!DOCTYPE HTML>
 <html lang=\"es\">
+    <header>
+        <link rel=\"stylesheet\" href=\"";
+        // line 4
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/header.css"), "html", null, true);
+        echo "\" />
+    </header>
     <body>
         <header>
             <nav class=\"navbar navbar-default customer-header\">
@@ -40,20 +46,20 @@ class __TwigTemplate_b5eb8dbafac79e7c320c6a68b1557ad119f390e36af161100562afa2cee
                     <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
                         <ul class=\"nav navbar-nav\">
                             <li><a href=\"";
-        // line 10
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("news");
+        // line 13
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_news");
         echo "\">Novedades</a></li>
                             <li><a href=\"";
-        // line 11
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("content");
+        // line 14
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_didactic_content");
         echo "\">Contenido Didáctico</a></li>
                             <li><a href=\"";
-        // line 12
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("about");
+        // line 15
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_about");
         echo "\">¿Quiénes somos?</a></li>
                             <li><a href=\"";
-        // line 13
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("services");
+        // line 16
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_services");
         echo "\">Servicios NutriK</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
@@ -82,7 +88,7 @@ class __TwigTemplate_b5eb8dbafac79e7c320c6a68b1557ad119f390e36af161100562afa2cee
 
     public function getDebugInfo()
     {
-        return array (  56 => 13,  52 => 12,  48 => 11,  44 => 10,  33 => 1,);
+        return array (  62 => 16,  58 => 15,  54 => 14,  50 => 13,  38 => 4,  33 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -97,6 +103,9 @@ class __TwigTemplate_b5eb8dbafac79e7c320c6a68b1557ad119f390e36af161100562afa2cee
     {
         return new Source("<!DOCTYPE HTML>
 <html lang=\"es\">
+    <header>
+        <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/header.css') }}\" />
+    </header>
     <body>
         <header>
             <nav class=\"navbar navbar-default customer-header\">
@@ -104,10 +113,10 @@ class __TwigTemplate_b5eb8dbafac79e7c320c6a68b1557ad119f390e36af161100562afa2cee
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
                         <ul class=\"nav navbar-nav\">
-                            <li><a href=\"{{ path('news') }}\">Novedades</a></li>
-                            <li><a href=\"{{ path('content') }}\">Contenido Didáctico</a></li>
-                            <li><a href=\"{{ path('about') }}\">¿Quiénes somos?</a></li>
-                            <li><a href=\"{{ path('services') }}\">Servicios NutriK</a></li>
+                            <li><a href=\"{{ path('customer_news') }}\">Novedades</a></li>
+                            <li><a href=\"{{ path('customer_didactic_content') }}\">Contenido Didáctico</a></li>
+                            <li><a href=\"{{ path('customer_about') }}\">¿Quiénes somos?</a></li>
+                            <li><a href=\"{{ path('customer_services') }}\">Servicios NutriK</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->

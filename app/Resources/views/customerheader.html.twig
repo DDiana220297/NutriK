@@ -1,5 +1,8 @@
 <!DOCTYPE HTML>
 <html lang="es">
+    <header>
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/header.css') }}" />
+    </header>
     <body>
         <header>
             <nav class="navbar navbar-default customer-header">
@@ -7,10 +10,10 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="{{ path('news') }}">Novedades</a></li>
-                            <li><a href="{{ path('content') }}">Contenido Didáctico</a></li>
-                            <li><a href="{{ path('about') }}">¿Quiénes somos?</a></li>
-                            <li><a href="{{ path('services') }}">Servicios NutriK</a></li>
+                            <li><a href="{{ path('customer_news') }}">Novedades</a></li>
+                            <li><a href="{{ path('customer_didactic_content') }}">Contenido Didáctico</a></li>
+                            <li><a href="{{ path('customer_about') }}">¿Quiénes somos?</a></li>
+                            <li><a href="{{ path('customer_services') }}">Servicios NutriK</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->

@@ -60,9 +60,10 @@ class __TwigTemplate_d9693291091b17b5b994df60326a5d93456020fbb88f2b54e2c584b9e54
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/css/bootstrap.css"), "html", null, true);
         echo "\">
 
+
         <!-- Optional theme -->
         <link rel=\"stylesheet\" href=\"";
-        // line 13
+        // line 14
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/css/bootstrap-theme.css"), "html", null, true);
         echo "\">
 
@@ -71,39 +72,39 @@ class __TwigTemplate_d9693291091b17b5b994df60326a5d93456020fbb88f2b54e2c584b9e54
 
         <!-- Latest compiled and minified JavaScript -->
         <script src=\"";
-        // line 19
+        // line 20
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/js/bootstrap.js"), "html", null, true);
         echo "\"></script>
 
         <!-- Header stylesheet-->
         <link rel=\"stylesheet\" href=\"";
-        // line 22
+        // line 23
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/header.css"), "html", null, true);
         echo "\" />
 
         <!-- Menu component javascript -->
         <script src=\"";
-        // line 25
+        // line 26
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/js/MenuComponent.js"), "html", null, true);
         echo "\"></script>
 
         <!-- Customs JS -->
         <script src=\"";
-        // line 28
+        // line 29
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework//js/customs.js"), "html", null, true);
         echo "\"></script>
     </header>
     <section id=\"default-header\">
         ";
-        // line 31
-        $this->loadTemplate("header.html.twig", "@Customs/Default/index.html.twig", 31)->display($context);
         // line 32
+        $this->loadTemplate("header.html.twig", "@Customs/Default/index.html.twig", 32)->display($context);
+        // line 33
         echo "    </section>
     <section id=\"customer-header\">
         ";
-        // line 34
-        $this->loadTemplate("customerheader.html.twig", "@Customs/Default/index.html.twig", 34)->display($context);
         // line 35
+        $this->loadTemplate("customerheader.html.twig", "@Customs/Default/index.html.twig", 35)->display($context);
+        // line 36
         echo "    </section>
     <section id=\"content\">
         Content Default
@@ -137,7 +138,7 @@ class __TwigTemplate_d9693291091b17b5b994df60326a5d93456020fbb88f2b54e2c584b9e54
 
     public function getDebugInfo()
     {
-        return array (  122 => 7,  107 => 35,  105 => 34,  101 => 32,  99 => 31,  93 => 28,  87 => 25,  81 => 22,  75 => 19,  66 => 13,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
+        return array (  123 => 7,  108 => 36,  106 => 35,  102 => 33,  100 => 32,  94 => 29,  88 => 26,  82 => 23,  76 => 20,  67 => 14,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -160,6 +161,7 @@ class __TwigTemplate_d9693291091b17b5b994df60326a5d93456020fbb88f2b54e2c584b9e54
         </title>
         <!-- Latest compiled and minified CSS -->
         <link rel=\"stylesheet\" href=\"{{ asset('public/css/bootstrap.css') }}\">
+
 
         <!-- Optional theme -->
         <link rel=\"stylesheet\" href=\"{{ asset('public/css/bootstrap-theme.css') }}\">

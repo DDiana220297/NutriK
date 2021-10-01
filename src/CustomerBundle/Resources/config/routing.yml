@@ -7,11 +7,9 @@ customer_about:
   defaults: { _controller: CustomerBundle:Customer:about }
 
 customer_didactic_content:
-    path: /content
-    defaults: { _controller: CustomerBundle:Customer:didacticContent }
+  path: /content
+  defaults: { _controller: CustomerBundle:Customer:didacticContent }
 
 customer_services:
   path: /services
   defaults: { _controller: CustomerBundle:Customer:services }
-
-
