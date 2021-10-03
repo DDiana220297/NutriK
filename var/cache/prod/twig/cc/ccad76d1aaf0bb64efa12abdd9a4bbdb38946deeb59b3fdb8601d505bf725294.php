@@ -22,7 +22,6 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
 
         $this->blocks = [
             'content' => [$this, 'block_content'],
-            'title' => [$this, 'block_title'],
         ];
     }
 
@@ -46,157 +45,87 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
         // line 2
         echo "    <!DOCTYPE HTML>
     <html lang=\"es\">
-    <header>
-        <meta charset=\"utf-8\"/>
-        <title>
+        <header>
+            <!-- Login Page stylesheet-->
+            <link rel=\"stylesheet\" href=\"";
+        // line 6
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/customerpages.css"), "html", null, true);
+        echo "\" />
+        </header>
+        <section id=\"default-header\">
             ";
-        // line 7
-        $this->displayBlock('title', $context, $blocks);
-        // line 8
-        echo "        </title>
-
-        <!-- Optional theme -->
-        <link rel=\"stylesheet\" href=\"";
-        // line 11
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/css/bootstrap-theme.css"), "html", null, true);
-        echo "\">
-        <link rel=\"stylesheet\" href=\"";
+        // line 9
+        $this->loadTemplate("header.html.twig", "@Customer/news.html.twig", 9)->display($context);
+        // line 10
+        echo "        </section>
+        <section id=\"customer-header\">
+            ";
         // line 12
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/css/bootstrap.css"), "html", null, true);
-        echo "\">
+        $this->loadTemplate("customerheader.html.twig", "@Customer/news.html.twig", 12)->display($context);
+        // line 13
+        echo "        </section>
+        <section id=\"carousel-section\">
+            <div class=\"container\">
+                <div id=\"news-carousel-section\" class=\"carousel slide\" data-ride=\"carousel\">
+                    <!-- Indicators -->
+                    <ol class=\"carousel-indicators\">
+                        <li data-target=\"#news-carousel-section\" data-slide-to=\"0\" class=\"active\"></li>
+                        <li data-target=\"#news-carousel-section\" data-slide-to=\"1\"></li>
+                        <li data-target=\"#news-carousel-section\" data-slide-to=\"2\"></li>
+                    </ol>
 
-        <!-- Login Page stylesheet-->
-        <link rel=\"stylesheet\" href=\"";
-        // line 15
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/loginpage.css"), "html", null, true);
-        echo "\" />
+                    <!-- Wrapper for slides -->
+                    <div class=\"carousel-inner\" role=\"listbox\">
+                        <div class=\"item active\">
+                            <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Example%20light%20background%20image\">
+                            <div class=\"carousel-caption\">
+                                <h4>Bootstrap caption example</h4>
+                                <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
+                            </div>
+                        </div>
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
+                        <div class=\"item\">
+                            <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Example%20light%20background%20image%20with%20caption\">
+                            <div class=\"carousel-caption\">
+                                <h4>Bootstrap caption example</h4>
+                                <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
+                            </div>
+                        </div>
 
-        <!-- Latest compiled and minified JavaScript -->
-        <script src=\"";
-        // line 21
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/js/bootstrap.js"), "html", null, true);
-        echo "\"></script>
-
-        <!-- Header stylesheet-->
-        <link rel=\"stylesheet\" href=\"";
-        // line 24
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/header.css"), "html", null, true);
-        echo "\" />
-
-        <!-- Menu component javascript -->
-        <script src=\"";
-        // line 27
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/js/MenuComponent.js"), "html", null, true);
-        echo "\"></script>
-
-        <!-- Customs JS -->
-        <script src=\"";
-        // line 30
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework//js/customs.js"), "html", null, true);
-        echo "\"></script>
-    </header>
-    <section id=\"default-header\">
-        ";
-        // line 33
-        $this->loadTemplate("header.html.twig", "@Customer/news.html.twig", 33)->display($context);
-        // line 34
-        echo "    </section>
-    <section id=\"customer-header\">
-        ";
-        // line 36
-        $this->loadTemplate("customerheader.html.twig", "@Customer/news.html.twig", 36)->display($context);
-        // line 37
-        echo "    </section>
-    <section id=\"carousel\">
-        <style>
-            /* Carousel dark indicators */
-            /* Add an extra .carousel parent class to increase specifity
-               avoiding the use of !important flag. */
-            .carousel .carousel-indicators li {
-                background-color: #fff;
-                background-color: rgba(70,70,70,.25);
-            }
-
-            .carousel .carousel-indicators .active {
-                background-color: #444;
-            }
-
-            /* Only for beautify example */
-            h1 {
-                margin: 60px auto;
-                text-align: center;
-            }
-
-            img {
-                width: 100%;
-            }
-        </style>
-        <h1>
-            Bootstrap v3.4.1 Carousel<br>
-            <small>dark indicators on light background</small>
-        </h1>
-
-        <div class=\"container\">
-            <div id=\"carousel-example-generic\" class=\"carousel slide\" data-ride=\"carousel\">
-                <!-- Indicators -->
-                <ol class=\"carousel-indicators\">
-                    <li data-target=\"#carousel-example-generic\" data-slide-to=\"0\" class=\"active\"></li>
-                    <li data-target=\"#carousel-example-generic\" data-slide-to=\"1\"></li>
-                    <li data-target=\"#carousel-example-generic\" data-slide-to=\"2\"></li>
-                </ol>
-
-                <!-- Wrapper for slides -->
-                <div class=\"carousel-inner\" role=\"listbox\">
-                    <div class=\"item active\">
-                        <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Example%20light%20background%20image\">
-                    </div>
-
-                    <div class=\"item\">
-                        <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Example%20light%20background%20image%20with%20caption\">
-                        <div class=\"carousel-caption\">
-                            <h4>Bootstrap caption example</h4>
-                            <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
+                        <div class=\"item\">
+                            <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Another%20example%20without%20caption\">
+                            <div class=\"carousel-caption\">
+                                <h4>Bootstrap caption example</h4>
+                                <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
+                            </div>
+                            <div style=\"color: black\">
+                                <p>Description vjdshkhsdakvhskdajvh</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class=\"item\">
-                        <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Another%20example%20without%20caption\">
-                    </div>
+                    <!-- Controls -->
+                    <a class=\"left carousel-control\" href=\"#news-carousel-section\" role=\"button\" data-slide=\"prev\">
+                        <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>
+                        <span class=\"sr-only\">Previous</span>
+                    </a>
+
+                    <a class=\"right carousel-control\" href=\"#news-carousel-section\" role=\"button\" data-slide=\"next\">
+                        <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>
+                        <span class=\"sr-only\">Next</span>
+                    </a>
                 </div>
-
-                <!-- Controls -->
-                <a class=\"left carousel-control\" href=\"#carousel-example-generic\" role=\"button\" data-slide=\"prev\">
-                    <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>
-                    <span class=\"sr-only\">Previous</span>
-                </a>
-
-                <a class=\"right carousel-control\" href=\"#carousel-example-generic\" role=\"button\" data-slide=\"next\">
-                    <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>
-                    <span class=\"sr-only\">Next</span>
-                </a>
             </div>
-        </div>
-    </section>
-    <footer>
-        Trabajo de fin de grado Nutrik
-    </footer>
+            <div class=\"container\">
+                <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+            </div>
+        </section>
     </html>
 ";
-        
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
-
-    }
-
-    // line 7
-    public function block_title($context, array $blocks = [])
-    {
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
-
-        echo " NutriK ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -209,7 +138,7 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
 
     public function getDebugInfo()
     {
-        return array (  194 => 7,  112 => 37,  110 => 36,  106 => 34,  104 => 33,  98 => 30,  92 => 27,  86 => 24,  80 => 21,  71 => 15,  65 => 12,  61 => 11,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
+        return array (  66 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -225,113 +154,76 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
         return new Source("{% block content %}
     <!DOCTYPE HTML>
     <html lang=\"es\">
-    <header>
-        <meta charset=\"utf-8\"/>
-        <title>
-            {% block title %} NutriK {% endblock %}
-        </title>
+        <header>
+            <!-- Login Page stylesheet-->
+            <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/customerpages.css') }}\" />
+        </header>
+        <section id=\"default-header\">
+            {% include 'header.html.twig' %}
+        </section>
+        <section id=\"customer-header\">
+            {% include 'customerheader.html.twig' %}
+        </section>
+        <section id=\"carousel-section\">
+            <div class=\"container\">
+                <div id=\"news-carousel-section\" class=\"carousel slide\" data-ride=\"carousel\">
+                    <!-- Indicators -->
+                    <ol class=\"carousel-indicators\">
+                        <li data-target=\"#news-carousel-section\" data-slide-to=\"0\" class=\"active\"></li>
+                        <li data-target=\"#news-carousel-section\" data-slide-to=\"1\"></li>
+                        <li data-target=\"#news-carousel-section\" data-slide-to=\"2\"></li>
+                    </ol>
 
-        <!-- Optional theme -->
-        <link rel=\"stylesheet\" href=\"{{ asset('public/css/bootstrap-theme.css') }}\">
-        <link rel=\"stylesheet\" href=\"{{ asset('public/css/bootstrap.css') }}\">
+                    <!-- Wrapper for slides -->
+                    <div class=\"carousel-inner\" role=\"listbox\">
+                        <div class=\"item active\">
+                            <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Example%20light%20background%20image\">
+                            <div class=\"carousel-caption\">
+                                <h4>Bootstrap caption example</h4>
+                                <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
+                            </div>
+                        </div>
 
-        <!-- Login Page stylesheet-->
-        <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/loginpage.css') }}\" />
+                        <div class=\"item\">
+                            <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Example%20light%20background%20image%20with%20caption\">
+                            <div class=\"carousel-caption\">
+                                <h4>Bootstrap caption example</h4>
+                                <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
+                            </div>
+                        </div>
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src=\"{{ asset('public/js/bootstrap.js') }}\"></script>
-
-        <!-- Header stylesheet-->
-        <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/header.css') }}\" />
-
-        <!-- Menu component javascript -->
-        <script src=\"{{ asset('bundles/framework/js/MenuComponent.js') }}\"></script>
-
-        <!-- Customs JS -->
-        <script src=\"{{ asset('bundles/framework//js/customs.js') }}\"></script>
-    </header>
-    <section id=\"default-header\">
-        {% include 'header.html.twig' %}
-    </section>
-    <section id=\"customer-header\">
-        {% include 'customerheader.html.twig' %}
-    </section>
-    <section id=\"carousel\">
-        <style>
-            /* Carousel dark indicators */
-            /* Add an extra .carousel parent class to increase specifity
-               avoiding the use of !important flag. */
-            .carousel .carousel-indicators li {
-                background-color: #fff;
-                background-color: rgba(70,70,70,.25);
-            }
-
-            .carousel .carousel-indicators .active {
-                background-color: #444;
-            }
-
-            /* Only for beautify example */
-            h1 {
-                margin: 60px auto;
-                text-align: center;
-            }
-
-            img {
-                width: 100%;
-            }
-        </style>
-        <h1>
-            Bootstrap v3.4.1 Carousel<br>
-            <small>dark indicators on light background</small>
-        </h1>
-
-        <div class=\"container\">
-            <div id=\"carousel-example-generic\" class=\"carousel slide\" data-ride=\"carousel\">
-                <!-- Indicators -->
-                <ol class=\"carousel-indicators\">
-                    <li data-target=\"#carousel-example-generic\" data-slide-to=\"0\" class=\"active\"></li>
-                    <li data-target=\"#carousel-example-generic\" data-slide-to=\"1\"></li>
-                    <li data-target=\"#carousel-example-generic\" data-slide-to=\"2\"></li>
-                </ol>
-
-                <!-- Wrapper for slides -->
-                <div class=\"carousel-inner\" role=\"listbox\">
-                    <div class=\"item active\">
-                        <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Example%20light%20background%20image\">
-                    </div>
-
-                    <div class=\"item\">
-                        <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Example%20light%20background%20image%20with%20caption\">
-                        <div class=\"carousel-caption\">
-                            <h4>Bootstrap caption example</h4>
-                            <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
+                        <div class=\"item\">
+                            <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Another%20example%20without%20caption\">
+                            <div class=\"carousel-caption\">
+                                <h4>Bootstrap caption example</h4>
+                                <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
+                            </div>
+                            <div style=\"color: black\">
+                                <p>Description vjdshkhsdakvhskdajvh</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div class=\"item\">
-                        <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Another%20example%20without%20caption\">
-                    </div>
+                    <!-- Controls -->
+                    <a class=\"left carousel-control\" href=\"#news-carousel-section\" role=\"button\" data-slide=\"prev\">
+                        <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>
+                        <span class=\"sr-only\">Previous</span>
+                    </a>
+
+                    <a class=\"right carousel-control\" href=\"#news-carousel-section\" role=\"button\" data-slide=\"next\">
+                        <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>
+                        <span class=\"sr-only\">Next</span>
+                    </a>
                 </div>
-
-                <!-- Controls -->
-                <a class=\"left carousel-control\" href=\"#carousel-example-generic\" role=\"button\" data-slide=\"prev\">
-                    <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>
-                    <span class=\"sr-only\">Previous</span>
-                </a>
-
-                <a class=\"right carousel-control\" href=\"#carousel-example-generic\" role=\"button\" data-slide=\"next\">
-                    <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>
-                    <span class=\"sr-only\">Next</span>
-                </a>
             </div>
-        </div>
-    </section>
-    <footer>
-        Trabajo de fin de grado Nutrik
-    </footer>
+            <div class=\"container\">
+                <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+            </div>
+        </section>
     </html>
 {% endblock %}
 ", "@Customer/news.html.twig", "/shared/httpd/nutrik/src/CustomerBundle/Resources/views/news.html.twig");

@@ -2,30 +2,8 @@
     <!DOCTYPE HTML>
     <html lang="es">
     <header>
-        <meta charset="utf-8"/>
-        <title>
-            {% block title %} NutriK {% endblock %}
-        </title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="{{ asset('public/css/bootstrap.css') }}">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="{{ asset('public/css/bootstrap-theme.css') }}">
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="{{ asset('public/js/bootstrap.js') }}"></script>
-
-        <!-- Header stylesheet-->
-        <link rel="stylesheet" href="{{ asset('bundles/framework/css/header.css') }}" />
-
-        <!-- Menu component javascript -->
-        <script src="{{ asset('bundles/framework/js/MenuComponent.js') }}"></script>
-
-        <!-- Customs JS -->
-        <script src="{{ asset('bundles/framework//js/customs.js') }}"></script>
+        <!-- Login Page stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/customerpages.css') }}" />
     </header>
     <section id="default-header">
         {% include 'header.html.twig' %}
@@ -33,11 +11,26 @@
     <section id="customer-header">
         {% include 'customerheader.html.twig' %}
     </section>
-    <section id="content">
-        Content Default
+    <section>
+        <div class="container">
+            <div class="container-services">
+                <div class="col-sm-4" style="justify-content: center; color: black; text-align: center; padding: 100px">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class="col-sm-4" style="justify-content: center; color: black; text-align: center; padding: 100px">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class="col-sm-4" style="justify-content: center; color: black; text-align: center; padding: 100px">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
-    <footer>
-        Trabajo de fin de grado Nutrik
-    </footer>
     </html>
 {% endblock %}

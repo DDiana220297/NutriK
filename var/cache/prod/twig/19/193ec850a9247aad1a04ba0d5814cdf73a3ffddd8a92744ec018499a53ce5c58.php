@@ -22,7 +22,6 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
 
         $this->blocks = [
             'content' => [$this, 'block_content'],
-            'title' => [$this, 'block_title'],
         ];
     }
 
@@ -47,84 +46,47 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
         echo "    <!DOCTYPE HTML>
     <html lang=\"es\">
     <header>
-        <meta charset=\"utf-8\"/>
-        <title>
-            ";
-        // line 7
-        $this->displayBlock('title', $context, $blocks);
-        // line 8
-        echo "        </title>
-        <!-- Latest compiled and minified CSS -->
+        <!-- Login Page stylesheet-->
         <link rel=\"stylesheet\" href=\"";
-        // line 10
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/css/bootstrap.css"), "html", null, true);
-        echo "\">
-
-        <!-- Optional theme -->
-        <link rel=\"stylesheet\" href=\"";
-        // line 13
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/css/bootstrap-theme.css"), "html", null, true);
-        echo "\">
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src=\"";
-        // line 19
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/js/bootstrap.js"), "html", null, true);
-        echo "\"></script>
-
-        <!-- Header stylesheet-->
-        <link rel=\"stylesheet\" href=\"";
-        // line 22
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/header.css"), "html", null, true);
+        // line 6
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/customerpages.css"), "html", null, true);
         echo "\" />
-
-        <!-- Menu component javascript -->
-        <script src=\"";
-        // line 25
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/js/MenuComponent.js"), "html", null, true);
-        echo "\"></script>
-
-        <!-- Customs JS -->
-        <script src=\"";
-        // line 28
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework//js/customs.js"), "html", null, true);
-        echo "\"></script>
     </header>
     <section id=\"default-header\">
         ";
-        // line 31
-        $this->loadTemplate("header.html.twig", "@Customer/services.html.twig", 31)->display($context);
-        // line 32
+        // line 9
+        $this->loadTemplate("header.html.twig", "@Customer/services.html.twig", 9)->display($context);
+        // line 10
         echo "    </section>
     <section id=\"customer-header\">
         ";
-        // line 34
-        $this->loadTemplate("customerheader.html.twig", "@Customer/services.html.twig", 34)->display($context);
-        // line 35
+        // line 12
+        $this->loadTemplate("customerheader.html.twig", "@Customer/services.html.twig", 12)->display($context);
+        // line 13
         echo "    </section>
-    <section id=\"content\">
-        Content Default
+    <section>
+        <div class=\"container\">
+            <div class=\"container-services\">
+                <div class=\"col-sm-4\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class=\"col-sm-4\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class=\"col-sm-4\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
-    <footer>
-        Trabajo de fin de grado Nutrik
-    </footer>
     </html>
 ";
-        
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
-
-    }
-
-    // line 7
-    public function block_title($context, array $blocks = [])
-    {
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
-
-        echo " NutriK ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -137,7 +99,7 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
 
     public function getDebugInfo()
     {
-        return array (  122 => 7,  107 => 35,  105 => 34,  101 => 32,  99 => 31,  93 => 28,  87 => 25,  81 => 22,  75 => 19,  66 => 13,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
+        return array (  66 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -154,30 +116,8 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
     <!DOCTYPE HTML>
     <html lang=\"es\">
     <header>
-        <meta charset=\"utf-8\"/>
-        <title>
-            {% block title %} NutriK {% endblock %}
-        </title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel=\"stylesheet\" href=\"{{ asset('public/css/bootstrap.css') }}\">
-
-        <!-- Optional theme -->
-        <link rel=\"stylesheet\" href=\"{{ asset('public/css/bootstrap-theme.css') }}\">
-
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src=\"{{ asset('public/js/bootstrap.js') }}\"></script>
-
-        <!-- Header stylesheet-->
-        <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/header.css') }}\" />
-
-        <!-- Menu component javascript -->
-        <script src=\"{{ asset('bundles/framework/js/MenuComponent.js') }}\"></script>
-
-        <!-- Customs JS -->
-        <script src=\"{{ asset('bundles/framework//js/customs.js') }}\"></script>
+        <!-- Login Page stylesheet-->
+        <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/customerpages.css') }}\" />
     </header>
     <section id=\"default-header\">
         {% include 'header.html.twig' %}
@@ -185,12 +125,27 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
     <section id=\"customer-header\">
         {% include 'customerheader.html.twig' %}
     </section>
-    <section id=\"content\">
-        Content Default
+    <section>
+        <div class=\"container\">
+            <div class=\"container-services\">
+                <div class=\"col-sm-4\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class=\"col-sm-4\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+                <div class=\"col-sm-4\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
-    <footer>
-        Trabajo de fin de grado Nutrik
-    </footer>
     </html>
 {% endblock %}
 ", "@Customer/services.html.twig", "/shared/httpd/nutrik/src/CustomerBundle/Resources/views/services.html.twig");
