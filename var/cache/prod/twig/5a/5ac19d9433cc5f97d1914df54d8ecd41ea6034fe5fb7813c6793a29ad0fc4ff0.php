@@ -59,7 +59,7 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
     ";
         // line 16
         $this->displayBlock('content', $context, $blocks);
-        // line 56
+        // line 58
         echo "</body>
 
 ";
@@ -132,7 +132,7 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
             // line 38
             echo "                <div class=\"row loginform\">
                     <div class=\"col-sm-6\">
-                        <form action=\"";
+                        <form class=\"form-login\" action=\"";
             // line 40
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("login_check");
             echo "\" method=\"post\">
@@ -147,6 +147,11 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
                                 <input class=\"btn btn-primary login-button\" type=\"submit\" style=\"margin: 20px 0px 0px 0px\" value=\"Inciar Sesión\"/>
                                 <input type=\"hidden\" name=\"_target_path\" value=\"/login\">
                             </div>
+                            <p style=\"text-align: center\"> ó </p>
+                            <p><a href=\"";
+            // line 50
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("register");
+            echo "\"> Registrate </a></p>
                         </form>
                     </div>
                 </div>
@@ -154,7 +159,7 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
             <div class=\"clearfix\"></div>
         ";
         }
-        // line 55
+        // line 57
         echo "    ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -173,7 +178,7 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
 
     public function getDebugInfo()
     {
-        return array (  158 => 55,  142 => 42,  137 => 40,  133 => 38,  122 => 33,  117 => 30,  113 => 29,  109 => 27,  107 => 26,  99 => 20,  93 => 18,  90 => 17,  84 => 16,  72 => 7,  63 => 56,  61 => 16,  55 => 13,  49 => 10,  45 => 8,  43 => 7,  35 => 1,);
+        return array (  163 => 57,  153 => 50,  142 => 42,  137 => 40,  133 => 38,  122 => 33,  117 => 30,  113 => 29,  109 => 27,  107 => 26,  99 => 20,  93 => 18,  90 => 17,  84 => 16,  72 => 7,  63 => 58,  61 => 16,  55 => 13,  49 => 10,  45 => 8,  43 => 7,  35 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -225,7 +230,7 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
                 {% endfor %}
                 <div class=\"row loginform\">
                     <div class=\"col-sm-6\">
-                        <form action=\"{{ path(\"login_check\") }}\" method=\"post\">
+                        <form class=\"form-login\" action=\"{{ path(\"login_check\") }}\" method=\"post\">
                             <label for=\"username\">Email:</label>
                             <input type=\"email\" id=\"username\" name=\"_username\" value=\"{{ last_username }}\" class=\"form-control\"/>
                             <label for=\"password\">Contraseña:</label>
@@ -234,6 +239,8 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
                                 <input class=\"btn btn-primary login-button\" type=\"submit\" style=\"margin: 20px 0px 0px 0px\" value=\"Inciar Sesión\"/>
                                 <input type=\"hidden\" name=\"_target_path\" value=\"/login\">
                             </div>
+                            <p style=\"text-align: center\"> ó </p>
+                            <p><a href=\"{{ path('register') }}\"> Registrate </a></p>
                         </form>
                     </div>
                 </div>

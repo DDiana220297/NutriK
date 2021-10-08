@@ -25,4 +25,28 @@ class CustomerController extends Controller
     {
         return $this->render('@Customer/services.html.twig');
     }
+
+    public function personalDataAction(){
+        return $this->render('@Customer/personal-data.html.twig');
+    }
+
+    public function diaryAction(){
+        return $this->render('@Customer/diary.html.twig');
+    }
+
+    public function calendarAction(){
+        return $this->render('@Customer/calendar.html.twig');
+    }
+
+    public function recipesAction(){
+        return $this->render('@Customer/recipes.html.twig');
+    }
+
+    public function progressAction(){
+        return $this->render('@Customer/progress.html.twig');
+    }
+
+    public function messengerAction(){
+        return $this->render('@Customer/messenger-services.html.twig');
+    }
 }

@@ -2,6 +2,7 @@
     padding: 10px;
     color: #00766c;
     justify-content: center;
+    text-align: center;
 }
 
 .container .title>h1{
@@ -17,10 +18,12 @@
 
 .container .loginactions{
     justify-content: center;
+    display: flex;
 }
 
 .container .registerform{
     justify-content: center;
+    display: flex;
 }
 
 .container .loginactions .login-button-item{
@@ -77,10 +80,48 @@
 
 .container .loginform{
     justify-content: center;
+    display: flex;
+}
+
+.container .loginform .col-sm-6 .form-login>input{
+    height: 45px;
+}
+
+.container .loginform .col-sm-6 .form-login>p{
+    text-align: center;
+    font-size: 1.5rem;
+    padding-top: 10px;
+    margin: 0;
+}
+
+.container .loginform .col-sm-6 .form-login>p>a{
+    color: #00766c;
 }
 
 .container .loginform .login-button-item>input{
     width: 100%;
     height: 50px;
     margin-top: 10px;
+    font-size: 1.5rem;
+}
+
+#carousel-login-page-section .container #carouselLoginPage {
+    height: 300px;
+    margin-bottom: 60px;
+}
+
+#carousel-login-page-section .container #carouselLoginPage .item .carousel-caption {
+    z-index: 10;
+}
+
+#carousel-login-page-section .container #carouselLoginPage .item {
+    width: 100%;
+    background-color: #777;
+}
+
+#carousel-login-page-section .container #carouselLoginPage .carousel-inner > .item > img {
+    width: 100%;
+    height: 300px;
+    top: 0;
+    left: 0;
 }

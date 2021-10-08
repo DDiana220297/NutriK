@@ -2,31 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90679569-6512-4917-b454-f5ba0a5de6e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/htdocs/web/bundles/framework/css/customerpages.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/bundles/framework/css/customerpages.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/views/calendar.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/views/diary.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/views/messenger-services.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/views/personal-data.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/views/progress.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/views/recipes.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/calendar.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/diary.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/messenger-services.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/personal-data.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/progress.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/recipes.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/carousel.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/carousel.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/header.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/lateralmenu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/lateralmenu.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Resources/views/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/login.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htdocs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/app/Resources/views/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/app/Resources/views/header.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/views/didactic-content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/views/didactic-content.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/views/news.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/views/news.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/7f/7f8c35e1add2d5a979084702feb19c88ac03cc2bce26f1d0c48b409a17b3afbf.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/7f/7f8c35e1add2d5a979084702feb19c88ac03cc2bce26f1d0c48b409a17b3afbf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/cc/ccad76d1aaf0bb64efa12abdd9a4bbdb38946deeb59b3fdb8601d505bf725294.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/cc/ccad76d1aaf0bb64efa12abdd9a4bbdb38946deeb59b3fdb8601d505bf725294.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/ce/ceb898457507485debc809c7a335f13f60464e022bca1fe10417874aac65095d.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/ce/ceb898457507485debc809c7a335f13f60464e022bca1fe10417874aac65095d.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/app/Resources/views/carousel.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/app/Resources/views/carousel.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/app/Resources/views/lateralmenu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/app/Resources/views/lateralmenu.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/app/Resources/views/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/app/Resources/views/login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Controller/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Controller/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/config/routing.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Form/UserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/appProdDebugProjectContainerUrlGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/appProdDebugProjectContainerUrlGenerator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/appProdDebugProjectContainerUrlMatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/appProdDebugProjectContainerUrlMatcher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/H/Z/C6bIBvIioCVe91CnRgdO" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/H/Z/C6bIBvIioCVe91CnRgdO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/53/538bd91198d6b4690dad4889912243d7c6805db7c5a97d3567c221e05c7ef0f6.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/53/538bd91198d6b4690dad4889912243d7c6805db7c5a97d3567c221e05c7ef0f6.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/5a/5ac19d9433cc5f97d1914df54d8ecd41ea6034fe5fb7813c6793a29ad0fc4ff0.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/5a/5ac19d9433cc5f97d1914df54d8ecd41ea6034fe5fb7813c6793a29ad0fc4ff0.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/a9/a905e62db82fc8d6ccda81743170b758167ab77eaf0359dea85882ff3ee16e85.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/a9/a905e62db82fc8d6ccda81743170b758167ab77eaf0359dea85882ff3ee16e85.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htdocs/var/logs/prod.log" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/logs/prod.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/web/bundles/framework/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/web/bundles/framework/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/web/public/css/carousel.css" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/web/public/css/carousel.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/about.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/about.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/didactic-content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/didactic-content.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/news.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/news.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/services.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/services.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/64/6496f36b2a368faedc21f45758c92626862256ca6983ac4450295cbacb584663.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/64/6496f36b2a368faedc21f45758c92626862256ca6983ac4450295cbacb584663.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/web/bundles/framework/css/loginpage.css" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/web/bundles/framework/css/loginpage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomerBundle/Controller/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerBundle/Controller/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomerBundle/Resources/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerBundle/Resources/config/routing.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomsBundle/Form/UserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/appProdDebugProjectContainerUrlGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/appProdDebugProjectContainerUrlGenerator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/appProdDebugProjectContainerUrlMatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/appProdDebugProjectContainerUrlMatcher.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/H/Z/C6bIBvIioCVe91CnRgdO" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/H/Z/C6bIBvIioCVe91CnRgdO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/53/538bd91198d6b4690dad4889912243d7c6805db7c5a97d3567c221e05c7ef0f6.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/53/538bd91198d6b4690dad4889912243d7c6805db7c5a97d3567c221e05c7ef0f6.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/5a/5ac19d9433cc5f97d1914df54d8ecd41ea6034fe5fb7813c6793a29ad0fc4ff0.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/5a/5ac19d9433cc5f97d1914df54d8ecd41ea6034fe5fb7813c6793a29ad0fc4ff0.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/7f/7f8c35e1add2d5a979084702feb19c88ac03cc2bce26f1d0c48b409a17b3afbf.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/7f/7f8c35e1add2d5a979084702feb19c88ac03cc2bce26f1d0c48b409a17b3afbf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/cc/ccad76d1aaf0bb64efa12abdd9a4bbdb38946deeb59b3fdb8601d505bf725294.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/cc/ccad76d1aaf0bb64efa12abdd9a4bbdb38946deeb59b3fdb8601d505bf725294.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/ce/ceb898457507485debc809c7a335f13f60464e022bca1fe10417874aac65095d.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/ce/ceb898457507485debc809c7a335f13f60464e022bca1fe10417874aac65095d.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/a9/a905e62db82fc8d6ccda81743170b758167ab77eaf0359dea85882ff3ee16e85.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/a9/a905e62db82fc8d6ccda81743170b758167ab77eaf0359dea85882ff3ee16e85.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/logs/prod.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/logs/prod.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/bundles/framework/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/bundles/framework/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/css/carousel.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/public/css/carousel.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/bundles/framework/css/customerpages.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/bundles/framework/css/customerpages.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/bundles/framework/css/loginpage.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/bundles/framework/css/loginpage.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,40 +77,40 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/pruebas/form.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/AppCache.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/AppKernel.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Tag.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/config/security.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/config/parameters.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/config/parameters.yml.dist" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/config/services.yml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/Resources/views/customerheader.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/config/services.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/config/services.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/config/parameters.yml.dist" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Entry.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Controller/CustomerController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/pruebas/form.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/config/parameters.yml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/pruebas/index.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/AppBundle/AppBundle.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/views/news.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/loginpagemodal.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Controller/DefaultController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/carousel.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/AppCache.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Entry.orm.yml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/views/Default/index.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/header.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Category.orm.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/views/layout.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/composer.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/Resources/views/login.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/views/layout.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/header.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/loginpagemodal.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/CustomsBundle.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Controller/DefaultController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/AppBundle/Controller/PruebasController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Entry.orm.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/config/services.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/views/news.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Entry.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/validation.yml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Category.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/carousel.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Category.orm.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Controller/CustomerController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/CustomsBundle.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/AppBundle/Controller/PruebasController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/config/security.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/AppBundle/AppBundle.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/validation.yml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
@@ -195,6 +215,8 @@
       <workItem from="1633109511188" duration="9273000" />
       <workItem from="1633168872592" duration="4817000" />
       <workItem from="1633263058771" duration="3912000" />
+      <workItem from="1633658137234" duration="67000" />
+      <workItem from="1633658712344" duration="6902000" />
     </task>
     <servers />
   </component>

@@ -97,7 +97,10 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
                                 </a>
                             </li>
                             <li>
-                                <a class=\"navbar-brand header-title\" href=\"#\">NutriK</a>
+                                <a class=\"navbar-brand header-title\" href=\"";
+        // line 43
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customs_homepage");
+        echo "\">NutriK</a>
                             </li>
                         </ul>
                     </div>
@@ -169,7 +172,7 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
 
     public function getDebugInfo()
     {
-        return array (  149 => 7,  138 => 64,  136 => 63,  128 => 57,  123 => 55,  120 => 54,  112 => 52,  110 => 51,  86 => 30,  80 => 27,  74 => 24,  68 => 21,  59 => 15,  53 => 12,  49 => 11,  44 => 8,  42 => 7,  34 => 1,);
+        return array (  152 => 7,  141 => 64,  139 => 63,  131 => 57,  126 => 55,  123 => 54,  115 => 52,  113 => 51,  102 => 43,  86 => 30,  80 => 27,  74 => 24,  68 => 21,  59 => 15,  53 => 12,  49 => 11,  44 => 8,  42 => 7,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -224,7 +227,7 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
                                 </a>
                             </li>
                             <li>
-                                <a class=\"navbar-brand header-title\" href=\"#\">NutriK</a>
+                                <a class=\"navbar-brand header-title\" href=\"{{ path('customs_homepage') }}\">NutriK</a>
                             </li>
                         </ul>
                     </div>

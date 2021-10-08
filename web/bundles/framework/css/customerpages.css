@@ -1,8 +1,6 @@
-/* Carousel dark indicators */
+/* NEWS PAGE */
 #carousel-section{
     margin-bottom: 20px;
-    /*background: linear-gradient(to bottom, #dedede 0%, #eeeeee 100%);*/
-    /*background-image: url('/web/newsbackground.jpg')*/
 }
 #carousel-section .container{
     height: 375px;
@@ -11,7 +9,6 @@
 #carousel-section .container .carousel{
     margin-top: 40px;
 }
-
 
 #carousel-section .container .carousel, #carousel-section .container .carousel .carousel-inner, #carousel-section .container .carousel .carousel-inner .item{
     height: 100%;
@@ -30,6 +27,8 @@
     width: 100%;
     height: 100%;
 }
+
+/* DIDACTIC CONTENT PAGE */
 
 #didactic-content .container{
     width: 100%;
@@ -78,3 +77,47 @@
     position: relative;
     background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
 }
+
+
+/* PERSONAL DATA PAGE */
+
+#customer-personal-data .container{
+    width: 95%;
+    height: 800px;
+    color: black;
+    padding: 20px;
+    margin-top: 25px;
+    background-color: lightgray;
+}
+
+#customer-personal-data .container .col-sm-6 .personal-data-header>svg{
+    width: 1em;
+    font-size: 50px;
+    height: 0.75em;
+    display: inline-flex;
+    margin-right: 8px;
+    vertical-align: -8px;
+}
+
+#customer-personal-data .container .col-sm-6 .form-check{
+    padding: 10px;
+}
+
+#customer-personal-data .container .col-sm-6 .personal-data-fields{
+    padding: 10px;
+}
+
+#customer-personal-data .container .col-sm-6 .personal-data-fields>input{
+    padding: 5px;
+    height: 45px;
+    width: 85%;
+    margin-bottom: 20px;
+}
+
+
+#customer-personal-data .container .col-sm-6 .personal-data-fields #metricas>input{
+    padding: 5px;
+    height: 45px;
+    margin-bottom: 20px;
+}
+

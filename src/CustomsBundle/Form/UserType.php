@@ -18,21 +18,25 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('firstname', TextType::class, array("required" => "required", "attr" => array(
-                "class" => "form-firstname form-control"
+                "class" => "form-firstname form-control",
+                "style" => "height:45px"
             )))
             ->add('lastname',TextType::class, array("required" => "required", "attr" => array(
-                "class" => "form-lastname form-control"
+                "class" => "form-lastname form-control",
+                "style" => "height:45px"
             )))
             ->add('email',EmailType::class, array("required" => "required", "attr" => array(
-                "class" => "form-email form-control"
+                "class" => "form-email form-control",
+                "style" => "height:45px"
             )))
             ->add('password',PasswordType::class, array("required" => "required", "attr" => array(
-                "class" => "form-password form-control"
+                "class" => "form-password form-control",
+                "style" => "height:45px"
             )))
             ->add('Registrarse',SubmitType::class, array("attr" => array(
                 "class" => "form-submit form-control",
                 "style" => "font-weight: 500;
-                            font-size: 1.25rem;
+                            font-size: 1.5rem;
                             --text-opacity: 1;
                             color: #fff;
                             border-bottom-width: 4px;
@@ -43,7 +47,8 @@ class UserType extends AbstractType
                             border-radius: .25rem;
                             position: relative;
                             background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
-                            margin-top: 20px;"
+                            margin-top: 20px;
+                            height:45px"
             )));
     }/**
      * {@inheritdoc}
