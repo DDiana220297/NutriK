@@ -64,7 +64,14 @@ class __TwigTemplate_7e507d517a76e131bb577676621b33f94607dd002561ee342fbf7b37ef6
         $this->loadTemplate("customerheader.html.twig", "@Customer/messenger-services.html.twig", 12)->display($context);
         // line 13
         echo "    </section>
-    <section>
+    <section id=\"messenger\">
+        <div class=\"container\">
+            <div class=\"col-sm-12\">
+                <div id=\"messenger-block\">
+
+                </div>
+            </div>
+        </div>
     </section>
     </html>
 ";
@@ -106,7 +113,14 @@ class __TwigTemplate_7e507d517a76e131bb577676621b33f94607dd002561ee342fbf7b37ef6
     <section id=\"customer-header\">
         {% include 'customerheader.html.twig' %}
     </section>
-    <section>
+    <section id=\"messenger\">
+        <div class=\"container\">
+            <div class=\"col-sm-12\">
+                <div id=\"messenger-block\">
+
+                </div>
+            </div>
+        </div>
     </section>
     </html>
 {% endblock %}

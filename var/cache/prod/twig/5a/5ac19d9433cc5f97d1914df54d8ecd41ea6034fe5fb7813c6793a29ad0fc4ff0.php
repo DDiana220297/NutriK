@@ -59,7 +59,7 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
     ";
         // line 16
         $this->displayBlock('content', $context, $blocks);
-        // line 58
+        // line 60
         echo "</body>
 
 ";
@@ -90,12 +90,12 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
         echo "        ";
         if (($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []) != null)) {
             // line 18
-            echo "            ";
-            echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\HttpKernelRuntime')->renderFragment("home");
-            echo "
+            echo "            <script>
+                window.document.location = '/web/home';
+            </script>
         ";
         } else {
-            // line 20
+            // line 22
             echo "            <div class=\"container\">
                 <div class=\"row title\">
                     <h1>NutriK</h1>
@@ -103,22 +103,22 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
                 <div class=\"row logincarousel\">
                     <div class=\"col-sm-12\">
                         ";
-            // line 26
-            $this->loadTemplate("carousel.html.twig", "login.html.twig", 26)->display($context);
-            // line 27
+            // line 28
+            $this->loadTemplate("carousel.html.twig", "login.html.twig", 28)->display($context);
+            // line 29
             echo "                    </div>
                 </div>
                 ";
-            // line 29
+            // line 31
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "statusOKMessage"], "method"));
             foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                // line 30
+                // line 32
                 echo "                    <div class=\"row\" style=\"justify-content: center\">
                         <div class=\"col-sm-6\">
                             <div class=\"alert alert-success\" role=\"alert\">
                                 ";
-                // line 33
+                // line 35
                 echo twig_escape_filter($this->env, $context["message"], "html", null, true);
                 echo "
                             </div>
@@ -129,16 +129,16 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 38
+            // line 40
             echo "                <div class=\"row loginform\">
                     <div class=\"col-sm-6\">
                         <form class=\"form-login\" action=\"";
-            // line 40
+            // line 42
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("login_check");
             echo "\" method=\"post\">
                             <label for=\"username\">Email:</label>
                             <input type=\"email\" id=\"username\" name=\"_username\" value=\"";
-            // line 42
+            // line 44
             echo twig_escape_filter($this->env, ($context["last_username"] ?? $this->getContext($context, "last_username")), "html", null, true);
             echo "\" class=\"form-control\"/>
                             <label for=\"password\">Contraseña:</label>
@@ -149,7 +149,7 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
                             </div>
                             <p style=\"text-align: center\"> ó </p>
                             <p><a href=\"";
-            // line 50
+            // line 52
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("register");
             echo "\"> Registrate </a></p>
                         </form>
@@ -159,7 +159,7 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
             <div class=\"clearfix\"></div>
         ";
         }
-        // line 57
+        // line 59
         echo "    ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -178,7 +178,7 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
 
     public function getDebugInfo()
     {
-        return array (  163 => 57,  153 => 50,  142 => 42,  137 => 40,  133 => 38,  122 => 33,  117 => 30,  113 => 29,  109 => 27,  107 => 26,  99 => 20,  93 => 18,  90 => 17,  84 => 16,  72 => 7,  63 => 58,  61 => 16,  55 => 13,  49 => 10,  45 => 8,  43 => 7,  35 => 1,);
+        return array (  163 => 59,  153 => 52,  142 => 44,  137 => 42,  133 => 40,  122 => 35,  117 => 32,  113 => 31,  109 => 29,  107 => 28,  99 => 22,  93 => 18,  90 => 17,  84 => 16,  72 => 7,  63 => 60,  61 => 16,  55 => 13,  49 => 10,  45 => 8,  43 => 7,  35 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -208,7 +208,9 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
 <body>
     {% block content %}
         {% if app.user != null %}
-            {{ render('home') }}
+            <script>
+                window.document.location = '/web/home';
+            </script>
         {% else %}
             <div class=\"container\">
                 <div class=\"row title\">

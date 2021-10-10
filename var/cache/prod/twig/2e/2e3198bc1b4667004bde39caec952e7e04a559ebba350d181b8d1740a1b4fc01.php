@@ -64,7 +64,41 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
         $this->loadTemplate("customerheader.html.twig", "@Customer/recipes.html.twig", 12)->display($context);
         // line 13
         echo "    </section>
-    <section>
+    <section id=\"recipes\">
+        <div class=\"container\">
+            <div class=\"col-sm-12\">
+                <nav class=\"navbar navbar-light bg-light\">
+                    <div class=\"container-fluid\">
+                        <form class=\"d-flex recipes-finder\">
+                            <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\">
+                            <button class=\"btn btn-outline-success\" type=\"submit\">Buscar</button>
+                        </form>
+                    </div>
+                </nav>
+                <div class=\"container-fluid\">
+                    <div id=\"recipes-content\">
+                        <div class=\"col-sm-7\">
+                            <div id=\"recipe-content\">
+                                <div id=\"recipe-title\">
+                                </div>
+                                <div id=\"recipe-nutritional-info\">
+                                </div>
+                                <div id=\"recipe-images\">
+                                </div>
+                                <div id=\"recipe-steps\">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=\"col-sm-5\">
+                            <div id=\"recipe-content\">
+                                <div id=\"recipe-ingredients\">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     </html>
 ";
@@ -106,7 +140,41 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
     <section id=\"customer-header\">
         {% include 'customerheader.html.twig' %}
     </section>
-    <section>
+    <section id=\"recipes\">
+        <div class=\"container\">
+            <div class=\"col-sm-12\">
+                <nav class=\"navbar navbar-light bg-light\">
+                    <div class=\"container-fluid\">
+                        <form class=\"d-flex recipes-finder\">
+                            <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\">
+                            <button class=\"btn btn-outline-success\" type=\"submit\">Buscar</button>
+                        </form>
+                    </div>
+                </nav>
+                <div class=\"container-fluid\">
+                    <div id=\"recipes-content\">
+                        <div class=\"col-sm-7\">
+                            <div id=\"recipe-content\">
+                                <div id=\"recipe-title\">
+                                </div>
+                                <div id=\"recipe-nutritional-info\">
+                                </div>
+                                <div id=\"recipe-images\">
+                                </div>
+                                <div id=\"recipe-steps\">
+                                </div>
+                            </div>
+                        </div>
+                        <div class=\"col-sm-5\">
+                            <div id=\"recipe-content\">
+                                <div id=\"recipe-ingredients\">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     </html>
 {% endblock %}

@@ -72,7 +72,7 @@ class __TwigTemplate_cb3a2e659eda18681a327bc073bbe6347d9413ffefbedd844a52e4bc742
                 <div class=\"col-sm-8 didactic-content-content\">
                     <nav class=\"navbar navbar-light bg-light\">
                         <div class=\"container-fluid\">
-                            <form class=\"d-flex\">
+                            <form class=\"d-flex didactic-content-finder\">
                                 <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\">
                                 <button class=\"btn btn-outline-success\" type=\"submit\">Buscar</button>
                             </form>
@@ -129,7 +129,7 @@ class __TwigTemplate_cb3a2e659eda18681a327bc073bbe6347d9413ffefbedd844a52e4bc742
                 <div class=\"col-sm-8 didactic-content-content\">
                     <nav class=\"navbar navbar-light bg-light\">
                         <div class=\"container-fluid\">
-                            <form class=\"d-flex\">
+                            <form class=\"d-flex didactic-content-finder\">
                                 <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\">
                                 <button class=\"btn btn-outline-success\" type=\"submit\">Buscar</button>
                             </form>

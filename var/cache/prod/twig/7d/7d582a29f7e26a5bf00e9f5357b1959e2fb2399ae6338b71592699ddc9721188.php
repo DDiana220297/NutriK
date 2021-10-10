@@ -64,7 +64,28 @@ class __TwigTemplate_4b396793b827deaca9ff20506832ae91851c6ac6951724a663632bf3ab6
         $this->loadTemplate("customerheader.html.twig", "@Customer/progress.html.twig", 12)->display($context);
         // line 13
         echo "    </section>
-    <section>
+    <section id=\"customer-progress\">
+        <div class=\"container\">
+            <div class=\"col-sm-8\">
+                <div id=\"customer-progress-graphics\">
+
+                </div>
+            </div>
+            <div class=\"col-sm-4\">
+                <div id=\"customer-progress-metrics\">
+                    <h3>Registrar métricas:</h3>
+                    <div id=\"customer-progress-fields\" style=\"margin-top: 30px\">
+                        <label for=\"weight\">Peso:</label><input type=\"text\" id=\"weight\" name=\"_weight\" class=\"form-control\"/>
+                        <label for=\"fat-percentage\">% Grasa corporal:</label><input type=\"text\" id=\"fat-percentage\" name=\"_fat-percentage\" class=\"form-control\"/>
+                        <label for=\"muscle-percentage\">% Masa muscular:</label><input type=\"text\" id=\"muscle-percentage\" name=\"_muscle-percentage\" class=\"form-control\"/>
+                        <label for=\"liquids-percentage\">% Líquidos:</label><input type=\"text\" id=\"liquids-percentage\" name=\"_liquids-percentage\" class=\"form-control\"/>
+                        <div class=\"save-button-item\" style=\"width: 100%; margin-top: 20px\">
+                            <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     </html>
 ";
@@ -106,7 +127,28 @@ class __TwigTemplate_4b396793b827deaca9ff20506832ae91851c6ac6951724a663632bf3ab6
     <section id=\"customer-header\">
         {% include 'customerheader.html.twig' %}
     </section>
-    <section>
+    <section id=\"customer-progress\">
+        <div class=\"container\">
+            <div class=\"col-sm-8\">
+                <div id=\"customer-progress-graphics\">
+
+                </div>
+            </div>
+            <div class=\"col-sm-4\">
+                <div id=\"customer-progress-metrics\">
+                    <h3>Registrar métricas:</h3>
+                    <div id=\"customer-progress-fields\" style=\"margin-top: 30px\">
+                        <label for=\"weight\">Peso:</label><input type=\"text\" id=\"weight\" name=\"_weight\" class=\"form-control\"/>
+                        <label for=\"fat-percentage\">% Grasa corporal:</label><input type=\"text\" id=\"fat-percentage\" name=\"_fat-percentage\" class=\"form-control\"/>
+                        <label for=\"muscle-percentage\">% Masa muscular:</label><input type=\"text\" id=\"muscle-percentage\" name=\"_muscle-percentage\" class=\"form-control\"/>
+                        <label for=\"liquids-percentage\">% Líquidos:</label><input type=\"text\" id=\"liquids-percentage\" name=\"_liquids-percentage\" class=\"form-control\"/>
+                        <div class=\"save-button-item\" style=\"width: 100%; margin-top: 20px\">
+                            <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     </html>
 {% endblock %}

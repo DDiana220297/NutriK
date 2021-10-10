@@ -15,7 +15,9 @@
 <body>
     {% block content %}
         {% if app.user != null %}
-            {{ render('home') }}
+            <script>
+                window.document.location = '/web/home';
+            </script>
         {% else %}
             <div class="container">
                 <div class="row title">
