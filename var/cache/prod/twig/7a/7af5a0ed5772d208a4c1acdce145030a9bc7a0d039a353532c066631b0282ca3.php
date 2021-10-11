@@ -100,13 +100,20 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
         $this->loadTemplate("header.html.twig", "@Customs/index.html.twig", 32)->display($context);
         // line 33
         echo "    </section>
-    <section id=\"customer-header\">
-        ";
-        // line 35
-        $this->loadTemplate("customerheader.html.twig", "@Customs/index.html.twig", 35)->display($context);
-        // line 36
-        echo "    </section>
-    <section id=\"content\">
+    ";
+        // line 34
+        if ( !$this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_NUTR")) {
+            // line 35
+            echo "        <section id=\"customer-header\">
+            ";
+            // line 36
+            $this->loadTemplate("customerheader.html.twig", "@Customs/index.html.twig", 36)->display($context);
+            // line 37
+            echo "        </section>
+    ";
+        }
+        // line 39
+        echo "    <section id=\"content\">
         Content Default
     </section>
     <footer>
@@ -138,7 +145,7 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
 
     public function getDebugInfo()
     {
-        return array (  123 => 7,  108 => 36,  106 => 35,  102 => 33,  100 => 32,  94 => 29,  88 => 26,  82 => 23,  76 => 20,  67 => 14,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
+        return array (  130 => 7,  116 => 39,  112 => 37,  110 => 36,  107 => 35,  105 => 34,  102 => 33,  100 => 32,  94 => 29,  88 => 26,  82 => 23,  76 => 20,  67 => 14,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -184,9 +191,11 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
     <section id=\"default-header\">
         {% include 'header.html.twig' %}
     </section>
-    <section id=\"customer-header\">
-        {% include 'customerheader.html.twig' %}
-    </section>
+    {% if not is_granted('ROLE_NUTR') %}
+        <section id=\"customer-header\">
+            {% include 'customerheader.html.twig' %}
+        </section>
+    {% endif %}
     <section id=\"content\">
         Content Default
     </section>

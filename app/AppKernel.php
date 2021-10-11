@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new CustomsBundle\CustomsBundle(),
             new CustomerBundle\CustomerBundle(),
+            new NutritionistBundle\NutritionistBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

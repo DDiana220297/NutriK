@@ -19,7 +19,7 @@ td.fc-today {
 
 .fc-first th{
     font-family: 'Roboto', sans-serif;
-    background:#9675ce !important;
+    background:#00766c !important;
     color:#FFF;
     font-size:14px !important;
     font-weight:500 !important;
@@ -27,7 +27,7 @@ td.fc-today {
 }
 .fc-event-inner {
     font-family: 'Roboto', sans-serif;
-    background: #03a9f3!important;
+    background: #26a69a!important;
     color: #FFF!important;
     font-size: 12px!important;
     font-weight: 500!important;
@@ -94,14 +94,15 @@ html .fc,
     font-weight: 100;
     margin-bottom: 10px;
     font-family: 'Roboto', sans-serif;
+    color: black;
 }
 span.fc-button {
     font-family: 'Roboto', sans-serif;
-    border-color: #9675ce;
-    color: #9675ce;
+    border-color: #00766c;
+    color: #00766c;
 }
 .fc-state-down, .fc-state-active {
-    background-color: #9675ce !important;
+    background-color: #00766c !important;
     color: #FFF !important;
 }
 .fc .fc-header-space {
@@ -172,7 +173,7 @@ span.fc-button {
 }
 
 .fc-state-highlight > div > div.fc-day-number{
-    background-color: #ff3b30;
+    background-color: #26a69a;
     color: #FFFFFF;
     border-radius: 50%;
     margin: 4px;
@@ -250,8 +251,8 @@ span.fc-button {
 
 
 .fc-state-default {
-    border-color: #ff3b30;
-    color: #ff3b30;
+    border-color: #26a69a;
+    color: #26a69a;
 }
 .fc-button-month.fc-state-default, .fc-button-agendaWeek.fc-state-default, .fc-button-agendaDay.fc-state-default{
     min-width: 67px;
@@ -264,11 +265,11 @@ span.fc-button {
 .fc-state-active,
 .fc-state-disabled {
     color: #333333;
-    background-color: #FFE3E3;
+    background-color: #64d8cb;
 }
 
 .fc-state-hover {
-    color: #ff3b30;
+    color: #26a69a;
     text-decoration: none;
     background-position: 0 -15px;
     -webkit-transition: background-position 0.1s linear;
@@ -279,7 +280,7 @@ span.fc-button {
 
 .fc-state-down,
 .fc-state-active {
-    background-color: #ff3b30;
+    background-color: #26a69a;
     background-image: none;
     outline: 0;
     color: #FFFFFF;
@@ -288,11 +289,11 @@ span.fc-button {
 .fc-state-disabled {
     cursor: default;
     background-image: none;
-    background-color: #FFE3E3;
+    background-color: #64d8cb;
     filter: alpha(opacity=65);
     box-shadow: none;
-    border:1px solid #FFE3E3;
-    color: #ff3b30;
+    border:1px solid #64d8cb;
+    color: #26a69a;
 }
 
 
@@ -508,8 +509,6 @@ table.fc-border-separate {
     float: right;
 }
 
-
-
 /* Agenda Week View, Agenda Day View
 ------------------------------------------------------------------------*/
 
@@ -676,6 +675,7 @@ table.fc-header{
     text-align: center;
     width: 30px;
     height: 30px;
+    color: black;
 }
 .fc-sun, .fc-sat{
     color: #b8b8b8;
@@ -688,7 +688,7 @@ table.fc-header{
     transition: background-color 0.2s;
 }
 .fc-week .fc-day.fc-state-highlight:hover .fc-day-number{
-    background-color:  #ff3b30;
+    background-color:  #26a69a;
 }
 .fc-button-today{
     border: 1px solid rgba(255,255,255,.0);
@@ -697,18 +697,6 @@ table.fc-header{
     text-align: right;
     padding-right: 10px;
 }
-
-/*!
- * FullCalendar v1.6.4 Print Stylesheet
- * Docs & License: http://arshaw.com/fullcalendar/
- * (c) 2013 Adam Shaw
- */
-
-/*
- * Include this stylesheet on your page to get a more printer-friendly calendar.
- * When including this stylesheet, use the media='print' attribute of the <link> tag.
- * Make sure to include this stylesheet IN ADDITION to the regular fullcalendar.css.
- */
 
 
 /* Events
@@ -732,8 +720,6 @@ table.fc-header{
 
 
 body {
-    margin-bottom: 40px;
-    margin-top: 40px;
     text-align: center;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
@@ -785,7 +771,7 @@ body {
     background-color: #FFFFFF;
     border-radius: 6px;
     box-shadow: 0 1px 2px #C3C3C3;
-    -webkit-box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
-    -moz-box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
-    box-shadow: 0px 0px 21px 2px rgba(0, 0, 0, 0.18);
+    -webkit-box-shadow: 0px 0px 21px 2px rgba(0,0,0,0.18);
+    -moz-box-shadow: 0px 0px 21px 2px rgba(0,0,0,0.18);
+    box-shadow: 0px 0px 21px 2px rgba(0,0,0,0.18);
 }

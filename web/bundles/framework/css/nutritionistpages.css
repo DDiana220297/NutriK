@@ -1,0 +1,506 @@
+#nutritionist-account .container{
+    width: 90%;
+    margin-top: 50px;
+}
+
+#nutritionist-account .container .col-sm-12 #nutritionist-account-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 80rem;
+    padding: 50px;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+#nutritionist-account .container .col-sm-12 #nutritionist-account-block .col-sm-4 .turquoise-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 33rem;
+    padding: 50px;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#nutritionist-account .container .col-sm-12 #nutritionist-account-block .col-sm-4 .grey-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 33rem;
+    padding: 50px;
+    background: linear-gradient(to bottom, grey 0%, #a6a6a6 100%);
+}
+
+#nutritionist-account .container .col-sm-12 #nutritionist-account-block .col-sm-4 .grey-block:hover,
+#nutritionist-account .container .col-sm-12 #nutritionist-account-block .col-sm-4 .turquoise-block:hover{
+    opacity: 0.5;
+}
+
+#nutritionist-account .container .col-sm-12 #nutritionist-account-block .col-sm-4 .grey-block .col-sm-4>svg,
+#nutritionist-account .container .col-sm-12 #nutritionist-account-block .col-sm-4 .turquoise-block .col-sm-4>svg{
+    width: 10rem;
+    height: 10rem;
+    margin-top: 5rem;
+    margin-left: -20px;
+}
+
+#nutritionist-account .container .col-sm-12 #nutritionist-account-block .col-sm-4 .grey-block .col-sm-8>p,
+#nutritionist-account .container .col-sm-12 #nutritionist-account-block .col-sm-4 .turquoise-block .col-sm-8>p{
+    text-align: justify;
+    margin-top: 20px;
+}
+
+
+/* PERSONAL DATA PAGE */
+
+#nutritionist-personal-data .container{
+    width: 95%;
+    height: 800px;
+    color: black;
+    padding: 20px;
+    margin-top: 25px;
+    background-color: lightgray;
+}
+
+#nutritionist-personal-data .container .col-sm-6 .personal-data-header>svg{
+    width: 1em;
+    font-size: 50px;
+    height: 0.75em;
+    display: inline-flex;
+    margin-right: 8px;
+    vertical-align: -8px;
+}
+
+#nutritionist-personal-data .container .col-sm-6 .form-check{
+    padding: 10px;
+}
+
+#nutritionist-personal-data .container .col-sm-6 .personal-data-fields{
+    padding: 10px;
+}
+
+#nutritionist-personal-data .container .col-sm-6 .personal-data-fields>input{
+    padding: 5px;
+    height: 45px;
+    width: 85%;
+    margin-bottom: 20px;
+}
+
+#nutritionist-personal-data .container .col-sm-6 .personal-data-fields>textarea{
+    width: 85%;
+    margin-bottom: 20px;
+}
+
+#nutritionist-personal-data .container .col-sm-6 .personal-data-fields .save-button-item .save-button{
+    font-weight: 500;
+    height: 40px;
+    width: 20%;
+    margin-top: 30px;
+    --text-opacity: 1;
+    color: black;
+    border-bottom-width: 4px;
+    --border-opacity: 1;
+    border-color: #00A295;
+    border-radius: .25rem;
+    position: relative;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+/* NUTRITIONIST PAYMENT DATA */
+
+#nutritionist-payment-data .container{
+    width: 95%;
+    height: 800px;
+    color: black;
+    padding: 20px;
+    margin-top: 25px;
+    background-color: lightgray;
+}
+#nutritionist-payment-data .container .col-sm-6 .col-sm-12 .card-item .card-input{
+    width: 70%;
+    margin-left: 2%;
+    display: inline-flex;
+    height: 37px;
+}
+
+#nutritionist-payment-data .container .col-sm-6 .col-sm-12 .card-item .delete-button{
+    width: 10%;
+    display: inline-flex;
+    font-weight: 500;
+    margin-top: -2px;
+    height: 35px;
+    --text-opacity: 1;
+    color: white;
+    border-bottom-width: 4px;
+    --border-opacity: 1;
+    border-color: #00A295;
+    border-radius: .25rem;
+    position: relative;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+#nutritionist-payment-data .container .col-sm-6 .col-sm-12 .card-header{
+    margin-bottom: 10%;
+    margin-top: 2%;
+}
+
+#nutritionist-payment-data .container .col-sm-6 .col-sm-12 .card-header .col-sm-1>svg{
+    width: 5rem;
+    height: 5rem;
+}
+
+#nutritionist-payment-data .container .col-sm-6 .col-sm-12 #receipts{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    width: 67rem;
+    margin-left: 2%;
+    margin-top: 10%;
+    height: 30rem;
+    padding: 50px;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+#nutritionist-payment-data .container .col-sm-6 .card-fields{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    margin-top: 12%;
+    width: 90%;
+    height: 458px;
+    padding: 50px;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#nutritionist-payment-data .container .col-sm-6 .card-fields>input{
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+#nutritionist-payment-data .container .col-sm-6 .card-fields .save-button-item .save-button{
+    font-weight: 500;
+    height: 40px;
+    width: 30%;
+    margin-top: 30px;
+    --text-opacity: 1;
+    color: black;
+    border-bottom-width: 4px;
+    --border-opacity: 1;
+    border-color: #e7e7e7;
+    border-radius: .25rem;
+    position: relative;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+/* NUTRITIONIST DIDACTIC CONTENT */
+#nutritionist-didactic-content .container,
+#nutritionist-events .container{
+    width: 90%;
+    margin-top: 3%;
+}
+
+#nutritionist-didactic-content .container .col-sm-12 #didactic-content-block,
+#nutritionist-events .container .col-sm-12 #events-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 80rem;
+    padding: 50px;
+    color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+#nutritionist-didactic-content .container .col-sm-12 #didactic-content-block .didactic-entries-header .col-sm-1>svg,
+#nutritionist-events .container .col-sm-12 #events-block .events-header .col-sm-1>svg{
+    width: 1em;
+    font-size: 50px;
+    height: 0.75em;
+    display: inline-flex;
+    margin-right: 8px;
+    vertical-align: -8px;
+}
+
+#nutritionist-didactic-content .container .col-sm-12 #didactic-content-block .didactic-entries,
+#nutritionist-events .container .col-sm-12 #events-block .events{
+    padding: 20px;
+    margin-top: 3%;
+}
+
+#nutritionist-didactic-content .container .col-sm-12 #didactic-content-block .didactic-entries .didactic-entry,
+#nutritionist-events .container .col-sm-12 #events-block .events .event-entry{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    padding: 50px;
+    color: black;
+    background: linear-gradient(to top, #f8f8f8 0%, white 100%);
+}
+
+#nutritionist-didactic-content .container .col-sm-12 #didactic-content-block .didactic-entries .didactic-entry .didactic-entry-resume,
+#nutritionist-events .container .col-sm-12 #events-block .events .event-entry .event-entry-resume{
+    margin-top: -35px;
+}
+
+#nutritionist-didactic-content .container .col-sm-12 #didactic-content-block .didactic-entries .didactic-entry .didactic-entry-actions>svg,
+#nutritionist-events .container .col-sm-12 #events-block .events .event-entry .event-entry-actions>svg{
+    width: 3rem;
+    font-size: 10px;
+    height: 2.5em;
+    display: inline-flex;
+    float: right;
+    margin-top: -10px;
+    vertical-align: -8px;
+}
+
+
+/* NUTRITIONIST WEEK PLAN */
+
+#nutritionist-plans .container{
+    width: 95%;
+    margin-top: 2.5%;
+}
+
+#nutritionist-plans .container .col-sm-12 #plan-content-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 80rem;
+    color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+#nutritionist-plans .container .col-sm-12 #plan-content-block #week-plan-buttons{
+    padding: 11px;
+}
+
+#nutritionist-plans .container .col-sm-12 #plan-content-block #week-plan-buttons .day-plan-button{
+    font-weight: 500;
+    height: 45px;
+    width: 245px;
+    border-color: #bdbdbd;
+    background: linear-gradient(to bottom, #8d8d8d 0%, #bdbdbd 100%);
+}
+
+#nutritionist-plans .container .col-sm-12 #plan-content-block #day-plan-content .col-sm-9{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    height: 65rem;
+    margin: 40px 50px;
+    width: 1018px;
+    border-radius: 0.5rem;
+    padding: 0;
+    color: black;
+    background: linear-gradient(to top, #f8f8f8 0%, white 100%);
+}
+
+#nutritionist-plans .container .col-sm-12 #plan-content-block #day-plan-content .col-sm-9 #meals-buttons .day-meal-button{
+    font-weight: 500;
+    height: 45px;
+    width: 200px;
+    border-color: #00766c;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+
+#nutritionist-plans .container .col-sm-12 #plan-content-block #day-plan-content .col-sm-3{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    height: 65rem;
+    margin: 40px 0;
+    width: 59rem;
+    border-radius: 0.5rem;
+    padding: 0;
+    color: black;
+    background: linear-gradient(to top, #f8f8f8 0%, white 100%);
+}
+
+#nutritionist-plans .container .col-sm-12 #plan-content-block #day-plan-content .col-sm-3 .workout-details,
+#nutritionist-plans .container .col-sm-12 #plan-content-block #day-plan-content .col-sm-3 .workouts{
+    padding: 20px;
+}
+
+/* NUTRITIONIST DIARY */
+#nutritionist-diary .container{
+    width: 80%;
+    margin-top: 2.5%;
+}
+
+#nutritionist-diary .container .col-sm-12 #diary-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 80rem;
+    color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+#nutritionist-diary .container .col-sm-12 #diary-block .col-sm-6 #todays-tasks{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 70rem;
+    padding: 50px;
+    margin-top: 20px;
+}
+
+#nutritionist-diary .container .col-sm-12 #diary-block .col-sm-6 #todays-events{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 33rem;
+    padding: 50px;
+    margin-top: 12px;
+    margin-bottom: 2rem;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+#nutritionist-diary .container .col-sm-12 #diary-block .col-sm-6 #todays-memos{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 35rem;
+    padding: 50px;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+
+/* NUTRICIONIST RECIPES */
+
+#nutritionist-recipes .container{
+    width: 95%;
+    margin-top: 2.5%;
+}
+
+#nutritionist-recipes .container .col-sm-12 #recipes-content-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 80rem;
+    color: black;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+
+#nutritionist-recipes .container .col-sm-12 #recipes-content-block .navbar .container-fluid .recipes-finder{
+    margin: 15px 0;
+}
+
+#nutritionist-recipes .container .col-sm-12 #recipes-content-block .navbar .container-fluid .recipes-finder>input{
+    width: 95%;
+    display: inline-flex;
+    margin: 0;
+}
+
+#nutritionist-recipes .container .col-sm-12 #recipes-content-block .navbar .container-fluid .recipes-finder>button{
+    margin-top: -2px;
+    margin-left: 10px;
+}
+
+#nutritionist-recipes .container .col-sm-12 #recipes-content-block .container-fluid .col-sm-7{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0;
+    padding-right: 10px;
+}
+
+#nutritionist-recipes .container .col-sm-12 #recipes-content-block .container-fluid .col-sm-5{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 0;
+}
+
+#nutritionist-recipes .container .col-sm-12 #recipes-content-block .container-fluid .col-sm-7 #recipe-content,
+#nutritionist-recipes .container .col-sm-12 #recipes-content-block .container-fluid .col-sm-5 #recipe-content{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 70rem;
+    padding: 50px;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+/* NUTRITIONIST CUSTOMERS LIST */
+#nutritionist-customers .container{
+    width: 95%;
+    margin-top: 2.5%;
+}
+
+#nutritionist-customers .container .col-sm-12 #customers-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 80rem;
+    color: black;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#nutritionist-customers .container .col-sm-12 #customers-block .col-sm-11 .navbar .container-fluid .customers-finder{
+    margin: 15px 0;
+}
+
+#nutritionist-customers .container .col-sm-12 #customers-block .col-sm-11 .navbar .container-fluid .customers-finder>input{
+    width: 90%;
+    display: inline-flex;
+    margin: 0;
+}
+
+#nutritionist-customers .container .col-sm-12 #customers-block .col-sm-11 .navbar .container-fluid .customers-finder>button{
+    margin-top: -2px;
+    margin-left: 10px;
+}
+
+#nutritionist-customers .container .col-sm-12 #customers-block  .col-sm-1{
+    padding: 15px;
+}
+
+#nutritionist-customers .container .col-sm-12 #customers-block  .col-sm-1>svg{
+    width: 1em;
+    font-size: 50px;
+    height: 0.75em;
+    display: inline-flex;
+    margin-right: 8px;
+    vertical-align: -8px;
+}
+#nutritionist-customers .container .col-sm-12 #customers-block .customers-list{
+    padding: 30px;
+}
+#nutritionist-customers .container .col-sm-12 #customers-block .customers-list .customer-entry{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 70px;
+    color: black;
+    background: linear-gradient(to top, #f8f8f8 0%, white 100%);
+}
+
+#nutritionist-customers .container .col-sm-12 #customers-block .customers-list .customer-entry .customer-entry-resume .col-sm-4{
+    margin-top: 25px;
+}
+
+#nutritionist-customers .container .col-sm-12 #customers-block .customers-list .customer-entry .customer-entry-actions>svg{
+    width: 3rem;
+    font-size: 10px;
+    height: 2.5em;
+    display: inline-flex;
+    float: right;
+    margin-top: 5px;
+    vertical-align: -8px;
+}
+
+/* NUTRITIONIST APPOINTMENT */

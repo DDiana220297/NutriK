@@ -1,0 +1,20 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <!-- Login Page stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/nutritionistpages.css') }}" />
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    <section id="nutritionist-didactic-content">
+        <div class="container">
+            <div class="col-sm-12">
+                <div id="didactic-content-block">
+                </div>
+            </div>
+        </div>
+    </section>
+    </html>
+{% endblock %}

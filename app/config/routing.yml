@@ -1,3 +1,7 @@
+nutritionist:
+    resource: "@NutritionistBundle/Resources/config/routing.yml"
+    prefix:   /
+
 customer:
     resource: "@CustomerBundle/Resources/config/routing.yml"
     prefix:   /

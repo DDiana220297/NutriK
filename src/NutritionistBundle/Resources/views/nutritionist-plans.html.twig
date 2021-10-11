@@ -1,0 +1,82 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <!-- Login Page stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/nutritionistpages.css') }}" />
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    <section id="nutritionist-plans">
+        <div class="container">
+            <div class="col-sm-12">
+                <div id="plan-content-block">
+                    <div id="week-plan-buttons">
+                        <button class="btn btn-primary day-plan-button" type="button">Lunes</button>
+                        <button class="btn btn-primary day-plan-button" type="button">Martes</button>
+                        <button class="btn btn-primary day-plan-button" type="button">Miércoles</button>
+                        <button class="btn btn-primary day-plan-button" type="button">Jueves</button>
+                        <button class="btn btn-primary day-plan-button" type="button">Viernes</button>
+                        <button class="btn btn-primary day-plan-button" type="button">Sabado</button>
+                        <button class="btn btn-primary day-plan-button" type="button">Domingo</button>
+                    </div>
+                    <div id="day-plan-content">
+                        <div class="col-sm-9 ">
+                            <div id="meals-buttons">
+                                <button class="btn btn-primary day-meal-button" type="button">Desayuno</button>
+                                <button class="btn btn-primary day-meal-button" type="button">Snack</button>
+                                <button class="btn btn-primary day-meal-button" type="button">Almuerzo</button>
+                                <button class="btn btn-primary day-meal-button" type="button">Merienda</button>
+                                <button class="btn btn-primary day-meal-button" type="button">Cena</button>
+                            </div>
+                            <div id="day-plan">
+                                <div class="col-sm-6" style="padding: 20px">
+                                    <label for="hora" style="margin-right: 10px">Hora:</label><input type="time" id="hora" name="hora" min="09:00" max="18:00" required>
+                                    <br/><br/>
+                                    <label for="menu">Menú:</label><textarea type="text" id="menu" name="_menu" class="form-control" style="height: 490px"></textarea>
+                                </div>
+                                <div class="col-sm-6" style="padding: 20px">
+                                    <label for="list">Lista:</label><textarea type="text" id="list" name="_list" class="form-control" style="height: 250px"></textarea>
+                                    <br/><br/>
+                                    <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="_comments" class="form-control" style="height: 220px"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="workout-details">
+                                <label for="workout">Detalles:</label>
+                                <textarea type="text" id="workout" name="_workout" class="form-control" style="height: 220px"></textarea>
+                            </div>
+                            <div class="workouts">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                        First checkbox
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                        Second checkbox
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                        Third checkbox
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                        Fourth checkbox
+                                    </li>
+                                    <li class="list-group-item">
+                                        <input class="form-check-input me-1" type="checkbox" value="" aria-label="...">
+                                        Fifth checkbox
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </html>
+{% endblock %}

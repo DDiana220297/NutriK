@@ -31,9 +31,11 @@
     <section id="default-header">
         {% include 'header.html.twig' %}
     </section>
-    <section id="customer-header">
-        {% include 'customerheader.html.twig' %}
-    </section>
+    {% if not is_granted('ROLE_NUTR') %}
+        <section id="customer-header">
+            {% include 'customerheader.html.twig' %}
+        </section>
+    {% endif %}
     <section id="content">
         Content Default
     </section>

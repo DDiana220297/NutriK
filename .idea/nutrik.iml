@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/src/CustomsBundle" isTestSource="false" packagePrefix="CustomsBundle\" />
       <sourceFolder url="file://$MODULE_DIR$/src/CustomerBundle" isTestSource="false" packagePrefix="CustomerBundle\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/NutritionistBundle" isTestSource="false" packagePrefix="NutritionistBundle\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sensio/distribution-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sensio/generator-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/dbal" />

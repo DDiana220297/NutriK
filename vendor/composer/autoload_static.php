@@ -55,6 +55,10 @@ class ComposerStaticInitcf41400f01ecb4c93173cce47fa743b0
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
         ),
+        'N' => 
+        array (
+            'NutritionistBundle\\' => 19,
+        ),
         'M' => 
         array (
             'Monolog\\' => 8,
@@ -193,6 +197,10 @@ class ComposerStaticInitcf41400f01ecb4c93173cce47fa743b0
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'NutritionistBundle\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/NutritionistBundle',
         ),
         'Monolog\\' => 
         array (

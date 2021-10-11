@@ -28,14 +28,80 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
             $canonicalMethod = 'GET';
         }
 
-        // customer_news
-        if ('/news' === $pathinfo) {
-            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::newsAction',  '_route' => 'customer_news',);
+        // nutritionist_accountpage
+        if ('/account' === $pathinfo) {
+            return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAccountAction',  '_route' => 'nutritionist_accountpage',);
         }
 
         // customer_about
         if ('/about' === $pathinfo) {
             return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::aboutAction',  '_route' => 'customer_about',);
+        }
+
+        if (0 === strpos($pathinfo, '/nutritionist-')) {
+            if (0 === strpos($pathinfo, '/nutritionist-p')) {
+                // nutritionist_personal_data
+                if ('/nutritionist-personal-data' === $pathinfo) {
+                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistPersonalDataAction',  '_route' => 'nutritionist_personal_data',);
+                }
+
+                // nutritionist_payment_data
+                if ('/nutritionist-payment-data' === $pathinfo) {
+                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistPaymentDataAction',  '_route' => 'nutritionist_payment_data',);
+                }
+
+                // nutritionist_plans
+                if ('/nutritionist-plans' === $pathinfo) {
+                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistPlansAction',  '_route' => 'nutritionist_plans',);
+                }
+
+            }
+
+            // nutritionist_didactic_content
+            if ('/nutritionist-didactic-content' === $pathinfo) {
+                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistDidacticContentAction',  '_route' => 'nutritionist_didactic_content',);
+            }
+
+            // nutritionist_diary
+            if ('/nutritionist-diary' === $pathinfo) {
+                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistDiaryAction',  '_route' => 'nutritionist_diary',);
+            }
+
+            // nutritionist_calendar
+            if ('/nutritionist-calendar' === $pathinfo) {
+                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistCalendarAction',  '_route' => 'nutritionist_calendar',);
+            }
+
+            // nutritionist_customers
+            if ('/nutritionist-customers' === $pathinfo) {
+                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistCustomersAction',  '_route' => 'nutritionist_customers',);
+            }
+
+            // nutritionist_add_customer
+            if ('/nutritionist-add-customer' === $pathinfo) {
+                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAddCustomerAction',  '_route' => 'nutritionist_add_customer',);
+            }
+
+            // nutritionist_events
+            if ('/nutritionist-events' === $pathinfo) {
+                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistEventsAction',  '_route' => 'nutritionist_events',);
+            }
+
+            // nutritionist_recipes
+            if ('/nutritionist-recipes' === $pathinfo) {
+                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistRecipesAction',  '_route' => 'nutritionist_recipes',);
+            }
+
+            // nutritionist_schedule_appointment
+            if ('/nutritionist-schedule-appointment' === $pathinfo) {
+                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistScheduleAppointmentAction',  '_route' => 'nutritionist_schedule_appointment',);
+            }
+
+        }
+
+        // customer_news
+        if ('/news' === $pathinfo) {
+            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::newsAction',  '_route' => 'customer_news',);
         }
 
         // customer_didactic_content
