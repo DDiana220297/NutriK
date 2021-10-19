@@ -84,6 +84,21 @@ class User implements UserInterface
     private $role = 'ROLE_GUEST';
 
     /**
+     * @var string
+     */
+    private $studies;
+
+    /**
+     * @var string
+     */
+    private $collegiate_number;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
      * Get idUser
      *
      * @return integer
@@ -425,6 +440,69 @@ class User implements UserInterface
      */
     public function getRole(){
         return $this->role;
+    }
+
+    /**
+     * Get Studies
+     *
+     * @return string
+     */
+    public function getStudies(){
+        return $this->studies;
+    }
+
+    /**
+     * Set studies
+     *
+     * @param $studies
+     * @return $this
+     */
+    public function setStudies($studies){
+        $this->studies = $studies;
+
+        return $this;
+    }
+
+    /**
+     * Get Description
+     *
+     * @return string
+     */
+    public function getDescription(){
+        return $this->description;
+    }
+
+    /**
+     * Set studies
+     *
+     * @param $description
+     * @return $this
+     */
+    public function setDescription($description){
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get Collegiate Number
+     *
+     * @return string
+     */
+    public function getCollegiate_Number(){
+        return $this->collegiate_number;
+    }
+
+    /**
+     * Set Collegiate Number
+     *
+     * @param $collegiate_number
+     * @return $this
+     */
+    public function setCollegiate_Number($collegiate_number){
+        $this->collegiate_number = $collegiate_number;
+
+        return $this;
     }
 
     /*

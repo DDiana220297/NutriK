@@ -56,7 +56,7 @@ CustomsBundle\Entity\Entry:
             cascade: {  }
             fetch: LAZY
             mappedBy: null
-            inversedBy: entry
+            inversedBy: null
             joinColumns:
                 id_category:
                     referencedColumnName: id_category
@@ -71,12 +71,4 @@ CustomsBundle\Entity\Entry:
                 id_user:
                     referencedColumnName: id_user
             orphanRemoval: false
-
-
-    oneToMany:
-        entryTags:
-            targetEntity: EntryTag
-            cascade: ["persist"]
-            mappedBy: idEntry
-
     lifecycleCallbacks: {  }

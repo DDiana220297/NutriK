@@ -23,7 +23,7 @@ CustomsBundle\Entity\EntryTag:
             cascade: {  }
             fetch: LAZY
             mappedBy: null
-            inversedBy: entryTag
+            inversedBy: null
             joinColumns:
                 id_entry:
                     referencedColumnName: id_entry

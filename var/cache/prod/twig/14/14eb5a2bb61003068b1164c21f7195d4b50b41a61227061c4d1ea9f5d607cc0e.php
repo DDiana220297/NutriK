@@ -110,6 +110,7 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                     </div>
                     <p><strong>Actividad:</strong></p>
                     <div id=\"actividad\" style=\"display: inline-flex; width: 85%\">
+                        <label for=\"actividad\"></label>
                         <select id=\"actividad\" name=\"actividad\" class=\"form-select\">
                             <option selected> -- Elige tu nivel de actividad --</option>
                             <option value=\"1\">Bajo</option>
@@ -213,6 +214,7 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                     </div>
                     <p><strong>Actividad:</strong></p>
                     <div id=\"actividad\" style=\"display: inline-flex; width: 85%\">
+                        <label for=\"actividad\"></label>
                         <select id=\"actividad\" name=\"actividad\" class=\"form-select\">
                             <option selected> -- Elige tu nivel de actividad --</option>
                             <option value=\"1\">Bajo</option>

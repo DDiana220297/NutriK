@@ -80,9 +80,7 @@ class __TwigTemplate_abc7b005f94cd9909ad2cd3bcd471be0470516adb84e628f74b0482ad9f
             <div class=\"col-sm-12\">
                 <div id=\"calendar-block\">
                     <div id='wrap'>
-
                         <div id='calendar'></div>
-
                         <div style='clear:both'></div>
                     </div>
                 </div>
@@ -139,9 +137,7 @@ class __TwigTemplate_abc7b005f94cd9909ad2cd3bcd471be0470516adb84e628f74b0482ad9f
             <div class=\"col-sm-12\">
                 <div id=\"calendar-block\">
                     <div id='wrap'>
-
                         <div id='calendar'></div>
-
                         <div style='clear:both'></div>
                     </div>
                 </div>

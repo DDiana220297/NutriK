@@ -53,10 +53,4 @@ CustomsBundle\Entity\Category:
             type: datetime
             nullable: true
             column: date_upd
-
-    oneToMany:
-        entries:
-            targetEntity: Entry
-            cascade: [ "persist" ]
-            mappedBy: idCategory
     lifecycleCallbacks: {  }

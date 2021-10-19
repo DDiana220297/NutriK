@@ -43,5 +43,10 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
     </include_path>
   </component>
+  <component name="PhpInterpreters">
+    <interpreters>
+      <interpreter id="aa08205f-dcd4-413c-874c-ed3b9788a45c" name="PHP" home="" debugger_id="php.debugger.XDebug" />
+    </interpreters>
+  </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />
 </project>

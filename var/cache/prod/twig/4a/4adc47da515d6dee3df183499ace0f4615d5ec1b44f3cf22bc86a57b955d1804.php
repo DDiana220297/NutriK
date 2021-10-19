@@ -112,9 +112,10 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                                 </svg>
                             </div>
                             <div class=\"col-sm-8\">
+                                <br/>
                                 <p><strong style=\"font-size: 22px\">Mis Datos Personales</strong></p>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Actualiza tu información personal y perfil
                                 </p>
                             </div>
                         </div>
@@ -125,10 +126,9 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                                 </svg>
                             </div>
                             <div class=\"col-sm-8\">
+                                <br/>
                                 <p><strong style=\"font-size: 22px\">Mensajeria</strong></p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                </p>
+                                <p>Accede aquí al apartado de mensajería. Una manera directa para la interacción personal entre tú y tus clientes</p>
                             </div>
                         </div>
                     </div>
@@ -140,9 +140,10 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                                 </svg>
                             </div>
                             <div class=\"col-sm-8\">
+                                <br/>
                                 <p><strong style=\"font-size: 22px\">Contenido Didáctico</strong></p>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Crea, modifica y gestiona tu contenido didáctico, artículos y entradas.
                                 </p>
                             </div>
                         </div>
@@ -155,9 +156,10 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                                 </svg>
                             </div>
                             <div class=\"col-sm-8\">
+                                <br/>
                                 <p><strong style=\"font-size: 22px\">Planificaciones</strong></p>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Crea planificaciones semanales para tus clientes, indicando entrenos y menús, junto con la lista de la compra y comentarios.
                                 </p>
                             </div>
                         </div>
@@ -170,9 +172,10 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                                 </svg>
                             </div>
                             <div class=\"col-sm-8\">
+                                <br/>
                                 <p><strong style=\"font-size: 22px\">Mis Datos Bancarios</strong></p>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Modifica tus datos bancarios, elimina o añade nuevos métodos de pago. Visualiza tus últimos y próximos recibos.
                                 </p>
                             </div>
                         </div>
@@ -185,9 +188,10 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                                 </svg>
                             </div>
                             <div class=\"col-sm-8\">
+                                <br/>
                                 <p><strong style=\"font-size: 22px\">Eventos / Salas</strong></p>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Crea eventos, conferencias y salas comunes para tus clientes
                                 </p>
                             </div>
                         </div>
@@ -269,9 +273,10 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                                 </svg>
                             </div>
                             <div class=\"col-sm-8\">
+                                <br/>
                                 <p><strong style=\"font-size: 22px\">Mis Datos Personales</strong></p>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Actualiza tu información personal y perfil
                                 </p>
                             </div>
                         </div>
@@ -282,10 +287,9 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                                 </svg>
                             </div>
                             <div class=\"col-sm-8\">
+                                <br/>
                                 <p><strong style=\"font-size: 22px\">Mensajeria</strong></p>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                </p>
+                                <p>Accede aquí al apartado de mensajería. Una manera directa para la interacción personal entre tú y tus clientes</p>
                             </div>
                         </div>
                     </div>
@@ -297,9 +301,10 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                                 </svg>
                             </div>
                             <div class=\"col-sm-8\">
+                                <br/>
                                 <p><strong style=\"font-size: 22px\">Contenido Didáctico</strong></p>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Crea, modifica y gestiona tu contenido didáctico, artículos y entradas.
                                 </p>
                             </div>
                         </div>
@@ -312,9 +317,10 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                                 </svg>
                             </div>
                             <div class=\"col-sm-8\">
+                                <br/>
                                 <p><strong style=\"font-size: 22px\">Planificaciones</strong></p>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Crea planificaciones semanales para tus clientes, indicando entrenos y menús, junto con la lista de la compra y comentarios.
                                 </p>
                             </div>
                         </div>
@@ -327,9 +333,10 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                                 </svg>
                             </div>
                             <div class=\"col-sm-8\">
+                                <br/>
                                 <p><strong style=\"font-size: 22px\">Mis Datos Bancarios</strong></p>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Modifica tus datos bancarios, elimina o añade nuevos métodos de pago. Visualiza tus últimos y próximos recibos.
                                 </p>
                             </div>
                         </div>
@@ -342,9 +349,10 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                                 </svg>
                             </div>
                             <div class=\"col-sm-8\">
+                                <br/>
                                 <p><strong style=\"font-size: 22px\">Eventos / Salas</strong></p>
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    Crea eventos, conferencias y salas comunes para tus clientes
                                 </p>
                             </div>
                         </div>

@@ -79,7 +79,7 @@ class __TwigTemplate_4b396793b827deaca9ff20506832ae91851c6ac6951724a663632bf3ab6
                         <label for=\"fat-percentage\">% Grasa corporal:</label><input type=\"text\" id=\"fat-percentage\" name=\"_fat-percentage\" class=\"form-control\"/>
                         <label for=\"muscle-percentage\">% Masa muscular:</label><input type=\"text\" id=\"muscle-percentage\" name=\"_muscle-percentage\" class=\"form-control\"/>
                         <label for=\"liquids-percentage\">% Líquidos:</label><input type=\"text\" id=\"liquids-percentage\" name=\"_liquids-percentage\" class=\"form-control\"/>
-                        <div class=\"save-button-item\" style=\"width: 100%; margin-top: 20px\">
+                        <div class=\"save-button-item\" style=\"width: 100%; margin-top: 35px\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>
                     </div>
@@ -142,7 +142,7 @@ class __TwigTemplate_4b396793b827deaca9ff20506832ae91851c6ac6951724a663632bf3ab6
                         <label for=\"fat-percentage\">% Grasa corporal:</label><input type=\"text\" id=\"fat-percentage\" name=\"_fat-percentage\" class=\"form-control\"/>
                         <label for=\"muscle-percentage\">% Masa muscular:</label><input type=\"text\" id=\"muscle-percentage\" name=\"_muscle-percentage\" class=\"form-control\"/>
                         <label for=\"liquids-percentage\">% Líquidos:</label><input type=\"text\" id=\"liquids-percentage\" name=\"_liquids-percentage\" class=\"form-control\"/>
-                        <div class=\"save-button-item\" style=\"width: 100%; margin-top: 20px\">
+                        <div class=\"save-button-item\" style=\"width: 100%; margin-top: 35px\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>
                     </div>

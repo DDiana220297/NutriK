@@ -35,12 +35,6 @@ CustomsBundle\Entity\User:
             length: 32
             options:
                 fixed: false
-        role:
-            type: string
-            nullable: false
-            length: 128
-            options:
-               fixed: false
         email:
             type: string
             nullable: false
@@ -50,9 +44,16 @@ CustomsBundle\Entity\User:
         password:
             type: string
             nullable: false
+            length: 128
+            options:
+                fixed: false
+        role:
+            type: string
+            nullable: false
             length: 32
             options:
                 fixed: false
+                default: ROLE_GUEST
         lastPasswordGen:
             type: datetime
             nullable: true
@@ -70,6 +71,25 @@ CustomsBundle\Entity\User:
             nullable: true
             options:
                 default: '1'
+        collegiateNumber:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: collegiate_number
+        studies:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
         deleted:
             type: boolean
             nullable: true
