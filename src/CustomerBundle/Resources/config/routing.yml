@@ -1,0 +1,39 @@
+customer_news:
+  path:   /news
+  defaults: { _controller: CustomerBundle:Customer:news }
+
+customer_about:
+  path:   /about
+  defaults: { _controller: CustomerBundle:Customer:about }
+
+customer_didactic_content:
+  path: /content
+  defaults: { _controller: CustomerBundle:Customer:didacticContent }
+
+customer_services:
+  path: /services
+  defaults: { _controller: CustomerBundle:Customer:services }
+
+customer_personal_data:
+  path: /personal-data
+  defaults: { _controller: CustomerBundle:Customer:personalData }
+
+customer_diary:
+  path: /diary
+  defaults: { _controller: CustomerBundle:Customer:diary }
+
+customer_calendar:
+  path: /calendar
+  defaults: { _controller: CustomerBundle:Customer:calendar }
+
+customer_recipes:
+  path: /recipes
+  defaults: { _controller: CustomerBundle:Customer:recipes }
+
+customer_progress:
+  path: /progress
+  defaults: { _controller: CustomerBundle:Customer:progress }
+
+customer_messenger:
+  path: /messenger
+  defaults: { _controller: CustomerBundle:Customer:messenger }
