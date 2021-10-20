@@ -9,6 +9,20 @@
         {% include 'header.html.twig' %}
     </section>
     <section id="nutritionist-payment-data">
+        {% for message in  app.session.flashbag().get('paymentDataKOStatus') %}
+            <div class="row" style="width: 95%; margin-left: 2.5%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        {% for message in  app.session.flashbag().get('paymentDataOKStatus') %}
+            <div class="row" style="width: 95%; margin-left: 2.5%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class="container">
             <div class="col-sm-6">
                 <div class="col-sm-12">
@@ -23,33 +37,50 @@
                         </div>
                     </div>
                     <br/>
-                    <div class="card-item">
-                        <label for="card_1"></label><input type="text"  id="card_1" name="_card_1" class="form-control card-input"/>
-                        <input class="btn delete-button" type="submit" value="Borrar"/>
-                    </div>
-                    <div class="card-item">
-                        <label for="card_1"></label><input type="text"  id="card_1" name="_card_1" class="form-control card-input"/>
-                        <input class="btn delete-button" type="submit" value="Borrar"/>
-                    </div>
+                    <form class="form" action="{{ path("nutritionist_payment_data_delete") }}" method="post">
+                        {% for card in nc_cards %}
+                            <div class="card-item">
+                                <span class="form-control card-input"><strong> {{ card.name }} </strong> - {{ card.ncDigits }} - <strong> {{ card.ncExpMonth }}/{{ card.ncExpYear }} </strong></span>
+                                <input type="hidden" name="_card_delete" value="{{ card.idCard }}"/>
+                                <input class="btn delete-button" type="submit" value="Borrar"/>
+                            </div>
+                        {% endfor %}
+                    </form>
                 </div>
                 <div class="col-sm-12">
                     <div id="receipts">
-                        <h3 style="margin-left: 10px">Proximos Recibos</h3>
-                        <ul style="margin-top: 20px">
-                            <li>Recibo consulta cliente - Jane Doe</li>
-                            <li>Recibo consulta cliente - David López</li>
-                        </ul>
+                        <h3>Mis Recibos</h3>
+                        <table class="table table-dark table-striped">
+                            <tr>
+                                <th>Recibo</th>
+                                <th>Cliente</th>
+                                <th>Importe</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                            </tr>
+                            {% for receipt in receipts %}
+                                <tr>
+                                    <td>{{ receipt.description }}</td>
+                                    <td>{{ receipt.customer_name }}</td>
+                                    <td>{{ receipt.amount }}</td>
+                                    <td>{{ receipt.status }}</td>
+                                    <td>{{ receipt.dateAdd|date('Y-m-d') }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6" style="display: inline-flex">
                 <div class="card-fields">
-                    <label for="nombre">Nombre:</label><input type="text" id="nombre" name="_nombre" class="form-control"/>
-                    <label for="card-number">Número Cuenta:</label><input type="number" id="card-number" name="_card-number" class="form-control"/>
-                    <label for="expiration-date">Fecha Caducidad:</label><input type="date" id="expiration-date" name="_expiration-date" class="form-control"/>
-                    <div class="save-button-item" style="width: 100%;">
-                        <input class="btn save-button" type="submit" value="Guardar"/>
-                    </div>
+                    <form class="form" action="{{ path("nutritionist_payment_data") }}" method="post">
+                        <label for="nombre">Nombre:</label><input type="text" id="name" name="_name" class="form-control" required="required"/>
+                        <label for="card-number">Número Cuenta:</label><input type="text" maxlength="20" id="card-number" name="_card-number" class="form-control" required="required"/>
+                        <label for="expiration-date">Fecha Caducidad:</label><input type="date" id="expiration-date" name="_expiration-date" class="form-control" required="required"/>
+                        <div class="save-button-item" style="width: 100%;">
+                            <input class="btn save-button" type="submit" value="Guardar"/>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

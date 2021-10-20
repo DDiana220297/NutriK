@@ -91,7 +91,7 @@ class User implements UserInterface
     /**
      * @var string
      */
-    private $collegiate_number;
+    private $collegiateNumber;
 
     /**
      * @var string
@@ -490,7 +490,7 @@ class User implements UserInterface
      * @return string
      */
     public function getCollegiate_Number(){
-        return $this->collegiate_number;
+        return $this->collegiateNumber;
     }
 
     /**
@@ -532,5 +532,28 @@ class User implements UserInterface
     /*
      * END AUTH
      */
-}
 
+    /**
+     * Set collegiateNumber
+     *
+     * @param string $collegiateNumber
+     *
+     * @return User
+     */
+    public function setCollegiateNumber($collegiateNumber)
+    {
+        $this->collegiateNumber = $collegiateNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get collegiateNumber
+     *
+     * @return string
+     */
+    public function getCollegiateNumber()
+    {
+        return $this->collegiateNumber;
+    }
+}

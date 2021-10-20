@@ -6,13 +6,29 @@ nutritionist_personal_data:
     path: /nutritionist-personal-data
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistPersonalData }
 
+nutritionist_payment_data:
+    path: /nutritionist-payment-data
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistPaymentData }
+
+nutritionist_payment_data_delete:
+    path: /nutritionist-payment-data-delete
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistPaymentDataDelete }
+
 nutritionist_didactic_content:
     path: /nutritionist-didactic-content
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistDidacticContent }
 
-nutritionist_payment_data:
-    path: /nutritionist-payment-data
-    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistPaymentData }
+nutritionist_add_didactic_content:
+    path: /nutritionist-add-didactic-content
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistAddDidacticContent }
+
+nutritionist_delete_didactic_content:
+    path: /nutritionist-delete-didactic-content
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistDeleteDidacticContent }
+
+nutritionist_edit_didactic_content:
+    path: /nutritionist-edit-didactic-content/{id_entry}
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistEditDidacticContent }
 
 nutritionist_calendar:
     path: /nutritionist-calendar

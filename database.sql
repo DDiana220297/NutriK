@@ -53,18 +53,7 @@ CREATE TABLE `nutrik`.`entry` (
     PRIMARY KEY (`id_entry`)
 );
 
-CREATE TABLE `nutrik`.`entry_tag` (
-        `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-        `id_entry` INT(10) UNSIGNED,
-        `id_tag` INT(10) UNSIGNED,
-    PRIMARY KEY (`id`)
-);
-
-
 ALTER TABLE `nutrik`.`entry`
     ADD CONSTRAINT `fk_entry_user` FOREIGN KEY (`id_user`) REFERENCES `nutrik`.`user`(`id_user`),
     ADD CONSTRAINT `fk_entry_category` FOREIGN KEY (`id_category`) REFERENCES `nutrik`.`category`(`id_category`);
 
-ALTER TABLE `nutrik`.`entry_tag`
-    ADD CONSTRAINT `fk_entry_tag_entry` FOREIGN KEY (`id_entry`) REFERENCES `nutrik`.`entry`(`id_entry`),
-    ADD CONSTRAINT `fk_entry_tag_tag` FOREIGN KEY (`id_tag`) REFERENCES `nutrik`.`tag`(`id_tag`);

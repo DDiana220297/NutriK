@@ -1,0 +1,112 @@
+.lateral-dropdown-menu{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    width: 100%;
+    height: 100%;
+    margin: 2px 0 0;
+    font-size: 20px;
+    text-align: left;
+    list-style: none;
+    background-color: transparent;
+}
+
+.lateral-dropdown-menu .lateral-dropdown-menu-user-account-top{
+    height: 9vh;
+    display: block;
+    z-index: 1000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 345px;
+    background-color: #00766c;
+}
+
+.lateral-dropdown-menu .lateral-dropdown-menu-user-account-top>li{
+    display: inline-block;
+}
+
+.lateral-dropdown-menu .lateral-dropdown-menu-content{
+    padding: 20px 0px;
+    height: 90vh;
+    z-index: 1000;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 10vh;
+    width: 345px;
+    background-color: #fff;
+}
+
+.lateral-dropdown-menu .lateral-dropdown-menu-content>ul{
+    padding: 30px;
+    height: 80vh;
+}
+
+.lateral-dropdown-menu .lateral-dropdown-menu-content>ul>li{
+    height: 7vh;
+}
+
+.lateral-dropdown-menu .lateral-dropdown-menu-content>ul>li>a{
+    color: black;
+}
+.lateral-dropdown-menu .lateral-dropdown-menu-content>ul>li>a>svg{
+    width: 1em;
+    font-size: 30px;
+    height: 1em;
+    display: inline-block;
+    margin-right: 8px;
+    vertical-align: -8px;
+}
+
+.lateral-dropdown-menu .lateral-dropdown-menu-user-account-bottom{
+    height: 10vh;
+    display: block;
+    z-index: 1000;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 345px;
+    background-color: #00766c;
+}
+
+.lateral-dropdown-menu .lateral-dropdown-menu-close{
+    height: 100vh;
+    background-color: #8d8d8d;
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: calc(100vw - 345px);
+    cursor: pointer;
+    z-index: 1000;
+    --text-opacity: 1;
+    color: #fff;
+    color: rgba(255,255,255,var(--text-opacity));
+    left: 345px;
+    opacity: 0.5;
+}
+
+.lateral-dropdown-menu .lateral-dropdown-menu-close #dropdown-menu-close-icon-button{
+    font-size: 30px;
+    padding: 10px;
+    color: white;
+    opacity: 1;
+}
+
+.lateral-dropdown-menu .lateral-dropdown-menu-close #dropdown-menu-close-icon-button:hover{
+    color: #00766c;
+}
+
+.navbar-nav>li>.dropdown-menu {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+

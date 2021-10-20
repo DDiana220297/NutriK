@@ -9,6 +9,16 @@
         <option name="unsigned"/>
       </options>
     </field>
+    <field name="name" type="string" column="name" length="242" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="ncDigits" type="string" column="nc_digits" length="20" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="ncLastDigits" type="integer" column="nc_last_digits" nullable="false">
       <options>
         <option name="unsigned"/>

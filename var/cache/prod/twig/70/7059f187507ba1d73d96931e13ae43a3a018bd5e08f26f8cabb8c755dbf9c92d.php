@@ -88,8 +88,27 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 22
+        echo "            ";
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "updateNutritionistDataOKStatus"], "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 23
+            echo "                <div class=\"row\" style=\"width: 95%; margin-left: 2.5%; margin-top: 10px; margin-bottom: -10px;\">
+                    <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
+                        ";
+            // line 25
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+                    </div>
+                </div>
+            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 29
         echo "            <div class=\"container\">
-                <div class=\"col-sm-6\">
+                <div class=\"col-sm-6\" style=\"padding-left: 2%\">
                     <div class=\"personal-data-header\">
                         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-circle\" viewBox=\"0 0 16 16\">
                             <path d=\"M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z\"/>
@@ -103,7 +122,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                             Otro
                         </label>
                         <input class=\"form-check-input\" type=\"checkbox\" value=\"0\" id=\"idGenderOther\" ";
-        // line 36
+        // line 43
         if (($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "idGender", []) == 0)) {
             echo " checked=\"checked\" ";
         }
@@ -112,7 +131,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                             Sra.
                         </label>
                         <input class=\"form-check-input\" type=\"checkbox\" value=\"1\" id=\"idGenderFemale\" ";
-        // line 40
+        // line 47
         if (($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "idGender", []) == 1)) {
             echo " checked=\"checked\" ";
         }
@@ -121,7 +140,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                             Sr.
                         </label>
                         <input class=\"form-check-input\" type=\"checkbox\" value=\"2\" id=\"idGenderMale\" ";
-        // line 44
+        // line 51
         if (($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "idGender", []) == 2)) {
             echo " checked=\"checked\" ";
         }
@@ -130,21 +149,21 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                     </div>
                     <div class=\"personal-data-fields\">
                         <label for=\"firstname\">Nombre:</label><input type=\"text\" id=\"firstname\" name=\"_firstname\" class=\"form-control\" value=\"";
-        // line 48
+        // line 55
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "firstname", []), "html", null, true);
         echo "\"/>
                         <label for=\"lastname\">Apellidos:</label><input type=\"text\" id=\"lastname\" name=\"_lastname\" class=\"form-control\" value=\"";
-        // line 49
+        // line 56
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "lastname", []), "html", null, true);
         echo "\"/>
                         <label for=\"email\">Email:</label><input type=\"email\" id=\"email\" name=\"_email\" class=\"form-control\" value=\"";
-        // line 50
+        // line 57
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "email", []), "html", null, true);
         echo "\"/>
                         <label for=\"password\">Contraseña:</label><input type=\"password\" id=\"password\" name=\"_password\" class=\"form-control\"/>
                         <label for=\"confirm_password\">Confirmar Contraseña:</label><input type=\"password\" id=\"confirm_password\" name=\"_confirm_password\" class=\"form-control\"/>
                         <label for=\"birthday\">Fecha de nacimiento:</label><input type=\"date\" id=\"birthday\" name=\"_birthday\" class=\"form-control\" value=\"";
-        // line 53
+        // line 60
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "birthday", []), "Y-m-d"), "html", null, true);
         echo "\"/>
                     </div>
@@ -153,17 +172,17 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                     <div class=\"personal-data-fields\" style=\"margin-top: 15%; width: 100%\">
                         <label for=\"bibliografia\">Descripción / Bibliografía:</label>
                         <textarea type=\"text\" id=\"bibliografia\" name=\"_bibliografia\" class=\"form-control\" style=\"height: 160px\">";
-        // line 59
+        // line 66
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "description", []), "html", null, true);
         echo "</textarea>
                         <label for=\"estudios\">Estudios:</label>
                         <textarea type=\"text\" id=\"estudios\" name=\"_estudios\" class=\"form-control\" style=\"height: 100px\">";
-        // line 61
+        // line 68
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "studies", []), "html", null, true);
         echo "</textarea>
                         <label for=\"n_colegiado\">Número de Colegiado:</label>
                         <input type=\"number\" id=\"n_colegiado\" name=\"_n_colegiado\" class=\"form-control\" value=\"";
-        // line 63
+        // line 70
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "collegiate_number", []), "html", null, true);
         echo "\"/>
                         <div class=\"save-button-item\" style=\"width: 100%;\">
@@ -188,7 +207,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
 
     public function getDebugInfo()
     {
-        return array (  167 => 63,  162 => 61,  157 => 59,  148 => 53,  142 => 50,  138 => 49,  134 => 48,  125 => 44,  116 => 40,  107 => 36,  91 => 22,  81 => 18,  77 => 16,  73 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  186 => 70,  181 => 68,  176 => 66,  167 => 60,  161 => 57,  157 => 56,  153 => 55,  144 => 51,  135 => 47,  126 => 43,  110 => 29,  100 => 25,  96 => 23,  91 => 22,  81 => 18,  77 => 16,  73 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -222,8 +241,15 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                     </div>
                 </div>
             {% endfor %}
+            {% for message in  app.session.flashbag().get('updateNutritionistDataOKStatus') %}
+                <div class=\"row\" style=\"width: 95%; margin-left: 2.5%; margin-top: 10px; margin-bottom: -10px;\">
+                    <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
+                        {{ message }}
+                    </div>
+                </div>
+            {% endfor %}
             <div class=\"container\">
-                <div class=\"col-sm-6\">
+                <div class=\"col-sm-6\" style=\"padding-left: 2%\">
                     <div class=\"personal-data-header\">
                         <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-circle\" viewBox=\"0 0 16 16\">
                             <path d=\"M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z\"/>

@@ -64,10 +64,10 @@ class Category extends \CustomsBundle\Entity\Category implements \Doctrine\ORM\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'idCategory', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'name', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'titleSeo', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'descriptionShort', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'description', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'linkRewrite', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'dateAdd', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'dateUpd'];
+            return ['__isInitialized__', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'idCategory', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'name', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'titleSeo', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'descriptionShort', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'description', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'linkRewrite', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'dateAdd', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'dateUpd', 'entries'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'idCategory', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'name', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'titleSeo', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'descriptionShort', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'description', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'linkRewrite', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'dateAdd', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'dateUpd'];
+        return ['__isInitialized__', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'idCategory', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'name', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'titleSeo', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'descriptionShort', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'description', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'linkRewrite', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'dateAdd', '' . "\0" . 'CustomsBundle\\Entity\\Category' . "\0" . 'dateUpd', 'entries'];
     }
 
     /**
@@ -340,6 +340,17 @@ class Category extends \CustomsBundle\Entity\Category implements \Doctrine\ORM\P
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDateUpd', []);
 
         return parent::getDateUpd();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEntries()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEntries', []);
+
+        return parent::getEntries();
     }
 
 }

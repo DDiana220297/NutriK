@@ -18,6 +18,19 @@ CustomsBundle\Entity\NutritionistCustomerCard:
             options:
                 unsigned: false
             column: id_user
+        name:
+            type: string
+            nullable: false
+            length: 242
+            options:
+                fixed: false
+        ncDigits:
+            type: string
+            nullable: false
+            length: 20
+            options:
+                fixed: false
+            column: nc_digits
         ncLastDigits:
             type: integer
             nullable: false

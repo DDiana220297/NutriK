@@ -3135,6 +3135,7 @@
         <argument type="collection">
           <argument key="AppBundle">AppBundle\Entity</argument>
           <argument key="CustomsBundle">CustomsBundle\Entity</argument>
+          <argument key="NutritionistBundle">NutritionistBundle\Entity</argument>
         </argument>
       </call>
       <call method="setMetadataCacheImpl">
@@ -3181,6 +3182,7 @@
       <argument type="collection">
         <argument key="/shared/httpd/nutrik/src/AppBundle/Resources/config/doctrine">AppBundle\Entity</argument>
         <argument key="/shared/httpd/nutrik/src/CustomsBundle/Resources/config/doctrine">CustomsBundle\Entity</argument>
+        <argument key="/shared/httpd/nutrik/src/NutritionistBundle/Resources/config/doctrine">NutritionistBundle\Entity</argument>
       </argument>
       <call method="setGlobalBasename">
         <argument>mapping</argument>
@@ -3194,6 +3196,10 @@
       <call method="addDriver">
         <argument type="service" id="doctrine.orm.default_yml_metadata_driver"/>
         <argument>CustomsBundle\Entity</argument>
+      </call>
+      <call method="addDriver">
+        <argument type="service" id="doctrine.orm.default_yml_metadata_driver"/>
+        <argument>NutritionistBundle\Entity</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_metadata_cache" class="Doctrine\Common\Cache\ArrayCache" public="true">

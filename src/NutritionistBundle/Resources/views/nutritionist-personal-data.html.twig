@@ -19,6 +19,13 @@
                     </div>
                 </div>
             {% endfor %}
+            {% for message in  app.session.flashbag().get('updateNutritionistDataOKStatus') %}
+                <div class="row" style="width: 95%; margin-left: 2.5%; margin-top: 10px; margin-bottom: -10px;">
+                    <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                        {{ message }}
+                    </div>
+                </div>
+            {% endfor %}
             <div class="container">
                 <div class="col-sm-6" style="padding-left: 2%">
                     <div class="personal-data-header">

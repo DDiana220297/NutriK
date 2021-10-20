@@ -55,28 +55,6 @@ class Entry
     private $idUser;
 
     /**
-     * @var
-     */
-    protected $entryTags;
-
-    /**
-     * Override del constructor
-     */
-    public function __construct(){
-        $this->entryTags = new ArrayCollection();
-    }
-
-    /**
-     * Get entryTags
-     *
-     * @return ArrayCollection
-     */
-    public function getEntryTags()
-    {
-        return $this->entryTags;
-    }
-
-    /**
      * Get idEntry
      *
      * @return integer
@@ -294,4 +272,3 @@ class Entry
 
 
 }
-

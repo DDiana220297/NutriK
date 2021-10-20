@@ -45,9 +45,17 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
                     return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistPersonalDataAction',  '_route' => 'nutritionist_personal_data',);
                 }
 
-                // nutritionist_payment_data
-                if ('/nutritionist-payment-data' === $pathinfo) {
-                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistPaymentDataAction',  '_route' => 'nutritionist_payment_data',);
+                if (0 === strpos($pathinfo, '/nutritionist-payment-data')) {
+                    // nutritionist_payment_data
+                    if ('/nutritionist-payment-data' === $pathinfo) {
+                        return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistPaymentDataAction',  '_route' => 'nutritionist_payment_data',);
+                    }
+
+                    // nutritionist_payment_data_delete
+                    if ('/nutritionist-payment-data-delete' === $pathinfo) {
+                        return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistPaymentDataDeleteAction',  '_route' => 'nutritionist_payment_data_delete',);
+                    }
+
                 }
 
                 // nutritionist_plans
@@ -57,14 +65,42 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
 
             }
 
-            // nutritionist_didactic_content
-            if ('/nutritionist-didactic-content' === $pathinfo) {
-                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistDidacticContentAction',  '_route' => 'nutritionist_didactic_content',);
+            elseif (0 === strpos($pathinfo, '/nutritionist-d')) {
+                // nutritionist_didactic_content
+                if ('/nutritionist-didactic-content' === $pathinfo) {
+                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistDidacticContentAction',  '_route' => 'nutritionist_didactic_content',);
+                }
+
+                // nutritionist_diary
+                if ('/nutritionist-diary' === $pathinfo) {
+                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistDiaryAction',  '_route' => 'nutritionist_diary',);
+                }
+
+                // nutritionist_delete_didactic_content
+                if ('/nutritionist-delete-didactic-content' === $pathinfo) {
+                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistDeleteDidacticContentAction',  '_route' => 'nutritionist_delete_didactic_content',);
+                }
+
             }
 
-            // nutritionist_diary
-            if ('/nutritionist-diary' === $pathinfo) {
-                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistDiaryAction',  '_route' => 'nutritionist_diary',);
+            // nutritionist_add_didactic_content
+            if ('/nutritionist-add-didactic-content' === $pathinfo) {
+                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAddDidacticContentAction',  '_route' => 'nutritionist_add_didactic_content',);
+            }
+
+            // nutritionist_add_customer
+            if ('/nutritionist-add-customer' === $pathinfo) {
+                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAddCustomerAction',  '_route' => 'nutritionist_add_customer',);
+            }
+
+            // nutritionist_edit_didactic_content
+            if (0 === strpos($pathinfo, '/nutritionist-edit-didactic-content') && preg_match('#^/nutritionist\\-edit\\-didactic\\-content/(?P<id_entry>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, ['_route' => 'nutritionist_edit_didactic_content']), array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistEditDidacticContentAction',));
+            }
+
+            // nutritionist_events
+            if ('/nutritionist-events' === $pathinfo) {
+                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistEventsAction',  '_route' => 'nutritionist_events',);
             }
 
             // nutritionist_calendar
@@ -75,16 +111,6 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
             // nutritionist_customers
             if ('/nutritionist-customers' === $pathinfo) {
                 return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistCustomersAction',  '_route' => 'nutritionist_customers',);
-            }
-
-            // nutritionist_add_customer
-            if ('/nutritionist-add-customer' === $pathinfo) {
-                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAddCustomerAction',  '_route' => 'nutritionist_add_customer',);
-            }
-
-            // nutritionist_events
-            if ('/nutritionist-events' === $pathinfo) {
-                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistEventsAction',  '_route' => 'nutritionist_events',);
             }
 
             // nutritionist_recipes
