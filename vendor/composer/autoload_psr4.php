@@ -32,6 +32,7 @@ return array(
     'Psr\\Link\\' => array($vendorDir . '/psr/link/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
+    'NutritionistBundle\\' => array($baseDir . '/src/NutritionistBundle'),
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Incenteev\\ParameterHandler\\' => array($vendorDir . '/incenteev/composer-parameter-handler'),
     'Fig\\Link\\' => array($vendorDir . '/fig/link-util/src'),
@@ -42,6 +43,8 @@ return array(
     'Doctrine\\Common\\' => array($vendorDir . '/doctrine/common/lib/Doctrine/Common'),
     'Doctrine\\Bundle\\DoctrineCacheBundle\\' => array($vendorDir . '/doctrine/doctrine-cache-bundle'),
     'Doctrine\\Bundle\\DoctrineBundle\\' => array($vendorDir . '/doctrine/doctrine-bundle'),
+    'CustomsBundle\\' => array($baseDir . '/src/CustomsBundle'),
+    'CustomerBundle\\' => array($baseDir . '/src/CustomerBundle'),
     'Composer\\CaBundle\\' => array($vendorDir . '/composer/ca-bundle/src'),
     'AppBundle\\' => array($baseDir . '/src/AppBundle'),
 );

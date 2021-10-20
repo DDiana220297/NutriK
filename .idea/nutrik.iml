@@ -5,6 +5,9 @@
       <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/AppBundle" isTestSource="false" packagePrefix="AppBundle\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/CustomsBundle" isTestSource="false" packagePrefix="CustomsBundle\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/CustomerBundle" isTestSource="false" packagePrefix="CustomerBundle\" />
+      <sourceFolder url="file://$MODULE_DIR$/src/NutritionistBundle" isTestSource="false" packagePrefix="NutritionistBundle\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sensio/distribution-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sensio/generator-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/dbal" />
@@ -47,5 +50,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="jquery-3.2.1.slim" level="application" />
   </component>
 </module>

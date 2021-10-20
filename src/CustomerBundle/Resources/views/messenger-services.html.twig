@@ -1,0 +1,24 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <!-- Login Page stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/customerpages.css') }}" />
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    <section id="customer-header">
+        {% include 'customerheader.html.twig' %}
+    </section>
+    <section id="messenger">
+        <div class="container">
+            <div class="col-sm-12">
+                <div id="messenger-block">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    </html>
+{% endblock %}

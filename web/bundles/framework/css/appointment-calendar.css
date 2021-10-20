@@ -1,0 +1,133 @@
+
+.elegant-calendar {
+    width: 55em;
+    height: 25em;
+    border: 1px solid #c9c9c9;
+    -webkit-box-shadow: 0 0 5px #c9c9c9;
+    box-shadow: 0 0 5px #c9c9c9;
+    text-align: center;
+    margin: 1em auto;
+    position: relative;
+}
+
+#header {
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    height: 6em;
+    background-color: #00766c;
+}
+
+.pre-button, .next-button {
+    margin-top: 0.5em;
+    font-size: 3em;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+    cursor: pointer;
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    color: white;
+    border-radius: 50%;
+}
+
+.pre-button:hover, .next-button:hover {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+}
+
+.pre-button:active,.next-button:active{
+    -webkit-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.7);
+}
+
+.pre-button {
+    float: left;
+    margin-left: 0.5em;
+}
+
+.next-button {
+    float: right;
+    margin-right: 0.5em;
+}
+
+.head-info {
+    margin-top: 3%;
+    float: left;
+    width: 83%;
+}
+
+.head-day {
+    margin-top: 30px;
+    font-size: 35px;
+    line-height: 1;
+    color: #fff;
+}
+
+.head-month {
+    margin-top: 20px;
+    font-size: 2em;
+    line-height: 1;
+    color: #fff;
+}
+
+#appointment-calendar {
+    width: 90%;
+    margin: 0 auto;
+}
+
+#appointment-calendar tr {
+    height: 2.5em;
+    line-height: 2em;
+}
+
+thead tr {
+    color: #00766c;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+thead tr th{
+    text-align: center;
+}
+
+tbody tr {
+    color: #252a25;
+}
+
+tbody td{
+    width: 14%;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-transition:all 0.2s ease-in;
+    transition:all 0.2s ease-in;
+}
+
+tbody td:hover, .selected {
+    color: #fff;
+    background-color: #2a3246;
+    border: none;
+}
+
+tbody td:active {
+    -webkit-transform: scale(0.7);
+    -ms-transform: scale(0.7);
+    transform: scale(0.7);
+}
+
+#today {
+    background-color: #00766c;
+    color: #fff;
+    font-family: serif;
+    border-radius: 50%;
+}
+
+#disabled {
+    cursor: default;
+    background: #fff;
+}
+
+#disabled:hover {
+    background: #fff;
+    color: #c9c9c9;
+}

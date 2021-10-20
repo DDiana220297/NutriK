@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Prueba;
 use AppBundle\Form\PruebaType;
+use Doctrine\ORM\Tools\ToolsException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -93,6 +94,7 @@ class PruebasController extends Controller
         $curso = $cursos_repo->find($id);
         $em->remove($curso);
         $flush = $em->flush();
+
 
         if(!empty($flush)){
             echo "El curso no se ha borrado bien";
