@@ -79,33 +79,80 @@ class __TwigTemplate_d0273891bf47bca5262db9be914ae5d9ae5866a00b2ef59a3b7710066a3
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 19
+        echo "        ";
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "editDidacticContentOKStatus"], "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 20
+            echo "            <div class=\"row\" style=\"width: 93.5%; margin-left: 3.3%; margin-top: 10px; margin-bottom: -10px;\">
+                <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
+                    ";
+            // line 22
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+                </div>
+            </div>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 26
         echo "        <div class=\"container\">
             <div id=\"add-didactic-content-block\">
                 <form class=\"form\" action=\"";
-        // line 21
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_add_didactic_content");
+        // line 28
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_didactic_content", ["id_entry" => $this->getAttribute(($context["entry"] ?? $this->getContext($context, "entry")), "idEntry", [])]), "html", null, true);
         echo "\" method=\"post\">
                     <div class=\"col-sm-3\">
                         <label for=\"title\">Título:</label>
-                        <input type=\"text\" id=\"title\" name=\"_title\" class=\"form-control\" required=\"required\"/>
+                        <input type=\"text\" id=\"title\" name=\"_title\" class=\"form-control\" required=\"required\" value=\"";
+        // line 31
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["entry"] ?? $this->getContext($context, "entry")), "title", []), "html", null, true);
+        echo "\"/>
                         <label for=\"category\">Categoría:</label>
                         <br/>
                         <select name=\"_category\" id=\"category\">
                             <option>-- Elija --</option>
-";
-        // line 32
+                            ";
+        // line 36
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["categories"] ?? $this->getContext($context, "categories")));
+        foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
+            // line 37
+            echo "                                <option value=\"";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "idCategory", []), "html", null, true);
+            echo "\" ";
+            if (($this->getAttribute($context["category"], "idCategory", []) == $this->getAttribute($this->getAttribute(($context["entry"] ?? $this->getContext($context, "entry")), "idCategory", []), "idCategory", []))) {
+                echo " selected=\"selected\" ";
+            }
+            echo ">";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "name", []), "html", null, true);
+            echo "</option>
+                            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 39
         echo "                        </select>
                         <br/>
                         <label for=\"description\">Descripción:</label>
                         <br/>
-                        <textarea type=\"text\" id=\"description\" name=\"_description\" class=\"form-control\" required=\"required\"></textarea>
+                        <textarea type=\"text\" id=\"description\" name=\"_description\" class=\"form-control\" required=\"required\">";
+        // line 43
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["entry"] ?? $this->getContext($context, "entry")), "description", []), "html", null, true);
+        echo "</textarea>
                         <div class=\"save-button-item\" style=\"width: 100%;\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>
                     </div>
                     <div class=\"col-sm-8\">
                         <label for=\"content\">Contenido:</label>
-                        <textarea type=\"text\" id=\"content\" name=\"_content\" class=\"form-control\" required=\"required\"></textarea>
+                        <textarea type=\"text\" id=\"content\" name=\"_content\" class=\"form-control\" required=\"required\">";
+        // line 50
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["entry"] ?? $this->getContext($context, "entry")), "content", []), "html", null, true);
+        echo "</textarea>
                     </div>
                 </form>
             </div>
@@ -125,7 +172,7 @@ class __TwigTemplate_d0273891bf47bca5262db9be914ae5d9ae5866a00b2ef59a3b7710066a3
 
     public function getDebugInfo()
     {
-        return array (  97 => 32,  86 => 21,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  154 => 50,  144 => 43,  138 => 39,  123 => 37,  119 => 36,  111 => 31,  105 => 28,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -156,31 +203,38 @@ class __TwigTemplate_d0273891bf47bca5262db9be914ae5d9ae5866a00b2ef59a3b7710066a3
                 </div>
             </div>
         {% endfor %}
+        {% for message in  app.session.flashbag().get('editDidacticContentOKStatus') %}
+            <div class=\"row\" style=\"width: 93.5%; margin-left: 3.3%; margin-top: 10px; margin-bottom: -10px;\">
+                <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class=\"container\">
             <div id=\"add-didactic-content-block\">
-                <form class=\"form\" action=\"{{ path(\"nutritionist_add_didactic_content\") }}\" method=\"post\">
+                <form class=\"form\" action=\"{{ path(\"nutritionist_edit_didactic_content\", {'id_entry':entry.idEntry}) }}\" method=\"post\">
                     <div class=\"col-sm-3\">
                         <label for=\"title\">Título:</label>
-                        <input type=\"text\" id=\"title\" name=\"_title\" class=\"form-control\" required=\"required\"/>
+                        <input type=\"text\" id=\"title\" name=\"_title\" class=\"form-control\" required=\"required\" value=\"{{ entry.title }}\"/>
                         <label for=\"category\">Categoría:</label>
                         <br/>
                         <select name=\"_category\" id=\"category\">
                             <option>-- Elija --</option>
-{#                            {% for category in categories %}#}
-{#                                <option value=\"{{ category.idCategory }}\">{{ category.name }}</option>#}
-{#                            {% endfor %}#}
+                            {% for category in categories %}
+                                <option value=\"{{ category.idCategory }}\" {% if category.idCategory == entry.idCategory.idCategory %} selected=\"selected\" {% endif %}>{{ category.name }}</option>
+                            {% endfor %}
                         </select>
                         <br/>
                         <label for=\"description\">Descripción:</label>
                         <br/>
-                        <textarea type=\"text\" id=\"description\" name=\"_description\" class=\"form-control\" required=\"required\"></textarea>
+                        <textarea type=\"text\" id=\"description\" name=\"_description\" class=\"form-control\" required=\"required\">{{ entry.description }}</textarea>
                         <div class=\"save-button-item\" style=\"width: 100%;\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>
                     </div>
                     <div class=\"col-sm-8\">
                         <label for=\"content\">Contenido:</label>
-                        <textarea type=\"text\" id=\"content\" name=\"_content\" class=\"form-control\" required=\"required\"></textarea>
+                        <textarea type=\"text\" id=\"content\" name=\"_content\" class=\"form-control\" required=\"required\">{{ entry.content }}</textarea>
                     </div>
                 </form>
             </div>

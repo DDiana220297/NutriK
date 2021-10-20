@@ -341,14 +341,51 @@ class NutritionistController extends Controller
 
 
     public function nutritionistEditDidacticContentAction(Request $request, $id_entry){
+
+        /**
+         * Cargamos la entrada
+         */
         $em = $this->getDoctrine()->getManager();
         $entries = $em->getRepository("CustomsBundle:Entry");
         $entry = $entries->find($id_entry);
 
+
+        /**
+         * Cargamos las categorias
+         */
+        $categories_repo = $em->getRepository("CustomsBundle:Category");
+        $categories = $categories_repo->findAll();
+
+        if($request->isMethod('POST')){
+
+            $title = $request->request->get('_title');
+            $id_category = $request->request->get('_category');
+            $description = $request->request->get('_description');
+            $content = $request->request->get('_content');
+
+
+            $category = $categories_repo->findBy(array("idCategory" => $id_category));
+            $entry->setIdCategory(reset($category));
+            $entry->setTitle($title);
+            $entry->setDescription($description);
+            $entry->setContent($content);
+            $entry->setDateUpd(new \DateTime('NOW'));
+
+            $em->persist($entry);
+            $flush = $em->flush();
+            if(!empty($flush)){
+                $this->session->getFlashBag()->add('editDidacticContentKOStatus',"Se ha producido un error. No se han podido guardar las modificaciones, intentelo de nuevo o contacte con el servicio de NutriK.");
+            }
+            else{
+                $this->session->getFlashBag()->add('editDidacticContentOKStatus',"El contenido se ha guardado correctamente.");
+            }
+        }
+
         return $this->render('@Nutritionist/edit-didactic-content.html.twig',
             [
                 "id_entry" => $id_entry,
-                "entry" => $entry
+                "entry" => $entry,
+                "categories" => $categories
             ]
         );
     }
