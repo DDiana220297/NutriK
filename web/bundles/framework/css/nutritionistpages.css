@@ -64,6 +64,11 @@
     background-color: lightgray;
 }
 
+#nutritionist-personal-data .container .col-sm-6 .personal-data-header{
+    margin-left: 10%;
+    margin-top: 3%;
+}
+
 #nutritionist-personal-data .container .col-sm-6 .personal-data-header>svg{
     width: 1em;
     font-size: 50px;
@@ -75,16 +80,18 @@
 
 #nutritionist-personal-data .container .col-sm-6 .form-check{
     padding: 10px;
+    margin-left: 10%;
 }
 
 #nutritionist-personal-data .container .col-sm-6 .personal-data-fields{
     padding: 10px;
+    margin-left: 10%;
 }
 
 #nutritionist-personal-data .container .col-sm-6 .personal-data-fields>input{
     padding: 5px;
     height: 45px;
-    width: 85%;
+    width: 95%;
     margin-bottom: 20px;
 }
 
@@ -97,7 +104,7 @@
     font-weight: 500;
     height: 40px;
     width: 20%;
-    margin-top: 30px;
+    margin-top: 38px;
     --text-opacity: 1;
     color: black;
     border-bottom-width: 4px;
@@ -118,15 +125,27 @@
     margin-top: 25px;
     background-color: lightgray;
 }
-#nutritionist-payment-data .container .col-sm-6 .col-sm-12 .card-item .card-input{
-    width: 70%;
+
+#nutritionist-payment-data .container .col-sm-6 .col-sm-12 #cards{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    width: 67rem;
     margin-left: 2%;
+    height: 20rem;
+    padding: 50px;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);;
+    overflow-y: scroll;
+}
+#nutritionist-payment-data .container .col-sm-6 .col-sm-12 #cards .card-item .card-input{
+    width: 87%;
     display: inline-flex;
     height: 37px;
 }
 
-#nutritionist-payment-data .container .col-sm-6 .col-sm-12 .card-item .delete-button{
-    width: 10%;
+#nutritionist-payment-data .container .col-sm-6 .col-sm-12 #cards .card-item .delete-button{
+    width: 12%;
     display: inline-flex;
     font-weight: 500;
     height: 35px;
@@ -156,10 +175,11 @@
     border-radius: 0.5rem;
     width: 67rem;
     margin-left: 2%;
-    margin-top: 10%;
+    margin-top: 2%;
     height: 30rem;
     padding: 50px;
     background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+    overflow-y: scroll;
 }
 
 #nutritionist-payment-data .container .col-sm-6 .card-fields{
@@ -169,7 +189,7 @@
     border-radius: 0.5rem;
     margin-top: 12%;
     width: 90%;
-    height: 458px;
+    height: 515px;
     padding: 50px;
     background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
 }
@@ -211,6 +231,7 @@
     padding: 50px;
     color: black;
     background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+    overflow-y: scroll;
 }
 
 #nutritionist-didactic-content .container .col-sm-12 #didactic-content-block .didactic-entries-header .col-sm-1>svg,
@@ -331,73 +352,6 @@
     border-color: #00A295;
     border-radius: .25rem;
     background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
-}
-
-/* NUTRITIONIST WEEK PLAN */
-#nutritionist-plans .container{
-    width: 95%;
-    margin-top: 2.5%;
-}
-
-#nutritionist-plans .container .col-sm-12 #plan-content-block{
-    border-style: solid;
-    border-color: #00A295;
-    border-width: thin;
-    border-radius: 0.5rem;
-    height: 80rem;
-    color: black;
-    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
-}
-#nutritionist-plans .container .col-sm-12 #plan-content-block #week-plan-buttons{
-    padding: 11px;
-}
-
-#nutritionist-plans .container .col-sm-12 #plan-content-block #week-plan-buttons .day-plan-button{
-    font-weight: 500;
-    height: 45px;
-    width: 245px;
-    border-color: #bdbdbd;
-    background: linear-gradient(to bottom, #8d8d8d 0%, #bdbdbd 100%);
-}
-
-#nutritionist-plans .container .col-sm-12 #plan-content-block #day-plan-content .col-sm-9{
-    border-style: solid;
-    border-color: #00A295;
-    border-width: thin;
-    height: 65rem;
-    margin: 40px 50px;
-    width: 1018px;
-    border-radius: 0.5rem;
-    padding: 0;
-    color: black;
-    background: linear-gradient(to top, #f8f8f8 0%, white 100%);
-}
-
-#nutritionist-plans .container .col-sm-12 #plan-content-block #day-plan-content .col-sm-9 #meals-buttons .day-meal-button{
-    font-weight: 500;
-    height: 45px;
-    width: 200px;
-    border-color: #00766c;
-    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
-}
-
-
-#nutritionist-plans .container .col-sm-12 #plan-content-block #day-plan-content .col-sm-3{
-    border-style: solid;
-    border-color: #00A295;
-    border-width: thin;
-    height: 65rem;
-    margin: 40px 0;
-    width: 59rem;
-    border-radius: 0.5rem;
-    padding: 0;
-    color: black;
-    background: linear-gradient(to top, #f8f8f8 0%, white 100%);
-}
-
-#nutritionist-plans .container .col-sm-12 #plan-content-block #day-plan-content .col-sm-3 .workout-details,
-#nutritionist-plans .container .col-sm-12 #plan-content-block #day-plan-content .col-sm-3 .workouts{
-    padding: 20px;
 }
 
 /* NUTRITIONIST DIARY */
@@ -537,7 +491,7 @@
 }
 
 #nutritionist-customers .container .col-sm-12 #customers-block  .col-sm-1>svg{
-    width: 1em;
+    width: 3em;
     font-size: 50px;
     height: 0.75em;
     display: inline-flex;
@@ -710,7 +664,10 @@ body{
     color: black;
     background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
 }
-
+#nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6 .personal-data-header{
+    margin-left: 10%;
+    margin-top: 3%;
+}
 #nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6 .personal-data-header>svg{
     width: 1em;
     font-size: 50px;
@@ -722,21 +679,23 @@ body{
 
 #nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6 .form-check{
     padding: 10px;
+    margin-left: 10%;
 }
 
 #nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6  .personal-data-fields{
     padding: 10px;
+    margin-left: 10%;
 }
 
 #nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6  .personal-data-fields>input{
     padding: 5px;
     height: 45px;
-    width: 85%;
+    width: 95%;
     margin-bottom: 20px;
 }
 
 #nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6  .personal-data-fields>textarea{
-    width: 85%;
+    width: 90%;
     margin-bottom: 20px;
 }
 
@@ -762,6 +721,12 @@ body{
     position: relative;
     background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
 }
+
+#nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-12 .save-button-item{
+    width: 90%;
+    margin-left: 5%;
+    padding: 10px;
+}
 #nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-12 .save-button-item .save-button{
     font-weight: 500;
     height: 40px;
@@ -773,5 +738,303 @@ body{
     border-color: #00A295;
     border-radius: .25rem;
     position: relative;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+/* WEEKLY PLAN MODAL */
+#nutritionist-weekly-plan .container{
+    width: 95%;
+}
+
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 80rem;
+    color: black;
+    background: transparent;
+}
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-6>label{
+    float: left;
+}
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-6 #plan_tags{
+    height: 30px;
+    width: 100%;
+    float: left;
+    border-color: #bdbdbd;
+    color: black;
+    padding-left: .5rem;
+    border-radius: .25rem;
+    margin-bottom: 10px;
+    background: linear-gradient(to bottom, #8d8d8d 0%, #bdbdbd 100%);
+}
+
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-6 #plan_title{
+    height: 35px;
+    width: 100%;
+    float: left;
+}
+
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-9{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    height: 59rem;
+    width: 70%;
+    border-radius: 0.5rem;
+    padding: 0;
+    color: black;
+    background: linear-gradient(to top, #f8f8f8 0%, white 100%);
+}
+
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-9 .day-meal-visible{
+    display: block;
+}
+
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-9 .day-meal-hidden{
+    display: none;
+}
+
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-9 #meals-buttons .day-meal-button{
+    font-weight: 500;
+    height: 45px;
+    width: 225px;
+    border-color: #00766c;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-9 #meals-buttons .day-meal-button:hover,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-9 #meals-buttons .day-meal-button-active{
+    background: linear-gradient(to bottom, black 0%, #00A295 100%);
+}
+
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-9 .day-plan{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 40px;
+}
+
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card  .col-sm-3{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    height: 59rem;
+    width: 48rem;
+    margin-left: 1rem;
+    border-radius: 0.5rem;
+    padding: 0;
+    color: black;
+    background: linear-gradient(to top, #f8f8f8 0%, white 100%);
+}
+
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card  .col-sm-3 .workout-rest{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 0;
+}
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .monday-workout,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .tuesday-workout,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .wednesday-workout,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .thursday-workout,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .friday-workout,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .saturday-workout,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .sunday-workout{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 0;
+    padding-bottom: 20px;
+}
+
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .monday-workout #monday_workout_sort,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .tuesday-workout #tuesday_workout_sort,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .wednesday-workout #wednesday_workout_sort,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .thursday-workout #thursday_workout_sort,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .friday-workout #friday_workout_sort,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .saturday-workout #saturday_workout_sort,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .sunday-workout #sunday_workout_sort{
+    height: 25px;
+    width: 100%;
+    border-color: #bdbdbd;
+    color: black;
+    padding-left: .5rem;
+    border-radius: .25rem;
+    background: linear-gradient(to bottom, #8d8d8d 0%, #bdbdbd 100%);
+}
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .monday-workout>ul,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .tuesday-workout>ul,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .wednesday-workout>ul,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .thursday-workout>ul,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .friday-workout>ul,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .saturday-workout>ul,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .sunday-workout>ul{
+    width: 100%;
+    height: 75px;
+    overflow-y: scroll;
+}
+
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .monday-workout>ul>li,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .tuesday-workout>ul>li,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .wednesday-workout>ul>li,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .thursday-workout>ul>li,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .friday-workout>ul>li,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .saturday-workout>ul>li,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-3 .sunday-workout>ul>li{
+    padding: 0 15px;
+    margin-bottom: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+
+/* NUTRITIONIST WEEKLY PLANS LIST */
+#nutritionist-plans .container{
+    width: 95%;
+    margin-top: 2.5%;
+}
+
+#nutritionist-plans .container .col-sm-12 #plan-content-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 80rem;
+    padding: 50px;
+    color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+    overflow-y: scroll;
+}
+#nutritionist-plans .container .col-sm-12 #plan-content-block .plans-header .col-sm-1>svg{
+    width: 1em;
+    font-size: 50px;
+    height: 0.75em;
+    display: inline-flex;
+    margin-right: 8px;
+    vertical-align: -8px;
+}
+
+#nutritionist-plans .container .col-sm-12 #plan-content-block .plans-header .col-sm-1>svg:hover{
+    opacity: 0.5;
+}
+
+#nutritionist-plans .container .col-sm-12 #plan-content-block .weekly-plans{
+    padding: 20px;
+    margin-top: 3%;
+}
+
+#nutritionist-plans .container .col-sm-12 #plan-content-block .weekly-plans .weekly-plan{
+    border-style: solid;
+    margin-bottom: 10px;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    padding: 50px;
+    color: black;
+    background: linear-gradient(to top, #f8f8f8 0%, white 100%);
+}
+
+#nutritionist-plans .container .col-sm-12 #plan-content-block .weekly-plans .weekly-plan .weekly-plan-resume{
+    margin-top: -35px;
+}
+
+#nutritionist-plans .container .col-sm-12 #plan-content-block .weekly-plans .weekly-plan .weekly-plan-actions>svg{
+    width: 3rem;
+    font-size: 10px;
+    height: 2.5em;
+    display: inline-flex;
+    float: right;
+    margin-top: -10px;
+    vertical-align: -8px;
+}
+
+#nutritionist-plans .container .col-sm-12 #plan-content-block .weekly-plans .weekly-plan .weekly-plan-actions>svg:hover{
+    opacity: 0.5;
+}
+
+/* NUTRITIONIST ADD EVENT */
+#nutritionist-add-event .container,
+#nutritionist-edit-event .container{
+    width: 95%;
+    margin-top: 1%;
+}
+
+#nutritionist-add-event .container #add-event-block,
+#nutritionist-edit-event .container #edit-event-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 82rem;
+    padding: 50px;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+#nutritionist-add-event .container #add-event-block .col-sm-7, #nutritionist-edit-event .container #edit-event-block .col-sm-7,
+#nutritionist-add-event .container #add-event-block .col-sm-4, #nutritionist-edit-event .container #edit-event-block .col-sm-4{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 72rem;
+    color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+#nutritionist-add-event .container #add-event-block .col-sm-4,
+#nutritionist-edit-event .container #edit-event-block .col-sm-4{
+    margin-left: 2%;
+    margin-right: 5%;
+}
+
+#nutritionist-add-event .container #add-event-block .col-sm-7>label,
+#nutritionist-edit-event .container #edit-event-block .col-sm-7>label{
+    margin: 2% 0;
+    font-size: 18px;
+}
+
+#nutritionist-add-event .container #add-event-block .col-sm-4>label,
+#nutritionist-edit-event .container #edit-event-block .col-sm-4>label{
+    margin: 3% 0;
+    font-size: 18px;
+}
+
+#nutritionist-add-event .container #add-event-block .col-sm-7>textarea,
+#nutritionist-edit-event .container #edit-event-block .col-sm-7>textarea{
+    height: 40rem;
+}
+
+#nutritionist-add-event.container #add-event-block .col-sm-4,
+#nutritionist-edit-event.container #aeditevent-block .col-sm-4{
+    width: 31%;
+}
+#nutritionist-add-event .container #add-event-block .col-sm-4>select,
+#nutritionist-edit-event .container #edit-event-block .col-sm-4>select{
+    height: 35px;
+    width: 100%;
+    border-color: #bdbdbd;
+    color: black;
+    padding-left: .5rem;
+    border-radius: .25rem;
+    background: linear-gradient(to bottom, #8d8d8d 0%, #bdbdbd 100%);
+}
+
+#nutritionist-add-event .container #add-event-block .col-sm-4>textarea,
+#nutritionist-edit-event .container #edit-event-block .col-sm-4>textarea{
+    height: 42rem;
+}
+#nutritionist-add-event .container #add-event-block .col-sm-4 .save-button-item,
+#nutritionist-edit-event .container #edit-event-block .col-sm-4 .save-button-item{
+    width: 100%;
+    margin-top: 12%;
+}
+
+#nutritionist-add-event .container #add-event-block .col-sm-4 .save-button-item>input,
+#nutritionist-edit-event .container #edit-event-block .col-sm-4 .save-button-item>input{
+    height: 40px;
+    width: 100%;
+    color: white;
+    margin: 10px 0;
+    border-color: #00A295;
+    border-radius: .25rem;
     background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
 }

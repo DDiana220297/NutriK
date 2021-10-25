@@ -24,11 +24,6 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="level" type="string" column="level" length="128" nullable="true">
-      <options>
-        <option name="fixed"/>
-      </options>
-    </field>
     <field name="dateAdd" type="datetime" column="date_add" nullable="false"/>
   </entity>
 </doctrine-mapping>

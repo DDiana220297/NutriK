@@ -36,12 +36,6 @@ NutritionistBundle\Entity\WeeklyPlan:
             length: 65535
             options:
                 fixed: false
-        level:
-            type: string
-            nullable: true
-            length: 128
-            options:
-                fixed: false
         dateAdd:
             type: datetime
             nullable: false

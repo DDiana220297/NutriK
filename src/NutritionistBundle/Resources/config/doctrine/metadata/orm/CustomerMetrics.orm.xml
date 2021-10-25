@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CustomerMetrics" table="customer_metrics">
+    <id name="idCustomerMetrics" type="integer" column="id_customer_metrics">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idCustomer" type="integer" column="id_customer" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="weight" type="float" column="weight" precision="10" scale="0" nullable="false"/>
+    <field name="height" type="float" column="height" precision="10" scale="0" nullable="false"/>
+    <field name="age" type="integer" column="age" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="movement" type="string" column="movement" length="248" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dateAdd" type="datetime" column="date_add" nullable="false"/>
+  </entity>
+</doctrine-mapping>

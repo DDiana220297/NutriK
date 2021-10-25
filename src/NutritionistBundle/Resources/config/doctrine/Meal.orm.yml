@@ -32,8 +32,11 @@ NutritionistBundle\Entity\Meal:
             options:
                 fixed: false
         hour:
-            type: time
+            type: string
             nullable: false
+            length: 128
+            options:
+                fixed: false
         meal:
             type: text
             nullable: false

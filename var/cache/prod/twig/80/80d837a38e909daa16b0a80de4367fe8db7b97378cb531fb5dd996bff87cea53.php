@@ -100,7 +100,7 @@ class __TwigTemplate_87d5ac61a1b380f02b0a62974386ea76b86af193284164fac8327fdd774
         // line 26
         echo "        <div class=\"container\">
             <div class=\"col-sm-6\">
-                <div class=\"col-sm-12\">
+                <div class=\"col-sm-12\" style=\"margin-left: 45px;\">
                     <div class=\"card-header\">
                         <div class=\"col-sm-1\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-bank\" viewBox=\"0 0 16 16\">
@@ -116,15 +116,16 @@ class __TwigTemplate_87d5ac61a1b380f02b0a62974386ea76b86af193284164fac8327fdd774
         // line 40
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_payment_data_delete");
         echo "\" method=\"post\">
-                        ";
-        // line 41
+                        <div id=\"cards\">
+                            ";
+        // line 42
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["nc_cards"] ?? $this->getContext($context, "nc_cards")));
         foreach ($context['_seq'] as $context["_key"] => $context["card"]) {
-            // line 42
-            echo "                            <div class=\"card-item\">
-                                <span class=\"form-control card-input\"><strong> ";
             // line 43
+            echo "                                <div class=\"card-item\">
+                                    <span class=\"form-control card-input\"><strong> ";
+            // line 44
             echo twig_escape_filter($this->env, $this->getAttribute($context["card"], "name", []), "html", null, true);
             echo " </strong> - ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["card"], "ncDigits", []), "html", null, true);
@@ -133,21 +134,22 @@ class __TwigTemplate_87d5ac61a1b380f02b0a62974386ea76b86af193284164fac8327fdd774
             echo "/";
             echo twig_escape_filter($this->env, $this->getAttribute($context["card"], "ncExpYear", []), "html", null, true);
             echo " </strong></span>
-                                <input type=\"hidden\" name=\"_card_delete\" value=\"";
-            // line 44
+                                    <input type=\"hidden\" name=\"_card_delete\" value=\"";
+            // line 45
             echo twig_escape_filter($this->env, $this->getAttribute($context["card"], "idCard", []), "html", null, true);
             echo "\"/>
-                                <input class=\"btn delete-button\" type=\"submit\" value=\"Borrar\"/>
-                            </div>
-                        ";
+                                    <input class=\"btn delete-button\" type=\"submit\" value=\"Borrar\"/>
+                                </div>
+                            ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['card'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 48
-        echo "                    </form>
+        // line 49
+        echo "                        </div>
+                    </form>
                 </div>
-                <div class=\"col-sm-12\">
+                <div class=\"col-sm-12\" style=\"margin-left: 45px;\">
                     <div id=\"receipts\">
                         <h3>Mis Recibos</h3>
                         <table class=\"table table-dark table-striped\">
@@ -159,30 +161,30 @@ class __TwigTemplate_87d5ac61a1b380f02b0a62974386ea76b86af193284164fac8327fdd774
                                 <th>Fecha</th>
                             </tr>
                             ";
-        // line 61
+        // line 63
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["receipts"] ?? $this->getContext($context, "receipts")));
         foreach ($context['_seq'] as $context["_key"] => $context["receipt"]) {
-            // line 62
+            // line 64
             echo "                                <tr>
                                     <td>";
-            // line 63
+            // line 65
             echo twig_escape_filter($this->env, $this->getAttribute($context["receipt"], "description", []), "html", null, true);
             echo "</td>
                                     <td>";
-            // line 64
+            // line 66
             echo twig_escape_filter($this->env, $this->getAttribute($context["receipt"], "customer_name", []), "html", null, true);
             echo "</td>
                                     <td>";
-            // line 65
+            // line 67
             echo twig_escape_filter($this->env, $this->getAttribute($context["receipt"], "amount", []), "html", null, true);
             echo "</td>
                                     <td>";
-            // line 66
+            // line 68
             echo twig_escape_filter($this->env, $this->getAttribute($context["receipt"], "status", []), "html", null, true);
             echo "</td>
                                     <td>";
-            // line 67
+            // line 69
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["receipt"], "dateAdd", []), "Y-m-d"), "html", null, true);
             echo "</td>
                                 </tr>
@@ -191,7 +193,7 @@ class __TwigTemplate_87d5ac61a1b380f02b0a62974386ea76b86af193284164fac8327fdd774
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['receipt'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 70
+        // line 72
         echo "                        </table>
                     </div>
                 </div>
@@ -199,12 +201,12 @@ class __TwigTemplate_87d5ac61a1b380f02b0a62974386ea76b86af193284164fac8327fdd774
             <div class=\"col-sm-6\" style=\"display: inline-flex\">
                 <div class=\"card-fields\">
                     <form class=\"form\" action=\"";
-        // line 76
+        // line 78
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_payment_data");
         echo "\" method=\"post\">
-                        <label for=\"nombre\">Nombre:</label><input type=\"text\" id=\"name\" name=\"_name\" class=\"form-control\"/>
-                        <label for=\"card-number\">Número Cuenta:</label><input type=\"text\" maxlength=\"20\" id=\"card-number\" name=\"_card-number\" class=\"form-control\"/>
-                        <label for=\"expiration-date\">Fecha Caducidad:</label><input type=\"date\" id=\"expiration-date\" name=\"_expiration-date\" class=\"form-control\"/>
+                        <label for=\"nombre\">Nombre:</label><input type=\"text\" id=\"name\" name=\"_name\" class=\"form-control\" required=\"required\"/>
+                        <label for=\"card-number\">Número Cuenta:</label><input type=\"text\" maxlength=\"20\" id=\"card-number\" name=\"_card-number\" class=\"form-control\" required=\"required\"/>
+                        <label for=\"expiration-date\">Fecha Caducidad:</label><input type=\"date\" id=\"expiration-date\" name=\"_expiration-date\" class=\"form-control\" required=\"required\"/>
                         <div class=\"save-button-item\" style=\"width: 100%;\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>
@@ -227,7 +229,7 @@ class __TwigTemplate_87d5ac61a1b380f02b0a62974386ea76b86af193284164fac8327fdd774
 
     public function getDebugInfo()
     {
-        return array (  203 => 76,  195 => 70,  186 => 67,  182 => 66,  178 => 65,  174 => 64,  170 => 63,  167 => 62,  163 => 61,  148 => 48,  138 => 44,  128 => 43,  125 => 42,  121 => 41,  117 => 40,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  205 => 78,  197 => 72,  188 => 69,  184 => 68,  180 => 67,  176 => 66,  172 => 65,  169 => 64,  165 => 63,  149 => 49,  139 => 45,  129 => 44,  126 => 43,  122 => 42,  117 => 40,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -267,7 +269,7 @@ class __TwigTemplate_87d5ac61a1b380f02b0a62974386ea76b86af193284164fac8327fdd774
         {% endfor %}
         <div class=\"container\">
             <div class=\"col-sm-6\">
-                <div class=\"col-sm-12\">
+                <div class=\"col-sm-12\" style=\"margin-left: 45px;\">
                     <div class=\"card-header\">
                         <div class=\"col-sm-1\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-bank\" viewBox=\"0 0 16 16\">
@@ -280,16 +282,18 @@ class __TwigTemplate_87d5ac61a1b380f02b0a62974386ea76b86af193284164fac8327fdd774
                     </div>
                     <br/>
                     <form class=\"form\" action=\"{{ path(\"nutritionist_payment_data_delete\") }}\" method=\"post\">
-                        {% for card in nc_cards %}
-                            <div class=\"card-item\">
-                                <span class=\"form-control card-input\"><strong> {{ card.name }} </strong> - {{ card.ncDigits }} - <strong> {{ card.ncExpMonth }}/{{ card.ncExpYear }} </strong></span>
-                                <input type=\"hidden\" name=\"_card_delete\" value=\"{{ card.idCard }}\"/>
-                                <input class=\"btn delete-button\" type=\"submit\" value=\"Borrar\"/>
-                            </div>
-                        {% endfor %}
+                        <div id=\"cards\">
+                            {% for card in nc_cards %}
+                                <div class=\"card-item\">
+                                    <span class=\"form-control card-input\"><strong> {{ card.name }} </strong> - {{ card.ncDigits }} - <strong> {{ card.ncExpMonth }}/{{ card.ncExpYear }} </strong></span>
+                                    <input type=\"hidden\" name=\"_card_delete\" value=\"{{ card.idCard }}\"/>
+                                    <input class=\"btn delete-button\" type=\"submit\" value=\"Borrar\"/>
+                                </div>
+                            {% endfor %}
+                        </div>
                     </form>
                 </div>
-                <div class=\"col-sm-12\">
+                <div class=\"col-sm-12\" style=\"margin-left: 45px;\">
                     <div id=\"receipts\">
                         <h3>Mis Recibos</h3>
                         <table class=\"table table-dark table-striped\">
@@ -316,9 +320,9 @@ class __TwigTemplate_87d5ac61a1b380f02b0a62974386ea76b86af193284164fac8327fdd774
             <div class=\"col-sm-6\" style=\"display: inline-flex\">
                 <div class=\"card-fields\">
                     <form class=\"form\" action=\"{{ path(\"nutritionist_payment_data\") }}\" method=\"post\">
-                        <label for=\"nombre\">Nombre:</label><input type=\"text\" id=\"name\" name=\"_name\" class=\"form-control\"/>
-                        <label for=\"card-number\">Número Cuenta:</label><input type=\"text\" maxlength=\"20\" id=\"card-number\" name=\"_card-number\" class=\"form-control\"/>
-                        <label for=\"expiration-date\">Fecha Caducidad:</label><input type=\"date\" id=\"expiration-date\" name=\"_expiration-date\" class=\"form-control\"/>
+                        <label for=\"nombre\">Nombre:</label><input type=\"text\" id=\"name\" name=\"_name\" class=\"form-control\" required=\"required\"/>
+                        <label for=\"card-number\">Número Cuenta:</label><input type=\"text\" maxlength=\"20\" id=\"card-number\" name=\"_card-number\" class=\"form-control\" required=\"required\"/>
+                        <label for=\"expiration-date\">Fecha Caducidad:</label><input type=\"date\" id=\"expiration-date\" name=\"_expiration-date\" class=\"form-control\" required=\"required\"/>
                         <div class=\"save-button-item\" style=\"width: 100%;\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>

@@ -19,7 +19,11 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="hour" type="time" column="hour" nullable="false"/>
+    <field name="hour" type="string" column="hour" length="128" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="meal" type="text" column="meal" length="65535" nullable="false">
       <options>
         <option name="fixed"/>

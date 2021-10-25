@@ -169,7 +169,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                     </div>
                 </div>
                 <div class=\"col-sm-6\" style=\"display: inline-flex\">
-                    <div class=\"personal-data-fields\" style=\"margin-top: 15%; width: 100%\">
+                    <div class=\"personal-data-fields\" style=\"margin-top: 18%; width: 100%; margin-left: 0; padding: 3px\">
                         <label for=\"bibliografia\">Descripción / Bibliografía:</label>
                         <textarea type=\"text\" id=\"bibliografia\" name=\"_bibliografia\" class=\"form-control\" style=\"height: 160px\">";
         // line 66
@@ -184,7 +184,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                         <input type=\"number\" id=\"n_colegiado\" name=\"_n_colegiado\" class=\"form-control\" value=\"";
         // line 70
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "collegiate_number", []), "html", null, true);
-        echo "\"/>
+        echo "\" style=\"width: 85%\"/>
                         <div class=\"save-button-item\" style=\"width: 100%;\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>
@@ -283,13 +283,13 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                     </div>
                 </div>
                 <div class=\"col-sm-6\" style=\"display: inline-flex\">
-                    <div class=\"personal-data-fields\" style=\"margin-top: 15%; width: 100%\">
+                    <div class=\"personal-data-fields\" style=\"margin-top: 18%; width: 100%; margin-left: 0; padding: 3px\">
                         <label for=\"bibliografia\">Descripción / Bibliografía:</label>
                         <textarea type=\"text\" id=\"bibliografia\" name=\"_bibliografia\" class=\"form-control\" style=\"height: 160px\">{{ app.user.description }}</textarea>
                         <label for=\"estudios\">Estudios:</label>
                         <textarea type=\"text\" id=\"estudios\" name=\"_estudios\" class=\"form-control\" style=\"height: 100px\">{{ app.user.studies }}</textarea>
                         <label for=\"n_colegiado\">Número de Colegiado:</label>
-                        <input type=\"number\" id=\"n_colegiado\" name=\"_n_colegiado\" class=\"form-control\" value=\"{{ app.user.collegiate_number }}\"/>
+                        <input type=\"number\" id=\"n_colegiado\" name=\"_n_colegiado\" class=\"form-control\" value=\"{{ app.user.collegiate_number }}\" style=\"width: 85%\"/>
                         <div class=\"save-button-item\" style=\"width: 100%;\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>

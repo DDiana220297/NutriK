@@ -4,8 +4,6 @@ function redirectTo(path, params = ""){
 }
 
 function checkIdGender(id, value){
-    // alert(id);
-    // debugger;
     if($('#idGenderFemale').attr('checked') === 'checked' && id !== 'idGenderFemale'){
         $('#idCustomerGenderFemale').removeAttr("checked");
     }
@@ -20,6 +18,13 @@ function checkIdGender(id, value){
 }
 
 function deleteEntry(idEntry){
-    debugger;
     document.getElementById("entry_delete_"+idEntry).click();
+}
+
+function deleteWeeklyPlan(idPlan){
+    document.getElementById("plan_delete_"+idPlan).click();
+}
+
+function deleteEvent(idEvent){
+    document.getElementById("event_delete_"+idEvent).click();
 }

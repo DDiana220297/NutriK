@@ -95,7 +95,7 @@ class __TwigTemplate_f39c04bfb3dc95d4cef00dc7299f0965f10dc4289b3634ac216bd96137b
                         </div>
                     </div>
                     <div class=\"col-sm-6\" style=\"display: inline-flex\">
-                        <div class=\"personal-data-fields\" style=\"margin-top: 15%; width: 100%\">
+                        <div class=\"personal-data-fields\" style=\"margin-top: 18%; width: 100%; margin-left: 0\">
                             <label for=\"bibliografia\">Descripción / Bibliografía:</label><textarea type=\"text\" id=\"bibliografia\" name=\"_bibliografia\" class=\"form-control\" style=\"height: 160px\"></textarea>
                             <label for=\"objetivos\">Objetivos:</label><textarea type=\"text\" id=\"objetivos\" name=\"_objetivos\" class=\"form-control\" style=\"height: 100px\"></textarea>
                             <p><strong>Metricas:</strong></p>
@@ -200,7 +200,7 @@ class __TwigTemplate_f39c04bfb3dc95d4cef00dc7299f0965f10dc4289b3634ac216bd96137b
                         </div>
                     </div>
                     <div class=\"col-sm-6\" style=\"display: inline-flex\">
-                        <div class=\"personal-data-fields\" style=\"margin-top: 15%; width: 100%\">
+                        <div class=\"personal-data-fields\" style=\"margin-top: 18%; width: 100%; margin-left: 0\">
                             <label for=\"bibliografia\">Descripción / Bibliografía:</label><textarea type=\"text\" id=\"bibliografia\" name=\"_bibliografia\" class=\"form-control\" style=\"height: 160px\"></textarea>
                             <label for=\"objetivos\">Objetivos:</label><textarea type=\"text\" id=\"objetivos\" name=\"_objetivos\" class=\"form-control\" style=\"height: 100px\"></textarea>
                             <p><strong>Metricas:</strong></p>

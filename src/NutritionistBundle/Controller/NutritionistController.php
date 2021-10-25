@@ -6,6 +6,10 @@ use CustomsBundle\Entity\Entry;
 use CustomsBundle\Entity\NutritionistCustomerCard;
 use CustomsBundle\Entity\User;
 use CustomsBundle\Form\UserType;
+use NutritionistBundle\Entity\Event;
+use NutritionistBundle\Entity\Meal;
+use NutritionistBundle\Entity\WeeklyPlan;
+use NutritionistBundle\Entity\Workout;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -47,7 +51,6 @@ class NutritionistController extends Controller
             $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
 
             if(count($users) > 0){
-                dump(reset($users));
                 $user = reset($users);
                 $password = $request->request->get('_password');
                 $confirm_password = $request->request->get('_confirm_password');
@@ -320,6 +323,12 @@ class NutritionistController extends Controller
         );
     }
 
+    /**
+     * Fn que se encarga de la eliminacion de una entrada de contenido didactico
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function nutritionistDeleteDidacticContentAction(Request $request){
         if($request->isMethod('POST')){
             $id_entry = $request->request->get('_entry_delete');
@@ -340,6 +349,13 @@ class NutritionistController extends Controller
     }
 
 
+    /**
+     * Fn que se encarga de la modificación de una entrada de contenido didactico
+     *
+     * @param Request $request
+     * @param $id_entry
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
     public function nutritionistEditDidacticContentAction(Request $request, $id_entry){
 
         /**
@@ -390,16 +406,2307 @@ class NutritionistController extends Controller
         );
     }
 
-    public function nutritionistCalendarAction()
-    {
-        return $this->render('@Nutritionist/nutritionist-calendar.html.twig');
+    /**
+     * Fn que se encarga de listar las planificaciones semanales
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function nutritionistPlansAction(Request $request){
+        $weekly_plans = array();
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+            $weekly_plans_repo = $em->getRepository("NutritionistBundle:WeeklyPlan");
+            $weekly_plans = $weekly_plans_repo->findBy(array("idUser" => $user->getIdUser()));
+        }
+        else{
+            $this->session->getFlashBag()->add('weeklyPlanKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+
+        return $this->render('@Nutritionist/nutritionist-plans.html.twig',
+            [
+                'weeklyPlans' => $weekly_plans
+            ]
+        );
     }
 
-    public function nutritionistAddCustomerAction()
+    /**
+     * Fn que se encarga de la eliminacion de una planificacion semanal
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function nutritionistDeleteWeeklyPlanAction(Request $request){
+        if($request->isMethod('POST')){
+            $id_plan = $request->request->get('_plan_delete');
+
+            $em = $this->getDoctrine()->getManager();
+            $entries = $em->getRepository("NutritionistBundle:WeeklyPlan");
+            $plan = $entries->find($id_plan);
+            $em->remove($plan);
+            $flush = $em->flush();
+            if(!empty($flush)){
+                $this->session->getFlashBag()->add('weeklyPlansKOStatus',"Se ha producido un error. No hemos podido borrar el plan semanal, intentelo de nuevo o contacte con el servicio de NutriK.");
+            }
+            else{
+                /**
+                 * Borramos los meals asociados
+                 */
+                $meals_repo = $em->getRepository("NutritionistBundle:Meal");
+                $meals = $meals_repo->findBy(["idPlan" => $id_plan]);
+                if(count($meals) > 0){
+                    foreach($meals as $meal){
+                        $em->remove($meal);
+                        $em->flush();
+                    }
+                }
+
+                /**
+                 * Borramos los workouts asociados
+                 */
+                $workouts_repo = $em->getRepository("NutritionistBundle:Workout");
+                $workouts = $workouts_repo->findBy(["idPlan" => $id_plan]);
+                if(count($workouts) > 0){
+                    foreach($workouts as $workout){
+                        $em->remove($workout);
+                        $em->flush();
+                    }
+                }
+
+                $this->session->getFlashBag()->add('weeklyPlansOKStatus',"El plan semanal se ha borrado correctamente.");
+            }
+        }
+        return $this->redirectToRoute('nutritionist_plans');
+    }
+
+    /**
+     * Fn que se encarga de la modificación de una planificacion semanal
+     *
+     * @param Request $request
+     * @param $id_plan
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function nutritionistEditWeeklyPlanAction(Request $request, $id_plan){
+
+        /**
+         * Cargamos la entrada
+         */
+        $em = $this->getDoctrine()->getManager();
+        $entries = $em->getRepository("NutritionistBundle:WeeklyPlan");
+        $plan = $entries->find($id_plan);
+
+        /**
+         * Cargamos los ejercicios
+         */
+        $em = $this->getDoctrine()->getManager();
+        $exercises_repo = $em->getRepository("NutritionistBundle:Exercise");
+        $exercises = $exercises_repo->findAll();
+
+        /**
+         * Cargamos los tags
+         */
+        $tags_repo = $em->getRepository("CustomsBundle:Tag");
+        $tags = $tags_repo->findAll();
+
+        /**
+         * Cargamos los planes de alimentacion
+         */
+        $meals_repo = $em->getRepository("NutritionistBundle:Meal");
+
+        /**
+         * Desayunos
+         */
+        $monday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Lunes"]);
+        $tuesday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Martes"]);
+        $wednesday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Miercoles"]);
+        $thursday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Jueves"]);
+        $friday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Viernes"]);
+        $saturday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Sabado"]);
+        $sunday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Domingo"]);
+
+        /**
+         * Snack
+         */
+        $monday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Lunes"]);
+        $tuesday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Martes"]);
+        $wednesday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Miercoles"]);
+        $thursday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Jueves"]);
+        $friday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Viernes"]);
+        $saturday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Sabado"]);
+        $sunday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Domingo"]);
+
+        /**
+         * Almuerzos
+         */
+        $monday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Lunes"]);
+        $tuesday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Martes"]);
+        $wednesday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Miercoles"]);
+        $thursday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Jueves"]);
+        $friday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Viernes"]);
+        $saturday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Sabado"]);
+        $sunday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Domingo"]);
+
+        /**
+         * Meriendas
+         */
+        $monday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Lunes"]);
+        $tuesday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Martes"]);
+        $wednesday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Miercoles"]);
+        $thursday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Jueves"]);
+        $friday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Viernes"]);
+        $saturday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Sabado"]);
+        $sunday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Domingo"]);
+
+        /**
+         * Cenas
+         */
+        $monday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Lunes"]);
+        $tuesday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Martes"]);
+        $wednesday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Miercoles"]);
+        $thursday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Jueves"]);
+        $friday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Viernes"]);
+        $saturday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Sabado"]);
+        $sunday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Domingo"]);
+
+        /**
+         * Cargamos los entrenamientos
+         */
+        $workouts_repo = $em->getRepository("NutritionistBundle:Workout");
+        $monday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Lunes"]);
+        $mondayWorkout = reset($monday_workout);
+        $tuesday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Martes"]);
+        $tuesdayWorkout = reset($tuesday_workout);
+        $wednesday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Miercoles"]);
+        $wednesdayWorkout = reset($wednesday_workout);
+        $thursday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Jueves"]);
+        $thursdayWorkout = reset($thursday_workout);
+        $friday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Viernes"]);
+        $fridayWorkout = reset($friday_workout);
+        $saturday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Sabado"]);
+        $saturdayWorkout = reset($saturday_workout);
+        $sunday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Domingo"]);
+        $sundayWorkout = reset($sunday_workout);
+
+
+        if($request->isMethod('POST')){
+            /**
+             * Modificación de la planificacion semanal
+             */
+            /**
+             * Cargamos el plan
+             */
+            $plans_repo = $em->getRepository("NutritionistBundle:WeeklyPlan");
+            $plans = $plans_repo->findBy(["idPlan" => $id_plan]);
+            if(count($plans) > 0) {
+                $plan = reset($plans);
+
+                $plan_days = 0;
+
+                /**
+                 * Monday meal
+                 */
+                $monday_meals = false;
+                $monday_breakfast_hour = $request->request->get('breakfast_hour_monday');
+                $monday_breakfast_menu = $request->request->get('breakfast_menu_monday');
+                $monday_breakfast_list = $request->request->get('breakfast_list_monday');
+                $monday_breakfast_comments = $request->request->get('breakfast_comments_monday');
+                $monday_snack_hour = $request->request->get('snack_hour_monday');
+                $monday_snack_menu = $request->request->get('snack_menu_monday');
+                $monday_snack_list = $request->request->get('snack_list_monday');
+                $monday_snack_comments = $request->request->get('snack_comments_monday');
+                $monday_lunch_hour = $request->request->get('lunch_hour_monday');
+                $monday_lunch_menu = $request->request->get('lunch_menu_monday');
+                $monday_lunch_list = $request->request->get('lunch_list_monday');
+                $monday_lunch_comments = $request->request->get('lunch_comments_monday');
+                $monday_afternoon_hour = $request->request->get('afternoon_hour_monday');
+                $monday_afternoon_menu = $request->request->get('afternoon_menu_monday');
+                $monday_afternoon_list = $request->request->get('afternoon_list_monday');
+                $monday_afternoon_comments = $request->request->get('afternoon_comments_monday');
+                $monday_dinner_hour = $request->request->get('dinner_hour_monday');
+                $monday_dinner_menu = $request->request->get('dinner_menu_monday');
+                $monday_dinner_list = $request->request->get('dinner_list_monday');
+                $monday_dinner_comments = $request->request->get('dinner_comments_monday');
+
+
+                if ($monday_breakfast_hour != "" && $monday_breakfast_menu != "" && $monday_breakfast_list != "" &&
+                    $monday_snack_hour != "" && $monday_snack_menu != "" && $monday_snack_list != "" &&
+                    $monday_lunch_hour != "" && $monday_lunch_menu != "" && $monday_lunch_list != "" &&
+                    $monday_afternoon_hour != "" && $monday_afternoon_menu != "" && $monday_afternoon_list != "" &&
+                    $monday_dinner_hour != "" && $monday_dinner_menu != "" && $monday_dinner_list != "") {
+                    $plan_days += 1;
+                    $monday_meals = true;
+                }
+
+                /**
+                 * Tuesday meal
+                 */
+                $tuesday_meals = false;
+                $tuesday_breakfast_hour = $request->request->get('breakfast_hour_tuesday');
+                $tuesday_breakfast_menu = $request->request->get('breakfast_menu_tuesday');
+                $tuesday_breakfast_list = $request->request->get('breakfast_list_tuesday');
+                $tuesday_breakfast_comments = $request->request->get('breakfast_comments_tuesday');
+                $tuesday_snack_hour = $request->request->get('snack_hour_tuesday');
+                $tuesday_snack_menu = $request->request->get('snack_menu_tuesday');
+                $tuesday_snack_list = $request->request->get('snack_list_tuesday');
+                $tuesday_snack_comments = $request->request->get('snack_comments_tuesday');
+                $tuesday_lunch_hour = $request->request->get('lunch_hour_tuesday');
+                $tuesday_lunch_menu = $request->request->get('lunch_menu_tuesday');
+                $tuesday_lunch_list = $request->request->get('lunch_list_tuesday');
+                $tuesday_lunch_comments = $request->request->get('lunch_comments_tuesday');
+                $tuesday_afternoon_hour = $request->request->get('afternoon_hour_tuesday');
+                $tuesday_afternoon_menu = $request->request->get('afternoon_menu_tuesday');
+                $tuesday_afternoon_list = $request->request->get('afternoon_list_tuesday');
+                $tuesday_afternoon_comments = $request->request->get('afternoon_comments_tuesday');
+                $tuesday_dinner_hour = $request->request->get('dinner_hour_tuesday');
+                $tuesday_dinner_menu = $request->request->get('dinner_menu_tuesday');
+                $tuesday_dinner_list = $request->request->get('dinner_list_tuesday');
+                $tuesday_dinner_comments = $request->request->get('dinner_comments_tuesday');
+
+
+                if ($tuesday_breakfast_hour != "" && $tuesday_breakfast_menu != "" && $tuesday_breakfast_list != "" &&
+                    $tuesday_snack_hour != "" && $tuesday_snack_menu != "" && $tuesday_snack_list != "" &&
+                    $tuesday_lunch_hour != "" && $tuesday_lunch_menu != "" && $tuesday_lunch_list != "" &&
+                    $tuesday_afternoon_hour != "" && $tuesday_afternoon_menu != "" && $tuesday_afternoon_list != "" &&
+                    $tuesday_dinner_hour != "" && $tuesday_dinner_menu != "" && $tuesday_dinner_list != "") {
+                    $plan_days += 1;
+                    $tuesday_meals = true;
+                }
+
+                /**
+                 * Wednesday meal
+                 */
+                $wednesday_meals = false;
+                $wednesday_breakfast_hour = $request->request->get('breakfast_hour_wednesday');
+                $wednesday_breakfast_menu = $request->request->get('breakfast_menu_wednesday');
+                $wednesday_breakfast_list = $request->request->get('breakfast_list_wednesday');
+                $wednesday_breakfast_comments = $request->request->get('breakfast_comments_wednesday');
+                $wednesday_snack_hour = $request->request->get('snack_hour_wednesday');
+                $wednesday_snack_menu = $request->request->get('snack_menu_wednesday');
+                $wednesday_snack_list = $request->request->get('snack_list_wednesday');
+                $wednesday_snack_comments = $request->request->get('snack_comments_wednesday');
+                $wednesday_lunch_hour = $request->request->get('lunch_hour_wednesday');
+                $wednesday_lunch_menu = $request->request->get('lunch_menu_wednesday');
+                $wednesday_lunch_list = $request->request->get('lunch_list_wednesday');
+                $wednesday_lunch_comments = $request->request->get('lunch_comments_wednesday');
+                $wednesday_afternoon_hour = $request->request->get('afternoon_hour_wednesday');
+                $wednesday_afternoon_menu = $request->request->get('afternoon_menu_wednesday');
+                $wednesday_afternoon_list = $request->request->get('afternoon_list_wednesday');
+                $wednesday_afternoon_comments = $request->request->get('afternoon_comments_wednesday');
+                $wednesday_dinner_hour = $request->request->get('dinner_hour_wednesday');
+                $wednesday_dinner_menu = $request->request->get('dinner_menu_wednesday');
+                $wednesday_dinner_list = $request->request->get('dinner_list_wednesday');
+                $wednesday_dinner_comments = $request->request->get('dinner_comments_wednesday');
+
+
+                if ($wednesday_breakfast_hour != "" && $wednesday_breakfast_menu != "" && $wednesday_breakfast_list != "" &&
+                    $wednesday_snack_hour != "" && $wednesday_snack_menu != "" && $wednesday_snack_list != "" &&
+                    $wednesday_lunch_hour != "" && $wednesday_lunch_menu != "" && $wednesday_lunch_list != "" &&
+                    $wednesday_afternoon_hour != "" && $wednesday_afternoon_menu != "" && $wednesday_afternoon_list != "" &&
+                    $wednesday_dinner_hour != "" && $wednesday_dinner_menu != "" && $wednesday_dinner_list != "") {
+                    $plan_days += 1;
+                    $wednesday_meals = true;
+                }
+
+                /**
+                 * Thursday meal
+                 */
+                $thursday_meals = false;
+                $thursday_breakfast_hour = $request->request->get('breakfast_hour_thursday');
+                $thursday_breakfast_menu = $request->request->get('breakfast_menu_thursday');
+                $thursday_breakfast_list = $request->request->get('breakfast_list_thursday');
+                $thursday_breakfast_comments = $request->request->get('breakfast_comments_thursday');
+                $thursday_snack_hour = $request->request->get('snack_hour_thursday');
+                $thursday_snack_menu = $request->request->get('snack_menu_thursday');
+                $thursday_snack_list = $request->request->get('snack_list_thursday');
+                $thursday_snack_comments = $request->request->get('snack_comments_thursday');
+                $thursday_lunch_hour = $request->request->get('lunch_hour_thursday');
+                $thursday_lunch_menu = $request->request->get('lunch_menu_thursday');
+                $thursday_lunch_list = $request->request->get('lunch_list_thursday');
+                $thursday_lunch_comments = $request->request->get('lunch_comments_thursday');
+                $thursday_afternoon_hour = $request->request->get('afternoon_hour_thursday');
+                $thursday_afternoon_menu = $request->request->get('afternoon_menu_thursday');
+                $thursday_afternoon_list = $request->request->get('afternoon_list_thursday');
+                $thursday_afternoon_comments = $request->request->get('afternoon_comments_thursday');
+                $thursday_dinner_hour = $request->request->get('dinner_hour_thursday');
+                $thursday_dinner_menu = $request->request->get('dinner_menu_thursday');
+                $thursday_dinner_list = $request->request->get('dinner_list_thursday');
+                $thursday_dinner_comments = $request->request->get('dinner_comments_thursday');
+
+
+                if ($thursday_breakfast_hour != "" && $thursday_breakfast_menu != "" && $thursday_breakfast_list != "" &&
+                    $thursday_snack_hour != "" && $thursday_snack_menu != "" && $thursday_snack_list != "" &&
+                    $thursday_lunch_hour != "" && $thursday_lunch_menu != "" && $thursday_lunch_list != "" &&
+                    $thursday_afternoon_hour != "" && $thursday_afternoon_menu != "" && $thursday_afternoon_list != "" &&
+                    $thursday_dinner_hour != "" && $thursday_dinner_menu != "" && $thursday_dinner_list != "") {
+                    $plan_days += 1;
+                    $thursday_meals = true;
+                }
+
+                /**
+                 * Friday meal
+                 */
+                $friday_meals = false;
+                $friday_breakfast_hour = $request->request->get('breakfast_hour_friday');
+                $friday_breakfast_menu = $request->request->get('breakfast_menu_friday');
+                $friday_breakfast_list = $request->request->get('breakfast_list_friday');
+                $friday_breakfast_comments = $request->request->get('breakfast_comments_friday');
+                $friday_snack_hour = $request->request->get('snack_hour_friday');
+                $friday_snack_menu = $request->request->get('snack_menu_friday');
+                $friday_snack_list = $request->request->get('snack_list_friday');
+                $friday_snack_comments = $request->request->get('snack_comments_friday');
+                $friday_lunch_hour = $request->request->get('lunch_hour_friday');
+                $friday_lunch_menu = $request->request->get('lunch_menu_friday');
+                $friday_lunch_list = $request->request->get('lunch_list_friday');
+                $friday_lunch_comments = $request->request->get('lunch_comments_friday');
+                $friday_afternoon_hour = $request->request->get('afternoon_hour_friday');
+                $friday_afternoon_menu = $request->request->get('afternoon_menu_friday');
+                $friday_afternoon_list = $request->request->get('afternoon_list_friday');
+                $friday_afternoon_comments = $request->request->get('afternoon_comments_friday');
+                $friday_dinner_hour = $request->request->get('dinner_hour_friday');
+                $friday_dinner_menu = $request->request->get('dinner_menu_friday');
+                $friday_dinner_list = $request->request->get('dinner_list_friday');
+                $friday_dinner_comments = $request->request->get('dinner_comments_friday');
+
+
+                if ($friday_breakfast_hour != "" && $friday_breakfast_menu != "" && $friday_breakfast_list != "" &&
+                    $friday_snack_hour != "" && $friday_snack_menu != "" && $friday_snack_list != "" &&
+                    $friday_lunch_hour != "" && $friday_lunch_menu != "" && $friday_lunch_list != "" &&
+                    $friday_afternoon_hour != "" && $friday_afternoon_menu != "" && $friday_afternoon_list != "" &&
+                    $friday_dinner_hour != "" && $friday_dinner_menu != "" && $friday_dinner_list != "") {
+                    $plan_days += 1;
+                    $friday_meals = true;
+                }
+
+                /**
+                 * Saturday meal
+                 */
+                $saturday_meals = false;
+                $saturday_breakfast_hour = $request->request->get('breakfast_hour_saturday');
+                $saturday_breakfast_menu = $request->request->get('breakfast_menu_saturday');
+                $saturday_breakfast_list = $request->request->get('breakfast_list_saturday');
+                $saturday_breakfast_comments = $request->request->get('breakfast_comments_saturday');
+                $saturday_snack_hour = $request->request->get('snack_hour_saturday');
+                $saturday_snack_menu = $request->request->get('snack_menu_saturday');
+                $saturday_snack_list = $request->request->get('snack_list_saturday');
+                $saturday_snack_comments = $request->request->get('snack_comments_saturday');
+                $saturday_lunch_hour = $request->request->get('lunch_hour_saturday');
+                $saturday_lunch_menu = $request->request->get('lunch_menu_saturday');
+                $saturday_lunch_list = $request->request->get('lunch_list_saturday');
+                $saturday_lunch_comments = $request->request->get('lunch_comments_saturday');
+                $saturday_afternoon_hour = $request->request->get('afternoon_hour_saturday');
+                $saturday_afternoon_menu = $request->request->get('afternoon_menu_saturday');
+                $saturday_afternoon_list = $request->request->get('afternoon_list_saturday');
+                $saturday_afternoon_comments = $request->request->get('afternoon_comments_saturday');
+                $saturday_dinner_hour = $request->request->get('dinner_hour_saturday');
+                $saturday_dinner_menu = $request->request->get('dinner_menu_saturday');
+                $saturday_dinner_list = $request->request->get('dinner_list_saturday');
+                $saturday_dinner_comments = $request->request->get('dinner_comments_saturday');
+
+
+                if ($saturday_breakfast_hour != "" && $saturday_breakfast_menu != "" && $saturday_breakfast_list != "" &&
+                    $saturday_snack_hour != "" && $saturday_snack_menu != "" && $saturday_snack_list != "" &&
+                    $saturday_lunch_hour != "" && $saturday_lunch_menu != "" && $saturday_lunch_list != "" &&
+                    $saturday_afternoon_hour != "" && $saturday_afternoon_menu != "" && $saturday_afternoon_list != "" &&
+                    $saturday_dinner_hour != "" && $saturday_dinner_menu != "" && $saturday_dinner_list != "") {
+                    $plan_days += 1;
+                    $saturday_meals = true;
+                }
+
+                /**
+                 * Sunday meal
+                 */
+                $sunday_meals = false;
+                $sunday_breakfast_hour = $request->request->get('breakfast_hour_sunday');
+                $sunday_breakfast_menu = $request->request->get('breakfast_menu_sunday');
+                $sunday_breakfast_list = $request->request->get('breakfast_list_sunday');
+                $sunday_breakfast_comments = $request->request->get('breakfast_comments_sunday');
+                $sunday_snack_hour = $request->request->get('snack_hour_sunday');
+                $sunday_snack_menu = $request->request->get('snack_menu_sunday');
+                $sunday_snack_list = $request->request->get('snack_list_sunday');
+                $sunday_snack_comments = $request->request->get('snack_comments_sunday');
+                $sunday_lunch_hour = $request->request->get('lunch_hour_sunday');
+                $sunday_lunch_menu = $request->request->get('lunch_menu_sunday');
+                $sunday_lunch_list = $request->request->get('lunch_list_sunday');
+                $sunday_lunch_comments = $request->request->get('lunch_comments_sunday');
+                $sunday_afternoon_hour = $request->request->get('afternoon_hour_sunday');
+                $sunday_afternoon_menu = $request->request->get('afternoon_menu_sunday');
+                $sunday_afternoon_list = $request->request->get('afternoon_list_sunday');
+                $sunday_afternoon_comments = $request->request->get('afternoon_comments_sunday');
+                $sunday_dinner_hour = $request->request->get('dinner_hour_sunday');
+                $sunday_dinner_menu = $request->request->get('dinner_menu_sunday');
+                $sunday_dinner_list = $request->request->get('dinner_list_sunday');
+                $sunday_dinner_comments = $request->request->get('dinner_comments_sunday');
+
+
+                if ($sunday_breakfast_hour != "" && $sunday_breakfast_menu != "" && $sunday_breakfast_list != "" &&
+                    $sunday_snack_hour != "" && $sunday_snack_menu != "" && $sunday_snack_list != "" &&
+                    $sunday_lunch_hour != "" && $sunday_lunch_menu != "" && $sunday_lunch_list != "" &&
+                    $sunday_afternoon_hour != "" && $sunday_afternoon_menu != "" && $sunday_afternoon_list != "" &&
+                    $sunday_dinner_hour != "" && $sunday_dinner_menu != "" && $sunday_dinner_list != "") {
+                    $plan_days += 1;
+                    $sunday_meals = true;
+                }
+
+                if ($plan_days >= 5) {
+                    $tag = $request->request->get('plan_tags');
+                    if ($tag != "") {
+                        $plan->setIdTag($tag);
+                    }
+
+                    $plan->setTitle($request->request->get('plan_title'));
+                    $plan->setDescription($request->request->get('plan_description'));
+                    $plan->setDateAdd(new \DateTime('NOW'));
+
+                    $em->persist($plan);
+                    $flush = $em->flush();
+                    if (!empty($flush)) {
+                        $this->session->getFlashBag()->add('addWeeklyPlanKOStatus', "Se ha producido un error. No se ha podido guardar el plan semanal, intentelo de nuevo o contacte con el servicio de NutriK");
+                    } else {
+                        /**
+                         * Plan meals
+                         */
+                        if ($monday_meals) {
+                            $mondayBreakfast = reset($monday_breakfast);
+                            $mondayBreakfast->setHour($monday_breakfast_hour);
+                            $mondayBreakfast->setMeal($monday_breakfast_menu);
+                            $mondayBreakfast->setMealShoppingList($monday_breakfast_list);
+                            $mondayBreakfast->setMealNotes($monday_breakfast_comments);
+                            $em->persist($mondayBreakfast);
+                            $em->flush();
+
+
+                            $mondaySnack = reset($monday_snack);
+                            $mondaySnack->setHour($monday_snack_hour);
+                            $mondaySnack->setMeal($monday_snack_menu);
+                            $mondaySnack->setMealShoppingList($monday_snack_list);
+                            $mondaySnack->setMealNotes($monday_snack_comments);
+                            $em->persist($mondaySnack);
+                            $em->flush();
+
+                            $mondayLunch = reset($monday_lunch);
+                            $mondayLunch->setHour($monday_lunch_hour);
+                            $mondayLunch->setMeal($monday_lunch_menu);
+                            $mondayLunch->setMealShoppingList($monday_lunch_list);
+                            $mondayLunch->setMealNotes($monday_lunch_comments);
+                            $em->persist($mondayLunch);
+                            $em->flush();
+
+                            $mondayAfternoon = reset($monday_afternoon);
+                            $mondayAfternoon->setHour($monday_afternoon_hour);
+                            $mondayAfternoon->setMeal($monday_afternoon_menu);
+                            $mondayAfternoon->setMealShoppingList($monday_afternoon_list);
+                            $mondayAfternoon->setMealNotes($monday_afternoon_comments);
+                            $em->persist($mondayAfternoon);
+                            $em->flush();
+
+
+                            $mondayDinner = reset($monday_dinner);
+                            $mondayDinner->setHour($monday_dinner_hour);
+                            $mondayDinner->setMeal($monday_dinner_menu);
+                            $mondayDinner->setMealShoppingList($monday_dinner_list);
+                            $mondayDinner->setMealNotes($monday_dinner_comments);
+                            $em->persist($mondayDinner);
+                            $em->flush();
+                        }
+
+                        if ($tuesday_meals) {
+                            $tuesdayBreakfast = reset($tuesday_breakfast);
+                            $tuesdayBreakfast->setHour($tuesday_breakfast_hour);
+                            $tuesdayBreakfast->setMeal($tuesday_breakfast_menu);
+                            $tuesdayBreakfast->setMealShoppingList($tuesday_breakfast_list);
+                            $tuesdayBreakfast->setMealNotes($tuesday_breakfast_comments);
+                            $em->persist($tuesdayBreakfast);
+                            $em->flush();
+
+                            $tuesdaySnack = reset($tuesday_snack);
+                            $tuesdaySnack->setHour($tuesday_snack_hour);
+                            $tuesdaySnack->setMeal($tuesday_snack_menu);
+                            $tuesdaySnack->setMealShoppingList($tuesday_snack_list);
+                            $tuesdaySnack->setMealNotes($tuesday_snack_comments);
+                            $em->persist($tuesdaySnack);
+                            $em->flush();
+
+                            $tuesdayLunch = reset($tuesday_lunch);
+                            $tuesdayLunch->setHour($tuesday_lunch_hour);
+                            $tuesdayLunch->setMeal($tuesday_lunch_menu);
+                            $tuesdayLunch->setMealShoppingList($tuesday_lunch_list);
+                            $tuesdayLunch->setMealNotes($tuesday_lunch_comments);
+                            $em->persist($tuesdayLunch);
+                            $em->flush();
+
+                            $tuesdayAfternoon = reset($tuesday_afternoon);
+                            $tuesdayAfternoon->setHour($tuesday_afternoon_hour);
+                            $tuesdayAfternoon->setMeal($tuesday_afternoon_menu);
+                            $tuesdayAfternoon->setMealShoppingList($tuesday_afternoon_list);
+                            $tuesdayAfternoon->setMealNotes($tuesday_afternoon_comments);
+                            $em->persist($tuesdayAfternoon);
+                            $em->flush();
+
+
+                            $tuesdayDinner = reset($tuesday_dinner);
+                            $tuesdayDinner->setHour($tuesday_dinner_hour);
+                            $tuesdayDinner->setMeal($tuesday_dinner_menu);
+                            $tuesdayDinner->setMealShoppingList($tuesday_dinner_list);
+                            $tuesdayDinner->setMealNotes($tuesday_dinner_comments);
+                            $em->persist($tuesdayDinner);
+                            $em->flush();
+                        }
+
+                        if ($wednesday_meals) {
+                            $wednesdayBreakfast = reset($wednesday_breakfast);
+                            $wednesdayBreakfast->setHour($wednesday_breakfast_hour);
+                            $wednesdayBreakfast->setMeal($wednesday_breakfast_menu);
+                            $wednesdayBreakfast->setMealShoppingList($wednesday_breakfast_list);
+                            $wednesdayBreakfast->setMealNotes($wednesday_breakfast_comments);
+                            $em->persist($wednesdayBreakfast);
+                            $em->flush();
+
+                            $wednesdaySnack = reset($wednesday_snack);
+                            $wednesdaySnack->setHour($wednesday_snack_hour);
+                            $wednesdaySnack->setMeal($wednesday_snack_menu);
+                            $wednesdaySnack->setMealShoppingList($wednesday_snack_list);
+                            $wednesdaySnack->setMealNotes($wednesday_snack_comments);
+                            $em->persist($wednesdaySnack);
+                            $em->flush();
+
+                            $wednesdayLunch = reset($wednesday_lunch);
+                            $wednesdayLunch->setHour($wednesday_lunch_hour);
+                            $wednesdayLunch->setMeal($wednesday_lunch_menu);
+                            $wednesdayLunch->setMealShoppingList($wednesday_lunch_list);
+                            $wednesdayLunch->setMealNotes($wednesday_lunch_comments);
+                            $em->persist($wednesdayLunch);
+                            $em->flush();
+
+                            $wednesdayAfternoon = reset($wednesday_afternoon);
+                            $wednesdayAfternoon->setHour($wednesday_afternoon_hour);
+                            $wednesdayAfternoon->setMeal($wednesday_afternoon_menu);
+                            $wednesdayAfternoon->setMealShoppingList($wednesday_afternoon_list);
+                            $wednesdayAfternoon->setMealNotes($wednesday_afternoon_comments);
+                            $em->persist($wednesdayAfternoon);
+                            $em->flush();
+
+
+                            $wednesdayDinner = reset($wednesday_dinner);
+                            $wednesdayDinner->setHour($wednesday_dinner_hour);
+                            $wednesdayDinner->setMeal($wednesday_dinner_menu);
+                            $wednesdayDinner->setMealShoppingList($wednesday_dinner_list);
+                            $wednesdayDinner->setMealNotes($wednesday_dinner_comments);
+                            $em->persist($wednesdayDinner);
+                            $em->flush();
+                        }
+                        if ($thursday_meals) {
+                            $thursdayBreakfast = reset($thursday_breakfast);
+                            $thursdayBreakfast->setHour($thursday_breakfast_hour);
+                            $thursdayBreakfast->setMeal($thursday_breakfast_menu);
+                            $thursdayBreakfast->setMealShoppingList($thursday_breakfast_list);
+                            $thursdayBreakfast->setMealNotes($thursday_breakfast_comments);
+                            $em->persist($thursdayBreakfast);
+                            $em->flush();
+
+                            $thursdaySnack = reset($thursday_snack);
+                            $thursdaySnack->setHour($thursday_snack_hour);
+                            $thursdaySnack->setMeal($thursday_snack_menu);
+                            $thursdaySnack->setMealShoppingList($thursday_snack_list);
+                            $thursdaySnack->setMealNotes($thursday_snack_comments);
+                            $em->persist($thursdaySnack);
+                            $em->flush();
+
+                            $thursdayLunch = reset($thursday_lunch);
+                            $thursdayLunch->setHour($thursday_lunch_hour);
+                            $thursdayLunch->setMeal($thursday_lunch_menu);
+                            $thursdayLunch->setMealShoppingList($thursday_lunch_list);
+                            $thursdayLunch->setMealNotes($thursday_lunch_comments);
+                            $em->persist($thursdayLunch);
+                            $em->flush();
+
+                            $thursdayAfternoon = reset($thursday_afternoon);
+                            $thursdayAfternoon->setHour($thursday_afternoon_hour);
+                            $thursdayAfternoon->setMeal($thursday_afternoon_menu);
+                            $thursdayAfternoon->setMealShoppingList($thursday_afternoon_list);
+                            $thursdayAfternoon->setMealNotes($thursday_afternoon_comments);
+                            $em->persist($thursdayAfternoon);
+                            $em->flush();
+
+
+                            $thursdayDinner = reset($thursday_dinner);
+                            $thursdayDinner->setHour($thursday_dinner_hour);
+                            $thursdayDinner->setMeal($thursday_dinner_menu);
+                            $thursdayDinner->setMealShoppingList($thursday_dinner_list);
+                            $thursdayDinner->setMealNotes($thursday_dinner_comments);
+                            $em->persist($thursdayDinner);
+                            $em->flush();
+                        }
+                        if ($friday_meals) {
+                            $fridayBreakfast = reset($friday_breakfast);
+                            $fridayBreakfast->setHour($friday_breakfast_hour);
+                            $fridayBreakfast->setMeal($friday_breakfast_menu);
+                            $fridayBreakfast->setMealShoppingList($friday_breakfast_list);
+                            $fridayBreakfast->setMealNotes($friday_breakfast_comments);
+                            $em->persist($fridayBreakfast);
+                            $em->flush();
+
+                            $fridaySnack = reset($friday_snack);
+                            $fridaySnack->setHour($friday_snack_hour);
+                            $fridaySnack->setMeal($friday_snack_menu);
+                            $fridaySnack->setMealShoppingList($friday_snack_list);
+                            $fridaySnack->setMealNotes($friday_snack_comments);
+                            $em->persist($fridaySnack);
+                            $em->flush();
+
+                            $fridayLunch = reset($friday_lunch);
+                            $fridayLunch->setHour($friday_lunch_hour);
+                            $fridayLunch->setMeal($friday_lunch_menu);
+                            $fridayLunch->setMealShoppingList($friday_lunch_list);
+                            $fridayLunch->setMealNotes($friday_lunch_comments);
+                            $em->persist($fridayLunch);
+                            $em->flush();
+
+                            $fridayAfternoon = reset($friday_afternoon);
+                            $fridayAfternoon->setHour($friday_afternoon_hour);
+                            $fridayAfternoon->setMeal($friday_afternoon_menu);
+                            $fridayAfternoon->setMealShoppingList($friday_afternoon_list);
+                            $fridayAfternoon->setMealNotes($friday_afternoon_comments);
+                            $em->persist($fridayAfternoon);
+                            $em->flush();
+
+                            $fridayDinner = reset($friday_dinner);
+                            $fridayDinner->setHour($friday_dinner_hour);
+                            $fridayDinner->setMeal($friday_dinner_menu);
+                            $fridayDinner->setMealShoppingList($friday_dinner_list);
+                            $fridayDinner->setMealNotes($friday_dinner_comments);
+                            $em->persist($fridayDinner);
+                            $em->flush();
+                        }
+                        if ($saturday_meals) {
+                            $saturdayBreakfast = reset($saturday_breakfast);
+                            $saturdayBreakfast->setHour($saturday_breakfast_hour);
+                            $saturdayBreakfast->setMeal($saturday_breakfast_menu);
+                            $saturdayBreakfast->setMealShoppingList($saturday_breakfast_list);
+                            $saturdayBreakfast->setMealNotes($saturday_breakfast_comments);
+                            $em->persist($saturdayBreakfast);
+                            $em->flush();
+
+                            $saturdaySnack = reset($saturday_snack);
+                            $saturdaySnack->setHour($saturday_snack_hour);
+                            $saturdaySnack->setMeal($saturday_snack_menu);
+                            $saturdaySnack->setMealShoppingList($saturday_snack_list);
+                            $saturdaySnack->setMealNotes($saturday_snack_comments);
+                            $em->persist($saturdaySnack);
+                            $em->flush();
+
+                            $saturdayLunch = reset($saturday_lunch);
+                            $saturdayLunch->setHour($saturday_lunch_hour);
+                            $saturdayLunch->setMeal($saturday_lunch_menu);
+                            $saturdayLunch->setMealShoppingList($saturday_lunch_list);
+                            $saturdayLunch->setMealNotes($saturday_lunch_comments);
+                            $em->persist($saturdayLunch);
+                            $em->flush();
+
+                            $saturdayAfternoon = reset($saturday_afternoon);
+                            $saturdayAfternoon->setHour($saturday_afternoon_hour);
+                            $saturdayAfternoon->setMeal($saturday_afternoon_menu);
+                            $saturdayAfternoon->setMealShoppingList($saturday_afternoon_list);
+                            $saturdayAfternoon->setMealNotes($saturday_afternoon_comments);
+                            $em->persist($saturdayAfternoon);
+                            $em->flush();
+
+
+                            $saturdayDinner = reset($saturday_dinner);
+                            $saturdayDinner->setHour($saturday_dinner_hour);
+                            $saturdayDinner->setMeal($saturday_dinner_menu);
+                            $saturdayDinner->setMealShoppingList($saturday_dinner_list);
+                            $saturdayDinner->setMealNotes($saturday_dinner_comments);
+                            $em->persist($saturdayDinner);
+                            $em->flush();
+                        }
+                        if ($sunday_meals) {
+                            $sundayBreakfast = reset($sunday_breakfast);
+                            $sundayBreakfast->setHour($sunday_breakfast_hour);
+                            $sundayBreakfast->setMeal($sunday_breakfast_menu);
+                            $sundayBreakfast->setMealShoppingList($sunday_breakfast_list);
+                            $sundayBreakfast->setMealNotes($sunday_breakfast_comments);
+                            $em->persist($sundayBreakfast);
+                            $em->flush();
+
+                            $sundaySnack = reset($sunday_snack);
+                            $sundaySnack->setHour($sunday_snack_hour);
+                            $sundaySnack->setMeal($sunday_snack_menu);
+                            $sundaySnack->setMealShoppingList($sunday_snack_list);
+                            $sundaySnack->setMealNotes($sunday_snack_comments);
+                            $em->persist($sundaySnack);
+                            $em->flush();
+
+                            $sundayLunch = reset($sunday_lunch);
+                            $sundayLunch->setHour($sunday_lunch_hour);
+                            $sundayLunch->setMeal($sunday_lunch_menu);
+                            $sundayLunch->setMealShoppingList($sunday_lunch_list);
+                            $sundayLunch->setMealNotes($sunday_lunch_comments);
+                            $em->persist($sundayLunch);
+                            $em->flush();
+
+                            $sundayAfternoon = reset($sunday_afternoon);
+                            $sundayAfternoon->setHour($sunday_afternoon_hour);
+                            $sundayAfternoon->setMeal($sunday_afternoon_menu);
+                            $sundayAfternoon->setMealShoppingList($sunday_afternoon_list);
+                            $sundayAfternoon->setMealNotes($sunday_afternoon_comments);
+                            $em->persist($sundayAfternoon);
+                            $em->flush();
+
+
+                            $sundayDinner = reset($sunday_dinner);
+                            $sundayDinner->setHour($sunday_dinner_hour);
+                            $sundayDinner->setMeal($sunday_dinner_menu);
+                            $sundayDinner->setMealShoppingList($sunday_dinner_list);
+                            $sundayDinner->setMealNotes($sunday_dinner_comments);
+                            $em->persist($sundayDinner);
+                            $em->flush();
+                        }
+
+
+                        /**
+                         * Monday workout
+                         */
+                        $monday_workout_rest = $request->request->get('monday_workout_rest');
+                        if (!$monday_workout_rest) {
+                            $monday_workout_sort = $request->request->get('monday_workout_sort');
+                            $monday_workout = $request->request->get('monday_workout');
+                            $monday_workout_exercises = $request->request->get('monday_workout_exercises');
+                            if ($monday_workout_sort != "" && $monday_workout != "" && $monday_workout_exercises != "") {
+                                $monday_workout_time = $request->request->get('monday_workout_time');
+                                $monday_workout_notes = $request->request->get('monday_workout_notes');
+                                $monday_workout_exercises = implode(',', array_keys($monday_workout_exercises));
+
+                                if ($monday_workout_time == "" || $monday_workout_notes == "") {
+                                    $this->session->getFlashBag()->add('editWeeklyPlanWarnings', "Advertencia. Faltan datos relacionados con el entrenamiento del Lunes para este plan semanal");
+                                }
+
+                                if($mondayWorkout == false){
+                                    $mondayWorkout = new Workout();
+                                    $mondayWorkout->setIdPlan($plan->getIdPlan());
+                                    $mondayWorkout->setWorkoutSort($monday_workout_sort);
+                                    $mondayWorkout->setDay('Lunes');
+                                    $mondayWorkout->setDateAdd(new \DateTime('NOW'));
+                                    $mondayWorkout->setHour($monday_workout_time);
+                                    $mondayWorkout->setWorkout($monday_workout);
+                                    $mondayWorkout->setWorkoutExercises($monday_workout_exercises);
+                                    $mondayWorkout->setWorkoutNotes($monday_workout_notes);
+                                    $em->persist($mondayWorkout);
+                                    $em->flush();
+                                }
+                                else{
+                                    $mondayWorkout->setHour($monday_workout_time);
+                                    $mondayWorkout->setWorkout($monday_workout);
+                                    $mondayWorkout->setWorkoutExercises($monday_workout_exercises);
+                                    $mondayWorkout->setWorkoutNotes($monday_workout_notes);
+                                    $em->persist($mondayWorkout);
+                                    $em->flush();
+                                }
+                            }
+                        }
+
+                        /**
+                         * Tuesday workout
+                         */
+                        $tuesday_workout_rest = $request->request->get('tuesday_workout_rest');
+                        if (!$tuesday_workout_rest) {
+                            $tuesday_workout_sort = $request->request->get('tuesday_workout_sort');
+                            $tuesday_workout = $request->request->get('tuesday_workout');
+                            $tuesday_workout_exercises = $request->request->get('tuesday_workout_exercises');
+                            if ($tuesday_workout_sort != "" && $tuesday_workout != "" && $tuesday_workout_exercises != "") {
+                                $tuesday_workout_time = $request->request->get('tuesday_workout_time');
+                                $tuesday_workout_notes = $request->request->get('tuesday_workout_notes');
+                                $tuesday_workout_exercises = implode(',', array_keys($tuesday_workout_exercises));
+
+                                if ($tuesday_workout_time == "" || $tuesday_workout_notes == "") {
+                                    $this->session->getFlashBag()->add('editWeeklyPlanWarnings', "Advertencia. Faltan datos relacionados con el entrenamiento del Martes para este plan semanal");
+                                }
+
+                                if($tuesdayWorkout == false){
+                                    $tuesdayWorkout = new Workout();
+                                    $tuesdayWorkout->setIdPlan($plan->getIdPlan());
+                                    $tuesdayWorkout->setWorkoutSort($tuesday_workout_sort);
+                                    $tuesdayWorkout->setDay('Martes');
+                                    $tuesdayWorkout->setDateAdd(new \DateTime('NOW'));
+                                    $tuesdayWorkout->setHour($tuesday_workout_time);
+                                    $tuesdayWorkout->setWorkout($tuesday_workout);
+                                    $tuesdayWorkout->setWorkoutExercises($tuesday_workout_exercises);
+                                    $tuesdayWorkout->setWorkoutNotes($tuesday_workout_notes);
+                                    $em->persist($tuesdayWorkout);
+                                    $em->flush();
+                                }
+                                else{
+                                    $tuesdayWorkout->setHour($tuesday_workout_time);
+                                    $tuesdayWorkout->setWorkout($tuesday_workout);
+                                    $tuesdayWorkout->setWorkoutExercises($tuesday_workout_exercises);
+                                    $tuesdayWorkout->setWorkoutNotes($tuesday_workout_notes);
+                                    $em->persist($tuesdayWorkout);
+                                    $em->flush();
+                                }
+                            }
+                        }
+
+                        /**
+                         * Wednesday workout
+                         */
+                        $wednesday_workout_rest = $request->request->get('wednesday_workout_rest');
+                        if (!$wednesday_workout_rest) {
+                            $wednesday_workout_sort = $request->request->get('wednesday_workout_sort');
+                            $wednesday_workout = $request->request->get('wednesday_workout');
+                            $wednesday_workout_exercises = $request->request->get('wednesday_workout_exercises');
+                            if ($wednesday_workout_sort != "" && $wednesday_workout != "" && $wednesday_workout_exercises != "") {
+                                $wednesday_workout_time = $request->request->get('wednesday_workout_time');
+                                $wednesday_workout_notes = $request->request->get('wednesday_workout_notes');
+                                $wednesday_workout_exercises = implode(',', array_keys($wednesday_workout_exercises));
+
+                                if ($wednesday_workout_time == "" || $wednesday_workout_notes == "") {
+                                    $this->session->getFlashBag()->add('editWeeklyPlanWarnings', "Advertencia. Faltan datos relacionados con el entrenamiento del Martes para este plan semanal");
+                                }
+
+                                if($wednesdayWorkout == false){
+                                    $wednesdayWorkout = new Workout();
+                                    $wednesdayWorkout->setIdPlan($plan->getIdPlan());
+                                    $wednesdayWorkout->setWorkoutSort($wednesday_workout_sort);
+                                    $wednesdayWorkout->setDay('Miercoles');
+                                    $wednesdayWorkout->setDateAdd(new \DateTime('NOW'));
+                                    $wednesdayWorkout->setHour($wednesday_workout_time);
+                                    $wednesdayWorkout->setWorkout($wednesday_workout);
+                                    $wednesdayWorkout->setWorkoutExercises($wednesday_workout_exercises);
+                                    $wednesdayWorkout->setWorkoutNotes($wednesday_workout_notes);
+                                    $em->persist($wednesdayWorkout);
+                                    $em->flush();
+                                }
+                                else{
+                                    $wednesdayWorkout->setHour($wednesday_workout_time);
+                                    $wednesdayWorkout->setWorkout($wednesday_workout);
+                                    $wednesdayWorkout->setWorkoutExercises($wednesday_workout_exercises);
+                                    $wednesdayWorkout->setWorkoutNotes($wednesday_workout_notes);
+                                    $em->persist($wednesdayWorkout);
+                                    $em->flush();
+                                }
+
+                            }
+                        }
+
+                        /**
+                         * Thursday workout
+                         */
+                        $thursday_workout_rest = $request->request->get('thursday_workout_rest');
+                        if (!$thursday_workout_rest) {
+                            $thursday_workout_sort = $request->request->get('thursday_workout_sort');
+                            $thursday_workout = $request->request->get('thursday_workout');
+                            $thursday_workout_exercises = $request->request->get('thursday_workout_exercises');
+                            if ($thursday_workout_sort != "" && $thursday_workout != "" && $thursday_workout_exercises != "") {
+                                $thursday_workout_time = $request->request->get('thursday_workout_time');
+                                $thursday_workout_notes = $request->request->get('thursday_workout_notes');
+                                $thursday_workout_exercises = implode(',', array_keys($thursday_workout_exercises));
+
+                                if ($thursday_workout_time == "" || $thursday_workout_notes == "") {
+                                    $this->session->getFlashBag()->add('editWeeklyPlanWarnings', "Advertencia. Faltan datos relacionados con el entrenamiento del Martes para este plan semanal");
+                                }
+
+                                if($thursdayWorkout == false){
+                                    $thursdayWorkout = new Workout();
+                                    $thursdayWorkout->setIdPlan($plan->getIdPlan());
+                                    $thursdayWorkout->setWorkoutSort($thursday_workout_sort);
+                                    $thursdayWorkout->setDay('Jueves');
+                                    $thursdayWorkout->setDateAdd(new \DateTime('NOW'));
+                                    $thursdayWorkout->setHour($thursday_workout_time);
+                                    $thursdayWorkout->setWorkout($thursday_workout);
+                                    $thursdayWorkout->setWorkoutExercises($thursday_workout_exercises);
+                                    $thursdayWorkout->setWorkoutNotes($thursday_workout_notes);
+                                    $em->persist($thursdayWorkout);
+                                    $em->flush();
+                                }
+                                else{
+                                    $thursdayWorkout->setHour($thursday_workout_time);
+                                    $thursdayWorkout->setWorkout($thursday_workout);
+                                    $thursdayWorkout->setWorkoutExercises($thursday_workout_exercises);
+                                    $thursdayWorkout->setWorkoutNotes($thursday_workout_notes);
+                                    $em->persist($thursdayWorkout);
+                                    $em->flush();
+                                }
+                            }
+                        }
+
+                        /**
+                         * Friday workout
+                         */
+                        $friday_workout_rest = $request->request->get('friday_workout_rest');
+                        if (!$friday_workout_rest) {
+                            $friday_workout_sort = $request->request->get('friday_workout_sort');
+                            $friday_workout = $request->request->get('friday_workout');
+                            $friday_workout_exercises = $request->request->get('friday_workout_exercises');
+                            if ($friday_workout_sort != "" && $friday_workout != "" && $friday_workout_exercises != "") {
+                                $friday_workout_time = $request->request->get('friday_workout_time');
+                                $friday_workout_notes = $request->request->get('friday_workout_notes');
+                                $friday_workout_exercises = implode(',', array_keys($friday_workout_exercises));
+
+                                if ($friday_workout_time == "" || $friday_workout_notes == "") {
+                                    $this->session->getFlashBag()->add('editWeeklyPlanWarnings', "Advertencia. Faltan datos relacionados con el entrenamiento del Martes para este plan semanal");
+                                }
+
+                                if($fridayWorkout == false){
+                                    $fridayWorkout = new Workout();
+                                    $fridayWorkout->setIdPlan($plan->getIdPlan());
+                                    $fridayWorkout->setWorkoutSort($friday_workout_sort);
+                                    $fridayWorkout->setDay('Viernes');
+                                    $fridayWorkout->setDateAdd(new \DateTime('NOW'));
+                                    $fridayWorkout->setHour($friday_workout_time);
+                                    $fridayWorkout->setWorkout($friday_workout);
+                                    $fridayWorkout->setWorkoutExercises($friday_workout_exercises);
+                                    $fridayWorkout->setWorkoutNotes($friday_workout_notes);
+                                    $em->persist($fridayWorkout);
+                                    $em->flush();
+                                }
+                                else{
+                                    $fridayWorkout->setHour($friday_workout_time);
+                                    $fridayWorkout->setWorkout($friday_workout);
+                                    $fridayWorkout->setWorkoutExercises($friday_workout_exercises);
+                                    $fridayWorkout->setWorkoutNotes($friday_workout_notes);
+                                    $em->persist($fridayWorkout);
+                                    $em->flush();
+                                }
+
+                            }
+                        }
+
+                        /**
+                         * Saturday workout
+                         */
+                        $saturday_workout_rest = $request->request->get('saturday_workout_rest');
+                        if (!$saturday_workout_rest) {
+                            $saturday_workout_sort = $request->request->get('saturday_workout_sort');
+                            $saturday_workout = $request->request->get('saturday_workout');
+                            $saturday_workout_exercises = $request->request->get('saturday_workout_exercises');
+                            if ($saturday_workout_sort != "" && $saturday_workout != "" && $saturday_workout_exercises != "") {
+                                $saturday_workout_time = $request->request->get('saturday_workout_time');
+                                $saturday_workout_notes = $request->request->get('saturday_workout_notes');
+                                $saturday_workout_exercises = implode(',', array_keys($saturday_workout_exercises));
+
+                                if ($saturday_workout_time == "" || $saturday_workout_notes == "") {
+                                    $this->session->getFlashBag()->add('editWeeklyPlanWarnings', "Advertencia. Faltan datos relacionados con el entrenamiento del Martes para este plan semanal");
+                                }
+
+                                if($saturdayWorkout == false){
+                                    $saturdayWorkout = new Workout();
+                                    $saturdayWorkout->setIdPlan($plan->getIdPlan());
+                                    $saturdayWorkout->setWorkoutSort($saturday_workout_sort);
+                                    $saturdayWorkout->setDay('Sabado');
+                                    $saturdayWorkout->setDateAdd(new \DateTime('NOW'));
+                                    $saturdayWorkout->setHour($saturday_workout_time);
+                                    $saturdayWorkout->setWorkout($saturday_workout);
+                                    $saturdayWorkout->setWorkoutExercises($saturday_workout_exercises);
+                                    $saturdayWorkout->setWorkoutNotes($saturday_workout_notes);
+                                    $em->persist($saturdayWorkout);
+                                    $em->flush();
+                                }
+                                else{
+                                    $saturdayWorkout->setHour($saturday_workout_time);
+                                    $saturdayWorkout->setWorkout($saturday_workout);
+                                    $saturdayWorkout->setWorkoutExercises($saturday_workout_exercises);
+                                    $saturdayWorkout->setWorkoutNotes($saturday_workout_notes);
+                                    $em->persist($saturdayWorkout);
+                                    $em->flush();
+                                }
+                            }
+                        }
+
+                        /**
+                         * Sunday workout
+                         */
+                        $sunday_workout_rest = $request->request->get('sunday_workout_rest');
+                        if (!$sunday_workout_rest) {
+                            $sunday_workout_sort = $request->request->get('sunday_workout_sort');
+                            $sunday_workout = $request->request->get('sunday_workout');
+                            $sunday_workout_exercises = $request->request->get('sunday_workout_exercises');
+                            if ($sunday_workout_sort != "" && $sunday_workout != "" && $sunday_workout_exercises != "") {
+                                $sunday_workout_time = $request->request->get('sunday_workout_time');
+                                $sunday_workout_notes = $request->request->get('sunday_workout_notes');
+                                $sunday_workout_exercises = implode(',', array_keys($sunday_workout_exercises));
+
+                                if ($sunday_workout_time == "" || $sunday_workout_notes == "") {
+                                    $this->session->getFlashBag()->add('editWeeklyPlanWarnings', "Advertencia. Faltan datos relacionados con el entrenamiento del Martes para este plan semanal");
+                                }
+
+                                if($sundayWorkout == false){
+                                    $sundayWorkout = new Workout();
+                                    $sundayWorkout->setIdPlan($plan->getIdPlan());
+                                    $sundayWorkout->setWorkoutSort($sunday_workout_sort);
+                                    $sundayWorkout->setDay('Domingo');
+                                    $sundayWorkout->setDateAdd(new \DateTime('NOW'));
+                                    $sundayWorkout->setHour($sunday_workout_time);
+                                    $sundayWorkout->setWorkout($sunday_workout);
+                                    $sundayWorkout->setWorkoutExercises($sunday_workout_exercises);
+                                    $sundayWorkout->setWorkoutNotes($sunday_workout_notes);
+                                    $em->persist($sundayWorkout);
+                                    $em->flush();
+                                }
+                                else{
+                                    $sundayWorkout->setHour($sunday_workout_time);
+                                    $sundayWorkout->setWorkout($sunday_workout);
+                                    $sundayWorkout->setWorkoutExercises($sunday_workout_exercises);
+                                    $sundayWorkout->setWorkoutNotes($sunday_workout_notes);
+                                    $em->persist($sundayWorkout);
+                                    $em->flush();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return $this->render('@Nutritionist/nutritionist-edit-weekly-plan.html.twig',
+            [
+                "id_plan" => $id_plan,
+                "weeklyPlan" => $plan,
+                "exercises" => $exercises,
+                "tags" => $tags,
+
+                //Meals
+                "monday_breakfast" => reset($monday_breakfast),
+                "tuesday_breakfast" => reset($tuesday_breakfast),
+                "wednesday_breakfast" => reset($wednesday_breakfast),
+                "thursday_breakfast" => reset($thursday_breakfast),
+                "friday_breakfast" => reset($friday_breakfast),
+                "saturday_breakfast" => reset($saturday_breakfast),
+                "sunday_breakfast" => reset($sunday_breakfast),
+                "monday_snack" => reset($monday_snack),
+                "tuesday_snack" => reset($tuesday_snack),
+                "wednesday_snack" => reset($wednesday_snack),
+                "thursday_snack" => reset($thursday_snack),
+                "friday_snack" => reset($friday_snack),
+                "saturday_snack" => reset($saturday_snack),
+                "sunday_snack" => reset($sunday_snack),
+                "monday_lunch" => reset($monday_lunch),
+                "tuesday_lunch" => reset($tuesday_lunch),
+                "wednesday_lunch" => reset($wednesday_lunch),
+                "thursday_lunch" => reset($thursday_lunch),
+                "friday_lunch" => reset($friday_lunch),
+                "saturday_lunch" => reset($saturday_lunch),
+                "sunday_lunch" => reset($sunday_lunch),
+                "monday_afternoon" => reset($monday_afternoon),
+                "tuesday_afternoon" => reset($tuesday_afternoon),
+                "wednesday_afternoon" => reset($wednesday_afternoon),
+                "thursday_afternoon" => reset($thursday_afternoon),
+                "friday_afternoon" => reset($friday_afternoon),
+                "saturday_afternoon" => reset($saturday_afternoon),
+                "sunday_afternoon" => reset($sunday_afternoon),
+                "monday_dinner" => reset($monday_dinner),
+                "tuesday_dinner" => reset($tuesday_dinner),
+                "wednesday_dinner" => reset($wednesday_dinner),
+                "thursday_dinner" => reset($thursday_dinner),
+                "friday_dinner" => reset($friday_dinner),
+                "saturday_dinner" => reset($saturday_dinner),
+                "sunday_dinner" => reset($sunday_dinner),
+
+                //Workouts
+                "monday_workout" => $mondayWorkout,
+                "monday_workout_exercises" => $mondayWorkout != false ? $mondayWorkout->getWorkoutExercises() : [],
+                "tuesday_workout" => $tuesdayWorkout,
+                "tuesday_workout_exercises" => $tuesdayWorkout != false ? $tuesdayWorkout->getWorkoutExercises() : [],
+                "wednesday_workout" => $wednesdayWorkout,
+                "wednesday_workout_exercises" => $wednesdayWorkout != false ? $wednesdayWorkout->getWorkoutExercises() : [],
+                "thursday_workout" => $thursdayWorkout,
+                "thursday_workout_exercises" => $thursdayWorkout != false ? $thursdayWorkout->getWorkoutExercises() : [],
+                "friday_workout" => $fridayWorkout,
+                "friday_workout_exercises" => $fridayWorkout != false ? $fridayWorkout->getWorkoutExercises() : [],
+                "saturday_workout" => $saturdayWorkout,
+                "saturday_workout_exercises" => $saturdayWorkout != false ? $saturdayWorkout->getWorkoutExercises() : [],
+                "sunday_workout" => $sundayWorkout,
+                "sunday_workout_exercises" => $sundayWorkout != false ? $sundayWorkout->getWorkoutExercises() : [],
+            ]
+        );
+    }
+
+    /**
+     * Fn que se encarga de la creacion de planificaciones semanales
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function nutritionistAddPlansAction(Request $request)
     {
+        $exercises = array();
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+
+            /**
+             * Cargamos los ejercicios
+             */
+            $em = $this->getDoctrine()->getManager();
+            $exercises_repo = $em->getRepository("NutritionistBundle:Exercise");
+            $exercises = $exercises_repo->findAll();
+
+            /**
+             * Cargamos los tags
+             */
+            $tags_repo = $em->getRepository("CustomsBundle:Tag");
+            $tags = $tags_repo->findAll();
+
+            if($request->isMethod('POST')){
+                $plan_days = 0;
+
+                /**
+                 * Monday meal
+                 */
+                $monday_meals = false;
+                $monday_breakfast_hour = $request->request->get('breakfast_hour_monday');
+                $monday_breakfast_menu = $request->request->get('breakfast_menu_monday');
+                $monday_breakfast_list = $request->request->get('breakfast_list_monday');
+                $monday_breakfast_comments = $request->request->get('breakfast_comments_monday');
+                $monday_snack_hour = $request->request->get('snack_hour_monday');
+                $monday_snack_menu = $request->request->get('snack_menu_monday');
+                $monday_snack_list = $request->request->get('snack_list_monday');
+                $monday_snack_comments = $request->request->get('snack_comments_monday');
+                $monday_lunch_hour = $request->request->get('lunch_hour_monday');
+                $monday_lunch_menu = $request->request->get('lunch_menu_monday');
+                $monday_lunch_list = $request->request->get('lunch_list_monday');
+                $monday_lunch_comments = $request->request->get('lunch_comments_monday');
+                $monday_afternoon_hour = $request->request->get('afternoon_hour_monday');
+                $monday_afternoon_menu = $request->request->get('afternoon_menu_monday');
+                $monday_afternoon_list = $request->request->get('afternoon_list_monday');
+                $monday_afternoon_comments = $request->request->get('afternoon_comments_monday');
+                $monday_dinner_hour = $request->request->get('dinner_hour_monday');
+                $monday_dinner_menu = $request->request->get('dinner_menu_monday');
+                $monday_dinner_list = $request->request->get('dinner_list_monday');
+                $monday_dinner_comments = $request->request->get('dinner_comments_monday');
+
+
+                if($monday_breakfast_hour != "" && $monday_breakfast_menu != "" && $monday_breakfast_list != "" &&
+                    $monday_snack_hour != "" && $monday_snack_menu != "" && $monday_snack_list != "" &&
+                    $monday_lunch_hour != "" && $monday_lunch_menu != "" && $monday_lunch_list != "" &&
+                    $monday_afternoon_hour != "" && $monday_afternoon_menu != "" && $monday_afternoon_list != "" &&
+                    $monday_dinner_hour != "" && $monday_dinner_menu != "" && $monday_dinner_list != ""){
+                    $plan_days += 1;
+                    $monday_meals = true;
+                }
+
+                /**
+                 * Tuesday meal
+                 */
+                $tuesday_meals = false;
+                $tuesday_breakfast_hour = $request->request->get('breakfast_hour_tuesday');
+                $tuesday_breakfast_menu = $request->request->get('breakfast_menu_tuesday');
+                $tuesday_breakfast_list = $request->request->get('breakfast_list_tuesday');
+                $tuesday_breakfast_comments = $request->request->get('breakfast_comments_tuesday');
+                $tuesday_snack_hour = $request->request->get('snack_hour_tuesday');
+                $tuesday_snack_menu = $request->request->get('snack_menu_tuesday');
+                $tuesday_snack_list = $request->request->get('snack_list_tuesday');
+                $tuesday_snack_comments = $request->request->get('snack_comments_tuesday');
+                $tuesday_lunch_hour = $request->request->get('lunch_hour_tuesday');
+                $tuesday_lunch_menu = $request->request->get('lunch_menu_tuesday');
+                $tuesday_lunch_list = $request->request->get('lunch_list_tuesday');
+                $tuesday_lunch_comments = $request->request->get('lunch_comments_tuesday');
+                $tuesday_afternoon_hour = $request->request->get('afternoon_hour_tuesday');
+                $tuesday_afternoon_menu = $request->request->get('afternoon_menu_tuesday');
+                $tuesday_afternoon_list = $request->request->get('afternoon_list_tuesday');
+                $tuesday_afternoon_comments = $request->request->get('afternoon_comments_tuesday');
+                $tuesday_dinner_hour = $request->request->get('dinner_hour_tuesday');
+                $tuesday_dinner_menu = $request->request->get('dinner_menu_tuesday');
+                $tuesday_dinner_list = $request->request->get('dinner_list_tuesday');
+                $tuesday_dinner_comments = $request->request->get('dinner_comments_tuesday');
+
+
+                if($tuesday_breakfast_hour != "" && $tuesday_breakfast_menu != "" && $tuesday_breakfast_list != "" &&
+                    $tuesday_snack_hour != "" && $tuesday_snack_menu != "" && $tuesday_snack_list != "" &&
+                    $tuesday_lunch_hour != "" && $tuesday_lunch_menu != "" && $tuesday_lunch_list != "" &&
+                    $tuesday_afternoon_hour != "" && $tuesday_afternoon_menu != "" && $tuesday_afternoon_list != "" &&
+                    $tuesday_dinner_hour != "" && $tuesday_dinner_menu != "" && $tuesday_dinner_list != ""){
+                    $plan_days += 1;
+                    $tuesday_meals = true;
+                }
+
+                /**
+                 * Wednesday meal
+                 */
+                $wednesday_meals = false;
+                $wednesday_breakfast_hour = $request->request->get('breakfast_hour_wednesday');
+                $wednesday_breakfast_menu = $request->request->get('breakfast_menu_wednesday');
+                $wednesday_breakfast_list = $request->request->get('breakfast_list_wednesday');
+                $wednesday_breakfast_comments = $request->request->get('breakfast_comments_wednesday');
+                $wednesday_snack_hour = $request->request->get('snack_hour_wednesday');
+                $wednesday_snack_menu = $request->request->get('snack_menu_wednesday');
+                $wednesday_snack_list = $request->request->get('snack_list_wednesday');
+                $wednesday_snack_comments = $request->request->get('snack_comments_wednesday');
+                $wednesday_lunch_hour = $request->request->get('lunch_hour_wednesday');
+                $wednesday_lunch_menu = $request->request->get('lunch_menu_wednesday');
+                $wednesday_lunch_list = $request->request->get('lunch_list_wednesday');
+                $wednesday_lunch_comments = $request->request->get('lunch_comments_wednesday');
+                $wednesday_afternoon_hour = $request->request->get('afternoon_hour_wednesday');
+                $wednesday_afternoon_menu = $request->request->get('afternoon_menu_wednesday');
+                $wednesday_afternoon_list = $request->request->get('afternoon_list_wednesday');
+                $wednesday_afternoon_comments = $request->request->get('afternoon_comments_wednesday');
+                $wednesday_dinner_hour = $request->request->get('dinner_hour_wednesday');
+                $wednesday_dinner_menu = $request->request->get('dinner_menu_wednesday');
+                $wednesday_dinner_list = $request->request->get('dinner_list_wednesday');
+                $wednesday_dinner_comments = $request->request->get('dinner_comments_wednesday');
+
+
+                if($wednesday_breakfast_hour != "" && $wednesday_breakfast_menu != "" && $wednesday_breakfast_list != "" &&
+                    $wednesday_snack_hour != "" && $wednesday_snack_menu != "" && $wednesday_snack_list != "" &&
+                    $wednesday_lunch_hour != "" && $wednesday_lunch_menu != "" && $wednesday_lunch_list != "" &&
+                    $wednesday_afternoon_hour != "" && $wednesday_afternoon_menu != "" && $wednesday_afternoon_list != "" &&
+                    $wednesday_dinner_hour != "" && $wednesday_dinner_menu != "" && $wednesday_dinner_list != ""){
+                    $plan_days += 1;
+                    $wednesday_meals = true;
+                }
+
+                /**
+                 * Thursday meal
+                 */
+                $thursday_meals = false;
+                $thursday_breakfast_hour = $request->request->get('breakfast_hour_thursday');
+                $thursday_breakfast_menu = $request->request->get('breakfast_menu_thursday');
+                $thursday_breakfast_list = $request->request->get('breakfast_list_thursday');
+                $thursday_breakfast_comments = $request->request->get('breakfast_comments_thursday');
+                $thursday_snack_hour = $request->request->get('snack_hour_thursday');
+                $thursday_snack_menu = $request->request->get('snack_menu_thursday');
+                $thursday_snack_list = $request->request->get('snack_list_thursday');
+                $thursday_snack_comments = $request->request->get('snack_comments_thursday');
+                $thursday_lunch_hour = $request->request->get('lunch_hour_thursday');
+                $thursday_lunch_menu = $request->request->get('lunch_menu_thursday');
+                $thursday_lunch_list = $request->request->get('lunch_list_thursday');
+                $thursday_lunch_comments = $request->request->get('lunch_comments_thursday');
+                $thursday_afternoon_hour = $request->request->get('afternoon_hour_thursday');
+                $thursday_afternoon_menu = $request->request->get('afternoon_menu_thursday');
+                $thursday_afternoon_list = $request->request->get('afternoon_list_thursday');
+                $thursday_afternoon_comments = $request->request->get('afternoon_comments_thursday');
+                $thursday_dinner_hour = $request->request->get('dinner_hour_thursday');
+                $thursday_dinner_menu = $request->request->get('dinner_menu_thursday');
+                $thursday_dinner_list = $request->request->get('dinner_list_thursday');
+                $thursday_dinner_comments = $request->request->get('dinner_comments_thursday');
+
+
+                if($thursday_breakfast_hour != "" && $thursday_breakfast_menu != "" && $thursday_breakfast_list != "" &&
+                    $thursday_snack_hour != "" && $thursday_snack_menu != "" && $thursday_snack_list != "" &&
+                    $thursday_lunch_hour != "" && $thursday_lunch_menu != "" && $thursday_lunch_list != "" &&
+                    $thursday_afternoon_hour != "" && $thursday_afternoon_menu != "" && $thursday_afternoon_list != "" &&
+                    $thursday_dinner_hour != "" && $thursday_dinner_menu != "" && $thursday_dinner_list != ""){
+                    $plan_days += 1;
+                    $thursday_meals = true;
+                }
+
+                /**
+                 * Friday meal
+                 */
+                $friday_meals = false;
+                $friday_breakfast_hour = $request->request->get('breakfast_hour_friday');
+                $friday_breakfast_menu = $request->request->get('breakfast_menu_friday');
+                $friday_breakfast_list = $request->request->get('breakfast_list_friday');
+                $friday_breakfast_comments = $request->request->get('breakfast_comments_friday');
+                $friday_snack_hour = $request->request->get('snack_hour_friday');
+                $friday_snack_menu = $request->request->get('snack_menu_friday');
+                $friday_snack_list = $request->request->get('snack_list_friday');
+                $friday_snack_comments = $request->request->get('snack_comments_friday');
+                $friday_lunch_hour = $request->request->get('lunch_hour_friday');
+                $friday_lunch_menu = $request->request->get('lunch_menu_friday');
+                $friday_lunch_list = $request->request->get('lunch_list_friday');
+                $friday_lunch_comments = $request->request->get('lunch_comments_friday');
+                $friday_afternoon_hour = $request->request->get('afternoon_hour_friday');
+                $friday_afternoon_menu = $request->request->get('afternoon_menu_friday');
+                $friday_afternoon_list = $request->request->get('afternoon_list_friday');
+                $friday_afternoon_comments = $request->request->get('afternoon_comments_friday');
+                $friday_dinner_hour = $request->request->get('dinner_hour_friday');
+                $friday_dinner_menu = $request->request->get('dinner_menu_friday');
+                $friday_dinner_list = $request->request->get('dinner_list_friday');
+                $friday_dinner_comments = $request->request->get('dinner_comments_friday');
+
+
+                if($friday_breakfast_hour != "" && $friday_breakfast_menu != "" && $friday_breakfast_list != "" &&
+                    $friday_snack_hour != "" && $friday_snack_menu != "" && $friday_snack_list != "" &&
+                    $friday_lunch_hour != "" && $friday_lunch_menu != "" && $friday_lunch_list != "" &&
+                    $friday_afternoon_hour != "" && $friday_afternoon_menu != "" && $friday_afternoon_list != "" &&
+                    $friday_dinner_hour != "" && $friday_dinner_menu != "" && $friday_dinner_list != ""){
+                    $plan_days += 1;
+                    $friday_meals = true;
+                }
+
+                /**
+                 * Saturday meal
+                 */
+                $saturday_meals = false;
+                $saturday_breakfast_hour = $request->request->get('breakfast_hour_saturday');
+                $saturday_breakfast_menu = $request->request->get('breakfast_menu_saturday');
+                $saturday_breakfast_list = $request->request->get('breakfast_list_saturday');
+                $saturday_breakfast_comments = $request->request->get('breakfast_comments_saturday');
+                $saturday_snack_hour = $request->request->get('snack_hour_saturday');
+                $saturday_snack_menu = $request->request->get('snack_menu_saturday');
+                $saturday_snack_list = $request->request->get('snack_list_saturday');
+                $saturday_snack_comments = $request->request->get('snack_comments_saturday');
+                $saturday_lunch_hour = $request->request->get('lunch_hour_saturday');
+                $saturday_lunch_menu = $request->request->get('lunch_menu_saturday');
+                $saturday_lunch_list = $request->request->get('lunch_list_saturday');
+                $saturday_lunch_comments = $request->request->get('lunch_comments_saturday');
+                $saturday_afternoon_hour = $request->request->get('afternoon_hour_saturday');
+                $saturday_afternoon_menu = $request->request->get('afternoon_menu_saturday');
+                $saturday_afternoon_list = $request->request->get('afternoon_list_saturday');
+                $saturday_afternoon_comments = $request->request->get('afternoon_comments_saturday');
+                $saturday_dinner_hour = $request->request->get('dinner_hour_saturday');
+                $saturday_dinner_menu = $request->request->get('dinner_menu_saturday');
+                $saturday_dinner_list = $request->request->get('dinner_list_saturday');
+                $saturday_dinner_comments = $request->request->get('dinner_comments_saturday');
+
+
+                if($saturday_breakfast_hour != "" && $saturday_breakfast_menu != "" && $saturday_breakfast_list != "" &&
+                    $saturday_snack_hour != "" && $saturday_snack_menu != "" && $saturday_snack_list != "" &&
+                    $saturday_lunch_hour != "" && $saturday_lunch_menu != "" && $saturday_lunch_list != "" &&
+                    $saturday_afternoon_hour != "" && $saturday_afternoon_menu != "" && $saturday_afternoon_list != "" &&
+                    $saturday_dinner_hour != "" && $saturday_dinner_menu != "" && $saturday_dinner_list != ""){
+                    $plan_days += 1;
+                    $saturday_meals = true;
+                }
+
+                /**
+                 * Sunday meal
+                 */
+                $sunday_meals = false;
+                $sunday_breakfast_hour = $request->request->get('breakfast_hour_sunday');
+                $sunday_breakfast_menu = $request->request->get('breakfast_menu_sunday');
+                $sunday_breakfast_list = $request->request->get('breakfast_list_sunday');
+                $sunday_breakfast_comments = $request->request->get('breakfast_comments_sunday');
+                $sunday_snack_hour = $request->request->get('snack_hour_sunday');
+                $sunday_snack_menu = $request->request->get('snack_menu_sunday');
+                $sunday_snack_list = $request->request->get('snack_list_sunday');
+                $sunday_snack_comments = $request->request->get('snack_comments_sunday');
+                $sunday_lunch_hour = $request->request->get('lunch_hour_sunday');
+                $sunday_lunch_menu = $request->request->get('lunch_menu_sunday');
+                $sunday_lunch_list = $request->request->get('lunch_list_sunday');
+                $sunday_lunch_comments = $request->request->get('lunch_comments_sunday');
+                $sunday_afternoon_hour = $request->request->get('afternoon_hour_sunday');
+                $sunday_afternoon_menu = $request->request->get('afternoon_menu_sunday');
+                $sunday_afternoon_list = $request->request->get('afternoon_list_sunday');
+                $sunday_afternoon_comments = $request->request->get('afternoon_comments_sunday');
+                $sunday_dinner_hour = $request->request->get('dinner_hour_sunday');
+                $sunday_dinner_menu = $request->request->get('dinner_menu_sunday');
+                $sunday_dinner_list = $request->request->get('dinner_list_sunday');
+                $sunday_dinner_comments = $request->request->get('dinner_comments_sunday');
+
+
+                if($sunday_breakfast_hour != "" && $sunday_breakfast_menu != "" && $sunday_breakfast_list != "" &&
+                    $sunday_snack_hour != "" && $sunday_snack_menu != "" && $sunday_snack_list != "" &&
+                    $sunday_lunch_hour != "" && $sunday_lunch_menu != "" && $sunday_lunch_list != "" &&
+                    $sunday_afternoon_hour != "" && $sunday_afternoon_menu != "" && $sunday_afternoon_list != "" &&
+                    $sunday_dinner_hour != "" && $sunday_dinner_menu != "" && $sunday_dinner_list != ""){
+                    $plan_days += 1;
+                    $sunday_meals = true;
+                }
+
+                /**
+                 * Se tienen que indicar al menos todos los días del plan de alimentación
+                 */
+                if($plan_days == 7){
+                    /**
+                     * Creamos el plan
+                     */
+                    $plan = new WeeklyPlan();
+                    $plan->setIdUser($user->getIdUser());
+
+                    $tag = $request->request->get('plan_tags');
+                    if($tag != ""){
+                        $plan->setIdTag($tag);
+                    }
+
+                    $plan->setTitle($request->request->get('plan_title'));
+                    $plan->setDescription($request->request->get('plan_description'));
+                    $plan->setDateAdd(new \DateTime('NOW'));
+
+                    $em->persist($plan);
+                    $flush = $em->flush();
+                    if(!empty($flush)){
+                        $this->session->getFlashBag()->add('addWeeklyPlanKOStatus',"Se ha producido un error. No se ha podido guardar el plan semanal, intentelo de nuevo o contacte con el servicio de NutriK");
+                    }
+                    else{
+                        /**
+                         * Plan meals
+                         */
+                        if ($monday_meals){
+                            $mondayBreakfast = new Meal();
+                            $mondayBreakfast->setIdPlan($plan->getIdPlan());
+                            $mondayBreakfast->setMealSort('Desayuno');
+                            $mondayBreakfast->setDay('Lunes');
+                            $mondayBreakfast->setHour($monday_breakfast_hour);
+                            $mondayBreakfast->setMeal($monday_breakfast_menu);
+                            $mondayBreakfast->setMealShoppingList($monday_breakfast_list);
+                            $mondayBreakfast->setMealNotes($monday_breakfast_comments);
+                            $mondayBreakfast->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($mondayBreakfast);
+                            $em->flush();
+
+                            $mondaySnack = new Meal();
+                            $mondaySnack->setIdPlan($plan->getIdPlan());
+                            $mondaySnack->setMealSort('Snack');
+                            $mondaySnack->setDay('Lunes');
+                            $mondaySnack->setHour($monday_snack_hour);
+                            $mondaySnack->setMeal($monday_snack_menu);
+                            $mondaySnack->setMealShoppingList($monday_snack_list);
+                            $mondaySnack->setMealNotes($monday_snack_comments);
+                            $mondaySnack->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($mondaySnack);
+                            $em->flush();
+
+                            $mondayLunch = new Meal();
+                            $mondayLunch->setIdPlan($plan->getIdPlan());
+                            $mondayLunch->setMealSort('Almuerzo');
+                            $mondayLunch->setDay('Lunes');
+                            $mondayLunch->setHour($monday_lunch_hour);
+                            $mondayLunch->setMeal($monday_lunch_menu);
+                            $mondayLunch->setMealShoppingList($monday_lunch_list);
+                            $mondayLunch->setMealNotes($monday_lunch_comments);
+                            $mondayLunch->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($mondayLunch);
+                            $em->flush();
+
+                            $mondayAfternoon = new Meal();
+                            $mondayAfternoon->setIdPlan($plan->getIdPlan());
+                            $mondayAfternoon->setMealSort('Merienda');
+                            $mondayAfternoon->setDay('Lunes');
+                            $mondayAfternoon->setHour($monday_afternoon_hour);
+                            $mondayAfternoon->setMeal($monday_afternoon_menu);
+                            $mondayAfternoon->setMealShoppingList($monday_afternoon_list);
+                            $mondayAfternoon->setMealNotes($monday_afternoon_comments);
+                            $mondayAfternoon->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($mondayAfternoon);
+                            $em->flush();
+
+
+                            $mondayDinner = new Meal();
+                            $mondayDinner->setIdPlan($plan->getIdPlan());
+                            $mondayDinner->setMealSort('Cena');
+                            $mondayDinner->setDay('Lunes');
+                            $mondayDinner->setHour($monday_dinner_hour);
+                            $mondayDinner->setMeal($monday_dinner_menu);
+                            $mondayDinner->setMealShoppingList($monday_dinner_list);
+                            $mondayDinner->setMealNotes($monday_dinner_comments);
+                            $mondayDinner->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($mondayDinner);
+                            $em->flush();
+                        }
+                        if ($tuesday_meals){
+                            $tuesdayBreakfast = new Meal();
+                            $tuesdayBreakfast->setIdPlan($plan->getIdPlan());
+                            $tuesdayBreakfast->setMealSort('Desayuno');
+                            $tuesdayBreakfast->setDay('Martes');
+                            $tuesdayBreakfast->setHour($tuesday_breakfast_hour);
+                            $tuesdayBreakfast->setMeal($tuesday_breakfast_menu);
+                            $tuesdayBreakfast->setMealShoppingList($tuesday_breakfast_list);
+                            $tuesdayBreakfast->setMealNotes($tuesday_breakfast_comments);
+                            $tuesdayBreakfast->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($tuesdayBreakfast);
+                            $em->flush();
+
+                            $tuesdaySnack = new Meal();
+                            $tuesdaySnack->setIdPlan($plan->getIdPlan());
+                            $tuesdaySnack->setMealSort('Snack');
+                            $tuesdaySnack->setDay('Martes');
+                            $tuesdaySnack->setHour($tuesday_snack_hour);
+                            $tuesdaySnack->setMeal($tuesday_snack_menu);
+                            $tuesdaySnack->setMealShoppingList($tuesday_snack_list);
+                            $tuesdaySnack->setMealNotes($tuesday_snack_comments);
+                            $tuesdaySnack->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($tuesdaySnack);
+                            $em->flush();
+
+                            $tuesdayLunch = new Meal();
+                            $tuesdayLunch->setIdPlan($plan->getIdPlan());
+                            $tuesdayLunch->setMealSort('Almuerzo');
+                            $tuesdayLunch->setDay('Martes');
+                            $tuesdayLunch->setHour($tuesday_lunch_hour);
+                            $tuesdayLunch->setMeal($tuesday_lunch_menu);
+                            $tuesdayLunch->setMealShoppingList($tuesday_lunch_list);
+                            $tuesdayLunch->setMealNotes($tuesday_lunch_comments);
+                            $tuesdayLunch->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($tuesdayLunch);
+                            $em->flush();
+
+                            $tuesdayAfternoon = new Meal();
+                            $tuesdayAfternoon->setIdPlan($plan->getIdPlan());
+                            $tuesdayAfternoon->setMealSort('Merienda');
+                            $tuesdayAfternoon->setDay('Martes');
+                            $tuesdayAfternoon->setHour($tuesday_afternoon_hour);
+                            $tuesdayAfternoon->setMeal($tuesday_afternoon_menu);
+                            $tuesdayAfternoon->setMealShoppingList($tuesday_afternoon_list);
+                            $tuesdayAfternoon->setMealNotes($tuesday_afternoon_comments);
+                            $tuesdayAfternoon->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($tuesdayAfternoon);
+                            $em->flush();
+
+
+                            $tuesdayDinner = new Meal();
+                            $tuesdayDinner->setIdPlan($plan->getIdPlan());
+                            $tuesdayDinner->setMealSort('Cena');
+                            $tuesdayDinner->setDay('Martes');
+                            $tuesdayDinner->setHour($tuesday_dinner_hour);
+                            $tuesdayDinner->setMeal($tuesday_dinner_menu);
+                            $tuesdayDinner->setMealShoppingList($tuesday_dinner_list);
+                            $tuesdayDinner->setMealNotes($tuesday_dinner_comments);
+                            $tuesdayDinner->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($tuesdayDinner);
+                            $em->flush();
+                        }
+                        if ($wednesday_meals){
+                            $wednesdayBreakfast = new Meal();
+                            $wednesdayBreakfast->setIdPlan($plan->getIdPlan());
+                            $wednesdayBreakfast->setMealSort('Desayuno');
+                            $wednesdayBreakfast->setDay('Miercoles');
+                            $wednesdayBreakfast->setHour($wednesday_breakfast_hour);
+                            $wednesdayBreakfast->setMeal($wednesday_breakfast_menu);
+                            $wednesdayBreakfast->setMealShoppingList($wednesday_breakfast_list);
+                            $wednesdayBreakfast->setMealNotes($wednesday_breakfast_comments);
+                            $wednesdayBreakfast->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($wednesdayBreakfast);
+                            $em->flush();
+
+                            $wednesdaySnack = new Meal();
+                            $wednesdaySnack->setIdPlan($plan->getIdPlan());
+                            $wednesdaySnack->setMealSort('Snack');
+                            $wednesdaySnack->setDay('Miercoles');
+                            $wednesdaySnack->setHour($wednesday_snack_hour);
+                            $wednesdaySnack->setMeal($wednesday_snack_menu);
+                            $wednesdaySnack->setMealShoppingList($wednesday_snack_list);
+                            $wednesdaySnack->setMealNotes($wednesday_snack_comments);
+                            $wednesdaySnack->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($wednesdaySnack);
+                            $em->flush();
+
+                            $wednesdayLunch = new Meal();
+                            $wednesdayLunch->setIdPlan($plan->getIdPlan());
+                            $wednesdayLunch->setMealSort('Almuerzo');
+                            $wednesdayLunch->setDay('Miercoles');
+                            $wednesdayLunch->setHour($wednesday_lunch_hour);
+                            $wednesdayLunch->setMeal($wednesday_lunch_menu);
+                            $wednesdayLunch->setMealShoppingList($wednesday_lunch_list);
+                            $wednesdayLunch->setMealNotes($wednesday_lunch_comments);
+                            $wednesdayLunch->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($wednesdayLunch);
+                            $em->flush();
+
+                            $wednesdayAfternoon = new Meal();
+                            $wednesdayAfternoon->setIdPlan($plan->getIdPlan());
+                            $wednesdayAfternoon->setMealSort('Merienda');
+                            $wednesdayAfternoon->setDay('Miercoles');
+                            $wednesdayAfternoon->setHour($wednesday_afternoon_hour);
+                            $wednesdayAfternoon->setMeal($wednesday_afternoon_menu);
+                            $wednesdayAfternoon->setMealShoppingList($wednesday_afternoon_list);
+                            $wednesdayAfternoon->setMealNotes($wednesday_afternoon_comments);
+                            $wednesdayAfternoon->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($wednesdayAfternoon);
+                            $em->flush();
+
+
+                            $wednesdayDinner = new Meal();
+                            $wednesdayDinner->setIdPlan($plan->getIdPlan());
+                            $wednesdayDinner->setMealSort('Cena');
+                            $wednesdayDinner->setDay('Miercoles');
+                            $wednesdayDinner->setHour($wednesday_dinner_hour);
+                            $wednesdayDinner->setMeal($wednesday_dinner_menu);
+                            $wednesdayDinner->setMealShoppingList($wednesday_dinner_list);
+                            $wednesdayDinner->setMealNotes($wednesday_dinner_comments);
+                            $wednesdayDinner->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($wednesdayDinner);
+                            $em->flush();
+                        }
+                        if ($thursday_meals){
+                            $thursdayBreakfast = new Meal();
+                            $thursdayBreakfast->setIdPlan($plan->getIdPlan());
+                            $thursdayBreakfast->setMealSort('Desayuno');
+                            $thursdayBreakfast->setDay('Jueves');
+                            $thursdayBreakfast->setHour($thursday_breakfast_hour);
+                            $thursdayBreakfast->setMeal($thursday_breakfast_menu);
+                            $thursdayBreakfast->setMealShoppingList($thursday_breakfast_list);
+                            $thursdayBreakfast->setMealNotes($thursday_breakfast_comments);
+                            $thursdayBreakfast->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($thursdayBreakfast);
+                            $em->flush();
+
+                            $thursdaySnack = new Meal();
+                            $thursdaySnack->setIdPlan($plan->getIdPlan());
+                            $thursdaySnack->setMealSort('Snack');
+                            $thursdaySnack->setDay('Jueves');
+                            $thursdaySnack->setHour($thursday_snack_hour);
+                            $thursdaySnack->setMeal($thursday_snack_menu);
+                            $thursdaySnack->setMealShoppingList($thursday_snack_list);
+                            $thursdaySnack->setMealNotes($thursday_snack_comments);
+                            $thursdaySnack->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($thursdaySnack);
+                            $em->flush();
+
+                            $thursdayLunch = new Meal();
+                            $thursdayLunch->setIdPlan($plan->getIdPlan());
+                            $thursdayLunch->setMealSort('Almuerzo');
+                            $thursdayLunch->setDay('Jueves');
+                            $thursdayLunch->setHour($thursday_lunch_hour);
+                            $thursdayLunch->setMeal($thursday_lunch_menu);
+                            $thursdayLunch->setMealShoppingList($thursday_lunch_list);
+                            $thursdayLunch->setMealNotes($thursday_lunch_comments);
+                            $thursdayLunch->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($thursdayLunch);
+                            $em->flush();
+
+                            $thursdayAfternoon = new Meal();
+                            $thursdayAfternoon->setIdPlan($plan->getIdPlan());
+                            $thursdayAfternoon->setMealSort('Merienda');
+                            $thursdayAfternoon->setDay('Jueves');
+                            $thursdayAfternoon->setHour($thursday_afternoon_hour);
+                            $thursdayAfternoon->setMeal($thursday_afternoon_menu);
+                            $thursdayAfternoon->setMealShoppingList($thursday_afternoon_list);
+                            $thursdayAfternoon->setMealNotes($thursday_afternoon_comments);
+                            $thursdayAfternoon->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($thursdayAfternoon);
+                            $em->flush();
+
+
+                            $thursdayDinner = new Meal();
+                            $thursdayDinner->setIdPlan($plan->getIdPlan());
+                            $thursdayDinner->setMealSort('Cena');
+                            $thursdayDinner->setDay('Jueves');
+                            $thursdayDinner->setHour($thursday_dinner_hour);
+                            $thursdayDinner->setMeal($thursday_dinner_menu);
+                            $thursdayDinner->setMealShoppingList($thursday_dinner_list);
+                            $thursdayDinner->setMealNotes($thursday_dinner_comments);
+                            $thursdayDinner->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($thursdayDinner);
+                            $em->flush();
+                        }
+                        if ($friday_meals){
+                            $fridayBreakfast = new Meal();
+                            $fridayBreakfast->setIdPlan($plan->getIdPlan());
+                            $fridayBreakfast->setMealSort('Desayuno');
+                            $fridayBreakfast->setDay('Viernes');
+                            $fridayBreakfast->setHour($friday_breakfast_hour);
+                            $fridayBreakfast->setMeal($friday_breakfast_menu);
+                            $fridayBreakfast->setMealShoppingList($friday_breakfast_list);
+                            $fridayBreakfast->setMealNotes($friday_breakfast_comments);
+                            $fridayBreakfast->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($fridayBreakfast);
+                            $em->flush();
+
+                            $fridaySnack = new Meal();
+                            $fridaySnack->setIdPlan($plan->getIdPlan());
+                            $fridaySnack->setMealSort('Snack');
+                            $fridaySnack->setDay('Viernes');
+                            $fridaySnack->setHour($friday_snack_hour);
+                            $fridaySnack->setMeal($friday_snack_menu);
+                            $fridaySnack->setMealShoppingList($friday_snack_list);
+                            $fridaySnack->setMealNotes($friday_snack_comments);
+                            $fridaySnack->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($fridaySnack);
+                            $em->flush();
+
+                            $fridayLunch = new Meal();
+                            $fridayLunch->setIdPlan($plan->getIdPlan());
+                            $fridayLunch->setMealSort('Almuerzo');
+                            $fridayLunch->setDay('Viernes');
+                            $fridayLunch->setHour($friday_lunch_hour);
+                            $fridayLunch->setMeal($friday_lunch_menu);
+                            $fridayLunch->setMealShoppingList($friday_lunch_list);
+                            $fridayLunch->setMealNotes($friday_lunch_comments);
+                            $fridayLunch->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($fridayLunch);
+                            $em->flush();
+
+                            $fridayAfternoon = new Meal();
+                            $fridayAfternoon->setIdPlan($plan->getIdPlan());
+                            $fridayAfternoon->setMealSort('Merienda');
+                            $fridayAfternoon->setDay('Viernes');
+                            $fridayAfternoon->setHour($friday_afternoon_hour);
+                            $fridayAfternoon->setMeal($friday_afternoon_menu);
+                            $fridayAfternoon->setMealShoppingList($friday_afternoon_list);
+                            $fridayAfternoon->setMealNotes($friday_afternoon_comments);
+                            $fridayAfternoon->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($fridayAfternoon);
+                            $em->flush();
+
+
+                            $fridayDinner = new Meal();
+                            $fridayDinner->setIdPlan($plan->getIdPlan());
+                            $fridayDinner->setMealSort('Cena');
+                            $fridayDinner->setDay('Viernes');
+                            $fridayDinner->setHour($friday_dinner_hour);
+                            $fridayDinner->setMeal($friday_dinner_menu);
+                            $fridayDinner->setMealShoppingList($friday_dinner_list);
+                            $fridayDinner->setMealNotes($friday_dinner_comments);
+                            $fridayDinner->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($fridayDinner);
+                            $em->flush();
+                        }
+                        if ($saturday_meals){
+                            $saturdayBreakfast = new Meal();
+                            $saturdayBreakfast->setIdPlan($plan->getIdPlan());
+                            $saturdayBreakfast->setMealSort('Desayuno');
+                            $saturdayBreakfast->setDay('Sabado');
+                            $saturdayBreakfast->setHour($saturday_breakfast_hour);
+                            $saturdayBreakfast->setMeal($saturday_breakfast_menu);
+                            $saturdayBreakfast->setMealShoppingList($saturday_breakfast_list);
+                            $saturdayBreakfast->setMealNotes($saturday_breakfast_comments);
+                            $saturdayBreakfast->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($saturdayBreakfast);
+                            $em->flush();
+
+                            $saturdaySnack = new Meal();
+                            $saturdaySnack->setIdPlan($plan->getIdPlan());
+                            $saturdaySnack->setMealSort('Snack');
+                            $saturdaySnack->setDay('Sabado');
+                            $saturdaySnack->setHour($saturday_snack_hour);
+                            $saturdaySnack->setMeal($saturday_snack_menu);
+                            $saturdaySnack->setMealShoppingList($saturday_snack_list);
+                            $saturdaySnack->setMealNotes($saturday_snack_comments);
+                            $saturdaySnack->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($saturdaySnack);
+                            $em->flush();
+
+                            $saturdayLunch = new Meal();
+                            $saturdayLunch->setIdPlan($plan->getIdPlan());
+                            $saturdayLunch->setMealSort('Almuerzo');
+                            $saturdayLunch->setDay('Sabado');
+                            $saturdayLunch->setHour($saturday_lunch_hour);
+                            $saturdayLunch->setMeal($saturday_lunch_menu);
+                            $saturdayLunch->setMealShoppingList($saturday_lunch_list);
+                            $saturdayLunch->setMealNotes($saturday_lunch_comments);
+                            $saturdayLunch->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($saturdayLunch);
+                            $em->flush();
+
+                            $saturdayAfternoon = new Meal();
+                            $saturdayAfternoon->setIdPlan($plan->getIdPlan());
+                            $saturdayAfternoon->setMealSort('Merienda');
+                            $saturdayAfternoon->setDay('Sabado');
+                            $saturdayAfternoon->setHour($saturday_afternoon_hour);
+                            $saturdayAfternoon->setMeal($saturday_afternoon_menu);
+                            $saturdayAfternoon->setMealShoppingList($saturday_afternoon_list);
+                            $saturdayAfternoon->setMealNotes($saturday_afternoon_comments);
+                            $saturdayAfternoon->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($saturdayAfternoon);
+                            $em->flush();
+
+
+                            $saturdayDinner = new Meal();
+                            $saturdayDinner->setIdPlan($plan->getIdPlan());
+                            $saturdayDinner->setMealSort('Cena');
+                            $saturdayDinner->setDay('Sabado');
+                            $saturdayDinner->setHour($saturday_dinner_hour);
+                            $saturdayDinner->setMeal($saturday_dinner_menu);
+                            $saturdayDinner->setMealShoppingList($saturday_dinner_list);
+                            $saturdayDinner->setMealNotes($saturday_dinner_comments);
+                            $saturdayDinner->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($saturdayDinner);
+                            $em->flush();
+                        }
+                        if ($sunday_meals){
+                            $sundayBreakfast = new Meal();
+                            $sundayBreakfast->setIdPlan($plan->getIdPlan());
+                            $sundayBreakfast->setMealSort('Desayuno');
+                            $sundayBreakfast->setDay('Domingo');
+                            $sundayBreakfast->setHour($sunday_breakfast_hour);
+                            $sundayBreakfast->setMeal($sunday_breakfast_menu);
+                            $sundayBreakfast->setMealShoppingList($sunday_breakfast_list);
+                            $sundayBreakfast->setMealNotes($sunday_breakfast_comments);
+                            $sundayBreakfast->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($sundayBreakfast);
+                            $em->flush();
+
+                            $sundaySnack = new Meal();
+                            $sundaySnack->setIdPlan($plan->getIdPlan());
+                            $sundaySnack->setMealSort('Snack');
+                            $sundaySnack->setDay('Domingo');
+                            $sundaySnack->setHour($sunday_snack_hour);
+                            $sundaySnack->setMeal($sunday_snack_menu);
+                            $sundaySnack->setMealShoppingList($sunday_snack_list);
+                            $sundaySnack->setMealNotes($sunday_snack_comments);
+                            $sundaySnack->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($sundaySnack);
+                            $em->flush();
+
+                            $sundayLunch = new Meal();
+                            $sundayLunch->setIdPlan($plan->getIdPlan());
+                            $sundayLunch->setMealSort('Almuerzo');
+                            $sundayLunch->setDay('Domingo');
+                            $sundayLunch->setHour($sunday_lunch_hour);
+                            $sundayLunch->setMeal($sunday_lunch_menu);
+                            $sundayLunch->setMealShoppingList($sunday_lunch_list);
+                            $sundayLunch->setMealNotes($sunday_lunch_comments);
+                            $sundayLunch->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($sundayLunch);
+                            $em->flush();
+
+                            $sundayAfternoon = new Meal();
+                            $sundayAfternoon->setIdPlan($plan->getIdPlan());
+                            $sundayAfternoon->setMealSort('Merienda');
+                            $sundayAfternoon->setDay('Domingo');
+                            $sundayAfternoon->setHour($sunday_afternoon_hour);
+                            $sundayAfternoon->setMeal($sunday_afternoon_menu);
+                            $sundayAfternoon->setMealShoppingList($sunday_afternoon_list);
+                            $sundayAfternoon->setMealNotes($sunday_afternoon_comments);
+                            $sundayAfternoon->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($sundayAfternoon);
+                            $em->flush();
+
+
+                            $sundayDinner = new Meal();
+                            $sundayDinner->setIdPlan($plan->getIdPlan());
+                            $sundayDinner->setMealSort('Cena');
+                            $sundayDinner->setDay('Domingo');
+                            $sundayDinner->setHour($sunday_dinner_hour);
+                            $sundayDinner->setMeal($sunday_dinner_menu);
+                            $sundayDinner->setMealShoppingList($sunday_dinner_list);
+                            $sundayDinner->setMealNotes($sunday_dinner_comments);
+                            $sundayDinner->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($sundayDinner);
+                            $em->flush();
+                        }
+
+
+                        /**
+                         * Monday workout
+                         */
+                        $monday_workout_rest = $request->request->get('monday_workout_rest');
+                        if(!$monday_workout_rest){
+                            $monday_workout_sort = $request->request->get('monday_workout_sort');
+                            $monday_workout = $request->request->get('monday_workout');
+                            $monday_workout_exercises = $request->request->get('monday_workout_exercises');
+                            if($monday_workout_sort != "" && $monday_workout != "" && $monday_workout_exercises != ""){
+                                $monday_workout_time = $request->request->get('monday_workout_time');
+                                $monday_workout_notes = $request->request->get('monday_workout_notes');
+                                $monday_workout_exercises = implode(',', array_keys($monday_workout_exercises));
+
+                                if($monday_workout_time == "" || $monday_workout_notes == ""){
+                                    $this->session->getFlashBag()->add('editWeeklyPlanWarnings',"Advertencia. Faltan datos relacionados con el entrenamiento del Lunes para este plan semanal");
+                                }
+
+                                $mondayWorkout = new Workout();
+                                $mondayWorkout->setIdPlan($plan->getIdPlan());
+                                $mondayWorkout->setWorkoutSort($monday_workout_sort);
+                                $mondayWorkout->setDay('Lunes');
+                                $mondayWorkout->setHour($monday_workout_time);
+                                $mondayWorkout->setWorkout($monday_workout);
+                                $mondayWorkout->setWorkoutExercises($monday_workout_exercises);
+                                $mondayWorkout->setWorkoutNotes($monday_workout_notes);
+                                $mondayWorkout->setDateAdd(new \DateTime('NOW'));
+                                $em->persist($mondayWorkout);
+                                $em->flush();
+                            }
+                        }
+
+                        /**
+                         * Tuesday workout
+                         */
+                        $tuesday_workout_rest = $request->request->get('tuesday_workout_rest');
+                        if(!$tuesday_workout_rest){
+                            $tuesday_workout_sort = $request->request->get('tuesday_workout_sort');
+                            $tuesday_workout = $request->request->get('tuesday_workout');
+                            $tuesday_workout_exercises = $request->request->get('tuesday_workout_exercises');
+                            if($tuesday_workout_sort != "" && $tuesday_workout != "" && $tuesday_workout_exercises != ""){
+                                $tuesday_workout_time = $request->request->get('tuesday_workout_time');
+                                $tuesday_workout_notes = $request->request->get('tuesday_workout_notes');
+                                $tuesday_workout_exercises = implode(',', array_keys($tuesday_workout_exercises));
+
+                                if($tuesday_workout_time == "" || $tuesday_workout_notes == ""){
+                                    $this->session->getFlashBag()->add('editWeeklyPlanWarnings',"Advertencia. Faltan datos relacionados con el entrenamiento del Martes para este plan semanal");
+                                }
+
+                                $tuesdayWorkout = new Workout();
+                                $tuesdayWorkout->setIdPlan($plan->getIdPlan());
+                                $tuesdayWorkout->setWorkoutSort($tuesday_workout_sort);
+                                $tuesdayWorkout->setDay('Lunes');
+                                $tuesdayWorkout->setHour($tuesday_workout_time);
+                                $tuesdayWorkout->setWorkout($tuesday_workout);
+                                $tuesdayWorkout->setWorkoutExercises($tuesday_workout_exercises);
+                                $tuesdayWorkout->setWorkoutNotes($tuesday_workout_notes);
+                                $tuesdayWorkout->setDateAdd(new \DateTime('NOW'));
+                                $em->persist($tuesdayWorkout);
+                                $em->flush();
+                            }
+                        }
+
+                        /**
+                         * Wednesday workout
+                         */
+                        $wednesday_workout_rest = $request->request->get('wednesday_workout_rest');
+                        if(!$wednesday_workout_rest){
+                            $wednesday_workout_sort = $request->request->get('wednesday_workout_sort');
+                            $wednesday_workout = $request->request->get('wednesday_workout');
+                            $wednesday_workout_exercises = $request->request->get('wednesday_workout_exercises');
+                            if($wednesday_workout_sort != "" && $wednesday_workout != "" && $wednesday_workout_exercises != ""){
+                                $wednesday_workout_time = $request->request->get('wednesday_workout_time');
+                                $wednesday_workout_notes = $request->request->get('wednesday_workout_notes');
+                                $wednesday_workout_exercises = implode(',', array_keys($wednesday_workout_exercises));
+
+                                if($wednesday_workout_time == "" || $wednesday_workout_notes == ""){
+                                    $this->session->getFlashBag()->add('editWeeklyPlanWarnings',"Advertencia. Faltan datos relacionados con el entrenamiento del Martes para este plan semanal");
+                                }
+
+                                $wednesdayWorkout = new Workout();
+                                $wednesdayWorkout->setIdPlan($plan->getIdPlan());
+                                $wednesdayWorkout->setWorkoutSort($wednesday_workout_sort);
+                                $wednesdayWorkout->setDay('Lunes');
+                                $wednesdayWorkout->setHour($wednesday_workout_time);
+                                $wednesdayWorkout->setWorkout($wednesday_workout);
+                                $wednesdayWorkout->setWorkoutExercises($wednesday_workout_exercises);
+                                $wednesdayWorkout->setWorkoutNotes($wednesday_workout_notes);
+                                $wednesdayWorkout->setDateAdd(new \DateTime('NOW'));
+                                $em->persist($wednesdayWorkout);
+                                $em->flush();
+                            }
+                        }
+
+                        /**
+                         * Thursday workout
+                         */
+                        $thursday_workout_rest = $request->request->get('thursday_workout_rest');
+                        if(!$thursday_workout_rest){
+                            $thursday_workout_sort = $request->request->get('thursday_workout_sort');
+                            $thursday_workout = $request->request->get('thursday_workout');
+                            $thursday_workout_exercises = $request->request->get('thursday_workout_exercises');
+                            if($thursday_workout_sort != "" && $thursday_workout != "" && $thursday_workout_exercises != ""){
+                                $thursday_workout_time = $request->request->get('thursday_workout_time');
+                                $thursday_workout_notes = $request->request->get('thursday_workout_notes');
+                                $thursday_workout_exercises = implode(',', array_keys($thursday_workout_exercises));
+
+                                if($thursday_workout_time == "" || $thursday_workout_notes == ""){
+                                    $this->session->getFlashBag()->add('editWeeklyPlanWarnings',"Advertencia. Faltan datos relacionados con el entrenamiento del Martes para este plan semanal");
+                                }
+
+                                $thursdayWorkout = new Workout();
+                                $thursdayWorkout->setIdPlan($plan->getIdPlan());
+                                $thursdayWorkout->setWorkoutSort($thursday_workout_sort);
+                                $thursdayWorkout->setDay('Lunes');
+                                $thursdayWorkout->setHour($thursday_workout_time);
+                                $thursdayWorkout->setWorkout($thursday_workout);
+                                $thursdayWorkout->setWorkoutExercises($thursday_workout_exercises);
+                                $thursdayWorkout->setWorkoutNotes($thursday_workout_notes);
+                                $thursdayWorkout->setDateAdd(new \DateTime('NOW'));
+                                $em->persist($thursdayWorkout);
+                                $em->flush();
+                            }
+                        }
+
+                        /**
+                         * Friday workout
+                         */
+                        $friday_workout_rest = $request->request->get('friday_workout_rest');
+                        if(!$friday_workout_rest){
+                            $friday_workout_sort = $request->request->get('friday_workout_sort');
+                            $friday_workout = $request->request->get('friday_workout');
+                            $friday_workout_exercises = $request->request->get('friday_workout_exercises');
+                            if($friday_workout_sort != "" && $friday_workout != "" && $friday_workout_exercises != ""){
+                                $friday_workout_time = $request->request->get('friday_workout_time');
+                                $friday_workout_notes = $request->request->get('friday_workout_notes');
+                                $friday_workout_exercises = implode(',', array_keys($friday_workout_exercises));
+
+                                if($friday_workout_time == "" || $friday_workout_notes == ""){
+                                    $this->session->getFlashBag()->add('editWeeklyPlanWarnings',"Advertencia. Faltan datos relacionados con el entrenamiento del Martes para este plan semanal");
+                                }
+
+                                $fridayWorkout = new Workout();
+                                $fridayWorkout->setIdPlan($plan->getIdPlan());
+                                $fridayWorkout->setWorkoutSort($friday_workout_sort);
+                                $fridayWorkout->setDay('Lunes');
+                                $fridayWorkout->setHour($friday_workout_time);
+                                $fridayWorkout->setWorkout($friday_workout);
+                                $fridayWorkout->setWorkoutExercises($friday_workout_exercises);
+                                $fridayWorkout->setWorkoutNotes($friday_workout_notes);
+                                $fridayWorkout->setDateAdd(new \DateTime('NOW'));
+                                $em->persist($fridayWorkout);
+                                $em->flush();
+                            }
+                        }
+
+                        /**
+                         * Saturday workout
+                         */
+                        $saturday_workout_rest = $request->request->get('saturday_workout_rest');
+                        if(!$saturday_workout_rest){
+                            $saturday_workout_sort = $request->request->get('saturday_workout_sort');
+                            $saturday_workout = $request->request->get('saturday_workout');
+                            $saturday_workout_exercises = $request->request->get('saturday_workout_exercises');
+                            if($saturday_workout_sort != "" && $saturday_workout != "" && $saturday_workout_exercises != ""){
+                                $saturday_workout_time = $request->request->get('saturday_workout_time');
+                                $saturday_workout_notes = $request->request->get('saturday_workout_notes');
+                                $saturday_workout_exercises = implode(',', array_keys($saturday_workout_exercises));
+
+                                if($saturday_workout_time == "" || $saturday_workout_notes == ""){
+                                    $this->session->getFlashBag()->add('editWeeklyPlanWarnings',"Advertencia. Faltan datos relacionados con el entrenamiento del Martes para este plan semanal");
+                                }
+
+                                $saturdayWorkout = new Workout();
+                                $saturdayWorkout->setIdPlan($plan->getIdPlan());
+                                $saturdayWorkout->setWorkoutSort($saturday_workout_sort);
+                                $saturdayWorkout->setDay('Lunes');
+                                $saturdayWorkout->setHour($saturday_workout_time);
+                                $saturdayWorkout->setWorkout($saturday_workout);
+                                $saturdayWorkout->setWorkoutExercises($saturday_workout_exercises);
+                                $saturdayWorkout->setWorkoutNotes($saturday_workout_notes);
+                                $saturdayWorkout->setDateAdd(new \DateTime('NOW'));
+                                $em->persist($saturdayWorkout);
+                                $em->flush();
+                            }
+                        }
+
+                        /**
+                         * Sunday workout
+                         */
+                        $sunday_workout_rest = $request->request->get('sunday_workout_rest');
+                        if(!$sunday_workout_rest){
+                            $sunday_workout_sort = $request->request->get('sunday_workout_sort');
+                            $sunday_workout = $request->request->get('sunday_workout');
+                            $sunday_workout_exercises = $request->request->get('sunday_workout_exercises');
+                            if($sunday_workout_sort != "" && $sunday_workout != "" && $sunday_workout_exercises != ""){
+                                $sunday_workout_time = $request->request->get('sunday_workout_time');
+                                $sunday_workout_notes = $request->request->get('sunday_workout_notes');
+                                $sunday_workout_exercises = implode(',', array_keys($sunday_workout_exercises));
+
+                                if($sunday_workout_time == "" || $sunday_workout_notes == ""){
+                                    $this->session->getFlashBag()->add('editWeeklyPlanWarnings',"Advertencia. Faltan datos relacionados con el entrenamiento del Martes para este plan semanal");
+                                }
+
+                                $sundayWorkout = new Workout();
+                                $sundayWorkout->setIdPlan($plan->getIdPlan());
+                                $sundayWorkout->setWorkoutSort($sunday_workout_sort);
+                                $sundayWorkout->setDay('Lunes');
+                                $sundayWorkout->setHour($sunday_workout_time);
+                                $sundayWorkout->setWorkout($sunday_workout);
+                                $sundayWorkout->setWorkoutExercises($sunday_workout_exercises);
+                                $sundayWorkout->setWorkoutNotes($sunday_workout_notes);
+                                $sundayWorkout->setDateAdd(new \DateTime('NOW'));
+                                $em->persist($sundayWorkout);
+                                $em->flush();
+                            }
+                        }
+                    }
+                }
+                else{
+                    $this->session->getFlashBag()->add('addWeeklyPlanKOStatus',"Se ha producido un error. Debes indicar al menos el plan alimenticio de los 7 días, intentelo de nuevo.");
+                }
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('addWeeklyPlanKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+
+        return $this->render('@Nutritionist/nutritionist-weekly-plan.html.twig',
+            [
+                "exercises" => $exercises,
+                "tags" => $tags
+            ]
+        );
+    }
+
+    public function nutritionistEventsAction()
+    {
+        $events = array();
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $user = reset($users);
+            $events_repo = $em->getRepository("NutritionistBundle:Event");
+            $events = $events_repo->findBy(array("idUser" => $user->getIdUser()));
+        }
+        else{
+            $this->session->getFlashBag()->add('eventsKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+
+        return $this->render('@Nutritionist/nutritionist-events.html.twig',
+            [
+                "events" => $events
+            ]
+        );
+    }
+
+    public function nutritionistAddEventAction(Request $request){
+        $categories = array();
+
+        $tags = array();
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $user = reset($users);
+
+            /**
+             * Cargamos las categorias
+             */
+            $categories_repo = $em->getRepository("CustomsBundle:Category");
+            $categories = $categories_repo->findAll();
+
+            /**
+             * Cargamos los tags
+             */
+            $tags_repo = $em->getRepository("CustomsBundle:Tag");
+            $tags = $tags_repo->findAll();
+
+            if($request->isMethod('POST')){
+                $date = $request->request->get('event_date');
+                $hour = $request->request->get('event_hour');
+                $event_date = new \DateTime($date . ' ' . $hour);
+                if($event_date <= new \DateTime("NOW")){
+                    $this->session->getFlashBag()->add('addEventKOStatus',"Se ha producido un error. La fecha y hora del evento no pueden ser inferiores a las actuales.");
+                }
+                else{
+                    $event = New Event();
+                    $event->setIdUser($user->getIdUser());
+                    $event->setIdCategory($request->request->get('event_category'));
+                    $event->setIdTag($request->request->get('event_tag'));
+                    $event->setTitle($request->request->get('event_title'));
+                    $event->setDescription($request->request->get('event_description'));
+                    $event->setEventLink($request->request->get('event_link'));
+                    $event->setDate($event_date);
+                    $event->setFrecuency($request->request->get('event_frecuency'));
+                    $event->setDuration($request->request->get('event_duration'));
+                    $event->setDateAdd(new \DateTime("NOW"));
+                    $event->setDateUpd(new \DateTime("NOW"));
+
+                    $em->persist($event);
+                    $flush = $em->flush();
+                    if(!empty($flush)){
+                        $this->session->getFlashBag()->add('addEventKOStatus',"Se ha producido un error. No hemos podido crear el evento, intentelo de nuevo o contacte con el servicio de NutriK.");
+                    }
+                    else{
+                        $this->session->getFlashBag()->add('eventsOKStatus',"El evento se ha creado correctamente");
+                        return $this->redirectToRoute('nutritionist_events');
+                    }
+                }
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('addEventKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+
+
+        return $this->render('@Nutritionist/nutritionist-add-event.html.twig',
+            [
+                "categories" => $categories,
+                "tags" => $tags
+            ]
+        );
+    }
+
+    public function nutritionistDeleteEventAction(Request $request){
+        if($request->isMethod('POST')){
+            $id_event = $request->request->get('_event_delete');
+
+            $em = $this->getDoctrine()->getManager();
+            $events_repo = $em->getRepository("NutritionistBundle:Event");
+            $event = $events_repo->find($id_event);
+            $em->remove($event);
+            $flush = $em->flush();
+            if(!empty($flush)){
+                $this->session->getFlashBag()->add('eventsKOStatus',"Se ha producido un error. No hemos podido borrar el evento, intentelo de nuevo o contacte con el servicio de NutriK.");
+            }
+            else{
+                $this->session->getFlashBag()->add('eventsOKStatus',"El evento se ha borrado correctamente.");
+            }
+        }
+        return $this->redirectToRoute('nutritionist_events');
+    }
+
+    public function nutritionistEditEventAction(Request $request, $id_event){
+        $categories = array();
+        $tags = array();
+
+        /**
+         * Instanciamos el evento
+         */
+        $em = $this->getDoctrine()->getManager();
+        $events_repo = $em->getRepository("NutritionistBundle:Event");
+        $event = $events_repo->find($id_event);
+
+        /**
+         * Cargamos las categorias
+         */
+        $categories_repo = $em->getRepository("CustomsBundle:Category");
+        $categories = $categories_repo->findAll();
+
+        /**
+         * Cargamos los tags
+         */
+        $tags_repo = $em->getRepository("CustomsBundle:Tag");
+        $tags = $tags_repo->findAll();
+
+        if($request->isMethod('POST')){
+            $date = $request->request->get('event_date');
+            $hour = $request->request->get('event_hour');
+            $event_date = new \DateTime($date . ' ' . $hour);
+            if($event_date <= new \DateTime("NOW")){
+                $this->session->getFlashBag()->add('editEventKOStatus',"Se ha producido un error. La fecha y hora del evento no pueden ser inferiores a las actuales.");
+            }
+            else{
+                $event->setIdCategory($request->request->get('event_category'));
+                $event->setIdTag($request->request->get('event_tag'));
+                $event->setTitle($request->request->get('event_title'));
+                $event->setDescription($request->request->get('event_description'));
+                $event->setEventLink($request->request->get('event_link'));
+                $event->setDate($event_date);
+                $event->setFrecuency($request->request->get('event_frecuency'));
+                $event->setDuration($request->request->get('event_duration'));
+                $event->setDateUpd(new \DateTime("NOW"));
+
+                $em->persist($event);
+                $flush = $em->flush();
+                if(!empty($flush)){
+                    $this->session->getFlashBag()->add('editEventKOStatus',"Se ha producido un error. No hemos podido actualizar el evento, intentelo de nuevo o contacte con el servicio de NutriK.");
+                }
+                else{
+                    $this->session->getFlashBag()->add('editEventOKStatus',"El evento se ha modificado correctamente");
+                }
+            }
+        }
+
+        return $this->render('@Nutritionist/nutritionist-edit-event.html.twig',
+            [
+                "categories" => $categories,
+                "tags" => $tags,
+                "id_event" => $id_event,
+                "event" => $event
+            ]
+        );
+
+    }
+
+
+
+    public function nutritionistAddCustomerAction(Request $request)
+    {
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+
+            if($request->isMethod('POST')){
+                $customer = new User();
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('addCustomerKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
         return $this->render('@Nutritionist/add-customer.html.twig');
     }
 
+
+        public function nutritionistCalendarAction()
+    {
+        return $this->render('@Nutritionist/nutritionist-calendar.html.twig');
+    }
     public function nutritionistCustomersAction()
     {
         return $this->render('@Nutritionist/nutritionist-customers.html.twig');
@@ -410,14 +2717,6 @@ class NutritionistController extends Controller
         return $this->render('@Nutritionist/nutritionist-diary.html.twig');
     }
 
-    public function nutritionistEventsAction()
-    {
-        return $this->render('@Nutritionist/nutritionist-events.html.twig');
-    }
-    public function nutritionistPlansAction()
-    {
-        return $this->render('@Nutritionist/nutritionist-plans.html.twig');
-    }
     public function nutritionistRecipesAction()
     {
         return $this->render('@Nutritionist/nutritionist-recipes.html.twig');
