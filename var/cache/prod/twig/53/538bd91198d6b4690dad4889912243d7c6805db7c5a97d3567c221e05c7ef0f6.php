@@ -161,6 +161,18 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
                     <li>
                         <a href=\"";
             // line 79
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_appointments");
+            echo "\">
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-calendar3\" viewBox=\"0 0 16 16\">
+                                <path d=\"M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z\"/>
+                                <path d=\"M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z\"/>
+                            </svg>
+                            Ver mis consultas
+                        </a>
+                    </li>
+                    <li>
+                        <a href=\"";
+            // line 88
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_schedule_appointment");
             echo "\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-calendar-plus\" viewBox=\"0 0 16 16\">
@@ -172,7 +184,7 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
                     </li>
                     <li>
                         <a href=\"";
-            // line 88
+            // line 97
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_add_customer");
             echo "\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-plus-fill\" viewBox=\"0 0 16 16\">
@@ -185,14 +197,14 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
                 </ul>
             ";
         }
-        // line 98
+        // line 107
         echo "            ";
         if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_GUEST")) {
-            // line 99
+            // line 108
             echo "                <ul>
                     <li>
                         <a href=\"";
-            // line 101
+            // line 110
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_personal_data");
             echo "\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-circle\" viewBox=\"0 0 16 16\">
@@ -204,7 +216,7 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
                     </li>
                     <li>
                         <a href=\"";
-            // line 110
+            // line 119
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_diary");
             echo "\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-journal\" viewBox=\"0 0 16 16\">
@@ -216,7 +228,7 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
                     </li>
                     <li>
                         <a href=\"";
-            // line 119
+            // line 128
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_calendar");
             echo "\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-calendar\" viewBox=\"0 0 16 16\">
@@ -227,7 +239,7 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
                     </li>
                     <li>
                         <a href=\"";
-            // line 127
+            // line 136
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_recipes");
             echo "\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-basket-fill\" viewBox=\"0 0 16 16\">
@@ -238,7 +250,7 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
                     </li>
                     <li>
                         <a href=\"";
-            // line 135
+            // line 144
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_progress");
             echo "\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-pie-chart-fill\" viewBox=\"0 0 16 16\">
@@ -249,7 +261,7 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
                     </li>
                     <li>
                         <a href=\"";
-            // line 143
+            // line 152
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_messenger");
             echo "\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-envelope-fill\" viewBox=\"0 0 16 16\">
@@ -261,26 +273,26 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
                 </ul>
             ";
         }
-        // line 152
+        // line 161
         echo "        </div>
         <div class=\"lateral-dropdown-menu-user-account-bottom\">
             <ul>
                 ";
-        // line 155
+        // line 164
         if (($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []) != null)) {
-            // line 156
+            // line 165
             echo "                    <li style=\"color: #00766c; height: 4vh; margin-top: 12px\"><a href=\"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("logout");
             echo "\" style=\"color: white\">Cerrar Sesión</a></li>
                 ";
         } else {
-            // line 158
+            // line 167
             echo "                    <li style=\"color: #00766c; height: 4vh; margin-top: 12px\"><a href=\"";
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("login");
             echo "\" style=\"color: white\">Iniciar Sesión</a></li>
                 ";
         }
-        // line 160
+        // line 169
         echo "                <li style=\"color: #00766c\"><a href=\"#\" style=\"color: white\">Ayuda y preguntas frecuentes</a></li>
             </ul>
         </div>
@@ -308,7 +320,7 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
 
     public function getDebugInfo()
     {
-        return array (  284 => 160,  278 => 158,  272 => 156,  270 => 155,  265 => 152,  253 => 143,  242 => 135,  231 => 127,  220 => 119,  208 => 110,  196 => 101,  192 => 99,  189 => 98,  176 => 88,  164 => 79,  151 => 69,  140 => 61,  129 => 53,  118 => 45,  106 => 36,  94 => 27,  90 => 25,  88 => 24,  83 => 21,  77 => 19,  69 => 17,  67 => 16,  56 => 8,  49 => 3,  37 => 2,  34 => 1,);
+        return array (  296 => 169,  290 => 167,  284 => 165,  282 => 164,  277 => 161,  265 => 152,  254 => 144,  243 => 136,  232 => 128,  220 => 119,  208 => 110,  204 => 108,  201 => 107,  188 => 97,  176 => 88,  164 => 79,  151 => 69,  140 => 61,  129 => 53,  118 => 45,  106 => 36,  94 => 27,  90 => 25,  88 => 24,  83 => 21,  77 => 19,  69 => 17,  67 => 16,  56 => 8,  49 => 3,  37 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -396,6 +408,15 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
                                 <path d=\"M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z\"/>
                             </svg>
                             Clientes
+                        </a>
+                    </li>
+                    <li>
+                        <a href=\"{{ path('nutritionist_appointments') }}\">
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-calendar3\" viewBox=\"0 0 16 16\">
+                                <path d=\"M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z\"/>
+                                <path d=\"M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z\"/>
+                            </svg>
+                            Ver mis consultas
                         </a>
                     </li>
                     <li>

@@ -60,13 +60,7 @@ $(document).ready(function(){
         $(this).parent().find('.radio').removeClass('selected');
         $(this).addClass('selected');
     });
-
-    $(".submit").click(function(){
-        return false;
-    })
-
 });
-
 
 // CALENDAR PAGE 1
 document.addEventListener('DOMContentLoaded', function(){
@@ -156,6 +150,15 @@ document.addEventListener('DOMContentLoaded', function(){
         this.drawHeader(o.innerHTML);
         this.setCookie('selected_day', 1);
 
+        /**
+         * Guardamos la fecha de la consulta para el formulario
+         */
+        var mm = month;
+        if(month < 10){
+            mm = '0'+month;
+        }
+        var appointmentDay = document.getElementById('appointment_date');
+        appointmentDay.value = year +'-'+mm+'-'+o.innerHTML;
     };
 
     Calendar.prototype.preMonth = function() {

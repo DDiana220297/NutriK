@@ -150,7 +150,7 @@
                                             </select>
                                             <br/><br/>
                                             <label for="monday_workout_time">Hora:</label>
-                                            <input type="time" name="monday_workout_time" value="{% if monday_workout != false %}{{ monday_workout.hour }}{% endif %}" style="width: fit-content">
+                                            <input type="time" name="monday_workout_time" value="{% if monday_workout != false %}{{ monday_workout.hour|date('H:i:s') }}{% endif %}" style="width: fit-content">
                                             <label for="monday-workout">Entrenamiento:</label>
                                             <textarea type="text" id="monday-workout" name="monday_workout" class="form-control" style="height: 150px">{% if monday_workout != false %}{{ monday_workout.workout }}{% endif %}</textarea>
                                             <br/>
@@ -257,7 +257,7 @@
                                             </select>
                                             <br/><br/>
                                             <label for="tuesday_workout_time">Hora:</label>
-                                            <input type="time" name="tuesday_workout_time" value="{% if tuesday_workout != false %}{{ tuesday_workout.hour }}{% endif %}" style="width: fit-content">
+                                            <input type="time" name="tuesday_workout_time" value="{% if tuesday_workout != false %}{{ tuesday_workout.hour|date('H:i:s') }}{% endif %}" style="width: fit-content">
                                             <label for="tuesday-workout">Entrenamiento:</label>
                                             <textarea type="text" id="tuesday-workout" name="tuesday_workout" class="form-control" style="height: 150px">{% if tuesday_workout != false %}{{ tuesday_workout.workout }}{% endif %}</textarea>
                                             <br/>
@@ -365,7 +365,7 @@
                                             </select>
                                             <br/><br/>
                                             <label for="wednesday_workout_time">Hora:</label>
-                                            <input type="time" name="wednesday_workout_time" value="{% if wednesday_workout != false %}{{ wednesday_workout.hour }}{% endif %}" style="width: fit-content">
+                                            <input type="time" name="wednesday_workout_time" value="{% if wednesday_workout != false %}{{ wednesday_workout.hour|date('H:i:s') }}{% endif %}" style="width: fit-content">
                                             <label for="wednesday-workout">Entrenamiento:</label>
                                             <textarea type="text" id="wednesday-workout" name="wednesday_workout" class="form-control" style="height: 150px">{% if wednesday_workout != false %}{{ wednesday_workout.workout }}{% endif %}</textarea>
                                             <br/>
@@ -473,7 +473,7 @@
                                             </select>
                                             <br/><br/>
                                             <label for="thursday_workout_time">Hora:</label>
-                                            <input type="time" name="thursday_workout_time" value="{% if thursday_workout != false %}{{ thursday_workout.hour }}{% endif %}" style="width: fit-content">
+                                            <input type="time" name="thursday_workout_time" value="{% if thursday_workout != false %}{{ thursday_workout.hour|date('H:i:s') }}{% endif %}" style="width: fit-content">
                                             <label for="thursday-workout">Entrenamiento:</label>
                                             <textarea type="text" id="thursday-workout" name="thursday_workout" class="form-control" style="height: 150px">{% if thursday_workout != false %}{{ thursday_workout.workout }}{% endif %}</textarea>
                                             <br/>
@@ -581,7 +581,7 @@
                                             </select>
                                             <br/><br/>
                                             <label for="friday_workout_time">Hora:</label>
-                                            <input type="time" name="friday_workout_time" value="{% if friday_workout != false %}{{ friday_workout.hour }}{% endif %}" style="width: fit-content">
+                                            <input type="time" name="friday_workout_time" value="{% if friday_workout != false %}{{ friday_workout.hour|date('H:i:s') }}{% endif %}" style="width: fit-content">
                                             <label for="friday-workout">Entrenamiento:</label>
                                             <textarea type="text" id="friday-workout" name="friday_workout" class="form-control" style="height: 150px">{% if friday_workout != false %}{{ friday_workout.workout }}{% endif %}</textarea>
                                             <br/>
@@ -689,9 +689,9 @@
                                             </select>
                                             <br/><br/>
                                             <label for="saturday_workout_time">Hora:</label>
-                                            <input type="time" name="saturday_workout_time" value="{% if saturday_workout != false %}{{ saturday_workout.hour }}{% endif %}" style="width: fit-content">
+                                            <input type="time" name="saturday_workout_time" value="{% if saturday_workout != false %}{{ saturday_workout.hour|date('H:i:s') }}{% endif %}" style="width: fit-content">
                                             <label for="saturday-workout">Entrenamiento:</label>
-                                            <textarea type="text" id="saturday-workout" name="saturday_workout" class="form-control" style="height: 150px">{% if saturday_workout != false %}{{ saturday_workout.hour }}{% endif %}</textarea>
+                                            <textarea type="text" id="saturday-workout" name="saturday_workout" class="form-control" style="height: 150px">{% if saturday_workout != false %}{{ saturday_workout.workout }}{% endif %}</textarea>
                                             <br/>
                                             <ul class="list-group" id="saturday-workout-exercises">
                                                 {% for exercise in exercises %}
@@ -702,7 +702,7 @@
                                                 {% endfor %}
                                             </ul>
                                             <label for="saturday-workout-notes">Observaciones:</label>
-                                            <textarea type="text" id="saturday-workout-notes" name="saturday_workout_notes" class="form-control" style="height: 80px">{% if saturday_workout != false %}{{ saturday_workout.hour }}{% endif %}</textarea>
+                                            <textarea type="text" id="saturday-workout-notes" name="saturday_workout_notes" class="form-control" style="height: 80px">{% if saturday_workout != false %}{{ saturday_workout.workoutNotes }}{% endif %}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -797,7 +797,7 @@
                                             </select>
                                             <br/><br/>
                                             <label for="sunday_workout_time">Hora:</label>
-                                            <input type="time" name="sunday_workout_time" value="{% if sunday_workout != false %}{{ sunday_workout.hour }}{% endif %}" style="width: fit-content">
+                                            <input type="time" name="sunday_workout_time" value="{% if sunday_workout != false %}{{ sunday_workout.hour|date('H:i:s') }}{% endif %}" style="width: fit-content">
                                             <label for="sunday-workout">Entrenamiento:</label>
                                             <textarea type="text" id="sunday-workout" name="sunday_workout" class="form-control" style="height: 150px">{% if sunday_workout != false %}{{ sunday_workout.workout }}{% endif %}</textarea>
                                             <br/>

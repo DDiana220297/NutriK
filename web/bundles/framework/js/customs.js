@@ -28,3 +28,20 @@ function deleteWeeklyPlan(idPlan){
 function deleteEvent(idEvent){
     document.getElementById("event_delete_"+idEvent).click();
 }
+
+function deleteCustomerDependency(idCustomer){
+    document.getElementById("customer_dependency_delete_"+idCustomer).click();
+}
+
+function deleteRecipe( idRecipe){
+    document.getElementById("recipe_delete_"+idRecipe).click();
+}
+
+function deleteAppointment(idAppointment){
+    document.getElementById("appointment_delete_"+idAppointment).click();
+}
+
+function openModal(){
+    let button = document.getElementById('openMyIngredientModal');
+    button.click()
+}

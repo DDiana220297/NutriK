@@ -6,13 +6,25 @@ use CustomsBundle\Entity\Entry;
 use CustomsBundle\Entity\NutritionistCustomerCard;
 use CustomsBundle\Entity\User;
 use CustomsBundle\Form\UserType;
+use CustomsBundle\Entity\CustomerMetrics;
+use NutritionistBundle\Entity\Appointment;
+use NutritionistBundle\Entity\CustomerNutritionist;
+use NutritionistBundle\Entity\DiaryPages;
 use NutritionistBundle\Entity\Event;
+use NutritionistBundle\Entity\Ingredients;
+use NutritionistBundle\Entity\IngredientsRecipes;
 use NutritionistBundle\Entity\Meal;
+use NutritionistBundle\Entity\Recipes;
 use NutritionistBundle\Entity\WeeklyPlan;
 use NutritionistBundle\Entity\Workout;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Validator\Constraints\Date;
+
+setlocale(LC_ALL, 'es_ES');
 
 class NutritionistController extends Controller
 {
@@ -2501,6 +2513,10 @@ class NutritionistController extends Controller
         );
     }
 
+    /**
+     * Fn que se encarga de renderizar el listado de eventos de un nutricionista
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
     public function nutritionistEventsAction()
     {
         $events = array();
@@ -2526,6 +2542,12 @@ class NutritionistController extends Controller
         );
     }
 
+    /**
+     * Fn que se encarga de la creacion de un evento
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response|null
+     * @throws \Exception
+     */
     public function nutritionistAddEventAction(Request $request){
         $categories = array();
 
@@ -2597,6 +2619,11 @@ class NutritionistController extends Controller
         );
     }
 
+    /**
+     * Fn que se encarga de la eliminacion de un evento
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function nutritionistDeleteEventAction(Request $request){
         if($request->isMethod('POST')){
             $id_event = $request->request->get('_event_delete');
@@ -2616,6 +2643,13 @@ class NutritionistController extends Controller
         return $this->redirectToRoute('nutritionist_events');
     }
 
+    /**
+     * Fn que se encarga de la modificacion de un evento
+     * @param Request $request
+     * @param $id_event
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     * @throws \Exception
+     */
     public function nutritionistEditEventAction(Request $request, $id_event){
         $categories = array();
         $tags = array();
@@ -2679,8 +2713,55 @@ class NutritionistController extends Controller
 
     }
 
+    /**
+     * Fn que se encarga de renderizar el listado de clientes asociados al nutricionista loggeado
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function nutritionistCustomersAction(Request $request)
+    {
+        $customers = array();
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $user = reset($users);
+            if($request->isMethod('POST') && $request->request->get('customer_search') != ""){
+                $key = $request->request->get('customer_search');
+                $customers = $this->findCustomerByKey($key);
+            }
+            else{
+                $customer_nutritionist_dependencies_repo = $em->getRepository("NutritionistBundle:CustomerNutritionist");
+                $customer_nutritionist_dependencies = $customer_nutritionist_dependencies_repo->findBy(array("idNutritionist" => $user->getIdUser()));
 
+                foreach($customer_nutritionist_dependencies as $dependency){
+                    $customers_array = $user_repository->findBy(array("idUser" => $dependency->getIdCustomer()));
+                    if(count($customers_array)>0){
+                        $customers = array_merge($customers, $customers_array);
+                    }
+                }
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('customersKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
 
+        return $this->render('@Nutritionist/nutritionist-customers.html.twig',
+            [
+                "customers" => $customers
+            ]
+        );
+    }
+
+    /**
+     * Fn que se encarga de la creacion de un cliente asociado al nutricionista loggeado
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response|null
+     * @throws \Exception
+     */
     public function nutritionistAddCustomerAction(Request $request)
     {
         /**
@@ -2693,7 +2774,79 @@ class NutritionistController extends Controller
             $user = reset($users);
 
             if($request->isMethod('POST')){
-                $customer = new User();
+                $email = $request->request->get('email');
+                $customers = $user_repository->findBy(["email"=>$email]);
+                if(count($customers)>0){
+                    $this->session->getFlashBag()->add('customersOKStatus',"Advertencia. Ya existe un cliente con el email " . $email . ", se añade la relacion y se modifican los datos del clientes con los indicados en el formulario.");
+                    $customer = reset($customers);
+                }
+                else {
+                    $customer = new User();
+                }
+                $customer->setRole('ROLE_CUSTOMER');
+                $customer->setIdGender(0);
+                $customer->setFirstname($request->request->get('firstname'));
+                $customer->setLastname($request->request->get('lastname'));
+                $customer->setEmail($request->request->get('email'));
+                $customer->setDescription($request->request->get('bibliografia'));
+                $password = $request->request->get('password');
+                $confirm_password = $request->request->get('confirm_password');
+                if(isset($password) && $password != ""){
+                    if($password != $confirm_password){
+                        $this->session->getFlashBag()->add('addCustomerKOStatus',"Se ha producido un error. La contraseñas indicadas deben coincidir.");
+                    }
+                    else{
+                        /**
+                         * Cifrado de contraseña
+                         */
+                        $factory = $this->get('security.encoder_factory');
+                        $encoder = $factory->getEncoder($customer);
+                        $password = $encoder->encodePassword($password, $this->getUser()->getSalt());
+                        $customer->setPassword($password);
+                        $customer->setLastPasswordGen(new \DateTime('NOW'));
+                    }
+                }
+                $customer->setDateAdd(new \DateTime('NOW'));
+                $customer->setDateUpd(new \DateTime('NOW'));
+                $birthday = $request->request->get('birthday');
+                if($birthday !== null && $birthday != ""){
+                    $customer->setBirthday(new \DateTime($birthday));
+                }
+
+                $em->persist($customer);
+                if(!empty($em->flush())){
+                    $this->session->getFlashBag()->add('addCustomerKOStatus', "No se han podido dar de alta el cliente, intentelo de nuevo o contacte con el servicio de NutriK.");
+                }
+                else{
+                    $this->session->getFlashBag()->add('customersOKStatus',"El cliente se ha dado de alta correctamente");
+                    $goals = $request->request->get('objetivos');
+                    $weight = $request->request->get('peso');
+                    $height = $request->request->get('altura');
+                    $age = $request->request->get('edad');
+                    $movement = $request->request->get('actividad');
+                    if($goals != "" && $weight != "" && $height != "" && $age != ""){
+                        $customer_metrics = new CustomerMetrics();
+                        $customer_metrics->setIdCustomer($customer->getIdUser());
+                        $customer_metrics->setWeight($weight);
+                        $customer_metrics->setHeight($height);
+                        $customer_metrics->setAge($age);
+                        $customer_metrics->setMovement($movement);
+                        $customer_metrics->setGoals($goals);
+                        $customer_metrics->setDateAdd(new \DateTime('NOW'));
+                        $em->persist($customer_metrics);
+                        $em->flush();
+                    }
+
+                    $customer_nutritionist_dependency = new CustomerNutritionist();
+                    $customer_nutritionist_dependency->setIdCustomer($customer->getIdUser());
+                    $customer_nutritionist_dependency->setIdNutritionist($user->getIdUser());
+                    $customer_nutritionist_dependency->setDateAdd(new \DateTime('NOW'));
+                    $em->persist($customer_nutritionist_dependency);
+                    $em->flush();
+
+                    return $this->redirectToRoute('nutritionist_customers');
+
+                }
             }
         }
         else{
@@ -2702,28 +2855,665 @@ class NutritionistController extends Controller
         return $this->render('@Nutritionist/add-customer.html.twig');
     }
 
+    /**
+     * Fn que se encarga de la modificacion de un cliente asociado al nutricionista loggeado
+     * @param Request $request
+     * @param $id_user
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     * @throws \Exception
+     */
+    public function nutritionistEditCustomerAction(Request $request, $id_user){
+        $em = $this->getDoctrine()->getManager();
 
-        public function nutritionistCalendarAction()
+        /**
+         * Cargamos el cliente
+         */
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $customer = $user_repository->find($id_user);
+
+        /**
+         * Cargamos las metricas del cliente
+         */
+        $customer_metrics = array();
+        $customer_metrics_repository = $em->getRepository('CustomsBundle:CustomerMetrics');
+        $customer_metrics = $customer_metrics_repository->findBy(["idCustomer"=>$id_user]);
+        $customer_metrics = reset($customer_metrics);
+
+        if($request->isMethod('POST')){
+            $customer->setFirstname($request->request->get('firstname'));
+            $customer->setLastname($request->request->get('lastname'));
+            $customer->setEmail($request->request->get('email'));
+            $customer->setDescription($request->request->get('bibliografia'));
+
+            $password = $request->request->get('password');
+            $confirm_password = $request->request->get('confirm_password');
+            if(isset($password) && $password != ""){
+                if($password != $confirm_password){
+                    $this->session->getFlashBag()->add('addCustomerKOStatus',"Se ha producido un error. La contraseñas indicadas deben coincidir.");
+                }
+                else{
+                    /**
+                     * Cifrado de contraseña
+                     */
+                    $factory = $this->get('security.encoder_factory');
+                    $encoder = $factory->getEncoder($customer);
+                    $password = $encoder->encodePassword($password, $this->getUser()->getSalt());
+                    $customer->setPassword($password);
+                    $customer->setLastPasswordGen(new \DateTime('NOW'));
+                }
+            }
+            $customer->setDateUpd(new \DateTime('NOW'));
+            $birthday = $request->request->get('birthday');
+            if($birthday !== null && $birthday != ""){
+                $customer->setBirthday(new \DateTime($birthday));
+            }
+
+
+            $em->persist($customer);
+            if(!empty($em->flush())){
+                $this->session->getFlashBag()->add('editCustomerKOStatus', "No se han podido modificar los datos del cliente, intentelo de nuevo o contacte con el servicio de NutriK.");
+            }
+            else{
+                $this->session->getFlashBag()->add('editsOKStatus',"Los datos del cliente se han modificado correctamente");
+                $goals = $request->request->get('objetivos');
+                $weight = $request->request->get('peso');
+                $height = $request->request->get('altura');
+                $age = $request->request->get('edad');
+                $movement = $request->request->get('actividad');
+                if($goals != "" && $weight != "" && $height != "" && $age != ""){
+                    $customer_metrics = new CustomerMetrics();
+                    $customer_metrics->setIdCustomer($customer->getIdUser());
+                    $customer_metrics->setWeight($weight);
+                    $customer_metrics->setHeight($height);
+                    $customer_metrics->setAge($age);
+                    $customer_metrics->setMovement($movement);
+                    $customer_metrics->setGoals($goals);
+                    $customer_metrics->setDateAdd(new \DateTime('NOW'));
+                    $em->persist($customer_metrics);
+                    $em->flush();
+                }
+            }
+        }
+
+        return $this->render('@Nutritionist/edit-customer.html.twig',
+            [
+                "id_user" => $id_user,
+                "customer" => $customer,
+                "customer_metrics" => $customer_metrics
+            ]
+        );
+    }
+
+    /**
+     * Fn que se encarga de la eliminacion de una relacion con un cliente y el nutricionista loggeado
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function nutritionistDeleteCustomerAction(Request $request){
+        if($request->isMethod('POST')){
+            $id_user = $request->request->get('_customer_dependency_delete');
+
+            $em = $this->getDoctrine()->getManager();
+            $customer_dependencies_repo = $em->getRepository("NutritionistBundle:CustomerNutritionist");
+            $customer_dependencies = $customer_dependencies_repo->findBy(["idCustomer" => $id_user]);
+            if(count($customer_dependencies)>0){
+                foreach ($customer_dependencies as $customer_dependency){
+                    $em->remove($customer_dependency);
+                    $flush = $em->flush();
+                    if(!empty($flush)){
+                        $this->session->getFlashBag()->add('customersKOStatus',"Se ha producido un error. No hemos podido borrar la relación con el cliente, intentelo de nuevo o contacte con el servicio de NutriK.");
+                    }
+                    else{
+                        $this->session->getFlashBag()->add('customersOKStatus',"La relación con el cliente se ha borrado correctamente.");
+                    }
+                }
+            }
+        }
+        return $this->redirectToRoute('nutritionist_customers');
+    }
+
+
+    /**
+     * Fn que se encarga de renderizar, modificar y añadir páginas diario del usuario loggeado
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     * @throws \Exception
+     */
+    public function nutritionistDiaryAction(Request $request)
+    {
+        $diary_page = false;
+
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+            $today_datetime =  new \DateTime($request->request->get('date_filter'));
+            $diary_pages_repo = $em->getRepository('NutritionistBundle:DiaryPages');
+            $diary_pages = $diary_pages_repo->findBy(['date' => $today_datetime, 'idUser' =>$user->getIdUser()]);
+
+            if(count($diary_pages) > 0){
+                $diary_page = reset($diary_pages);
+            }
+
+            if($request->isMethod('POST') && ($request->request->get('submit') == "Guardar" && $diary_page != false)){
+                $diary_page->setTasks($request->request->get('todays_tasks'));
+                $diary_page->setEvents($request->request->get('todays_events'));
+                $diary_page->setMemosAndNotes($request->request->get('todays_memos'));
+                $em->persist($diary_page);
+                $em->flush();
+            }
+            elseif($request->isMethod('POST') && ($request->request->get('submit') == "Guardar" && $diary_page == false)){
+                $diary_page = new DiaryPages();
+                $diary_page->setTasks($request->request->get('todays_tasks'));
+                $diary_page->setEvents($request->request->get('todays_events'));
+                $diary_page->setMemosAndNotes($request->request->get('todays_memos'));
+                $diary_page->setDate($today_datetime);
+                $diary_page->setIdUser($user->getIdUser());
+                $diary_page->setDateAdd(new \DateTime('NOW'));
+                $diary_page->setDateUpd(new \DateTime('NOW'));
+                $em->persist($diary_page);
+                $em->flush();
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('nutritionistDiaryKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+
+        return $this->render('@Nutritionist/nutritionist-diary.html.twig',
+            [
+                "today_datetime" => $today_datetime,
+                "diaryPage" => $diary_page
+            ]
+        );
+    }
+
+    /**
+     * Fn que se encarga de renderizar el listado de recetas
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function nutritionistRecipesAction(Request $request)
+    {
+        $recipes = array();
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $user = reset($users);
+            if($request->isMethod('POST') && $request->request->get('recipe_search') != ""){
+                $key = $request->request->get('recipe_search');
+                $dql_query = $em->createQuery("
+                    SELECT r FROM NutritionistBundle:Recipes r
+                    WHERE
+                      (r.idUser = ".$user->getIdUser()." OR r.idUser = 0)
+                      AND r.name LIKE '%$key%'
+                ");
+                $recipes = $dql_query->getResult();
+            }
+            else{
+                $recipes_repo = $em->getRepository("NutritionistBundle:Recipes");
+                /**
+                 * Consultamos las recetas pertenecientes y visibles para el nutricionista loggeado
+                 */
+                $nutricionist_recipes = $recipes_repo->findBy(['idUser' => $user->getIdUser()]);
+
+                /**
+                 * Consultamos las recetas visibles globalmente
+                 */
+                $general_recipes = $recipes_repo->findBy(['idUser' => 0]);
+
+                /**
+                 * Fusionamos ambos listados de recetas para renderizalas
+                 */
+                $recipes = array_merge($nutricionist_recipes, $general_recipes);
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('recipesKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+
+        return $this->render('@Nutritionist/nutritionist-recipes.html.twig',
+            [
+                'recipes' => $recipes
+            ]
+        );
+    }
+
+    /**
+     * Fn que se encarga de crear una receta
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response|null
+     */
+    public function nutritionistAddRecipeAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $ingredients_repo = $em->getRepository("NutritionistBundle:Ingredients");
+
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+            if($request->isMethod('POST') && $request->request->get('submit') == "Guardar Receta"){
+                $recipe = new Recipes();
+                $description =  $request->request->get('recipe_description');
+                $ingredients = $request->request->get('add_ingredients');
+                $name = $request->request->get('recipe_name');
+                $image_link = $request->request->get('recipe_image');
+                if($description != "" && $ingredients != "" && $name != "" && $image_link != ""){
+                    if($request->request->get('visibility') == 1) {
+                        $recipe->setIdUser($user->getIdUser());
+                    }
+                    else{
+                        $recipe->setIdUser(0);
+                    }
+
+                    $recipe->setName($name);
+                    $recipe->setDescription($description);
+                    $recipe->setImage($image_link);
+                    $recipe->setDateAdd(new \DateTime('NOW'));
+                    $recipe->setDateUpd(new \DateTime('NOW'));
+                    $em->persist($recipe);
+                    if(!empty($em->flush())){
+                        $this->session->getFlashBag()->add('addRecipeKOStatus',"Se ha producido un error. No hemos podido crear la receta, intentelo de nuevo o contacte con el servicio de NutriK.");
+                    }
+                    else{
+                        $this->session->getFlashBag()->add('recipesOKStatus',"La receta se ha creado correctamente");
+                        $ingredients = array_keys($ingredients);
+                        foreach ($ingredients as $ingredient){
+                            $recipe_ingredient = new IngredientsRecipes();
+                            $recipe_ingredient->setIdIngredient($ingredient);
+                            $recipe_ingredient->setIdRecipe($recipe->getIdRecipe());
+                            $recipe_ingredient->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($recipe_ingredient);
+                            $em->flush();
+                        }
+                        return $this->redirectToRoute('nutritionist_add_recipe');
+                    }
+                }
+                else{
+                    $this->session->getFlashBag()->add('addRecipeKOStatus',"Se ha producido un error. Faltan datos para la creación de la receta.");
+                }
+            }
+            elseif ($request->isMethod('POST') && $request->request->get('submit') == "Guardar Ingrediente"){
+                $name = $request->request->get('ingredient_name');
+                if($name != ""){
+                    $new_ingredient = new Ingredients();
+                    $new_ingredient->setName($name);
+                    $new_ingredient->setCarbohydrates($request->request->get('ingredient_carbs'));
+                    $new_ingredient->setFats($request->request->get('ingredient_fats'));
+                    $new_ingredient->setProtein($request->request->get('ingredient_protein'));
+                    $new_ingredient->setDateAdd(new \DateTime('NOW'));
+                    $new_ingredient->setDateUpd(new \DateTime('NOW'));
+                    $em->persist($new_ingredient);
+                    $em->flush();
+                }
+                else{
+                    $this->session->getFlashBag()->add('addRecipeKOStatus',"Se ha producido un error. Debes indicar al menos el nombre del ingrediente que deseas añadir.");
+                }
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('addRecipeKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+
+        /**
+         * Cargamos los ingredientes
+         */
+        if($request->isMethod('POST') && $request->request->get('submit') == "Buscar" && $request->request->get('search_ingredient') != ""){
+            $key = $request->request->get('search_ingredient');
+            $dql_query = $em->createQuery("
+                SELECT i FROM NutritionistBundle:Ingredients i
+                WHERE
+                  i.name LIKE '%$key%'
+            ");
+            $all_ingredients = $dql_query->getResult();
+        }
+        else{
+            $all_ingredients = $ingredients_repo->findAll();
+        }
+
+
+        return $this->render('@Nutritionist/nutritionist-add-recipe.html.twig',
+            [
+                'all_ingredients' => $all_ingredients
+            ]
+        );
+    }
+
+    /**
+     * Fn que se encarga de modificar una receta
+     * @param Request $request
+     * @param $id_recipe
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function nutritionistEditRecipeAction(Request $request, $id_recipe)
+    {
+        /**
+         * Cargamos la receta
+         */
+        $em = $this->getDoctrine()->getManager();
+        $recipes_repo = $em->getRepository("NutritionistBundle:Recipes");
+        $recipe = $recipes_repo->findBy(['idRecipe' => $id_recipe]);
+        $recipe = reset($recipe);
+
+        $ingredients_repo = $em->getRepository("NutritionistBundle:Ingredients");
+        $recipe_ingredients_repo = $em->getRepository("NutritionistBundle:IngredientsRecipes");
+        if($request->isMethod('POST')){
+            $em = $this->getDoctrine()->getManager();
+            $user_repository = $em->getRepository('CustomsBundle:User');
+            $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+            if(count($users) > 0) {
+                if($request->isMethod('POST') && ($request->request->get('submit') == "Guardar Cambios")){
+                    $recipe->setName($request->request->get('recipe_name'));
+                    $recipe->setDescription($request->request->get('recipe_description'));
+                    $recipe->setImage($request->request->get('recipe_image'));
+                    $recipe->setDateUpd(new \DateTime('NOW'));
+
+                    $em->persist($recipe);
+                    if(!empty($em->flush())){
+                        $this->session->getFlashBag()->add('editRecipeKOStatus',"Se ha producido un error. No hemos podido modificar la receta, intentelo de nuevo o contacte con el servicio de NutriK.");
+                    }
+                    else{
+                        $this->session->getFlashBag()->add('editRecipeKOStatus',"La receta se ha modificado correctamente");
+                    }
+                }
+                elseif ($request->isMethod('POST') && ($request->request->get('submit') == "Borrar Ingredientes Seleccionados")){
+                    $delete_ingredients = $request->request->get('delete_ingredients');
+                    $delete_ingredients = array_keys($delete_ingredients);
+                    foreach ($delete_ingredients as $delete_ingredient){
+                        $ingredients = $recipe_ingredients_repo->findBy(['idIngredient' => $delete_ingredient, 'idRecipe' => $id_recipe]);
+                        foreach ($ingredients as $ingr) {
+                            $em->remove($ingr);
+                            $em->flush();
+                        }
+                    }
+
+                }
+                elseif ($request->isMethod('POST') && ($request->request->get('submit') == "Añadir Ingredientes Seleccionados")){
+                    $add_ingredients = $request->request->get('add_ingredients');
+                    $add_ingredients = array_keys($add_ingredients);
+                    foreach ($add_ingredients as $add_ingredient){
+                        $recipe_ingredient = new IngredientsRecipes();
+                        $recipe_ingredient->setIdIngredient($add_ingredient);
+                        $recipe_ingredient->setIdRecipe($id_recipe);
+                        $recipe_ingredient->setDateAdd(new \DateTime('NOW'));
+                        $em->persist($recipe_ingredient);
+                        $em->flush();
+                    }
+                }
+            }
+            else{
+                $this->session->getFlashBag()->add('editRecipeKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+            }
+        }
+
+        $recipe_ingredients_ids = $recipe_ingredients_repo->findBy(['idRecipe' => $recipe->getIdRecipe()]);
+        $recipe_ingredients = $all_ingredients = array();
+        $nutritional_info = [
+            'carbs' => 0,
+            'fats' => 0,
+            'protein' => 0
+        ];
+
+        $all_ingredients = $ingredients_repo->findAll();
+        foreach ($recipe_ingredients_ids as $ingredient){
+            $ingredient = $ingredients_repo->findBy(['idIngredient' => $ingredient->getIdIngredient()]);
+            $ingredient = reset($ingredient);
+            $recipe_ingredients[] = $ingredient;
+            $nutritional_info['carbs'] += $ingredient->getCarbohydrates();
+            $nutritional_info['fats'] += $ingredient->getFats();
+            $nutritional_info['protein'] += $ingredient->getProtein();
+        }
+
+
+        return $this->render('@Nutritionist/nutritionist-edit-recipe.html.twig',
+            [
+                'id_recipe' => $id_recipe,
+                'recipe' => $recipe,
+                'recipe_ingredients' => $recipe_ingredients,
+                'nutritional_info' => $nutritional_info,
+                'all_ingredients' => $all_ingredients
+            ]
+        );
+    }
+
+    /**
+     * Fn que se encarga de eliminar una receta, siempre y cuando haya sido creado por el mismo nutricionista
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function nutritionistDeleteRecipeAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+            if($request->isMethod('POST')){
+                $id_recipe = $request->request->get('recipe_delete');
+
+                $em = $this->getDoctrine()->getManager();
+                $recipes_repo = $em->getRepository("NutritionistBundle:Recipes");
+                $recipes = $recipes_repo->findBy(["idRecipe" => $id_recipe]);
+                foreach ($recipes as $recipe){
+                    if($recipe->getIdUser() == $user->getIdUser()){
+                        $em->remove($recipe);
+                        $flush = $em->flush();
+                        if(!empty($flush)){
+                            $this->session->getFlashBag()->add('recipesKOStatus',"Se ha producido un error. No puede borrar la receta, intentelo de nuevo o contacte con el servicio de NutriK.");
+                        }
+                        else{
+                            $this->session->getFlashBag()->add('recipesOKStatus',"La receta se ha borrado correctamente.");
+                        }
+                    }
+                }
+            }
+        }
+
+        return $this->redirectToRoute('nutritionist_recipes');
+    }
+
+    /**
+     * Fn auxiliar que busca los clientes asocidos al nutricionista loggeado por una key
+     * @param $key
+     * @return array
+     */
+    public function findCustomerByKey($key){
+        $customers = array();
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+            $dql_query = $em->createQuery("
+                SELECT u FROM CustomsBundle:User u
+                INNER JOIN NutritionistBundle:CustomerNutritionist nc WITH nc.idCustomer = u.idUser
+                WHERE
+                  nc.idNutritionist = ".$user->getIdUser()."
+                  AND (u.firstname LIKE '%$key%' OR u.lastname LIKE '%$key%' OR u.email LIKE '%$key%')
+            ");
+            $customers = $dql_query->getResult();
+        }
+        return $customers;
+    }
+
+    /**
+     * Fn que se encarga de programar una consulta
+     * @param Request $request
+     * @return Response|null
+     * @throws \Exception
+     */
+    public function nutritionistScheduleAppointmentAction(Request $request)
+    {
+        $customers = array();
+        $modal_page = 1;
+
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $user = reset($users);
+
+            if($request->isMethod('POST')  && $request->request->get('submit') == "Buscar" && $request->request->get('appointment_customer_search') != ""){
+                $key = $request->request->get('appointment_customer_search');
+                $customers = $this->findCustomerByKey($key);
+                $modal_page = 3;
+            }
+            else{
+                $customer_nutritionist_dependencies_repo = $em->getRepository("NutritionistBundle:CustomerNutritionist");
+                $customer_nutritionist_dependencies = $customer_nutritionist_dependencies_repo->findBy(array("idNutritionist" => $user->getIdUser()));
+
+                foreach($customer_nutritionist_dependencies as $dependency){
+                    $customers_array = $user_repository->findBy(array("idUser" => $dependency->getIdCustomer()));
+                    if(count($customers_array)>0){
+                        $customers = array_merge($customers, $customers_array);
+                    }
+                }
+            }
+
+            if($request->isMethod('POST')  && $request->request->get('submit') == "Confirmar"){
+                $customer = $request->request->get('appointment_customer');
+                $appointment_hour = $request->request->get('appointment_hour');
+                $appointment_date = $request->request->get('appointment_date');
+                $appointment_type = $request->request->get('appointment_type');
+                $appointment_duration = $request->request->get('appointment_duration');
+                $appointment_link = $request->request->get('appointment_link');
+                $appointment_description = $request->request->get('appointment_description');
+                if($customer != "" && $appointment_hour != "" && $appointment_date != "" && $appointment_type != ""  && $appointment_duration != ""){
+                    $appointment = new Appointment();
+                    $appointment->setDate(new \DateTime($appointment_date .' '.$appointment_hour));
+                    $appointment->setIdNutritionist($user->getIdUser());
+                    $appointment->setIdCustomer($customer);
+                    $appointment->setDescription($appointment_description);
+                    $appointment->setAppointmentLink($appointment_link);
+                    $appointment->setAppointmentType($appointment_type);
+                    $appointment->setDuration($appointment_duration);
+                    $appointment->setDateAdd(new \DateTime('NOW'));
+                    $appointment->setDateUpd(new \DateTime('NOW'));
+                    $em->persist($appointment);
+                    if(!empty($em->flush())){
+                        $this->session->getFlashBag()->add('scheduleAppointmentKOStatus',"Se ha producido un error. No se ha podido crear la consulta, intentelo de nuevo o contacte con el servicio de NutriK.");
+                    }
+                    else{
+                        $this->session->getFlashBag()->add('appointmentsOKStatus',"La consulta se ha creado con exito.");
+                        return $this->redirectToRoute('nutritionist_appointments');
+                    }
+                }
+                else{
+                    $this->session->getFlashBag()->add('scheduleAppointmentKOStatus',"Se ha producido un error. Faltan datos necesarios para la creación de la consulta, intentelo de nuevo o contacte con el servicio de NutriK.");
+                }
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('scheduleAppointmentKOStatus',"Se ha producido un error. No pueden obtener los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+        return $this->render('@Nutritionist/schedule-appointment.html.twig',
+            [
+                "customers" => $customers,
+                'modal_page' => $modal_page
+            ]
+        );
+    }
+
+    public function nutritionistAppointmentsAction(){
+        $appointments = array();
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+            $appointments_repo = $em->getRepository("NutritionistBundle:Appointment");
+            $appointments = $appointments_repo->findBy(['idNutritionist' => $user->getIdUser()]);
+        }
+
+        return $this->render('@Nutritionist/nutritionist-appointments.html.twig',
+            [
+                "appointments" => $appointments
+            ]
+        );
+    }
+
+    public function nutritionistDeleteAppointmentAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            if($request->isMethod('POST')){
+                $id_apppointment = $request->request->get('appointment_delete');
+                $appointments_repo = $em->getRepository("NutritionistBundle:Appointment");
+                $appointments = $appointments_repo->findBy(['idAppointment' => $id_apppointment]);
+                foreach ($appointments as $appointment){
+                    $em->remove($appointment);
+                    $flush = $em->flush();
+                    if(!empty($flush)){
+                        $this->session->getFlashBag()->add('appointmentsKOStatus',"Se ha producido un error. No se ha podido borrar la consulta, intentelo de nuevo o contacte con el servicio de NutriK.");
+                    }
+                    else{
+                        $this->session->getFlashBag()->add('appointmentsOKStatus',"La consulta se ha borrado correctamente.");
+
+                    }
+                }
+            }
+        }
+
+        return $this->redirectToRoute('nutritionist_appointments');
+    }
+
+    public function nutritionistEditAppointmentAction(Request $request, $id_appointment){
+        $customers = array();
+
+        /**
+         * Instanciamos la consulta a editar
+         */
+        $em = $this->getDoctrine()->getManager();
+        $appointments_repo = $em->getRepository("NutritionistBundle:Appointment");
+        $appointment = $appointments_repo->findBy(['idAppointment' => $id_appointment]);
+        $appointment = reset($appointment);
+
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $user = reset($users);
+            $customer_nutritionist_dependencies_repo = $em->getRepository("NutritionistBundle:CustomerNutritionist");
+            $customer_nutritionist_dependencies = $customer_nutritionist_dependencies_repo->findBy(array("idNutritionist" => $user->getIdUser()));
+
+            foreach($customer_nutritionist_dependencies as $dependency){
+                $customers_array = $user_repository->findBy(array("idUser" => $dependency->getIdCustomer()));
+                if(count($customers_array)>0){
+                    $customers = array_merge($customers, $customers_array);
+                }
+            }
+        }
+
+
+        return $this->render('@Nutritionist/nutritionist-edit-appointment.html.twig',
+            [
+                'id_appointment' => $id_appointment,
+                'appointment' => $appointment,
+                'customers' => $customers
+            ]
+        );
+    }
+    /**
+     * Fn que se encarga de renderizar los distintos eventos y notificaciones en el calendario
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function nutritionistCalendarAction()
     {
         return $this->render('@Nutritionist/nutritionist-calendar.html.twig');
-    }
-    public function nutritionistCustomersAction()
-    {
-        return $this->render('@Nutritionist/nutritionist-customers.html.twig');
-    }
-
-    public function nutritionistDiaryAction()
-    {
-        return $this->render('@Nutritionist/nutritionist-diary.html.twig');
-    }
-
-    public function nutritionistRecipesAction()
-    {
-        return $this->render('@Nutritionist/nutritionist-recipes.html.twig');
-    }
-
-    public function nutritionistScheduleAppointmentAction()
-    {
-        return $this->render('@Nutritionist/schedule-appointment.html.twig');
     }
 }

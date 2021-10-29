@@ -334,4 +334,3 @@ class Event
         $this->duration = $duration;
     }
 }
-

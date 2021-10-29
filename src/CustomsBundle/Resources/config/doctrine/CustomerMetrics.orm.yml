@@ -1,0 +1,52 @@
+CustomsBundle\Entity\CustomerMetrics:
+    type: entity
+    table: customer_metrics
+    id:
+        idCustomerMetrics:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_customer_metrics
+            generator:
+                strategy: IDENTITY
+    fields:
+        idCustomer:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_customer
+        weight:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        height:
+            type: float
+            nullable: false
+            precision: 10
+            scale: 0
+        age:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        movement:
+            type: string
+            nullable: false
+            length: 248
+            options:
+                fixed: false
+        goals:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        dateAdd:
+            type: datetime
+            nullable: false
+            column: date_add
+    lifecycleCallbacks: {  }

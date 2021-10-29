@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="CustomerMetrics" table="customer_metrics">
-    <id name="idCustomerMetrics" type="integer" column="id_customer_metrics">
+  <entity name="Recipes" table="recipes">
+    <id name="idRecipe" type="integer" column="id_recipe">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="idCustomer" type="integer" column="id_customer" nullable="false">
+    <field name="idUser" type="integer" column="id_user" nullable="false">
       <options>
         <option name="unsigned"/>
+        <option name="default">0</option>
       </options>
     </field>
-    <field name="weight" type="float" column="weight" precision="10" scale="0" nullable="false"/>
-    <field name="height" type="float" column="height" precision="10" scale="0" nullable="false"/>
-    <field name="age" type="integer" column="age" nullable="false">
+    <field name="name" type="string" column="name" length="248" nullable="false">
       <options>
-        <option name="unsigned"/>
+        <option name="fixed"/>
       </options>
     </field>
-    <field name="movement" type="string" column="movement" length="248" nullable="false">
+    <field name="description" type="text" column="description" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="image" type="string" column="image" length="248" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
     </field>
     <field name="dateAdd" type="datetime" column="date_add" nullable="false"/>
+    <field name="dateUpd" type="datetime" column="date_upd" nullable="false"/>
   </entity>
 </doctrine-mapping>

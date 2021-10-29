@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Ingredients" table="ingredients">
+    <id name="idIngredient" type="integer" column="id_ingredient">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="name" length="248" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="carbohydrates" type="float" column="carbohydrates" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">10</option>
+      </options>
+    </field>
+    <field name="fats" type="float" column="fats" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">5</option>
+      </options>
+    </field>
+    <field name="protein" type="float" column="protein" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="default">7</option>
+      </options>
+    </field>
+    <field name="dateAdd" type="datetime" column="date_add" nullable="false"/>
+    <field name="dateUpd" type="datetime" column="date_upd" nullable="false"/>
+  </entity>
+</doctrine-mapping>

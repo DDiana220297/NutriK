@@ -62,35 +62,58 @@ nutritionist_edit_event:
     path: /nutritionist-edit-event/{id_event}
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistEditEvent }
 
+nutritionist_customers:
+    path: /nutritionist-customers
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistCustomers }
+
 nutritionist_add_customer:
     path: /nutritionist-add-customer
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistAddCustomer }
 
+nutritionist_edit_customer:
+    path: /nutritionist-edit-customer/{id_user}
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistEditCustomer }
 
-
-
-
-
-
-nutritionist_calendar:
-    path: /nutritionist-calendar
-    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistCalendar }
-
-
-nutritionist_customers:
-    path: /nutritionist-customers
-    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistCustomers }
+nutritionist_delete_customer:
+    path: /nutritionist-delete-customer
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistDeleteCustomer }
 
 nutritionist_diary:
     path: /nutritionist-diary
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistDiary }
 
-
 nutritionist_recipes:
     path: /nutritionist-recipes
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistRecipes }
+
+nutritionist_add_recipe:
+    path: /nutritionist-add-recipe
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistAddRecipe }
+
+nutritionist_edit_recipe:
+    path: /nutritionist-edit-recipe/{id_recipe}
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistEditRecipe }
+
+nutritionist_delete_recipe:
+    path: /nutritionist-delete-recipe
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistDeleteRecipe }
 
 nutritionist_schedule_appointment:
     path: /nutritionist-schedule-appointment
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistScheduleAppointment }
 
+nutritionist_appointments:
+    path: /nutritionist-appointments
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistAppointments }
+
+nutritionist_delete_appointment:
+    path: /nutritionist-delete-appointment
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistDeleteAppointment }
+
+nutritionist_edit_appointment:
+    path: /nutritionist-edit-appointment/{id_appointment}
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistEditAppointment }
+
+nutritionist_calendar:
+    path: /nutritionist-calendar
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistCalendar }

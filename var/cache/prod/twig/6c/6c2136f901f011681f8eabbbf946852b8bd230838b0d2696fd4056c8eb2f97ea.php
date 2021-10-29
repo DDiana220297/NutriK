@@ -380,7 +380,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <input type=\"time\" name=\"monday_workout_time\" value=\"";
         // line 153
         if ((($context["monday_workout"] ?? $this->getContext($context, "monday_workout")) != false)) {
-            echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_workout"] ?? $this->getContext($context, "monday_workout")), "hour", []), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["monday_workout"] ?? $this->getContext($context, "monday_workout")), "hour", []), "H:i:s"), "html", null, true);
         }
         echo "\" style=\"width: fit-content\">
                                             <label for=\"monday-workout\">Entrenamiento:</label>
@@ -644,7 +644,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <input type=\"time\" name=\"tuesday_workout_time\" value=\"";
         // line 260
         if ((($context["tuesday_workout"] ?? $this->getContext($context, "tuesday_workout")) != false)) {
-            echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_workout"] ?? $this->getContext($context, "tuesday_workout")), "hour", []), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["tuesday_workout"] ?? $this->getContext($context, "tuesday_workout")), "hour", []), "H:i:s"), "html", null, true);
         }
         echo "\" style=\"width: fit-content\">
                                             <label for=\"tuesday-workout\">Entrenamiento:</label>
@@ -909,7 +909,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <input type=\"time\" name=\"wednesday_workout_time\" value=\"";
         // line 368
         if ((($context["wednesday_workout"] ?? $this->getContext($context, "wednesday_workout")) != false)) {
-            echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_workout"] ?? $this->getContext($context, "wednesday_workout")), "hour", []), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["wednesday_workout"] ?? $this->getContext($context, "wednesday_workout")), "hour", []), "H:i:s"), "html", null, true);
         }
         echo "\" style=\"width: fit-content\">
                                             <label for=\"wednesday-workout\">Entrenamiento:</label>
@@ -1174,7 +1174,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <input type=\"time\" name=\"thursday_workout_time\" value=\"";
         // line 476
         if ((($context["thursday_workout"] ?? $this->getContext($context, "thursday_workout")) != false)) {
-            echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_workout"] ?? $this->getContext($context, "thursday_workout")), "hour", []), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["thursday_workout"] ?? $this->getContext($context, "thursday_workout")), "hour", []), "H:i:s"), "html", null, true);
         }
         echo "\" style=\"width: fit-content\">
                                             <label for=\"thursday-workout\">Entrenamiento:</label>
@@ -1439,7 +1439,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <input type=\"time\" name=\"friday_workout_time\" value=\"";
         // line 584
         if ((($context["friday_workout"] ?? $this->getContext($context, "friday_workout")) != false)) {
-            echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_workout"] ?? $this->getContext($context, "friday_workout")), "hour", []), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["friday_workout"] ?? $this->getContext($context, "friday_workout")), "hour", []), "H:i:s"), "html", null, true);
         }
         echo "\" style=\"width: fit-content\">
                                             <label for=\"friday-workout\">Entrenamiento:</label>
@@ -1704,14 +1704,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <input type=\"time\" name=\"saturday_workout_time\" value=\"";
         // line 692
         if ((($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")) != false)) {
-            echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")), "hour", []), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")), "hour", []), "H:i:s"), "html", null, true);
         }
         echo "\" style=\"width: fit-content\">
                                             <label for=\"saturday-workout\">Entrenamiento:</label>
                                             <textarea type=\"text\" id=\"saturday-workout\" name=\"saturday_workout\" class=\"form-control\" style=\"height: 150px\">";
         // line 694
         if ((($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")) != false)) {
-            echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")), "hour", []), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")), "workout", []), "html", null, true);
         }
         echo "</textarea>
                                             <br/>
@@ -1749,7 +1749,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <textarea type=\"text\" id=\"saturday-workout-notes\" name=\"saturday_workout_notes\" class=\"form-control\" style=\"height: 80px\">";
         // line 705
         if ((($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")) != false)) {
-            echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")), "hour", []), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")), "workoutNotes", []), "html", null, true);
         }
         echo "</textarea>
                                         </div>
@@ -1969,7 +1969,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <input type=\"time\" name=\"sunday_workout_time\" value=\"";
         // line 800
         if ((($context["sunday_workout"] ?? $this->getContext($context, "sunday_workout")) != false)) {
-            echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_workout"] ?? $this->getContext($context, "sunday_workout")), "hour", []), "html", null, true);
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["sunday_workout"] ?? $this->getContext($context, "sunday_workout")), "hour", []), "H:i:s"), "html", null, true);
         }
         echo "\" style=\"width: fit-content\">
                                             <label for=\"sunday-workout\">Entrenamiento:</label>
@@ -2208,7 +2208,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </select>
                                             <br/><br/>
                                             <label for=\"monday_workout_time\">Hora:</label>
-                                            <input type=\"time\" name=\"monday_workout_time\" value=\"{% if monday_workout != false %}{{ monday_workout.hour }}{% endif %}\" style=\"width: fit-content\">
+                                            <input type=\"time\" name=\"monday_workout_time\" value=\"{% if monday_workout != false %}{{ monday_workout.hour|date('H:i:s') }}{% endif %}\" style=\"width: fit-content\">
                                             <label for=\"monday-workout\">Entrenamiento:</label>
                                             <textarea type=\"text\" id=\"monday-workout\" name=\"monday_workout\" class=\"form-control\" style=\"height: 150px\">{% if monday_workout != false %}{{ monday_workout.workout }}{% endif %}</textarea>
                                             <br/>
@@ -2315,7 +2315,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </select>
                                             <br/><br/>
                                             <label for=\"tuesday_workout_time\">Hora:</label>
-                                            <input type=\"time\" name=\"tuesday_workout_time\" value=\"{% if tuesday_workout != false %}{{ tuesday_workout.hour }}{% endif %}\" style=\"width: fit-content\">
+                                            <input type=\"time\" name=\"tuesday_workout_time\" value=\"{% if tuesday_workout != false %}{{ tuesday_workout.hour|date('H:i:s') }}{% endif %}\" style=\"width: fit-content\">
                                             <label for=\"tuesday-workout\">Entrenamiento:</label>
                                             <textarea type=\"text\" id=\"tuesday-workout\" name=\"tuesday_workout\" class=\"form-control\" style=\"height: 150px\">{% if tuesday_workout != false %}{{ tuesday_workout.workout }}{% endif %}</textarea>
                                             <br/>
@@ -2423,7 +2423,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </select>
                                             <br/><br/>
                                             <label for=\"wednesday_workout_time\">Hora:</label>
-                                            <input type=\"time\" name=\"wednesday_workout_time\" value=\"{% if wednesday_workout != false %}{{ wednesday_workout.hour }}{% endif %}\" style=\"width: fit-content\">
+                                            <input type=\"time\" name=\"wednesday_workout_time\" value=\"{% if wednesday_workout != false %}{{ wednesday_workout.hour|date('H:i:s') }}{% endif %}\" style=\"width: fit-content\">
                                             <label for=\"wednesday-workout\">Entrenamiento:</label>
                                             <textarea type=\"text\" id=\"wednesday-workout\" name=\"wednesday_workout\" class=\"form-control\" style=\"height: 150px\">{% if wednesday_workout != false %}{{ wednesday_workout.workout }}{% endif %}</textarea>
                                             <br/>
@@ -2531,7 +2531,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </select>
                                             <br/><br/>
                                             <label for=\"thursday_workout_time\">Hora:</label>
-                                            <input type=\"time\" name=\"thursday_workout_time\" value=\"{% if thursday_workout != false %}{{ thursday_workout.hour }}{% endif %}\" style=\"width: fit-content\">
+                                            <input type=\"time\" name=\"thursday_workout_time\" value=\"{% if thursday_workout != false %}{{ thursday_workout.hour|date('H:i:s') }}{% endif %}\" style=\"width: fit-content\">
                                             <label for=\"thursday-workout\">Entrenamiento:</label>
                                             <textarea type=\"text\" id=\"thursday-workout\" name=\"thursday_workout\" class=\"form-control\" style=\"height: 150px\">{% if thursday_workout != false %}{{ thursday_workout.workout }}{% endif %}</textarea>
                                             <br/>
@@ -2639,7 +2639,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </select>
                                             <br/><br/>
                                             <label for=\"friday_workout_time\">Hora:</label>
-                                            <input type=\"time\" name=\"friday_workout_time\" value=\"{% if friday_workout != false %}{{ friday_workout.hour }}{% endif %}\" style=\"width: fit-content\">
+                                            <input type=\"time\" name=\"friday_workout_time\" value=\"{% if friday_workout != false %}{{ friday_workout.hour|date('H:i:s') }}{% endif %}\" style=\"width: fit-content\">
                                             <label for=\"friday-workout\">Entrenamiento:</label>
                                             <textarea type=\"text\" id=\"friday-workout\" name=\"friday_workout\" class=\"form-control\" style=\"height: 150px\">{% if friday_workout != false %}{{ friday_workout.workout }}{% endif %}</textarea>
                                             <br/>
@@ -2747,9 +2747,9 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </select>
                                             <br/><br/>
                                             <label for=\"saturday_workout_time\">Hora:</label>
-                                            <input type=\"time\" name=\"saturday_workout_time\" value=\"{% if saturday_workout != false %}{{ saturday_workout.hour }}{% endif %}\" style=\"width: fit-content\">
+                                            <input type=\"time\" name=\"saturday_workout_time\" value=\"{% if saturday_workout != false %}{{ saturday_workout.hour|date('H:i:s') }}{% endif %}\" style=\"width: fit-content\">
                                             <label for=\"saturday-workout\">Entrenamiento:</label>
-                                            <textarea type=\"text\" id=\"saturday-workout\" name=\"saturday_workout\" class=\"form-control\" style=\"height: 150px\">{% if saturday_workout != false %}{{ saturday_workout.hour }}{% endif %}</textarea>
+                                            <textarea type=\"text\" id=\"saturday-workout\" name=\"saturday_workout\" class=\"form-control\" style=\"height: 150px\">{% if saturday_workout != false %}{{ saturday_workout.workout }}{% endif %}</textarea>
                                             <br/>
                                             <ul class=\"list-group\" id=\"saturday-workout-exercises\">
                                                 {% for exercise in exercises %}
@@ -2760,7 +2760,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 {% endfor %}
                                             </ul>
                                             <label for=\"saturday-workout-notes\">Observaciones:</label>
-                                            <textarea type=\"text\" id=\"saturday-workout-notes\" name=\"saturday_workout_notes\" class=\"form-control\" style=\"height: 80px\">{% if saturday_workout != false %}{{ saturday_workout.hour }}{% endif %}</textarea>
+                                            <textarea type=\"text\" id=\"saturday-workout-notes\" name=\"saturday_workout_notes\" class=\"form-control\" style=\"height: 80px\">{% if saturday_workout != false %}{{ saturday_workout.workoutNotes }}{% endif %}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -2855,7 +2855,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </select>
                                             <br/><br/>
                                             <label for=\"sunday_workout_time\">Hora:</label>
-                                            <input type=\"time\" name=\"sunday_workout_time\" value=\"{% if sunday_workout != false %}{{ sunday_workout.hour }}{% endif %}\" style=\"width: fit-content\">
+                                            <input type=\"time\" name=\"sunday_workout_time\" value=\"{% if sunday_workout != false %}{{ sunday_workout.hour|date('H:i:s') }}{% endif %}\" style=\"width: fit-content\">
                                             <label for=\"sunday-workout\">Entrenamiento:</label>
                                             <textarea type=\"text\" id=\"sunday-workout\" name=\"sunday_workout\" class=\"form-control\" style=\"height: 150px\">{% if sunday_workout != false %}{{ sunday_workout.workout }}{% endif %}</textarea>
                                             <br/>

@@ -1,0 +1,87 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <!-- Login Page stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/nutritionistpages.css') }}" />
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    <section id="nutritionist-edit-recipe">
+        {% for message in  app.session.flashbag().get('editRecipeKOStatus') %}
+            <div class="row" style="width: 91.3%; margin-left: 4.3%; margin-top: 10px; margin-bottom: -35px;">
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="container">
+            <div class="col-sm-12">
+                <form class="form" action="{{ path("nutritionist_edit_recipe",{"id_recipe":id_recipe}) }}" method="post">
+                    <div id="recipe-content-block">
+                        <div class="container-fluid">
+                            <div class="col-sm-7">
+                                <div id="recipe-content">
+                                    <div id="recipe-title">
+                                        <label for="recipe_name">Nombre receta:</label>
+                                        <input type="text" id="recipe_name" name="recipe_name" class="form-control" required="required" style="background-color: transparent" value="{{ recipe.name }}"/>
+                                    </div>
+                                    <div id="recipe-image" class="col-sm-6">
+                                        <img src="{{ asset(recipe.image) }}">
+                                    </div>
+                                    <div id="recipe-nutritional-info" class="col-sm-6">
+                                        <h3>Información nutricional</h3>
+                                        <p><strong>Carbohidratos:</strong><span> {{ nutritional_info['carbs'] }} gramos / 100 gramos</span></p>
+                                        <p><strong>Grasas:</strong><span> {{ nutritional_info['fats'] }} gramos / 100 gramos</span></p>
+                                        <p><strong>Proteinas:</strong><span> {{ nutritional_info['protein']}} gramos / 100 gramos</span></p>
+                                    </div>
+                                    <div id="recipe-image-link" class="col-sm-12">
+                                        <label for="recipe_image">Link imagén:</label>
+                                        <input type="text" id="recipe_image" name="recipe_image" class="form-control" required="required" style="background-color: transparent" value="{{ recipe.image }}"/>
+                                    </div>
+                                    <div id="recipe-steps" class="col-sm-12" >
+                                        <label for="recipe_description">Receta:</label>
+                                        <textarea type="text" id="recipe_description" name="recipe_description" class="form-control" required="required" style="background-color: transparent"> {{ recipe.description }}</textarea>
+                                    </div>
+                                    <input type="submit" name="submit" class="btn btn-primary" value="Guardar Cambios"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div id="recipe-content">
+                                    <div id="recipe-delete-ingredients">
+                                        <strong>Ingredientes:</strong>
+                                        <br/><br/>
+                                        <ul class="list-group" id="delete_ingredients">
+                                            {% for recipe_ingredient in recipe_ingredients %}
+                                                <li>
+                                                    <input type="checkbox" value="{{ recipe_ingredient.idIngredient }}" style="width: fit-content; margin-bottom: 10px; margin-top: 10px" name="delete_ingredients[{{ recipe_ingredient.idIngredient }}][]">
+                                                    {{ recipe_ingredient.name }}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                        <input type="submit" name="submit" class="btn btn-primary" value="Borrar Ingredientes Seleccionados"/>
+                                    </div>
+                                    <div id="recipe-add-ingredients">
+                                        <strong>Ingredientes:</strong>
+                                        <br/><br/>
+                                        <ul class="list-group" id="add_ingredients">
+                                            {% for ingredient in all_ingredients %}
+                                                <li>
+                                                    <input type="checkbox" value="{{ ingredient.idIngredient }}" style="width: fit-content; margin-bottom: 10px; margin-top: 10px" name="add_ingredients[{{ ingredient.idIngredient }}][]">
+                                                    {{ ingredient.name }}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                        <input type="submit" name="submit" class="btn btn-primary" value="Añadir Ingredientes Seleccionados"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    </html>
+{% endblock %}

@@ -38,6 +38,11 @@ class CustomerMetrics
     private $movement;
 
     /**
+     * @var string
+     */
+    private $goals;
+
+    /**
      * @var \DateTime
      */
     private $dateAdd;
@@ -195,6 +200,22 @@ class CustomerMetrics
     public function getDateAdd()
     {
         return $this->dateAdd;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoals()
+    {
+        return $this->goals;
+    }
+
+    /**
+     * @param string $goals
+     */
+    public function setGoals($goals)
+    {
+        $this->goals = $goals;
     }
 }
 
