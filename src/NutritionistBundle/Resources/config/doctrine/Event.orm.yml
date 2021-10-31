@@ -1,0 +1,76 @@
+NutritionistBundle\Entity\Event:
+    type: entity
+    table: event
+    id:
+        idEvent:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_event
+            generator:
+                strategy: IDENTITY
+    fields:
+        idUser:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_user
+        idCategory:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_category
+        idTag:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: id_tag
+        title:
+            type: string
+            nullable: false
+            length: 284
+            options:
+                fixed: false
+        description:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        eventLink:
+            type: string
+            nullable: false
+            length: 284
+            options:
+                fixed: false
+            column: event_link
+        date:
+            type: datetime
+            nullable: false
+        frecuency:
+            type: string
+            nullable: false
+            length: 128
+            options:
+                fixed: false
+                default: puntual
+        duration:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '60'
+        dateAdd:
+            type: datetime
+            nullable: false
+            column: date_add
+        dateUpd:
+            type: datetime
+            nullable: false
+            column: date_upd
+    lifecycleCallbacks: {  }

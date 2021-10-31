@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <title>
+        {% block title %} NutriK {% endblock %}
+    </title>
+
+    <link rel="stylesheet" href="{{ asset('public/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/bootstrap-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/css/carousel.css') }}">
+
+    <!-- Login Page stylesheet-->
+    <link rel="stylesheet" href="{{ asset('bundles/framework/css/loginpage.css') }}" />
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="{{ asset('public/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/js/jquery-3.2.1.slim.min.js') }}"></script>
+    <script src="{{ asset('public/js/popper.min.js') }}"></script>
+
+    <!-- Customs JS -->
+    <script src="{{ asset('bundles/framework//js/customs.js') }}"></script>
+
+</head>
+    <body>
+        <div class="container">
+            <div class="row title">
+                <h1>NutriK</h1>
+            </div>
+            <div class="row logincarousel">
+                <div class="col-sm-12">
+                    {% include 'carousel.html.twig' %}
+                </div>
+            </div>
+            <div class="row webdescription">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
+            <div class="row loginactions">
+                <div class="login-button-item">
+                    <button class="btn btn-primary login-button" type="button" onclick="redirectTo('home')">Visita NutriK</button>
+                </div>
+                <div class="login-button-item">
+                    <button class="btn btn-primary login-button-grey" type="button" onclick="redirectTo('login')">Iniciar Sesión</button>
+                </div>
+                <div class="login-button-item">
+                    <button class="btn btn-primary login-button" type="button" onclick="redirectTo('register')">Registrarse</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

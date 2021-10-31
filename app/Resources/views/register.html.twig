@@ -1,0 +1,44 @@
+
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <title>
+        {% block title %} NutriK {% endblock %}
+    </title>
+    <!-- Login Page stylesheet-->
+    <link rel="stylesheet" href="{{ asset('bundles/framework/css/loginpage.css') }}" />
+</head>
+<body>
+{% block content %}
+    <div class="container">
+        <div class="row title">
+            <h1>NutriK</h1>
+        </div>
+        <div class="row logincarousel">
+            <div class="col-sm-12">
+                {% include 'carousel.html.twig' %}
+            </div>
+        </div>
+
+        {% for message in  app.session.flashbag().get('statusKOMessage') %}
+            <div class="row" style="justify-content: center">
+                <div class="col-sm-6">
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        <div class="row registerform">
+            <div class="col-sm-6">
+                {{ form_start(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+{% endblock %}
+</body>
+

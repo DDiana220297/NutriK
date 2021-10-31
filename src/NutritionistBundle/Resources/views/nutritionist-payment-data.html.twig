@@ -1,0 +1,91 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <!-- Login Page stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/nutritionistpages.css') }}" />
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    <section id="nutritionist-payment-data">
+        {% for message in  app.session.flashbag().get('paymentDataKOStatus') %}
+            <div class="row" style="width: 95%; margin-left: 2.5%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        {% for message in  app.session.flashbag().get('paymentDataOKStatus') %}
+            <div class="row" style="width: 95%; margin-left: 2.5%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="container">
+            <div class="col-sm-6">
+                <div class="col-sm-12" style="margin-left: 45px;">
+                    <div class="card-header">
+                        <div class="col-sm-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+                                <path d="M8 .95 14.61 4h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.379l.5 2A.5.5 0 0 1 15.5 17H.5a.5.5 0 0 1-.485-.621l.5-2A.5.5 0 0 1 1 14V7H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 4h.89L8 .95zM3.776 4h8.447L8 2.05 3.776 4zM2 7v7h1V7H2zm2 0v7h2.5V7H4zm3.5 0v7h1V7h-1zm2 0v7H12V7H9.5zM13 7v7h1V7h-1zm2-1V5H1v1h14zm-.39 9H1.39l-.25 1h13.72l-.25-1z"/>
+                            </svg>
+                        </div>
+                        <div class="col-sm-9">
+                            <h3>Mis Datos Bancarios</h3>
+                        </div>
+                    </div>
+                    <br/>
+                    <form class="form" action="{{ path("nutritionist_payment_data_delete") }}" method="post">
+                        <div id="cards">
+                            {% for card in nc_cards %}
+                                <div class="card-item">
+                                    <span class="form-control card-input"><strong> {{ card.name }} </strong> - {{ card.ncDigits }} - <strong> {{ card.ncExpMonth }}/{{ card.ncExpYear }} </strong></span>
+                                    <input type="hidden" name="_card_delete" value="{{ card.idCard }}"/>
+                                    <input class="btn delete-button" type="submit" value="Borrar"/>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-12" style="margin-left: 45px;">
+                    <div id="receipts">
+                        <h3>Mis Recibos</h3>
+                        <table class="table table-dark table-striped">
+                            <tr>
+                                <th>Recibo</th>
+                                <th>Cliente</th>
+                                <th>Importe</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                            </tr>
+                            {% for receipt in receipts %}
+                                <tr>
+                                    <td>{{ receipt.description }}</td>
+                                    <td>{{ receipt.customer_name }}</td>
+                                    <td>{{ receipt.amount }}</td>
+                                    <td>{{ receipt.status }}</td>
+                                    <td>{{ receipt.dateAdd|date('Y-m-d') }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6" style="display: inline-flex">
+                <div class="card-fields">
+                    <form class="form" action="{{ path("nutritionist_payment_data") }}" method="post">
+                        <label for="nombre">Nombre:</label><input type="text" id="name" name="_name" class="form-control" required="required"/>
+                        <label for="card-number">Número Cuenta:</label><input type="text" maxlength="20" id="card-number" name="_card-number" class="form-control" required="required"/>
+                        <label for="expiration-date">Fecha Caducidad:</label><input type="date" id="expiration-date" name="_expiration-date" class="form-control" required="required"/>
+                        <div class="save-button-item" style="width: 100%;">
+                            <input class="btn save-button" type="submit" value="Guardar"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    </html>
+{% endblock %}

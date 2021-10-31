@@ -1,0 +1,122 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <meta charset="utf-8"/>
+        <title>
+            {% block title %} NutriK {% endblock %}
+        </title>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="{{ asset('public/css/bootstrap.css') }}">
+
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="{{ asset('public/css/bootstrap-theme.css') }}">
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="{{ asset('public/js/bootstrap.js') }}"></script>
+
+        <!-- Header stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/header.css') }}" />
+
+        <!-- Footer stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/footer.css') }}" />
+
+        <!-- Homepage stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/homepage.css') }}" />
+
+        <!-- Menu component javascript -->
+        <script src="{{ asset('bundles/framework/js/MenuComponent.js') }}"></script>
+
+        <!-- Customs JS -->
+        <script src="{{ asset('bundles/framework//js/customs.js') }}"></script>
+
+        <!-- Chart JS -->
+        <script src="{{ asset('public/js/chart.js') }}"></script>
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    {% if not is_granted('ROLE_NUTR') %}
+        <section id="customer-header">
+            {% include 'customerheader.html.twig' %}
+        </section>
+        <section id="customer-homepage">
+            <div class="container">
+                <div class="row" style="justify-content: center; color: black; text-align: center; padding: 20px">
+                    <img src="{{ asset('home-banner.jpg') }}" style="border-radius: 10%;width: 100%;height: 45rem;">
+                </div>
+                <div class="row" style="justify-content: center; color: black; text-align: center; padding: 20px">
+                    <p style="font-size: 17px;">
+                        En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                        Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                    </p>
+                </div>
+            </div>
+        </section>
+    {% else %}
+        <section id="nutritionist-homepage">
+            <div class="container">
+                <div class="col-sm-12">
+                    <div id="nutritionist-homepage-block">
+                        <div class="col-sm-6">
+                            <div class="col-sm-12 nutritionist-appointments-events">
+                                <h3>Mis próximas consultas</h3>
+                                <hr/>
+                                <div class="nutritionist-appointments">
+                                    {% for appointment in appointments %}
+                                        <p>
+                                            <strong>{{ appointment.date|date('Y-m-d H:i:s') }}:</strong>
+                                            <a href="{{ path("nutritionist_edit_appointment",{"id_appointment":appointment.idAppointment}) }}">{{ appointment.description }}</a>
+                                        </p>
+                                    {% endfor %}
+                                </div>
+
+                                <h3>Mis próximos eventos</h3>
+                                <hr/>
+                                <div class="nutritionist-events">
+                                    {% for event in events %}
+                                        <p>
+                                            <strong>{{ event.date|date('Y-m-d H:i:s') }}:</strong>
+                                            <a href="{{ path("nutritionist_edit_event",{"id_event":event.idEvent}) }}">{{ event.title }}</a>
+                                        </p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-sm-12 nutritionist-kpis">
+                                <img src="{{ asset('chart.png') }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="nutritionist-notifications">
+                                <h3>Mis notificaciones</h3>
+                                {% for log in logs %}
+                                    <div class="row">
+                                        {% if 'add' in log.source %}
+                                            <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                                                {{ log.context }}
+                                            </div>
+                                        {% elseif 'delete' in log.source %}
+                                            <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                                                {{ log.context }}
+                                            </div>
+                                        {% else %}
+                                            <div class="alert alert-info" role="alert" style="margin-bottom: 0">
+                                                {{ log.context }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+    {% include 'footer.html.twig' %}
+    </html>
+{% endblock %}

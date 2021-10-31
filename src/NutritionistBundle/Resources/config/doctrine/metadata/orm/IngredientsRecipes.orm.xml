@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="IngredientsRecipes" table="ingredients_recipes">
+    <id name="idIngredientRecipe" type="integer" column="id_ingredient_recipe">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idIngredient" type="integer" column="id_ingredient" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idRecipe" type="integer" column="id_recipe" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="dateAdd" type="datetime" column="date_add" nullable="false"/>
+  </entity>
+</doctrine-mapping>

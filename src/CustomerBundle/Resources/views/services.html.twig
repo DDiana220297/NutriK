@@ -1,0 +1,54 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <!-- Login Page stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/customerpages.css') }}" />
+        <!-- Footer stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/footer.css') }}" />
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    <section id="customer-header">
+        {% include 'customerheader.html.twig' %}
+    </section>
+    <section id="customer-services">
+        {% for message in  app.session.flashbag().get('servicesOKStatus') %}
+            <div class="row" style="width: 88.5%; margin-left: 5.7%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="container">
+            <form class="form" action="{{ path("customer_services") }}" method="post">
+                <div class="container-services-block">
+                    <div class="col-sm-4">
+                        <p style="height: 8rem; font-size: 22px; font-weight: bold">Paquete planes de alimentación</p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <input type="submit" name="submit" class="btn btn-primary" value="Contratar"/>
+                    </div>
+                    <div class="col-sm-4">
+                        <p style="height: 8rem; font-size: 22px; font-weight: bold">Paquete planes de acompañamiento</p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <input type="submit" name="submit" class="btn btn-primary" value="Contratar"/>
+                    </div>
+                    <div class="col-sm-4">
+                        <p style="height: 8rem; font-size: 22px; font-weight: bold">Paquete Premium</p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <input type="submit" name="submit" class="btn btn-primary" value="Contratar"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    {% include 'footer.html.twig' %}
+    </html>
+{% endblock %}

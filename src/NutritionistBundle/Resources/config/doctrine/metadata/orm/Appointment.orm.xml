@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Appointment" table="appointment">
+    <id name="idAppointment" type="integer" column="id_appointment">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idNutritionist" type="integer" column="id_nutritionist" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idCustomer" type="integer" column="id_customer" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="date" type="datetime" column="date" nullable="false"/>
+    <field name="duration" type="integer" column="duration" nullable="false">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">60</option>
+      </options>
+    </field>
+    <field name="description" type="text" column="description" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="appointmentType" type="string" column="appointment_type" length="124" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">presencial</option>
+      </options>
+    </field>
+    <field name="appointmentLink" type="string" column="appointment_link" length="124" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="dateAdd" type="datetime" column="date_add" nullable="false"/>
+    <field name="dateUpd" type="datetime" column="date_upd" nullable="false"/>
+  </entity>
+</doctrine-mapping>

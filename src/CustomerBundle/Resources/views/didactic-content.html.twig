@@ -1,0 +1,60 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+        <header>
+            <!-- Login Page stylesheet-->
+            <link rel="stylesheet" href="{{ asset('bundles/framework/css/customerpages.css') }}" />
+            <!-- Footer stylesheet-->
+            <link rel="stylesheet" href="{{ asset('bundles/framework/css/footer.css') }}" />
+            <!-- Customs JS -->
+            <script src="{{ asset('bundles/framework//js/customs.js') }}"></script>
+        </header>
+        <section id="default-header">
+            {% include 'header.html.twig' %}
+        </section>
+        <section id="customer-header">
+            {% include 'customerheader.html.twig' %}
+        </section>
+        <section id="didactic-content">
+            <div class="container">
+                <form class="form" action="{{ path("customer_didactic_content") }}" method="post">
+                    <div class="col-sm-3 didactic-content-filters">
+                        <h2>Categorias</h2>
+                        {% for category in categories %}
+                            <p style="margin:0">
+                                <input style="display: none" type="submit" name="submit" id="categorySearch" value="categorySearch">
+                                <a style="font-size: 16px; color: black" href="#" id="category" onclick="categoryFilter({{ category.idCategory }});">{{ category.name }}</a>
+                            </p>
+                        {% endfor %}
+                        <input type="hidden" name="category_search" id="category"/>
+                    </div>
+                    <div class="col-sm-8 didactic-content-content">
+                        <nav class="navbar navbar-light bg-light">
+                            <div class="container-fluid">
+                                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="entry_search">
+                                <button class="btn btn-outline-success" type="submit" name="submit" value="entrySearch">Buscar</button>
+                            </div>
+                        </nav>
+                        <div id="entries-content">
+                            {% for entry in entries %}
+                                <div class="didactic-entry">
+                                    <div class="col-sm-11 didactic-entry-resume">
+                                        <a style="font-size: 17px;color: black; font-weight: bold;" href="{{ path("customer_didactic_content_view",{"id_entry":entry.idEntry}) }}">{{ entry.title }}</a>
+                                        <p>{{ entry.description }}</p>
+                                    </div>
+                                    <div class="col-sm-1 didactic-entry-actions">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"
+                                             onclick="redirectTo('didactic_content','/'+{{ entry.idEntry }})">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        {% include 'footer.html.twig' %}
+    </html>
+{% endblock %}

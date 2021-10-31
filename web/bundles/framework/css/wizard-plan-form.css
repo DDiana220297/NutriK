@@ -1,0 +1,254 @@
+* {
+    margin: 0;
+    padding: 0
+}
+
+html {
+    height: 100%
+}
+
+#grad1 {
+    background-color: #9C27B0;
+    background-image: linear-gradient(120deg, #FF4081, #81D4FA)
+}
+
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 20px
+}
+
+#msform fieldset .form-card {
+    background: transparent;
+    border: 0 none;
+    border-radius: 0px;
+    padding: 20px 40px 30px 40px;
+    position: relative
+}
+
+#msform fieldset {
+    border-style: solid;
+    border-color: #00766c;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 69rem;
+    color: black;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 20px;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+    position: relative
+}
+
+#msform fieldset:not(:first-of-type) {
+    display: none
+}
+
+#msform fieldset .form-card {
+    text-align: left;
+    height: 62rem;
+    color: #9E9E9E
+}
+
+#msform input{
+    padding: 0px 8px 4px 8px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 16px;
+    letter-spacing: 1px
+}
+
+#msform input:focus{
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: none;
+    font-weight: bold;
+    border-bottom: 2px solid skyblue;
+    outline-width: 0
+}
+
+#msform .action-button {
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    width: 150px;
+    background: skyblue;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+    height: 40px;
+    --text-opacity: 1;
+    color: white;
+    border-bottom-width: 4px;
+    --border-opacity: 1;
+    border-color: #00A295;
+    border-radius: .25rem;
+    position: relative;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue
+}
+
+#msform .action-button-previous {
+    font-family: 'HelveticaNeue-UltraLight', 'Helvetica Neue UltraLight', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    width: 150px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+    height: 40px;
+    --text-opacity: 1;
+    color: white;
+    border-bottom-width: 4px;
+    --border-opacity: 1;
+    border-color: #bdbdbd;
+    border-radius: .25rem;
+    position: relative;
+    background: linear-gradient(to bottom, #8d8d8d 0%, #bdbdbd 100%);
+}
+
+#msform .action-button-previous:hover,
+#msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #616161
+}
+
+select.list-dt {
+    border: none;
+    outline: 0;
+    border-bottom: 1px solid #ccc;
+    padding: 2px 5px 3px 5px;
+    margin: 2px
+}
+
+select.list-dt:focus {
+    border-bottom: 2px solid skyblue
+}
+
+.fs-title {
+    font-size: 25px;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: left
+}
+
+#progressbar {
+    margin-bottom: 10px;
+    overflow: hidden;
+    color: lightgrey;
+}
+
+#progressbar .active {
+    color: #000000
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 12px;
+    width: 14.2%;
+    float: left;
+    position: relative
+}
+
+#progressbar #monday:before {
+    font-family: FontAwesome;
+    content: "\f023"
+}
+
+#progressbar #tuesday:before {
+    font-family: FontAwesome;
+    content: "\f007"
+}
+
+#progressbar #wednesday:before {
+    font-family: FontAwesome;
+    content: "\f09d"
+}
+
+#progressbar #thursday:before {
+    font-family: FontAwesome;
+    content: "\f00c"
+}
+
+#progressbar #friday:before {
+    font-family: FontAwesome;
+    content: "\f00c"
+}
+
+#progressbar #saturday:before {
+    font-family: FontAwesome;
+    content: "\f00c"
+}
+
+#progressbar #sunday:before {
+    font-family: FontAwesome;
+    content: "\f00c"
+}
+
+#progressbar li:before {
+    width: 30px;
+    height: 30px;
+    line-height: 45px;
+    display: block;
+    font-size: 18px;
+    color: #ffffff;
+    background: lightgrey;
+    border-radius: 50%;
+    margin: 10px auto 10px auto;
+    padding: 2px
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgrey;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: #00766c;
+}
+
+.radio-group {
+    position: relative;
+    margin-bottom: 25px
+}
+
+.radio {
+    display: inline-block;
+    width: 204px;
+    height: 104px;
+    border-radius: 0;
+    background: #00766c;
+    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 8px 2px
+}
+
+.radio:hover {
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3)
+}
+
+.radio.selected {
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1)
+}
+
+.fit-image {
+    width: 100%;
+    object-fit: cover
+}
