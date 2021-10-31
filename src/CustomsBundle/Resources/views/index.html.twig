@@ -22,11 +22,20 @@
         <!-- Header stylesheet-->
         <link rel="stylesheet" href="{{ asset('bundles/framework/css/header.css') }}" />
 
+        <!-- Footer stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/footer.css') }}" />
+
+        <!-- Homepage stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/homepage.css') }}" />
+
         <!-- Menu component javascript -->
         <script src="{{ asset('bundles/framework/js/MenuComponent.js') }}"></script>
 
         <!-- Customs JS -->
         <script src="{{ asset('bundles/framework//js/customs.js') }}"></script>
+
+        <!-- Chart JS -->
+        <script src="{{ asset('public/js/chart.js') }}"></script>
     </header>
     <section id="default-header">
         {% include 'header.html.twig' %}
@@ -35,12 +44,67 @@
         <section id="customer-header">
             {% include 'customerheader.html.twig' %}
         </section>
+        <section id="customer-homepage">
+
+        </section>
+    {% else %}
+        <section id="nutritionist-homepage">
+            <div class="container">
+                <div class="col-sm-12">
+                    <div id="nutritionist-homepage-block">
+                        <div class="col-sm-6">
+                            <div class="col-sm-12 nutritionist-appointments-events">
+                                <h3>Mis próximas consultas</h3>
+                                <hr/>
+                                <div class="nutritionist-appointments">
+                                    {% for appointment in appointments %}
+                                        <p>
+                                            <strong>{{ appointment.date|date('Y-m-d H:i:s') }}:</strong>
+                                            <a href="{{ path("nutritionist_edit_appointment",{"id_appointment":appointment.idAppointment}) }}">{{ appointment.description }}</a>
+                                        </p>
+                                    {% endfor %}
+                                </div>
+
+                                <h3>Mis próximos eventos</h3>
+                                <hr/>
+                                <div class="nutritionist-events">
+                                    {% for event in events %}
+                                        <p>
+                                            <strong>{{ event.date|date('Y-m-d H:i:s') }}:</strong>
+                                            <a href="{{ path("nutritionist_edit_event",{"id_event":event.idEvent}) }}">{{ event.title }}</a>
+                                        </p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="col-sm-12 nutritionist-kpis">
+                                <img src="{{ asset('chart.png') }}">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="nutritionist-notifications">
+                                <h3>Mis notificaciones</h3>
+                                {% for log in logs %}
+                                    <div class="row">
+                                        {% if 'add' in log.source %}
+                                            <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                                        {% elseif 'delete' in log.source %}
+                                            <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                                        {% else %}
+                                            <div class="alert alert-info" role="alert" style="margin-bottom: 0">
+                                        {% endif %}
+                                            {{ log.context }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     {% endif %}
-    <section id="content">
-        Content Default
-    </section>
-    <footer>
-        Trabajo de fin de grado Nutrik
-    </footer>
+
+
+    {% include 'footer.html.twig' %}
     </html>
 {% endblock %}

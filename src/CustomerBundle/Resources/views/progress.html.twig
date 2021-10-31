@@ -12,25 +12,50 @@
         {% include 'customerheader.html.twig' %}
     </section>
     <section id="customer-progress">
+        {% for message in  app.session.flashbag().get('progressKOStatus') %}
+            <div class="row" style="width: 90%; margin-left: 5%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        {% for message in  app.session.flashbag().get('progressOKStatus') %}
+            <div class="row" style="width: 90%; margin-left: 5%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class="container">
             <div class="col-sm-8">
                 <div id="customer-progress-graphics">
-
+                    <img src="{{ asset('chart.png') }}" style="width: 100%;height: 63rem;">
                 </div>
             </div>
             <div class="col-sm-4">
-                <div id="customer-progress-metrics">
-                    <h3>Registrar métricas:</h3>
-                    <div id="customer-progress-fields" style="margin-top: 30px">
-                        <label for="weight">Peso:</label><input type="text" id="weight" name="_weight" class="form-control"/>
-                        <label for="fat-percentage">% Grasa corporal:</label><input type="text" id="fat-percentage" name="_fat-percentage" class="form-control"/>
-                        <label for="muscle-percentage">% Masa muscular:</label><input type="text" id="muscle-percentage" name="_muscle-percentage" class="form-control"/>
-                        <label for="liquids-percentage">% Líquidos:</label><input type="text" id="liquids-percentage" name="_liquids-percentage" class="form-control"/>
-                        <div class="save-button-item" style="width: 100%; margin-top: 35px">
-                            <input class="btn save-button" type="submit" value="Guardar"/>
+                <form class="form" action="{{ path("customer_progress") }}" method="post">
+                    <div id="customer-progress-metrics">
+                        <h3 style="margin:0">Registrar métricas:</h3>
+                        <div id="customer-progress-fields" style="margin-top: 30px">
+                            <label for="weight">Peso:</label><input type="text" id="weight" name="weight" class="form-control" required {% if customer_metrics != false %}value="{{ customer_metrics.weight }}"{% endif %}/>
+                            <label for="age">Edad:</label><input type="number" id="age" name="age" class="form-control" required {% if customer_metrics != false %}value="{{ customer_metrics.age }}"{% endif %}/>
+                            <label for="height">Altura:</label><input type="text" id="height" name="height" class="form-control" required {% if customer_metrics != false %}value="{{ customer_metrics.height }}"{% endif %}/>
+                            <label for="fat-percentage">% Grasa corporal:</label><input type="text" id="fat-percentage" name="fat_percentage" class="form-control" {% if customer_metrics != false %}value="{{ customer_metrics.fatPercentage }}"{% endif %}/>
+                            <label for="muscle-percentage">% Masa muscular:</label><input type="text" id="muscle-percentage" name="muscle_percentage" class="form-control" {% if customer_metrics != false %}value="{{ customer_metrics.musclePercentage }}"{% endif %}/>
+                            <label for="liquids-percentage">% Líquidos:</label><input type="text" id="liquids-percentage" name="liquids_percentage" class="form-control" {% if customer_metrics != false %}value="{{ customer_metrics.liquidPercentage }}"{% endif %}/>
+                            <label for="actividad">Actividad:</label>
+                            <select id="actividad" name="actividad" class="form-select">
+                                <option value="1" {% if customer_metrics != false and customer_metrics.movement == 1 %}selected{% endif %}>Bajo</option>
+                                <option value="2" {% if customer_metrics != false and customer_metrics.movement == 2 %}selected{% endif %}}>Moderado</option>
+                                <option value="3" {% if customer_metrics != false and customer_metrics.movement == 3 %}selected{% endif %}>Activo</option>
+                                <option value="4" {% if customer_metrics != false and customer_metrics.movement == 4 %}selected{% endif %}>Muy Activo</option>
+                            </select>
+                            <div class="save-button-item" style="width: 100%; margin-top: 25px">
+                                <input class="btn save-button" type="submit" value="Guardar"/>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>

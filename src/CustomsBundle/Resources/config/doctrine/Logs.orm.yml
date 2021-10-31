@@ -1,0 +1,37 @@
+CustomsBundle\Entity\Logs:
+    type: entity
+    table: logs
+    id:
+        idLog:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_log
+            generator:
+                strategy: IDENTITY
+    fields:
+        idUser:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_user
+        source:
+            type: string
+            nullable: false
+            length: 248
+            options:
+                fixed: false
+        context:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+        dateAdd:
+            type: datetime
+            nullable: false
+            column: date_add
+    lifecycleCallbacks: {  }

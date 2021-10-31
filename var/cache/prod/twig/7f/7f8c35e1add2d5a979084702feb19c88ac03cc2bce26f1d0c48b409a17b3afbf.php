@@ -116,9 +116,13 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "firstname", []), "html", null, true);
             echo " ";
             echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "lastname", []), "html", null, true);
-            echo " ;) <a style=\"color: white\" href=\"";
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_accountpage");
-            echo "\">Mi cuenta</a></p></li>
+            echo " ";
+            if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_NUTR")) {
+                echo "<a style=\"color: white\" href=\"";
+                echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_accountpage");
+                echo "\">Mi cuenta</a>";
+            }
+            echo "</p></li>
                             ";
         } else {
             // line 54
@@ -174,7 +178,7 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
 
     public function getDebugInfo()
     {
-        return array (  154 => 7,  143 => 64,  141 => 63,  133 => 57,  128 => 55,  125 => 54,  115 => 52,  113 => 51,  102 => 43,  86 => 30,  80 => 27,  74 => 24,  68 => 21,  59 => 15,  53 => 12,  49 => 11,  44 => 8,  42 => 7,  34 => 1,);
+        return array (  158 => 7,  147 => 64,  145 => 63,  137 => 57,  132 => 55,  129 => 54,  115 => 52,  113 => 51,  102 => 43,  86 => 30,  80 => 27,  74 => 24,  68 => 21,  59 => 15,  53 => 12,  49 => 11,  44 => 8,  42 => 7,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -238,7 +242,7 @@ class __TwigTemplate_2ae61efed0f65316a5cbc45241a80b50d0d18b167dedc101bfab1a96ff5
                         <ul class=\"nav navbar-nav navbar-right\">
 
                             {% if app.user != null %}
-                                <li><p style=\"padding-top: 15px; padding-bottom: 15px\">Hola :) {{ app.user.firstname }} {{ app.user.lastname }} ;) <a style=\"color: white\" href=\"{{ path('nutritionist_accountpage') }}\">Mi cuenta</a></p></li>
+                                <li><p style=\"padding-top: 15px; padding-bottom: 15px\">Hola :) {{ app.user.firstname }} {{ app.user.lastname }} {% if is_granted('ROLE_NUTR') %}<a style=\"color: white\" href=\"{{ path('nutritionist_accountpage') }}\">Mi cuenta</a>{% endif %}</p></li>
                             {% else %}
                                 <li><p style=\"padding-top: 15px; padding-bottom: 15px\">Hola :)</p></li>
                                 <li><a href=\"{{ path('login') }}\">Inicia Sesion</a></li>

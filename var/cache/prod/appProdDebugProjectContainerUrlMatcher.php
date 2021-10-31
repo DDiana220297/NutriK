@@ -111,40 +111,48 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
 
             }
 
-            elseif (0 === strpos($pathinfo, '/nutritionist-add-')) {
-                // nutritionist_add_didactic_content
-                if ('/nutritionist-add-didactic-content' === $pathinfo) {
-                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAddDidacticContentAction',  '_route' => 'nutritionist_add_didactic_content',);
+            elseif (0 === strpos($pathinfo, '/nutritionist-a')) {
+                if (0 === strpos($pathinfo, '/nutritionist-add-')) {
+                    // nutritionist_add_didactic_content
+                    if ('/nutritionist-add-didactic-content' === $pathinfo) {
+                        return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAddDidacticContentAction',  '_route' => 'nutritionist_add_didactic_content',);
+                    }
+
+                    // nutritionist_add_plan
+                    if ('/nutritionist-add-plan' === $pathinfo) {
+                        return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAddPlansAction',  '_route' => 'nutritionist_add_plan',);
+                    }
+
+                    // nutritionist_add_event
+                    if ('/nutritionist-add-event' === $pathinfo) {
+                        return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAddEventAction',  '_route' => 'nutritionist_add_event',);
+                    }
+
+                    // nutritionist_add_customer
+                    if ('/nutritionist-add-customer' === $pathinfo) {
+                        return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAddCustomerAction',  '_route' => 'nutritionist_add_customer',);
+                    }
+
+                    // nutritionist_add_recipe
+                    if ('/nutritionist-add-recipe' === $pathinfo) {
+                        return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAddRecipeAction',  '_route' => 'nutritionist_add_recipe',);
+                    }
+
                 }
 
-                // nutritionist_add_plan
-                if ('/nutritionist-add-plan' === $pathinfo) {
-                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAddPlansAction',  '_route' => 'nutritionist_add_plan',);
+                // nutritionist_all_customers
+                if ('/nutritionist-all-customers' === $pathinfo) {
+                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAllCustomersAction',  '_route' => 'nutritionist_all_customers',);
                 }
 
-                // nutritionist_add_event
-                if ('/nutritionist-add-event' === $pathinfo) {
-                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAddEventAction',  '_route' => 'nutritionist_add_event',);
-                }
-
-                // nutritionist_add_customer
-                if ('/nutritionist-add-customer' === $pathinfo) {
-                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAddCustomerAction',  '_route' => 'nutritionist_add_customer',);
-                }
-
-                // nutritionist_add_recipe
-                if ('/nutritionist-add-recipe' === $pathinfo) {
-                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAddRecipeAction',  '_route' => 'nutritionist_add_recipe',);
+                // nutritionist_appointments
+                if ('/nutritionist-appointments' === $pathinfo) {
+                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAppointmentsAction',  '_route' => 'nutritionist_appointments',);
                 }
 
             }
 
-            // nutritionist_appointments
-            if ('/nutritionist-appointments' === $pathinfo) {
-                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAppointmentsAction',  '_route' => 'nutritionist_appointments',);
-            }
-
-            if (0 === strpos($pathinfo, '/nutritionist-edit-')) {
+            elseif (0 === strpos($pathinfo, '/nutritionist-edit-')) {
                 // nutritionist_edit_didactic_content
                 if (0 === strpos($pathinfo, '/nutritionist-edit-didactic-content') && preg_match('#^/nutritionist\\-edit\\-didactic\\-content/(?P<id_entry>[^/]++)$#sD', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, ['_route' => 'nutritionist_edit_didactic_content']), array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistEditDidacticContentAction',));
@@ -209,6 +217,26 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
             return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::newsAction',  '_route' => 'customer_news',);
         }
 
+        // customer_services
+        if ('/services' === $pathinfo) {
+            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::servicesAction',  '_route' => 'customer_services',);
+        }
+
+        // customer_event_view
+        if (0 === strpos($pathinfo, '/event') && preg_match('#^/event/(?P<id_event>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'customer_event_view']), array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::eventViewAction',));
+        }
+
+        // customer_didactic_content_view
+        if (0 === strpos($pathinfo, '/didactic_content') && preg_match('#^/didactic_content/(?P<id_entry>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'customer_didactic_content_view']), array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::didactiContentViewAction',));
+        }
+
+        // customer_diary
+        if ('/diary' === $pathinfo) {
+            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::diaryAction',  '_route' => 'customer_diary',);
+        }
+
         // customer_didactic_content
         if ('/content' === $pathinfo) {
             return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::didacticContentAction',  '_route' => 'customer_didactic_content',);
@@ -217,11 +245,6 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
         // customer_calendar
         if ('/calendar' === $pathinfo) {
             return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::calendarAction',  '_route' => 'customer_calendar',);
-        }
-
-        // customer_services
-        if ('/services' === $pathinfo) {
-            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::servicesAction',  '_route' => 'customer_services',);
         }
 
         if (0 === strpos($pathinfo, '/p')) {
@@ -255,14 +278,9 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
 
         }
 
-        // customer_diary
-        if ('/diary' === $pathinfo) {
-            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::diaryAction',  '_route' => 'customer_diary',);
-        }
-
         // customer_recipes
-        if ('/recipes' === $pathinfo) {
-            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::recipesAction',  '_route' => 'customer_recipes',);
+        if (0 === strpos($pathinfo, '/recipes') && preg_match('#^/recipes/(?P<id_recipe>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'customer_recipes']), array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::recipesAction',));
         }
 
         // register

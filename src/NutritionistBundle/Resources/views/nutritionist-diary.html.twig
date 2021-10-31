@@ -19,7 +19,7 @@
         <div class="container">
             <div class="col-sm-12">
                 <div id="diary-block">
-                    <form class="form" action="{{ path("nutritionist_diary") }}" method="post">
+                    <form class="form" action="{{ path("nutritionist_diary") }}" method="post" novalidate>
                         <div class="col-sm-6">
                             <h3>
                                 {% if today_datetime != false %}{{ today_datetime|date('l', "Europe/Paris") }} - {{ today_datetime|date('d', "Europe/Paris") }} de {{ today_datetime|date('F', "Europe/Paris") }}

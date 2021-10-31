@@ -3,10 +3,12 @@
 namespace NutritionistBundle\Controller;
 
 use CustomsBundle\Entity\Entry;
+use CustomsBundle\Entity\Logs;
 use CustomsBundle\Entity\NutritionistCustomerCard;
 use CustomsBundle\Entity\User;
 use CustomsBundle\Form\UserType;
 use CustomsBundle\Entity\CustomerMetrics;
+use DateInterval;
 use NutritionistBundle\Entity\Appointment;
 use NutritionistBundle\Entity\CustomerNutritionist;
 use NutritionistBundle\Entity\DiaryPages;
@@ -316,6 +318,7 @@ class NutritionistController extends Controller
                     }
                     else{
                         $this->session->getFlashBag()->add('didacticContentOKStatus',"El contenido se ha guardado correctamente.");
+                        $this->addLog('add_didactic_content', $user->getIdUser(), "Nueva entrada didáctica creada: $title");
                         return $this->redirectToRoute('nutritionist_didactic_content');
                     }
                 }
@@ -355,6 +358,7 @@ class NutritionistController extends Controller
             }
             else{
                 $this->session->getFlashBag()->add('didacticContentOKStatus',"El contenido se ha borrado correctamente.");
+                $this->addLog('delete_didactic_content', $entry->getIdUser()->getIdUser(), "Se ha borrado una entrada en el contenido didáctico: ". $entry->getTitle());
             }
         }
         return $this->redirectToRoute('nutritionist_didactic_content');
@@ -406,6 +410,7 @@ class NutritionistController extends Controller
             }
             else{
                 $this->session->getFlashBag()->add('editDidacticContentOKStatus',"El contenido se ha guardado correctamente.");
+                $this->addLog('edit_didactic_content', $entry->getIdUser()->getIdUser(), "Entrada didáctica modificada: ". $entry->getTitle());
             }
         }
 
@@ -491,6 +496,7 @@ class NutritionistController extends Controller
                 }
 
                 $this->session->getFlashBag()->add('weeklyPlansOKStatus',"El plan semanal se ha borrado correctamente.");
+                $this->addLog('delete_weekly_plan', $plan->getIdUser(), "Planificación semanal borrada: ". $plan->getTitle());
             }
         }
         return $this->redirectToRoute('nutritionist_plans');
@@ -1190,6 +1196,7 @@ class NutritionistController extends Controller
                             $monday_workout_exercises = $request->request->get('monday_workout_exercises');
                             if ($monday_workout_sort != "" && $monday_workout != "" && $monday_workout_exercises != "") {
                                 $monday_workout_time = $request->request->get('monday_workout_time');
+                                $monday_workout_time = new \DateTime($monday_workout_time);
                                 $monday_workout_notes = $request->request->get('monday_workout_notes');
                                 $monday_workout_exercises = implode(',', array_keys($monday_workout_exercises));
 
@@ -1203,7 +1210,7 @@ class NutritionistController extends Controller
                                     $mondayWorkout->setWorkoutSort($monday_workout_sort);
                                     $mondayWorkout->setDay('Lunes');
                                     $mondayWorkout->setDateAdd(new \DateTime('NOW'));
-                                    $mondayWorkout->setHour($monday_workout_time);
+                                    $mondayWorkout->setHour($monday_workout_time->format('H:i:s'));
                                     $mondayWorkout->setWorkout($monday_workout);
                                     $mondayWorkout->setWorkoutExercises($monday_workout_exercises);
                                     $mondayWorkout->setWorkoutNotes($monday_workout_notes);
@@ -1211,6 +1218,7 @@ class NutritionistController extends Controller
                                     $em->flush();
                                 }
                                 else{
+
                                     $mondayWorkout->setHour($monday_workout_time);
                                     $mondayWorkout->setWorkout($monday_workout);
                                     $mondayWorkout->setWorkoutExercises($monday_workout_exercises);
@@ -1231,6 +1239,7 @@ class NutritionistController extends Controller
                             $tuesday_workout_exercises = $request->request->get('tuesday_workout_exercises');
                             if ($tuesday_workout_sort != "" && $tuesday_workout != "" && $tuesday_workout_exercises != "") {
                                 $tuesday_workout_time = $request->request->get('tuesday_workout_time');
+                                $tuesday_workout_time = new \DateTime($tuesday_workout_time);
                                 $tuesday_workout_notes = $request->request->get('tuesday_workout_notes');
                                 $tuesday_workout_exercises = implode(',', array_keys($tuesday_workout_exercises));
 
@@ -1272,6 +1281,7 @@ class NutritionistController extends Controller
                             $wednesday_workout_exercises = $request->request->get('wednesday_workout_exercises');
                             if ($wednesday_workout_sort != "" && $wednesday_workout != "" && $wednesday_workout_exercises != "") {
                                 $wednesday_workout_time = $request->request->get('wednesday_workout_time');
+                                $wednesday_workout_time = new \DateTime($wednesday_workout_time);
                                 $wednesday_workout_notes = $request->request->get('wednesday_workout_notes');
                                 $wednesday_workout_exercises = implode(',', array_keys($wednesday_workout_exercises));
 
@@ -1314,6 +1324,7 @@ class NutritionistController extends Controller
                             $thursday_workout_exercises = $request->request->get('thursday_workout_exercises');
                             if ($thursday_workout_sort != "" && $thursday_workout != "" && $thursday_workout_exercises != "") {
                                 $thursday_workout_time = $request->request->get('thursday_workout_time');
+                                $thursday_workout_time = new \DateTime($thursday_workout_time);
                                 $thursday_workout_notes = $request->request->get('thursday_workout_notes');
                                 $thursday_workout_exercises = implode(',', array_keys($thursday_workout_exercises));
 
@@ -1355,6 +1366,7 @@ class NutritionistController extends Controller
                             $friday_workout_exercises = $request->request->get('friday_workout_exercises');
                             if ($friday_workout_sort != "" && $friday_workout != "" && $friday_workout_exercises != "") {
                                 $friday_workout_time = $request->request->get('friday_workout_time');
+                                $friday_workout_time = new \DateTime($friday_workout_time);
                                 $friday_workout_notes = $request->request->get('friday_workout_notes');
                                 $friday_workout_exercises = implode(',', array_keys($friday_workout_exercises));
 
@@ -1397,6 +1409,7 @@ class NutritionistController extends Controller
                             $saturday_workout_exercises = $request->request->get('saturday_workout_exercises');
                             if ($saturday_workout_sort != "" && $saturday_workout != "" && $saturday_workout_exercises != "") {
                                 $saturday_workout_time = $request->request->get('saturday_workout_time');
+                                $saturday_workout_time = new \DateTime($saturday_workout_time);
                                 $saturday_workout_notes = $request->request->get('saturday_workout_notes');
                                 $saturday_workout_exercises = implode(',', array_keys($saturday_workout_exercises));
 
@@ -1438,6 +1451,7 @@ class NutritionistController extends Controller
                             $sunday_workout_exercises = $request->request->get('sunday_workout_exercises');
                             if ($sunday_workout_sort != "" && $sunday_workout != "" && $sunday_workout_exercises != "") {
                                 $sunday_workout_time = $request->request->get('sunday_workout_time');
+                                $sunday_workout_time = new \DateTime($sunday_workout_time);
                                 $sunday_workout_notes = $request->request->get('sunday_workout_notes');
                                 $sunday_workout_exercises = implode(',', array_keys($sunday_workout_exercises));
 
@@ -1468,6 +1482,7 @@ class NutritionistController extends Controller
                                 }
                             }
                         }
+                        $this->addLog('edit_weekly_plan', $plan->getIdUser(), "Planificación semanal modificada: ". $plan->getTitle());
                     }
                 }
             }
@@ -2288,6 +2303,7 @@ class NutritionistController extends Controller
                             $monday_workout_exercises = $request->request->get('monday_workout_exercises');
                             if($monday_workout_sort != "" && $monday_workout != "" && $monday_workout_exercises != ""){
                                 $monday_workout_time = $request->request->get('monday_workout_time');
+                                $monday_workout_time = new \DateTime($monday_workout_time);
                                 $monday_workout_notes = $request->request->get('monday_workout_notes');
                                 $monday_workout_exercises = implode(',', array_keys($monday_workout_exercises));
 
@@ -2319,6 +2335,7 @@ class NutritionistController extends Controller
                             $tuesday_workout_exercises = $request->request->get('tuesday_workout_exercises');
                             if($tuesday_workout_sort != "" && $tuesday_workout != "" && $tuesday_workout_exercises != ""){
                                 $tuesday_workout_time = $request->request->get('tuesday_workout_time');
+                                $tuesday_workout_time = new \DateTime($tuesday_workout_time);
                                 $tuesday_workout_notes = $request->request->get('tuesday_workout_notes');
                                 $tuesday_workout_exercises = implode(',', array_keys($tuesday_workout_exercises));
 
@@ -2350,6 +2367,7 @@ class NutritionistController extends Controller
                             $wednesday_workout_exercises = $request->request->get('wednesday_workout_exercises');
                             if($wednesday_workout_sort != "" && $wednesday_workout != "" && $wednesday_workout_exercises != ""){
                                 $wednesday_workout_time = $request->request->get('wednesday_workout_time');
+                                $wednesday_workout_time = new \DateTime($wednesday_workout_time);
                                 $wednesday_workout_notes = $request->request->get('wednesday_workout_notes');
                                 $wednesday_workout_exercises = implode(',', array_keys($wednesday_workout_exercises));
 
@@ -2381,6 +2399,7 @@ class NutritionistController extends Controller
                             $thursday_workout_exercises = $request->request->get('thursday_workout_exercises');
                             if($thursday_workout_sort != "" && $thursday_workout != "" && $thursday_workout_exercises != ""){
                                 $thursday_workout_time = $request->request->get('thursday_workout_time');
+                                $thursday_workout_time = new \DateTime($thursday_workout_time);
                                 $thursday_workout_notes = $request->request->get('thursday_workout_notes');
                                 $thursday_workout_exercises = implode(',', array_keys($thursday_workout_exercises));
 
@@ -2412,6 +2431,7 @@ class NutritionistController extends Controller
                             $friday_workout_exercises = $request->request->get('friday_workout_exercises');
                             if($friday_workout_sort != "" && $friday_workout != "" && $friday_workout_exercises != ""){
                                 $friday_workout_time = $request->request->get('friday_workout_time');
+                                $friday_workout_time = new \DateTime($friday_workout_time);
                                 $friday_workout_notes = $request->request->get('friday_workout_notes');
                                 $friday_workout_exercises = implode(',', array_keys($friday_workout_exercises));
 
@@ -2443,6 +2463,7 @@ class NutritionistController extends Controller
                             $saturday_workout_exercises = $request->request->get('saturday_workout_exercises');
                             if($saturday_workout_sort != "" && $saturday_workout != "" && $saturday_workout_exercises != ""){
                                 $saturday_workout_time = $request->request->get('saturday_workout_time');
+                                $saturday_workout_time = new \DateTime($saturday_workout_time);
                                 $saturday_workout_notes = $request->request->get('saturday_workout_notes');
                                 $saturday_workout_exercises = implode(',', array_keys($saturday_workout_exercises));
 
@@ -2474,6 +2495,7 @@ class NutritionistController extends Controller
                             $sunday_workout_exercises = $request->request->get('sunday_workout_exercises');
                             if($sunday_workout_sort != "" && $sunday_workout != "" && $sunday_workout_exercises != ""){
                                 $sunday_workout_time = $request->request->get('sunday_workout_time');
+                                $sunday_workout_time = new \DateTime($sunday_workout_time);
                                 $sunday_workout_notes = $request->request->get('sunday_workout_notes');
                                 $sunday_workout_exercises = implode(',', array_keys($sunday_workout_exercises));
 
@@ -2494,6 +2516,9 @@ class NutritionistController extends Controller
                                 $em->flush();
                             }
                         }
+                        $this->addLog('add_weekly_plan', $plan->getIdUser(), "Planificación semanal creada: ". $plan->getTitle());
+                        $this->session->getFlashBag()->add('weeklyPlansOKStatus',"Planificación semanal creada correctamente");
+                        return $this->redirectToRoute('nutritionist_plans');
                     }
                 }
                 else{
@@ -2601,6 +2626,7 @@ class NutritionistController extends Controller
                     }
                     else{
                         $this->session->getFlashBag()->add('eventsOKStatus',"El evento se ha creado correctamente");
+                        $this->addLog('add_event', $event->getIdUser(), "Evento creado: ". $event->getTitle());
                         return $this->redirectToRoute('nutritionist_events');
                     }
                 }
@@ -2638,6 +2664,7 @@ class NutritionistController extends Controller
             }
             else{
                 $this->session->getFlashBag()->add('eventsOKStatus',"El evento se ha borrado correctamente.");
+                $this->addLog('delete_event', $event->getIdUser(), "Evento borrado: ". $event->getTitle());
             }
         }
         return $this->redirectToRoute('nutritionist_events');
@@ -2698,6 +2725,7 @@ class NutritionistController extends Controller
                 }
                 else{
                     $this->session->getFlashBag()->add('editEventOKStatus',"El evento se ha modificado correctamente");
+                    $this->addLog('edit_event', $event->getIdUser(), "Evento modificado: ". $event->getTitle());
                 }
             }
         }
@@ -2757,6 +2785,58 @@ class NutritionistController extends Controller
     }
 
     /**
+     * Fn que se encarga de renderizar el listado de clientes asociados al nutricionista loggeado
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function nutritionistAllCustomersAction(Request $request)
+    {
+        $customers = array();
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $user = reset($users);
+            if($request->isMethod('POST') && $request->request->get('customer_search') != ""){
+                $key = $request->request->get('customer_search');
+                $customers = $this->findCustomerByKey($key);
+            }
+            else{
+                $customers_customer = $user_repository->findBy(array("role" => 'ROLE_CUSTOMER'));
+                $customers_guest = $user_repository->findBy(array("role" => 'ROLE_GUEST'));
+                $customers = array_merge($customers_customer, $customers_guest);
+            }
+
+            if ($request->isMethod('POST') && $request->request->get('customer_dependency_ids') != ""){
+                $customers_dependency = $request->request->get('customer_dependency_ids');
+                foreach ($customers_dependency as $dependency){
+                    $customer_nutritionist_dependency = new CustomerNutritionist();
+                    $customer_nutritionist_dependency->setIdCustomer($dependency);
+                    $customer_nutritionist_dependency->setIdNutritionist($user->getIdUser());
+                    $customer_nutritionist_dependency->setDateAdd(new \DateTime('NOW'));
+                    $em->persist($customer_nutritionist_dependency);
+                    $em->flush();
+                    $this->addLog('add_customer', $user->getIdUser(), "Relación con el cliente creada: ". $dependency);
+                }
+                $this->session->getFlashBag()->add('customersOKStatus',"Las relaciones con los clientes seleccionados se han creado correctamente.");
+                return $this->redirectToRoute('nutritionist_customers');
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('customersKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+
+        return $this->render('@Nutritionist/nutritionist-all-customers.html.twig',
+            [
+                "customers" => $customers
+            ]
+        );
+    }
+
+    /**
      * Fn que se encarga de la creacion de un cliente asociado al nutricionista loggeado
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response|null
@@ -2794,6 +2874,7 @@ class NutritionistController extends Controller
                 if(isset($password) && $password != ""){
                     if($password != $confirm_password){
                         $this->session->getFlashBag()->add('addCustomerKOStatus',"Se ha producido un error. La contraseñas indicadas deben coincidir.");
+                        return $this->redirectToRoute('nutritionist_add_customer');
                     }
                     else{
                         /**
@@ -2843,7 +2924,7 @@ class NutritionistController extends Controller
                     $customer_nutritionist_dependency->setDateAdd(new \DateTime('NOW'));
                     $em->persist($customer_nutritionist_dependency);
                     $em->flush();
-
+                    $this->addLog('add_customer', $user->getIdUser(), "Cliente dado de alta: ". $customer->getEmail());
                     return $this->redirectToRoute('nutritionist_customers');
 
                 }
@@ -2890,6 +2971,7 @@ class NutritionistController extends Controller
             if(isset($password) && $password != ""){
                 if($password != $confirm_password){
                     $this->session->getFlashBag()->add('addCustomerKOStatus',"Se ha producido un error. La contraseñas indicadas deben coincidir.");
+                    return $this->redirectToRoute('nutritionist_edit_customer');
                 }
                 else{
                     /**
@@ -2907,7 +2989,6 @@ class NutritionistController extends Controller
             if($birthday !== null && $birthday != ""){
                 $customer->setBirthday(new \DateTime($birthday));
             }
-
 
             $em->persist($customer);
             if(!empty($em->flush())){
@@ -2932,6 +3013,12 @@ class NutritionistController extends Controller
                     $em->persist($customer_metrics);
                     $em->flush();
                 }
+
+                $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+                $user = reset($users);
+                $this->session->getFlashBag()->add('customersOKStatus',"El perfil del cliente se ha modificado correctamente");
+                $this->addLog('edit_customer', $user->getIdUser(), "Perfil del cliente modificado correctamente: ". $customer->getEmail());
+                return $this->redirectToRoute('nutritionist_customers');
             }
         }
 
@@ -2954,20 +3041,30 @@ class NutritionistController extends Controller
             $id_user = $request->request->get('_customer_dependency_delete');
 
             $em = $this->getDoctrine()->getManager();
-            $customer_dependencies_repo = $em->getRepository("NutritionistBundle:CustomerNutritionist");
-            $customer_dependencies = $customer_dependencies_repo->findBy(["idCustomer" => $id_user]);
-            if(count($customer_dependencies)>0){
-                foreach ($customer_dependencies as $customer_dependency){
-                    $em->remove($customer_dependency);
-                    $flush = $em->flush();
-                    if(!empty($flush)){
-                        $this->session->getFlashBag()->add('customersKOStatus',"Se ha producido un error. No hemos podido borrar la relación con el cliente, intentelo de nuevo o contacte con el servicio de NutriK.");
-                    }
-                    else{
-                        $this->session->getFlashBag()->add('customersOKStatus',"La relación con el cliente se ha borrado correctamente.");
+            $user_repository = $em->getRepository('CustomsBundle:User');
+            $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+            if(count($users) > 0) {
+                $user = reset($users);
+                $customer_dependencies_repo = $em->getRepository("NutritionistBundle:CustomerNutritionist");
+                $customer_dependencies = $customer_dependencies_repo->findBy(["idCustomer" => $id_user, "idNutritionist" => $user->getIdUser()]);
+                if(count($customer_dependencies)>0){
+                    foreach ($customer_dependencies as $customer_dependency){
+                        $em->remove($customer_dependency);
+                        $flush = $em->flush();
+                        if(!empty($flush)){
+                            $this->session->getFlashBag()->add('customersKOStatus',"Se ha producido un error. No hemos podido borrar la relación con el cliente, intentelo de nuevo o contacte con el servicio de NutriK.");
+                        }
+                        else{
+                            $this->session->getFlashBag()->add('customersOKStatus',"La relación con el cliente se ha borrado correctamente.");
+                            $this->addLog('delete_customer', $user->getIdUser(), "La relación con el cliente se ha borrado correctamente: ".$id_user);
+                        }
                     }
                 }
             }
+            else{
+                $this->session->getFlashBag()->add('customersKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+            }
+
         }
         return $this->redirectToRoute('nutritionist_customers');
     }
@@ -3005,6 +3102,7 @@ class NutritionistController extends Controller
                 $diary_page->setMemosAndNotes($request->request->get('todays_memos'));
                 $em->persist($diary_page);
                 $em->flush();
+                $this->addLog('edit_diary_page', $user->getIdUser(), "Página de tu agenda personal modificada: " . $diary_page->getDate()->format('Y-m-d H:i:s'));
             }
             elseif($request->isMethod('POST') && ($request->request->get('submit') == "Guardar" && $diary_page == false)){
                 $diary_page = new DiaryPages();
@@ -3017,6 +3115,7 @@ class NutritionistController extends Controller
                 $diary_page->setDateUpd(new \DateTime('NOW'));
                 $em->persist($diary_page);
                 $em->flush();
+                $this->addLog('add_diary_page', $user->getIdUser(), "Página creada en tu agenda personal: ". $diary_page->getDate()->format('Y-m-d H:i:s'));
             }
         }
         else{
@@ -3128,6 +3227,7 @@ class NutritionistController extends Controller
                     }
                     else{
                         $this->session->getFlashBag()->add('recipesOKStatus',"La receta se ha creado correctamente");
+                        $this->addLog('add_recipe', $user->getIdUser(), "Nueva receta: " . $name);
                         $ingredients = array_keys($ingredients);
                         foreach ($ingredients as $ingredient){
                             $recipe_ingredient = new IngredientsRecipes();
@@ -3224,7 +3324,8 @@ class NutritionistController extends Controller
                         $this->session->getFlashBag()->add('editRecipeKOStatus',"Se ha producido un error. No hemos podido modificar la receta, intentelo de nuevo o contacte con el servicio de NutriK.");
                     }
                     else{
-                        $this->session->getFlashBag()->add('editRecipeKOStatus',"La receta se ha modificado correctamente");
+                        $this->session->getFlashBag()->add('editRecipeOKStatus',"La receta se ha modificado correctamente");
+                        $this->addLog('edit_recipe', $recipe->getIdUser(), "Receta modificada: " . $recipe->getName());
                     }
                 }
                 elseif ($request->isMethod('POST') && ($request->request->get('submit') == "Borrar Ingredientes Seleccionados")){
@@ -3314,6 +3415,7 @@ class NutritionistController extends Controller
                         }
                         else{
                             $this->session->getFlashBag()->add('recipesOKStatus',"La receta se ha borrado correctamente.");
+                            $this->addLog('delete_recipe', $recipe->getIdUser(), "Receta borrada: " . $recipe->getName());
                         }
                     }
                 }
@@ -3409,6 +3511,7 @@ class NutritionistController extends Controller
                     }
                     else{
                         $this->session->getFlashBag()->add('appointmentsOKStatus',"La consulta se ha creado con exito.");
+                        $this->addLog('add_appointment', $appointment->getIdNutritionist(), "Nueva consulta: " . $appointment->getDate()->format('Y-m-d H:i:s'));
                         return $this->redirectToRoute('nutritionist_appointments');
                     }
                 }
@@ -3428,6 +3531,10 @@ class NutritionistController extends Controller
         );
     }
 
+    /**
+     * Fn que se encarga de renderizar las consultas de un nutricionista
+     * @return Response|null
+     */
     public function nutritionistAppointmentsAction(){
         $appointments = array();
         $em = $this->getDoctrine()->getManager();
@@ -3446,6 +3553,11 @@ class NutritionistController extends Controller
         );
     }
 
+    /**
+     * Fn que se encarga de borrar una consulta de un nutricionista
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function nutritionistDeleteAppointmentAction(Request $request){
         $em = $this->getDoctrine()->getManager();
         $user_repository = $em->getRepository('CustomsBundle:User');
@@ -3463,7 +3575,7 @@ class NutritionistController extends Controller
                     }
                     else{
                         $this->session->getFlashBag()->add('appointmentsOKStatus',"La consulta se ha borrado correctamente.");
-
+                        $this->addLog('delete_appointment', $appointment->getIdNutritionist(), "Consulta eliminada: " . $appointment->getDate()->format('Y-m-d H:i:s'));
                     }
                 }
             }
@@ -3472,6 +3584,13 @@ class NutritionistController extends Controller
         return $this->redirectToRoute('nutritionist_appointments');
     }
 
+    /**
+     * Fn que se encarga de la modificacion de la consulta de un nutricionista
+     * @param Request $request
+     * @param $id_appointment
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response|null
+     * @throws \Exception
+     */
     public function nutritionistEditAppointmentAction(Request $request, $id_appointment){
         $customers = array();
 
@@ -3497,8 +3616,38 @@ class NutritionistController extends Controller
                     $customers = array_merge($customers, $customers_array);
                 }
             }
-        }
 
+            if($request->isMethod('POST')  && $request->request->get('submit') == "Confirmar"){
+                $customer = $request->request->get('appointment_customer');
+                $appointment_hour = $request->request->get('appointment_hour');
+                $appointment_date = $request->request->get('appointment_date');
+                $appointment_type = $request->request->get('appointment_type');
+                $appointment_duration = $request->request->get('appointment_duration');
+                $appointment_link = $request->request->get('appointment_link');
+                $appointment_description = $request->request->get('appointment_description');
+                if($customer != "" && $appointment_hour != "" && $appointment_date != "" && $appointment_type != ""  && $appointment_duration != ""){
+                    $appointment->setDate(new \DateTime($appointment_date .' '.$appointment_hour));
+                    $appointment->setIdCustomer($customer);
+                    $appointment->setDescription($appointment_description);
+                    $appointment->setAppointmentLink($appointment_link);
+                    $appointment->setAppointmentType($appointment_type);
+                    $appointment->setDuration($appointment_duration);
+                    $appointment->setDateUpd(new \DateTime('NOW'));
+                    $em->persist($appointment);
+                    if(!empty($em->flush())){
+                        $this->session->getFlashBag()->add('editAppointmentKOStatus',"Se ha producido un error. No se ha podido modificar la consulta, intentelo de nuevo o contacte con el servicio de NutriK.");
+                    }
+                    else{
+                        $this->session->getFlashBag()->add('appointmentsOKStatus',"La consulta se ha modificado con exito.");
+                        $this->addLog('edit_appointment', $appointment->getIdNutritionist(), "Consulta modificada: " . $appointment->getDate()->format('Y-m-d H:i:s'));
+                        return $this->redirectToRoute('nutritionist_appointments');
+                    }
+                }
+                else{
+                    $this->session->getFlashBag()->add('editAppointmentKOStatus',"Se ha producido un error. Faltan datos necesarios para la modificación de la consulta, intentelo de nuevo o contacte con el servicio de NutriK.");
+                }
+            }
+        }
 
         return $this->render('@Nutritionist/nutritionist-edit-appointment.html.twig',
             [
@@ -3508,12 +3657,92 @@ class NutritionistController extends Controller
             ]
         );
     }
+
     /**
      * Fn que se encarga de renderizar los distintos eventos y notificaciones en el calendario
-     * @return \Symfony\Component\HttpFoundation\Response|null
+     * @return Response|null
+     * @throws \Exception
      */
     public function nutritionistCalendarAction()
     {
-        return $this->render('@Nutritionist/nutritionist-calendar.html.twig');
+        $appointments = $calendar_events = $events = array();
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+
+            /**
+             * Appointments
+             */
+            $appointments_repo = $em->getRepository("NutritionistBundle:Appointment");
+            $appointments = $appointments_repo->findBy(['idNutritionist' => $user->getIdUser()]);
+
+            /**
+             * Events
+             */
+            $events_repo = $em->getRepository("NutritionistBundle:Event");
+            $events = $events_repo->findBy(array("idUser" => $user->getIdUser()));
+
+            /**
+             * Format appointments as calendar events
+             */
+            foreach ($appointments as $appointment){
+                $id_appointment = $appointment->getIdAppointment();
+                $start_date = $appointment->getDate();
+                $end_date = new \DateTime($appointment->getDate()->format('Y-m-d H:i:s'));
+                $end_date->modify('+'.$appointment->getDuration().' minutes');
+                $calendar_events[] = [
+                    'id' => $id_appointment,
+                    'title' => $appointment->getDescription(),
+                    'start' => $start_date,
+                    'end' => $end_date,
+                    'url' => '/web/nutritionist-edit-appointment/'.$id_appointment
+                ];
+            }
+
+            /**
+             * Format events as calendar events
+             */
+            foreach ($events as $event){
+                $id_event = $event->getIdEvent();
+                $start_date = $event->getDate();
+                $end_date = new \DateTime($event->getDate()->format('Y-m-d H:i:s'));
+                $end_date->modify('+'.$event->getDuration().' minutes');
+                $calendar_events[] = [
+                    'id' => $id_event,
+                    'title' => $event->getTitle(),
+                    'start' => $start_date,
+                    'end' => $end_date,
+                    'url' => '/web/nutritionist-edit-event/'.$id_event
+                ];
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('calendarKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+
+        return $this->render('@Nutritionist/nutritionist-calendar.html.twig',
+            [
+                "calendar_events" => $calendar_events
+            ]
+        );
+    }
+
+    /**
+     * Fn auxiliar que crea un log
+     * @param $source
+     * @param $id_user
+     * @param $context
+     */
+    public function addLog($source, $id_user, $context){
+        $em = $this->getDoctrine()->getManager();
+        $log = new Logs();
+        $log->setIdUser($id_user);
+        $log->setContext($context);
+        $log->setSource($source);
+        $log->setDateAdd(new \DateTime('NOW'));
+        $em->persist($log);
+        $em->flush();
     }
 }

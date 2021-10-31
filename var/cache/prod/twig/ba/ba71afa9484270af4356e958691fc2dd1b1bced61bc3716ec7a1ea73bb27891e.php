@@ -154,25 +154,35 @@ class __TwigTemplate_36b1e53aaea600a7e918e27b32a0b49978e5d1fb8fd4a524bfdbfd38fbe
                             <div class=\"personal-data-fields\" style=\"margin-top: 18%; width: 100%; margin-left: 0\">
                                 <label for=\"bibliografia\">Descripción / Bibliografía:</label><textarea type=\"text\" id=\"bibliografia\" name=\"bibliografia\" class=\"form-control\" style=\"height: 160px\">";
         // line 57
-        echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "description", []), "html", null, true);
+        if ((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false)) {
+            echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "description", []), "html", null, true);
+        }
         echo "</textarea>
                                 <label for=\"objetivos\">Objetivos:</label><textarea type=\"text\" id=\"objetivos\" name=\"objetivos\" class=\"form-control\" style=\"height: 100px\">";
         // line 58
-        echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "goals", []), "html", null, true);
+        if ((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false)) {
+            echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "goals", []), "html", null, true);
+        }
         echo "</textarea>
                                 <p><strong>Metricas:</strong></p>
                                 <div id=\"metricas\" style=\"display: inline-flex; width: 90%\">
                                     <label for=\"peso\"></label><input type=\"number\" id=\"peso\" name=\"peso\" class=\"form-control\" placeholder=\"peso\" value=\"";
         // line 61
-        echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "weight", []), "html", null, true);
+        if ((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false)) {
+            echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "weight", []), "html", null, true);
+        }
         echo "\"/>
                                     <label for=\"altura\"></label><input type=\"number\" id=\"altura\" name=\"altura\" class=\"form-control\" placeholder=\"altura\" value=\"";
         // line 62
-        echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "height", []), "html", null, true);
+        if ((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false)) {
+            echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "height", []), "html", null, true);
+        }
         echo "\"/>
                                     <label for=\"edad\"></label><input type=\"number\" id=\"edad\" name=\"edad\" class=\"form-control\" placeholder=\"edad\" value=\"";
         // line 63
-        echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "age", []), "html", null, true);
+        if ((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false)) {
+            echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "age", []), "html", null, true);
+        }
         echo "\"/>
                                 </div>
                                 <p><strong>Rendimiento deportivo:</strong></p>
@@ -181,25 +191,25 @@ class __TwigTemplate_36b1e53aaea600a7e918e27b32a0b49978e5d1fb8fd4a524bfdbfd38fbe
                                     <select id=\"actividad\" name=\"actividad\" class=\"form-select\">
                                         <option value=\"1\" ";
         // line 69
-        if (($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 1)) {
+        if (((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false) && ($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 1))) {
             echo "selected";
         }
         echo ">Bajo</option>
                                         <option value=\"2\" ";
         // line 70
-        if (($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 2)) {
+        if (((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false) && ($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 2))) {
             echo "selected";
         }
         echo ">Moderado</option>
                                         <option value=\"3\" ";
         // line 71
-        if (($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 3)) {
+        if (((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false) && ($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 3))) {
             echo "selected";
         }
         echo ">Activo</option>
                                         <option value=\"3\" ";
         // line 72
-        if (($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 4)) {
+        if (((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false) && ($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 4))) {
             echo "selected";
         }
         echo ">Muy Activo</option>
@@ -231,7 +241,7 @@ class __TwigTemplate_36b1e53aaea600a7e918e27b32a0b49978e5d1fb8fd4a524bfdbfd38fbe
 
     public function getDebugInfo()
     {
-        return array (  202 => 72,  196 => 71,  190 => 70,  184 => 69,  175 => 63,  171 => 62,  167 => 61,  161 => 58,  157 => 57,  149 => 52,  143 => 49,  139 => 48,  135 => 47,  127 => 44,  118 => 40,  109 => 36,  97 => 29,  87 => 22,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  212 => 72,  206 => 71,  200 => 70,  194 => 69,  183 => 63,  177 => 62,  171 => 61,  163 => 58,  157 => 57,  149 => 52,  143 => 49,  139 => 48,  135 => 47,  127 => 44,  118 => 40,  109 => 36,  97 => 29,  87 => 22,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -300,22 +310,22 @@ class __TwigTemplate_36b1e53aaea600a7e918e27b32a0b49978e5d1fb8fd4a524bfdbfd38fbe
                         </div>
                         <div class=\"col-sm-6\" style=\"display: inline-flex\">
                             <div class=\"personal-data-fields\" style=\"margin-top: 18%; width: 100%; margin-left: 0\">
-                                <label for=\"bibliografia\">Descripción / Bibliografía:</label><textarea type=\"text\" id=\"bibliografia\" name=\"bibliografia\" class=\"form-control\" style=\"height: 160px\">{{ customer.description }}</textarea>
-                                <label for=\"objetivos\">Objetivos:</label><textarea type=\"text\" id=\"objetivos\" name=\"objetivos\" class=\"form-control\" style=\"height: 100px\">{{ customer_metrics.goals }}</textarea>
+                                <label for=\"bibliografia\">Descripción / Bibliografía:</label><textarea type=\"text\" id=\"bibliografia\" name=\"bibliografia\" class=\"form-control\" style=\"height: 160px\">{% if customer_metrics != false %}{{ customer.description }}{% endif %}</textarea>
+                                <label for=\"objetivos\">Objetivos:</label><textarea type=\"text\" id=\"objetivos\" name=\"objetivos\" class=\"form-control\" style=\"height: 100px\">{% if customer_metrics != false %}{{ customer_metrics.goals }}{% endif %}</textarea>
                                 <p><strong>Metricas:</strong></p>
                                 <div id=\"metricas\" style=\"display: inline-flex; width: 90%\">
-                                    <label for=\"peso\"></label><input type=\"number\" id=\"peso\" name=\"peso\" class=\"form-control\" placeholder=\"peso\" value=\"{{ customer_metrics.weight }}\"/>
-                                    <label for=\"altura\"></label><input type=\"number\" id=\"altura\" name=\"altura\" class=\"form-control\" placeholder=\"altura\" value=\"{{ customer_metrics.height }}\"/>
-                                    <label for=\"edad\"></label><input type=\"number\" id=\"edad\" name=\"edad\" class=\"form-control\" placeholder=\"edad\" value=\"{{ customer_metrics.age }}\"/>
+                                    <label for=\"peso\"></label><input type=\"number\" id=\"peso\" name=\"peso\" class=\"form-control\" placeholder=\"peso\" value=\"{% if customer_metrics != false %}{{ customer_metrics.weight }}{% endif %}\"/>
+                                    <label for=\"altura\"></label><input type=\"number\" id=\"altura\" name=\"altura\" class=\"form-control\" placeholder=\"altura\" value=\"{% if customer_metrics != false %}{{ customer_metrics.height }}{% endif %}\"/>
+                                    <label for=\"edad\"></label><input type=\"number\" id=\"edad\" name=\"edad\" class=\"form-control\" placeholder=\"edad\" value=\"{% if customer_metrics != false %}{{ customer_metrics.age }}{% endif %}\"/>
                                 </div>
                                 <p><strong>Rendimiento deportivo:</strong></p>
                                 <div id=\"actividad\" style=\"display: inline-flex; width: 85%\">
                                     <label for=\"actividad\"></label>
                                     <select id=\"actividad\" name=\"actividad\" class=\"form-select\">
-                                        <option value=\"1\" {% if customer_metrics.movement == 1 %}selected{% endif %}>Bajo</option>
-                                        <option value=\"2\" {% if customer_metrics.movement == 2 %}selected{% endif %}>Moderado</option>
-                                        <option value=\"3\" {% if customer_metrics.movement == 3 %}selected{% endif %}>Activo</option>
-                                        <option value=\"3\" {% if customer_metrics.movement == 4 %}selected{% endif %}>Muy Activo</option>
+                                        <option value=\"1\" {% if customer_metrics != false and customer_metrics.movement == 1 %}selected{% endif %}>Bajo</option>
+                                        <option value=\"2\" {% if customer_metrics != false and customer_metrics.movement == 2 %}selected{% endif %}>Moderado</option>
+                                        <option value=\"3\" {% if customer_metrics != false and customer_metrics.movement == 3 %}selected{% endif %}>Activo</option>
+                                        <option value=\"3\" {% if customer_metrics != false and customer_metrics.movement == 4 %}selected{% endif %}>Muy Activo</option>
                                     </select>
                                 </div>
                             </div>

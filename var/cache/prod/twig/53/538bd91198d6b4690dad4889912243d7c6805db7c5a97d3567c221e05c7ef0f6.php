@@ -60,7 +60,7 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
     <!-- Lateral Menu -->
     <div class=\"lateral-dropdown-menu\" style=\"display: none\">
         <div class=\"lateral-dropdown-menu-user-account-top\">
-            <ul style=\"margin-top: 30px;\">
+            <ul style=\"margin-top: 20px;padding: 15px;\">
                 <li style=\"display: inline-block\"><span>Hola :)</span></li>
                 ";
         // line 16
@@ -240,7 +240,7 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
                     <li>
                         <a href=\"";
             // line 136
-            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_recipes");
+            echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_recipes", ["id_recipe" => 0]);
             echo "\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-basket-fill\" viewBox=\"0 0 16 16\">
                                 <path d=\"M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717L5.07 1.243zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3z\"/>
@@ -276,7 +276,7 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
         // line 161
         echo "        </div>
         <div class=\"lateral-dropdown-menu-user-account-bottom\">
-            <ul>
+            <ul style=\"padding: 0 15px;\">
                 ";
         // line 164
         if (($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []) != null)) {
@@ -346,7 +346,7 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
     <!-- Lateral Menu -->
     <div class=\"lateral-dropdown-menu\" style=\"display: none\">
         <div class=\"lateral-dropdown-menu-user-account-top\">
-            <ul style=\"margin-top: 30px;\">
+            <ul style=\"margin-top: 20px;padding: 15px;\">
                 <li style=\"display: inline-block\"><span>Hola :)</span></li>
                 {% if app.user != null %}
                     <li style=\"display: inline-block\"><p style=\"color: white\">{{ app.user.firstname }} {{ app.user.lastname }}</p></li>
@@ -468,7 +468,7 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
                         </a>
                     </li>
                     <li>
-                        <a href=\"{{ path('customer_recipes') }}\">
+                        <a href=\"{{ path(\"customer_recipes\", {\"id_recipe\":0}) }}\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-basket-fill\" viewBox=\"0 0 16 16\">
                                 <path d=\"M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717L5.07 1.243zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3z\"/>
                             </svg>
@@ -495,7 +495,7 @@ class __TwigTemplate_87339c4ccf520f2d49f82891cca2629a71ec3599fb179adc57fccb48347
             {% endif %}
         </div>
         <div class=\"lateral-dropdown-menu-user-account-bottom\">
-            <ul>
+            <ul style=\"padding: 0 15px;\">
                 {% if app.user != null %}
                     <li style=\"color: #00766c; height: 4vh; margin-top: 12px\"><a href=\"{{ path('logout') }}\" style=\"color: white\">Cerrar Sesión</a></li>
                 {% else %}

@@ -64,25 +64,56 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
         $this->loadTemplate("customerheader.html.twig", "@Customer/services.html.twig", 12)->display($context);
         // line 13
         echo "    </section>
-    <section>
-        <div class=\"container\">
-            <div class=\"container-services\">
-                <div class=\"col-sm-4\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-                <div class=\"col-sm-4\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-                <div class=\"col-sm-4\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+    <section id=\"customer-services\">
+        ";
+        // line 15
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "servicesOKStatus"], "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 16
+            echo "            <div class=\"row\" style=\"width: 88.5%; margin-left: 5.7%; margin-top: 10px; margin-bottom: -10px;\">
+                <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
+                    ";
+            // line 18
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
                 </div>
             </div>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 22
+        echo "        <div class=\"container\">
+            <form class=\"form\" action=\"";
+        // line 23
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_services");
+        echo "\" method=\"post\">
+                <div class=\"container-services-block\">
+                    <div class=\"col-sm-4\">
+                        <p style=\"height: 8rem; font-size: 22px; font-weight: bold\">Paquete planes de alimentación</p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Contratar\"/>
+                    </div>
+                    <div class=\"col-sm-4\">
+                        <p style=\"height: 8rem; font-size: 22px; font-weight: bold\">Paquete planes de acompañamiento</p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Contratar\"/>
+                    </div>
+                    <div class=\"col-sm-4\">
+                        <p style=\"height: 8rem; font-size: 22px; font-weight: bold\">Paquete Premium</p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Contratar\"/>
+                    </div>
+                </div>
+            </form>
         </div>
     </section>
     </html>
@@ -99,7 +130,7 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
 
     public function getDebugInfo()
     {
-        return array (  66 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  91 => 23,  88 => 22,  78 => 18,  74 => 16,  70 => 15,  66 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -125,25 +156,40 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
     <section id=\"customer-header\">
         {% include 'customerheader.html.twig' %}
     </section>
-    <section>
-        <div class=\"container\">
-            <div class=\"container-services\">
-                <div class=\"col-sm-4\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-                <div class=\"col-sm-4\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-                <div class=\"col-sm-4\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+    <section id=\"customer-services\">
+        {% for message in  app.session.flashbag().get('servicesOKStatus') %}
+            <div class=\"row\" style=\"width: 88.5%; margin-left: 5.7%; margin-top: 10px; margin-bottom: -10px;\">
+                <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
+                    {{ message }}
                 </div>
             </div>
+        {% endfor %}
+        <div class=\"container\">
+            <form class=\"form\" action=\"{{ path(\"customer_services\") }}\" method=\"post\">
+                <div class=\"container-services-block\">
+                    <div class=\"col-sm-4\">
+                        <p style=\"height: 8rem; font-size: 22px; font-weight: bold\">Paquete planes de alimentación</p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Contratar\"/>
+                    </div>
+                    <div class=\"col-sm-4\">
+                        <p style=\"height: 8rem; font-size: 22px; font-weight: bold\">Paquete planes de acompañamiento</p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Contratar\"/>
+                    </div>
+                    <div class=\"col-sm-4\">
+                        <p style=\"height: 8rem; font-size: 22px; font-weight: bold\">Paquete Premium</p>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </p>
+                        <input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Contratar\"/>
+                    </div>
+                </div>
+            </form>
         </div>
     </section>
     </html>

@@ -1,0 +1,74 @@
+#nutritionist-homepage .container{
+    width: 90%;
+    margin-top: 2.2rem;
+}
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 82rem;
+    color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6 .nutritionist-appointments-events{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    font-size: 16px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    height: 38rem;
+    margin: 15px;
+    color: white;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+    padding: 10px 40px;
+
+}
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6  .nutritionist-appointments-events .nutritionist-appointments,
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6  .nutritionist-appointments-events .nutritionist-events{
+    width: 100%;
+    overflow-y: scroll;
+}
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6  .nutritionist-appointments-events .nutritionist-appointments>p>a,
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6  .nutritionist-appointments-events .nutritionist-events>p>a{
+    color: white;
+}
+
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6 .nutritionist-kpis{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 38rem;
+    margin: 15px;
+    color: black;
+    background: transparent;
+    padding: 0;
+}
+
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6 .nutritionist-kpis>img{
+    height: 38rem;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+
+
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6 .nutritionist-notifications{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 79rem;
+    margin: 14px;
+    color: black;
+    background: transparent;
+    padding: 10px 40px;
+    overflow-y: scroll;
+}
+
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6 .nutritionist-notifications .row{
+    margin: 5px 0;
+}

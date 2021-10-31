@@ -51,34 +51,101 @@ class __TwigTemplate_cb3a2e659eda18681a327bc073bbe6347d9413ffefbedd844a52e4bc742
         // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/customerpages.css"), "html", null, true);
         echo "\" />
+            <!-- Customs JS -->
+            <script src=\"";
+        // line 8
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework//js/customs.js"), "html", null, true);
+        echo "\"></script>
         </header>
         <section id=\"default-header\">
             ";
-        // line 9
-        $this->loadTemplate("header.html.twig", "@Customer/didactic-content.html.twig", 9)->display($context);
-        // line 10
+        // line 11
+        $this->loadTemplate("header.html.twig", "@Customer/didactic-content.html.twig", 11)->display($context);
+        // line 12
         echo "        </section>
         <section id=\"customer-header\">
             ";
-        // line 12
-        $this->loadTemplate("customerheader.html.twig", "@Customer/didactic-content.html.twig", 12)->display($context);
-        // line 13
+        // line 14
+        $this->loadTemplate("customerheader.html.twig", "@Customer/didactic-content.html.twig", 14)->display($context);
+        // line 15
         echo "        </section>
         <section id=\"didactic-content\">
             <div class=\"container\">
-                <div class=\"col-sm-3 didactic-content-filters\">
-                    <h2>Categorias</h2>
-                </div>
-                <div class=\"col-sm-8 didactic-content-content\">
-                    <nav class=\"navbar navbar-light bg-light\">
-                        <div class=\"container-fluid\">
-                            <form class=\"d-flex didactic-content-finder\">
-                                <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\">
-                                <button class=\"btn btn-outline-success\" type=\"submit\">Buscar</button>
-                            </form>
-                        </div>
-                    </nav>
-                </div>
+                <form class=\"form\" action=\"";
+        // line 18
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_didactic_content");
+        echo "\" method=\"post\">
+                    <div class=\"col-sm-3 didactic-content-filters\">
+                        <h2>Categorias</h2>
+                        ";
+        // line 21
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["categories"] ?? $this->getContext($context, "categories")));
+        foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
+            // line 22
+            echo "                            <p style=\"margin:0\">
+                                <input style=\"display: none\" type=\"submit\" name=\"submit\" id=\"categorySearch\" value=\"categorySearch\">
+                                <a style=\"font-size: 16px; color: black\" href=\"#\" id=\"category\" onclick=\"categoryFilter(";
+            // line 24
+            echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "idCategory", []), "html", null, true);
+            echo ");\">";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "name", []), "html", null, true);
+            echo "</a>
+                            </p>
+                        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 27
+        echo "                        <input type=\"hidden\" name=\"category_search\" id=\"category\"/>
+                    </div>
+                    <div class=\"col-sm-8 didactic-content-content\">
+                        <nav class=\"navbar navbar-light bg-light\">
+                            <div class=\"container-fluid\">
+                                <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\" name=\"entry_search\">
+                                <button class=\"btn btn-outline-success\" type=\"submit\" name=\"submit\" value=\"entrySearch\">Buscar</button>
+                            </div>
+                        </nav>
+                        <div id=\"entries-content\">
+                            ";
+        // line 37
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["entries"] ?? $this->getContext($context, "entries")));
+        foreach ($context['_seq'] as $context["_key"] => $context["entry"]) {
+            // line 38
+            echo "                                <div class=\"didactic-entry\">
+                                    <div class=\"col-sm-11 didactic-entry-resume\">
+                                        <a style=\"font-size: 17px;color: black; font-weight: bold;\" href=\"";
+            // line 40
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_didactic_content_view", ["id_entry" => $this->getAttribute($context["entry"], "idEntry", [])]), "html", null, true);
+            echo "\">";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["entry"], "title", []), "html", null, true);
+            echo "</a>
+                                        <p>";
+            // line 41
+            echo twig_escape_filter($this->env, $this->getAttribute($context["entry"], "description", []), "html", null, true);
+            echo "</p>
+                                    </div>
+                                    <div class=\"col-sm-1 didactic-entry-actions\">
+                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\"
+                                             onclick=\"redirectTo('didactic_content','/'+";
+            // line 45
+            echo twig_escape_filter($this->env, $this->getAttribute($context["entry"], "idEntry", []), "html", null, true);
+            echo ")\">
+                                            <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z\"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entry'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 51
+        echo "                        </div>
+                    </div>
+                </form>
             </div>
         </section>
     </html>
@@ -95,7 +162,7 @@ class __TwigTemplate_cb3a2e659eda18681a327bc073bbe6347d9413ffefbedd844a52e4bc742
 
     public function getDebugInfo()
     {
-        return array (  66 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  146 => 51,  134 => 45,  127 => 41,  121 => 40,  117 => 38,  113 => 37,  101 => 27,  90 => 24,  86 => 22,  82 => 21,  76 => 18,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -114,6 +181,8 @@ class __TwigTemplate_cb3a2e659eda18681a327bc073bbe6347d9413ffefbedd844a52e4bc742
         <header>
             <!-- Login Page stylesheet-->
             <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/customerpages.css') }}\" />
+            <!-- Customs JS -->
+            <script src=\"{{ asset('bundles/framework//js/customs.js') }}\"></script>
         </header>
         <section id=\"default-header\">
             {% include 'header.html.twig' %}
@@ -123,19 +192,42 @@ class __TwigTemplate_cb3a2e659eda18681a327bc073bbe6347d9413ffefbedd844a52e4bc742
         </section>
         <section id=\"didactic-content\">
             <div class=\"container\">
-                <div class=\"col-sm-3 didactic-content-filters\">
-                    <h2>Categorias</h2>
-                </div>
-                <div class=\"col-sm-8 didactic-content-content\">
-                    <nav class=\"navbar navbar-light bg-light\">
-                        <div class=\"container-fluid\">
-                            <form class=\"d-flex didactic-content-finder\">
-                                <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\">
-                                <button class=\"btn btn-outline-success\" type=\"submit\">Buscar</button>
-                            </form>
+                <form class=\"form\" action=\"{{ path(\"customer_didactic_content\") }}\" method=\"post\">
+                    <div class=\"col-sm-3 didactic-content-filters\">
+                        <h2>Categorias</h2>
+                        {% for category in categories %}
+                            <p style=\"margin:0\">
+                                <input style=\"display: none\" type=\"submit\" name=\"submit\" id=\"categorySearch\" value=\"categorySearch\">
+                                <a style=\"font-size: 16px; color: black\" href=\"#\" id=\"category\" onclick=\"categoryFilter({{ category.idCategory }});\">{{ category.name }}</a>
+                            </p>
+                        {% endfor %}
+                        <input type=\"hidden\" name=\"category_search\" id=\"category\"/>
+                    </div>
+                    <div class=\"col-sm-8 didactic-content-content\">
+                        <nav class=\"navbar navbar-light bg-light\">
+                            <div class=\"container-fluid\">
+                                <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\" name=\"entry_search\">
+                                <button class=\"btn btn-outline-success\" type=\"submit\" name=\"submit\" value=\"entrySearch\">Buscar</button>
+                            </div>
+                        </nav>
+                        <div id=\"entries-content\">
+                            {% for entry in entries %}
+                                <div class=\"didactic-entry\">
+                                    <div class=\"col-sm-11 didactic-entry-resume\">
+                                        <a style=\"font-size: 17px;color: black; font-weight: bold;\" href=\"{{ path(\"customer_didactic_content_view\",{\"id_entry\":entry.idEntry}) }}\">{{ entry.title }}</a>
+                                        <p>{{ entry.description }}</p>
+                                    </div>
+                                    <div class=\"col-sm-1 didactic-entry-actions\">
+                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\"
+                                             onclick=\"redirectTo('didactic_content','/'+{{ entry.idEntry }})\">
+                                            <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z\"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
-                    </nav>
-                </div>
+                    </div>
+                </form>
             </div>
         </section>
     </html>

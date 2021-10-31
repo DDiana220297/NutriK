@@ -74,7 +74,7 @@ class __TwigTemplate_67f534950b1d73e9ba18c1300bb774788f24f440696b552d3f8133a22bc
         ";
         // line 16
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "scheduleAppointmentKOStatus"], "method"));
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "editAppointmentKOStatus"], "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
             // line 17
             echo "            <div class=\"row\" style=\"width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: -10px;\">
@@ -98,7 +98,7 @@ class __TwigTemplate_67f534950b1d73e9ba18c1300bb774788f24f440696b552d3f8133a22bc
                         <h2>Programar Consulta</h2>
                         <form id=\"msform\" action=\"";
         // line 28
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_schedule_appointment");
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_appointment", ["id_appointment" => ($context["id_appointment"] ?? $this->getContext($context, "id_appointment"))]), "html", null, true);
         echo "\" method=\"post\">
                             <!-- progressbar -->
                             <ul id=\"progressbar\">
@@ -109,7 +109,10 @@ class __TwigTemplate_67f534950b1d73e9ba18c1300bb774788f24f440696b552d3f8133a22bc
                             </ul> <!-- fieldsets -->
                             <fieldset>
                                 <div class=\"form-card\">
-                                    <input name=\"appointment_date\" id=\"appointment_date\" value=\"\" type=\"date\"/>
+                                    <input name=\"appointment_date\" id=\"appointment_date\" value=\"";
+        // line 38
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["appointment"] ?? $this->getContext($context, "appointment")), "date", []), "Y-m-d"), "html", null, true);
+        echo "\" type=\"date\"/>
                                 </div>
                                 <input type=\"button\" name=\"next\" class=\"next action-button\" value=\"Siguiente\"/>
                             </fieldset>
@@ -118,10 +121,16 @@ class __TwigTemplate_67f534950b1d73e9ba18c1300bb774788f24f440696b552d3f8133a22bc
                                     <h2 style=\"color: #00766c; text-align: center\">Elige una hora para la consulta</h2>
                                     <p style=\"text-align: center; font-size: 20px; margin-top: 3%; margin-bottom: 3%\"> El horario permitido para la consulta es de 09:00 a 19:00. Para modificarlo, es necesario ajustar dicho horario en la configuracion de su perfil</p>
                                     <label for=\"appointment_hour\" style=\"margin-right: 10px\"></label>
-                                    <input type=\"time\" id=\"appointment_hour\" name=\"appointment_hour\" min=\"09:00\" max=\"19:00\" style=\"width: 50%; margin-left: 25%\" value=\"11:00\" required=\"required\">
+                                    <input type=\"time\" id=\"appointment_hour\" name=\"appointment_hour\" min=\"09:00\" max=\"19:00\" style=\"width: 50%; margin-left: 25%\" value=\"";
+        // line 47
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["appointment"] ?? $this->getContext($context, "appointment")), "date", []), "H:i:s"), "html", null, true);
+        echo "\" required=\"required\">
                                     <p style=\"text-align: center; font-size: 20px;\"> Indica una breve descripción para la consulta</p>
                                     <label for=\"appointment_description\" style=\"margin-right: 10px\"></label>
-                                    <input type=\"text\" class=\"form-control\" id=\"appointment_description\" name=\"appointment_description\" style=\"width: 60%;margin-left: 21%;height: 10rem;border: 1px solid #ccc;border-radius: 10px;\"  required=\"required\">
+                                    <input type=\"text\" class=\"form-control\" id=\"appointment_description\" name=\"appointment_description\" style=\"width: 60%;margin-left: 21%;height: 10rem;border: 1px solid #ccc;border-radius: 10px;\" value=\"";
+        // line 50
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["appointment"] ?? $this->getContext($context, "appointment")), "description", []), "html", null, true);
+        echo "\" required=\"required\">
                                 </div>
                                 <input type=\"button\" name=\"previous\" class=\"previous action-button-previous\" value=\"Previo\"/>
                                 <input type=\"button\" name=\"next\" class=\"next action-button\" value=\"Siguiente\"/>
@@ -150,7 +159,11 @@ class __TwigTemplate_67f534950b1d73e9ba18c1300bb774788f24f440696b552d3f8133a22bc
                                                     <div class=\"col-sm-2\"><input type=\"checkbox\" value=\"";
             // line 71
             echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "idUser", []), "html", null, true);
-            echo "\" style=\"width: 15px; height: 15px\" name=\"appointment_customer\" id=\"appointment-customer\"></div>
+            echo "\" ";
+            if (($this->getAttribute($context["customer"], "idUser", []) == $this->getAttribute(($context["appointment"] ?? $this->getContext($context, "appointment")), "idCustomer", []))) {
+                echo " checked ";
+            }
+            echo " style=\"width: 15px; height: 15px\" name=\"appointment_customer\" id=\"appointment-customer\"></div>
                                                     <div class=\"col-sm-3\" style=\"text-align: start\">";
             // line 72
             echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "firstname", []), "html", null, true);
@@ -180,15 +193,31 @@ class __TwigTemplate_67f534950b1d73e9ba18c1300bb774788f24f440696b552d3f8133a22bc
                                 <div class=\"form-card\">
                                     <div class=\"col-sm-6\" style=\"margin-left: 25%\">
                                         <label for=\"appointment_duration\">Duración consulta (min):</label>
-                                        <input type=\"number\" id=\"appointment_duration\" name=\"appointment_duration\" class=\"form-control\" style=\"padding: 0; border: 1px solid #00766c; border-radius: 5px; margin-bottom: 20px; margin-top: 20px; height: 45px;\"/>
+                                        <input type=\"number\" id=\"appointment_duration\" name=\"appointment_duration\" class=\"form-control\" style=\"padding: 0; border: 1px solid #00766c; border-radius: 5px; margin-bottom: 20px; margin-top: 20px; height: 45px;\" value=\"";
+        // line 87
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["appointment"] ?? $this->getContext($context, "appointment")), "duration", []), "html", null, true);
+        echo "\"/>
 
                                         <label for=\"appointment_type\">Tipo consulta:</label>
-                                        <select id=\"appointment_type\" name=\"appointment_type\" class=\"form-control\" >
-                                            <option value=\"1\">Presencial</option>
-                                            <option value=\"2\">Virtual</option>
+                                        <select id=\"appointment_type\" name=\"appointment_type\" class=\"form-control\">
+                                            <option value=\"1\" ";
+        // line 91
+        if (($this->getAttribute(($context["appointment"] ?? $this->getContext($context, "appointment")), "appointmentType", []) == 1)) {
+            echo "selected";
+        }
+        echo ">Presencial</option>
+                                            <option value=\"2\" ";
+        // line 92
+        if (($this->getAttribute(($context["appointment"] ?? $this->getContext($context, "appointment")), "appointmentType", []) == 2)) {
+            echo "selected";
+        }
+        echo ">Virtual</option>
                                         </select>
                                         <label for=\"appointment_link\">Añadir enlace videollamada (opcional):</label>
-                                        <input type=\"text\" id=\"appointment_link\" name=\"appointment_link\" class=\"form-control\" style=\"padding: 0; border: 1px solid #00766c; border-radius: 5px; margin-bottom: 20px; margin-top: 20px; height: 45px;\"/>
+                                        <input type=\"text\" id=\"appointment_link\" name=\"appointment_link\" class=\"form-control\" style=\"padding: 0; border: 1px solid #00766c; border-radius: 5px; margin-bottom: 20px; margin-top: 20px; height: 45px;\" value=\"";
+        // line 95
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["appointment"] ?? $this->getContext($context, "appointment")), "appointmentLink", []), "html", null, true);
+        echo "\"/>
                                     </div>
                                 </div>
                                 <input type=\"button\" name=\"previous\" class=\"previous action-button-previous\" value=\"Previo\"/>
@@ -214,7 +243,7 @@ class __TwigTemplate_67f534950b1d73e9ba18c1300bb774788f24f440696b552d3f8133a22bc
 
     public function getDebugInfo()
     {
-        return array (  174 => 78,  164 => 74,  160 => 73,  156 => 72,  152 => 71,  148 => 69,  144 => 68,  101 => 28,  94 => 23,  84 => 19,  80 => 17,  76 => 16,  70 => 13,  65 => 11,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  219 => 95,  211 => 92,  205 => 91,  198 => 87,  187 => 78,  177 => 74,  173 => 73,  169 => 72,  161 => 71,  157 => 69,  153 => 68,  132 => 50,  126 => 47,  114 => 38,  101 => 28,  94 => 23,  84 => 19,  80 => 17,  76 => 16,  70 => 13,  65 => 11,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -242,7 +271,7 @@ class __TwigTemplate_67f534950b1d73e9ba18c1300bb774788f24f440696b552d3f8133a22bc
         <script src=\"{{ asset('bundles/framework/js/wizard.js') }}\"></script>
     </section>
     <section id=\"nutritionist-appointment\">
-        {% for message in  app.session.flashbag().get('scheduleAppointmentKOStatus') %}
+        {% for message in  app.session.flashbag().get('editAppointmentKOStatus') %}
             <div class=\"row\" style=\"width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: -10px;\">
                 <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
                     {{ message }}
@@ -254,7 +283,7 @@ class __TwigTemplate_67f534950b1d73e9ba18c1300bb774788f24f440696b552d3f8133a22bc
                 <div id=\"appointment-content-block\">
                     <div class=\"col-sm-12\">
                         <h2>Programar Consulta</h2>
-                        <form id=\"msform\" action=\"{{ path(\"nutritionist_schedule_appointment\") }}\" method=\"post\">
+                        <form id=\"msform\" action=\"{{ path(\"nutritionist_edit_appointment\",{\"id_appointment\":id_appointment}) }}\" method=\"post\">
                             <!-- progressbar -->
                             <ul id=\"progressbar\">
                                 <li class=\"active\" id=\"appointment-date\"><strong>Fecha Consulta</strong></li>
@@ -264,7 +293,7 @@ class __TwigTemplate_67f534950b1d73e9ba18c1300bb774788f24f440696b552d3f8133a22bc
                             </ul> <!-- fieldsets -->
                             <fieldset>
                                 <div class=\"form-card\">
-                                    <input name=\"appointment_date\" id=\"appointment_date\" value=\"\" type=\"date\"/>
+                                    <input name=\"appointment_date\" id=\"appointment_date\" value=\"{{ appointment.date|date('Y-m-d') }}\" type=\"date\"/>
                                 </div>
                                 <input type=\"button\" name=\"next\" class=\"next action-button\" value=\"Siguiente\"/>
                             </fieldset>
@@ -273,10 +302,10 @@ class __TwigTemplate_67f534950b1d73e9ba18c1300bb774788f24f440696b552d3f8133a22bc
                                     <h2 style=\"color: #00766c; text-align: center\">Elige una hora para la consulta</h2>
                                     <p style=\"text-align: center; font-size: 20px; margin-top: 3%; margin-bottom: 3%\"> El horario permitido para la consulta es de 09:00 a 19:00. Para modificarlo, es necesario ajustar dicho horario en la configuracion de su perfil</p>
                                     <label for=\"appointment_hour\" style=\"margin-right: 10px\"></label>
-                                    <input type=\"time\" id=\"appointment_hour\" name=\"appointment_hour\" min=\"09:00\" max=\"19:00\" style=\"width: 50%; margin-left: 25%\" value=\"11:00\" required=\"required\">
+                                    <input type=\"time\" id=\"appointment_hour\" name=\"appointment_hour\" min=\"09:00\" max=\"19:00\" style=\"width: 50%; margin-left: 25%\" value=\"{{ appointment.date|date('H:i:s') }}\" required=\"required\">
                                     <p style=\"text-align: center; font-size: 20px;\"> Indica una breve descripción para la consulta</p>
                                     <label for=\"appointment_description\" style=\"margin-right: 10px\"></label>
-                                    <input type=\"text\" class=\"form-control\" id=\"appointment_description\" name=\"appointment_description\" style=\"width: 60%;margin-left: 21%;height: 10rem;border: 1px solid #ccc;border-radius: 10px;\"  required=\"required\">
+                                    <input type=\"text\" class=\"form-control\" id=\"appointment_description\" name=\"appointment_description\" style=\"width: 60%;margin-left: 21%;height: 10rem;border: 1px solid #ccc;border-radius: 10px;\" value=\"{{ appointment.description}}\" required=\"required\">
                                 </div>
                                 <input type=\"button\" name=\"previous\" class=\"previous action-button-previous\" value=\"Previo\"/>
                                 <input type=\"button\" name=\"next\" class=\"next action-button\" value=\"Siguiente\"/>
@@ -297,7 +326,7 @@ class __TwigTemplate_67f534950b1d73e9ba18c1300bb774788f24f440696b552d3f8133a22bc
                                         {% for customer in customers %}
                                             <div class=\"customer-entry\">
                                                 <div class=\"col-sm-11 customer-entry-resume\">
-                                                    <div class=\"col-sm-2\"><input type=\"checkbox\" value=\"{{ customer.idUser }}\" style=\"width: 15px; height: 15px\" name=\"appointment_customer\" id=\"appointment-customer\"></div>
+                                                    <div class=\"col-sm-2\"><input type=\"checkbox\" value=\"{{ customer.idUser }}\" {% if customer.idUser == appointment.idCustomer %} checked {% endif %} style=\"width: 15px; height: 15px\" name=\"appointment_customer\" id=\"appointment-customer\"></div>
                                                     <div class=\"col-sm-3\" style=\"text-align: start\">{{ customer.firstname }}</div>
                                                     <div class=\"col-sm-3\" style=\"text-align: center\">{{ customer.lastname }}</div>
                                                     <div class=\"col-sm-4\" style=\"text-align: end\">{{ customer.email }}</div>
@@ -313,15 +342,15 @@ class __TwigTemplate_67f534950b1d73e9ba18c1300bb774788f24f440696b552d3f8133a22bc
                                 <div class=\"form-card\">
                                     <div class=\"col-sm-6\" style=\"margin-left: 25%\">
                                         <label for=\"appointment_duration\">Duración consulta (min):</label>
-                                        <input type=\"number\" id=\"appointment_duration\" name=\"appointment_duration\" class=\"form-control\" style=\"padding: 0; border: 1px solid #00766c; border-radius: 5px; margin-bottom: 20px; margin-top: 20px; height: 45px;\"/>
+                                        <input type=\"number\" id=\"appointment_duration\" name=\"appointment_duration\" class=\"form-control\" style=\"padding: 0; border: 1px solid #00766c; border-radius: 5px; margin-bottom: 20px; margin-top: 20px; height: 45px;\" value=\"{{ appointment.duration }}\"/>
 
                                         <label for=\"appointment_type\">Tipo consulta:</label>
-                                        <select id=\"appointment_type\" name=\"appointment_type\" class=\"form-control\" >
-                                            <option value=\"1\">Presencial</option>
-                                            <option value=\"2\">Virtual</option>
+                                        <select id=\"appointment_type\" name=\"appointment_type\" class=\"form-control\">
+                                            <option value=\"1\" {% if appointment.appointmentType == 1 %}selected{% endif %}>Presencial</option>
+                                            <option value=\"2\" {% if appointment.appointmentType == 2 %}selected{% endif %}>Virtual</option>
                                         </select>
                                         <label for=\"appointment_link\">Añadir enlace videollamada (opcional):</label>
-                                        <input type=\"text\" id=\"appointment_link\" name=\"appointment_link\" class=\"form-control\" style=\"padding: 0; border: 1px solid #00766c; border-radius: 5px; margin-bottom: 20px; margin-top: 20px; height: 45px;\"/>
+                                        <input type=\"text\" id=\"appointment_link\" name=\"appointment_link\" class=\"form-control\" style=\"padding: 0; border: 1px solid #00766c; border-radius: 5px; margin-bottom: 20px; margin-top: 20px; height: 45px;\" value=\"{{ appointment.appointmentLink }}\"/>
                                     </div>
                                 </div>
                                 <input type=\"button\" name=\"previous\" class=\"previous action-button-previous\" value=\"Previo\"/>

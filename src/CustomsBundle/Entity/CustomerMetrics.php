@@ -33,6 +33,21 @@ class CustomerMetrics
     private $age;
 
     /**
+     * @var float
+     */
+    private $fatPercentage = 0;
+
+    /**
+     * @var float
+     */
+    private $musclePercentage = 0;
+
+    /**
+     * @var float
+     */
+    private $liquidPercentage = 0;
+
+    /**
      * @var string
      */
     private $movement;
@@ -216,5 +231,53 @@ class CustomerMetrics
     public function setGoals($goals)
     {
         $this->goals = $goals;
+    }
+
+    /**
+     * @return float
+     */
+    public function getFatPercentage(): float
+    {
+        return $this->fatPercentage;
+    }
+
+    /**
+     * @param float $fatPercentage
+     */
+    public function setFatPercentage(float $fatPercentage): void
+    {
+        $this->fatPercentage = $fatPercentage;
+    }
+
+    /**
+     * @return float
+     */
+    public function getMusclePercentage(): float
+    {
+        return $this->musclePercentage;
+    }
+
+    /**
+     * @param float $musclePercentage
+     */
+    public function setMusclePercentage(float $musclePercentage): void
+    {
+        $this->musclePercentage = $musclePercentage;
+    }
+
+    /**
+     * @return float
+     */
+    public function getLiquidPercentage(): float
+    {
+        return $this->liquidPercentage;
+    }
+
+    /**
+     * @param float $liquidPercentage
+     */
+    public function setLiquidPercentage(float $liquidPercentage): void
+    {
+        $this->liquidPercentage = $liquidPercentage;
     }
 }

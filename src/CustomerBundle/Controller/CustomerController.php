@@ -2,48 +2,413 @@
 
 namespace CustomerBundle\Controller;
 
+use CustomsBundle\Entity\CustomerMetrics;
+use NutritionistBundle\Entity\DiaryPages;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class CustomerController extends Controller
 {
-    public function newsAction()
-    {
-        return $this->render('@Customer/news.html.twig');
+    private $session;
+
+    public function __construct(){
+        $this->session = new Session();
     }
 
-    public function didacticContentAction()
-    {
-        return $this->render('@Customer/didactic-content.html.twig');
-    }
-
+    /**
+     * Fn que se encarga de renderizar la vista "about" de NutriK
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
     public function aboutAction()
     {
         return $this->render('@Customer/about.html.twig');
     }
 
-    public function servicesAction()
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function servicesAction(Request $request)
     {
+        if ($request->isMethod('POST')){
+            $this->session->getFlashBag()->add('servicesOKStatus',"Recibirás un correo para seguir con el proceso de contratacion del servicio elegido");
+        }
+
         return $this->render('@Customer/services.html.twig');
     }
 
-    public function personalDataAction(){
-        return $this->render('@Customer/personal-data.html.twig');
+    /**
+     * Fn que se encarga de renderizar las ultimas novedeades en NutriK
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function newsAction()
+    {
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $today = new \DateTime('NOW');
+            $lastWeek = date("Y-m-d H:i:s", strtotime("-7 days"));
+            $new_events_query = $em->createQuery("
+                    SELECT e FROM NutritionistBundle:Event e
+                    WHERE e.dateAdd BETWEEN '".$lastWeek."' AND '".$today->format('Y-m-d H:i:s')."'
+                ");
+            $new_events = $new_events_query->getResult();
+
+            $new_didactic_content_query = $em->createQuery("
+                    SELECT e FROM CustomsBundle:Entry e
+                    WHERE e.dateAdd BETWEEN '".$lastWeek."' AND '".$today->format('Y-m-d H:i:s')."'
+                ");
+            $new_didactic_contents = $new_didactic_content_query->getResult();
+        }
+        else{
+            $this->session->getFlashBag()->add('newsKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+
+        return $this->render('@Customer/news.html.twig',
+            [
+                'new_events' => $new_events,
+                'new_didactic_contents' => $new_didactic_contents
+            ]
+        );
     }
 
-    public function diaryAction(){
-        return $this->render('@Customer/diary.html.twig');
+    public function didacticContentAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $categories_repo = $em->getRepository("CustomsBundle:Category");
+        $categories = $categories_repo->findAll();
+
+        $entries_repo = $em->getRepository("CustomsBundle:Entry");
+        if ($request->isMethod('POST') && $request->request->get('submit') == 'categorySearch'){
+            $category_filter = $request->request->get('category_search');
+            $entries = $entries_repo->findBy(['idCategory'=>1]);
+        }
+        elseif($request->isMethod('POST') && $request->request->get('submit') == 'entrySearch' && $request->request->get('entry_search') != ""){
+            $key = $request->request->get('entry_search');
+            $didactic_content_query = $em->createQuery("
+                    SELECT e FROM CustomsBundle:Entry e
+                    WHERE (e.title LIKE '%$key%' OR e.description LIKE '%$key%' OR e.content LIKE '%$key%')
+                ");
+            $entries = $didactic_content_query->getResult();
+        }
+        else{
+            $entries = $entries_repo->findAll();
+        }
+
+        return $this->render('@Customer/didactic-content.html.twig',
+            [
+                'categories' => $categories,
+                'entries' => $entries
+            ]
+        );
     }
+
+    public function eventViewAction($id_event){
+        return $this->render('@Customer/event-view.html.twig',
+            [
+                'id_event' => $id_event
+            ]
+        );
+    }
+
+    public function didactiContentViewAction($id_entry){
+        return $this->render('@Customer/didactic-content-view.html.twig',
+            [
+                'id_entry' => $id_entry
+            ]
+        );
+    }
+
+    /**
+     * Fn que se encarga de renderizar y modificar los datos personales del cliente
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response|null
+     * @throws \Exception
+     */
+    public function personalDataAction(Request $request){
+        $user = $customer_metrics = array();
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $user = reset($users);
+
+            /**
+             * Comprobamos si el cliente tiene metricas registradas
+             */
+            $customer_metrics_query = $em->createQuery("
+                    SELECT cm FROM CustomsBundle:CustomerMetrics cm
+                    WHERE cm.idCustomer = ".$user->getIdUser()." ORDER BY cm.dateAdd DESC
+                ");
+            $customer_metrics = $customer_metrics_query->getResult();
+
+            if($request->isMethod('POST')){
+                $user->setFirstname($request->request->get('firstname'));
+                $user->setLastname($request->request->get('lastname'));
+                $user->setEmail($request->request->get('email'));
+                $user->setDescription($request->request->get('bibliografia'));
+
+                $password = $request->request->get('password');
+                $confirm_password = $request->request->get('confirm_password');
+                if(isset($password) && $password != ""){
+                    if($password != $confirm_password){
+                        $this->session->getFlashBag()->add('personalDataKOStatus',"Se ha producido un error. La contraseñas indicadas deben coincidir.");
+                        return $this->redirectToRoute('customer_personal_data');
+                    }
+                    else{
+                        /**
+                         * Cifrado de contraseña
+                         */
+                        $factory = $this->get('security.encoder_factory');
+                        $encoder = $factory->getEncoder($user);
+                        $password = $encoder->encodePassword($password, $this->getUser()->getSalt());
+                        $user->setPassword($password);
+                        $user->setLastPasswordGen(new \DateTime('NOW'));
+                    }
+                }
+                $user->setDateUpd(new \DateTime('NOW'));
+                $birthday = $request->request->get('birthday');
+                if($birthday !== null && $birthday != ""){
+                    $user->setBirthday(new \DateTime($birthday));
+                }
+
+                $em->persist($user);
+                if(!empty($em->flush())){
+                    $this->session->getFlashBag()->add('personalDataKOStatus', "No se han podido modificar los datos del cliente, intentelo de nuevo o contacte con el servicio de NutriK.");
+                }
+                else{
+                    $this->session->getFlashBag()->add('personalDataOKStatus',"Los datos del cliente se han modificado correctamente");
+                    $goals = $request->request->get('objetivos');
+                    $weight = $request->request->get('peso');
+                    $height = $request->request->get('altura');
+                    $age = $request->request->get('edad');
+                    $movement = $request->request->get('actividad');
+                    if($goals != "" && $weight != "" && $height != "" && $age != ""){
+                        $customer_metrics = new CustomerMetrics();
+                        $customer_metrics->setIdCustomer($user->getIdUser());
+                        $customer_metrics->setWeight($weight);
+                        $customer_metrics->setHeight($height);
+                        $customer_metrics->setAge($age);
+                        $customer_metrics->setMovement($movement);
+                        $customer_metrics->setGoals($goals);
+                        $customer_metrics->setDateAdd(new \DateTime('NOW'));
+                        $em->persist($customer_metrics);
+                        $em->flush();
+                    }
+                    return $this->redirectToRoute('customer_personal_data');
+                }
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('personalDataKOStatus',"Se ha producido un error. No pueden obtener los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+        return $this->render('@Customer/personal-data.html.twig',
+            [
+                "customer" => $user,
+                "customer_metrics" => reset($customer_metrics)
+            ]
+        );
+    }
+
+    /**
+     * Fn que se encarga de la creacion, modificacion y renderizacion de las paginas de la agenda personal del usuario loggeado
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     * @throws \Exception
+     */
+    public function diaryAction(Request $request){
+        $diary_page = false;
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+            $today_datetime =  new \DateTime($request->request->get('date_filter'));
+            $diary_pages_repo = $em->getRepository('NutritionistBundle:DiaryPages');
+            $diary_pages = $diary_pages_repo->findBy(['date' => $today_datetime, 'idUser' =>$user->getIdUser()]);
+
+            if(count($diary_pages) > 0){
+                $diary_page = reset($diary_pages);
+            }
+
+            if($request->isMethod('POST') && ($request->request->get('submit') == "Guardar" && $diary_page != false)){
+                $diary_page->setTasks($request->request->get('todays_tasks'));
+                $diary_page->setEvents($request->request->get('todays_events'));
+                $diary_page->setMemosAndNotes($request->request->get('todays_memos'));
+                $em->persist($diary_page);
+                $em->flush();
+            }
+            elseif($request->isMethod('POST') && ($request->request->get('submit') == "Guardar" && $diary_page == false)){
+                $diary_page = new DiaryPages();
+                $diary_page->setTasks($request->request->get('todays_tasks'));
+                $diary_page->setEvents($request->request->get('todays_events'));
+                $diary_page->setMemosAndNotes($request->request->get('todays_memos'));
+                $diary_page->setDate($today_datetime);
+                $diary_page->setIdUser($user->getIdUser());
+                $diary_page->setDateAdd(new \DateTime('NOW'));
+                $diary_page->setDateUpd(new \DateTime('NOW'));
+                $em->persist($diary_page);
+                $em->flush();
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('customerDiaryKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+
+
+        return $this->render('@Customer/diary.html.twig',
+            [
+                "today_datetime" => $today_datetime,
+                "diaryPage" => $diary_page
+            ]
+        );
+    }
+
+    /**
+     * Fn que se encarga de renderizar las recetas para el usuario
+     * @param Request $request
+     * @param int $id_recipe
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function recipesAction(Request $request, $id_recipe = 0){
+        $em = $this->getDoctrine()->getManager();
+        $recipe_ingredients = $nutritional_info = array();
+        /**
+         * Comprobamos si se debe renderizar una receta en concreto
+         */
+        if($id_recipe){
+            $recipes_repository = $em->getRepository('NutritionistBundle:Recipes');
+            $recipe = $recipes_repository->findBy(['idRecipe' => $id_recipe]);
+            $recipe = reset($recipe);
+
+            $ingredients_repo = $em->getRepository("NutritionistBundle:Ingredients");
+            $recipe_ingredients_repo = $em->getRepository("NutritionistBundle:IngredientsRecipes");
+
+            $recipe_ingredients_ids = $recipe_ingredients_repo->findBy(['idRecipe' => $recipe->getIdRecipe()]);
+            $nutritional_info = [
+                'carbs' => 0,
+                'fats' => 0,
+                'protein' => 0
+            ];
+
+            foreach ($recipe_ingredients_ids as $ingredient){
+                $ingredient = $ingredients_repo->findBy(['idIngredient' => $ingredient->getIdIngredient()]);
+                $ingredient = reset($ingredient);
+                $recipe_ingredients[] = $ingredient;
+                $nutritional_info['carbs'] += $ingredient->getCarbohydrates();
+                $nutritional_info['fats'] += $ingredient->getFats();
+                $nutritional_info['protein'] += $ingredient->getProtein();
+            }
+        }
+        else{
+            $recipe = false;
+        }
+
+        /**
+         * Cargamos todas las recetas o las recetas por filtro si procede
+         */
+        $recipes_repo = $em->getRepository("NutritionistBundle:Recipes");
+        $recipes = $recipes_repo->findAll();
+        if($request->isMethod('POST') && $request->request->get('recipe_search') != ""){
+            $key = $request->request->get('recipe_search');
+            $dql_query = $em->createQuery("
+                    SELECT r FROM NutritionistBundle:Recipes r
+                    WHERE r.name LIKE '%$key%'
+                ");
+            $recipes = $dql_query->getResult();
+            $recipe = false;
+        }
+        elseif($request->isMethod('POST')){
+            $recipe = false;
+        }
+
+
+        return $this->render('@Customer/recipes.html.twig',
+            [
+                "id_recipe" => $id_recipe,
+                "recipe" => $recipe,
+                "recipes" => $recipes,
+                'recipe_ingredients' => $recipe_ingredients,
+                'nutritional_info' => $nutritional_info,
+            ]
+        );
+    }
+
+    public function progressAction(Request $request){
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+
+            if($request->isMethod('POST')){
+                $customer_metrics = new CustomerMetrics();
+                $customer_metrics->setIdCustomer($user->getIdUser());
+                $customer_metrics->setWeight($request->request->get('weight'));
+                $customer_metrics->setHeight($request->request->get('height'));
+                $customer_metrics->setAge($request->request->get('age'));
+                $customer_metrics->setMovement($request->request->get('actividad'));
+
+                $fat_percentage = $request->request->get('fat_percentage');
+                if($fat_percentage != ""){
+                    $customer_metrics->setFatPercentage($fat_percentage);
+                }
+
+                $muscle_percentage = $request->request->get('muscle_percentage');
+                if($muscle_percentage != ""){
+                    $customer_metrics->setMusclePercentage($muscle_percentage);
+                }
+
+                $liquids_percentage = $request->request->get('liquids_percentage');
+                if($liquids_percentage != ""){
+                    $customer_metrics->setLiquidPercentage($liquids_percentage);
+                }
+
+                $customer_metrics->setDateAdd(new \DateTime('NOW'));
+                $em->persist($customer_metrics);
+                if(!empty($em->flush())){
+                    $this->session->getFlashBag()->add('progressKOStatus',"Se ha producido un error en el registro de sus métricas, intentelo de nuevo o contacte con el servicio de NutriK.");
+                }
+                else{
+                    $this->session->getFlashBag()->add('progressOKStatus',"Sus métricas se han registrado correctamente.");
+                }
+            }
+            $customer_metrics_query = $em->createQuery("
+                    SELECT cm FROM CustomsBundle:CustomerMetrics cm
+                    WHERE
+                      cm.idCustomer = ".$user->getIdUser()." ORDER BY cm.dateAdd DESC
+                    ");
+            $customer_metrics = $customer_metrics_query->getResult();
+            $customer_metrics = reset($customer_metrics);
+        }
+        else{
+            $this->session->getFlashBag()->add('progressKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+
+        return $this->render('@Customer/progress.html.twig',
+            [
+                "customer_metrics" => $customer_metrics
+            ]
+        );
+    }
+
 
     public function calendarAction(){
         return $this->render('@Customer/calendar.html.twig');
-    }
-
-    public function recipesAction(){
-        return $this->render('@Customer/recipes.html.twig');
-    }
-
-    public function progressAction(){
-        return $this->render('@Customer/progress.html.twig');
     }
 
     public function messengerAction(){

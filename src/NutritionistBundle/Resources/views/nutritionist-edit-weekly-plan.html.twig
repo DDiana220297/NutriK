@@ -19,7 +19,7 @@
                 </div>
             </div>
         {% endfor %}
-        {% for message in  app.session.flashbag().get('addWeeklyPlanKOStatus') %}
+        {% for message in  app.session.flashbag().get('editWeeklyPlanKOStatus') %}
             <div class="row" style="width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: 0;">
                 <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
                     {{ message }}

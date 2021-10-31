@@ -45,3 +45,11 @@ function openModal(){
     let button = document.getElementById('openMyIngredientModal');
     button.click()
 }
+
+function categoryFilter(idCategory) {
+    let category = document.getElementById('category');
+    category.value = idCategory;
+
+    let button = document.getElementById('categorySearch');
+    button.click()
+}

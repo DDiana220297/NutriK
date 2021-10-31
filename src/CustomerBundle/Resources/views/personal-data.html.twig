@@ -12,67 +12,78 @@
         {% include 'customerheader.html.twig' %}
     </section>
     <section id="customer-personal-data">
+        {% for message in  app.session.flashbag().get('personalDataKOStatus') %}
+            <div class="row" style="width: 95%; margin-left: 2.5%; margin-top: 10px; margin-bottom: -16px;">
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        {% for message in  app.session.flashbag().get('personalDataOKStatus') %}
+            <div class="row" style="width: 95%; margin-left: 2.5%; margin-top: 10px; margin-bottom: -16px;">
+                <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class="container">
-            <div class="col-sm-6">
-                <div class="personal-data-header">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                    </svg>
-                    <h3 style="display: inline-flex">Mis Datos Personales</h3>
-                </div>
-                <br/>
-                <div class="form-check">
-                    <label class="form-check-label" for="idCustomerGenderOther">
-                        Otro
-                    </label>
-                    <input class="form-check-input" type="checkbox" value="0" id="idCustomerGenderOther">
-                    <label class="form-check-label" for="idCustomerGenderFemale">
-                        Sra.
-                    </label>
-                    <input class="form-check-input" type="checkbox" value="1" id="idCustomerGenderFemale">
-                    <label class="form-check-label" for="idCustomerGenderMale">
-                        Sr.
-                    </label>
-                    <input class="form-check-input" type="checkbox" value="2" id="idCustomerGenderMale">
-                </div>
-                <div class="personal-data-fields">
-                    <label for="firstname">Nombre:</label><input type="text" id="firstname" name="_firstname" class="form-control"/>
-                    <label for="lastname">Apellidos:</label><input type="text" id="lastname" name="_lastname" class="form-control"/>
-                    <label for="email">Email:</label><input type="email" id="email" name="_email" class="form-control"/>
-                    <label for="password">Contraseña:</label><input type="password" id="password" name="_password" class="form-control"/>
-                    <label for="confirm_password">Confirmar Contraseña:</label><input type="password" id="confirm_password" name="_confirm_password" class="form-control"/>
-                    <label for="birthday">Fecha de nacimiento:</label><input type="date" id="birthday" name="_birthday" class="form-control"/>
-                </div>
-            </div>
-            <div class="col-sm-6" style="display: inline-flex">
-                <div class="personal-data-fields" style="margin-top: 15%; width: 100%">
-                    <label for="bibliografia">Descripción / Bibliografía:</label><textarea type="text" id="bibliografia" name="_bibliografia" class="form-control" style="height: 160px"></textarea>
-                    <label for="objetivos">Objetivos:</label><textarea type="text" id="objetivos" name="_objetivos" class="form-control" style="height: 100px"></textarea>
-                    <p><strong>Metricas:</strong></p>
-                    <div id="metricas" style="display: inline-flex; width: 85%">
-                        <label for="peso"></label><input type="number" id="peso" name="_peso" class="form-control"/>
-                        <label for="altura"></label><input type="number" id="altura" name="_altura" class="form-control"/>
-                        <label for="edad"></label><input type="number" id="edad" name="_edad" class="form-control"/>
+                <form class="form" action="{{ path("customer_personal_data") }}" method="post">
+                <div class="col-sm-6">
+                    <div class="personal-data-header">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                        </svg>
+                        <h3 style="display: inline-flex">Mis Datos Personales</h3>
                     </div>
-                    <p><strong>Actividad:</strong></p>
-                    <div id="actividad" style="display: inline-flex; width: 85%">
-                        <label for="actividad"></label>
-                        <select id="actividad" name="actividad" class="form-select">
-                            <option selected> -- Elige tu nivel de actividad --</option>
-                            <option value="1">Bajo</option>
-                            <option value="2">Moderado</option>
-                            <option value="3">Activo</option>
-                            <option value="3">Muy Activo</option>
-                        </select>
+                    <br/>
+                    <div class="form-check">
+                        <label class="form-check-label" for="idCustomerGenderOther">
+                            Otro
+                        </label>
+                        <input class="form-check-input" type="checkbox" value="0" id="idCustomerGenderOther" {% if customer.idGender == 0 %} checked {% endif %}>
+                        <label class="form-check-label" for="idCustomerGenderFemale">
+                            Sra.
+                        </label>
+                        <input class="form-check-input" type="checkbox" value="1" id="idCustomerGenderFemale" {% if customer.idGender == 1 %} checked {% endif %}>
+                        <label class="form-check-label" for="idCustomerGenderMale">
+                            Sr.
+                        </label>
+                        <input class="form-check-input" type="checkbox" value="2" id="idCustomerGenderMale" {% if customer.idGender == 2 %} checked {% endif %}>
+                    </div>
+                    <div class="personal-data-fields">
+                        <label for="firstname">Nombre:</label><input type="text" id="firstname" name="firstname" class="form-control" value="{{ customer.firstname }}"/>
+                        <label for="lastname">Apellidos:</label><input type="text" id="lastname" name="lastname" class="form-control" value="{{ customer.lastname }}"/>
+                        <label for="email">Email:</label><input type="email" id="email" name="email" class="form-control" value="{{ customer.email }}"/>
+                        <label for="password">Contraseña:</label><input type="password" id="password" name="password" class="form-control"/>
+                        <label for="confirm_password">Confirmar Contraseña:</label><input type="password" id="confirm_password" name="confirm_password" class="form-control"/>
+                        <label for="birthday">Fecha de nacimiento:</label><input type="date" id="birthday" name="birthday" class="form-control" value="{{ customer.birthday|date('Y-m-d') }}"/>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-12" style="display: inline-flex">
-                <div class="save-button-item" style="width: 100%; padding: 10px">
-                    <input class="btn save-button" type="submit" value="Guardar"/>
+                <div class="col-sm-6" style="display: inline-flex">
+                    <div class="personal-data-fields" style="margin-top: 17.5%; width: 100%">
+                        <label for="bibliografia">Descripción / Bibliografía:</label><textarea type="text" id="bibliografia" name="bibliografia" class="form-control" style="height: 160px">{{ customer.description }}</textarea>
+                        <label for="objetivos">Objetivos:</label><textarea type="text" id="objetivos" name="objetivos" class="form-control" style="height: 100px">{% if customer_metrics != false %}{{ customer_metrics.goals }}{% endif %}</textarea>
+                        <p><strong>Metricas:</strong></p>
+                        <div id="metricas" style="display: inline-flex; width: 85%">
+                            <label for="peso"></label><input type="number" id="peso" name="peso" class="form-control" placeholder="kg" value="{% if customer_metrics != false %}{{ customer_metrics.weight }}{% endif %}"/>
+                            <label for="altura"></label><input type="number" id="altura" name="altura" class="form-control" placeholder="cm" value="{% if customer_metrics != false %}{{ customer_metrics.height }}{% endif %}"/>
+                            <label for="edad"></label><input type="number" id="edad" name="edad" class="form-control" placeholder="años" value="{% if customer_metrics != false %}{{ customer_metrics.age }}{% endif %}"/>
+                        </div>
+                        <p><strong>Actividad:</strong></p>
+                        <div id="actividad" style="display: inline-flex; width: 85%">
+                            <label for="actividad"></label>
+                            <select id="actividad" name="actividad" class="form-select">
+                                <option value="1" {% if customer_metrics != false and customer_metrics.movement == 1 %} selected {% endif %}>Bajo</option>
+                                <option value="2" {% if customer_metrics != false and customer_metrics.movement == 2 %} selected {% endif %}>Moderado</option>
+                                <option value="3" {% if customer_metrics != false and customer_metrics.movement == 3 %} selected {% endif %}>Activo</option>
+                                <option value="3" {% if customer_metrics != false and customer_metrics.movement == 4 %} selected {% endif %}>Muy Activo</option>
+                            </select>
+                            <input class="btn save-button" type="submit" value="Guardar"/>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </section>
     </html>

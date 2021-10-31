@@ -110,4 +110,3 @@ class Tag
         return $this->visible;
     }
 }
-

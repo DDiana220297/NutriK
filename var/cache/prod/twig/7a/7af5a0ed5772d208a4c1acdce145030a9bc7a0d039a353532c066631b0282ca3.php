@@ -82,44 +82,183 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/header.css"), "html", null, true);
         echo "\" />
 
+        <!-- Footer stylesheet-->
+        <link rel=\"stylesheet\" href=\"";
+        // line 26
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/footer.css"), "html", null, true);
+        echo "\" />
+
+        <!-- Homepage stylesheet-->
+        <link rel=\"stylesheet\" href=\"";
+        // line 29
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/homepage.css"), "html", null, true);
+        echo "\" />
+
         <!-- Menu component javascript -->
         <script src=\"";
-        // line 26
+        // line 32
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/js/MenuComponent.js"), "html", null, true);
         echo "\"></script>
 
         <!-- Customs JS -->
         <script src=\"";
-        // line 29
+        // line 35
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework//js/customs.js"), "html", null, true);
+        echo "\"></script>
+
+        <!-- Chart JS -->
+        <script src=\"";
+        // line 38
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/js/chart.js"), "html", null, true);
         echo "\"></script>
     </header>
     <section id=\"default-header\">
         ";
-        // line 32
-        $this->loadTemplate("header.html.twig", "@Customs/index.html.twig", 32)->display($context);
-        // line 33
+        // line 41
+        $this->loadTemplate("header.html.twig", "@Customs/index.html.twig", 41)->display($context);
+        // line 42
         echo "    </section>
     ";
-        // line 34
+        // line 43
         if ( !$this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_NUTR")) {
-            // line 35
+            // line 44
             echo "        <section id=\"customer-header\">
             ";
-            // line 36
-            $this->loadTemplate("customerheader.html.twig", "@Customs/index.html.twig", 36)->display($context);
-            // line 37
+            // line 45
+            $this->loadTemplate("customerheader.html.twig", "@Customs/index.html.twig", 45)->display($context);
+            // line 46
             echo "        </section>
+        <section id=\"customer-homepage\">
+
+        </section>
+    ";
+        } else {
+            // line 51
+            echo "        <section id=\"nutritionist-homepage\">
+            <div class=\"container\">
+                <div class=\"col-sm-12\">
+                    <div id=\"nutritionist-homepage-block\">
+                        <div class=\"col-sm-6\">
+                            <div class=\"col-sm-12 nutritionist-appointments-events\">
+                                <h3>Mis próximas consultas</h3>
+                                <hr/>
+                                <div class=\"nutritionist-appointments\">
+                                    ";
+            // line 60
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["appointments"] ?? $this->getContext($context, "appointments")));
+            foreach ($context['_seq'] as $context["_key"] => $context["appointment"]) {
+                // line 61
+                echo "                                        <p>
+                                            <strong>";
+                // line 62
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["appointment"], "date", []), "Y-m-d H:i:s"), "html", null, true);
+                echo ":</strong>
+                                            <a href=\"";
+                // line 63
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_appointment", ["id_appointment" => $this->getAttribute($context["appointment"], "idAppointment", [])]), "html", null, true);
+                echo "\">";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["appointment"], "description", []), "html", null, true);
+                echo "</a>
+                                        </p>
+                                    ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['appointment'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 66
+            echo "                                </div>
+
+                                <h3>Mis próximos eventos</h3>
+                                <hr/>
+                                <div class=\"nutritionist-events\">
+                                    ";
+            // line 71
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["events"] ?? $this->getContext($context, "events")));
+            foreach ($context['_seq'] as $context["_key"] => $context["event"]) {
+                // line 72
+                echo "                                        <p>
+                                            <strong>";
+                // line 73
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["event"], "date", []), "Y-m-d H:i:s"), "html", null, true);
+                echo ":</strong>
+                                            <a href=\"";
+                // line 74
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_event", ["id_event" => $this->getAttribute($context["event"], "idEvent", [])]), "html", null, true);
+                echo "\">";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "title", []), "html", null, true);
+                echo "</a>
+                                        </p>
+                                    ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 77
+            echo "                                </div>
+                            </div>
+                            <div class=\"col-sm-12 nutritionist-kpis\">
+                                <img src=\"";
+            // line 80
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("chart.png"), "html", null, true);
+            echo "\">
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"nutritionist-notifications\">
+                                <h3>Mis notificaciones</h3>
+                                ";
+            // line 86
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["logs"] ?? $this->getContext($context, "logs")));
+            foreach ($context['_seq'] as $context["_key"] => $context["log"]) {
+                // line 87
+                echo "                                    <div class=\"row\">
+                                        ";
+                // line 88
+                if (twig_in_filter("add", $this->getAttribute($context["log"], "source", []))) {
+                    // line 89
+                    echo "                                            <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
+                                        ";
+                } elseif (twig_in_filter("delete", $this->getAttribute(                // line 90
+$context["log"], "source", []))) {
+                    // line 91
+                    echo "                                            <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
+                                        ";
+                } else {
+                    // line 93
+                    echo "                                            <div class=\"alert alert-info\" role=\"alert\" style=\"margin-bottom: 0\">
+                                        ";
+                }
+                // line 95
+                echo "                                            ";
+                echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
+                echo "
+                                        </div>
+                                    </div>
+                                ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['log'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 99
+            echo "                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     ";
         }
-        // line 39
-        echo "    <section id=\"content\">
-        Content Default
-    </section>
-    <footer>
-        Trabajo de fin de grado Nutrik
-    </footer>
-    </html>
+        // line 106
+        echo "
+
+    ";
+        // line 108
+        $this->loadTemplate("footer.html.twig", "@Customs/index.html.twig", 108)->display($context);
+        // line 109
+        echo "    </html>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -145,7 +284,7 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
 
     public function getDebugInfo()
     {
-        return array (  130 => 7,  116 => 39,  112 => 37,  110 => 36,  107 => 35,  105 => 34,  102 => 33,  100 => 32,  94 => 29,  88 => 26,  82 => 23,  76 => 20,  67 => 14,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
+        return array (  269 => 7,  261 => 109,  259 => 108,  255 => 106,  246 => 99,  235 => 95,  231 => 93,  227 => 91,  225 => 90,  222 => 89,  220 => 88,  217 => 87,  213 => 86,  204 => 80,  199 => 77,  188 => 74,  184 => 73,  181 => 72,  177 => 71,  170 => 66,  159 => 63,  155 => 62,  152 => 61,  148 => 60,  137 => 51,  130 => 46,  128 => 45,  125 => 44,  123 => 43,  120 => 42,  118 => 41,  112 => 38,  106 => 35,  100 => 32,  94 => 29,  88 => 26,  82 => 23,  76 => 20,  67 => 14,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -182,11 +321,20 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
         <!-- Header stylesheet-->
         <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/header.css') }}\" />
 
+        <!-- Footer stylesheet-->
+        <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/footer.css') }}\" />
+
+        <!-- Homepage stylesheet-->
+        <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/homepage.css') }}\" />
+
         <!-- Menu component javascript -->
         <script src=\"{{ asset('bundles/framework/js/MenuComponent.js') }}\"></script>
 
         <!-- Customs JS -->
         <script src=\"{{ asset('bundles/framework//js/customs.js') }}\"></script>
+
+        <!-- Chart JS -->
+        <script src=\"{{ asset('public/js/chart.js') }}\"></script>
     </header>
     <section id=\"default-header\">
         {% include 'header.html.twig' %}
@@ -195,13 +343,68 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
         <section id=\"customer-header\">
             {% include 'customerheader.html.twig' %}
         </section>
+        <section id=\"customer-homepage\">
+
+        </section>
+    {% else %}
+        <section id=\"nutritionist-homepage\">
+            <div class=\"container\">
+                <div class=\"col-sm-12\">
+                    <div id=\"nutritionist-homepage-block\">
+                        <div class=\"col-sm-6\">
+                            <div class=\"col-sm-12 nutritionist-appointments-events\">
+                                <h3>Mis próximas consultas</h3>
+                                <hr/>
+                                <div class=\"nutritionist-appointments\">
+                                    {% for appointment in appointments %}
+                                        <p>
+                                            <strong>{{ appointment.date|date('Y-m-d H:i:s') }}:</strong>
+                                            <a href=\"{{ path(\"nutritionist_edit_appointment\",{\"id_appointment\":appointment.idAppointment}) }}\">{{ appointment.description }}</a>
+                                        </p>
+                                    {% endfor %}
+                                </div>
+
+                                <h3>Mis próximos eventos</h3>
+                                <hr/>
+                                <div class=\"nutritionist-events\">
+                                    {% for event in events %}
+                                        <p>
+                                            <strong>{{ event.date|date('Y-m-d H:i:s') }}:</strong>
+                                            <a href=\"{{ path(\"nutritionist_edit_event\",{\"id_event\":event.idEvent}) }}\">{{ event.title }}</a>
+                                        </p>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class=\"col-sm-12 nutritionist-kpis\">
+                                <img src=\"{{ asset('chart.png') }}\">
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"nutritionist-notifications\">
+                                <h3>Mis notificaciones</h3>
+                                {% for log in logs %}
+                                    <div class=\"row\">
+                                        {% if 'add' in log.source %}
+                                            <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
+                                        {% elseif 'delete' in log.source %}
+                                            <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
+                                        {% else %}
+                                            <div class=\"alert alert-info\" role=\"alert\" style=\"margin-bottom: 0\">
+                                        {% endif %}
+                                            {{ log.context }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     {% endif %}
-    <section id=\"content\">
-        Content Default
-    </section>
-    <footer>
-        Trabajo de fin de grado Nutrik
-    </footer>
+
+
+    {% include 'footer.html.twig' %}
     </html>
 {% endblock %}
 ", "@Customs/index.html.twig", "/shared/httpd/nutrik/src/CustomsBundle/Resources/views/index.html.twig");

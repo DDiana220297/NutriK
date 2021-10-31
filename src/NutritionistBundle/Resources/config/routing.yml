@@ -66,6 +66,10 @@ nutritionist_customers:
     path: /nutritionist-customers
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistCustomers }
 
+nutritionist_all_customers:
+    path: /nutritionist-all-customers
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistAllCustomers }
+
 nutritionist_add_customer:
     path: /nutritionist-add-customer
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistAddCustomer }

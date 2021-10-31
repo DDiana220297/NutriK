@@ -12,39 +12,80 @@
         {% include 'customerheader.html.twig' %}
     </section>
     <section id="recipes">
-        <div class="container">
-            <div class="col-sm-12">
-                <nav class="navbar navbar-light bg-light">
-                    <div class="container-fluid">
-                        <form class="d-flex recipes-finder">
-                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Buscar</button>
-                        </form>
-                    </div>
-                </nav>
-                <div class="container-fluid">
-                    <div id="recipes-content">
-                        <div class="col-sm-7">
-                            <div id="recipe-content">
-                                <div id="recipe-title">
-                                </div>
-                                <div id="recipe-nutritional-info">
-                                </div>
-                                <div id="recipe-images">
-                                </div>
-                                <div id="recipe-steps">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div id="recipe-content">
-                                <div id="recipe-ingredients">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        {% for message in  app.session.flashbag().get('recipesKOStatus') %}
+            <div class="row" style="width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                    {{ message }}
                 </div>
             </div>
+        {% endfor %}
+        <div class="container">
+            <form class="form" action="{{ path("customer_recipes", {"id_recipe":id_recipe}) }}" method="post">
+                <div class="col-sm-12">
+                    <nav class="navbar navbar-light bg-light">
+                        <div class="container-fluid">
+                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="recipe_search">
+                            <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        </div>
+                    </nav>
+                    <div class="container-fluid">
+                        {% if recipe != false%}
+                            <div id="recipes-content">
+                                <div class="col-sm-8">
+                                    <div id="recipe-content">
+                                        <div id="recipe-title" class="col-sm-12">
+                                            <strong style="font-size: 22px;">{{ recipe.name }}</strong>
+                                        </div>
+                                        <div id="recipe-nutritional-info" class="col-sm-6">
+                                            <h3>Información nutricional</h3>
+                                            <p><strong>Carbohidratos:</strong><span> {{ nutritional_info['carbs'] }} gramos / 100 gramos</span></p>
+                                            <p><strong>Grasas:</strong><span> {{ nutritional_info['fats'] }} gramos / 100 gramos</span></p>
+                                            <p><strong>Proteinas:</strong><span> {{ nutritional_info['protein']}} gramos / 100 gramos</span></p>
+                                        </div>
+                                        <div id="recipe-images" class="col-sm-6">
+                                            <img src="{{ asset(recipe.image) }}">
+                                        </div>
+                                        <div id="recipe-steps" class="col-sm-12">
+                                            {{ recipe.description }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div id="recipe-content">
+                                        <div id="recipe-ingredients">
+                                            <strong style="font-size: 22px;">Ingredientes</strong>
+                                            <br/><br/>
+                                            <ul class="list-group">
+                                                {% for recipe_ingredient in recipe_ingredients %}
+                                                    <li>
+                                                        {{ recipe_ingredient.name }}
+                                                    </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div id="recipes-content" style="overflow-y: auto">
+                                {% for recipe_object in recipes %}
+                                    <div class="recipe">
+                                        <div class="col-sm-11 recipe-name">
+                                            <a href="{{ path("customer_recipes", {"id_recipe":recipe_object.idRecipe}) }}">{{ recipe_object.name }}</a>
+                                        </div>
+                                        <div class="col-sm-1 recipe-actions">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"
+                                                onclick="redirectTo('recipes','/'+{{ recipe_object.idRecipe }})">
+                                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </form>
         </div>
     </section>
     </html>

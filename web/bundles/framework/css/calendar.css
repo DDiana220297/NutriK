@@ -698,7 +698,6 @@ table.fc-header{
     padding-right: 10px;
 }
 
-
 /* Events
 -----------------------------------------------------*/
 
@@ -708,7 +707,6 @@ table.fc-header{
 }
 
 /* for vertical events */
-
 .fc-event-bg {
     display: none !important;
 }

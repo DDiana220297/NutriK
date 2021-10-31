@@ -65,41 +65,95 @@ class __TwigTemplate_735871fb37e10b2d8a5aebe7c781d9e39e7572e7ed17eb9b3ba2784c641
         // line 13
         echo "    </section>
     <section id=\"customer-diary\">
-        <div class=\"container\">
-            <div class=\"col-sm-5\">
-                <h3>Sabado - 09 de Octubre</h3>
-                <div id=\"todays-tasks\">
-                    <h3>Tareas para hoy:</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+        ";
+        // line 15
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "customerDiaryKOStatus"], "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 16
+            echo "            <div class=\"row\" style=\"width: 93.5%; margin-left: 3.3%; margin-top: 10px; margin-bottom: -10px;\">
+                <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
+                    ";
+            // line 18
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
                 </div>
             </div>
-            <div class=\"col-sm-5\" style=\"padding: 0px 20px\">
-                <label for=\"date-filter\"></label>
-                <input type=\"date\" id=\"date-filter\" name=\"_date_filter\" class=\"form-control\"/>
-                <div id=\"todays-events\">
-                    <h3>Eventos de hoy:</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 22
+        echo "        <div class=\"container\">
+            <form class=\"form\" action=\"";
+        // line 23
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_diary");
+        echo "\" method=\"post\" novalidate>
+                <div class=\"col-sm-6\">
+                    <h3>
+                        ";
+        // line 26
+        if ((($context["today_datetime"] ?? $this->getContext($context, "today_datetime")) != false)) {
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, ($context["today_datetime"] ?? $this->getContext($context, "today_datetime")), "l", "Europe/Paris"), "html", null, true);
+            echo " - ";
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, ($context["today_datetime"] ?? $this->getContext($context, "today_datetime")), "d", "Europe/Paris"), "html", null, true);
+            echo " de ";
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, ($context["today_datetime"] ?? $this->getContext($context, "today_datetime")), "F", "Europe/Paris"), "html", null, true);
+            echo "
+                        ";
+        } else {
+            // line 28
+            echo "                            ";
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "l", "Europe/Paris"), "html", null, true);
+            echo " - ";
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "d", "Europe/Paris"), "html", null, true);
+            echo " de ";
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, "now", "F", "Europe/Paris"), "html", null, true);
+            echo "
+                        ";
+        }
+        // line 30
+        echo "                    </h3>
+                    <div id=\"todays-tasks\">
+                        <h3>Tareas para hoy:</h3>
+                        <textarea type=\"text\" id=\"todays_tasks\" name=\"todays_tasks\" required=\"required\">";
+        // line 33
+        if ((($context["diaryPage"] ?? $this->getContext($context, "diaryPage")) != false)) {
+            echo twig_escape_filter($this->env, $this->getAttribute(($context["diaryPage"] ?? $this->getContext($context, "diaryPage")), "tasks", []), "html", null, true);
+        }
+        echo "</textarea>
+                    </div>
+                    <div class=\"save-button-item\" style=\"width: 100%;\">
+                        <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Guardar\"/>
+                    </div>
                 </div>
-                <div id=\"todays-memos\">
-                    <h3>Recordatorios y notas:</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+                <div class=\"col-sm-6\" style=\"padding: 0 20px\">
+                    <input type=\"date\" id=\"date-filter\" name=\"date_filter\" class=\"form-control\" value=\"";
+        // line 40
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, ($context["today_datetime"] ?? $this->getContext($context, "today_datetime")), "Y-m-d", "Europe/Paris"), "html", null, true);
+        echo "\"/>
+                    <input class=\"btn btn-outline-success\" type=\"submit\" name=\"submit\" value=\"Buscar\"/>
+                    <div id=\"todays-events\">
+                        <h3>Eventos de hoy:</h3>
+                        <textarea type=\"text\" id=\"todays_events\" name=\"todays_events\" required=\"required\">";
+        // line 44
+        if ((($context["diaryPage"] ?? $this->getContext($context, "diaryPage")) != false)) {
+            echo twig_escape_filter($this->env, $this->getAttribute(($context["diaryPage"] ?? $this->getContext($context, "diaryPage")), "events", []), "html", null, true);
+        }
+        echo "</textarea>
+                    </div>
+                    <div id=\"todays-memos\">
+                        <h3 style=\"color: white\">Recordatorios y notas:</h3>
+                        <textarea type=\"text\" id=\"todays_memos\" name=\"todays_memos\" required=\"required\">";
+        // line 48
+        if ((($context["diaryPage"] ?? $this->getContext($context, "diaryPage")) != false)) {
+            echo twig_escape_filter($this->env, $this->getAttribute(($context["diaryPage"] ?? $this->getContext($context, "diaryPage")), "memosAndNotes", []), "html", null, true);
+        }
+        echo "</textarea>
+                    </div>
                 </div>
-            </div>
-            <div class=\"col-sm-2\">
-                <div id=\"todays-quick-access\">
-                    <h3>Eventos de hoy:</h3>
-                    <ul style=\"margin-top: 30px\">
-                        <li>Evento 1</li>
-                        <li>Evento 2</li>
-                    </ul>
-                </div>
-            </div>
+            </form>
         </div>
     </section>
     </html>
@@ -116,7 +170,7 @@ class __TwigTemplate_735871fb37e10b2d8a5aebe7c781d9e39e7572e7ed17eb9b3ba2784c641
 
     public function getDebugInfo()
     {
-        return array (  66 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  150 => 48,  141 => 44,  134 => 40,  122 => 33,  117 => 30,  107 => 28,  97 => 26,  91 => 23,  88 => 22,  78 => 18,  74 => 16,  70 => 15,  66 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -143,41 +197,43 @@ class __TwigTemplate_735871fb37e10b2d8a5aebe7c781d9e39e7572e7ed17eb9b3ba2784c641
         {% include 'customerheader.html.twig' %}
     </section>
     <section id=\"customer-diary\">
+        {% for message in  app.session.flashbag().get('customerDiaryKOStatus') %}
+            <div class=\"row\" style=\"width: 93.5%; margin-left: 3.3%; margin-top: 10px; margin-bottom: -10px;\">
+                <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class=\"container\">
-            <div class=\"col-sm-5\">
-                <h3>Sabado - 09 de Octubre</h3>
-                <div id=\"todays-tasks\">
-                    <h3>Tareas para hoy:</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+            <form class=\"form\" action=\"{{ path(\"customer_diary\") }}\" method=\"post\" novalidate>
+                <div class=\"col-sm-6\">
+                    <h3>
+                        {% if today_datetime != false %}{{ today_datetime|date('l', \"Europe/Paris\") }} - {{ today_datetime|date('d', \"Europe/Paris\") }} de {{ today_datetime|date('F', \"Europe/Paris\") }}
+                        {% else %}
+                            {{ 'now'|date('l', \"Europe/Paris\") }} - {{ 'now'|date('d', \"Europe/Paris\") }} de {{ 'now'|date('F', \"Europe/Paris\") }}
+                        {% endif %}
+                    </h3>
+                    <div id=\"todays-tasks\">
+                        <h3>Tareas para hoy:</h3>
+                        <textarea type=\"text\" id=\"todays_tasks\" name=\"todays_tasks\" required=\"required\">{% if diaryPage != false %}{{ diaryPage.tasks }}{% endif %}</textarea>
+                    </div>
+                    <div class=\"save-button-item\" style=\"width: 100%;\">
+                        <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Guardar\"/>
+                    </div>
                 </div>
-            </div>
-            <div class=\"col-sm-5\" style=\"padding: 0px 20px\">
-                <label for=\"date-filter\"></label>
-                <input type=\"date\" id=\"date-filter\" name=\"_date_filter\" class=\"form-control\"/>
-                <div id=\"todays-events\">
-                    <h3>Eventos de hoy:</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+                <div class=\"col-sm-6\" style=\"padding: 0 20px\">
+                    <input type=\"date\" id=\"date-filter\" name=\"date_filter\" class=\"form-control\" value=\"{{ today_datetime|date('Y-m-d', \"Europe/Paris\") }}\"/>
+                    <input class=\"btn btn-outline-success\" type=\"submit\" name=\"submit\" value=\"Buscar\"/>
+                    <div id=\"todays-events\">
+                        <h3>Eventos de hoy:</h3>
+                        <textarea type=\"text\" id=\"todays_events\" name=\"todays_events\" required=\"required\">{% if diaryPage != false %}{{ diaryPage.events }}{% endif %}</textarea>
+                    </div>
+                    <div id=\"todays-memos\">
+                        <h3 style=\"color: white\">Recordatorios y notas:</h3>
+                        <textarea type=\"text\" id=\"todays_memos\" name=\"todays_memos\" required=\"required\">{% if diaryPage != false %}{{ diaryPage.memosAndNotes }}{% endif %}</textarea>
+                    </div>
                 </div>
-                <div id=\"todays-memos\">
-                    <h3>Recordatorios y notas:</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-            </div>
-            <div class=\"col-sm-2\">
-                <div id=\"todays-quick-access\">
-                    <h3>Eventos de hoy:</h3>
-                    <ul style=\"margin-top: 30px\">
-                        <li>Evento 1</li>
-                        <li>Evento 2</li>
-                    </ul>
-                </div>
-            </div>
+            </form>
         </div>
     </section>
     </html>

@@ -16,6 +16,25 @@
         <option name="unsigned"/>
       </options>
     </field>
+    <field name="fatPercentage" type="float" column="fat_percentage" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="musclePercentage" type="float" column="muscle_percentage" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="liquidPercentage" type="float" column="liquid_percentage" precision="10" scale="0" nullable="false">
+      <options>
+        <option name="fixed"/>
+        <option name="default">0</option>
+      </options>
+    </field>
+
     <field name="movement" type="string" column="movement" length="248" nullable="false">
       <options>
         <option name="fixed"/>

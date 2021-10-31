@@ -12,41 +12,43 @@
         {% include 'customerheader.html.twig' %}
     </section>
     <section id="customer-diary">
+        {% for message in  app.session.flashbag().get('customerDiaryKOStatus') %}
+            <div class="row" style="width: 93.5%; margin-left: 3.3%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class="container">
-            <div class="col-sm-5">
-                <h3>Sabado - 09 de Octubre</h3>
-                <div id="todays-tasks">
-                    <h3>Tareas para hoy:</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+            <form class="form" action="{{ path("customer_diary") }}" method="post" novalidate>
+                <div class="col-sm-6">
+                    <h3>
+                        {% if today_datetime != false %}{{ today_datetime|date('l', "Europe/Paris") }} - {{ today_datetime|date('d', "Europe/Paris") }} de {{ today_datetime|date('F', "Europe/Paris") }}
+                        {% else %}
+                            {{ 'now'|date('l', "Europe/Paris") }} - {{ 'now'|date('d', "Europe/Paris") }} de {{ 'now'|date('F', "Europe/Paris") }}
+                        {% endif %}
+                    </h3>
+                    <div id="todays-tasks">
+                        <h3>Tareas para hoy:</h3>
+                        <textarea type="text" id="todays_tasks" name="todays_tasks" required="required">{% if diaryPage != false %}{{ diaryPage.tasks }}{% endif %}</textarea>
+                    </div>
+                    <div class="save-button-item" style="width: 100%;">
+                        <input class="btn save-button" type="submit" name="submit" value="Guardar"/>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-5" style="padding: 0px 20px">
-                <label for="date-filter"></label>
-                <input type="date" id="date-filter" name="_date_filter" class="form-control"/>
-                <div id="todays-events">
-                    <h3>Eventos de hoy:</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
+                <div class="col-sm-6" style="padding: 0 20px">
+                    <input type="date" id="date-filter" name="date_filter" class="form-control" value="{{ today_datetime|date('Y-m-d', "Europe/Paris") }}"/>
+                    <input class="btn btn-outline-success" type="submit" name="submit" value="Buscar"/>
+                    <div id="todays-events">
+                        <h3>Eventos de hoy:</h3>
+                        <textarea type="text" id="todays_events" name="todays_events" required="required">{% if diaryPage != false %}{{ diaryPage.events }}{% endif %}</textarea>
+                    </div>
+                    <div id="todays-memos">
+                        <h3 style="color: white">Recordatorios y notas:</h3>
+                        <textarea type="text" id="todays_memos" name="todays_memos" required="required">{% if diaryPage != false %}{{ diaryPage.memosAndNotes }}{% endif %}</textarea>
+                    </div>
                 </div>
-                <div id="todays-memos">
-                    <h3>Recordatorios y notas:</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <div id="todays-quick-access">
-                    <h3>Eventos de hoy:</h3>
-                    <ul style="margin-top: 30px">
-                        <li>Evento 1</li>
-                        <li>Evento 2</li>
-                    </ul>
-                </div>
-            </div>
+            </form>
         </div>
     </section>
     </html>

@@ -65,7 +65,7 @@ class __TwigTemplate_cb28e53a7b719f2f14c51e957f0a07ff05be5d9ec517f30d50bb7dd1415
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "editRecipeKOStatus"], "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
             // line 13
-            echo "            <div class=\"row\" style=\"width: 91.3%; margin-left: 4.3%; margin-top: 10px; margin-bottom: -35px;\">
+            echo "            <div class=\"row\" style=\"width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: -10px;\">
                 <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
                     ";
             // line 15
@@ -245,7 +245,7 @@ class __TwigTemplate_cb28e53a7b719f2f14c51e957f0a07ff05be5d9ec517f30d50bb7dd1415
     </section>
     <section id=\"nutritionist-edit-recipe\">
         {% for message in  app.session.flashbag().get('editRecipeKOStatus') %}
-            <div class=\"row\" style=\"width: 91.3%; margin-left: 4.3%; margin-top: 10px; margin-bottom: -35px;\">
+            <div class=\"row\" style=\"width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: -10px;\">
                 <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
                     {{ message }}
                 </div>

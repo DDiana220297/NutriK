@@ -76,41 +76,76 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
 
                     <!-- Wrapper for slides -->
                     <div class=\"carousel-inner\" role=\"listbox\">
-                        <div class=\"item active\">
-                            <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Example%20light%20background%20image\">
-                            <div class=\"carousel-caption\">
-                                <h4>Bootstrap caption example</h4>
-                                <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
-                            </div>
-                        </div>
-
-                        <div class=\"item\">
-                            <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Example%20light%20background%20image%20with%20caption\">
-                            <div class=\"carousel-caption\">
-                                <h4>Bootstrap caption example</h4>
-                                <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
-                            </div>
-                        </div>
-
-                        <div class=\"item\">
-                            <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Another%20example%20without%20caption\">
-                            <div class=\"carousel-caption\">
-                                <h4>Bootstrap caption example</h4>
-                                <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
-                            </div>
-                            <div style=\"color: black\">
-                                <p>Description vjdshkhsdakvhskdajvh</p>
-                            </div>
-                        </div>
+                        <div class=\"carousel-inner\" role=\"listbox\">
+                            ";
+        // line 27
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["new_events"] ?? $this->getContext($context, "new_events")));
+        foreach ($context['_seq'] as $context["_key"] => $context["new_event"]) {
+            // line 28
+            echo "                                <div class=\"item active\">
+                                    <img src=\"";
+            // line 29
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(twig_random($this->env, [0 => "carousel1.jpg", 1 => "carousel2.jpg", 2 => "carousel3.jpg", 3 => "carousel4.jpeg", 4 => "carousel5.jpg", 5 => "img3.jpg", 6 => "img4.jpg"])), "html", null, true);
+            echo "\" style=\"border-radius: 10%;\">
+                                    <div class=\"carousel-caption\">
+                                        <a href=\"";
+            // line 31
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_event_view", ["id_event" => $this->getAttribute($context["new_event"], "idEvent", [])]), "html", null, true);
+            echo "\" style=\"font-size: 22px; font-weight: bold; color: white\">";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["new_event"], "title", []), "html", null, true);
+            echo "</a>
+                                        <p style=\"font-size: 18px\">";
+            // line 32
+            echo twig_escape_filter($this->env, $this->getAttribute($context["new_event"], "description", []), "html", null, true);
+            echo "</p>
+                                    </div>
+                                </div>
+                            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['new_event'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 36
+        echo "                            ";
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["new_didactic_contents"] ?? $this->getContext($context, "new_didactic_contents")));
+        foreach ($context['_seq'] as $context["_key"] => $context["new_didactic_content"]) {
+            // line 37
+            echo "                                <div class=\"item\">
+                                    <img src=\"";
+            // line 38
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(twig_random($this->env, [0 => "carousel1.jpg", 1 => "carousel2.jpg", 2 => "carousel3.jpg", 3 => "carousel4.jpeg", 4 => "carousel5.jpg", 5 => "img3.jpg", 6 => "img4.jpg"])), "html", null, true);
+            echo "\" style=\"border-radius: 10%;\">
+                                    <div class=\"carousel-caption\">
+                                        <a href=\"";
+            // line 40
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_didactic_content_view", ["id_entry" => $this->getAttribute($context["new_didactic_content"], "idEntry", [])]), "html", null, true);
+            echo "\" style=\"font-size: 22px; font-weight: bold; color: white\">";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["new_didactic_content"], "title", []), "html", null, true);
+            echo "</a>
+                                        <p style=\"font-size: 18px\">";
+            // line 41
+            echo twig_escape_filter($this->env, $this->getAttribute($context["new_didactic_content"], "description", []), "html", null, true);
+            echo "</p>
+                                    </div>
+                                </div>
+                            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['new_didactic_content'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 45
+        echo "                        </div>
                     </div>
 
                     <!-- Controls -->
-                    <a class=\"left carousel-control\" href=\"#news-carousel-section\" role=\"button\" data-slide=\"prev\">
+                    <a class=\"left carousel-control\" href=\"#news-carousel-section\" role=\"button\" data-slide=\"prev\" style=\"border-radius: 10%;\">
                         <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>
                         <span class=\"sr-only\">Previous</span>
                     </a>
 
-                    <a class=\"right carousel-control\" href=\"#news-carousel-section\" role=\"button\" data-slide=\"next\">
+                    <a class=\"right carousel-control\" href=\"#news-carousel-section\" role=\"button\" data-slide=\"next\" style=\"border-radius: 10%;\">
                         <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>
                         <span class=\"sr-only\">Next</span>
                     </a>
@@ -118,8 +153,12 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
             </div>
             <div class=\"container\">
                 <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <p style=\"font-size: 22px; font-weight: bold\"> Novedades y Eventos</p>
+                    <p style=\"font-size: 17px;\">
+                        Aqui podŕas ver las ultimas novedaes en NutriK. Navega por el carousel para ver las ultimas entradas en el contenido didactico para aprender todo sobre como llevar un estilo de vida saludable, la alimentación, el ejercicio y mucho más.
+                    </p>
+                    <p style=\"font-size: 17px\">
+                        No te pierdas los eventos ofrecidos por nuestros profesionales. Participa en nuestras salas de debates y conferencias donde ofrecemos formaciones sobre cualquier tema.
                     </p>
                 </div>
             </div>
@@ -138,7 +177,7 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
 
     public function getDebugInfo()
     {
-        return array (  66 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  139 => 45,  129 => 41,  123 => 40,  118 => 38,  115 => 37,  110 => 36,  100 => 32,  94 => 31,  89 => 29,  86 => 28,  82 => 27,  66 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -176,41 +215,35 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
 
                     <!-- Wrapper for slides -->
                     <div class=\"carousel-inner\" role=\"listbox\">
-                        <div class=\"item active\">
-                            <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Example%20light%20background%20image\">
-                            <div class=\"carousel-caption\">
-                                <h4>Bootstrap caption example</h4>
-                                <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
-                            </div>
-                        </div>
-
-                        <div class=\"item\">
-                            <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Example%20light%20background%20image%20with%20caption\">
-                            <div class=\"carousel-caption\">
-                                <h4>Bootstrap caption example</h4>
-                                <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
-                            </div>
-                        </div>
-
-                        <div class=\"item\">
-                            <img src=\"https://dummyimage.com/920x480/eeeeee/aaaaaa&text=Another%20example%20without%20caption\">
-                            <div class=\"carousel-caption\">
-                                <h4>Bootstrap caption example</h4>
-                                <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
-                            </div>
-                            <div style=\"color: black\">
-                                <p>Description vjdshkhsdakvhskdajvh</p>
-                            </div>
+                        <div class=\"carousel-inner\" role=\"listbox\">
+                            {% for new_event in new_events %}
+                                <div class=\"item active\">
+                                    <img src=\"{{ asset(random(['carousel1.jpg','carousel2.jpg', 'carousel3.jpg', 'carousel4.jpeg','carousel5.jpg', 'img3.jpg','img4.jpg' ])) }}\" style=\"border-radius: 10%;\">
+                                    <div class=\"carousel-caption\">
+                                        <a href=\"{{ path(\"customer_event_view\",{\"id_event\":new_event.idEvent}) }}\" style=\"font-size: 22px; font-weight: bold; color: white\">{{ new_event.title }}</a>
+                                        <p style=\"font-size: 18px\">{{ new_event.description }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            {% for new_didactic_content in new_didactic_contents %}
+                                <div class=\"item\">
+                                    <img src=\"{{ asset(random(['carousel1.jpg','carousel2.jpg', 'carousel3.jpg', 'carousel4.jpeg','carousel5.jpg', 'img3.jpg','img4.jpg' ])) }}\" style=\"border-radius: 10%;\">
+                                    <div class=\"carousel-caption\">
+                                        <a href=\"{{ path(\"customer_didactic_content_view\",{\"id_entry\":new_didactic_content.idEntry}) }}\" style=\"font-size: 22px; font-weight: bold; color: white\">{{ new_didactic_content.title }}</a>
+                                        <p style=\"font-size: 18px\">{{ new_didactic_content.description }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
 
                     <!-- Controls -->
-                    <a class=\"left carousel-control\" href=\"#news-carousel-section\" role=\"button\" data-slide=\"prev\">
+                    <a class=\"left carousel-control\" href=\"#news-carousel-section\" role=\"button\" data-slide=\"prev\" style=\"border-radius: 10%;\">
                         <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>
                         <span class=\"sr-only\">Previous</span>
                     </a>
 
-                    <a class=\"right carousel-control\" href=\"#news-carousel-section\" role=\"button\" data-slide=\"next\">
+                    <a class=\"right carousel-control\" href=\"#news-carousel-section\" role=\"button\" data-slide=\"next\" style=\"border-radius: 10%;\">
                         <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>
                         <span class=\"sr-only\">Next</span>
                     </a>
@@ -218,8 +251,12 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
             </div>
             <div class=\"container\">
                 <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <p style=\"font-size: 22px; font-weight: bold\"> Novedades y Eventos</p>
+                    <p style=\"font-size: 17px;\">
+                        Aqui podŕas ver las ultimas novedaes en NutriK. Navega por el carousel para ver las ultimas entradas en el contenido didactico para aprender todo sobre como llevar un estilo de vida saludable, la alimentación, el ejercicio y mucho más.
+                    </p>
+                    <p style=\"font-size: 17px\">
+                        No te pierdas los eventos ofrecidos por nuestros profesionales. Participa en nuestras salas de debates y conferencias donde ofrecemos formaciones sobre cualquier tema.
                     </p>
                 </div>
             </div>
