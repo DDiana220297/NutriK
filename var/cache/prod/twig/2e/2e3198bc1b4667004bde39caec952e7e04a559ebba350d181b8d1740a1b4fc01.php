@@ -51,30 +51,35 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
         // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/customerpages.css"), "html", null, true);
         echo "\" />
+        <!-- Footer stylesheet-->
+        <link rel=\"stylesheet\" href=\"";
+        // line 8
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/footer.css"), "html", null, true);
+        echo "\" />
     </header>
     <section id=\"default-header\">
         ";
-        // line 9
-        $this->loadTemplate("header.html.twig", "@Customer/recipes.html.twig", 9)->display($context);
-        // line 10
+        // line 11
+        $this->loadTemplate("header.html.twig", "@Customer/recipes.html.twig", 11)->display($context);
+        // line 12
         echo "    </section>
     <section id=\"customer-header\">
         ";
-        // line 12
-        $this->loadTemplate("customerheader.html.twig", "@Customer/recipes.html.twig", 12)->display($context);
-        // line 13
+        // line 14
+        $this->loadTemplate("customerheader.html.twig", "@Customer/recipes.html.twig", 14)->display($context);
+        // line 15
         echo "    </section>
     <section id=\"recipes\">
         ";
-        // line 15
+        // line 17
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "recipesKOStatus"], "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 16
+            // line 18
             echo "            <div class=\"row\" style=\"width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: -10px;\">
                 <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
                     ";
-            // line 18
+            // line 20
             echo twig_escape_filter($this->env, $context["message"], "html", null, true);
             echo "
                 </div>
@@ -84,10 +89,10 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 22
+        // line 24
         echo "        <div class=\"container\">
             <form class=\"form\" action=\"";
-        // line 23
+        // line 25
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_recipes", ["id_recipe" => ($context["id_recipe"] ?? $this->getContext($context, "id_recipe"))]), "html", null, true);
         echo "\" method=\"post\">
                 <div class=\"col-sm-12\">
@@ -99,42 +104,42 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
                     </nav>
                     <div class=\"container-fluid\">
                         ";
-        // line 32
+        // line 34
         if ((($context["recipe"] ?? $this->getContext($context, "recipe")) != false)) {
-            // line 33
+            // line 35
             echo "                            <div id=\"recipes-content\">
                                 <div class=\"col-sm-8\">
                                     <div id=\"recipe-content\">
                                         <div id=\"recipe-title\" class=\"col-sm-12\">
                                             <strong style=\"font-size: 22px;\">";
-            // line 37
+            // line 39
             echo twig_escape_filter($this->env, $this->getAttribute(($context["recipe"] ?? $this->getContext($context, "recipe")), "name", []), "html", null, true);
             echo "</strong>
                                         </div>
                                         <div id=\"recipe-nutritional-info\" class=\"col-sm-6\">
                                             <h3>Información nutricional</h3>
                                             <p><strong>Carbohidratos:</strong><span> ";
-            // line 41
+            // line 43
             echo twig_escape_filter($this->env, $this->getAttribute(($context["nutritional_info"] ?? $this->getContext($context, "nutritional_info")), "carbs", [], "array"), "html", null, true);
             echo " gramos / 100 gramos</span></p>
                                             <p><strong>Grasas:</strong><span> ";
-            // line 42
+            // line 44
             echo twig_escape_filter($this->env, $this->getAttribute(($context["nutritional_info"] ?? $this->getContext($context, "nutritional_info")), "fats", [], "array"), "html", null, true);
             echo " gramos / 100 gramos</span></p>
                                             <p><strong>Proteinas:</strong><span> ";
-            // line 43
+            // line 45
             echo twig_escape_filter($this->env, $this->getAttribute(($context["nutritional_info"] ?? $this->getContext($context, "nutritional_info")), "protein", [], "array"), "html", null, true);
             echo " gramos / 100 gramos</span></p>
                                         </div>
                                         <div id=\"recipe-images\" class=\"col-sm-6\">
                                             <img src=\"";
-            // line 46
+            // line 48
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl($this->getAttribute(($context["recipe"] ?? $this->getContext($context, "recipe")), "image", [])), "html", null, true);
             echo "\">
                                         </div>
                                         <div id=\"recipe-steps\" class=\"col-sm-12\">
                                             ";
-            // line 49
+            // line 51
             echo twig_escape_filter($this->env, $this->getAttribute(($context["recipe"] ?? $this->getContext($context, "recipe")), "description", []), "html", null, true);
             echo "
                                         </div>
@@ -147,14 +152,14 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
                                             <br/><br/>
                                             <ul class=\"list-group\">
                                                 ";
-            // line 59
+            // line 61
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["recipe_ingredients"] ?? $this->getContext($context, "recipe_ingredients")));
             foreach ($context['_seq'] as $context["_key"] => $context["recipe_ingredient"]) {
-                // line 60
+                // line 62
                 echo "                                                    <li>
                                                         ";
-                // line 61
+                // line 63
                 echo twig_escape_filter($this->env, $this->getAttribute($context["recipe_ingredient"], "name", []), "html", null, true);
                 echo "
                                                     </li>
@@ -163,7 +168,7 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['recipe_ingredient'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 64
+            // line 66
             echo "                                            </ul>
                                         </div>
                                     </div>
@@ -171,18 +176,18 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
                             </div>
                         ";
         } else {
-            // line 70
+            // line 72
             echo "                            <div id=\"recipes-content\" style=\"overflow-y: auto\">
                                 ";
-            // line 71
+            // line 73
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["recipes"] ?? $this->getContext($context, "recipes")));
             foreach ($context['_seq'] as $context["_key"] => $context["recipe_object"]) {
-                // line 72
+                // line 74
                 echo "                                    <div class=\"recipe\">
                                         <div class=\"col-sm-11 recipe-name\">
                                             <a href=\"";
-                // line 74
+                // line 76
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_recipes", ["id_recipe" => $this->getAttribute($context["recipe_object"], "idRecipe", [])]), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["recipe_object"], "name", []), "html", null, true);
@@ -191,7 +196,7 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
                                         <div class=\"col-sm-1 recipe-actions\">
                                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\"
                                                 onclick=\"redirectTo('recipes','/'+";
-                // line 78
+                // line 80
                 echo twig_escape_filter($this->env, $this->getAttribute($context["recipe_object"], "idRecipe", []), "html", null, true);
                 echo ")\">
                                                 <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z\"/>
@@ -203,17 +208,21 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['recipe_object'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 84
+            // line 86
             echo "                            </div>
                         ";
         }
-        // line 86
+        // line 88
         echo "                    </div>
                 </div>
             </form>
         </div>
     </section>
-    </html>
+    ";
+        // line 93
+        $this->loadTemplate("footer.html.twig", "@Customer/recipes.html.twig", 93)->display($context);
+        // line 94
+        echo "    </html>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -227,7 +236,7 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
 
     public function getDebugInfo()
     {
-        return array (  211 => 86,  207 => 84,  195 => 78,  186 => 74,  182 => 72,  178 => 71,  175 => 70,  167 => 64,  158 => 61,  155 => 60,  151 => 59,  138 => 49,  132 => 46,  126 => 43,  122 => 42,  118 => 41,  111 => 37,  105 => 33,  103 => 32,  91 => 23,  88 => 22,  78 => 18,  74 => 16,  70 => 15,  66 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  225 => 94,  223 => 93,  216 => 88,  212 => 86,  200 => 80,  191 => 76,  187 => 74,  183 => 73,  180 => 72,  172 => 66,  163 => 63,  160 => 62,  156 => 61,  143 => 51,  137 => 48,  131 => 45,  127 => 44,  123 => 43,  116 => 39,  110 => 35,  108 => 34,  96 => 25,  93 => 24,  83 => 20,  79 => 18,  75 => 17,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -246,6 +255,8 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
     <header>
         <!-- Login Page stylesheet-->
         <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/customerpages.css') }}\" />
+        <!-- Footer stylesheet-->
+        <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/footer.css') }}\" />
     </header>
     <section id=\"default-header\">
         {% include 'header.html.twig' %}
@@ -330,6 +341,7 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
             </form>
         </div>
     </section>
+    {% include 'footer.html.twig' %}
     </html>
 {% endblock %}
 ", "@Customer/recipes.html.twig", "/shared/httpd/nutrik/src/CustomerBundle/Resources/views/recipes.html.twig");

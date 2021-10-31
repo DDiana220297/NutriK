@@ -1,0 +1,64 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <!-- Login Page stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/customerpages.css') }}" />
+        <!-- Footer stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/footer.css') }}" />
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    <section id="customer-add-event">
+        {% for message in  app.session.flashbag().get('addEventKOStatus') %}
+            <div class="row" style="width: 93.5%; margin-left: 3.3%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="container">
+            <div id="add-event-block">
+                <form class="form" action="{{ path("customer_add_event") }}" method="post">
+                    <div class="col-sm-4">
+                        <label for="event_title">Título:</label>
+                        <input type="text" id="event_title" name="event_title" class="form-control" required="required"/>
+                        <label for="event_date">Fecha del evento:</label>
+                        <input type="date" id="event_date" name="event_date" class="form-control" required="required"/>
+                        <label for="event_date">Hora del evento:</label>
+                        <input type="time" id="event_hour" name="event_hour" class="form-control" required="required"/>
+                        <label for="event_duration">Duración del evento (min):</label>
+                        <input type="number" id="event_duration" name="event_duration" class="form-control" required="required" value="60"/>
+                        <label for="event_description">Descripción:</label>
+                        <br/>
+                        <textarea type="text" id="event_description" name="event_description" class="form-control" required="required"></textarea>
+                        <div class="save-button-item">
+                            <input class="btn save-button" type="submit" value="Guardar"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <br/>
+                        <strong style="font-size: 18px;">Mis eventos:</strong>
+                        <br/><br/>
+                        {% for event in events %}
+                            <div class="event-entry">
+                                <div class="col-sm-11 event-title">
+                                    <a href="{{ path("customer_event_view",{"id_event":event.idEvent}) }}">{{ event.title }}</a>
+                                </div>
+                                <div class="col-sm-1 event-actions" style="margin-top: -5px;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"
+                                         onclick="redirectTo('event','/'+{{ event.idEvent }})">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    {% include 'footer.html.twig' %}
+</html>
+{% endblock %}

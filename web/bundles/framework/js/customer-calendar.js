@@ -49,7 +49,7 @@ $(document).ready(function() {
         select: function (start, end, allDay) {
             var title = prompt('¿Añadir Evento?', 'Evento');
             if (title.toLowerCase() === 'evento') {
-                window.document.location = '/web/nutritionist-add-event';
+                window.document.location = '/web/add-event';
             } else {
                 $('#event_type_alert').show();
             }

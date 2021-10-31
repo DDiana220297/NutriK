@@ -4,6 +4,8 @@
     <header>
         <!-- Login Page stylesheet-->
         <link rel="stylesheet" href="{{ asset('bundles/framework/css/customerpages.css') }}" />
+        <!-- Footer stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/footer.css') }}" />
     </header>
     <section id="default-header">
         {% include 'header.html.twig' %}
@@ -32,18 +34,25 @@
                 </div>
             </div>
         {% endfor %}
+        {% for message in  app.session.flashbag().get('calendarOKStatus') %}
+            <div class="row" style="width: 93.5%; margin-left: 3.3%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class="container">
             <div class="col-sm-12">
-{#                {% for calendar_event in calendar_events %}#}
-{#                    <div class="calendar_event" style="color: black; display: none">#}
-{#                        <input class="calendar_event_id" value="{{ calendar_event['id'] }}"/>#}
-{#                        <input class="calendar_event_title" value="{{ calendar_event['title'] }}"/>#}
-{#                        <input class="calendar_event_start" value="{{ calendar_event['start']|date('Y-m-d H:i:s') }}"/>#}
-{#                        <input class="calendar_event_end" value="{{ calendar_event['end']|date('Y-m-d H:i:s') }}"/>#}
-{#                        <input class="calendar_event_url" value="{{ calendar_event['url'] }}"/>#}
-{#                    </div>#}
-{#                {% endfor %}#}
-                <div id="calendar-block">
+                {% for calendar_event in calendar_events %}
+                    <div class="calendar_event" style="color: black; display: none">
+                        <input class="calendar_event_id" value="{{ calendar_event['id'] }}"/>
+                        <input class="calendar_event_title" value="{{ calendar_event['title'] }}"/>
+                        <input class="calendar_event_start" value="{{ calendar_event['start']|date('Y-m-d H:i:s') }}"/>
+                        <input class="calendar_event_end" value="{{ calendar_event['end']|date('Y-m-d H:i:s') }}"/>
+                        <input class="calendar_event_url" value="{{ calendar_event['url'] }}"/>
+                    </div>
+                {% endfor %}
+                <div id="calendar-block" style="margin: 20px">
                     <div id='wrap'>
                         <div id='calendar'></div>
                         <div style='clear:both'></div>
@@ -52,5 +61,6 @@
             </div>
         </div>
     </section>
+    {% include 'footer.html.twig' %}
     </html>
 {% endblock %}

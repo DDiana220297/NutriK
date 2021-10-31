@@ -4,6 +4,8 @@
     <header>
         <!-- Login Page stylesheet-->
         <link rel="stylesheet" href="{{ asset('bundles/framework/css/customerpages.css') }}" />
+        <!-- Footer stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/footer.css') }}" />
     </header>
     <section id="default-header">
         {% include 'header.html.twig' %}
@@ -59,5 +61,6 @@
             </div>
         </div>
     </section>
+    {% include 'footer.html.twig' %}
     </html>
 {% endblock %}

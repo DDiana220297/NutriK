@@ -37,6 +37,12 @@ CustomsBundle\Entity\Entry:
             length: 65535
             options:
                 fixed: false
+        image:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
         active:
             type: boolean
             nullable: false

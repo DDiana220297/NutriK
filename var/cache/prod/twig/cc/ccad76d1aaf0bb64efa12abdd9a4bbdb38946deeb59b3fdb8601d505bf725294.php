@@ -51,18 +51,23 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
         // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/customerpages.css"), "html", null, true);
         echo "\" />
+            <!-- Footer stylesheet-->
+            <link rel=\"stylesheet\" href=\"";
+        // line 8
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/footer.css"), "html", null, true);
+        echo "\" />
         </header>
         <section id=\"default-header\">
             ";
-        // line 9
-        $this->loadTemplate("header.html.twig", "@Customer/news.html.twig", 9)->display($context);
-        // line 10
+        // line 11
+        $this->loadTemplate("header.html.twig", "@Customer/news.html.twig", 11)->display($context);
+        // line 12
         echo "        </section>
         <section id=\"customer-header\">
             ";
-        // line 12
-        $this->loadTemplate("customerheader.html.twig", "@Customer/news.html.twig", 12)->display($context);
-        // line 13
+        // line 14
+        $this->loadTemplate("customerheader.html.twig", "@Customer/news.html.twig", 14)->display($context);
+        // line 15
         echo "        </section>
         <section id=\"carousel-section\">
             <div class=\"container\">
@@ -78,25 +83,25 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
                     <div class=\"carousel-inner\" role=\"listbox\">
                         <div class=\"carousel-inner\" role=\"listbox\">
                             ";
-        // line 27
+        // line 29
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["new_events"] ?? $this->getContext($context, "new_events")));
         foreach ($context['_seq'] as $context["_key"] => $context["new_event"]) {
-            // line 28
+            // line 30
             echo "                                <div class=\"item active\">
                                     <img src=\"";
-            // line 29
+            // line 31
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(twig_random($this->env, [0 => "carousel1.jpg", 1 => "carousel2.jpg", 2 => "carousel3.jpg", 3 => "carousel4.jpeg", 4 => "carousel5.jpg", 5 => "img3.jpg", 6 => "img4.jpg"])), "html", null, true);
             echo "\" style=\"border-radius: 10%;\">
                                     <div class=\"carousel-caption\">
                                         <a href=\"";
-            // line 31
+            // line 33
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_event_view", ["id_event" => $this->getAttribute($context["new_event"], "idEvent", [])]), "html", null, true);
             echo "\" style=\"font-size: 22px; font-weight: bold; color: white\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["new_event"], "title", []), "html", null, true);
             echo "</a>
                                         <p style=\"font-size: 18px\">";
-            // line 32
+            // line 34
             echo twig_escape_filter($this->env, $this->getAttribute($context["new_event"], "description", []), "html", null, true);
             echo "</p>
                                     </div>
@@ -106,26 +111,26 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['new_event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 36
+        // line 38
         echo "                            ";
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["new_didactic_contents"] ?? $this->getContext($context, "new_didactic_contents")));
         foreach ($context['_seq'] as $context["_key"] => $context["new_didactic_content"]) {
-            // line 37
+            // line 39
             echo "                                <div class=\"item\">
                                     <img src=\"";
-            // line 38
+            // line 40
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(twig_random($this->env, [0 => "carousel1.jpg", 1 => "carousel2.jpg", 2 => "carousel3.jpg", 3 => "carousel4.jpeg", 4 => "carousel5.jpg", 5 => "img3.jpg", 6 => "img4.jpg"])), "html", null, true);
             echo "\" style=\"border-radius: 10%;\">
                                     <div class=\"carousel-caption\">
                                         <a href=\"";
-            // line 40
+            // line 42
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_didactic_content_view", ["id_entry" => $this->getAttribute($context["new_didactic_content"], "idEntry", [])]), "html", null, true);
             echo "\" style=\"font-size: 22px; font-weight: bold; color: white\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["new_didactic_content"], "title", []), "html", null, true);
             echo "</a>
                                         <p style=\"font-size: 18px\">";
-            // line 41
+            // line 43
             echo twig_escape_filter($this->env, $this->getAttribute($context["new_didactic_content"], "description", []), "html", null, true);
             echo "</p>
                                     </div>
@@ -135,7 +140,7 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['new_didactic_content'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 45
+        // line 47
         echo "                        </div>
                     </div>
 
@@ -163,7 +168,11 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
                 </div>
             </div>
         </section>
-    </html>
+        ";
+        // line 74
+        $this->loadTemplate("footer.html.twig", "@Customer/news.html.twig", 74)->display($context);
+        // line 75
+        echo "    </html>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -177,7 +186,7 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
 
     public function getDebugInfo()
     {
-        return array (  139 => 45,  129 => 41,  123 => 40,  118 => 38,  115 => 37,  110 => 36,  100 => 32,  94 => 31,  89 => 29,  86 => 28,  82 => 27,  66 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  175 => 75,  173 => 74,  144 => 47,  134 => 43,  128 => 42,  123 => 40,  120 => 39,  115 => 38,  105 => 34,  99 => 33,  94 => 31,  91 => 30,  87 => 29,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -196,6 +205,8 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
         <header>
             <!-- Login Page stylesheet-->
             <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/customerpages.css') }}\" />
+            <!-- Footer stylesheet-->
+            <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/footer.css') }}\" />
         </header>
         <section id=\"default-header\">
             {% include 'header.html.twig' %}
@@ -261,6 +272,7 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
                 </div>
             </div>
         </section>
+        {% include 'footer.html.twig' %}
     </html>
 {% endblock %}
 ", "@Customer/news.html.twig", "/shared/httpd/nutrik/src/CustomerBundle/Resources/views/news.html.twig");

@@ -51,18 +51,23 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
         // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/customerpages.css"), "html", null, true);
         echo "\" />
+        <!-- Footer stylesheet-->
+        <link rel=\"stylesheet\" href=\"";
+        // line 8
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/footer.css"), "html", null, true);
+        echo "\" />
     </header>
     <section id=\"default-header\">
         ";
-        // line 9
-        $this->loadTemplate("header.html.twig", "@Customer/about.html.twig", 9)->display($context);
-        // line 10
+        // line 11
+        $this->loadTemplate("header.html.twig", "@Customer/about.html.twig", 11)->display($context);
+        // line 12
         echo "    </section>
     <section id=\"customer-header\">
         ";
-        // line 12
-        $this->loadTemplate("customerheader.html.twig", "@Customer/about.html.twig", 12)->display($context);
-        // line 13
+        // line 14
+        $this->loadTemplate("customerheader.html.twig", "@Customer/about.html.twig", 14)->display($context);
+        // line 15
         echo "    </section>
     <section id=\"carousel-section\">
         <div class=\"container\">
@@ -78,7 +83,7 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
                 <div class=\"carousel-inner\" role=\"listbox\">
                     <div class=\"item active\">
                         <img src=\"";
-        // line 27
+        // line 29
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("carousel1.jpg"), "html", null, true);
         echo "\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
@@ -89,7 +94,7 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
 
                     <div class=\"item\">
                         <img src=\"";
-        // line 35
+        // line 37
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("carousel2.jpg"), "html", null, true);
         echo "\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
@@ -100,7 +105,7 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
 
                     <div class=\"item\">
                         <img src=\"";
-        // line 43
+        // line 45
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("carousel3.jpg"), "html", null, true);
         echo "\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
@@ -111,7 +116,7 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
 
                     <div class=\"item\">
                         <img src=\"";
-        // line 51
+        // line 53
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("carousel4.jpeg"), "html", null, true);
         echo "\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
@@ -122,7 +127,7 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
 
                     <div class=\"item\">
                         <img src=\"";
-        // line 59
+        // line 61
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("carousel5.jpg"), "html", null, true);
         echo "\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
@@ -153,7 +158,11 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
             </div>
         </div>
     </section>
-    </html>
+    ";
+        // line 90
+        $this->loadTemplate("footer.html.twig", "@Customer/about.html.twig", 90)->display($context);
+        // line 91
+        echo "    </html>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -167,7 +176,7 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
 
     public function getDebugInfo()
     {
-        return array (  126 => 59,  115 => 51,  104 => 43,  93 => 35,  82 => 27,  66 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  165 => 91,  163 => 90,  131 => 61,  120 => 53,  109 => 45,  98 => 37,  87 => 29,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -186,6 +195,8 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
     <header>
         <!-- Login Page stylesheet-->
         <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/customerpages.css') }}\" />
+        <!-- Footer stylesheet-->
+        <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/footer.css') }}\" />
     </header>
     <section id=\"default-header\">
         {% include 'header.html.twig' %}
@@ -267,6 +278,7 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
             </div>
         </div>
     </section>
+    {% include 'footer.html.twig' %}
     </html>
 {% endblock %}
 ", "@Customer/about.html.twig", "/shared/httpd/nutrik/src/CustomerBundle/Resources/views/about.html.twig");

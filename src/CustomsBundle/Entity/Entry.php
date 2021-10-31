@@ -30,6 +30,11 @@ class Entry
     private $content;
 
     /**
+     * @var string
+     */
+    private $image;
+
+    /**
      * @var boolean
      */
     private $active = '1';
@@ -269,6 +274,21 @@ class Entry
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getImage(): string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage(string $image): void
+    {
+        $this->image = $image;
+    }
 
 
 }

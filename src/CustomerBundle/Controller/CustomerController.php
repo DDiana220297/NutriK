@@ -4,6 +4,7 @@ namespace CustomerBundle\Controller;
 
 use CustomsBundle\Entity\CustomerMetrics;
 use NutritionistBundle\Entity\DiaryPages;
+use NutritionistBundle\Entity\Event;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -77,6 +78,11 @@ class CustomerController extends Controller
         );
     }
 
+    /**
+     * Fn que se encarga de renderizar las entradas de contenido didactico
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
     public function didacticContentAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -108,18 +114,49 @@ class CustomerController extends Controller
         );
     }
 
+    /**
+     * Fn que se encarga de renderizar la vista de un evento
+     * @param $id_event
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
     public function eventViewAction($id_event){
+        $em = $this->getDoctrine()->getManager();
+        $events_repo = $em->getRepository("NutritionistBundle:Event");
+        $event = $events_repo->findBy(['idEvent' => $id_event]);
+        if(count($event)>0){
+            $event = reset($event);
+        }
+        else{
+            $this->session->getFlashBag()->add('eventKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
         return $this->render('@Customer/event-view.html.twig',
             [
-                'id_event' => $id_event
+                'id_event' => $id_event,
+                'event' => $event
             ]
         );
     }
 
+    /**
+     * Fn que se encarga de rendizar la vista de una entrada de contenido didactico
+     * @param $id_entry
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
     public function didactiContentViewAction($id_entry){
+        $em = $this->getDoctrine()->getManager();
+        $entries_repo = $em->getRepository("CustomsBundle:Entry");
+        $entry = $entries_repo->findBy(['idEntry' => $id_entry]);
+        if(count($entry)>0){
+            $entry = reset($entry);
+        }
+        else{
+            $this->session->getFlashBag()->add('entryKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+
         return $this->render('@Customer/didactic-content-view.html.twig',
             [
-                'id_entry' => $id_entry
+                'id_entry' => $id_entry,
+                'entry' => $entry
             ]
         );
     }
@@ -345,6 +382,11 @@ class CustomerController extends Controller
         );
     }
 
+    /**
+     * Fn que se encarga de renderizar el progreso de un cliente y registrar nuevas metricas
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
     public function progressAction(Request $request){
         /**
          * Instanciamos el user con el email del usuario logeado
@@ -407,10 +449,141 @@ class CustomerController extends Controller
     }
 
 
+    /**
+     * Fn que se encarga de renderizar el calendario del cliente con sus eventos
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     * @throws \Exception
+     */
     public function calendarAction(){
-        return $this->render('@Customer/calendar.html.twig');
+        $appointments = $calendar_events = $events = array();
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+
+            /**
+             * Appointments
+             */
+            $appointments_repo = $em->getRepository("NutritionistBundle:Appointment");
+            $appointments = $appointments_repo->findBy(['idCustomer' => $user->getIdUser()]);
+
+            /**
+             * Events
+             */
+            $events_repo = $em->getRepository("NutritionistBundle:Event");
+            $events = $events_repo->findBy(array("idUser" => $user->getIdUser()));
+
+            /**
+             * Format appointments as calendar events
+             */
+            foreach ($appointments as $appointment){
+                $id_appointment = $appointment->getIdAppointment();
+                $start_date = $appointment->getDate();
+                $end_date = new \DateTime($appointment->getDate()->format('Y-m-d H:i:s'));
+                $end_date->modify('+'.$appointment->getDuration().' minutes');
+                $calendar_events[] = [
+                    'id' => $id_appointment,
+                    'title' => $appointment->getDescription(),
+                    'start' => $start_date,
+                    'end' => $end_date,
+                    'url' => '/web/nutritionist-edit-appointment/'.$id_appointment
+                ];
+            }
+
+            /**
+             * Format events as calendar events
+             */
+            foreach ($events as $event){
+                $id_event = $event->getIdEvent();
+                $start_date = $event->getDate();
+                $end_date = new \DateTime($event->getDate()->format('Y-m-d H:i:s'));
+                $end_date->modify('+'.$event->getDuration().' minutes');
+                $calendar_events[] = [
+                    'id' => $id_event,
+                    'title' => $event->getTitle(),
+                    'start' => $start_date,
+                    'end' => $end_date,
+                    'url' => '/web/nutritionist-edit-event/'.$id_event
+                ];
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('calendarKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+
+        return $this->render('@Customer/calendar.html.twig',
+            [
+                "calendar_events" => $calendar_events
+            ]
+        );
     }
 
+    /**
+     * Fn que se encarga de añadir un evento para el cliente, se omiten los campos no necesarios para este
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response|null
+     * @throws \Exception
+     */
+    public function addEventAction(Request $request){
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $user = reset($users);
+
+            /**
+             * Events
+             */
+            $events_repo = $em->getRepository("NutritionistBundle:Event");
+            $events = $events_repo->findBy(array("idUser" => $user->getIdUser()));
+
+            if($request->isMethod('POST')){
+                $date = $request->request->get('event_date');
+                $hour = $request->request->get('event_hour');
+                $event_date = new \DateTime($date . ' ' . $hour);
+                if($event_date <= new \DateTime("NOW")){
+                    $this->session->getFlashBag()->add('addEventKOStatus',"Se ha producido un error. La fecha y hora del evento no pueden ser inferiores a las actuales.");
+                }
+                else{
+                    $event = New Event();
+                    $event->setIdUser($user->getIdUser());
+                    $event->setIdCategory(0);
+                    $event->setIdTag(0);
+                    $event->setTitle($request->request->get('event_title'));
+                    $event->setDescription($request->request->get('event_description'));
+                    $event->setEventLink("");
+                    $event->setDate($event_date);
+                    $event->setDuration($request->request->get('event_duration'));
+                    $event->setDateAdd(new \DateTime("NOW"));
+                    $event->setDateUpd(new \DateTime("NOW"));
+
+                    $em->persist($event);
+                    $flush = $em->flush();
+                    if(!empty($flush)){
+                        $this->session->getFlashBag()->add('addEventKOStatus',"Se ha producido un error. No hemos podido crear el evento, intentelo de nuevo o contacte con el servicio de NutriK.");
+                    }
+                    else{
+                        $this->session->getFlashBag()->add('calendarOKStatus',"El evento se ha creado correctamente");
+                        return $this->redirectToRoute('customer_calendar');
+                    }
+                }
+            }
+        }
+        return $this->render('@Customer/customer-add-event.html.twig',
+            [
+                "events" => $events
+            ]
+        );
+    }
+
+    /**
+     * Fn que se encarga de la mensajeria entre usuarios
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
     public function messengerAction(){
         return $this->render('@Customer/messenger-services.html.twig');
     }

@@ -51,30 +51,35 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
         // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/customerpages.css"), "html", null, true);
         echo "\" />
+        <!-- Footer stylesheet-->
+        <link rel=\"stylesheet\" href=\"";
+        // line 8
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/footer.css"), "html", null, true);
+        echo "\" />
     </header>
     <section id=\"default-header\">
         ";
-        // line 9
-        $this->loadTemplate("header.html.twig", "@Customer/services.html.twig", 9)->display($context);
-        // line 10
+        // line 11
+        $this->loadTemplate("header.html.twig", "@Customer/services.html.twig", 11)->display($context);
+        // line 12
         echo "    </section>
     <section id=\"customer-header\">
         ";
-        // line 12
-        $this->loadTemplate("customerheader.html.twig", "@Customer/services.html.twig", 12)->display($context);
-        // line 13
+        // line 14
+        $this->loadTemplate("customerheader.html.twig", "@Customer/services.html.twig", 14)->display($context);
+        // line 15
         echo "    </section>
     <section id=\"customer-services\">
         ";
-        // line 15
+        // line 17
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "servicesOKStatus"], "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 16
+            // line 18
             echo "            <div class=\"row\" style=\"width: 88.5%; margin-left: 5.7%; margin-top: 10px; margin-bottom: -10px;\">
                 <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
                     ";
-            // line 18
+            // line 20
             echo twig_escape_filter($this->env, $context["message"], "html", null, true);
             echo "
                 </div>
@@ -84,10 +89,10 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 22
+        // line 24
         echo "        <div class=\"container\">
             <form class=\"form\" action=\"";
-        // line 23
+        // line 25
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_services");
         echo "\" method=\"post\">
                 <div class=\"container-services-block\">
@@ -116,7 +121,11 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
             </form>
         </div>
     </section>
-    </html>
+    ";
+        // line 52
+        $this->loadTemplate("footer.html.twig", "@Customer/services.html.twig", 52)->display($context);
+        // line 53
+        echo "    </html>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -130,7 +139,7 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
 
     public function getDebugInfo()
     {
-        return array (  91 => 23,  88 => 22,  78 => 18,  74 => 16,  70 => 15,  66 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  128 => 53,  126 => 52,  96 => 25,  93 => 24,  83 => 20,  79 => 18,  75 => 17,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -149,6 +158,8 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
     <header>
         <!-- Login Page stylesheet-->
         <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/customerpages.css') }}\" />
+        <!-- Footer stylesheet-->
+        <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/footer.css') }}\" />
     </header>
     <section id=\"default-header\">
         {% include 'header.html.twig' %}
@@ -192,6 +203,7 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
             </form>
         </div>
     </section>
+    {% include 'footer.html.twig' %}
     </html>
 {% endblock %}
 ", "@Customer/services.html.twig", "/shared/httpd/nutrik/src/CustomerBundle/Resources/views/services.html.twig");

@@ -129,11 +129,24 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
             // line 46
             echo "        </section>
         <section id=\"customer-homepage\">
-
+            <div class=\"container\">
+                <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                    <img src=\"";
+            // line 50
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("home-banner.jpg"), "html", null, true);
+            echo "\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                </div>
+                <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                    <p style=\"font-size: 17px;\">
+                        En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                        Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                    </p>
+                </div>
+            </div>
         </section>
     ";
         } else {
-            // line 51
+            // line 61
             echo "        <section id=\"nutritionist-homepage\">
             <div class=\"container\">
                 <div class=\"col-sm-12\">
@@ -144,18 +157,18 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
                                 <hr/>
                                 <div class=\"nutritionist-appointments\">
                                     ";
-            // line 60
+            // line 70
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["appointments"] ?? $this->getContext($context, "appointments")));
             foreach ($context['_seq'] as $context["_key"] => $context["appointment"]) {
-                // line 61
+                // line 71
                 echo "                                        <p>
                                             <strong>";
-                // line 62
+                // line 72
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["appointment"], "date", []), "Y-m-d H:i:s"), "html", null, true);
                 echo ":</strong>
                                             <a href=\"";
-                // line 63
+                // line 73
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_appointment", ["id_appointment" => $this->getAttribute($context["appointment"], "idAppointment", [])]), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["appointment"], "description", []), "html", null, true);
@@ -166,25 +179,25 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['appointment'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 66
+            // line 76
             echo "                                </div>
 
                                 <h3>Mis próximos eventos</h3>
                                 <hr/>
                                 <div class=\"nutritionist-events\">
                                     ";
-            // line 71
+            // line 81
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["events"] ?? $this->getContext($context, "events")));
             foreach ($context['_seq'] as $context["_key"] => $context["event"]) {
-                // line 72
+                // line 82
                 echo "                                        <p>
                                             <strong>";
-                // line 73
+                // line 83
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["event"], "date", []), "Y-m-d H:i:s"), "html", null, true);
                 echo ":</strong>
                                             <a href=\"";
-                // line 74
+                // line 84
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_event", ["id_event" => $this->getAttribute($context["event"], "idEvent", [])]), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "title", []), "html", null, true);
@@ -195,12 +208,12 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 77
+            // line 87
             echo "                                </div>
                             </div>
                             <div class=\"col-sm-12 nutritionist-kpis\">
                                 <img src=\"";
-            // line 80
+            // line 90
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("chart.png"), "html", null, true);
             echo "\">
                             </div>
@@ -209,40 +222,51 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
                             <div class=\"nutritionist-notifications\">
                                 <h3>Mis notificaciones</h3>
                                 ";
-            // line 86
+            // line 96
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["logs"] ?? $this->getContext($context, "logs")));
             foreach ($context['_seq'] as $context["_key"] => $context["log"]) {
-                // line 87
+                // line 97
                 echo "                                    <div class=\"row\">
                                         ";
-                // line 88
+                // line 98
                 if (twig_in_filter("add", $this->getAttribute($context["log"], "source", []))) {
-                    // line 89
+                    // line 99
                     echo "                                            <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
+                                                ";
+                    // line 100
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
+                    echo "
+                                            </div>
                                         ";
-                } elseif (twig_in_filter("delete", $this->getAttribute(                // line 90
+                } elseif (twig_in_filter("delete", $this->getAttribute(                // line 102
 $context["log"], "source", []))) {
-                    // line 91
+                    // line 103
                     echo "                                            <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
+                                                ";
+                    // line 104
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
+                    echo "
+                                            </div>
                                         ";
                 } else {
-                    // line 93
+                    // line 107
                     echo "                                            <div class=\"alert alert-info\" role=\"alert\" style=\"margin-bottom: 0\">
+                                                ";
+                    // line 108
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
+                    echo "
+                                            </div>
                                         ";
                 }
-                // line 95
-                echo "                                            ";
-                echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
-                echo "
-                                        </div>
-                                    </div>
+                // line 111
+                echo "                                    </div>
                                 ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['log'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 99
+            // line 113
             echo "                            </div>
                         </div>
                     </div>
@@ -251,13 +275,10 @@ $context["log"], "source", []))) {
         </section>
     ";
         }
-        // line 106
-        echo "
-
-    ";
-        // line 108
-        $this->loadTemplate("footer.html.twig", "@Customs/index.html.twig", 108)->display($context);
-        // line 109
+        // line 120
+        echo "    ";
+        $this->loadTemplate("footer.html.twig", "@Customs/index.html.twig", 120)->display($context);
+        // line 121
         echo "    </html>
 ";
         
@@ -284,7 +305,7 @@ $context["log"], "source", []))) {
 
     public function getDebugInfo()
     {
-        return array (  269 => 7,  261 => 109,  259 => 108,  255 => 106,  246 => 99,  235 => 95,  231 => 93,  227 => 91,  225 => 90,  222 => 89,  220 => 88,  217 => 87,  213 => 86,  204 => 80,  199 => 77,  188 => 74,  184 => 73,  181 => 72,  177 => 71,  170 => 66,  159 => 63,  155 => 62,  152 => 61,  148 => 60,  137 => 51,  130 => 46,  128 => 45,  125 => 44,  123 => 43,  120 => 42,  118 => 41,  112 => 38,  106 => 35,  100 => 32,  94 => 29,  88 => 26,  82 => 23,  76 => 20,  67 => 14,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
+        return array (  290 => 7,  282 => 121,  279 => 120,  270 => 113,  263 => 111,  257 => 108,  254 => 107,  248 => 104,  245 => 103,  243 => 102,  238 => 100,  235 => 99,  233 => 98,  230 => 97,  226 => 96,  217 => 90,  212 => 87,  201 => 84,  197 => 83,  194 => 82,  190 => 81,  183 => 76,  172 => 73,  168 => 72,  165 => 71,  161 => 70,  150 => 61,  136 => 50,  130 => 46,  128 => 45,  125 => 44,  123 => 43,  120 => 42,  118 => 41,  112 => 38,  106 => 35,  100 => 32,  94 => 29,  88 => 26,  82 => 23,  76 => 20,  67 => 14,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -344,7 +365,17 @@ $context["log"], "source", []))) {
             {% include 'customerheader.html.twig' %}
         </section>
         <section id=\"customer-homepage\">
-
+            <div class=\"container\">
+                <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                    <img src=\"{{ asset('home-banner.jpg') }}\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                </div>
+                <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                    <p style=\"font-size: 17px;\">
+                        En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                        Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                    </p>
+                </div>
+            </div>
         </section>
     {% else %}
         <section id=\"nutritionist-homepage\">
@@ -386,13 +417,17 @@ $context["log"], "source", []))) {
                                     <div class=\"row\">
                                         {% if 'add' in log.source %}
                                             <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
+                                                {{ log.context }}
+                                            </div>
                                         {% elseif 'delete' in log.source %}
                                             <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
+                                                {{ log.context }}
+                                            </div>
                                         {% else %}
                                             <div class=\"alert alert-info\" role=\"alert\" style=\"margin-bottom: 0\">
+                                                {{ log.context }}
+                                            </div>
                                         {% endif %}
-                                            {{ log.context }}
-                                        </div>
                                     </div>
                                 {% endfor %}
                             </div>
@@ -402,8 +437,6 @@ $context["log"], "source", []))) {
             </div>
         </section>
     {% endif %}
-
-
     {% include 'footer.html.twig' %}
     </html>
 {% endblock %}

@@ -51,30 +51,35 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
         // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/customerpages.css"), "html", null, true);
         echo "\" />
+        <!-- Footer stylesheet-->
+        <link rel=\"stylesheet\" href=\"";
+        // line 8
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/footer.css"), "html", null, true);
+        echo "\" />
     </header>
     <section id=\"default-header\">
         ";
-        // line 9
-        $this->loadTemplate("header.html.twig", "@Customer/personal-data.html.twig", 9)->display($context);
-        // line 10
+        // line 11
+        $this->loadTemplate("header.html.twig", "@Customer/personal-data.html.twig", 11)->display($context);
+        // line 12
         echo "    </section>
     <section id=\"customer-header\">
         ";
-        // line 12
-        $this->loadTemplate("customerheader.html.twig", "@Customer/personal-data.html.twig", 12)->display($context);
-        // line 13
+        // line 14
+        $this->loadTemplate("customerheader.html.twig", "@Customer/personal-data.html.twig", 14)->display($context);
+        // line 15
         echo "    </section>
     <section id=\"customer-personal-data\">
         ";
-        // line 15
+        // line 17
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "personalDataKOStatus"], "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 16
+            // line 18
             echo "            <div class=\"row\" style=\"width: 95%; margin-left: 2.5%; margin-top: 10px; margin-bottom: -16px;\">
                 <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
                     ";
-            // line 18
+            // line 20
             echo twig_escape_filter($this->env, $context["message"], "html", null, true);
             echo "
                 </div>
@@ -84,16 +89,16 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 22
+        // line 24
         echo "        ";
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "personalDataOKStatus"], "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-            // line 23
+            // line 25
             echo "            <div class=\"row\" style=\"width: 95%; margin-left: 2.5%; margin-top: 10px; margin-bottom: -16px;\">
                 <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
                     ";
-            // line 25
+            // line 27
             echo twig_escape_filter($this->env, $context["message"], "html", null, true);
             echo "
                 </div>
@@ -103,10 +108,10 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 29
+        // line 31
         echo "        <div class=\"container\">
                 <form class=\"form\" action=\"";
-        // line 30
+        // line 32
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_personal_data");
         echo "\" method=\"post\">
                 <div class=\"col-sm-6\">
@@ -123,7 +128,7 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                             Otro
                         </label>
                         <input class=\"form-check-input\" type=\"checkbox\" value=\"0\" id=\"idCustomerGenderOther\" ";
-        // line 44
+        // line 46
         if (($this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "idGender", []) == 0)) {
             echo " checked ";
         }
@@ -132,7 +137,7 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                             Sra.
                         </label>
                         <input class=\"form-check-input\" type=\"checkbox\" value=\"1\" id=\"idCustomerGenderFemale\" ";
-        // line 48
+        // line 50
         if (($this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "idGender", []) == 1)) {
             echo " checked ";
         }
@@ -141,7 +146,7 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                             Sr.
                         </label>
                         <input class=\"form-check-input\" type=\"checkbox\" value=\"2\" id=\"idCustomerGenderMale\" ";
-        // line 52
+        // line 54
         if (($this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "idGender", []) == 2)) {
             echo " checked ";
         }
@@ -149,21 +154,21 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                     </div>
                     <div class=\"personal-data-fields\">
                         <label for=\"firstname\">Nombre:</label><input type=\"text\" id=\"firstname\" name=\"firstname\" class=\"form-control\" value=\"";
-        // line 55
+        // line 57
         echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "firstname", []), "html", null, true);
         echo "\"/>
                         <label for=\"lastname\">Apellidos:</label><input type=\"text\" id=\"lastname\" name=\"lastname\" class=\"form-control\" value=\"";
-        // line 56
+        // line 58
         echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "lastname", []), "html", null, true);
         echo "\"/>
                         <label for=\"email\">Email:</label><input type=\"email\" id=\"email\" name=\"email\" class=\"form-control\" value=\"";
-        // line 57
+        // line 59
         echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "email", []), "html", null, true);
         echo "\"/>
                         <label for=\"password\">Contraseña:</label><input type=\"password\" id=\"password\" name=\"password\" class=\"form-control\"/>
                         <label for=\"confirm_password\">Confirmar Contraseña:</label><input type=\"password\" id=\"confirm_password\" name=\"confirm_password\" class=\"form-control\"/>
                         <label for=\"birthday\">Fecha de nacimiento:</label><input type=\"date\" id=\"birthday\" name=\"birthday\" class=\"form-control\" value=\"";
-        // line 60
+        // line 62
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "birthday", []), "Y-m-d"), "html", null, true);
         echo "\"/>
                     </div>
@@ -171,11 +176,11 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                 <div class=\"col-sm-6\" style=\"display: inline-flex\">
                     <div class=\"personal-data-fields\" style=\"margin-top: 17.5%; width: 100%\">
                         <label for=\"bibliografia\">Descripción / Bibliografía:</label><textarea type=\"text\" id=\"bibliografia\" name=\"bibliografia\" class=\"form-control\" style=\"height: 160px\">";
-        // line 65
+        // line 67
         echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "description", []), "html", null, true);
         echo "</textarea>
                         <label for=\"objetivos\">Objetivos:</label><textarea type=\"text\" id=\"objetivos\" name=\"objetivos\" class=\"form-control\" style=\"height: 100px\">";
-        // line 66
+        // line 68
         if ((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "goals", []), "html", null, true);
         }
@@ -183,19 +188,19 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                         <p><strong>Metricas:</strong></p>
                         <div id=\"metricas\" style=\"display: inline-flex; width: 85%\">
                             <label for=\"peso\"></label><input type=\"number\" id=\"peso\" name=\"peso\" class=\"form-control\" placeholder=\"kg\" value=\"";
-        // line 69
+        // line 71
         if ((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "weight", []), "html", null, true);
         }
         echo "\"/>
                             <label for=\"altura\"></label><input type=\"number\" id=\"altura\" name=\"altura\" class=\"form-control\" placeholder=\"cm\" value=\"";
-        // line 70
+        // line 72
         if ((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "height", []), "html", null, true);
         }
         echo "\"/>
                             <label for=\"edad\"></label><input type=\"number\" id=\"edad\" name=\"edad\" class=\"form-control\" placeholder=\"años\" value=\"";
-        // line 71
+        // line 73
         if ((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "age", []), "html", null, true);
         }
@@ -206,25 +211,25 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                             <label for=\"actividad\"></label>
                             <select id=\"actividad\" name=\"actividad\" class=\"form-select\">
                                 <option value=\"1\" ";
-        // line 77
+        // line 79
         if (((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false) && ($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 1))) {
             echo " selected ";
         }
         echo ">Bajo</option>
                                 <option value=\"2\" ";
-        // line 78
+        // line 80
         if (((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false) && ($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 2))) {
             echo " selected ";
         }
         echo ">Moderado</option>
                                 <option value=\"3\" ";
-        // line 79
+        // line 81
         if (((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false) && ($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 3))) {
             echo " selected ";
         }
         echo ">Activo</option>
                                 <option value=\"3\" ";
-        // line 80
+        // line 82
         if (((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false) && ($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 4))) {
             echo " selected ";
         }
@@ -237,7 +242,11 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
             </form>
         </div>
     </section>
-    </html>
+    ";
+        // line 91
+        $this->loadTemplate("footer.html.twig", "@Customer/personal-data.html.twig", 91)->display($context);
+        // line 92
+        echo "    </html>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -251,7 +260,7 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
 
     public function getDebugInfo()
     {
-        return array (  228 => 80,  222 => 79,  216 => 78,  210 => 77,  199 => 71,  193 => 70,  187 => 69,  179 => 66,  175 => 65,  167 => 60,  161 => 57,  157 => 56,  153 => 55,  145 => 52,  136 => 48,  127 => 44,  110 => 30,  107 => 29,  97 => 25,  93 => 23,  88 => 22,  78 => 18,  74 => 16,  70 => 15,  66 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  249 => 92,  247 => 91,  233 => 82,  227 => 81,  221 => 80,  215 => 79,  204 => 73,  198 => 72,  192 => 71,  184 => 68,  180 => 67,  172 => 62,  166 => 59,  162 => 58,  158 => 57,  150 => 54,  141 => 50,  132 => 46,  115 => 32,  112 => 31,  102 => 27,  98 => 25,  93 => 24,  83 => 20,  79 => 18,  75 => 17,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -270,6 +279,8 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
     <header>
         <!-- Login Page stylesheet-->
         <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/customerpages.css') }}\" />
+        <!-- Footer stylesheet-->
+        <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/footer.css') }}\" />
     </header>
     <section id=\"default-header\">
         {% include 'header.html.twig' %}
@@ -352,6 +363,7 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
             </form>
         </div>
     </section>
+    {% include 'footer.html.twig' %}
     </html>
 {% endblock %}
 ", "@Customer/personal-data.html.twig", "/shared/httpd/nutrik/src/CustomerBundle/Resources/views/personal-data.html.twig");

@@ -28,17 +28,25 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
             $canonicalMethod = 'GET';
         }
 
-        // nutritionist_accountpage
-        if ('/account' === $pathinfo) {
-            return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAccountAction',  '_route' => 'nutritionist_accountpage',);
+        if (0 === strpos($pathinfo, '/a')) {
+            // nutritionist_accountpage
+            if ('/account' === $pathinfo) {
+                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAccountAction',  '_route' => 'nutritionist_accountpage',);
+            }
+
+            // customer_about
+            if ('/about' === $pathinfo) {
+                return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::aboutAction',  '_route' => 'customer_about',);
+            }
+
+            // customer_add_event
+            if ('/add-event' === $pathinfo) {
+                return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::addEventAction',  '_route' => 'customer_add_event',);
+            }
+
         }
 
-        // customer_about
-        if ('/about' === $pathinfo) {
-            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::aboutAction',  '_route' => 'customer_about',);
-        }
-
-        if (0 === strpos($pathinfo, '/nutritionist-')) {
+        elseif (0 === strpos($pathinfo, '/nutritionist-')) {
             if (0 === strpos($pathinfo, '/nutritionist-p')) {
                 // nutritionist_personal_data
                 if ('/nutritionist-personal-data' === $pathinfo) {

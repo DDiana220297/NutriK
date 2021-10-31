@@ -45,7 +45,17 @@
             {% include 'customerheader.html.twig' %}
         </section>
         <section id="customer-homepage">
-
+            <div class="container">
+                <div class="row" style="justify-content: center; color: black; text-align: center; padding: 20px">
+                    <img src="{{ asset('home-banner.jpg') }}" style="border-radius: 10%;width: 100%;height: 45rem;">
+                </div>
+                <div class="row" style="justify-content: center; color: black; text-align: center; padding: 20px">
+                    <p style="font-size: 17px;">
+                        En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                        Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                    </p>
+                </div>
+            </div>
         </section>
     {% else %}
         <section id="nutritionist-homepage">
@@ -87,13 +97,17 @@
                                     <div class="row">
                                         {% if 'add' in log.source %}
                                             <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                                                {{ log.context }}
+                                            </div>
                                         {% elseif 'delete' in log.source %}
                                             <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                                                {{ log.context }}
+                                            </div>
                                         {% else %}
                                             <div class="alert alert-info" role="alert" style="margin-bottom: 0">
+                                                {{ log.context }}
+                                            </div>
                                         {% endif %}
-                                            {{ log.context }}
-                                        </div>
                                     </div>
                                 {% endfor %}
                             </div>
@@ -103,8 +117,6 @@
             </div>
         </section>
     {% endif %}
-
-
     {% include 'footer.html.twig' %}
     </html>
 {% endblock %}

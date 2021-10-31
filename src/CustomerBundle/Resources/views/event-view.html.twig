@@ -1,9 +1,12 @@
 {% block content %}
-    <!DOCTYPE HTML>
-    <html lang="es">
+<!DOCTYPE HTML>
+<html lang="es">
     <header>
         <!-- Login Page stylesheet-->
         <link rel="stylesheet" href="{{ asset('bundles/framework/css/customerpages.css') }}" />
+
+        <!-- Footer stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/footer.css') }}" />
     </header>
     <section id="default-header">
         {% include 'header.html.twig' %}
@@ -12,10 +15,33 @@
         {% include 'customerheader.html.twig' %}
     </section>
     <section id="event-view">
+        {% for message in  app.session.flashbag().get('eventKOStatus') %}
+            <div class="row" style="width: 93.5%; margin-left: 3.3%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class="container">
             <div class="event-view-block">
+                <div class="col-sm-12 event-title">
+                    <strong>{{ event.title }}</strong>
+                </div>
+                <div class="col-sm-12" style="height: 35rem">
+                    <img src="{{ asset(random(['carousel1.jpg','carousel2.jpg', 'carousel3.jpg', 'carousel4.jpeg','carousel5.jpg', 'img3.jpg','img4.jpg' ])) }}" style="width: 100%;margin: 50px 0px;">
+                </div>
+                <div class="col-sm-12 event-date">
+                    <p>{{ event.date|date('Y-m-d H:i:s') }}</p>
+                </div>
+                <div class="col-sm-12 event-duration">
+                    <p>{{ event.duration }} minutos</p>
+                </div>
+                <div class="col-sm-12 event-description">
+                    <p>{{ event.description }}</p>
+                </div>
             </div>
         </div>
     </section>
-    </html>
+    {% include 'footer.html.twig' %}
+</html>
 {% endblock %}
