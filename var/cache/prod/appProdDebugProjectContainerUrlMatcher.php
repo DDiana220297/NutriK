@@ -80,8 +80,8 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
                 }
 
                 // nutritionist_diary
-                if ('/nutritionist-diary' === $pathinfo) {
-                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistDiaryAction',  '_route' => 'nutritionist_diary',);
+                if (0 === strpos($pathinfo, '/nutritionist-diary') && preg_match('#^/nutritionist\\-diary/(?P<id_diary_page>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'nutritionist_diary']), array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistDiaryAction',));
                 }
 
                 if (0 === strpos($pathinfo, '/nutritionist-delete-')) {

@@ -41,8 +41,8 @@ function deleteAppointment(idAppointment){
     document.getElementById("appointment_delete_"+idAppointment).click();
 }
 
-function openModal(){
-    let button = document.getElementById('openMyIngredientModal');
+function openModal(modalName){
+    let button = document.getElementById(modalName);
     button.click()
 }
 

@@ -103,7 +103,7 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
         <!-- Customs JS -->
         <script src=\"";
         // line 35
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework//js/customs.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/js/customs.js"), "html", null, true);
         echo "\"></script>
 
         <!-- Chart JS -->
@@ -148,126 +148,221 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
         } else {
             // line 61
             echo "        <section id=\"nutritionist-homepage\">
+            <header>
+                <!-- Calendar Page stylesheet -->
+                <link rel=\"stylesheet\" href=\"";
+            // line 64
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/home-calendar.css"), "html", null, true);
+            echo "\" />
+                <!-- Calendar JS -->
+                <script src=\"";
+            // line 66
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/js/calendar.js"), "html", null, true);
+            echo "\"></script>
+                <!-- NutriK Calendar JS -->
+                <script src=\"";
+            // line 68
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/js/nutrik-calendar.js"), "html", null, true);
+            echo "\"></script>
+            </header>
             <div class=\"container\">
                 <div class=\"col-sm-12\">
                     <div id=\"nutritionist-homepage-block\">
                         <div class=\"col-sm-6\">
+
+                            <div class=\"col-sm-12 nutritionist-notifications\">
+                                <h3>Mis notificaciones
+                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\" style=\"width: 2rem; height: 2rem; margin-bottom: -3px\"
+                                         onclick=\"openModal('openMyInfoNotificationsModal')\">
+                                        <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
+                                        <path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\"/>
+                                    </svg>
+                                </h3>
+                                <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openMyInfoNotificationsModal\" data-toggle=\"modal\" data-target=\"#infoNotificationsModal\"></button>
+                                <div class=\"modal fade\" id=\"infoNotificationsModal\">
+                                    <div class=\"modal-dialog\">
+                                        <div class=\"modal-content\">
+                                            <!-- Modal body -->
+                                            <div class=\"modal-body\" style=\"text-align: start\">
+                                                <span>
+                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-bookmark-fill\" viewBox=\"0 0 16 16\" style=\"margin-bottom: -5px; width: 20px; height: 20px\" color=\"#d6e9c6\">
+                                                        <path d=\"M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z\"/></svg>
+                                                    Notificaciones para nuevo contenido
+                                                </span>
+                                                <br/><br/>
+                                                <span>
+                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-bookmark-fill\" viewBox=\"0 0 16 16\" style=\"margin-bottom: -5px; width: 20px; height: 20px\" color=\"#bce8f1\">
+                                                        <path d=\"M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z\"/></svg>
+                                                    Notificaciones para la modificación de contenido
+                                                </span>
+                                                <br/><br/>
+                                                <span>
+                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-bookmark-fill\" viewBox=\"0 0 16 16\" style=\"margin-bottom: -5px; width: 20px; height: 20px\" color=\"#ebccd1\">
+                                                        <path d=\"M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z\"/></svg>
+                                                    Notificaciones para la eliminación de contenido
+                                                </span>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style=\"overflow-y: auto; height: 29rem\">
+                                    ";
+            // line 113
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["logs"] ?? $this->getContext($context, "logs")));
+            foreach ($context['_seq'] as $context["_key"] => $context["log"]) {
+                // line 114
+                echo "                                        <div class=\"row\">
+                                            ";
+                // line 115
+                if (twig_in_filter("add", $this->getAttribute($context["log"], "source", []))) {
+                    // line 116
+                    echo "                                                <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\">
+                                                    ";
+                    // line 117
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
+                    echo "
+                                                </div>
+                                            ";
+                } elseif (twig_in_filter("delete", $this->getAttribute(                // line 119
+$context["log"], "source", []))) {
+                    // line 120
+                    echo "                                                <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\"\">
+                                                    ";
+                    // line 121
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
+                    echo "
+                                                </div>
+                                            ";
+                } else {
+                    // line 124
+                    echo "                                                <div class=\"alert alert-info\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\"\">
+                                                    ";
+                    // line 125
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
+                    echo "
+                                                </div>
+                                            ";
+                }
+                // line 128
+                echo "                                        </div>
+                                    ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['log'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 130
+            echo "                                </div>
+                            </div>
+                            <div class=\"col-sm-12 nutritionist-kpis\">
+                                <img src=\"";
+            // line 133
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("chart.png"), "html", null, true);
+            echo "\">
+                            </div>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <div class=\"col-sm-12 nutritionist-calendar\">
+                                ";
+            // line 138
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable(($context["calendar_events"] ?? $this->getContext($context, "calendar_events")));
+            foreach ($context['_seq'] as $context["_key"] => $context["calendar_event"]) {
+                // line 139
+                echo "                                    <div class=\"calendar_event\" style=\"color: black; display: none\">
+                                        <input class=\"calendar_event_id\" value=\"";
+                // line 140
+                echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "id", [], "array"), "html", null, true);
+                echo "\"/>
+                                        <input class=\"calendar_event_title\" value=\"";
+                // line 141
+                echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "title", [], "array"), "html", null, true);
+                echo "\"/>
+                                        <input class=\"calendar_event_start\" value=\"";
+                // line 142
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["calendar_event"], "start", [], "array"), "Y-m-d H:i:s"), "html", null, true);
+                echo "\"/>
+                                        <input class=\"calendar_event_end\" value=\"";
+                // line 143
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["calendar_event"], "end", [], "array"), "Y-m-d H:i:s"), "html", null, true);
+                echo "\"/>
+                                        <input class=\"calendar_event_url\" value=\"";
+                // line 144
+                echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "url", [], "array"), "html", null, true);
+                echo "\"/>
+                                    </div>
+                                ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['calendar_event'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 147
+            echo "                                <div id='wrap'>
+                                    <div id='calendar'></div>
+                                    <div style='clear:both'></div>
+                                </div>
+                            </div>
                             <div class=\"col-sm-12 nutritionist-appointments-events\">
-                                <h3>Mis próximas consultas</h3>
-                                <hr/>
+                                <strong>Mis próximas consultas y eventos</strong>
+                                <hr style=\"margin-top: 10px; margin-bottom: 10px\"/>
                                 <div class=\"nutritionist-appointments\">
                                     ";
-            // line 70
+            // line 156
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["appointments"] ?? $this->getContext($context, "appointments")));
             foreach ($context['_seq'] as $context["_key"] => $context["appointment"]) {
-                // line 71
+                // line 157
                 echo "                                        <p>
-                                            <strong>";
-                // line 72
+                                            <span>
+                                                Consulta:
+                                                <strong>";
+                // line 160
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["appointment"], "date", []), "Y-m-d H:i:s"), "html", null, true);
                 echo ":</strong>
-                                            <a href=\"";
-                // line 73
+                                                <a href=\"";
+                // line 161
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_appointment", ["id_appointment" => $this->getAttribute($context["appointment"], "idAppointment", [])]), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["appointment"], "description", []), "html", null, true);
                 echo "</a>
+                                            </span>
                                         </p>
                                     ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['appointment'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 76
-            echo "                                </div>
-
-                                <h3>Mis próximos eventos</h3>
-                                <hr/>
-                                <div class=\"nutritionist-events\">
-                                    ";
-            // line 81
+            // line 165
+            echo "                                    ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["events"] ?? $this->getContext($context, "events")));
             foreach ($context['_seq'] as $context["_key"] => $context["event"]) {
-                // line 82
+                // line 166
                 echo "                                        <p>
-                                            <strong>";
-                // line 83
+                                            <span>
+                                                Evento:
+                                                <strong>";
+                // line 169
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["event"], "date", []), "Y-m-d H:i:s"), "html", null, true);
                 echo ":</strong>
-                                            <a href=\"";
-                // line 84
+                                                <a href=\"";
+                // line 170
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_event", ["id_event" => $this->getAttribute($context["event"], "idEvent", [])]), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "title", []), "html", null, true);
                 echo "</a>
+                                            </span>
                                         </p>
                                     ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 87
+            // line 174
             echo "                                </div>
                             </div>
-                            <div class=\"col-sm-12 nutritionist-kpis\">
-                                <img src=\"";
-            // line 90
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("chart.png"), "html", null, true);
-            echo "\">
-                            </div>
-                        </div>
-                        <div class=\"col-sm-6\">
-                            <div class=\"nutritionist-notifications\">
-                                <h3>Mis notificaciones</h3>
-                                ";
-            // line 96
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(($context["logs"] ?? $this->getContext($context, "logs")));
-            foreach ($context['_seq'] as $context["_key"] => $context["log"]) {
-                // line 97
-                echo "                                    <div class=\"row\">
-                                        ";
-                // line 98
-                if (twig_in_filter("add", $this->getAttribute($context["log"], "source", []))) {
-                    // line 99
-                    echo "                                            <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
-                                                ";
-                    // line 100
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
-                    echo "
-                                            </div>
-                                        ";
-                } elseif (twig_in_filter("delete", $this->getAttribute(                // line 102
-$context["log"], "source", []))) {
-                    // line 103
-                    echo "                                            <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
-                                                ";
-                    // line 104
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
-                    echo "
-                                            </div>
-                                        ";
-                } else {
-                    // line 107
-                    echo "                                            <div class=\"alert alert-info\" role=\"alert\" style=\"margin-bottom: 0\">
-                                                ";
-                    // line 108
-                    echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
-                    echo "
-                                            </div>
-                                        ";
-                }
-                // line 111
-                echo "                                    </div>
-                                ";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['log'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 113
-            echo "                            </div>
                         </div>
                     </div>
                 </div>
@@ -275,10 +370,10 @@ $context["log"], "source", []))) {
         </section>
     ";
         }
-        // line 120
+        // line 182
         echo "    ";
-        $this->loadTemplate("footer.html.twig", "@Customs/index.html.twig", 120)->display($context);
-        // line 121
+        $this->loadTemplate("footer.html.twig", "@Customs/index.html.twig", 182)->display($context);
+        // line 183
         echo "    </html>
 ";
         
@@ -305,7 +400,7 @@ $context["log"], "source", []))) {
 
     public function getDebugInfo()
     {
-        return array (  290 => 7,  282 => 121,  279 => 120,  270 => 113,  263 => 111,  257 => 108,  254 => 107,  248 => 104,  245 => 103,  243 => 102,  238 => 100,  235 => 99,  233 => 98,  230 => 97,  226 => 96,  217 => 90,  212 => 87,  201 => 84,  197 => 83,  194 => 82,  190 => 81,  183 => 76,  172 => 73,  168 => 72,  165 => 71,  161 => 70,  150 => 61,  136 => 50,  130 => 46,  128 => 45,  125 => 44,  123 => 43,  120 => 42,  118 => 41,  112 => 38,  106 => 35,  100 => 32,  94 => 29,  88 => 26,  82 => 23,  76 => 20,  67 => 14,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
+        return array (  385 => 7,  377 => 183,  374 => 182,  364 => 174,  352 => 170,  348 => 169,  343 => 166,  338 => 165,  326 => 161,  322 => 160,  317 => 157,  313 => 156,  302 => 147,  293 => 144,  289 => 143,  285 => 142,  281 => 141,  277 => 140,  274 => 139,  270 => 138,  262 => 133,  257 => 130,  250 => 128,  244 => 125,  241 => 124,  235 => 121,  232 => 120,  230 => 119,  225 => 117,  222 => 116,  220 => 115,  217 => 114,  213 => 113,  165 => 68,  160 => 66,  155 => 64,  150 => 61,  136 => 50,  130 => 46,  128 => 45,  125 => 44,  123 => 43,  120 => 42,  118 => 41,  112 => 38,  106 => 35,  100 => 32,  94 => 29,  88 => 26,  82 => 23,  76 => 20,  67 => 14,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -352,7 +447,7 @@ $context["log"], "source", []))) {
         <script src=\"{{ asset('bundles/framework/js/MenuComponent.js') }}\"></script>
 
         <!-- Customs JS -->
-        <script src=\"{{ asset('bundles/framework//js/customs.js') }}\"></script>
+        <script src=\"{{ asset('bundles/framework/js/customs.js') }}\"></script>
 
         <!-- Chart JS -->
         <script src=\"{{ asset('public/js/chart.js') }}\"></script>
@@ -379,30 +474,73 @@ $context["log"], "source", []))) {
         </section>
     {% else %}
         <section id=\"nutritionist-homepage\">
+            <header>
+                <!-- Calendar Page stylesheet -->
+                <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/home-calendar.css') }}\" />
+                <!-- Calendar JS -->
+                <script src=\"{{ asset('public/js/calendar.js') }}\"></script>
+                <!-- NutriK Calendar JS -->
+                <script src=\"{{ asset('bundles/framework/js/nutrik-calendar.js') }}\"></script>
+            </header>
             <div class=\"container\">
                 <div class=\"col-sm-12\">
                     <div id=\"nutritionist-homepage-block\">
                         <div class=\"col-sm-6\">
-                            <div class=\"col-sm-12 nutritionist-appointments-events\">
-                                <h3>Mis próximas consultas</h3>
-                                <hr/>
-                                <div class=\"nutritionist-appointments\">
-                                    {% for appointment in appointments %}
-                                        <p>
-                                            <strong>{{ appointment.date|date('Y-m-d H:i:s') }}:</strong>
-                                            <a href=\"{{ path(\"nutritionist_edit_appointment\",{\"id_appointment\":appointment.idAppointment}) }}\">{{ appointment.description }}</a>
-                                        </p>
-                                    {% endfor %}
+
+                            <div class=\"col-sm-12 nutritionist-notifications\">
+                                <h3>Mis notificaciones
+                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\" style=\"width: 2rem; height: 2rem; margin-bottom: -3px\"
+                                         onclick=\"openModal('openMyInfoNotificationsModal')\">
+                                        <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
+                                        <path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\"/>
+                                    </svg>
+                                </h3>
+                                <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openMyInfoNotificationsModal\" data-toggle=\"modal\" data-target=\"#infoNotificationsModal\"></button>
+                                <div class=\"modal fade\" id=\"infoNotificationsModal\">
+                                    <div class=\"modal-dialog\">
+                                        <div class=\"modal-content\">
+                                            <!-- Modal body -->
+                                            <div class=\"modal-body\" style=\"text-align: start\">
+                                                <span>
+                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-bookmark-fill\" viewBox=\"0 0 16 16\" style=\"margin-bottom: -5px; width: 20px; height: 20px\" color=\"#d6e9c6\">
+                                                        <path d=\"M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z\"/></svg>
+                                                    Notificaciones para nuevo contenido
+                                                </span>
+                                                <br/><br/>
+                                                <span>
+                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-bookmark-fill\" viewBox=\"0 0 16 16\" style=\"margin-bottom: -5px; width: 20px; height: 20px\" color=\"#bce8f1\">
+                                                        <path d=\"M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z\"/></svg>
+                                                    Notificaciones para la modificación de contenido
+                                                </span>
+                                                <br/><br/>
+                                                <span>
+                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-bookmark-fill\" viewBox=\"0 0 16 16\" style=\"margin-bottom: -5px; width: 20px; height: 20px\" color=\"#ebccd1\">
+                                                        <path d=\"M2 2v13.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z\"/></svg>
+                                                    Notificaciones para la eliminación de contenido
+                                                </span>
+                                                <br/>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <h3>Mis próximos eventos</h3>
-                                <hr/>
-                                <div class=\"nutritionist-events\">
-                                    {% for event in events %}
-                                        <p>
-                                            <strong>{{ event.date|date('Y-m-d H:i:s') }}:</strong>
-                                            <a href=\"{{ path(\"nutritionist_edit_event\",{\"id_event\":event.idEvent}) }}\">{{ event.title }}</a>
-                                        </p>
+                                <div style=\"overflow-y: auto; height: 29rem\">
+                                    {% for log in logs %}
+                                        <div class=\"row\">
+                                            {% if 'add' in log.source %}
+                                                <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\">
+                                                    {{ log.context }}
+                                                </div>
+                                            {% elseif 'delete' in log.source %}
+                                                <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\"\">
+                                                    {{ log.context }}
+                                                </div>
+                                            {% else %}
+                                                <div class=\"alert alert-info\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\"\">
+                                                    {{ log.context }}
+                                                </div>
+                                            {% endif %}
+                                        </div>
                                     {% endfor %}
                                 </div>
                             </div>
@@ -411,25 +549,44 @@ $context["log"], "source", []))) {
                             </div>
                         </div>
                         <div class=\"col-sm-6\">
-                            <div class=\"nutritionist-notifications\">
-                                <h3>Mis notificaciones</h3>
-                                {% for log in logs %}
-                                    <div class=\"row\">
-                                        {% if 'add' in log.source %}
-                                            <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
-                                                {{ log.context }}
-                                            </div>
-                                        {% elseif 'delete' in log.source %}
-                                            <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
-                                                {{ log.context }}
-                                            </div>
-                                        {% else %}
-                                            <div class=\"alert alert-info\" role=\"alert\" style=\"margin-bottom: 0\">
-                                                {{ log.context }}
-                                            </div>
-                                        {% endif %}
+                            <div class=\"col-sm-12 nutritionist-calendar\">
+                                {% for calendar_event in calendar_events %}
+                                    <div class=\"calendar_event\" style=\"color: black; display: none\">
+                                        <input class=\"calendar_event_id\" value=\"{{ calendar_event['id'] }}\"/>
+                                        <input class=\"calendar_event_title\" value=\"{{ calendar_event['title'] }}\"/>
+                                        <input class=\"calendar_event_start\" value=\"{{ calendar_event['start']|date('Y-m-d H:i:s') }}\"/>
+                                        <input class=\"calendar_event_end\" value=\"{{ calendar_event['end']|date('Y-m-d H:i:s') }}\"/>
+                                        <input class=\"calendar_event_url\" value=\"{{ calendar_event['url'] }}\"/>
                                     </div>
                                 {% endfor %}
+                                <div id='wrap'>
+                                    <div id='calendar'></div>
+                                    <div style='clear:both'></div>
+                                </div>
+                            </div>
+                            <div class=\"col-sm-12 nutritionist-appointments-events\">
+                                <strong>Mis próximas consultas y eventos</strong>
+                                <hr style=\"margin-top: 10px; margin-bottom: 10px\"/>
+                                <div class=\"nutritionist-appointments\">
+                                    {% for appointment in appointments %}
+                                        <p>
+                                            <span>
+                                                Consulta:
+                                                <strong>{{ appointment.date|date('Y-m-d H:i:s') }}:</strong>
+                                                <a href=\"{{ path(\"nutritionist_edit_appointment\",{\"id_appointment\":appointment.idAppointment}) }}\">{{ appointment.description }}</a>
+                                            </span>
+                                        </p>
+                                    {% endfor %}
+                                    {% for event in events %}
+                                        <p>
+                                            <span>
+                                                Evento:
+                                                <strong>{{ event.date|date('Y-m-d H:i:s') }}:</strong>
+                                                <a href=\"{{ path(\"nutritionist_edit_event\",{\"id_event\":event.idEvent}) }}\">{{ event.title }}</a>
+                                            </span>
+                                        </p>
+                                    {% endfor %}
+                                </div>
                             </div>
                         </div>
                     </div>

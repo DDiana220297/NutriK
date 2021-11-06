@@ -54,7 +54,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
         <!-- Customs JS -->
         <script src=\"";
         // line 8
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework//js/customs.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/js/customs.js"), "html", null, true);
         echo "\"></script>
     </header>
     <section id=\"default-header\">
@@ -185,6 +185,28 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
         // line 70
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "collegiate_number", []), "html", null, true);
         echo "\" style=\"width: 85%\"/>
+                        <strong>
+                            Obtener más informacion acerca de tu perfil de colegiado
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\" style=\"width: 2rem; height: 2rem; margin-bottom: -3px\"
+                                 onclick=\"openModal('openCollegiateNumberModal')\">
+                                <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
+                                <path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\"/>
+                            </svg>
+                        </strong>
+                        <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openCollegiateNumberModal\" data-toggle=\"modal\" data-target=\"#infoCollegiateNumberModal\"></button>
+                        <div class=\"modal fade\" id=\"infoCollegiateNumberModal\">
+                            <div class=\"modal-dialog\" style=\"margin: 5rem 22rem;\">
+                                <div class=\"modal-content\" style=\"width: 150rem; height: 90rem\">
+                                    <!-- Modal body -->
+                                    <iframe id=\"inlineFrameExample\"
+                                            title=\"Inline Frame Example\"
+                                            width=\"100%\"
+                                            height=\"100%\"
+                                            src=\"https://www.consejodietistasnutricionistas.com/que-es-un-dietista-nutricionista/registro-nacional-de-dietistas-nutricionistas/\">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
                         <div class=\"save-button-item\" style=\"width: 100%;\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>
@@ -227,7 +249,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
         <!-- Login Page stylesheet-->
         <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/nutritionistpages.css') }}\" />
         <!-- Customs JS -->
-        <script src=\"{{ asset('bundles/framework//js/customs.js') }}\"></script>
+        <script src=\"{{ asset('bundles/framework/js/customs.js') }}\"></script>
     </header>
     <section id=\"default-header\">
         {% include 'header.html.twig' %}
@@ -290,6 +312,28 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                         <textarea type=\"text\" id=\"estudios\" name=\"_estudios\" class=\"form-control\" style=\"height: 100px\">{{ app.user.studies }}</textarea>
                         <label for=\"n_colegiado\">Número de Colegiado:</label>
                         <input type=\"number\" id=\"n_colegiado\" name=\"_n_colegiado\" class=\"form-control\" value=\"{{ app.user.collegiate_number }}\" style=\"width: 85%\"/>
+                        <strong>
+                            Obtener más informacion acerca de tu perfil de colegiado
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\" style=\"width: 2rem; height: 2rem; margin-bottom: -3px\"
+                                 onclick=\"openModal('openCollegiateNumberModal')\">
+                                <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
+                                <path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\"/>
+                            </svg>
+                        </strong>
+                        <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openCollegiateNumberModal\" data-toggle=\"modal\" data-target=\"#infoCollegiateNumberModal\"></button>
+                        <div class=\"modal fade\" id=\"infoCollegiateNumberModal\">
+                            <div class=\"modal-dialog\" style=\"margin: 5rem 22rem;\">
+                                <div class=\"modal-content\" style=\"width: 150rem; height: 90rem\">
+                                    <!-- Modal body -->
+                                    <iframe id=\"inlineFrameExample\"
+                                            title=\"Inline Frame Example\"
+                                            width=\"100%\"
+                                            height=\"100%\"
+                                            src=\"https://www.consejodietistasnutricionistas.com/que-es-un-dietista-nutricionista/registro-nacional-de-dietistas-nutricionistas/\">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
                         <div class=\"save-button-item\" style=\"width: 100%;\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>

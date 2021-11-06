@@ -58,7 +58,7 @@ class NutritionistController extends Controller
     {
         if($request->isMethod('POST')){
             /**
-             * Instanciamos el user con el email del usuario logeado
+             * Instanciamos el user con el email del usuario logueado
              */
             $em = $this->getDoctrine()->getManager();
             $user_repository = $em->getRepository('CustomsBundle:User');
@@ -3076,7 +3076,7 @@ class NutritionistController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response|null
      * @throws \Exception
      */
-    public function nutritionistDiaryAction(Request $request)
+    public function nutritionistDiaryAction(Request $request, $id_diary_page = 0)
     {
         $diary_page = false;
 
@@ -3090,7 +3090,14 @@ class NutritionistController extends Controller
             $user = reset($users);
             $today_datetime =  new \DateTime($request->request->get('date_filter'));
             $diary_pages_repo = $em->getRepository('NutritionistBundle:DiaryPages');
-            $diary_pages = $diary_pages_repo->findBy(['date' => $today_datetime, 'idUser' =>$user->getIdUser()]);
+
+            if ($id_diary_page != 0){
+                $diary_pages = $diary_pages_repo->findBy(['idDiaryPage' => $id_diary_page]);
+            }
+            else{
+                $diary_pages = $diary_pages_repo->findBy(['date' => $today_datetime, 'idUser' =>$user->getIdUser()]);
+            }
+
 
             if(count($diary_pages) > 0){
                 $diary_page = reset($diary_pages);
@@ -3125,7 +3132,8 @@ class NutritionistController extends Controller
         return $this->render('@Nutritionist/nutritionist-diary.html.twig',
             [
                 "today_datetime" => $today_datetime,
-                "diaryPage" => $diary_page
+                "diaryPage" => $diary_page,
+                "id_diary_page" => $id_diary_page
             ]
         );
     }
@@ -3665,7 +3673,7 @@ class NutritionistController extends Controller
      */
     public function nutritionistCalendarAction()
     {
-        $appointments = $calendar_events = $events = array();
+        $appointments = $calendar_events = $events = $diary_pages = array();
         $em = $this->getDoctrine()->getManager();
         $user_repository = $em->getRepository('CustomsBundle:User');
         $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
@@ -3685,6 +3693,12 @@ class NutritionistController extends Controller
             $events = $events_repo->findBy(array("idUser" => $user->getIdUser()));
 
             /**
+             * Diary Pages
+             */
+            $diary_pages_repo = $em->getRepository('NutritionistBundle:DiaryPages');
+            $diary_pages = $diary_pages_repo->findBy(['idUser' =>$user->getIdUser()]);
+
+            /**
              * Format appointments as calendar events
              */
             foreach ($appointments as $appointment){
@@ -3697,7 +3711,8 @@ class NutritionistController extends Controller
                     'title' => $appointment->getDescription(),
                     'start' => $start_date,
                     'end' => $end_date,
-                    'url' => '/web/nutritionist-edit-appointment/'.$id_appointment
+                    'url' => '/web/nutritionist-edit-appointment/'.$id_appointment,
+                    'type' => 'event'
                 ];
             }
 
@@ -3714,7 +3729,24 @@ class NutritionistController extends Controller
                     'title' => $event->getTitle(),
                     'start' => $start_date,
                     'end' => $end_date,
-                    'url' => '/web/nutritionist-edit-event/'.$id_event
+                    'url' => '/web/nutritionist-edit-event/'.$id_event,
+                    'type' => 'event'
+                ];
+            }
+
+            /**
+             * Format diary pages as calendar events
+             */
+            foreach ($diary_pages as $page){
+                $id_diary_page = $page->getIdDiaryPage();
+                $start_date = $page->getDate();
+                $calendar_events[] = [
+                    'id' => $id_diary_page,
+                    'title' => "Notas agenda personal",
+                    'start' => $start_date,
+                    'end' => $start_date,
+                    'url' => '/web/nutritionist-diary/'.$id_diary_page,
+                    'type' => 'diary'
                 ];
             }
         }

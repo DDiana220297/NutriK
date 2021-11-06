@@ -14,6 +14,7 @@ $(document).ready(function() {
             start: calendar_events_nodes[i].querySelector('.calendar_event_start').value,
             end: calendar_events_nodes[i].querySelector('.calendar_event_end').value,
             url: calendar_events_nodes[i].querySelector('.calendar_event_url').value,
+            type: calendar_events_nodes[i].querySelector('.calendar_event_type').value,
             className: 'info',
             allDay: false
         }

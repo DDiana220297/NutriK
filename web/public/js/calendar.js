@@ -2647,10 +2647,6 @@ function enableTextSelection(element) {
         function clearEvents() {
             t.getDaySegmentContainer().empty();
         }
-
-
-        // TODO: have this class (and AgendaEventRenderer) be responsible for creating the event container div
-
     }
 
     ;;
@@ -3956,6 +3952,13 @@ function enableTextSelection(element) {
 
 
         function slotSegHtml(event, seg) {
+            debugger;
+            var type = event.type
+            var type_class = '"<div class=\'fc-event-inner\'>"';
+            if(type === 'diary'){
+                var type_class = '"<div class=\'fc-event-inner-diary\'>"';
+            }
+
             var html = "<";
             var url = event.url;
             var skinCss = getSkinCss(event, opt);
@@ -3988,7 +3991,7 @@ function enableTextSelection(element) {
                 skinCss +
                 "'" +
                 ">" +
-                "<div class='fc-event-inner'>" +
+                type_class +
                 "<div class='fc-event-time'>" +
                 htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +
                 "</div>" +
@@ -5341,6 +5344,11 @@ function enableTextSelection(element) {
             }else{
                 html += "<div";
             }
+            var type_class = "<div class='fc-event-inner'>";
+            if(event.type === 'diary'){
+                type_class = "<div class='fc-event-inner-diary'>";
+            }
+            debugger;
             html +=
                 " class='" + classNames.join(' ') + "'" +
                 " style=" +
@@ -5350,7 +5358,7 @@ function enableTextSelection(element) {
                 skinCss +
                 "'" +
                 ">" +
-                "<div class='fc-event-inner'>";
+                type_class;
             if (!event.allDay && segment.isStart) {
                 html +=
                     "<span class='fc-event-time'>" +

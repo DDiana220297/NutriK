@@ -84,7 +84,7 @@ class __TwigTemplate_ad5ea11df2e5cbb8f9da7a038693df6bafdd2bd9c8e73ab97ae1af8788b
                 <div id=\"diary-block\">
                     <form class=\"form\" action=\"";
         // line 22
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_diary");
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_diary", ["id_diary_page" => ($context["id_diary_page"] ?? $this->getContext($context, "id_diary_page"))]), "html", null, true);
         echo "\" method=\"post\" novalidate>
                         <div class=\"col-sm-6\">
                             <h3>
@@ -202,7 +202,7 @@ class __TwigTemplate_ad5ea11df2e5cbb8f9da7a038693df6bafdd2bd9c8e73ab97ae1af8788b
         <div class=\"container\">
             <div class=\"col-sm-12\">
                 <div id=\"diary-block\">
-                    <form class=\"form\" action=\"{{ path(\"nutritionist_diary\") }}\" method=\"post\" novalidate>
+                    <form class=\"form\" action=\"{{ path(\"nutritionist_diary\",{'id_diary_page': id_diary_page }) }}\" method=\"post\" novalidate>
                         <div class=\"col-sm-6\">
                             <h3>
                                 {% if today_datetime != false %}{{ today_datetime|date('l', \"Europe/Paris\") }} - {{ today_datetime|date('d', \"Europe/Paris\") }} de {{ today_datetime|date('F', \"Europe/Paris\") }}

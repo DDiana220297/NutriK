@@ -83,7 +83,7 @@ nutritionist_delete_customer:
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistDeleteCustomer }
 
 nutritionist_diary:
-    path: /nutritionist-diary
+    path: /nutritionist-diary/{id_diary_page}
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistDiary }
 
 nutritionist_recipes:

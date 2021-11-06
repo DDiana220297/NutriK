@@ -130,13 +130,17 @@ class __TwigTemplate_abc7b005f94cd9909ad2cd3bcd471be0470516adb84e628f74b0482ad9f
             // line 40
             echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "url", [], "array"), "html", null, true);
             echo "\"/>
+                        <input class=\"calendar_event_type\" value=\"";
+            // line 41
+            echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "type", [], "array"), "html", null, true);
+            echo "\"/>
                     </div>
                 ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['calendar_event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 43
+        // line 44
         echo "                <div id=\"calendar-block\">
                     <div id='wrap'>
                         <div id='calendar'></div>
@@ -160,7 +164,7 @@ class __TwigTemplate_abc7b005f94cd9909ad2cd3bcd471be0470516adb84e628f74b0482ad9f
 
     public function getDebugInfo()
     {
-        return array (  140 => 43,  131 => 40,  127 => 39,  123 => 38,  119 => 37,  115 => 36,  112 => 35,  108 => 34,  104 => 32,  94 => 28,  90 => 26,  86 => 25,  76 => 18,  71 => 16,  66 => 14,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  144 => 44,  135 => 41,  131 => 40,  127 => 39,  123 => 38,  119 => 37,  115 => 36,  112 => 35,  108 => 34,  104 => 32,  94 => 28,  90 => 26,  86 => 25,  76 => 18,  71 => 16,  66 => 14,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -213,6 +217,7 @@ class __TwigTemplate_abc7b005f94cd9909ad2cd3bcd471be0470516adb84e628f74b0482ad9f
                         <input class=\"calendar_event_start\" value=\"{{ calendar_event['start']|date('Y-m-d H:i:s') }}\"/>
                         <input class=\"calendar_event_end\" value=\"{{ calendar_event['end']|date('Y-m-d H:i:s') }}\"/>
                         <input class=\"calendar_event_url\" value=\"{{ calendar_event['url'] }}\"/>
+                        <input class=\"calendar_event_type\" value=\"{{ calendar_event['type'] }}\"/>
                     </div>
                 {% endfor %}
                 <div id=\"calendar-block\">
