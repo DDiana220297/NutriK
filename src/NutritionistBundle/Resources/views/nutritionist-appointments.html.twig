@@ -49,7 +49,7 @@
                         {% for appointment in appointments %}
                             <div class="appointments-entry">
                                 <div class="col-sm-11 appointments-entry-resume">
-                                    <h4> {{ appointment.date|date('l', "Europe/Paris") }} - {{ appointment.date|date('d', "Europe/Paris") }} de {{ appointment.date|date('F', "Europe/Paris") }}</h4>
+                                    <h4><strong>{{ appointments_dates[appointment.idAppointment] }}</strong><a href="{{ path('nutritionist_edit_customer',{'id_user':appointment.idCustomer}) }}" style="color: #00766c; margin-left: 10px; font-size: 18px; font-weight: bold">{{ appointments_customer[appointment.idAppointment] }}</a></h4>
                                     <p>{{ appointment.description }}</p>
                                 </div>
                                 <div class="col-sm-1 appointments-entry-actions">

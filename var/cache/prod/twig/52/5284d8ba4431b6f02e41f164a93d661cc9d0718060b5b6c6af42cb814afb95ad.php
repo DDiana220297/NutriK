@@ -174,31 +174,41 @@ class __TwigTemplate_3bb114c1d54dc1fa8bca612e82ebd43dcf94ce4e9c1cecf7e3359a7bf02
         // line 50
         echo "                        </select>
                         <br/>
-                        <label for=\"event_tag\">Tag:</label>
+                        <label>Tags:</label>
                         <br/>
-                        <select name=\"event_tag\" id=\"event_tag\">
+                        <ul class=\"list-group\" id=\"event_tags\">
                             ";
         // line 55
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["tags"] ?? $this->getContext($context, "tags")));
         foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
             // line 56
-            echo "                                <option value=\"";
+            echo "                                <li>
+                                    <input type=\"checkbox\" value=\"";
+            // line 57
             echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "idTag", []), "html", null, true);
             echo "\" ";
-            if (($this->getAttribute(($context["event"] ?? $this->getContext($context, "event")), "idTag", []) == $this->getAttribute($context["tag"], "idTag", []))) {
-                echo " selected ";
+            if (twig_in_filter($this->getAttribute($context["tag"], "idTag", []), twig_get_array_keys_filter(($context["event_tags_keys"] ?? $this->getContext($context, "event_tags_keys"))))) {
+                echo " checked ";
             }
-            echo ">";
+            // line 58
+            echo "                                           style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"add_tags[";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "idTag", []), "html", null, true);
+            echo "][]\">
+                                    Nivel ";
+            // line 59
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "level", []), "html", null, true);
+            echo " - ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "name", []), "html", null, true);
-            echo "</option>
+            echo "
+                                </li>
                             ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 58
-        echo "                        </select>
+        // line 62
+        echo "                        </ul>
                         <div class=\"save-button-item\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>
@@ -206,18 +216,18 @@ class __TwigTemplate_3bb114c1d54dc1fa8bca612e82ebd43dcf94ce4e9c1cecf7e3359a7bf02
                     <div class=\"col-sm-7\">
                         <label for=\"event_title\">Título:</label>
                         <input type=\"text\" id=\"event_title\" name=\"event_title\" class=\"form-control\" required=\"required\" value=\"";
-        // line 65
+        // line 69
         echo twig_escape_filter($this->env, $this->getAttribute(($context["event"] ?? $this->getContext($context, "event")), "title", []), "html", null, true);
         echo "\"/>
                         <label for=\"event_link\">Enlace del evento:</label>
                         <input type=\"text\" id=\"event_link\" name=\"event_link\" class=\"form-control\" required=\"required\" value=\"";
-        // line 67
+        // line 71
         echo twig_escape_filter($this->env, $this->getAttribute(($context["event"] ?? $this->getContext($context, "event")), "eventLink", []), "html", null, true);
         echo "\">
                         <label for=\"event_description\">Descripción:</label>
                         <br/>
                         <textarea type=\"text\" id=\"event_description\" name=\"event_description\" class=\"form-control\" required=\"required\">";
-        // line 70
+        // line 74
         echo twig_escape_filter($this->env, $this->getAttribute(($context["event"] ?? $this->getContext($context, "event")), "description", []), "html", null, true);
         echo "</textarea>
                     </div>
@@ -239,7 +249,7 @@ class __TwigTemplate_3bb114c1d54dc1fa8bca612e82ebd43dcf94ce4e9c1cecf7e3359a7bf02
 
     public function getDebugInfo()
     {
-        return array (  221 => 70,  215 => 67,  210 => 65,  201 => 58,  186 => 56,  182 => 55,  175 => 50,  160 => 48,  156 => 47,  146 => 42,  140 => 41,  134 => 40,  128 => 39,  121 => 35,  116 => 33,  111 => 31,  105 => 28,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  231 => 74,  225 => 71,  220 => 69,  211 => 62,  200 => 59,  195 => 58,  189 => 57,  186 => 56,  182 => 55,  175 => 50,  160 => 48,  156 => 47,  146 => 42,  140 => 41,  134 => 40,  128 => 39,  121 => 35,  116 => 33,  111 => 31,  105 => 28,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -303,13 +313,17 @@ class __TwigTemplate_3bb114c1d54dc1fa8bca612e82ebd43dcf94ce4e9c1cecf7e3359a7bf02
                             {% endfor %}
                         </select>
                         <br/>
-                        <label for=\"event_tag\">Tag:</label>
+                        <label>Tags:</label>
                         <br/>
-                        <select name=\"event_tag\" id=\"event_tag\">
+                        <ul class=\"list-group\" id=\"event_tags\">
                             {% for tag in tags %}
-                                <option value=\"{{ tag.idTag }}\" {% if event.idTag == tag.idTag %} selected {% endif %}>{{ tag.name }}</option>
+                                <li>
+                                    <input type=\"checkbox\" value=\"{{ tag.idTag }}\" {% if tag.idTag in event_tags_keys|keys %} checked {% endif %}
+                                           style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"add_tags[{{ tag.idTag }}][]\">
+                                    Nivel {{ tag.level }} - {{ tag.name }}
+                                </li>
                             {% endfor %}
-                        </select>
+                        </ul>
                         <div class=\"save-button-item\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>

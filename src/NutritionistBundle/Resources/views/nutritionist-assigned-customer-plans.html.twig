@@ -1,0 +1,27 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <!-- Login Page stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/nutritionistpages.css') }}" />
+        <!-- Footer stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/footer.css') }}" />
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    <section id="assigned-customer-plans-section">
+        <div class="container">
+            <div class="assigned-customer-plans">
+                <div class="col-sm-12 customer-info">
+
+                </div>
+                <div class="col-sm-12 customer-plans">
+
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'footer.html.twig' %}
+    </html>
+{% endblock %}

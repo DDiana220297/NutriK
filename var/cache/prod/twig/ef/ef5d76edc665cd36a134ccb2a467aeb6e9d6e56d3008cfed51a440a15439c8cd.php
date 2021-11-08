@@ -93,24 +93,69 @@ class __TwigTemplate_c71860b524a371c9dd9e601f469dd981b8adca70323a1e49fe2f8329504
         // line 23
         echo "        <div class=\"container\">
             <div class=\"col-sm-12\">
-                <input type=\"hidden\" id=\"modal_page\" value=\"";
-        // line 25
-        echo twig_escape_filter($this->env, ($context["modal_page"] ?? $this->getContext($context, "modal_page")), "html", null, true);
-        echo "\"/>
                 <div id=\"appointment-content-block\">
                         <div class=\"col-sm-12\">
                             <h2>Programar Consulta</h2>
                             <form id=\"msform\" action=\"";
-        // line 29
+        // line 28
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_schedule_appointment");
-        echo "\" method=\"post\">
+        echo "\" method=\"post\" novalidate>
                                 <!-- progressbar -->
                                 <ul id=\"progressbar\">
-                                    <li class=\"active\" id=\"appointment-date\"><strong>Fecha Consulta</strong></li>
+                                    <li class=\"active\" id=\"appointment-customer\"><strong>Cliente Consulta</strong></li>
+                                    <li id=\"appointment-date\"><strong>Fecha Consulta</strong></li>
                                     <li id=\"appointment-hour\"><strong>Hora Consulta</strong></li>
-                                    <li id=\"appointment-customer\"><strong>Cliente Consulta</strong></li>
                                     <li id=\"confirm\"><strong>Confirmación</strong></li>
                                 </ul> <!-- fieldsets -->
+                                <fieldset>
+                                    <div class=\"form-card\">
+                                        <h2 style=\"color: #00766c; text-align: center\">Selecciona el cliente</h2>
+                                        <nav class=\"navbar navbar-light bg-light\" style=\"height: 7rem;\">
+                                            <div class=\"container-fluid\">
+                                                <div class=\"d-flex customers-finder\" style=\"margin: 15px 0;\">
+                                                    <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\" name=\"appointment_customer_search\"
+                                                           style=\"width: 68.5%; display: inline-flex; margin-left: 14.3%;border: 1px solid #00766c;border-radius: 5px;\"/>
+                                                    <button class=\"btn btn-outline-success\" id=\"appointment-customer-search-button\" name=\"submit\" value=\"Buscar\">Buscar</button>
+                                                </div>
+                                            </div>
+                                        </nav>
+                                        <div id=\"appointment-customers-block\">
+                                            ";
+        // line 49
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["customers"] ?? $this->getContext($context, "customers")));
+        foreach ($context['_seq'] as $context["_key"] => $context["customer"]) {
+            // line 50
+            echo "                                                <div class=\"customer-entry\">
+                                                    <div class=\"col-sm-11 customer-entry-resume\">
+                                                        <div class=\"col-sm-2\"><input type=\"checkbox\" value=\"";
+            // line 52
+            echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "idUser", []), "html", null, true);
+            echo "\" style=\"width: 15px; height: 15px\" name=\"appointment_customer\" id=\"appointment-customer\"></div>
+                                                        <div class=\"col-sm-3\" style=\"text-align: start\">";
+            // line 53
+            echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "firstname", []), "html", null, true);
+            echo "</div>
+                                                        <div class=\"col-sm-3\" style=\"text-align: center\">";
+            // line 54
+            echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "lastname", []), "html", null, true);
+            echo "</div>
+                                                        <div class=\"col-sm-4\" style=\"text-align: end\">";
+            // line 55
+            echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "email", []), "html", null, true);
+            echo "</div>
+                                                    </div>
+                                                </div>
+                                            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['customer'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 59
+        echo "                                        </div>
+                                    </div>
+                                    <input type=\"button\" name=\"next\" class=\"next action-button\" value=\"Siguiente\"/>
+                                </fieldset>
                                 <fieldset>
                                     <div class=\"form-card\">
                                         <body>
@@ -149,6 +194,7 @@ class __TwigTemplate_c71860b524a371c9dd9e601f469dd981b8adca70323a1e49fe2f8329504
                                         </div>
                                         </body>
                                     </div>
+                                    <input type=\"button\" name=\"previous\" class=\"previous action-button-previous\" value=\"Previo\"/>
                                     <input type=\"button\" name=\"next\" class=\"next action-button\" value=\"Siguiente\"/>
                                 </fieldset>
                                 <fieldset>
@@ -160,56 +206,6 @@ class __TwigTemplate_c71860b524a371c9dd9e601f469dd981b8adca70323a1e49fe2f8329504
                                         <p style=\"text-align: center; font-size: 20px;\"> Indica una breve descripción para la consulta</p>
                                         <label for=\"appointment_description\" style=\"margin-right: 10px\"></label>
                                         <input type=\"text\" class=\"form-control\" id=\"appointment_description\" name=\"appointment_description\" style=\"width: 60%;margin-left: 21%;height: 10rem;border: 1px solid #ccc;border-radius: 10px;\"  required=\"required\">
-                                    </div>
-                                    <input type=\"button\" name=\"previous\" class=\"previous action-button-previous\" value=\"Previo\"/>
-                                    <input type=\"button\" name=\"next\" class=\"next action-button\" value=\"Siguiente\"/>
-                                </fieldset>
-                                <fieldset>
-                                    <div class=\"form-card\">
-                                        <h2 style=\"color: #00766c; text-align: center\">Selecciona el cliente</h2>
-                                        <nav class=\"navbar navbar-light bg-light\" style=\"height: 7rem;\">
-                                            <div class=\"container-fluid\">
-                                                <div class=\"d-flex customers-finder\" style=\"margin: 15px 0;\">
-                                                    <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\" name=\"appointment_customer_search\"
-                                                           style=\"width: 68.5%; display: inline-flex; margin-left: 14.3%;border: 1px solid #00766c;border-radius: 5px;\"/>
-                                                    <button class=\"btn btn-outline-success\" id=\"appointment-customer-search-button\" name=\"submit\" value=\"Buscar\">Buscar</button>
-                                                </div>
-                                            </div>
-                                        </nav>
-                                        <div id=\"appointment-customers-block\">
-                                            ";
-        // line 103
-        $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(($context["customers"] ?? $this->getContext($context, "customers")));
-        foreach ($context['_seq'] as $context["_key"] => $context["customer"]) {
-            // line 104
-            echo "                                                <div class=\"customer-entry\">
-                                                    <div class=\"col-sm-11 customer-entry-resume\">
-                                                        <div class=\"col-sm-2\"><input type=\"checkbox\" value=\"";
-            // line 106
-            echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "idUser", []), "html", null, true);
-            echo "\" style=\"width: 15px; height: 15px\" name=\"appointment_customer\" id=\"appointment-customer\"></div>
-                                                        <div class=\"col-sm-3\" style=\"text-align: start\">";
-            // line 107
-            echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "firstname", []), "html", null, true);
-            echo "</div>
-                                                        <div class=\"col-sm-3\" style=\"text-align: center\">";
-            // line 108
-            echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "lastname", []), "html", null, true);
-            echo "</div>
-                                                        <div class=\"col-sm-4\" style=\"text-align: end\">";
-            // line 109
-            echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "email", []), "html", null, true);
-            echo "</div>
-                                                    </div>
-                                                </div>
-                                            ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['customer'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 113
-        echo "                                        </div>
                                     </div>
                                     <input type=\"button\" name=\"previous\" class=\"previous action-button-previous\" value=\"Previo\"/>
                                     <input type=\"button\" name=\"next\" class=\"next action-button\" value=\"Siguiente\"/>
@@ -252,7 +248,7 @@ class __TwigTemplate_c71860b524a371c9dd9e601f469dd981b8adca70323a1e49fe2f8329504
 
     public function getDebugInfo()
     {
-        return array (  212 => 113,  202 => 109,  198 => 108,  194 => 107,  190 => 106,  186 => 104,  182 => 103,  105 => 29,  98 => 25,  94 => 23,  84 => 19,  80 => 17,  76 => 16,  70 => 13,  65 => 11,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  155 => 59,  145 => 55,  141 => 54,  137 => 53,  133 => 52,  129 => 50,  125 => 49,  101 => 28,  94 => 23,  84 => 19,  80 => 17,  76 => 16,  70 => 13,  65 => 11,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -289,18 +285,44 @@ class __TwigTemplate_c71860b524a371c9dd9e601f469dd981b8adca70323a1e49fe2f8329504
         {% endfor %}
         <div class=\"container\">
             <div class=\"col-sm-12\">
-                <input type=\"hidden\" id=\"modal_page\" value=\"{{ modal_page }}\"/>
                 <div id=\"appointment-content-block\">
                         <div class=\"col-sm-12\">
                             <h2>Programar Consulta</h2>
-                            <form id=\"msform\" action=\"{{ path(\"nutritionist_schedule_appointment\") }}\" method=\"post\">
+                            <form id=\"msform\" action=\"{{ path(\"nutritionist_schedule_appointment\") }}\" method=\"post\" novalidate>
                                 <!-- progressbar -->
                                 <ul id=\"progressbar\">
-                                    <li class=\"active\" id=\"appointment-date\"><strong>Fecha Consulta</strong></li>
+                                    <li class=\"active\" id=\"appointment-customer\"><strong>Cliente Consulta</strong></li>
+                                    <li id=\"appointment-date\"><strong>Fecha Consulta</strong></li>
                                     <li id=\"appointment-hour\"><strong>Hora Consulta</strong></li>
-                                    <li id=\"appointment-customer\"><strong>Cliente Consulta</strong></li>
                                     <li id=\"confirm\"><strong>Confirmación</strong></li>
                                 </ul> <!-- fieldsets -->
+                                <fieldset>
+                                    <div class=\"form-card\">
+                                        <h2 style=\"color: #00766c; text-align: center\">Selecciona el cliente</h2>
+                                        <nav class=\"navbar navbar-light bg-light\" style=\"height: 7rem;\">
+                                            <div class=\"container-fluid\">
+                                                <div class=\"d-flex customers-finder\" style=\"margin: 15px 0;\">
+                                                    <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\" name=\"appointment_customer_search\"
+                                                           style=\"width: 68.5%; display: inline-flex; margin-left: 14.3%;border: 1px solid #00766c;border-radius: 5px;\"/>
+                                                    <button class=\"btn btn-outline-success\" id=\"appointment-customer-search-button\" name=\"submit\" value=\"Buscar\">Buscar</button>
+                                                </div>
+                                            </div>
+                                        </nav>
+                                        <div id=\"appointment-customers-block\">
+                                            {% for customer in customers %}
+                                                <div class=\"customer-entry\">
+                                                    <div class=\"col-sm-11 customer-entry-resume\">
+                                                        <div class=\"col-sm-2\"><input type=\"checkbox\" value=\"{{ customer.idUser }}\" style=\"width: 15px; height: 15px\" name=\"appointment_customer\" id=\"appointment-customer\"></div>
+                                                        <div class=\"col-sm-3\" style=\"text-align: start\">{{ customer.firstname }}</div>
+                                                        <div class=\"col-sm-3\" style=\"text-align: center\">{{ customer.lastname }}</div>
+                                                        <div class=\"col-sm-4\" style=\"text-align: end\">{{ customer.email }}</div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <input type=\"button\" name=\"next\" class=\"next action-button\" value=\"Siguiente\"/>
+                                </fieldset>
                                 <fieldset>
                                     <div class=\"form-card\">
                                         <body>
@@ -339,6 +361,7 @@ class __TwigTemplate_c71860b524a371c9dd9e601f469dd981b8adca70323a1e49fe2f8329504
                                         </div>
                                         </body>
                                     </div>
+                                    <input type=\"button\" name=\"previous\" class=\"previous action-button-previous\" value=\"Previo\"/>
                                     <input type=\"button\" name=\"next\" class=\"next action-button\" value=\"Siguiente\"/>
                                 </fieldset>
                                 <fieldset>
@@ -350,34 +373,6 @@ class __TwigTemplate_c71860b524a371c9dd9e601f469dd981b8adca70323a1e49fe2f8329504
                                         <p style=\"text-align: center; font-size: 20px;\"> Indica una breve descripción para la consulta</p>
                                         <label for=\"appointment_description\" style=\"margin-right: 10px\"></label>
                                         <input type=\"text\" class=\"form-control\" id=\"appointment_description\" name=\"appointment_description\" style=\"width: 60%;margin-left: 21%;height: 10rem;border: 1px solid #ccc;border-radius: 10px;\"  required=\"required\">
-                                    </div>
-                                    <input type=\"button\" name=\"previous\" class=\"previous action-button-previous\" value=\"Previo\"/>
-                                    <input type=\"button\" name=\"next\" class=\"next action-button\" value=\"Siguiente\"/>
-                                </fieldset>
-                                <fieldset>
-                                    <div class=\"form-card\">
-                                        <h2 style=\"color: #00766c; text-align: center\">Selecciona el cliente</h2>
-                                        <nav class=\"navbar navbar-light bg-light\" style=\"height: 7rem;\">
-                                            <div class=\"container-fluid\">
-                                                <div class=\"d-flex customers-finder\" style=\"margin: 15px 0;\">
-                                                    <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar\" aria-label=\"Search\" name=\"appointment_customer_search\"
-                                                           style=\"width: 68.5%; display: inline-flex; margin-left: 14.3%;border: 1px solid #00766c;border-radius: 5px;\"/>
-                                                    <button class=\"btn btn-outline-success\" id=\"appointment-customer-search-button\" name=\"submit\" value=\"Buscar\">Buscar</button>
-                                                </div>
-                                            </div>
-                                        </nav>
-                                        <div id=\"appointment-customers-block\">
-                                            {% for customer in customers %}
-                                                <div class=\"customer-entry\">
-                                                    <div class=\"col-sm-11 customer-entry-resume\">
-                                                        <div class=\"col-sm-2\"><input type=\"checkbox\" value=\"{{ customer.idUser }}\" style=\"width: 15px; height: 15px\" name=\"appointment_customer\" id=\"appointment-customer\"></div>
-                                                        <div class=\"col-sm-3\" style=\"text-align: start\">{{ customer.firstname }}</div>
-                                                        <div class=\"col-sm-3\" style=\"text-align: center\">{{ customer.lastname }}</div>
-                                                        <div class=\"col-sm-4\" style=\"text-align: end\">{{ customer.email }}</div>
-                                                    </div>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
                                     </div>
                                     <input type=\"button\" name=\"previous\" class=\"previous action-button-previous\" value=\"Previo\"/>
                                     <input type=\"button\" name=\"next\" class=\"next action-button\" value=\"Siguiente\"/>

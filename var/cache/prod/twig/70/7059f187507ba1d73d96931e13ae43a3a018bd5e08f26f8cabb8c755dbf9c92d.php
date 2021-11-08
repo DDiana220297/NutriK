@@ -171,18 +171,23 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                 <div class=\"col-sm-6\" style=\"display: inline-flex\">
                     <div class=\"personal-data-fields\" style=\"margin-top: 18%; width: 100%; margin-left: 0; padding: 3px\">
                         <label for=\"bibliografia\">Descripción / Bibliografía:</label>
-                        <textarea type=\"text\" id=\"bibliografia\" name=\"_bibliografia\" class=\"form-control\" style=\"height: 160px\">";
+                        <textarea type=\"text\" id=\"bibliografia\" name=\"_bibliografia\" class=\"form-control\" style=\"height: 10rem\">";
         // line 66
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "description", []), "html", null, true);
         echo "</textarea>
                         <label for=\"estudios\">Estudios:</label>
-                        <textarea type=\"text\" id=\"estudios\" name=\"_estudios\" class=\"form-control\" style=\"height: 100px\">";
+                        <textarea type=\"text\" id=\"estudios\" name=\"_estudios\" class=\"form-control\" style=\"height: 7rem\">";
         // line 68
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "studies", []), "html", null, true);
         echo "</textarea>
+                        <label for=\"antiquity\">Antiguedad (años):</label>
+                        <input type=\"number\" id=\"antiquity\" name=\"_antiquity\" class=\"form-control\" value=\"";
+        // line 70
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "antiquity", []), "html", null, true);
+        echo "\" style=\"width: 85%\"/>
                         <label for=\"n_colegiado\">Número de Colegiado:</label>
                         <input type=\"number\" id=\"n_colegiado\" name=\"_n_colegiado\" class=\"form-control\" value=\"";
-        // line 70
+        // line 72
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "collegiate_number", []), "html", null, true);
         echo "\" style=\"width: 85%\"/>
                         <strong>
@@ -229,7 +234,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
 
     public function getDebugInfo()
     {
-        return array (  186 => 70,  181 => 68,  176 => 66,  167 => 60,  161 => 57,  157 => 56,  153 => 55,  144 => 51,  135 => 47,  126 => 43,  110 => 29,  100 => 25,  96 => 23,  91 => 22,  81 => 18,  77 => 16,  73 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  191 => 72,  186 => 70,  181 => 68,  176 => 66,  167 => 60,  161 => 57,  157 => 56,  153 => 55,  144 => 51,  135 => 47,  126 => 43,  110 => 29,  100 => 25,  96 => 23,  91 => 22,  81 => 18,  77 => 16,  73 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -307,9 +312,11 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                 <div class=\"col-sm-6\" style=\"display: inline-flex\">
                     <div class=\"personal-data-fields\" style=\"margin-top: 18%; width: 100%; margin-left: 0; padding: 3px\">
                         <label for=\"bibliografia\">Descripción / Bibliografía:</label>
-                        <textarea type=\"text\" id=\"bibliografia\" name=\"_bibliografia\" class=\"form-control\" style=\"height: 160px\">{{ app.user.description }}</textarea>
+                        <textarea type=\"text\" id=\"bibliografia\" name=\"_bibliografia\" class=\"form-control\" style=\"height: 10rem\">{{ app.user.description }}</textarea>
                         <label for=\"estudios\">Estudios:</label>
-                        <textarea type=\"text\" id=\"estudios\" name=\"_estudios\" class=\"form-control\" style=\"height: 100px\">{{ app.user.studies }}</textarea>
+                        <textarea type=\"text\" id=\"estudios\" name=\"_estudios\" class=\"form-control\" style=\"height: 7rem\">{{ app.user.studies }}</textarea>
+                        <label for=\"antiquity\">Antiguedad (años):</label>
+                        <input type=\"number\" id=\"antiquity\" name=\"_antiquity\" class=\"form-control\" value=\"{{ app.user.antiquity }}\" style=\"width: 85%\"/>
                         <label for=\"n_colegiado\">Número de Colegiado:</label>
                         <input type=\"number\" id=\"n_colegiado\" name=\"_n_colegiado\" class=\"form-control\" value=\"{{ app.user.collegiate_number }}\" style=\"width: 85%\"/>
                         <strong>

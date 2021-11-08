@@ -26,25 +26,35 @@
                 </div>
             </div>
         {% endfor %}
+        {% for message in app.session.flashbag().get('editWeeklyPlanOKStatus') %}
+            <div class="row" style="width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: 0;">
+                <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class="container">
             <!-- Añadimos un novalidate debido a los contenedores ocultos, mostraremos el error con la variable de sesion -->
             <form id="msform" class="form" action="{{ path("nutritionist_edit_weekly_plan", {id_plan:weeklyPlan.idPlan}) }}" method="post" novalidate>
                 <div class="col-sm-12">
                     <div id="weekly-plan-content-block" style="height: 15rem; margin-bottom: 20px">
                         <div class="col-sm-6">
-                            <label for="plan_tags">Tag:</label>
-                            <select name="plan_tags" id="plan_tags">
+                            <label>Tags:</label>
+                            <ul class="list-group" id="weekly_plan_tags">
                                 {% for tag in tags %}
-                                    <option value="{{ tag.idTag }}" {% if tag.idTag == weeklyPlan.idTag %} selected {% endif %}>{{ tag.name }}</option>
+                                    <li>
+                                        <input type="checkbox" value="{{ tag.idTag }}" {% if tag.idTag in weekly_plan_tags_keys %} checked {% endif %}
+                                               style="width: fit-content; margin-bottom: 5px; margin-top: 5px" name="add_tags[{{ tag.idTag }}][]">
+                                        Nivel {{ tag.level }} - {{ tag.name }}
+                                    </li>
                                 {% endfor %}
-                            </select>
-                            <br/><br/>
-                            <label for="plan_title">Tile:</label>
-                            <textarea type="text" id="plan_title" name="plan_title" class="form-control">{{ weeklyPlan.title }}</textarea>
+                            </ul>
                         </div>
                         <div class="col-sm-6">
+                            <label for="plan_title">Tile:</label>
+                            <textarea type="text" id="plan_title" name="plan_title" class="form-control">{{ weeklyPlan.title }}</textarea>
                             <label for="plan_description">Descripción:</label>
-                            <textarea type="text" id="plan_description" name="plan_description" class="form-control" style="height: 100px">{{ weeklyPlan.description }}</textarea>
+                            <textarea type="text" id="plan_description" name="plan_description" class="form-control" style="height: 5.5rem">{{ weeklyPlan.description }}</textarea>
                         </div>
                     </div>
                 </div>

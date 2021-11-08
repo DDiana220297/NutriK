@@ -119,16 +119,18 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                                 </p>
                             </div>
                         </div>
-                        <div class=\"col-sm-12 grey-block\" style=\"margin-top: 20px\" onclick=\"redirectTo('messenger')\">
+                        <div class=\"col-sm-12 grey-block\" style=\"margin-top: 20px\" onclick=\"redirectTo('nutritionist-customers')\">
                             <div class=\"col-sm-4\">
-                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-envelope\" viewBox=\"0 0 16 16\">
-                                    <path d=\"M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z\"/>
+                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-people-fill\" viewBox=\"0 0 16 16\">
+                                    <path d=\"M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z\"/>
+                                    <path fill-rule=\"evenodd\" d=\"M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z\"/>
+                                    <path d=\"M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z\"/>
                                 </svg>
                             </div>
                             <div class=\"col-sm-8\">
                                 <br/>
-                                <p><strong style=\"font-size: 22px\">Mensajeria</strong></p>
-                                <p>Accede aquí al apartado de mensajería. Una manera directa para la interacción personal entre tú y tus clientes</p>
+                                <p><strong style=\"font-size: 22px\">Clientes</strong></p>
+                                <p>Accede aquí para ver tus clientes. Una manera facil para acceder a la información de tus clientes</p>
                             </div>
                         </div>
                     </div>
@@ -280,16 +282,18 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                                 </p>
                             </div>
                         </div>
-                        <div class=\"col-sm-12 grey-block\" style=\"margin-top: 20px\" onclick=\"redirectTo('messenger')\">
+                        <div class=\"col-sm-12 grey-block\" style=\"margin-top: 20px\" onclick=\"redirectTo('nutritionist-customers')\">
                             <div class=\"col-sm-4\">
-                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-envelope\" viewBox=\"0 0 16 16\">
-                                    <path d=\"M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z\"/>
+                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-people-fill\" viewBox=\"0 0 16 16\">
+                                    <path d=\"M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z\"/>
+                                    <path fill-rule=\"evenodd\" d=\"M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z\"/>
+                                    <path d=\"M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z\"/>
                                 </svg>
                             </div>
                             <div class=\"col-sm-8\">
                                 <br/>
-                                <p><strong style=\"font-size: 22px\">Mensajeria</strong></p>
-                                <p>Accede aquí al apartado de mensajería. Una manera directa para la interacción personal entre tú y tus clientes</p>
+                                <p><strong style=\"font-size: 22px\">Clientes</strong></p>
+                                <p>Accede aquí para ver tus clientes. Una manera facil para acceder a la información de tus clientes</p>
                             </div>
                         </div>
                     </div>

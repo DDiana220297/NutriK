@@ -53,7 +53,16 @@
                         {% for recipe in recipes %}
                             <div class="recipe">
                                 <div class="col-sm-11 recipe-name">
-                                    <h4>{{ recipe.name }}</h4>
+                                    <h4>
+                                        {% if recipe.idRecipe in recipes_tags|keys %}
+                                            <span>
+                                                {% for tag in recipes_tags[recipe.idRecipe] %}
+                                                    {{ tag.name }} <span style="color: #00766c">></span>
+                                                {% endfor %}
+                                            </span>
+                                        {% endif %}
+                                        <strong style="color: #00766c">{{ recipe.name }}</strong>
+                                    </h4>
                                 </div>
                                 <div class="col-sm-1 didactic-entry-actions">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="margin-right: -35px;"

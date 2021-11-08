@@ -45,19 +45,15 @@
                             </svg>
                         </div>
                     </div>
-                    <div class="col-sm-12">
-                        <nav class="navbar navbar-light bg-light">
-                            <div class="container-fluid">
-                                <form class="form customers-finder" action="{{ path("nutritionist_all_customers") }}" method="post">
-                                    <input class="form-control me-2" type="search" placeholder="Buscar Cliente" aria-label="Search" name="customer_search">
-                                    <button class="btn btn-outline-success" type="submit" style="float: right">Buscar</button>
-                                </form>
-                            </div>
-                        </nav>
-                    </div>
                     <form class="form customers-finder" action="{{ path("nutritionist_all_customers") }}" method="post">
-                        <div class="col-sm-12 customers-create-dependency">
-                            <button class="btn btn-outline-success" style="margin: 0 15px; float: right; width: 25%" type="submit">Crear relación con clientes seleccionados</button>
+                        <div class="col-sm-12">
+                            <nav class="navbar navbar-light bg-light">
+                                <div class="container-fluid">
+                                    <input class="form-control me-2" type="search" placeholder="Buscar Cliente" aria-label="Search" name="customer_search">
+                                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                                    <button class="btn btn-outline-success" style="width: 17.3%" type="submit">Crear relación con clientes seleccionados</button>
+                                </div>
+                            </nav>
                         </div>
                         <div class="col-sm-12 customers-list">
                             {% for customer in customers %}

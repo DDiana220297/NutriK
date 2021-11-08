@@ -31,15 +31,15 @@ CustomsBundle\Entity\Entry:
             length: 65535
             options:
                 fixed: false
-        content:
-            type: text
-            nullable: false
-            length: 65535
-            options:
-                fixed: false
         image:
             type: text
             nullable: true
+            length: 65535
+            options:
+                fixed: false
+        content:
+            type: text
+            nullable: false
             length: 65535
             options:
                 fixed: false

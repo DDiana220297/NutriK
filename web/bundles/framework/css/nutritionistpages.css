@@ -267,7 +267,7 @@
     border-color: #00A295;
     border-width: thin;
     border-radius: 0.5rem;
-    padding: 50px;
+    padding: 40px 30px 60px;
     color: black;
     background: linear-gradient(to top, #f8f8f8 0%, white 100%);
 }
@@ -323,6 +323,37 @@
     margin-right: 30px;
 }
 
+
+#nutritionist-add-didactic-content .container #add-didactic-content-block .col-sm-3 #didactic-content-tags,
+#nutritionist-add-didactic-content .container #add-didactic-content-block .form .col-sm-3 #didactic-tags{
+    padding: 10px 15px;
+    height: 15rem;
+    margin-top: 2%;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+}
+
+#nutritionist-add-didactic-content .container #add-didactic-content-block .col-sm-3 #didactic-content-tags>strong>svg:hover,
+#nutritionist-add-didactic-content .container #add-didactic-content-block .form .col-sm-3 #didactic-tags>strong>svg:hover{
+    color: #00766c;
+}
+
+#nutritionist-add-didactic-content .container #add-didactic-content-block .col-sm-3 #didactic-content-tags>ul,
+#nutritionist-add-didactic-content .container #add-didactic-content-block .form .col-sm-3 #didactic-tags>ul{
+    height: 10rem;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#nutritionist-add-didactic-content .container #add-didactic-content-block .col-sm-3 #didactic-content-tags>ul>li,
+#nutritionist-add-didactic-content .container #add-didactic-content-block .form .col-sm-3 #didactic-tags>ul>li{
+    padding: 0 15px;
+    margin-bottom: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
 #nutritionist-add-didactic-content .container #add-didactic-content-block .col-sm-8>label,
 #nutritionist-add-didactic-content .container #add-didactic-content-block .col-sm-3>label{
     margin: 2% 0;
@@ -347,7 +378,7 @@
 }
 
 #nutritionist-add-didactic-content .container #add-didactic-content-block .col-sm-3>textarea{
-    height: 42rem;
+    height: 28rem;
 }
 #nutritionist-add-didactic-content .container #add-didactic-content-block .col-sm-3 .save-button-item>input{
     height: 40px;
@@ -405,7 +436,7 @@
     width: 100%;
     margin-top: 10px;
     --text-opacity: 1;
-    color: black;
+    color: white;
     border-bottom-width: 4px;
     --border-opacity: 1;
     border-color: #00A295;
@@ -450,6 +481,7 @@
 #nutritionist-diary .container .col-sm-12 #diary-block .col-sm-6 .btn-outline-success{
     width: 13%;
     display: inline-flex;
+    color: white;
     margin-top: -3px;
     height: 33px;
     background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
@@ -503,18 +535,20 @@
     overflow-y: auto;
 }
 
-#nutritionist-customers .container .col-sm-12 #customers-block .col-sm-12 .navbar .container-fluid .customers-finder{
+#nutritionist-customers .container .col-sm-12 #customers-block .customers-finder{
     margin: 15px 0;
 }
 
-#nutritionist-customers .container .col-sm-12 #customers-block .col-sm-12 .navbar .container-fluid .customers-finder>input{
-    width: 92%;
+#nutritionist-customers .container .col-sm-12 #customers-block .customers-finder .col-sm-12 .navbar .container-fluid>input{
+    width: 75%;
     display: inline-flex;
     margin: 0;
 }
 
-#nutritionist-customers .container .col-sm-12 #customers-block .col-sm-12 .navbar .container-fluid .customers-finder>button{
-    margin-left: 10px;
+#nutritionist-customers .container .col-sm-12 #customers-block .customers-finder .col-sm-12 .navbar .container-fluid>button{
+    margin-left: 0px;
+    display: inline-flex;
+    margin-bottom: 3px;
     width: 7%;
 }
 
@@ -564,7 +598,7 @@
     height: 2.5em;
     display: inline-flex;
     float: right;
-    margin-top: 5px;
+    margin-top: 20px;
     vertical-align: -8px;
 }
 
@@ -661,7 +695,7 @@ body{
 }
 
 #appointment-customer-search-button{
-    margin-top: -2px;
+    margin-top: 1px;
     color: #fff;
     background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
 }
@@ -688,6 +722,10 @@ body{
     height: 50px;
     margin: 5px;
     color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, white 100%);
+}
+
+#appointment-customers-block .customer-entry:hover{
     background: linear-gradient(to bottom, #8d8d8d 0%, #bdbdbd 100%);
 }
 
@@ -713,24 +751,49 @@ body{
 /* NUTRITIONIST ADD CUSTOMER PAGE */
 #nutritionist-add-customer .container{
     width: 95%;
-    height: 800px;
+    height: 85rem;
     color: black;
-    padding: 20px;
-    margin-top: 25px;
+    padding: 15px;
+    margin-top: 15px;
 }
-#nutritionist-add-customer .container .col-sm-12 #add-customer-block{
+#nutritionist-add-customer .container .col-sm-12 #add-customer-block,
+#nutritionist-add-customer .container .col-sm-12 #invite-customer-block{
     border-style: solid;
     border-color: #00A295;
     border-width: thin;
     border-radius: 0.5rem;
-    height: 80rem;
+    height: 85rem;
     color: black;
     background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
 }
+
+#nutritionist-add-customer .container .col-sm-12 #invite-customer-block .col-sm-12 .personal-data-header,
 #nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6 .personal-data-header{
     margin-left: 10%;
-    margin-top: 3%;
+    margin-top: 1.5%;
 }
+
+#nutritionist-add-customer .container .col-sm-12 #invite-customer-block .col-sm-12 .save-button-item{
+    width: 81.5%;
+    margin-left: 10%;
+    padding: 10px;
+}
+#nutritionist-add-customer .container .col-sm-12 #invite-customer-block .col-sm-12 .save-button-item .save-button{
+    font-weight: 500;
+    font-size: 18px;
+    height: 40px;
+    width: 100%;
+    --text-opacity: 1;
+    color: white;
+    border-bottom-width: 4px;
+    --border-opacity: 1;
+    border-color: #00A295;
+    border-radius: .25rem;
+    position: relative;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#nutritionist-add-customer .container .col-sm-12 #invite-customer-block .col-sm-12 .personal-data-header>svg,
 #nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6 .personal-data-header>svg{
     width: 1em;
     font-size: 50px;
@@ -740,26 +803,23 @@ body{
     vertical-align: -8px;
 }
 
-#nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6 .form-check{
-    padding: 10px;
-    margin-left: 10%;
-}
-
+#nutritionist-add-customer .container .col-sm-12 #invite-customer-block .col-sm-12  .personal-data-fields,
 #nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6  .personal-data-fields{
     padding: 10px;
     margin-left: 10%;
 }
 
+#nutritionist-add-customer .container .col-sm-12 #invite-customer-block .col-sm-12  .personal-data-fields>input,
 #nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6  .personal-data-fields>input{
     padding: 5px;
     height: 45px;
-    width: 95%;
-    margin-bottom: 20px;
-}
-
-#nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6  .personal-data-fields>textarea{
     width: 90%;
     margin-bottom: 20px;
+}
+#nutritionist-add-customer .container .col-sm-12 #invite-customer-block .col-sm-12  .personal-data-fields>textarea,
+#nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6  .personal-data-fields>textarea{
+    width: 90%;
+    margin-bottom: 10px;
 }
 
 #nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6  .personal-data-fields #metricas>input{
@@ -771,6 +831,7 @@ body{
 #nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6  .personal-data-fields #actividad>select{
     font-weight: 500;
     height: 40px;
+    margin-bottom: 10px;
     width: 34%;
     font-size: 1.25rem;
     --text-opacity: 1;
@@ -785,6 +846,19 @@ body{
     background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
 }
 
+#nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6 .col-sm-12 .customer-metrics-records{
+    overflow-y: auto;
+    height: 60rem;
+    padding: 10px 0;
+}
+
+#nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-6 .col-sm-12 .customer-metrics-records .record{
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
 #nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-12 .save-button-item{
     width: 90%;
     margin-left: 5%;
@@ -793,7 +867,7 @@ body{
 #nutritionist-add-customer .container .col-sm-12 #add-customer-block .col-sm-12 .save-button-item .save-button{
     font-weight: 500;
     height: 40px;
-    width: 35rem;
+    width: 46%;
     --text-opacity: 1;
     color: white;
     border-bottom-width: 4px;
@@ -832,6 +906,23 @@ body{
     color: black;
     background: transparent;
 }
+
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-6>ul,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-6>ul {
+    height: 11rem;
+    text-align: start;
+    overflow-y: auto;
+    width: 100%;
+}
+
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-6>ul>li,
+#nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-6>ul>li {
+    padding: 0 15px;
+    margin-bottom: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
 #nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-6>label{
     float: left;
 }
@@ -848,7 +939,7 @@ body{
 }
 
 #nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-6 #plan_title{
-    height: 35px;
+    height: 32px;
     width: 100%;
     float: left;
 }
@@ -1012,7 +1103,7 @@ body{
 }
 
 #nutritionist-plans .container .col-sm-12 #plan-content-block .weekly-plans .weekly-plan .weekly-plan-resume{
-    margin-top: -35px;
+    margin-top: -45px;
 }
 
 #nutritionist-plans .container .col-sm-12 #plan-content-block .weekly-plans .weekly-plan .weekly-plan-actions>svg{
@@ -1077,7 +1168,7 @@ body{
 
 #nutritionist-add-event .container #add-event-block .col-sm-7>textarea,
 #nutritionist-edit-event .container #edit-event-block .col-sm-7>textarea{
-    height: 40rem;
+    height: 43rem;
 }
 
 #nutritionist-add-event.container #add-event-block .col-sm-4,
@@ -1095,6 +1186,20 @@ body{
     background: linear-gradient(to bottom, #8d8d8d 0%, #bdbdbd 100%);
 }
 
+#nutritionist-add-event .container #add-event-block .col-sm-4>ul,
+#nutritionist-edit-event .container #edit-event-block .col-sm-4>ul {
+    height: 10rem;
+    overflow-y: auto;
+}
+
+#nutritionist-add-event .container #add-event-block .col-sm-4>ul>li,
+#nutritionist-edit-event .container #edit-event-block .col-sm-4>ul>li {
+    padding: 0 15px;
+    margin-bottom: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
 #nutritionist-add-event .container #add-event-block .col-sm-4>textarea,
 #nutritionist-edit-event .container #edit-event-block .col-sm-4>textarea{
     height: 42rem;
@@ -1102,7 +1207,7 @@ body{
 #nutritionist-add-event .container #add-event-block .col-sm-4 .save-button-item,
 #nutritionist-edit-event .container #edit-event-block .col-sm-4 .save-button-item{
     width: 100%;
-    margin-top: 12%;
+    margin-top: 5%;
 }
 
 #nutritionist-add-event .container #add-event-block .col-sm-4 .save-button-item>input,
@@ -1179,7 +1284,8 @@ body{
     background: linear-gradient(to top, #f8f8f8 0%, white 100%);
 }
 
-#nutritionist-recipes .container .col-sm-12 #recipes-content-block .recipes .recipe .recipe-name{
+#nutritionist-recipes .container .col-sm-12 #recipes-content-block .recipes .recipe .recipe-name,
+#nutritionist-recipes .container .col-sm-12 #recipes-content-block .recipes .recipe .recipe-tags{
     margin-top: -20px;
 }
 
@@ -1233,24 +1339,33 @@ body{
     background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
 }
 
-#nutritionist-edit-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-nutritional-info{
-    padding: 20px 30px;
-    width: 38rem;
+#nutritionist-edit-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-nutritional-info,
+#nutritionist-edit-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-tags{
+    padding: 10px 15px;
     height: 20rem;
     margin-top: 2%;
-    margin-left: 5rem;
     border-radius: 0.5rem;
     border: 1px solid #ccc;
 }
+
+#nutritionist-edit-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-tags>h3>svg:hover{
+    color: #00766c;
+}
+
+#nutritionist-edit-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-tags>ul{
+    height: 10rem;
+    overflow-y: auto;
+}
+
 #nutritionist-edit-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-image{
     padding: 0;
-    width: 38rem;
     height: 20rem;
     margin-top: 2%;
+    border: 1px solid #ccc;
 }
 #nutritionist-edit-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-image>img{
     height: 20rem;
-    width: 40rem;
+    width: 100%;
     border-radius: 0.5rem;
 }
 #nutritionist-edit-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-image-link{
@@ -1277,7 +1392,8 @@ body{
 }
 
 #nutritionist-edit-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-5 #recipe-content #recipe-add-ingredients>ul>li,
-#nutritionist-edit-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-5 #recipe-content #recipe-delete-ingredients>ul>li{
+#nutritionist-edit-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-5 #recipe-content #recipe-delete-ingredients>ul>li,
+#nutritionist-edit-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-tags>ul>li{
     padding: 0 15px;
     margin-bottom: 0;
     background-color: #fff;
@@ -1339,33 +1455,52 @@ body{
     width: 100%;
     margin-top: 1%;
 }
-#nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-steps,
-#nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-visibility,
+
+#nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-tags,
 #nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-5 #recipe-content #recipe-add-ingredients{
     padding: 0;
     margin-top: 2%;
 }
 
+#nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-steps,
+#nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-visibility{
+    padding: 0;
+}
+
+#nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-tags>strong>svg:hover{
+    color: #00766c;
+}
+
 #nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-steps>textarea{
-    height: 40rem;
+    height: 27rem;
 }
 
 #nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-5 #recipe-content #recipe-add-ingredients>ul{
     overflow-y: auto;
     height: 44.5rem;
 }
+
+#nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-tags>ul{
+    overflow-y: auto;
+    height: 10rem;
+    margin-top: 10px;
+}
+
 #nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-5 #recipe-content #recipe-add-ingredients .ingredients-finder .finder{
     margin-top: 20px;
     width: 84%;
     display: inline-flex;
 }
 
-#nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-5 #recipe-content #recipe-add-ingredients>ul>li{
+#nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-5 #recipe-content #recipe-add-ingredients>ul>li,
+#nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-7 #recipe-content #recipe-tags>ul>li{
     padding: 0 15px;
     margin-bottom: 0;
     background-color: #fff;
     border: 1px solid #ddd;
 }
+
+
 
 #nutritionist-add-recipe .container .col-sm-12 #recipe-content-block .container-fluid .col-sm-5 #recipe-content #recipe-add-ingredients .btn{
     font-weight: 500;
@@ -1450,3 +1585,82 @@ body{
 #nutritionist-appointments .container .col-sm-12 #appointments-block .appointments-entries .appointments-entry .appointments-entry-actions>svg:hover{
     opacity: 0.5;
 }
+
+/* NUTRITIONIST ASSIGN PLANS */
+#nutritionist-assign-plan .container{
+    width: 95%;
+    margin-top: 1%;
+}
+
+#nutritionist-assign-plan .container .col-sm-12 #assign-plan-content-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 80rem;
+    color: black;
+}
+
+#nutritionist-assign-plan .container .col-sm-12 #assign-plan-content-block .col-sm-12{
+    padding: 3% 5% 5%;
+}
+
+#nutritionist-assign-plan .container .col-sm-12 #assign-plan-content-block .col-sm-12>h2{
+    text-align: center;
+    color: #00766c;
+    margin: 0;
+}
+#nutritionist-assign-plan .container .col-sm-12 #assign-plan-content-block .col-sm-12 .col-sm-6 #plan_notes{
+    padding: 0;
+    border: 1px solid #00766c;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    height: 20rem;
+}
+
+#nutritionist-assign-plan .container .col-sm-12 #assign-plan-content-block .col-sm-12 .col-sm-6 #plan_notes:hover{
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+#nutritionist-assign-plan .container .col-sm-12 #assign-plan-content-block .col-sm-12>form>fieldset .form-card #weekly-plans-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 35rem;
+    margin-left: 15%;
+    width: 72%;
+    color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+    overflow-y: auto;
+}
+
+#nutritionist-assign-plan .container .col-sm-12 #assign-plan-content-block .col-sm-12>form>fieldset .form-card #weekly-plans-block .plan-entry{
+    border-style: solid;
+    margin-bottom: 10px;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    padding: 15px;
+    width: 100%;
+    height: 10rem;
+    color: black;
+    background: linear-gradient(to top, #f8f8f8 0%, white 100%);
+}
+
+/* NUTRITIONIST ASSIGNED CUSTOMER PLANS */
+#assigned-customer-plans-section .container{
+    width: 95%;
+    margin-top: 1%;
+}
+
+#assigned-customer-plans-section .container .assigned-customer-plans{
+    border-radius: 0.5rem;
+    width: 80%;
+    height: 80rem;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+    padding: 50px;
+    margin-left: 10%;
+}
+

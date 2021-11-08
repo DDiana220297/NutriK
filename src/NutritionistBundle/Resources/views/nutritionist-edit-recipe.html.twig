@@ -27,14 +27,41 @@
                                         <label for="recipe_name">Nombre receta:</label>
                                         <input type="text" id="recipe_name" name="recipe_name" class="form-control" required="required" style="background-color: transparent" value="{{ recipe.name }}"/>
                                     </div>
-                                    <div id="recipe-image" class="col-sm-6">
-                                        <img src="{{ asset(recipe.image) }}">
-                                    </div>
-                                    <div id="recipe-nutritional-info" class="col-sm-6">
+                                    <div id="recipe-nutritional-info" class="col-sm-4">
                                         <h3>Información nutricional</h3>
                                         <p><strong>Carbohidratos:</strong><span> {{ nutritional_info['carbs'] }} gramos / 100 gramos</span></p>
                                         <p><strong>Grasas:</strong><span> {{ nutritional_info['fats'] }} gramos / 100 gramos</span></p>
                                         <p><strong>Proteinas:</strong><span> {{ nutritional_info['protein']}} gramos / 100 gramos</span></p>
+                                    </div>
+                                    <div id="recipe-image" class="col-sm-4">
+                                        <img src="{{ asset(recipe.image) }}">
+                                    </div>
+                                    <div id="recipe-tags" class="col-sm-4">
+                                        <h3>Tags:
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16" style="width: 2rem; height: 2rem; margin-bottom: -3px"
+                                                 onclick="openModal('openMyInfoTagsModal')">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                            </svg>
+                                        </h3>
+                                        <button style="display: none" type="button" class="btn btn-primary" id="openMyInfoTagsModal" data-toggle="modal" data-target="#infoTagsModal"></button>
+                                        <div class="modal fade" id="infoTagsModal">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content" style="height: 15rem;width: 50rem;padding: 40px 30px;">
+                                                    <!-- Modal body -->
+                                                    <span>Etiqueta tus recetas añadiendo los tags deseados. Para obtener más informacion sobre un tag, modificar o crear uno accede a la configuracion de tu perfil o haz click <a href="#">aqui</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class="list-group" id="add_tags">
+                                            {% for tag in all_tags %}
+                                                <li>
+                                                    <input type="checkbox" value="{{ tag.idTag }}" {% if tag.idTag in recipe_tags|keys %} checked {% endif %}
+                                                           style="width: fit-content; margin-bottom: 10px; margin-top: 10px" name="add_tags[{{ tag.idTag }}][]">
+                                                    Nivel {{ tag.level }} - {{ tag.name }}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
                                     </div>
                                     <div id="recipe-image-link" class="col-sm-12">
                                         <label for="recipe_image">Link imagén:</label>

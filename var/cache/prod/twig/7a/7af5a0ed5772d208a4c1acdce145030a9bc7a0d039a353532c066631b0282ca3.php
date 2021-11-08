@@ -229,7 +229,7 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
                 } elseif (twig_in_filter("delete", $this->getAttribute(                // line 119
 $context["log"], "source", []))) {
                     // line 120
-                    echo "                                                <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\"\">
+                    echo "                                                <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\">
                                                     ";
                     // line 121
                     echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
@@ -238,7 +238,7 @@ $context["log"], "source", []))) {
                                             ";
                 } else {
                     // line 124
-                    echo "                                                <div class=\"alert alert-info\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\"\">
+                    echo "                                                <div class=\"alert alert-info\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\">
                                                     ";
                     // line 125
                     echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
@@ -292,13 +292,17 @@ $context["log"], "source", []))) {
                 // line 144
                 echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "url", [], "array"), "html", null, true);
                 echo "\"/>
+                                        <input class=\"calendar_event_type\" value=\"";
+                // line 145
+                echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "type", [], "array"), "html", null, true);
+                echo "\"/>
                                     </div>
                                 ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['calendar_event'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 147
+            // line 148
             echo "                                <div id='wrap'>
                                     <div id='calendar'></div>
                                     <div style='clear:both'></div>
@@ -309,20 +313,20 @@ $context["log"], "source", []))) {
                                 <hr style=\"margin-top: 10px; margin-bottom: 10px\"/>
                                 <div class=\"nutritionist-appointments\">
                                     ";
-            // line 156
+            // line 157
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["appointments"] ?? $this->getContext($context, "appointments")));
             foreach ($context['_seq'] as $context["_key"] => $context["appointment"]) {
-                // line 157
+                // line 158
                 echo "                                        <p>
                                             <span>
                                                 Consulta:
                                                 <strong>";
-                // line 160
+                // line 161
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["appointment"], "date", []), "Y-m-d H:i:s"), "html", null, true);
                 echo ":</strong>
                                                 <a href=\"";
-                // line 161
+                // line 162
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_appointment", ["id_appointment" => $this->getAttribute($context["appointment"], "idAppointment", [])]), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["appointment"], "description", []), "html", null, true);
@@ -334,21 +338,21 @@ $context["log"], "source", []))) {
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['appointment'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 165
+            // line 166
             echo "                                    ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["events"] ?? $this->getContext($context, "events")));
             foreach ($context['_seq'] as $context["_key"] => $context["event"]) {
-                // line 166
+                // line 167
                 echo "                                        <p>
                                             <span>
                                                 Evento:
                                                 <strong>";
-                // line 169
+                // line 170
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["event"], "date", []), "Y-m-d H:i:s"), "html", null, true);
                 echo ":</strong>
                                                 <a href=\"";
-                // line 170
+                // line 171
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_event", ["id_event" => $this->getAttribute($context["event"], "idEvent", [])]), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "title", []), "html", null, true);
@@ -360,7 +364,7 @@ $context["log"], "source", []))) {
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 174
+            // line 175
             echo "                                </div>
                             </div>
                         </div>
@@ -370,10 +374,10 @@ $context["log"], "source", []))) {
         </section>
     ";
         }
-        // line 182
-        echo "    ";
-        $this->loadTemplate("footer.html.twig", "@Customs/index.html.twig", 182)->display($context);
         // line 183
+        echo "    ";
+        $this->loadTemplate("footer.html.twig", "@Customs/index.html.twig", 183)->display($context);
+        // line 184
         echo "    </html>
 ";
         
@@ -400,7 +404,7 @@ $context["log"], "source", []))) {
 
     public function getDebugInfo()
     {
-        return array (  385 => 7,  377 => 183,  374 => 182,  364 => 174,  352 => 170,  348 => 169,  343 => 166,  338 => 165,  326 => 161,  322 => 160,  317 => 157,  313 => 156,  302 => 147,  293 => 144,  289 => 143,  285 => 142,  281 => 141,  277 => 140,  274 => 139,  270 => 138,  262 => 133,  257 => 130,  250 => 128,  244 => 125,  241 => 124,  235 => 121,  232 => 120,  230 => 119,  225 => 117,  222 => 116,  220 => 115,  217 => 114,  213 => 113,  165 => 68,  160 => 66,  155 => 64,  150 => 61,  136 => 50,  130 => 46,  128 => 45,  125 => 44,  123 => 43,  120 => 42,  118 => 41,  112 => 38,  106 => 35,  100 => 32,  94 => 29,  88 => 26,  82 => 23,  76 => 20,  67 => 14,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
+        return array (  389 => 7,  381 => 184,  378 => 183,  368 => 175,  356 => 171,  352 => 170,  347 => 167,  342 => 166,  330 => 162,  326 => 161,  321 => 158,  317 => 157,  306 => 148,  297 => 145,  293 => 144,  289 => 143,  285 => 142,  281 => 141,  277 => 140,  274 => 139,  270 => 138,  262 => 133,  257 => 130,  250 => 128,  244 => 125,  241 => 124,  235 => 121,  232 => 120,  230 => 119,  225 => 117,  222 => 116,  220 => 115,  217 => 114,  213 => 113,  165 => 68,  160 => 66,  155 => 64,  150 => 61,  136 => 50,  130 => 46,  128 => 45,  125 => 44,  123 => 43,  120 => 42,  118 => 41,  112 => 38,  106 => 35,  100 => 32,  94 => 29,  88 => 26,  82 => 23,  76 => 20,  67 => 14,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -532,11 +536,11 @@ $context["log"], "source", []))) {
                                                     {{ log.context }}
                                                 </div>
                                             {% elseif 'delete' in log.source %}
-                                                <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\"\">
+                                                <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\">
                                                     {{ log.context }}
                                                 </div>
                                             {% else %}
-                                                <div class=\"alert alert-info\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\"\">
+                                                <div class=\"alert alert-info\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\">
                                                     {{ log.context }}
                                                 </div>
                                             {% endif %}
@@ -557,6 +561,7 @@ $context["log"], "source", []))) {
                                         <input class=\"calendar_event_start\" value=\"{{ calendar_event['start']|date('Y-m-d H:i:s') }}\"/>
                                         <input class=\"calendar_event_end\" value=\"{{ calendar_event['end']|date('Y-m-d H:i:s') }}\"/>
                                         <input class=\"calendar_event_url\" value=\"{{ calendar_event['url'] }}\"/>
+                                        <input class=\"calendar_event_type\" value=\"{{ calendar_event['type'] }}\"/>
                                     </div>
                                 {% endfor %}
                                 <div id='wrap'>

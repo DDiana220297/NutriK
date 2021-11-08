@@ -93,6 +93,9 @@ class __TwigTemplate_e60d84ff6ee7f6c0dc9a2c3aa095010589153ad2305cf41a374765a7d87
                         <div class=\"container-fluid\">
                             <div class=\"col-sm-7\">
                                 <div id=\"recipe-content\">
+                                    <div id=\"recipe-visibility\" class=\"col-sm-12\">
+                                        <input type=\"checkbox\" value=\"1\" style=\"margin: 12px 0; margin-right: 10px;\" name=\"visibility\"><strong>Visible para todos los usuarios de NutriK</strong>
+                                    </div>
                                     <div id=\"recipe-title\">
                                         <label for=\"recipe_name\">Nombre receta:</label>
                                         <input type=\"text\" id=\"recipe_name\" name=\"recipe_name\" class=\"form-control\" required=\"required\" style=\"background-color: transparent\" value=\"\" placeholder=\"Título de la receta\"/>
@@ -101,8 +104,51 @@ class __TwigTemplate_e60d84ff6ee7f6c0dc9a2c3aa095010589153ad2305cf41a374765a7d87
                                         <label for=\"recipe_image\">Link imagén:</label>
                                         <input type=\"text\" id=\"recipe_image\" name=\"recipe_image\" class=\"form-control\" required=\"required\" style=\"background-color: transparent\" value=\"\" placeholder=\"Link de la imagen de la receta\"/>
                                     </div>
-                                    <div id=\"recipe-visibility\" class=\"col-sm-12\">
-                                        <input type=\"checkbox\" value=\"1\" style=\"margin: 12px 0; margin-right: 10px;\" name=\"visibility\"><strong>Visible para todos los usuarios de NutriK</strong>
+                                    <div id=\"recipe-tags\" class=\"col-sm-12\">
+                                        <strong>Tags:
+                                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\" style=\"width: 15px; height: 15px; margin-bottom: -3px\"
+                                                 onclick=\"openModal('openMyInfoTagsModal')\">
+                                                <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
+                                                <path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\"/>
+                                            </svg>
+                                        </strong>
+                                        <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openMyInfoTagsModal\" data-toggle=\"modal\" data-target=\"#infoTagsModal\"></button>
+                                        <div class=\"modal fade\" id=\"infoTagsModal\">
+                                            <div class=\"modal-dialog\">
+                                                <div class=\"modal-content\" style=\"height: 15rem;width: 50rem;padding: 40px 30px;\">
+                                                    <!-- Modal body -->
+                                                    <span>Etiqueta tus recetas añadiendo los tags deseados. Para obtener más informacion sobre un tag, modificar o crear uno accede a la configuracion de tu perfil o haz click <a href=\"#\">aqui</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class=\"list-group\" id=\"add_tags\">
+                                            ";
+        // line 59
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["tags"] ?? $this->getContext($context, "tags")));
+        foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
+            // line 60
+            echo "                                                <li>
+                                                    <input type=\"checkbox\" value=\"";
+            // line 61
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "idTag", []), "html", null, true);
+            echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"add_tags[";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "idTag", []), "html", null, true);
+            echo "][]\">
+                                                    Nivel ";
+            // line 62
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "level", []), "html", null, true);
+            echo " - ";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "name", []), "html", null, true);
+            echo "
+                                                </li>
+                                            ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 65
+        echo "                                        </ul>
                                     </div>
                                     <div id=\"recipe-steps\" class=\"col-sm-12\" >
                                         <label for=\"recipe_description\">Receta:</label>
@@ -114,7 +160,7 @@ class __TwigTemplate_e60d84ff6ee7f6c0dc9a2c3aa095010589153ad2305cf41a374765a7d87
                                 <div id=\"recipe-content\">
                                     <div id=\"recipe-add-ingredients\">
                                         <strong style=\"float: left\">Añadir Ingredientes:</strong>
-                                        <strong id=\"add_ingredient_link\" onclick=\"openModal()\">Agregar nuevo ingrediente
+                                        <strong id=\"add_ingredient_link\" onclick=\"openModal('openMyIngredientModal')\">Agregar nuevo ingrediente
                                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-plus-circle\" viewBox=\"0 0 16 16\" style=\"margin-bottom: -3px;margin-left: 5px;\">
                                                 <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
                                                 <path d=\"M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z\"/>
@@ -163,20 +209,20 @@ class __TwigTemplate_e60d84ff6ee7f6c0dc9a2c3aa095010589153ad2305cf41a374765a7d87
                                         <br/>
                                         <ul class=\"list-group\" id=\"add_ingredients\">
                                             ";
-        // line 99
+        // line 125
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["all_ingredients"] ?? $this->getContext($context, "all_ingredients")));
         foreach ($context['_seq'] as $context["_key"] => $context["ingredient"]) {
-            // line 100
+            // line 126
             echo "                                                <li>
                                                     <input type=\"checkbox\" value=\"";
-            // line 101
+            // line 127
             echo twig_escape_filter($this->env, $this->getAttribute($context["ingredient"], "idIngredient", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"add_ingredients[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["ingredient"], "idIngredient", []), "html", null, true);
             echo "][]\">
                                                     ";
-            // line 102
+            // line 128
             echo twig_escape_filter($this->env, $this->getAttribute($context["ingredient"], "name", []), "html", null, true);
             echo "
                                                 </li>
@@ -185,7 +231,7 @@ class __TwigTemplate_e60d84ff6ee7f6c0dc9a2c3aa095010589153ad2305cf41a374765a7d87
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['ingredient'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 105
+        // line 131
         echo "                                        </ul>
                                         <input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Guardar Receta\"/>
                                     </div>
@@ -211,7 +257,7 @@ class __TwigTemplate_e60d84ff6ee7f6c0dc9a2c3aa095010589153ad2305cf41a374765a7d87
 
     public function getDebugInfo()
     {
-        return array (  189 => 105,  180 => 102,  174 => 101,  171 => 100,  167 => 99,  89 => 24,  85 => 22,  75 => 18,  71 => 16,  67 => 15,  63 => 13,  61 => 12,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  235 => 131,  226 => 128,  220 => 127,  217 => 126,  213 => 125,  151 => 65,  140 => 62,  134 => 61,  131 => 60,  127 => 59,  89 => 24,  85 => 22,  75 => 18,  71 => 16,  67 => 15,  63 => 13,  61 => 12,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -253,6 +299,9 @@ class __TwigTemplate_e60d84ff6ee7f6c0dc9a2c3aa095010589153ad2305cf41a374765a7d87
                         <div class=\"container-fluid\">
                             <div class=\"col-sm-7\">
                                 <div id=\"recipe-content\">
+                                    <div id=\"recipe-visibility\" class=\"col-sm-12\">
+                                        <input type=\"checkbox\" value=\"1\" style=\"margin: 12px 0; margin-right: 10px;\" name=\"visibility\"><strong>Visible para todos los usuarios de NutriK</strong>
+                                    </div>
                                     <div id=\"recipe-title\">
                                         <label for=\"recipe_name\">Nombre receta:</label>
                                         <input type=\"text\" id=\"recipe_name\" name=\"recipe_name\" class=\"form-control\" required=\"required\" style=\"background-color: transparent\" value=\"\" placeholder=\"Título de la receta\"/>
@@ -261,8 +310,31 @@ class __TwigTemplate_e60d84ff6ee7f6c0dc9a2c3aa095010589153ad2305cf41a374765a7d87
                                         <label for=\"recipe_image\">Link imagén:</label>
                                         <input type=\"text\" id=\"recipe_image\" name=\"recipe_image\" class=\"form-control\" required=\"required\" style=\"background-color: transparent\" value=\"\" placeholder=\"Link de la imagen de la receta\"/>
                                     </div>
-                                    <div id=\"recipe-visibility\" class=\"col-sm-12\">
-                                        <input type=\"checkbox\" value=\"1\" style=\"margin: 12px 0; margin-right: 10px;\" name=\"visibility\"><strong>Visible para todos los usuarios de NutriK</strong>
+                                    <div id=\"recipe-tags\" class=\"col-sm-12\">
+                                        <strong>Tags:
+                                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\" style=\"width: 15px; height: 15px; margin-bottom: -3px\"
+                                                 onclick=\"openModal('openMyInfoTagsModal')\">
+                                                <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
+                                                <path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\"/>
+                                            </svg>
+                                        </strong>
+                                        <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openMyInfoTagsModal\" data-toggle=\"modal\" data-target=\"#infoTagsModal\"></button>
+                                        <div class=\"modal fade\" id=\"infoTagsModal\">
+                                            <div class=\"modal-dialog\">
+                                                <div class=\"modal-content\" style=\"height: 15rem;width: 50rem;padding: 40px 30px;\">
+                                                    <!-- Modal body -->
+                                                    <span>Etiqueta tus recetas añadiendo los tags deseados. Para obtener más informacion sobre un tag, modificar o crear uno accede a la configuracion de tu perfil o haz click <a href=\"#\">aqui</a></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <ul class=\"list-group\" id=\"add_tags\">
+                                            {% for tag in tags %}
+                                                <li>
+                                                    <input type=\"checkbox\" value=\"{{ tag.idTag }}\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"add_tags[{{ tag.idTag }}][]\">
+                                                    Nivel {{ tag.level }} - {{ tag.name }}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
                                     </div>
                                     <div id=\"recipe-steps\" class=\"col-sm-12\" >
                                         <label for=\"recipe_description\">Receta:</label>
@@ -274,7 +346,7 @@ class __TwigTemplate_e60d84ff6ee7f6c0dc9a2c3aa095010589153ad2305cf41a374765a7d87
                                 <div id=\"recipe-content\">
                                     <div id=\"recipe-add-ingredients\">
                                         <strong style=\"float: left\">Añadir Ingredientes:</strong>
-                                        <strong id=\"add_ingredient_link\" onclick=\"openModal()\">Agregar nuevo ingrediente
+                                        <strong id=\"add_ingredient_link\" onclick=\"openModal('openMyIngredientModal')\">Agregar nuevo ingrediente
                                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-plus-circle\" viewBox=\"0 0 16 16\" style=\"margin-bottom: -3px;margin-left: 5px;\">
                                                 <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
                                                 <path d=\"M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z\"/>

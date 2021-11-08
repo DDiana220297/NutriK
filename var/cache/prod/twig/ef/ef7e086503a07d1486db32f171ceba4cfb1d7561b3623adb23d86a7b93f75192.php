@@ -129,30 +129,65 @@ class __TwigTemplate_24a8d590b01fee9a18bab37e03dba5dc31576d5a4fb2427bfdde81e6a06
             // line 50
             echo "                            <div class=\"event-entry\">
                                 <div class=\"col-sm-11 event-entry-resume\">
-                                    <h4>";
-            // line 52
-            echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "title", []), "html", null, true);
-            echo "</h4>
-                                    <p>";
+                                    <h4>
+                                        ";
             // line 53
+            if (twig_in_filter($this->getAttribute($context["event"], "idEvent", []), twig_get_array_keys_filter(($context["events_tags"] ?? $this->getContext($context, "events_tags"))))) {
+                // line 54
+                echo "                                            <span>
+                                                ";
+                // line 55
+                $context['_parent'] = $context;
+                $context['_seq'] = twig_ensure_traversable($this->getAttribute(($context["events_tags"] ?? $this->getContext($context, "events_tags")), $this->getAttribute($context["event"], "idEvent", []), [], "array"));
+                foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
+                    // line 56
+                    echo "                                                    ";
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "name", []), "html", null, true);
+                    echo " <span style=\"color: #00766c\">></span>
+                                                ";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 58
+                echo "                                            </span>
+                                        ";
+            }
+            // line 60
+            echo "                                        <strong style=\"color: #00766c\">";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "title", []), "html", null, true);
+            echo "</strong>
+                                    </h4>
+                                    <p>";
+            // line 62
             echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "description", []), "html", null, true);
             echo "</p>
+                                    <strong ";
+            // line 63
+            if ((twig_date_format_filter($this->env, $this->getAttribute($context["event"], "date", []), "Y-m-d H:i:s") < twig_date_format_filter($this->env, ($context["now"] ?? $this->getContext($context, "now")), "Y-m-d H:i:s"))) {
+                echo " style=\"color: #a94442\" ";
+            } else {
+                echo " style=\"color: #3c763d\" ";
+            }
+            echo ">";
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["event"], "date", []), "Y-m-d H:i:s"), "html", null, true);
+            echo "</strong>
                                 </div>
                                 <div class=\"col-sm-1 event-entry-actions\">
                                     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash\" viewBox=\"0 0 16 16\" style=\"margin-right: -35px;\"
                                         onclick=\"deleteEvent(";
-            // line 57
+            // line 67
             echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "idEvent", []), "html", null, true);
             echo ")\">
                                         <path d=\"M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z\"/>
                                         <path fill-rule=\"evenodd\" d=\"M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z\"/>
                                     </svg>
                                     <form class=\"form\" action=\"";
-            // line 61
+            // line 71
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_delete_event");
             echo "\" method=\"post\">
                                         <input type=\"submit\" class=\"hidden\" name=\"_event_delete\" id=\"event_delete_";
-            // line 62
+            // line 72
             echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "idEvent", []), "html", null, true);
             echo "\" value=\"";
             echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "idEvent", []), "html", null, true);
@@ -160,7 +195,7 @@ class __TwigTemplate_24a8d590b01fee9a18bab37e03dba5dc31576d5a4fb2427bfdde81e6a06
                                     </form>
                                     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-pencil-square\" viewBox=\"0 0 16 16\"
                                         onclick=\"redirectTo('nutritionist-edit-event','/'+";
-            // line 65
+            // line 75
             echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "idEvent", []), "html", null, true);
             echo ")\">
                                         <path d=\"M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z\"/>
@@ -173,7 +208,7 @@ class __TwigTemplate_24a8d590b01fee9a18bab37e03dba5dc31576d5a4fb2427bfdde81e6a06
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 72
+        // line 82
         echo "                    </div>
                 </div>
             </div>
@@ -193,7 +228,7 @@ class __TwigTemplate_24a8d590b01fee9a18bab37e03dba5dc31576d5a4fb2427bfdde81e6a06
 
     public function getDebugInfo()
     {
-        return array (  177 => 72,  164 => 65,  156 => 62,  152 => 61,  145 => 57,  138 => 53,  134 => 52,  130 => 50,  126 => 49,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  212 => 82,  199 => 75,  191 => 72,  187 => 71,  180 => 67,  167 => 63,  163 => 62,  157 => 60,  153 => 58,  144 => 56,  140 => 55,  137 => 54,  135 => 53,  130 => 50,  126 => 49,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -257,8 +292,18 @@ class __TwigTemplate_24a8d590b01fee9a18bab37e03dba5dc31576d5a4fb2427bfdde81e6a06
                         {% for event in events %}
                             <div class=\"event-entry\">
                                 <div class=\"col-sm-11 event-entry-resume\">
-                                    <h4>{{ event.title}}</h4>
+                                    <h4>
+                                        {% if event.idEvent in events_tags|keys %}
+                                            <span>
+                                                {% for tag in events_tags[event.idEvent] %}
+                                                    {{ tag.name }} <span style=\"color: #00766c\">></span>
+                                                {% endfor %}
+                                            </span>
+                                        {% endif %}
+                                        <strong style=\"color: #00766c\">{{ event.title}}</strong>
+                                    </h4>
                                     <p>{{ event.description }}</p>
+                                    <strong {% if event.date|date('Y-m-d H:i:s') < now|date('Y-m-d H:i:s') %} style=\"color: #a94442\" {% else %} style=\"color: #3c763d\" {% endif %}>{{ event.date|date('Y-m-d H:i:s') }}</strong>
                                 </div>
                                 <div class=\"col-sm-1 event-entry-actions\">
                                     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash\" viewBox=\"0 0 16 16\" style=\"margin-right: -35px;\"

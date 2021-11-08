@@ -18,12 +18,40 @@ class CustomerController extends Controller
     }
 
     /**
+     * Fn auxiliar para comprobar si el cliente tiene correo pendiente
+     * @return int|void
+     */
+    public function checkPendingInbox(){
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $user = reset($users);
+            $messages_query = $em->createQuery("
+                    SELECT m FROM CustomsBundle:Message m
+                    WHERE m.idUserTo = ".$user->getIdUser()." AND m.messageRead = 0
+                ");
+            $messages = $messages_query->getResult();
+            if(count($messages)>0){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+        }
+    }
+
+    /**
      * Fn que se encarga de renderizar la vista "about" de NutriK
      * @return \Symfony\Component\HttpFoundation\Response|null
      */
     public function aboutAction()
     {
-        return $this->render('@Customer/about.html.twig');
+        return $this->render('@Customer/about.html.twig',
+            [
+                'pending_inbox' => $this->checkPendingInbox()
+            ]
+        );
     }
 
     /**
@@ -36,7 +64,11 @@ class CustomerController extends Controller
             $this->session->getFlashBag()->add('servicesOKStatus',"Recibirás un correo para seguir con el proceso de contratacion del servicio elegido");
         }
 
-        return $this->render('@Customer/services.html.twig');
+        return $this->render('@Customer/services.html.twig',
+            [
+                'pending_inbox' => $this->checkPendingInbox()
+            ]
+        );
     }
 
     /**
@@ -73,7 +105,8 @@ class CustomerController extends Controller
         return $this->render('@Customer/news.html.twig',
             [
                 'new_events' => $new_events,
-                'new_didactic_contents' => $new_didactic_contents
+                'new_didactic_contents' => $new_didactic_contents,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -109,7 +142,8 @@ class CustomerController extends Controller
         return $this->render('@Customer/didactic-content.html.twig',
             [
                 'categories' => $categories,
-                'entries' => $entries
+                'entries' => $entries,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -132,7 +166,8 @@ class CustomerController extends Controller
         return $this->render('@Customer/event-view.html.twig',
             [
                 'id_event' => $id_event,
-                'event' => $event
+                'event' => $event,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -156,7 +191,8 @@ class CustomerController extends Controller
         return $this->render('@Customer/didactic-content-view.html.twig',
             [
                 'id_entry' => $id_entry,
-                'entry' => $entry
+                'entry' => $entry,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -250,7 +286,8 @@ class CustomerController extends Controller
         return $this->render('@Customer/personal-data.html.twig',
             [
                 "customer" => $user,
-                "customer_metrics" => reset($customer_metrics)
+                "customer_metrics" => reset($customer_metrics),
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -307,7 +344,8 @@ class CustomerController extends Controller
         return $this->render('@Customer/diary.html.twig',
             [
                 "today_datetime" => $today_datetime,
-                "diaryPage" => $diary_page
+                "diaryPage" => $diary_page,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -378,6 +416,7 @@ class CustomerController extends Controller
                 "recipes" => $recipes,
                 'recipe_ingredients' => $recipe_ingredients,
                 'nutritional_info' => $nutritional_info,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -443,7 +482,8 @@ class CustomerController extends Controller
 
         return $this->render('@Customer/progress.html.twig',
             [
-                "customer_metrics" => $customer_metrics
+                "customer_metrics" => $customer_metrics,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -514,7 +554,8 @@ class CustomerController extends Controller
 
         return $this->render('@Customer/calendar.html.twig',
             [
-                "calendar_events" => $calendar_events
+                "calendar_events" => $calendar_events,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -575,7 +616,8 @@ class CustomerController extends Controller
         }
         return $this->render('@Customer/customer-add-event.html.twig',
             [
-                "events" => $events
+                "events" => $events,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -584,7 +626,235 @@ class CustomerController extends Controller
      * Fn que se encarga de la mensajeria entre usuarios
      * @return \Symfony\Component\HttpFoundation\Response|null
      */
-    public function messengerAction(){
-        return $this->render('@Customer/messenger-services.html.twig');
+    public function messengerAction(Request $request, $id_message = 0){
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $customer_nutritionist_dependencies_repo = $em->getRepository("NutritionistBundle:CustomerNutritionist");
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+            $inbox_users = $inbox = $sent_inbox = $sent_inbox_threads = $inbox_threads = array();
+            $message_repo = $em->getRepository('CustomsBundle:Message');
+
+            /**
+             * Si estamos abriendo un mensaje, vamos a marcarlo como leido
+             */
+            if($id_message != 0){
+                $message = $message_repo->findBy(array('idMessage' => $id_message));
+                if(count($message)>0){
+                    $message = reset($message);
+                    if($message->getIdUserTo() == $user->getIdUser()){
+                        $message->setDateRead(new \DateTime('NOW'));
+                        $message->setMessageRead(1);
+                        $em->persist($message);
+                        $em->flush();
+                    }
+                }
+            }
+
+            if($request->isMethod('POST')  && $request->request->get('submit') == "Responder"){
+                /**
+                 * Cargamos los datos del mensaje al que estamos respondiendo
+                 */
+                $id_message_reply = $request->request->get('repply_id_message');
+                $message = $message_repo->findBy(array('idMessage' => $id_message_reply));
+                $message = reset($message);
+
+                $reply_message_content = $request->request->get('reply_message_content');
+                if ($reply_message_content != ""){
+                    /**
+                     * Construimos el nuevo mensaje
+                     */
+                    $reply_message = new \CustomsBundle\Entity\Message();
+                    $reply_message->setIdUserFrom($user->getIdUser());
+                    $reply_message->setIdUserTo($message->getIdUserFrom());
+                    $reply_message->setContent($request->request->get('reply_message_content'));
+                    $reply_message->setDateAdd(new \DateTime('NOW'));
+
+                    /**
+                     * Reply Subject
+                     */
+                    $subject = $message->getSubject();
+                    $subject = 0 == strpos($subject, '[Re]') ? $message->getSubject() :  '[Re]' . $message->getSubject();
+                    $reply_message->setSubject($subject);
+
+                    $em->persist($reply_message);
+                    $em->flush();
+                    $this->session->getFlashBag()->add('messengerOKStatus','Mensaje respondido correctamente.');
+                }
+                else{
+                    $this->session->getFlashBag()->add('messengerKOStatus','Debes indicar el contenido de la respuesta.');
+                }
+            }
+            elseif ($request->isMethod('POST')  && $request->request->get('submit') == "Enviar"){
+                $new_inbox_receivers = $request->request->get('new_inbox_receivers');
+                $message_content = $request->request->get('message_content');
+                $message_subject = $request->request->get('message_subject');
+                if($new_inbox_receivers != ""){
+                    if($message_content != "" && $message_subject != ""){
+                        foreach ($new_inbox_receivers  as $new_inbox_receiver){
+                            $message = new \CustomsBundle\Entity\Message();
+                            $message->setIdUserFrom($user->getIdUser());
+                            $message->setIdUserTo($new_inbox_receiver);
+                            $message->setContent($message_content);
+                            $message->setSubject($message_subject);
+                            $message->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($message);
+                            $em->flush();
+                        }
+                        $this->session->getFlashBag()->add('messengerOKStatus','Mensaje enviado correctamente.');
+                    }
+                    else{
+                        $this->session->getFlashBag()->add('messengerKOStatus','Debes indicar el contenido y asunto para el nuevo mensaje.');
+                    }
+                }
+                else{
+                    $this->session->getFlashBag()->add('messengerKOStatus','Debes indicar al menos un destinatario para el nuevo mensaje.');
+                }
+            }
+
+
+            /**
+             * Para cada mensaje recibido, consultamos el hilo mantenido con el remitente y cargamos los datos del mismo
+             */
+            $inbox = $message_repo->findBy(array('idUserTo' => $user->getIdUser()));
+            foreach ($inbox as $in){
+                $from = $user_repository->findBy(array('idUser' => $in->getIdUserFrom()));
+                $from = reset($from);
+
+                $dql_query = $em->createQuery("
+                    SELECT m FROM CustomsBundle:Message m
+                    WHERE
+                      (m.idUserFrom = ".$in->getIdUserFrom()." AND m.idUserTo = ".$user->getIdUser().")
+                      OR (m.idUserFrom = ".$user->getIdUser()." AND m.idUserTo = ".$in->getIdUserFrom().")
+                      ORDER BY m.dateAdd ASC
+                ");
+                $threads = $dql_query->getResult();
+                if(count($threads)>0 && $threads != false){
+                    foreach ($threads as $thread){
+                        $inbox_threads[$in->getIdMessage()][] = [
+                            'date_add' => $thread->getDateAdd(),
+                            'date_read' => $thread->getDateRead(),
+                            'content' => $thread->getContent(),
+                            'subject' => $thread->getSubject(),
+                            'id_user_to' => $thread->getIdUserFrom(),
+                            'id_user_from' => $thread->getIdUserTo(),
+                            'firstname_user_from' => $from->getFirstname(),
+                            'lastname_user_from' => $from->getLastname(),
+                            'email_user_from' => $from->getEmail()
+                        ];
+                    }
+                }
+            }
+
+            /**
+             * Para cada mensaje enviado, consultamos el hilo mantenido con el remitente y cargamos los datos del mismo
+             */
+            $sent_inbox = $message_repo->findBy(array('idUserFrom' => $user->getIdUser()));
+            foreach ($sent_inbox as $out){
+                $to = $user_repository->findBy(array('idUser' => $out->getIdUserTo()));
+                $to = reset($to);
+
+                $dql_query = $em->createQuery("
+                    SELECT m FROM CustomsBundle:Message m
+                    WHERE
+                      (m.idUserFrom = ".$out->getIdUserTo()." AND m.idUserTo = ".$user->getIdUser().")
+                      OR (m.idUserFrom = ".$user->getIdUser()." AND m.idUserTo = ".$out->getIdUserTo().")
+                      ORDER BY m.dateAdd ASC
+                ");
+                $threads = $dql_query->getResult();
+                if(count($threads)>0 && $threads != false){
+                    foreach ($threads as $thread){
+                        $sent_inbox_threads[$out->getIdMessage()][] = [
+                            'date_add' => $thread->getDateAdd(),
+                            'date_read' => $thread->getDateRead(),
+                            'content' => $thread->getContent(),
+                            'subject' => $thread->getSubject(),
+                            'id_user_to' => $thread->getIdUserFrom(),
+                            'id_user_from' => $thread->getIdUserTo(),
+                            'firstname_user_from' => $to->getFirstname(),
+                            'lastname_user_from' => $to->getLastname(),
+                            'email_user_from' => $to->getEmail()
+                        ];
+                    }
+                }
+            }
+
+            if($user->getRole() == 'ROLE_NUTR'){
+                /**
+                 * El nutricionista podrá mantener un servicio de mensajeria con los clientes con los que tiene relacion
+                 */
+                $customer_nutritionist_dependencies = $customer_nutritionist_dependencies_repo->findBy(array("idNutritionist" => $user->getIdUser()));
+                if (count($customer_nutritionist_dependencies)>0){
+                    foreach ($customer_nutritionist_dependencies as $dependency){
+                        $customers = $user_repository->findBy(array("idUser" => $dependency->getIdCustomer()));
+                        if(count($customers)>0){
+                            $inbox_users = array_merge($inbox_users, $customers);
+                        }
+                    }
+                }
+            }
+            else{
+                /**
+                 * El cliente podrá mantener un servicio de mensajeria con los nutricionistas contratados y con otros usuarios de la web
+                 */
+                $customer_nutritionist_dependencies = $customer_nutritionist_dependencies_repo->findBy(array("idCustomer" => $user->getIdUser()));
+                if (count($customer_nutritionist_dependencies)>0){
+                    foreach ($customer_nutritionist_dependencies as $dependency){
+                        $customers = $user_repository->findBy(array("idUser" => $dependency->getIdNutritionist()));
+                        if(count($customers)>0){
+                            $inbox_users = array_merge($inbox_users, $customers);
+                        }
+                    }
+                }
+
+                $nutrik_customers = $user_repository->findBy(array('role' => 'ROLE_CUSTOMER'));
+                if(count($nutrik_customers)>0){
+                    $inbox_users = array_merge($inbox_users, $nutrik_customers);
+                }
+            }
+        }
+        else {
+            $this->session->getFlashBag()->add('messengerKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+        return $this->render('@Customer/messenger-services.html.twig',
+            [
+                'id_message' => $id_message,
+                'id_user' => $user->getIdUser(),
+                'inbox_users' => $inbox_users,
+                'inbox' => $inbox,
+                'inbox_threads' => $inbox_threads,
+                'sent_inbox' => $sent_inbox,
+                'sent_inbox_threads' => $sent_inbox_threads,
+                'pending_inbox' => $this->checkPendingInbox()
+            ]
+        );
+    }
+
+    /**
+     * Fn auxiliar que busca los clientes asocidos al nutricionista loggeado por una key
+     * @param $key
+     * @return array
+     */
+    public function findCustomerByKey($key){
+        $customers = array();
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+            $dql_query = $em->createQuery("
+                SELECT u FROM CustomsBundle:User u
+                INNER JOIN NutritionistBundle:CustomerNutritionist nc WITH nc.idCustomer = u.idUser
+                WHERE
+                  nc.idNutritionist = ".$user->getIdUser()."
+                  AND (u.firstname LIKE '%$key%' OR u.lastname LIKE '%$key%' OR u.email LIKE '%$key%')
+            ");
+            $customers = $dql_query->getResult();
+        }
+        return $customers;
     }
 }

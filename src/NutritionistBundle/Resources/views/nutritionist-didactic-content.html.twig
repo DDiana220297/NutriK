@@ -49,8 +49,18 @@
                         {% for entry in entries %}
                             <div class="didactic-entry">
                                 <div class="col-sm-11 didactic-entry-resume">
-                                    <h4>{{ entry.title }}</h4>
+                                    <h4>
+                                        {% if entry.idEntry in entries_tags|keys %}
+                                            <span>
+                                                {% for tag in entries_tags[entry.idEntry] %}
+                                                    {{ tag.name }} <span style="color: #00766c">></span>
+                                                {% endfor %}
+                                            </span>
+                                        {% endif %}
+                                        <strong style="color: #00766c">{{entry.title }}</strong>
+                                    </h4>
                                     <p>{{ entry.description }}</p>
+                                    <strong>{{ entry.dateAdd|date('Y-m-d H:i:s') }}</strong>
                                 </div>
                                 <div class="col-sm-1 didactic-entry-actions">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="margin-right: -35px;"
@@ -69,7 +79,6 @@
                                 </div>
                             </div>
                         {% endfor %}
-
                     </div>
                 </div>
             </div>

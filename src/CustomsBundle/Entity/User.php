@@ -89,6 +89,11 @@ class User implements UserInterface
     private $studies;
 
     /**
+     * @var integer
+     */
+    private $antiquity = 0;
+
+    /**
      * @var string
      */
     private $collegiateNumber;
@@ -555,5 +560,21 @@ class User implements UserInterface
     public function getCollegiateNumber()
     {
         return $this->collegiateNumber;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAntiquity(): int
+    {
+        return $this->antiquity;
+    }
+
+    /**
+     * @param int $antiquity
+     */
+    public function setAntiquity(int $antiquity): void
+    {
+        $this->antiquity = $antiquity;
     }
 }

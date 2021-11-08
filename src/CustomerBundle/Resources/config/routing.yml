@@ -47,5 +47,5 @@ customer_progress:
   defaults: { _controller: CustomerBundle:Customer:progress }
 
 customer_messenger:
-  path: /messenger
+  path: /messenger/{id_message}
   defaults: { _controller: CustomerBundle:Customer:messenger }

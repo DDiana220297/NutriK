@@ -106,50 +106,78 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 29
+        echo "        ";
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "editWeeklyPlanOKStatus"], "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 30
+            echo "            <div class=\"row\" style=\"width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: 0;\">
+                <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
+                    ";
+            // line 32
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+                </div>
+            </div>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 36
         echo "        <div class=\"container\">
             <!-- Añadimos un novalidate debido a los contenedores ocultos, mostraremos el error con la variable de sesion -->
             <form id=\"msform\" class=\"form\" action=\"";
-        // line 31
+        // line 38
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_weekly_plan", ["id_plan" => $this->getAttribute(($context["weeklyPlan"] ?? $this->getContext($context, "weeklyPlan")), "idPlan", [])]), "html", null, true);
         echo "\" method=\"post\" novalidate>
                 <div class=\"col-sm-12\">
                     <div id=\"weekly-plan-content-block\" style=\"height: 15rem; margin-bottom: 20px\">
                         <div class=\"col-sm-6\">
-                            <label for=\"plan_tags\">Tag:</label>
-                            <select name=\"plan_tags\" id=\"plan_tags\">
+                            <label>Tags:</label>
+                            <ul class=\"list-group\" id=\"weekly_plan_tags\">
                                 ";
-        // line 37
+        // line 44
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["tags"] ?? $this->getContext($context, "tags")));
         foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
-            // line 38
-            echo "                                    <option value=\"";
+            // line 45
+            echo "                                    <li>
+                                        <input type=\"checkbox\" value=\"";
+            // line 46
             echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "idTag", []), "html", null, true);
             echo "\" ";
-            if (($this->getAttribute($context["tag"], "idTag", []) == $this->getAttribute(($context["weeklyPlan"] ?? $this->getContext($context, "weeklyPlan")), "idTag", []))) {
-                echo " selected ";
+            if (twig_in_filter($this->getAttribute($context["tag"], "idTag", []), ($context["weekly_plan_tags_keys"] ?? $this->getContext($context, "weekly_plan_tags_keys")))) {
+                echo " checked ";
             }
-            echo ">";
+            // line 47
+            echo "                                               style=\"width: fit-content; margin-bottom: 5px; margin-top: 5px\" name=\"add_tags[";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "idTag", []), "html", null, true);
+            echo "][]\">
+                                        Nivel ";
+            // line 48
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "level", []), "html", null, true);
+            echo " - ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "name", []), "html", null, true);
-            echo "</option>
+            echo "
+                                    </li>
                                 ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 40
-        echo "                            </select>
-                            <br/><br/>
-                            <label for=\"plan_title\">Tile:</label>
-                            <textarea type=\"text\" id=\"plan_title\" name=\"plan_title\" class=\"form-control\">";
-        // line 43
-        echo twig_escape_filter($this->env, $this->getAttribute(($context["weeklyPlan"] ?? $this->getContext($context, "weeklyPlan")), "title", []), "html", null, true);
-        echo "</textarea>
+        // line 51
+        echo "                            </ul>
                         </div>
                         <div class=\"col-sm-6\">
+                            <label for=\"plan_title\">Tile:</label>
+                            <textarea type=\"text\" id=\"plan_title\" name=\"plan_title\" class=\"form-control\">";
+        // line 55
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["weeklyPlan"] ?? $this->getContext($context, "weeklyPlan")), "title", []), "html", null, true);
+        echo "</textarea>
                             <label for=\"plan_description\">Descripción:</label>
-                            <textarea type=\"text\" id=\"plan_description\" name=\"plan_description\" class=\"form-control\" style=\"height: 100px\">";
-        // line 47
+                            <textarea type=\"text\" id=\"plan_description\" name=\"plan_description\" class=\"form-control\" style=\"height: 5.5rem\">";
+        // line 57
         echo twig_escape_filter($this->env, $this->getAttribute(($context["weeklyPlan"] ?? $this->getContext($context, "weeklyPlan")), "description", []), "html", null, true);
         echo "</textarea>
                         </div>
@@ -183,7 +211,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-breakfast day-plan day-meal-visible\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"breakfast_hour_monday\" value=\"";
-        // line 78
+        // line 88
         if ((($context["monday_breakfast"] ?? $this->getContext($context, "monday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_breakfast"] ?? $this->getContext($context, "monday_breakfast")), "hour", []), "html", null, true);
         } else {
@@ -192,7 +220,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"breakfast_menu_monday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 80
+        // line 90
         if ((($context["monday_breakfast"] ?? $this->getContext($context, "monday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_breakfast"] ?? $this->getContext($context, "monday_breakfast")), "meal", []), "html", null, true);
         }
@@ -200,14 +228,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_monday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 83
+        // line 93
         if ((($context["monday_breakfast"] ?? $this->getContext($context, "monday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_breakfast"] ?? $this->getContext($context, "monday_breakfast")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"breakfast_comments_monday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 85
+        // line 95
         if ((($context["monday_breakfast"] ?? $this->getContext($context, "monday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_breakfast"] ?? $this->getContext($context, "monday_breakfast")), "mealNotes", []), "html", null, true);
         }
@@ -217,7 +245,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-snack day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"snack_hour_monday\" value=\"";
-        // line 90
+        // line 100
         if ((($context["monday_snack"] ?? $this->getContext($context, "monday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_snack"] ?? $this->getContext($context, "monday_snack")), "hour", []), "html", null, true);
         } else {
@@ -226,7 +254,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"snack_menu_monday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 92
+        // line 102
         if ((($context["monday_snack"] ?? $this->getContext($context, "monday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_snack"] ?? $this->getContext($context, "monday_snack")), "meal", []), "html", null, true);
         }
@@ -234,14 +262,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_monday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 95
+        // line 105
         if ((($context["monday_snack"] ?? $this->getContext($context, "monday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_snack"] ?? $this->getContext($context, "monday_snack")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_monday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 97
+        // line 107
         if ((($context["monday_snack"] ?? $this->getContext($context, "monday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_snack"] ?? $this->getContext($context, "monday_snack")), "mealNotes", []), "html", null, true);
         }
@@ -251,7 +279,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-lunch day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"lunch_hour_monday\" value=\"";
-        // line 102
+        // line 112
         if ((($context["monday_lunch"] ?? $this->getContext($context, "monday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_lunch"] ?? $this->getContext($context, "monday_lunch")), "hour", []), "html", null, true);
         } else {
@@ -260,7 +288,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"lunch_menu_monday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 104
+        // line 114
         if ((($context["monday_lunch"] ?? $this->getContext($context, "monday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_lunch"] ?? $this->getContext($context, "monday_lunch")), "meal", []), "html", null, true);
         }
@@ -268,14 +296,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_monday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 107
+        // line 117
         if ((($context["monday_lunch"] ?? $this->getContext($context, "monday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_lunch"] ?? $this->getContext($context, "monday_lunch")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"lunch_comments_monday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 109
+        // line 119
         if ((($context["monday_lunch"] ?? $this->getContext($context, "monday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_lunch"] ?? $this->getContext($context, "monday_lunch")), "mealNotes", []), "html", null, true);
         }
@@ -285,7 +313,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-afternoon day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"afternoon_hour_monday\" value=\"";
-        // line 114
+        // line 124
         if ((($context["monday_afternoon"] ?? $this->getContext($context, "monday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_afternoon"] ?? $this->getContext($context, "monday_afternoon")), "hour", []), "html", null, true);
         } else {
@@ -294,7 +322,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"afternoon_menu_monday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 116
+        // line 126
         if ((($context["monday_afternoon"] ?? $this->getContext($context, "monday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_afternoon"] ?? $this->getContext($context, "monday_afternoon")), "meal", []), "html", null, true);
         }
@@ -302,14 +330,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_monday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 119
+        // line 129
         if ((($context["monday_afternoon"] ?? $this->getContext($context, "monday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_afternoon"] ?? $this->getContext($context, "monday_afternoon")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"afternoon_comments_monday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 121
+        // line 131
         if ((($context["monday_afternoon"] ?? $this->getContext($context, "monday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_afternoon"] ?? $this->getContext($context, "monday_afternoon")), "mealNotes", []), "html", null, true);
         }
@@ -319,7 +347,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-dinner day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"dinner_hour_monday\" value=\"";
-        // line 126
+        // line 136
         if ((($context["monday_dinner"] ?? $this->getContext($context, "monday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_dinner"] ?? $this->getContext($context, "monday_dinner")), "hour", []), "html", null, true);
         } else {
@@ -328,7 +356,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"22:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"dinner_menu_monday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 128
+        // line 138
         if ((($context["monday_dinner"] ?? $this->getContext($context, "monday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_dinner"] ?? $this->getContext($context, "monday_dinner")), "meal", []), "html", null, true);
         }
@@ -336,14 +364,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_monday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 131
+        // line 141
         if ((($context["monday_dinner"] ?? $this->getContext($context, "monday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_dinner"] ?? $this->getContext($context, "monday_dinner")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"dinner_comments_monday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 133
+        // line 143
         if ((($context["monday_dinner"] ?? $this->getContext($context, "monday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_dinner"] ?? $this->getContext($context, "monday_dinner")), "mealNotes", []), "html", null, true);
         }
@@ -354,14 +382,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                     <div class=\"col-sm-3\">
                                         <div class=\"workout-rest\">
                                             <input type=\"checkbox\" value=\"1\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px; margin-right: 10px\" name=\"monday_workout_rest\" id=\"monday-workout-rest\" ";
-        // line 139
+        // line 149
         if ((($context["monday_workout"] ?? $this->getContext($context, "monday_workout")) == false)) {
             echo " checked ";
         }
         echo " onclick=\"restDay('monday')\"><strong>Descanso</strong>
                                         </div>
                                         <div class=\"monday-workout\"  ";
-        // line 141
+        // line 151
         if ((($context["monday_workout"] ?? $this->getContext($context, "monday_workout")) == false)) {
             echo " style=\"display: none\" ";
         }
@@ -378,14 +406,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <br/><br/>
                                             <label for=\"monday_workout_time\">Hora:</label>
                                             <input type=\"time\" name=\"monday_workout_time\" value=\"";
-        // line 153
+        // line 163
         if ((($context["monday_workout"] ?? $this->getContext($context, "monday_workout")) != false)) {
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["monday_workout"] ?? $this->getContext($context, "monday_workout")), "hour", []), "H:i:s"), "html", null, true);
         }
         echo "\" style=\"width: fit-content\">
                                             <label for=\"monday-workout\">Entrenamiento:</label>
                                             <textarea type=\"text\" id=\"monday-workout\" name=\"monday_workout\" class=\"form-control\" style=\"height: 150px\">";
-        // line 155
+        // line 165
         if ((($context["monday_workout"] ?? $this->getContext($context, "monday_workout")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_workout"] ?? $this->getContext($context, "monday_workout")), "workout", []), "html", null, true);
         }
@@ -393,14 +421,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <br/>
                                             <ul class=\"list-group\" id=\"monday-workout-exercises\">
                                                 ";
-        // line 158
+        // line 168
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["exercises"] ?? $this->getContext($context, "exercises")));
         foreach ($context['_seq'] as $context["_key"] => $context["exercise"]) {
-            // line 159
+            // line 169
             echo "                                                    <li>
                                                         <input type=\"checkbox\" value=\"";
-            // line 160
+            // line 170
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"monday_workout_exercises[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
@@ -410,7 +438,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
             }
             echo ">
                                                         ";
-            // line 161
+            // line 171
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "
                                                     </li>
@@ -419,11 +447,11 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['exercise'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 164
+        // line 174
         echo "                                            </ul>
                                             <label for=\"monday-workout-notes\">Observaciones:</label>
                                             <textarea type=\"text\" id=\"monday-workout-notes\" name=\"monday_workout_notes\" class=\"form-control\" style=\"height: 80px\">";
-        // line 166
+        // line 176
         if ((($context["monday_workout"] ?? $this->getContext($context, "monday_workout")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_workout"] ?? $this->getContext($context, "monday_workout")), "workoutNotes", []), "html", null, true);
         }
@@ -447,7 +475,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-breakfast day-plan day-plan-visible\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"breakfast_hour_tuesday\" value=\"";
-        // line 185
+        // line 195
         if ((($context["tuesday_breakfast"] ?? $this->getContext($context, "tuesday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_breakfast"] ?? $this->getContext($context, "tuesday_breakfast")), "hour", []), "html", null, true);
         } else {
@@ -456,7 +484,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"breakfast_menu_tuesday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 187
+        // line 197
         if ((($context["tuesday_breakfast"] ?? $this->getContext($context, "tuesday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_breakfast"] ?? $this->getContext($context, "tuesday_breakfast")), "meal", []), "html", null, true);
         }
@@ -464,14 +492,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 190
+        // line 200
         if ((($context["tuesday_breakfast"] ?? $this->getContext($context, "tuesday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_breakfast"] ?? $this->getContext($context, "tuesday_breakfast")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"breakfast_comments_tuesday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 192
+        // line 202
         if ((($context["tuesday_breakfast"] ?? $this->getContext($context, "tuesday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_breakfast"] ?? $this->getContext($context, "tuesday_breakfast")), "mealShoppingList", []), "html", null, true);
         }
@@ -481,7 +509,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-snack day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"snack_hour_tuesday\" value=\"";
-        // line 197
+        // line 207
         if ((($context["tuesday_snack"] ?? $this->getContext($context, "tuesday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_snack"] ?? $this->getContext($context, "tuesday_snack")), "hour", []), "html", null, true);
         } else {
@@ -490,7 +518,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"snack_menu_tuesday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 199
+        // line 209
         if ((($context["tuesday_snack"] ?? $this->getContext($context, "tuesday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_snack"] ?? $this->getContext($context, "tuesday_snack")), "meal", []), "html", null, true);
         }
@@ -498,14 +526,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 202
+        // line 212
         if ((($context["tuesday_snack"] ?? $this->getContext($context, "tuesday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_snack"] ?? $this->getContext($context, "tuesday_snack")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_tuesday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 204
+        // line 214
         if ((($context["tuesday_snack"] ?? $this->getContext($context, "tuesday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_snack"] ?? $this->getContext($context, "tuesday_snack")), "mealNotes", []), "html", null, true);
         }
@@ -515,7 +543,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-lunch day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"lunch_hour_tuesday\" value=\"";
-        // line 209
+        // line 219
         if ((($context["tuesday_lunch"] ?? $this->getContext($context, "tuesday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_lunch"] ?? $this->getContext($context, "tuesday_lunch")), "hour", []), "html", null, true);
         } else {
@@ -524,7 +552,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"lunch_menu_tuesday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 211
+        // line 221
         if ((($context["tuesday_lunch"] ?? $this->getContext($context, "tuesday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_lunch"] ?? $this->getContext($context, "tuesday_lunch")), "meal", []), "html", null, true);
         }
@@ -532,14 +560,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 214
+        // line 224
         if ((($context["tuesday_lunch"] ?? $this->getContext($context, "tuesday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_lunch"] ?? $this->getContext($context, "tuesday_lunch")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"lunch_comments_tuesday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 216
+        // line 226
         if ((($context["tuesday_lunch"] ?? $this->getContext($context, "tuesday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_lunch"] ?? $this->getContext($context, "tuesday_lunch")), "mealNotes", []), "html", null, true);
         }
@@ -549,7 +577,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-afternoon day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"afternoon_hour_tuesday\" value=\"";
-        // line 221
+        // line 231
         if ((($context["tuesday_afternoon"] ?? $this->getContext($context, "tuesday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_afternoon"] ?? $this->getContext($context, "tuesday_afternoon")), "hour", []), "html", null, true);
         } else {
@@ -558,7 +586,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"afternoon_menu_tuesday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 223
+        // line 233
         if ((($context["tuesday_afternoon"] ?? $this->getContext($context, "tuesday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_afternoon"] ?? $this->getContext($context, "tuesday_afternoon")), "meal", []), "html", null, true);
         }
@@ -566,14 +594,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 226
+        // line 236
         if ((($context["tuesday_afternoon"] ?? $this->getContext($context, "tuesday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_afternoon"] ?? $this->getContext($context, "tuesday_afternoon")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"afternoon_comments_tuesday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 228
+        // line 238
         if ((($context["tuesday_afternoon"] ?? $this->getContext($context, "tuesday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_afternoon"] ?? $this->getContext($context, "tuesday_afternoon")), "mealNotes", []), "html", null, true);
         }
@@ -583,7 +611,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-dinner day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"dinner_hour_tuesday\" value=\"";
-        // line 233
+        // line 243
         if ((($context["tuesday_dinner"] ?? $this->getContext($context, "tuesday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_dinner"] ?? $this->getContext($context, "tuesday_dinner")), "hour", []), "html", null, true);
         } else {
@@ -592,7 +620,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"22:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"dinner_menu_tuesday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 235
+        // line 245
         if ((($context["tuesday_dinner"] ?? $this->getContext($context, "tuesday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_dinner"] ?? $this->getContext($context, "tuesday_dinner")), "meal", []), "html", null, true);
         }
@@ -600,14 +628,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 238
+        // line 248
         if ((($context["tuesday_dinner"] ?? $this->getContext($context, "tuesday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_dinner"] ?? $this->getContext($context, "tuesday_dinner")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"dinner_comments_tuesday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 240
+        // line 250
         if ((($context["tuesday_dinner"] ?? $this->getContext($context, "tuesday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_dinner"] ?? $this->getContext($context, "tuesday_dinner")), "mealNotes", []), "html", null, true);
         }
@@ -618,14 +646,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                     <div class=\"col-sm-3\">
                                         <div class=\"workout-rest\">
                                             <input type=\"checkbox\" value=\"1\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px; margin-right: 10px\" name=\"tuesday_workout_rest\" id=\"tuesday-workout-rest\"  ";
-        // line 246
+        // line 256
         if ((($context["tuesday_workout"] ?? $this->getContext($context, "tuesday_workout")) == false)) {
             echo " checked ";
         }
         echo "onclick=\"restDay('tuesday')\"><strong>Descanso</strong>
                                         </div>
                                         <div class=\"tuesday-workout\" ";
-        // line 248
+        // line 258
         if ((($context["tuesday_workout"] ?? $this->getContext($context, "tuesday_workout")) == false)) {
             echo " style=\"display: none\" ";
         }
@@ -642,14 +670,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <br/><br/>
                                             <label for=\"tuesday_workout_time\">Hora:</label>
                                             <input type=\"time\" name=\"tuesday_workout_time\" value=\"";
-        // line 260
+        // line 270
         if ((($context["tuesday_workout"] ?? $this->getContext($context, "tuesday_workout")) != false)) {
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["tuesday_workout"] ?? $this->getContext($context, "tuesday_workout")), "hour", []), "H:i:s"), "html", null, true);
         }
         echo "\" style=\"width: fit-content\">
                                             <label for=\"tuesday-workout\">Entrenamiento:</label>
                                             <textarea type=\"text\" id=\"tuesday-workout\" name=\"tuesday_workout\" class=\"form-control\" style=\"height: 150px\">";
-        // line 262
+        // line 272
         if ((($context["tuesday_workout"] ?? $this->getContext($context, "tuesday_workout")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_workout"] ?? $this->getContext($context, "tuesday_workout")), "workout", []), "html", null, true);
         }
@@ -657,14 +685,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <br/>
                                             <ul class=\"list-group\" id=\"tuesday-workout-exercises\">
                                                 ";
-        // line 265
+        // line 275
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["exercises"] ?? $this->getContext($context, "exercises")));
         foreach ($context['_seq'] as $context["_key"] => $context["exercise"]) {
-            // line 266
+            // line 276
             echo "                                                    <li>
                                                         <input type=\"checkbox\" value=\"";
-            // line 267
+            // line 277
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"tuesday_workout_exercises[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
@@ -674,7 +702,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
             }
             echo ">
                                                         ";
-            // line 268
+            // line 278
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "
                                                     </li>
@@ -683,11 +711,11 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['exercise'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 271
+        // line 281
         echo "                                            </ul>
                                             <label for=\"tuesday-workout-notes\">Observaciones:</label>
                                             <textarea type=\"text\" id=\"tuesday-workout-notes\" name=\"tuesday_workout_notes\" class=\"form-control\" style=\"height: 80px\">";
-        // line 273
+        // line 283
         if ((($context["tuesday_workout"] ?? $this->getContext($context, "tuesday_workout")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_workout"] ?? $this->getContext($context, "tuesday_workout")), "workoutNotes", []), "html", null, true);
         }
@@ -712,7 +740,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-breakfast day-plan day-meal-visible\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"breakfast_hour_wednesday\" value=\"";
-        // line 293
+        // line 303
         if ((($context["wednesday_breakfast"] ?? $this->getContext($context, "wednesday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_breakfast"] ?? $this->getContext($context, "wednesday_breakfast")), "hour", []), "html", null, true);
         } else {
@@ -721,7 +749,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"breakfast_menu_wednesday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 295
+        // line 305
         if ((($context["wednesday_breakfast"] ?? $this->getContext($context, "wednesday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_breakfast"] ?? $this->getContext($context, "wednesday_breakfast")), "meal", []), "html", null, true);
         }
@@ -729,14 +757,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 298
+        // line 308
         if ((($context["wednesday_breakfast"] ?? $this->getContext($context, "wednesday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_breakfast"] ?? $this->getContext($context, "wednesday_breakfast")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"breakfast_comments_wednesday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 300
+        // line 310
         if ((($context["wednesday_breakfast"] ?? $this->getContext($context, "wednesday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_breakfast"] ?? $this->getContext($context, "wednesday_breakfast")), "mealNotes", []), "html", null, true);
         }
@@ -746,7 +774,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-snack day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"snack_hour_wednesday\" value=\"";
-        // line 305
+        // line 315
         if ((($context["wednesday_snack"] ?? $this->getContext($context, "wednesday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_snack"] ?? $this->getContext($context, "wednesday_snack")), "hour", []), "html", null, true);
         } else {
@@ -755,7 +783,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"snack_menu_wednesday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 307
+        // line 317
         if ((($context["wednesday_snack"] ?? $this->getContext($context, "wednesday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_snack"] ?? $this->getContext($context, "wednesday_snack")), "meal", []), "html", null, true);
         }
@@ -763,14 +791,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 310
+        // line 320
         if ((($context["wednesday_snack"] ?? $this->getContext($context, "wednesday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_snack"] ?? $this->getContext($context, "wednesday_snack")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_wednesday\" class=\"form-control\" style=\"height: 186px\"><";
-        // line 312
+        // line 322
         if ((($context["wednesday_snack"] ?? $this->getContext($context, "wednesday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_snack"] ?? $this->getContext($context, "wednesday_snack")), "mealNotes", []), "html", null, true);
         }
@@ -780,7 +808,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-lunch day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"lunch_hour_wednesday\" value=\"";
-        // line 317
+        // line 327
         if ((($context["wednesday_lunch"] ?? $this->getContext($context, "wednesday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_lunch"] ?? $this->getContext($context, "wednesday_lunch")), "hour", []), "html", null, true);
         } else {
@@ -789,7 +817,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"lunch_menu_wednesday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 319
+        // line 329
         if ((($context["wednesday_lunch"] ?? $this->getContext($context, "wednesday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_lunch"] ?? $this->getContext($context, "wednesday_lunch")), "meal", []), "html", null, true);
         }
@@ -797,14 +825,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 322
+        // line 332
         if ((($context["wednesday_lunch"] ?? $this->getContext($context, "wednesday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_lunch"] ?? $this->getContext($context, "wednesday_lunch")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"lunch_comments_wednesday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 324
+        // line 334
         if ((($context["wednesday_lunch"] ?? $this->getContext($context, "wednesday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_lunch"] ?? $this->getContext($context, "wednesday_lunch")), "mealNotes", []), "html", null, true);
         }
@@ -814,7 +842,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-afternoon day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"afternoon_hour_wednesday\" value=\"";
-        // line 329
+        // line 339
         if ((($context["wednesday_afternoon"] ?? $this->getContext($context, "wednesday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_afternoon"] ?? $this->getContext($context, "wednesday_afternoon")), "hour", []), "html", null, true);
         } else {
@@ -823,7 +851,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"afternoon_menu_wednesday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 331
+        // line 341
         if ((($context["wednesday_afternoon"] ?? $this->getContext($context, "wednesday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_afternoon"] ?? $this->getContext($context, "wednesday_afternoon")), "meal", []), "html", null, true);
         }
@@ -831,14 +859,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 334
+        // line 344
         if ((($context["wednesday_afternoon"] ?? $this->getContext($context, "wednesday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_afternoon"] ?? $this->getContext($context, "wednesday_afternoon")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"afternoon_comments_wednesday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 336
+        // line 346
         if ((($context["wednesday_afternoon"] ?? $this->getContext($context, "wednesday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_afternoon"] ?? $this->getContext($context, "wednesday_afternoon")), "mealNotes", []), "html", null, true);
         }
@@ -848,7 +876,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-dinner day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"dinner_hour_wednesday\" value=\"";
-        // line 341
+        // line 351
         if ((($context["wednesday_dinner"] ?? $this->getContext($context, "wednesday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_dinner"] ?? $this->getContext($context, "wednesday_dinner")), "hour", []), "html", null, true);
         } else {
@@ -857,7 +885,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"22:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"dinner_menu_wednesday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 343
+        // line 353
         if ((($context["wednesday_dinner"] ?? $this->getContext($context, "wednesday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_dinner"] ?? $this->getContext($context, "wednesday_dinner")), "meal", []), "html", null, true);
         }
@@ -865,14 +893,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 346
+        // line 356
         if ((($context["wednesday_dinner"] ?? $this->getContext($context, "wednesday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_dinner"] ?? $this->getContext($context, "wednesday_dinner")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"dinner_comments_wednesday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 348
+        // line 358
         if ((($context["wednesday_dinner"] ?? $this->getContext($context, "wednesday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_dinner"] ?? $this->getContext($context, "wednesday_dinner")), "mealNotes", []), "html", null, true);
         }
@@ -883,14 +911,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                     <div class=\"col-sm-3\">
                                         <div class=\"workout-rest\">
                                             <input type=\"checkbox\" value=\"1\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px; margin-right: 10px\" name=\"wednesday_workout_rest\" id=\"wednesday-workout-rest\" ";
-        // line 354
+        // line 364
         if ((($context["wednesday_workout"] ?? $this->getContext($context, "wednesday_workout")) == false)) {
             echo " checked ";
         }
         echo "onclick=\"restDay('wednesday')\"><strong>Descanso</strong>
                                         </div>
                                         <div class=\"wednesday-workout\" ";
-        // line 356
+        // line 366
         if ((($context["wednesday_workout"] ?? $this->getContext($context, "wednesday_workout")) == false)) {
             echo " style=\"display: none\"";
         }
@@ -907,14 +935,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <br/><br/>
                                             <label for=\"wednesday_workout_time\">Hora:</label>
                                             <input type=\"time\" name=\"wednesday_workout_time\" value=\"";
-        // line 368
+        // line 378
         if ((($context["wednesday_workout"] ?? $this->getContext($context, "wednesday_workout")) != false)) {
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["wednesday_workout"] ?? $this->getContext($context, "wednesday_workout")), "hour", []), "H:i:s"), "html", null, true);
         }
         echo "\" style=\"width: fit-content\">
                                             <label for=\"wednesday-workout\">Entrenamiento:</label>
                                             <textarea type=\"text\" id=\"wednesday-workout\" name=\"wednesday_workout\" class=\"form-control\" style=\"height: 150px\">";
-        // line 370
+        // line 380
         if ((($context["wednesday_workout"] ?? $this->getContext($context, "wednesday_workout")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_workout"] ?? $this->getContext($context, "wednesday_workout")), "workout", []), "html", null, true);
         }
@@ -922,14 +950,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <br/>
                                             <ul class=\"list-group\" id=\"wednesday-workout-exercises\">
                                                 ";
-        // line 373
+        // line 383
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["exercises"] ?? $this->getContext($context, "exercises")));
         foreach ($context['_seq'] as $context["_key"] => $context["exercise"]) {
-            // line 374
+            // line 384
             echo "                                                    <li>
                                                         <input type=\"checkbox\" value=\"";
-            // line 375
+            // line 385
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"wednesday_workout_exercises[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
@@ -939,7 +967,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
             }
             echo ">
                                                         ";
-            // line 376
+            // line 386
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "
                                                     </li>
@@ -948,11 +976,11 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['exercise'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 379
+        // line 389
         echo "                                            </ul>
                                             <label for=\"wednesday-workout-notes\">Observaciones:</label>
                                             <textarea type=\"text\" id=\"wednesday-workout-notes\" name=\"wednesday_workout_notes\" class=\"form-control\" style=\"height: 80px\">";
-        // line 381
+        // line 391
         if ((($context["wednesday_workout"] ?? $this->getContext($context, "wednesday_workout")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_workout"] ?? $this->getContext($context, "wednesday_workout")), "workoutNotes", []), "html", null, true);
         }
@@ -977,7 +1005,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-breakfast day-plan day-meal-visible\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"breakfast_hour_thursday\" value=\"";
-        // line 401
+        // line 411
         if ((($context["thursday_breakfast"] ?? $this->getContext($context, "thursday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_breakfast"] ?? $this->getContext($context, "thursday_breakfast")), "hour", []), "html", null, true);
         } else {
@@ -986,7 +1014,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"breakfast_menu_thursday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 403
+        // line 413
         if ((($context["thursday_breakfast"] ?? $this->getContext($context, "thursday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_breakfast"] ?? $this->getContext($context, "thursday_breakfast")), "meal", []), "html", null, true);
         }
@@ -994,14 +1022,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 406
+        // line 416
         if ((($context["thursday_breakfast"] ?? $this->getContext($context, "thursday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_breakfast"] ?? $this->getContext($context, "thursday_breakfast")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"breakfast_comments_thursday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 408
+        // line 418
         if ((($context["thursday_breakfast"] ?? $this->getContext($context, "thursday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_breakfast"] ?? $this->getContext($context, "thursday_breakfast")), "mealNotes", []), "html", null, true);
         }
@@ -1011,7 +1039,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-snack day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"snack_hour_thursday\" value=\"";
-        // line 413
+        // line 423
         if ((($context["thursday_snack"] ?? $this->getContext($context, "thursday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_snack"] ?? $this->getContext($context, "thursday_snack")), "hour", []), "html", null, true);
         } else {
@@ -1020,7 +1048,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"snack_menu_thursday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 415
+        // line 425
         if ((($context["thursday_snack"] ?? $this->getContext($context, "thursday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_snack"] ?? $this->getContext($context, "thursday_snack")), "meal", []), "html", null, true);
         }
@@ -1028,14 +1056,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 418
+        // line 428
         if ((($context["thursday_snack"] ?? $this->getContext($context, "thursday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_snack"] ?? $this->getContext($context, "thursday_snack")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_thursday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 420
+        // line 430
         if ((($context["thursday_snack"] ?? $this->getContext($context, "thursday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_snack"] ?? $this->getContext($context, "thursday_snack")), "mealNotes", []), "html", null, true);
         }
@@ -1045,7 +1073,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-lunch day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"lunch_hour_thursday\" value=\"";
-        // line 425
+        // line 435
         if ((($context["thursday_lunch"] ?? $this->getContext($context, "thursday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_lunch"] ?? $this->getContext($context, "thursday_lunch")), "hour", []), "html", null, true);
         } else {
@@ -1054,7 +1082,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"lunch_menu_thursday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 427
+        // line 437
         if ((($context["thursday_lunch"] ?? $this->getContext($context, "thursday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_lunch"] ?? $this->getContext($context, "thursday_lunch")), "meal", []), "html", null, true);
         }
@@ -1062,14 +1090,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 430
+        // line 440
         if ((($context["thursday_lunch"] ?? $this->getContext($context, "thursday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_lunch"] ?? $this->getContext($context, "thursday_lunch")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"lunch_comments_thursday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 432
+        // line 442
         if ((($context["thursday_lunch"] ?? $this->getContext($context, "thursday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_lunch"] ?? $this->getContext($context, "thursday_lunch")), "mealNotes", []), "html", null, true);
         }
@@ -1079,7 +1107,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-afternoon day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"afternoon_hour_thursday\" value=\"";
-        // line 437
+        // line 447
         if ((($context["thursday_afternoon"] ?? $this->getContext($context, "thursday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_afternoon"] ?? $this->getContext($context, "thursday_afternoon")), "hour", []), "html", null, true);
         } else {
@@ -1088,7 +1116,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"afternoon_menu_thursday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 439
+        // line 449
         if ((($context["thursday_afternoon"] ?? $this->getContext($context, "thursday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_afternoon"] ?? $this->getContext($context, "thursday_afternoon")), "meal", []), "html", null, true);
         }
@@ -1096,14 +1124,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 442
+        // line 452
         if ((($context["thursday_afternoon"] ?? $this->getContext($context, "thursday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_afternoon"] ?? $this->getContext($context, "thursday_afternoon")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"afternoon_comments_thursday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 444
+        // line 454
         if ((($context["thursday_afternoon"] ?? $this->getContext($context, "thursday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_afternoon"] ?? $this->getContext($context, "thursday_afternoon")), "mealNotes", []), "html", null, true);
         }
@@ -1113,7 +1141,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-dinner day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"dinner_hour_thursday\" value=\"";
-        // line 449
+        // line 459
         if ((($context["thursday_dinner"] ?? $this->getContext($context, "thursday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_dinner"] ?? $this->getContext($context, "thursday_dinner")), "hour", []), "html", null, true);
         } else {
@@ -1122,7 +1150,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"22:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"dinner_menu_thursday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 451
+        // line 461
         if ((($context["thursday_dinner"] ?? $this->getContext($context, "thursday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_dinner"] ?? $this->getContext($context, "thursday_dinner")), "meal", []), "html", null, true);
         }
@@ -1130,14 +1158,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 454
+        // line 464
         if ((($context["thursday_dinner"] ?? $this->getContext($context, "thursday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_dinner"] ?? $this->getContext($context, "thursday_dinner")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"dinner_comments_thursday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 456
+        // line 466
         if ((($context["thursday_dinner"] ?? $this->getContext($context, "thursday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_dinner"] ?? $this->getContext($context, "thursday_dinner")), "mealNotes", []), "html", null, true);
         }
@@ -1148,14 +1176,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                     <div class=\"col-sm-3\">
                                         <div class=\"workout-rest\">
                                             <input type=\"checkbox\" value=\"1\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px; margin-right: 10px\" name=\"thursday_workout_rest\" id=\"thursday-workout-rest\" ";
-        // line 462
+        // line 472
         if ((($context["thursday_workout"] ?? $this->getContext($context, "thursday_workout")) == false)) {
             echo " checked ";
         }
         echo " onclick=\"restDay('thursday')\"><strong>Descanso</strong>
                                         </div>
                                         <div class=\"thursday-workout\" ";
-        // line 464
+        // line 474
         if ((($context["thursday_workout"] ?? $this->getContext($context, "thursday_workout")) == false)) {
             echo " style=\"display: none\"";
         }
@@ -1172,14 +1200,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <br/><br/>
                                             <label for=\"thursday_workout_time\">Hora:</label>
                                             <input type=\"time\" name=\"thursday_workout_time\" value=\"";
-        // line 476
+        // line 486
         if ((($context["thursday_workout"] ?? $this->getContext($context, "thursday_workout")) != false)) {
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["thursday_workout"] ?? $this->getContext($context, "thursday_workout")), "hour", []), "H:i:s"), "html", null, true);
         }
         echo "\" style=\"width: fit-content\">
                                             <label for=\"thursday-workout\">Entrenamiento:</label>
                                             <textarea type=\"text\" id=\"thursday-workout\" name=\"thursday_workout\" class=\"form-control\" style=\"height: 150px\">";
-        // line 478
+        // line 488
         if ((($context["thursday_workout"] ?? $this->getContext($context, "thursday_workout")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_workout"] ?? $this->getContext($context, "thursday_workout")), "workout", []), "html", null, true);
         }
@@ -1187,14 +1215,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <br/>
                                             <ul class=\"list-group\" id=\"thursday-workout-exercises\">
                                                 ";
-        // line 481
+        // line 491
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["exercises"] ?? $this->getContext($context, "exercises")));
         foreach ($context['_seq'] as $context["_key"] => $context["exercise"]) {
-            // line 482
+            // line 492
             echo "                                                    <li>
                                                         <input type=\"checkbox\" value=\"";
-            // line 483
+            // line 493
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"thursday_workout_exercises[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
@@ -1204,7 +1232,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
             }
             echo ">
                                                         ";
-            // line 484
+            // line 494
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "
                                                     </li>
@@ -1213,11 +1241,11 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['exercise'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 487
+        // line 497
         echo "                                            </ul>
                                             <label for=\"thursday-workout-notes\">Observaciones:</label>
                                             <textarea type=\"text\" id=\"thursday-workout-notes\" name=\"thursday_workout_notes\" class=\"form-control\" style=\"height: 80px\">";
-        // line 489
+        // line 499
         if ((($context["thursday_workout"] ?? $this->getContext($context, "thursday_workout")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_workout"] ?? $this->getContext($context, "thursday_workout")), "workoutNotes", []), "html", null, true);
         }
@@ -1242,7 +1270,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-breakfast day-plan day-meal-visible\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"breakfast_hour_friday\" value=\"";
-        // line 509
+        // line 519
         if ((($context["friday_breakfast"] ?? $this->getContext($context, "friday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_breakfast"] ?? $this->getContext($context, "friday_breakfast")), "hour", []), "html", null, true);
         } else {
@@ -1251,7 +1279,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"breakfast_menu_friday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 511
+        // line 521
         if ((($context["friday_breakfast"] ?? $this->getContext($context, "friday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_breakfast"] ?? $this->getContext($context, "friday_breakfast")), "meal", []), "html", null, true);
         }
@@ -1259,14 +1287,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_friday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 514
+        // line 524
         if ((($context["friday_breakfast"] ?? $this->getContext($context, "friday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_breakfast"] ?? $this->getContext($context, "friday_breakfast")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"breakfast_comments_friday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 516
+        // line 526
         if ((($context["friday_breakfast"] ?? $this->getContext($context, "friday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_breakfast"] ?? $this->getContext($context, "friday_breakfast")), "mealNotes", []), "html", null, true);
         }
@@ -1276,7 +1304,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-snack day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"snack_hour_friday\" value=\"";
-        // line 521
+        // line 531
         if ((($context["friday_snack"] ?? $this->getContext($context, "friday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_snack"] ?? $this->getContext($context, "friday_snack")), "hour", []), "html", null, true);
         } else {
@@ -1285,7 +1313,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"snack_menu_friday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 523
+        // line 533
         if ((($context["friday_snack"] ?? $this->getContext($context, "friday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_snack"] ?? $this->getContext($context, "friday_snack")), "meal", []), "html", null, true);
         }
@@ -1293,14 +1321,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_friday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 526
+        // line 536
         if ((($context["friday_snack"] ?? $this->getContext($context, "friday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_snack"] ?? $this->getContext($context, "friday_snack")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_friday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 528
+        // line 538
         if ((($context["friday_snack"] ?? $this->getContext($context, "friday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_snack"] ?? $this->getContext($context, "friday_snack")), "mealNotes", []), "html", null, true);
         }
@@ -1310,7 +1338,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-lunch day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"lunch_hour_friday\" value=\"";
-        // line 533
+        // line 543
         if ((($context["friday_lunch"] ?? $this->getContext($context, "friday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_lunch"] ?? $this->getContext($context, "friday_lunch")), "hour", []), "html", null, true);
         } else {
@@ -1319,7 +1347,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"lunch_menu_friday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 535
+        // line 545
         if ((($context["friday_lunch"] ?? $this->getContext($context, "friday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_lunch"] ?? $this->getContext($context, "friday_lunch")), "meal", []), "html", null, true);
         }
@@ -1327,14 +1355,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_friday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 538
+        // line 548
         if ((($context["friday_lunch"] ?? $this->getContext($context, "friday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_lunch"] ?? $this->getContext($context, "friday_lunch")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"lunch_comments_friday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 540
+        // line 550
         if ((($context["friday_lunch"] ?? $this->getContext($context, "friday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_lunch"] ?? $this->getContext($context, "friday_lunch")), "mealNotes", []), "html", null, true);
         }
@@ -1344,7 +1372,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-afternoon day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"afternoon_hour_friday\" value=\"";
-        // line 545
+        // line 555
         if ((($context["friday_afternoon"] ?? $this->getContext($context, "friday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_afternoon"] ?? $this->getContext($context, "friday_afternoon")), "hour", []), "html", null, true);
         } else {
@@ -1353,7 +1381,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"afternoon_menu_friday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 547
+        // line 557
         if ((($context["friday_afternoon"] ?? $this->getContext($context, "friday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_afternoon"] ?? $this->getContext($context, "friday_afternoon")), "meal", []), "html", null, true);
         }
@@ -1361,14 +1389,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_friday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 550
+        // line 560
         if ((($context["friday_afternoon"] ?? $this->getContext($context, "friday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_afternoon"] ?? $this->getContext($context, "friday_afternoon")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"afternoon_comments_friday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 552
+        // line 562
         if ((($context["friday_afternoon"] ?? $this->getContext($context, "friday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_afternoon"] ?? $this->getContext($context, "friday_afternoon")), "mealNotes", []), "html", null, true);
         }
@@ -1378,7 +1406,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-dinner day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"dinner_hour_friday\" value=\"";
-        // line 557
+        // line 567
         if ((($context["friday_dinner"] ?? $this->getContext($context, "friday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_dinner"] ?? $this->getContext($context, "friday_dinner")), "hour", []), "html", null, true);
         } else {
@@ -1387,7 +1415,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"22:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"dinner_menu_friday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 559
+        // line 569
         if ((($context["friday_dinner"] ?? $this->getContext($context, "friday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_dinner"] ?? $this->getContext($context, "friday_dinner")), "meal", []), "html", null, true);
         }
@@ -1395,14 +1423,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_friday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 562
+        // line 572
         if ((($context["friday_dinner"] ?? $this->getContext($context, "friday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_dinner"] ?? $this->getContext($context, "friday_dinner")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"dinner_comments_friday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 564
+        // line 574
         if ((($context["friday_dinner"] ?? $this->getContext($context, "friday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_dinner"] ?? $this->getContext($context, "friday_dinner")), "mealNotes", []), "html", null, true);
         }
@@ -1413,14 +1441,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                     <div class=\"col-sm-3\">
                                         <div class=\"workout-rest\">
                                             <input type=\"checkbox\" value=\"1\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px; margin-right: 10px\" name=\"friday_workout_rest\" id=\"friday-workout-rest\" ";
-        // line 570
+        // line 580
         if ((($context["friday_workout"] ?? $this->getContext($context, "friday_workout")) == false)) {
             echo " checked ";
         }
         echo " onclick=\"restDay('friday')\"><strong>Descanso</strong>
                                         </div>
                                         <div class=\"friday-workout\" ";
-        // line 572
+        // line 582
         if ((($context["friday_workout"] ?? $this->getContext($context, "friday_workout")) == false)) {
             echo " style=\"display: none\"";
         }
@@ -1437,14 +1465,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <br/><br/>
                                             <label for=\"friday_workout_time\">Hora:</label>
                                             <input type=\"time\" name=\"friday_workout_time\" value=\"";
-        // line 584
+        // line 594
         if ((($context["friday_workout"] ?? $this->getContext($context, "friday_workout")) != false)) {
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["friday_workout"] ?? $this->getContext($context, "friday_workout")), "hour", []), "H:i:s"), "html", null, true);
         }
         echo "\" style=\"width: fit-content\">
                                             <label for=\"friday-workout\">Entrenamiento:</label>
                                             <textarea type=\"text\" id=\"friday-workout\" name=\"friday_workout\" class=\"form-control\" style=\"height: 150px\">";
-        // line 586
+        // line 596
         if ((($context["friday_workout"] ?? $this->getContext($context, "friday_workout")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_workout"] ?? $this->getContext($context, "friday_workout")), "workout", []), "html", null, true);
         }
@@ -1452,14 +1480,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <br/>
                                             <ul class=\"list-group\" id=\"friday-workout-exercises\">
                                                 ";
-        // line 589
+        // line 599
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["exercises"] ?? $this->getContext($context, "exercises")));
         foreach ($context['_seq'] as $context["_key"] => $context["exercise"]) {
-            // line 590
+            // line 600
             echo "                                                    <li>
                                                         <input type=\"checkbox\" value=\"";
-            // line 591
+            // line 601
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"friday_workout_exercises[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
@@ -1469,7 +1497,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
             }
             echo ">
                                                         ";
-            // line 592
+            // line 602
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "
                                                     </li>
@@ -1478,11 +1506,11 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['exercise'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 595
+        // line 605
         echo "                                            </ul>
                                             <label for=\"friday-workout-notes\">Observaciones:</label>
                                             <textarea type=\"text\" id=\"friday-workout-notes\" name=\"friday_workout_notes\" class=\"form-control\" style=\"height: 80px\">";
-        // line 597
+        // line 607
         if ((($context["friday_workout"] ?? $this->getContext($context, "friday_workout")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_workout"] ?? $this->getContext($context, "friday_workout")), "workoutNotes", []), "html", null, true);
         }
@@ -1507,7 +1535,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-breakfast day-plan day-meal-visible\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"breakfast_hour_saturday\" value=\"";
-        // line 617
+        // line 627
         if ((($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")), "hour", []), "html", null, true);
         } else {
@@ -1516,7 +1544,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"breakfast_menu_saturday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 619
+        // line 629
         if ((($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")), "meal", []), "html", null, true);
         }
@@ -1524,14 +1552,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 622
+        // line 632
         if ((($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"breakfast_comments_saturday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 624
+        // line 634
         if ((($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")), "mealNotes", []), "html", null, true);
         }
@@ -1541,7 +1569,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-snack day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"snack_hour_saturday\" value=\"";
-        // line 629
+        // line 639
         if ((($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")), "hour", []), "html", null, true);
         } else {
@@ -1550,7 +1578,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"snack_menu_saturday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 631
+        // line 641
         if ((($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_snack"] ?? $this->getContext($context, "saturday_snack")), "meal", []), "html", null, true);
         }
@@ -1558,14 +1586,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 634
+        // line 644
         if ((($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_snack"] ?? $this->getContext($context, "saturday_snack")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_saturday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 636
+        // line 646
         if ((($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_snack"] ?? $this->getContext($context, "saturday_snack")), "mealNotes", []), "html", null, true);
         }
@@ -1575,7 +1603,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-lunch day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"lunch_hour_saturday\" value=\"";
-        // line 641
+        // line 651
         if ((($context["saturday_lunch"] ?? $this->getContext($context, "saturday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_lunch"] ?? $this->getContext($context, "saturday_lunch")), "hour", []), "html", null, true);
         } else {
@@ -1584,7 +1612,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"lunch_menu_saturday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 643
+        // line 653
         if ((($context["saturday_lunch"] ?? $this->getContext($context, "saturday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_lunch"] ?? $this->getContext($context, "saturday_lunch")), "meal", []), "html", null, true);
         }
@@ -1592,14 +1620,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 646
+        // line 656
         if ((($context["saturday_lunch"] ?? $this->getContext($context, "saturday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_lunch"] ?? $this->getContext($context, "saturday_lunch")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"lunch_comments_saturday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 648
+        // line 658
         if ((($context["saturday_lunch"] ?? $this->getContext($context, "saturday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_lunch"] ?? $this->getContext($context, "saturday_lunch")), "mealNotes", []), "html", null, true);
         }
@@ -1609,7 +1637,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-afternoon day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"afternoon_hour_saturday\" value=\"";
-        // line 653
+        // line 663
         if ((($context["saturday_afternoon"] ?? $this->getContext($context, "saturday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_afternoon"] ?? $this->getContext($context, "saturday_afternoon")), "hour", []), "html", null, true);
         } else {
@@ -1618,7 +1646,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"afternoon_menu_saturday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 655
+        // line 665
         if ((($context["saturday_afternoon"] ?? $this->getContext($context, "saturday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_afternoon"] ?? $this->getContext($context, "saturday_afternoon")), "meal", []), "html", null, true);
         }
@@ -1626,14 +1654,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 658
+        // line 668
         if ((($context["saturday_afternoon"] ?? $this->getContext($context, "saturday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_afternoon"] ?? $this->getContext($context, "saturday_afternoon")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"afternoon_comments_saturday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 660
+        // line 670
         if ((($context["saturday_afternoon"] ?? $this->getContext($context, "saturday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_afternoon"] ?? $this->getContext($context, "saturday_afternoon")), "mealNotes", []), "html", null, true);
         }
@@ -1643,7 +1671,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-dinner day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"dinner_hour_saturday\" value=\"";
-        // line 665
+        // line 675
         if ((($context["saturday_dinner"] ?? $this->getContext($context, "saturday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_dinner"] ?? $this->getContext($context, "saturday_dinner")), "hour", []), "html", null, true);
         } else {
@@ -1652,7 +1680,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"22:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"dinner_menu_saturday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 667
+        // line 677
         if ((($context["saturday_dinner"] ?? $this->getContext($context, "saturday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_dinner"] ?? $this->getContext($context, "saturday_dinner")), "meal", []), "html", null, true);
         }
@@ -1660,14 +1688,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 670
+        // line 680
         if ((($context["saturday_dinner"] ?? $this->getContext($context, "saturday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_dinner"] ?? $this->getContext($context, "saturday_dinner")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"dinner_comments_saturday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 672
+        // line 682
         if ((($context["saturday_dinner"] ?? $this->getContext($context, "saturday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_dinner"] ?? $this->getContext($context, "saturday_dinner")), "mealNotes", []), "html", null, true);
         }
@@ -1678,14 +1706,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                     <div class=\"col-sm-3\">
                                         <div class=\"workout-rest\">
                                             <input type=\"checkbox\" value=\"1\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px; margin-right: 10px\" name=\"saturday_workout_rest\" id=\"saturday-workout-rest\" ";
-        // line 678
+        // line 688
         if ((($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")) == false)) {
             echo " checked ";
         }
         echo " onclick=\"restDay('saturday')\"><strong>Descanso</strong>
                                         </div>
                                         <div class=\"saturday-workout\" ";
-        // line 680
+        // line 690
         if ((($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")) == false)) {
             echo " style=\"display: none\"";
         }
@@ -1702,14 +1730,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <br/><br/>
                                             <label for=\"saturday_workout_time\">Hora:</label>
                                             <input type=\"time\" name=\"saturday_workout_time\" value=\"";
-        // line 692
+        // line 702
         if ((($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")) != false)) {
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")), "hour", []), "H:i:s"), "html", null, true);
         }
         echo "\" style=\"width: fit-content\">
                                             <label for=\"saturday-workout\">Entrenamiento:</label>
                                             <textarea type=\"text\" id=\"saturday-workout\" name=\"saturday_workout\" class=\"form-control\" style=\"height: 150px\">";
-        // line 694
+        // line 704
         if ((($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")), "workout", []), "html", null, true);
         }
@@ -1717,14 +1745,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <br/>
                                             <ul class=\"list-group\" id=\"saturday-workout-exercises\">
                                                 ";
-        // line 697
+        // line 707
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["exercises"] ?? $this->getContext($context, "exercises")));
         foreach ($context['_seq'] as $context["_key"] => $context["exercise"]) {
-            // line 698
+            // line 708
             echo "                                                    <li>
                                                         <input type=\"checkbox\" value=\"";
-            // line 699
+            // line 709
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"saturday_workout_exercises[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
@@ -1734,7 +1762,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
             }
             echo ">
                                                         ";
-            // line 700
+            // line 710
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "
                                                     </li>
@@ -1743,11 +1771,11 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['exercise'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 703
+        // line 713
         echo "                                            </ul>
                                             <label for=\"saturday-workout-notes\">Observaciones:</label>
                                             <textarea type=\"text\" id=\"saturday-workout-notes\" name=\"saturday_workout_notes\" class=\"form-control\" style=\"height: 80px\">";
-        // line 705
+        // line 715
         if ((($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_workout"] ?? $this->getContext($context, "saturday_workout")), "workoutNotes", []), "html", null, true);
         }
@@ -1772,7 +1800,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-breakfast day-plan day-meal-visible\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"breakfast_hour_sunday\" value=\"";
-        // line 725
+        // line 735
         if ((($context["sunday_breakfast"] ?? $this->getContext($context, "sunday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_breakfast"] ?? $this->getContext($context, "sunday_breakfast")), "hour", []), "html", null, true);
         } else {
@@ -1781,7 +1809,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"breakfast_menu_sunday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 727
+        // line 737
         if ((($context["sunday_breakfast"] ?? $this->getContext($context, "sunday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_breakfast"] ?? $this->getContext($context, "sunday_breakfast")), "meal", []), "html", null, true);
         }
@@ -1789,14 +1817,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 730
+        // line 740
         if ((($context["sunday_breakfast"] ?? $this->getContext($context, "sunday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_breakfast"] ?? $this->getContext($context, "sunday_breakfast")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"breakfast_comments_sunday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 732
+        // line 742
         if ((($context["sunday_breakfast"] ?? $this->getContext($context, "sunday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_breakfast"] ?? $this->getContext($context, "sunday_breakfast")), "mealNotes", []), "html", null, true);
         }
@@ -1806,7 +1834,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-snack day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"snack_hour_sunday\" value=\"";
-        // line 737
+        // line 747
         if ((($context["sunday_snack"] ?? $this->getContext($context, "sunday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_snack"] ?? $this->getContext($context, "sunday_snack")), "hour", []), "html", null, true);
         } else {
@@ -1815,7 +1843,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"snack_menu_sunday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 739
+        // line 749
         if ((($context["sunday_snack"] ?? $this->getContext($context, "sunday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_snack"] ?? $this->getContext($context, "sunday_snack")), "meal", []), "html", null, true);
         }
@@ -1823,14 +1851,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 742
+        // line 752
         if ((($context["sunday_snack"] ?? $this->getContext($context, "sunday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_snack"] ?? $this->getContext($context, "sunday_snack")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_sunday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 744
+        // line 754
         if ((($context["sunday_snack"] ?? $this->getContext($context, "sunday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_snack"] ?? $this->getContext($context, "sunday_snack")), "mealNotes", []), "html", null, true);
         }
@@ -1840,7 +1868,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-lunch day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"lunch_hour_sunday\" value=\"";
-        // line 749
+        // line 759
         if ((($context["sunday_lunch"] ?? $this->getContext($context, "sunday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_lunch"] ?? $this->getContext($context, "sunday_lunch")), "hour", []), "html", null, true);
         } else {
@@ -1849,7 +1877,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"lunch_menu_sunday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 751
+        // line 761
         if ((($context["sunday_lunch"] ?? $this->getContext($context, "sunday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_lunch"] ?? $this->getContext($context, "sunday_lunch")), "meal", []), "html", null, true);
         }
@@ -1857,14 +1885,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 754
+        // line 764
         if ((($context["sunday_lunch"] ?? $this->getContext($context, "sunday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_lunch"] ?? $this->getContext($context, "sunday_lunch")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"lunch_comments_sunday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 756
+        // line 766
         if ((($context["sunday_lunch"] ?? $this->getContext($context, "sunday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_lunch"] ?? $this->getContext($context, "sunday_lunch")), "mealNotes", []), "html", null, true);
         }
@@ -1874,7 +1902,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-afternoon day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"afternoon_hour_sunday\" value=\"";
-        // line 761
+        // line 771
         if ((($context["sunday_afternoon"] ?? $this->getContext($context, "sunday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_afternoon"] ?? $this->getContext($context, "sunday_afternoon")), "hour", []), "html", null, true);
         } else {
@@ -1883,7 +1911,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"afternoon_menu_sunday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 763
+        // line 773
         if ((($context["sunday_afternoon"] ?? $this->getContext($context, "sunday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_afternoon"] ?? $this->getContext($context, "sunday_afternoon")), "meal", []), "html", null, true);
         }
@@ -1891,14 +1919,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 766
+        // line 776
         if ((($context["sunday_afternoon"] ?? $this->getContext($context, "sunday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_afternoon"] ?? $this->getContext($context, "sunday_afternoon")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"afternoon_comments_sunday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 768
+        // line 778
         if ((($context["sunday_afternoon"] ?? $this->getContext($context, "sunday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_afternoon"] ?? $this->getContext($context, "sunday_afternoon")), "mealNotes", []), "html", null, true);
         }
@@ -1908,7 +1936,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                         <div class=\"day-plan-dinner day-plan day-meal-hidden\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"dinner_hour_sunday\" value=\"";
-        // line 773
+        // line 783
         if ((($context["sunday_dinner"] ?? $this->getContext($context, "sunday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_dinner"] ?? $this->getContext($context, "sunday_dinner")), "hour", []), "html", null, true);
         } else {
@@ -1917,7 +1945,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "\" min=\"09:00\" max=\"22:00\" required>
                                                 <br/><br/>
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"dinner_menu_sunday\" class=\"form-control\" style=\"height: 430px\">";
-        // line 775
+        // line 785
         if ((($context["sunday_dinner"] ?? $this->getContext($context, "sunday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_dinner"] ?? $this->getContext($context, "sunday_dinner")), "meal", []), "html", null, true);
         }
@@ -1925,14 +1953,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
-        // line 778
+        // line 788
         if ((($context["sunday_dinner"] ?? $this->getContext($context, "sunday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_dinner"] ?? $this->getContext($context, "sunday_dinner")), "mealShoppingList", []), "html", null, true);
         }
         echo "</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"dinner_comments_sunday\" class=\"form-control\" style=\"height: 186px\">";
-        // line 780
+        // line 790
         if ((($context["sunday_dinner"] ?? $this->getContext($context, "sunday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_dinner"] ?? $this->getContext($context, "sunday_dinner")), "mealNotes", []), "html", null, true);
         }
@@ -1943,14 +1971,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                     <div class=\"col-sm-3\">
                                         <div class=\"workout-rest\">
                                             <input type=\"checkbox\" value=\"1\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px; margin-right: 10px\" name=\"sunday_workout_rest\" id=\"sunday-workout-rest\" ";
-        // line 786
+        // line 796
         if ((($context["sunday_workout"] ?? $this->getContext($context, "sunday_workout")) == false)) {
             echo " checked ";
         }
         echo " onclick=\"restDay('sunday')\"><strong>Descanso</strong>
                                         </div>
                                         <div class=\"sunday-workout\" ";
-        // line 788
+        // line 798
         if ((($context["sunday_workout"] ?? $this->getContext($context, "sunday_workout")) == false)) {
             echo " style=\"display: none\"";
         }
@@ -1967,14 +1995,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <br/><br/>
                                             <label for=\"sunday_workout_time\">Hora:</label>
                                             <input type=\"time\" name=\"sunday_workout_time\" value=\"";
-        // line 800
+        // line 810
         if ((($context["sunday_workout"] ?? $this->getContext($context, "sunday_workout")) != false)) {
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["sunday_workout"] ?? $this->getContext($context, "sunday_workout")), "hour", []), "H:i:s"), "html", null, true);
         }
         echo "\" style=\"width: fit-content\">
                                             <label for=\"sunday-workout\">Entrenamiento:</label>
                                             <textarea type=\"text\" id=\"sunday-workout\" name=\"sunday_workout\" class=\"form-control\" style=\"height: 150px\">";
-        // line 802
+        // line 812
         if ((($context["sunday_workout"] ?? $this->getContext($context, "sunday_workout")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_workout"] ?? $this->getContext($context, "sunday_workout")), "workout", []), "html", null, true);
         }
@@ -1982,14 +2010,14 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <br/>
                                             <ul class=\"list-group\" id=\"sunday-workout-exercises\">
                                                 ";
-        // line 805
+        // line 815
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["exercises"] ?? $this->getContext($context, "exercises")));
         foreach ($context['_seq'] as $context["_key"] => $context["exercise"]) {
-            // line 806
+            // line 816
             echo "                                                    <li>
                                                         <input type=\"checkbox\" value=\"";
-            // line 807
+            // line 817
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"sunday_workout_exercises[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
@@ -1999,7 +2027,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
             }
             echo ">
                                                         ";
-            // line 808
+            // line 818
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "
                                                     </li>
@@ -2008,11 +2036,11 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['exercise'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 811
+        // line 821
         echo "                                            </ul>
                                             <label for=\"sunday-workout-notes\">Observaciones:</label>
                                             <textarea type=\"text\" id=\"sunday-workout-notes\" name=\"sunday_workout_notes\" class=\"form-control\" style=\"height: 80px\">";
-        // line 813
+        // line 823
         if ((($context["sunday_workout"] ?? $this->getContext($context, "sunday_workout")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_workout"] ?? $this->getContext($context, "sunday_workout")), "workoutNotes", []), "html", null, true);
         }
@@ -2043,7 +2071,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
 
     public function getDebugInfo()
     {
-        return array (  2016 => 813,  2012 => 811,  2003 => 808,  1993 => 807,  1990 => 806,  1986 => 805,  1978 => 802,  1971 => 800,  1954 => 788,  1947 => 786,  1936 => 780,  1929 => 778,  1921 => 775,  1912 => 773,  1902 => 768,  1895 => 766,  1887 => 763,  1878 => 761,  1868 => 756,  1861 => 754,  1853 => 751,  1844 => 749,  1834 => 744,  1827 => 742,  1819 => 739,  1810 => 737,  1800 => 732,  1793 => 730,  1785 => 727,  1776 => 725,  1751 => 705,  1747 => 703,  1738 => 700,  1728 => 699,  1725 => 698,  1721 => 697,  1713 => 694,  1706 => 692,  1689 => 680,  1682 => 678,  1671 => 672,  1664 => 670,  1656 => 667,  1647 => 665,  1637 => 660,  1630 => 658,  1622 => 655,  1613 => 653,  1603 => 648,  1596 => 646,  1588 => 643,  1579 => 641,  1569 => 636,  1562 => 634,  1554 => 631,  1545 => 629,  1535 => 624,  1528 => 622,  1520 => 619,  1511 => 617,  1486 => 597,  1482 => 595,  1473 => 592,  1463 => 591,  1460 => 590,  1456 => 589,  1448 => 586,  1441 => 584,  1424 => 572,  1417 => 570,  1406 => 564,  1399 => 562,  1391 => 559,  1382 => 557,  1372 => 552,  1365 => 550,  1357 => 547,  1348 => 545,  1338 => 540,  1331 => 538,  1323 => 535,  1314 => 533,  1304 => 528,  1297 => 526,  1289 => 523,  1280 => 521,  1270 => 516,  1263 => 514,  1255 => 511,  1246 => 509,  1221 => 489,  1217 => 487,  1208 => 484,  1198 => 483,  1195 => 482,  1191 => 481,  1183 => 478,  1176 => 476,  1159 => 464,  1152 => 462,  1141 => 456,  1134 => 454,  1126 => 451,  1117 => 449,  1107 => 444,  1100 => 442,  1092 => 439,  1083 => 437,  1073 => 432,  1066 => 430,  1058 => 427,  1049 => 425,  1039 => 420,  1032 => 418,  1024 => 415,  1015 => 413,  1005 => 408,  998 => 406,  990 => 403,  981 => 401,  956 => 381,  952 => 379,  943 => 376,  933 => 375,  930 => 374,  926 => 373,  918 => 370,  911 => 368,  894 => 356,  887 => 354,  876 => 348,  869 => 346,  861 => 343,  852 => 341,  842 => 336,  835 => 334,  827 => 331,  818 => 329,  808 => 324,  801 => 322,  793 => 319,  784 => 317,  774 => 312,  767 => 310,  759 => 307,  750 => 305,  740 => 300,  733 => 298,  725 => 295,  716 => 293,  691 => 273,  687 => 271,  678 => 268,  668 => 267,  665 => 266,  661 => 265,  653 => 262,  646 => 260,  629 => 248,  622 => 246,  611 => 240,  604 => 238,  596 => 235,  587 => 233,  577 => 228,  570 => 226,  562 => 223,  553 => 221,  543 => 216,  536 => 214,  528 => 211,  519 => 209,  509 => 204,  502 => 202,  494 => 199,  485 => 197,  475 => 192,  468 => 190,  460 => 187,  451 => 185,  427 => 166,  423 => 164,  414 => 161,  404 => 160,  401 => 159,  397 => 158,  389 => 155,  382 => 153,  365 => 141,  358 => 139,  347 => 133,  340 => 131,  332 => 128,  323 => 126,  313 => 121,  306 => 119,  298 => 116,  289 => 114,  279 => 109,  272 => 107,  264 => 104,  255 => 102,  245 => 97,  238 => 95,  230 => 92,  221 => 90,  211 => 85,  204 => 83,  196 => 80,  187 => 78,  153 => 47,  146 => 43,  141 => 40,  126 => 38,  122 => 37,  113 => 31,  109 => 29,  99 => 25,  95 => 23,  90 => 22,  80 => 18,  76 => 16,  72 => 15,  66 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  2044 => 823,  2040 => 821,  2031 => 818,  2021 => 817,  2018 => 816,  2014 => 815,  2006 => 812,  1999 => 810,  1982 => 798,  1975 => 796,  1964 => 790,  1957 => 788,  1949 => 785,  1940 => 783,  1930 => 778,  1923 => 776,  1915 => 773,  1906 => 771,  1896 => 766,  1889 => 764,  1881 => 761,  1872 => 759,  1862 => 754,  1855 => 752,  1847 => 749,  1838 => 747,  1828 => 742,  1821 => 740,  1813 => 737,  1804 => 735,  1779 => 715,  1775 => 713,  1766 => 710,  1756 => 709,  1753 => 708,  1749 => 707,  1741 => 704,  1734 => 702,  1717 => 690,  1710 => 688,  1699 => 682,  1692 => 680,  1684 => 677,  1675 => 675,  1665 => 670,  1658 => 668,  1650 => 665,  1641 => 663,  1631 => 658,  1624 => 656,  1616 => 653,  1607 => 651,  1597 => 646,  1590 => 644,  1582 => 641,  1573 => 639,  1563 => 634,  1556 => 632,  1548 => 629,  1539 => 627,  1514 => 607,  1510 => 605,  1501 => 602,  1491 => 601,  1488 => 600,  1484 => 599,  1476 => 596,  1469 => 594,  1452 => 582,  1445 => 580,  1434 => 574,  1427 => 572,  1419 => 569,  1410 => 567,  1400 => 562,  1393 => 560,  1385 => 557,  1376 => 555,  1366 => 550,  1359 => 548,  1351 => 545,  1342 => 543,  1332 => 538,  1325 => 536,  1317 => 533,  1308 => 531,  1298 => 526,  1291 => 524,  1283 => 521,  1274 => 519,  1249 => 499,  1245 => 497,  1236 => 494,  1226 => 493,  1223 => 492,  1219 => 491,  1211 => 488,  1204 => 486,  1187 => 474,  1180 => 472,  1169 => 466,  1162 => 464,  1154 => 461,  1145 => 459,  1135 => 454,  1128 => 452,  1120 => 449,  1111 => 447,  1101 => 442,  1094 => 440,  1086 => 437,  1077 => 435,  1067 => 430,  1060 => 428,  1052 => 425,  1043 => 423,  1033 => 418,  1026 => 416,  1018 => 413,  1009 => 411,  984 => 391,  980 => 389,  971 => 386,  961 => 385,  958 => 384,  954 => 383,  946 => 380,  939 => 378,  922 => 366,  915 => 364,  904 => 358,  897 => 356,  889 => 353,  880 => 351,  870 => 346,  863 => 344,  855 => 341,  846 => 339,  836 => 334,  829 => 332,  821 => 329,  812 => 327,  802 => 322,  795 => 320,  787 => 317,  778 => 315,  768 => 310,  761 => 308,  753 => 305,  744 => 303,  719 => 283,  715 => 281,  706 => 278,  696 => 277,  693 => 276,  689 => 275,  681 => 272,  674 => 270,  657 => 258,  650 => 256,  639 => 250,  632 => 248,  624 => 245,  615 => 243,  605 => 238,  598 => 236,  590 => 233,  581 => 231,  571 => 226,  564 => 224,  556 => 221,  547 => 219,  537 => 214,  530 => 212,  522 => 209,  513 => 207,  503 => 202,  496 => 200,  488 => 197,  479 => 195,  455 => 176,  451 => 174,  442 => 171,  432 => 170,  429 => 169,  425 => 168,  417 => 165,  410 => 163,  393 => 151,  386 => 149,  375 => 143,  368 => 141,  360 => 138,  351 => 136,  341 => 131,  334 => 129,  326 => 126,  317 => 124,  307 => 119,  300 => 117,  292 => 114,  283 => 112,  273 => 107,  266 => 105,  258 => 102,  249 => 100,  239 => 95,  232 => 93,  224 => 90,  215 => 88,  181 => 57,  176 => 55,  170 => 51,  159 => 48,  154 => 47,  148 => 46,  145 => 45,  141 => 44,  132 => 38,  128 => 36,  118 => 32,  114 => 30,  109 => 29,  99 => 25,  95 => 23,  90 => 22,  80 => 18,  76 => 16,  72 => 15,  66 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -2084,25 +2112,35 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                 </div>
             </div>
         {% endfor %}
+        {% for message in app.session.flashbag().get('editWeeklyPlanOKStatus') %}
+            <div class=\"row\" style=\"width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: 0;\">
+                <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class=\"container\">
             <!-- Añadimos un novalidate debido a los contenedores ocultos, mostraremos el error con la variable de sesion -->
             <form id=\"msform\" class=\"form\" action=\"{{ path(\"nutritionist_edit_weekly_plan\", {id_plan:weeklyPlan.idPlan}) }}\" method=\"post\" novalidate>
                 <div class=\"col-sm-12\">
                     <div id=\"weekly-plan-content-block\" style=\"height: 15rem; margin-bottom: 20px\">
                         <div class=\"col-sm-6\">
-                            <label for=\"plan_tags\">Tag:</label>
-                            <select name=\"plan_tags\" id=\"plan_tags\">
+                            <label>Tags:</label>
+                            <ul class=\"list-group\" id=\"weekly_plan_tags\">
                                 {% for tag in tags %}
-                                    <option value=\"{{ tag.idTag }}\" {% if tag.idTag == weeklyPlan.idTag %} selected {% endif %}>{{ tag.name }}</option>
+                                    <li>
+                                        <input type=\"checkbox\" value=\"{{ tag.idTag }}\" {% if tag.idTag in weekly_plan_tags_keys %} checked {% endif %}
+                                               style=\"width: fit-content; margin-bottom: 5px; margin-top: 5px\" name=\"add_tags[{{ tag.idTag }}][]\">
+                                        Nivel {{ tag.level }} - {{ tag.name }}
+                                    </li>
                                 {% endfor %}
-                            </select>
-                            <br/><br/>
-                            <label for=\"plan_title\">Tile:</label>
-                            <textarea type=\"text\" id=\"plan_title\" name=\"plan_title\" class=\"form-control\">{{ weeklyPlan.title }}</textarea>
+                            </ul>
                         </div>
                         <div class=\"col-sm-6\">
+                            <label for=\"plan_title\">Tile:</label>
+                            <textarea type=\"text\" id=\"plan_title\" name=\"plan_title\" class=\"form-control\">{{ weeklyPlan.title }}</textarea>
                             <label for=\"plan_description\">Descripción:</label>
-                            <textarea type=\"text\" id=\"plan_description\" name=\"plan_description\" class=\"form-control\" style=\"height: 100px\">{{ weeklyPlan.description }}</textarea>
+                            <textarea type=\"text\" id=\"plan_description\" name=\"plan_description\" class=\"form-control\" style=\"height: 5.5rem\">{{ weeklyPlan.description }}</textarea>
                         </div>
                     </div>
                 </div>

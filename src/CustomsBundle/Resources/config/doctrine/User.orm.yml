@@ -84,6 +84,11 @@ CustomsBundle\Entity\User:
             length: 65535
             options:
                 fixed: false
+        antiquity:
+            type: integer
+            nullable: true
+            options:
+                default: '0'
         description:
             type: text
             nullable: true

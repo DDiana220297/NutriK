@@ -47,8 +47,18 @@
                         {% for plan in weeklyPlans %}
                             <div class="weekly-plan">
                                 <div class="col-sm-11 weekly-plan-resume">
-                                    <h4>{{ plan.title }}</h4>
+                                    <h4>
+                                        {% if plan.idPlan in weekly_plans_tags|keys %}
+                                            <span>
+                                                {% for tag in weekly_plans_tags[plan.idPlan] %}
+                                                    {{ tag.name }} <span style="color: #00766c">></span>
+                                                {% endfor %}
+                                            </span>
+                                        {% endif %}
+                                        <strong style="color: #00766c">{{ plan.title}}</strong>
+                                    </h4>
                                     <p>{{ plan.description }}</p>
+                                    <strong>{{ plan.dateAdd|date('Y-m-d H:i:s') }}</strong>
                                 </div>
                                 <div class="col-sm-1 weekly-plan-actions">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="margin-right: -35px;"

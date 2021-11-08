@@ -70,6 +70,9 @@ body {
 .global-header .navbar-brand {
     font-size: 50px;
 }
+.global-header .container-fluid .navbar-collapse .navbar-right>li #svg-messenger:hover{
+    opacity: 0.5;
+}
 
 .container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {
     margin-right: -15px;

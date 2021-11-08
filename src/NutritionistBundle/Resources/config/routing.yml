@@ -121,3 +121,11 @@ nutritionist_edit_appointment:
 nutritionist_calendar:
     path: /nutritionist-calendar
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistCalendar }
+
+nutritionist_assign_plans:
+    path: /nutritionist-assign-plans
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistAssignPlans }
+
+nutritionist_assigned_customer_plans:
+    path: /nutritionist-assigned-customer-plans/{id_customer}
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistAssignedCustomerPlans }

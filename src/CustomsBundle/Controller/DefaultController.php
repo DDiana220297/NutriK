@@ -7,9 +7,40 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
+
+    /**
+     * Fn auxiliar para comprobar si el usuario tiene correo pendiente
+     * @return int|void
+     */
+    public function checkPendingInbox(){
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $user = reset($users);
+            $messages_query = $em->createQuery("
+                    SELECT m FROM CustomsBundle:Message m
+                    WHERE m.idUserTo = ".$user->getIdUser()." AND m.messageRead = 0
+                ");
+            $messages = $messages_query->getResult();
+            if(count($messages)>0){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+        }
+    }
+
+
+    /**
+     * Homepage
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     * @throws \Exception
+     */
     public function indexAction(){
         $logs = $events = $appointments = array();
-        $calendar_appointments = $calendar_events = $calendar_events = array();
+        $calendar_appointments = $calendar_events_array = $calendar_events = array();
         /**
          * Instanciamos el user con el email del usuario logeado
          */
@@ -56,12 +87,13 @@ class DefaultController extends Controller
                         $start_date = $appointment->getDate();
                         $end_date = new \DateTime($appointment->getDate()->format('Y-m-d H:i:s'));
                         $end_date->modify('+'.$appointment->getDuration().' minutes');
-                        $calendar_events[] = [
+                        $calendar_events_array[] = [
                             'id' => $id_appointment,
                             'title' => $appointment->getDescription(),
                             'start' => $start_date,
                             'end' => $end_date,
-                            'url' => '/web/nutritionist-edit-appointment/'.$id_appointment
+                            'url' => '/web/nutritionist-edit-appointment/'.$id_appointment,
+                            'type' => 'event'
                         ];
                     }
                 }
@@ -69,24 +101,43 @@ class DefaultController extends Controller
                 /**
                  * Format events as calendar events
                  */
+                $events_repo = $em->getRepository("NutritionistBundle:Event");
+                $calendar_events = $events_repo->findBy(array("idUser" => $user->getIdUser()));
+                if (count($calendar_events)>0){
+                    foreach ($calendar_events as $event){
+                        $id_event = $event->getIdEvent();
+                        $start_date = $event->getDate();
+                        $end_date = new \DateTime($event->getDate()->format('Y-m-d H:i:s'));
+                        $end_date->modify('+'.$event->getDuration().' minutes');
+                        $calendar_events_array[] = [
+                            'id' => $id_event,
+                            'title' => $event->getTitle(),
+                            'start' => $start_date,
+                            'end' => $end_date,
+                            'url' => '/web/nutritionist-edit-event/'.$id_event,
+                            'type' => 'event'
+                        ];
+                    }
+                }
 
-//                $events_repo = $em->getRepository("NutritionistBundle:Event");
-//                $calendar_events = $events_repo->findBy(array("idUser" => $user->getIdUser()));
-//                if (count($calendar_events)>0){
-//                    foreach ($calendar_events as $event){
-//                        $id_event = $event->getIdEvent();
-//                        $start_date = $event->getDate();
-//                        $end_date = new \DateTime($event->getDate()->format('Y-m-d H:i:s'));
-//                        $end_date->modify('+'.$event->getDuration().' minutes');
-//                        $calendar_events[] = [
-//                            'id' => $id_event,
-//                            'title' => $event->getTitle(),
-//                            'start' => $start_date,
-//                            'end' => $end_date,
-//                            'url' => '/web/nutritionist-edit-event/'.$id_event
-//                        ];
-//                    }
-//                }
+                /**
+                 * Format diary pages as calendar events
+                 */
+
+                $diary_pages_repo = $em->getRepository('NutritionistBundle:DiaryPages');
+                $diary_pages = $diary_pages_repo->findBy(['idUser' =>$user->getIdUser()]);
+                foreach ($diary_pages as $page){
+                    $id_diary_page = $page->getIdDiaryPage();
+                    $start_date = $page->getDate();
+                    $calendar_events_array[] = [
+                        'id' => $id_diary_page,
+                        'title' => "Notas agenda personal",
+                        'start' => $start_date,
+                        'end' => $start_date,
+                        'url' => '/web/nutritionist-diary/'.$id_diary_page,
+                        'type' => 'diary'
+                    ];
+                }
             }
         }
         return $this->render('@Customs/index.html.twig',
@@ -94,7 +145,8 @@ class DefaultController extends Controller
                 'appointments' => $appointments,
                 'events' => $events,
                 'logs' => $logs,
-                "calendar_events" => $calendar_events
+                "calendar_events" => $calendar_events_array,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }

@@ -38,25 +38,25 @@ CustomsBundle\Entity\CustomerMetrics:
             nullable: false
             precision: 10
             scale: 0
-            column: fat_percentage
             options:
-                default: 0
+                default: '0'
+            column: fat_percentage
         musclePercentage:
             type: float
             nullable: false
             precision: 10
             scale: 0
-            column: muscle_percentage
             options:
-                default: 0
+                default: '0'
+            column: muscle_percentage
         liquidPercentage:
             type: float
             nullable: false
             precision: 10
             scale: 0
-            column: liquid_percentage
             options:
-                default: 0
+                default: '0'
+            column: liquid_percentage
         movement:
             type: string
             nullable: false

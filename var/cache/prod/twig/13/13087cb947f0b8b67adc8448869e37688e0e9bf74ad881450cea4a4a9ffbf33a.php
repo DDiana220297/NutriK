@@ -132,30 +132,59 @@ class __TwigTemplate_b3cab24dab4289816c9f05f640778438c6b1c092996074a84440c533729
             // line 50
             echo "                            <div class=\"didactic-entry\">
                                 <div class=\"col-sm-11 didactic-entry-resume\">
-                                    <h4>";
-            // line 52
-            echo twig_escape_filter($this->env, $this->getAttribute($context["entry"], "title", []), "html", null, true);
-            echo "</h4>
-                                    <p>";
+                                    <h4>
+                                        ";
             // line 53
+            if (twig_in_filter($this->getAttribute($context["entry"], "idEntry", []), twig_get_array_keys_filter(($context["entries_tags"] ?? $this->getContext($context, "entries_tags"))))) {
+                // line 54
+                echo "                                            <span>
+                                                ";
+                // line 55
+                $context['_parent'] = $context;
+                $context['_seq'] = twig_ensure_traversable($this->getAttribute(($context["entries_tags"] ?? $this->getContext($context, "entries_tags")), $this->getAttribute($context["entry"], "idEntry", []), [], "array"));
+                foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
+                    // line 56
+                    echo "                                                    ";
+                    echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "name", []), "html", null, true);
+                    echo " <span style=\"color: #00766c\">></span>
+                                                ";
+                }
+                $_parent = $context['_parent'];
+                unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
+                $context = array_intersect_key($context, $_parent) + $_parent;
+                // line 58
+                echo "                                            </span>
+                                        ";
+            }
+            // line 60
+            echo "                                        <strong style=\"color: #00766c\">";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["entry"], "title", []), "html", null, true);
+            echo "</strong>
+                                    </h4>
+                                    <p>";
+            // line 62
             echo twig_escape_filter($this->env, $this->getAttribute($context["entry"], "description", []), "html", null, true);
             echo "</p>
+                                    <strong>";
+            // line 63
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["entry"], "dateAdd", []), "Y-m-d H:i:s"), "html", null, true);
+            echo "</strong>
                                 </div>
                                 <div class=\"col-sm-1 didactic-entry-actions\">
                                     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash\" viewBox=\"0 0 16 16\" style=\"margin-right: -35px;\"
                                     onclick=\"deleteEntry(";
-            // line 57
+            // line 67
             echo twig_escape_filter($this->env, $this->getAttribute($context["entry"], "idEntry", []), "html", null, true);
             echo ")\">
                                         <path d=\"M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z\"/>
                                         <path fill-rule=\"evenodd\" d=\"M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z\"/>
                                     </svg>
                                     <form class=\"form\" action=\"";
-            // line 61
+            // line 71
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_delete_didactic_content");
             echo "\" method=\"post\">
                                         <input type=\"submit\" class=\"hidden\" name=\"_entry_delete\" id=\"entry_delete_";
-            // line 62
+            // line 72
             echo twig_escape_filter($this->env, $this->getAttribute($context["entry"], "idEntry", []), "html", null, true);
             echo "\" value=\"";
             echo twig_escape_filter($this->env, $this->getAttribute($context["entry"], "idEntry", []), "html", null, true);
@@ -163,7 +192,7 @@ class __TwigTemplate_b3cab24dab4289816c9f05f640778438c6b1c092996074a84440c533729
                                     </form>
                                     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-pencil-square\" viewBox=\"0 0 16 16\"
                                         onclick=\"redirectTo('nutritionist-edit-didactic-content','/'+";
-            // line 65
+            // line 75
             echo twig_escape_filter($this->env, $this->getAttribute($context["entry"], "idEntry", []), "html", null, true);
             echo ")\">
                                         <path d=\"M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z\"/>
@@ -176,9 +205,8 @@ class __TwigTemplate_b3cab24dab4289816c9f05f640778438c6b1c092996074a84440c533729
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['entry'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 72
-        echo "
-                    </div>
+        // line 82
+        echo "                    </div>
                 </div>
             </div>
         </div>
@@ -197,7 +225,7 @@ class __TwigTemplate_b3cab24dab4289816c9f05f640778438c6b1c092996074a84440c533729
 
     public function getDebugInfo()
     {
-        return array (  180 => 72,  167 => 65,  159 => 62,  155 => 61,  148 => 57,  141 => 53,  137 => 52,  133 => 50,  129 => 49,  106 => 28,  96 => 24,  92 => 22,  87 => 21,  77 => 17,  73 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  209 => 82,  196 => 75,  188 => 72,  184 => 71,  177 => 67,  170 => 63,  166 => 62,  160 => 60,  156 => 58,  147 => 56,  143 => 55,  140 => 54,  138 => 53,  133 => 50,  129 => 49,  106 => 28,  96 => 24,  92 => 22,  87 => 21,  77 => 17,  73 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -261,8 +289,18 @@ class __TwigTemplate_b3cab24dab4289816c9f05f640778438c6b1c092996074a84440c533729
                         {% for entry in entries %}
                             <div class=\"didactic-entry\">
                                 <div class=\"col-sm-11 didactic-entry-resume\">
-                                    <h4>{{ entry.title }}</h4>
+                                    <h4>
+                                        {% if entry.idEntry in entries_tags|keys %}
+                                            <span>
+                                                {% for tag in entries_tags[entry.idEntry] %}
+                                                    {{ tag.name }} <span style=\"color: #00766c\">></span>
+                                                {% endfor %}
+                                            </span>
+                                        {% endif %}
+                                        <strong style=\"color: #00766c\">{{entry.title }}</strong>
+                                    </h4>
                                     <p>{{ entry.description }}</p>
+                                    <strong>{{ entry.dateAdd|date('Y-m-d H:i:s') }}</strong>
                                 </div>
                                 <div class=\"col-sm-1 didactic-entry-actions\">
                                     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash\" viewBox=\"0 0 16 16\" style=\"margin-right: -35px;\"
@@ -281,7 +319,6 @@ class __TwigTemplate_b3cab24dab4289816c9f05f640778438c6b1c092996074a84440c533729
                                 </div>
                             </div>
                         {% endfor %}
-
                     </div>
                 </div>
             </div>

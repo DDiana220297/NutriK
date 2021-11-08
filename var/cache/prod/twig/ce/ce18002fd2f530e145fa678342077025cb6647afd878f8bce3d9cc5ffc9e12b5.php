@@ -114,7 +114,7 @@ class __TwigTemplate_f4ffd67878ad2c5e1150651873fecd41df4730d560e56728904bfd61bbe
                         </div>
                         <div class=\"col-sm-1\" style=\"padding: 15px 0;\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-plus-fill\" viewBox=\"0 0 16 16\" style=\"float: right; color: white\"
-                                 onclick=\"redirectTo('nutritionist-add-customer')\">
+                                 onclick=\"redirectTo('nutritionist-all-customers')\">
                                 <path d=\"M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z\"/>
                                 <path fill-rule=\"evenodd\" d=\"M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z\"/>
                             </svg>
@@ -127,8 +127,8 @@ class __TwigTemplate_f4ffd67878ad2c5e1150651873fecd41df4730d560e56728904bfd61bbe
         // line 51
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_customers");
         echo "\" method=\"post\">
-                                    <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar Cliente\" aria-label=\"Search\" name=\"customer_search\">
-                                    <button class=\"btn btn-outline-success\" type=\"submit\">Buscar</button>
+                                    <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar Cliente\" aria-label=\"Search\" name=\"customer_search\" style=\"width: 95%; display: inline-block\">
+                                    <button class=\"btn btn-outline-success\" type=\"submit\" style=\"margin-bottom: 3px; width: 4.7%; display: inline-block\">Buscar</button>
                                 </form>
                             </div>
                         </nav>
@@ -141,7 +141,7 @@ class __TwigTemplate_f4ffd67878ad2c5e1150651873fecd41df4730d560e56728904bfd61bbe
         foreach ($context['_seq'] as $context["_key"] => $context["customer"]) {
             // line 60
             echo "                            <div class=\"customer-entry\">
-                                <div class=\"col-sm-11 customer-entry-resume\">
+                                <div class=\"col-sm-10 customer-entry-resume\">
                                     <div class=\"col-sm-4\">";
             // line 62
             echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "firstname", []), "html", null, true);
@@ -155,14 +155,14 @@ class __TwigTemplate_f4ffd67878ad2c5e1150651873fecd41df4730d560e56728904bfd61bbe
             echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "email", []), "html", null, true);
             echo "</div>
                                 </div>
-                                <div class=\"col-sm-1 customer-entry-actions\">
-                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash\" viewBox=\"0 0 16 16\"
-                                         onclick=\"deleteCustomerDependency(";
+                                <div class=\"col-sm-2 customer-entry-actions\">
+                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-x\" viewBox=\"0 0 16 16\"
+                                        onclick=\"deleteCustomerDependency(";
             // line 68
             echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "idUser", []), "html", null, true);
             echo ")\">
-                                        <path d=\"M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z\"/>
-                                        <path fill-rule=\"evenodd\" d=\"M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z\"/>
+                                        <path d=\"M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>
+                                        <path fill-rule=\"evenodd\" d=\"M12.146 5.146a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z\"/>
                                     </svg>
                                     <form class=\"form\" action=\"";
             // line 72
@@ -176,12 +176,20 @@ class __TwigTemplate_f4ffd67878ad2c5e1150651873fecd41df4730d560e56728904bfd61bbe
             echo "\">
                                     </form>
                                     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-pencil-square\" viewBox=\"0 0 16 16\"
-                                         onclick=\"redirectTo('nutritionist-edit-customer','/'+";
+                                        onclick=\"redirectTo('nutritionist-edit-customer','/'+";
             // line 76
             echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "idUser", []), "html", null, true);
             echo ")\">
                                         <path d=\"M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z\"/>
                                         <path fill-rule=\"evenodd\" d=\"M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z\"/>
+                                    </svg>
+                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-journals\" viewBox=\"0 0 16 16\"
+                                        onclick=\"redirectTo('nutritionist-assigned-customer-plans','/'+";
+            // line 81
+            echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "idUser", []), "html", null, true);
+            echo ")\">
+                                        <path d=\"M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z\"/>
+                                        <path d=\"M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z\"/>
                                     </svg>
                                 </div>
                             </div>
@@ -190,7 +198,7 @@ class __TwigTemplate_f4ffd67878ad2c5e1150651873fecd41df4730d560e56728904bfd61bbe
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['customer'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 83
+        // line 88
         echo "                    </div>
                 </div>
             </div>
@@ -210,7 +218,7 @@ class __TwigTemplate_f4ffd67878ad2c5e1150651873fecd41df4730d560e56728904bfd61bbe
 
     public function getDebugInfo()
     {
-        return array (  194 => 83,  181 => 76,  173 => 73,  169 => 72,  162 => 68,  155 => 64,  151 => 63,  147 => 62,  143 => 60,  139 => 59,  128 => 51,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  202 => 88,  189 => 81,  181 => 76,  173 => 73,  169 => 72,  162 => 68,  155 => 64,  151 => 63,  147 => 62,  143 => 60,  139 => 59,  128 => 51,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -264,7 +272,7 @@ class __TwigTemplate_f4ffd67878ad2c5e1150651873fecd41df4730d560e56728904bfd61bbe
                         </div>
                         <div class=\"col-sm-1\" style=\"padding: 15px 0;\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-plus-fill\" viewBox=\"0 0 16 16\" style=\"float: right; color: white\"
-                                 onclick=\"redirectTo('nutritionist-add-customer')\">
+                                 onclick=\"redirectTo('nutritionist-all-customers')\">
                                 <path d=\"M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z\"/>
                                 <path fill-rule=\"evenodd\" d=\"M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z\"/>
                             </svg>
@@ -274,8 +282,8 @@ class __TwigTemplate_f4ffd67878ad2c5e1150651873fecd41df4730d560e56728904bfd61bbe
                         <nav class=\"navbar navbar-light bg-light\">
                             <div class=\"container-fluid\">
                                 <form class=\"form customers-finder\" action=\"{{ path(\"nutritionist_customers\") }}\" method=\"post\">
-                                    <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar Cliente\" aria-label=\"Search\" name=\"customer_search\">
-                                    <button class=\"btn btn-outline-success\" type=\"submit\">Buscar</button>
+                                    <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar Cliente\" aria-label=\"Search\" name=\"customer_search\" style=\"width: 95%; display: inline-block\">
+                                    <button class=\"btn btn-outline-success\" type=\"submit\" style=\"margin-bottom: 3px; width: 4.7%; display: inline-block\">Buscar</button>
                                 </form>
                             </div>
                         </nav>
@@ -283,24 +291,29 @@ class __TwigTemplate_f4ffd67878ad2c5e1150651873fecd41df4730d560e56728904bfd61bbe
                     <div class=\"col-sm-12 customers-list\">
                         {% for customer in customers %}
                             <div class=\"customer-entry\">
-                                <div class=\"col-sm-11 customer-entry-resume\">
+                                <div class=\"col-sm-10 customer-entry-resume\">
                                     <div class=\"col-sm-4\">{{ customer.firstname }}</div>
                                     <div class=\"col-sm-4\">{{ customer.lastname }}</div>
                                     <div class=\"col-sm-4\">{{ customer.email }}</div>
                                 </div>
-                                <div class=\"col-sm-1 customer-entry-actions\">
-                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash\" viewBox=\"0 0 16 16\"
-                                         onclick=\"deleteCustomerDependency({{ customer.idUser }})\">
-                                        <path d=\"M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z\"/>
-                                        <path fill-rule=\"evenodd\" d=\"M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z\"/>
+                                <div class=\"col-sm-2 customer-entry-actions\">
+                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-x\" viewBox=\"0 0 16 16\"
+                                        onclick=\"deleteCustomerDependency({{ customer.idUser }})\">
+                                        <path d=\"M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>
+                                        <path fill-rule=\"evenodd\" d=\"M12.146 5.146a.5.5 0 0 1 .708 0L14 6.293l1.146-1.147a.5.5 0 0 1 .708.708L14.707 7l1.147 1.146a.5.5 0 0 1-.708.708L14 7.707l-1.146 1.147a.5.5 0 0 1-.708-.708L13.293 7l-1.147-1.146a.5.5 0 0 1 0-.708z\"/>
                                     </svg>
                                     <form class=\"form\" action=\"{{ path(\"nutritionist_delete_customer\") }}\" method=\"post\">
                                         <input type=\"submit\" class=\"hidden\" name=\"_customer_dependency_delete\" id=\"customer_dependency_delete_{{ customer.idUser }}\" value=\"{{ customer.idUser }}\">
                                     </form>
                                     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-pencil-square\" viewBox=\"0 0 16 16\"
-                                         onclick=\"redirectTo('nutritionist-edit-customer','/'+{{ customer.idUser}})\">
+                                        onclick=\"redirectTo('nutritionist-edit-customer','/'+{{ customer.idUser}})\">
                                         <path d=\"M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z\"/>
                                         <path fill-rule=\"evenodd\" d=\"M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z\"/>
+                                    </svg>
+                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-journals\" viewBox=\"0 0 16 16\"
+                                        onclick=\"redirectTo('nutritionist-assigned-customer-plans','/'+{{ customer.idUser}})\">
+                                        <path d=\"M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z\"/>
+                                        <path d=\"M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z\"/>
                                     </svg>
                                 </div>
                             </div>

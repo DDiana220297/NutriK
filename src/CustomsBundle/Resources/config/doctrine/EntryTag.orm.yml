@@ -1,0 +1,33 @@
+CustomsBundle\Entity\EntryTag:
+    type: entity
+    table: entry_tag
+    indexes:
+        fk_entry_tag_entry:
+            columns:
+                - id_entry
+        fk_entry_tag_tag:
+            columns:
+                - id_tag
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        idEntry:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+            column: id_entry
+        idTag:
+            type: integer
+            nullable: true
+            options:
+                unsigned: true
+            column: id_tag
+    lifecycleCallbacks: {  }

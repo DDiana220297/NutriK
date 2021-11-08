@@ -1,0 +1,27 @@
+NutritionistBundle\Entity\RecipeTag:
+    type: entity
+    table: recipe_tag
+    id:
+        idRecipeTag:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_recipe_tag
+            generator:
+                strategy: IDENTITY
+    fields:
+        idRecipe:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_recipe
+        idTag:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_tag
+    lifecycleCallbacks: {  }

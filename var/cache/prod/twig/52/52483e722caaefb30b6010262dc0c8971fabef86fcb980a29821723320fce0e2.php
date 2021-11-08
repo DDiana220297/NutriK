@@ -132,14 +132,14 @@ class __TwigTemplate_1b6ec685781314c59d6b095abc4297a9bcafda0dffa8b0e7dcff02d6767
             // line 50
             echo "                            <div class=\"appointments-entry\">
                                 <div class=\"col-sm-11 appointments-entry-resume\">
-                                    <h4> ";
+                                    <h4><strong>";
             // line 52
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["appointment"], "date", []), "l", "Europe/Paris"), "html", null, true);
-            echo " - ";
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["appointment"], "date", []), "d", "Europe/Paris"), "html", null, true);
-            echo " de ";
-            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["appointment"], "date", []), "F", "Europe/Paris"), "html", null, true);
-            echo "</h4>
+            echo twig_escape_filter($this->env, $this->getAttribute(($context["appointments_dates"] ?? $this->getContext($context, "appointments_dates")), $this->getAttribute($context["appointment"], "idAppointment", []), [], "array"), "html", null, true);
+            echo "</strong><a href=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_customer", ["id_user" => $this->getAttribute($context["appointment"], "idCustomer", [])]), "html", null, true);
+            echo "\" style=\"color: #00766c; margin-left: 10px; font-size: 18px; font-weight: bold\">";
+            echo twig_escape_filter($this->env, $this->getAttribute(($context["appointments_customer"] ?? $this->getContext($context, "appointments_customer")), $this->getAttribute($context["appointment"], "idAppointment", []), [], "array"), "html", null, true);
+            echo "</a></h4>
                                     <p>";
             // line 53
             echo twig_escape_filter($this->env, $this->getAttribute($context["appointment"], "description", []), "html", null, true);
@@ -264,7 +264,7 @@ class __TwigTemplate_1b6ec685781314c59d6b095abc4297a9bcafda0dffa8b0e7dcff02d6767
                         {% for appointment in appointments %}
                             <div class=\"appointments-entry\">
                                 <div class=\"col-sm-11 appointments-entry-resume\">
-                                    <h4> {{ appointment.date|date('l', \"Europe/Paris\") }} - {{ appointment.date|date('d', \"Europe/Paris\") }} de {{ appointment.date|date('F', \"Europe/Paris\") }}</h4>
+                                    <h4><strong>{{ appointments_dates[appointment.idAppointment] }}</strong><a href=\"{{ path('nutritionist_edit_customer',{'id_user':appointment.idCustomer}) }}\" style=\"color: #00766c; margin-left: 10px; font-size: 18px; font-weight: bold\">{{ appointments_customer[appointment.idAppointment] }}</a></h4>
                                     <p>{{ appointment.description }}</p>
                                 </div>
                                 <div class=\"col-sm-1 appointments-entry-actions\">

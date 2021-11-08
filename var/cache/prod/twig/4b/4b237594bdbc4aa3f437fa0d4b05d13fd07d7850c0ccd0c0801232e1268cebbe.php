@@ -96,31 +96,41 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
                 <div class=\"col-sm-12\">
                     <div id=\"weekly-plan-content-block\" style=\"height: 15rem; margin-bottom: 20px\">
                         <div class=\"col-sm-6\">
-                            <label for=\"plan_tags\">Tag:</label><select name=\"plan_tags\" id=\"plan_tags\">
+                            <label>Tags:</label>
+                            <ul class=\"list-group\" id=\"weekly_plan_tags\">
                                 ";
-        // line 29
+        // line 30
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["tags"] ?? $this->getContext($context, "tags")));
         foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
-            // line 30
-            echo "                                    <option value=\"";
+            // line 31
+            echo "                                    <li>
+                                        <input type=\"checkbox\" value=\"";
+            // line 32
             echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "idTag", []), "html", null, true);
-            echo "\">";
+            echo "\" style=\"width: fit-content; margin-bottom: 5px; margin-top: 5px\" name=\"add_tags[";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "idTag", []), "html", null, true);
+            echo "][]\">
+                                        Nivel ";
+            // line 33
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "level", []), "html", null, true);
+            echo " - ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "name", []), "html", null, true);
-            echo "</option>
+            echo "
+                                    </li>
                                 ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 32
-        echo "                            </select>
-                            <br/><br/>
-                            <label for=\"plan_title\">Tile:</label>
-                            <textarea type=\"text\" id=\"plan_title\" name=\"plan_title\" class=\"form-control\"></textarea>
+        // line 36
+        echo "                            </ul>
                         </div>
                         <div class=\"col-sm-6\">
-                            <label for=\"plan_description\">Descripción:</label><textarea type=\"text\" id=\"plan_description\" name=\"plan_description\" class=\"form-control\" style=\"height: 100px\"></textarea>
+                            <label for=\"plan_title\">Tile:</label>
+                            <textarea type=\"text\" id=\"plan_title\" name=\"plan_title\" class=\"form-control\"></textarea>
+                            <label for=\"plan_description\">Descripción:</label>
+                            <textarea type=\"text\" id=\"plan_description\" name=\"plan_description\" class=\"form-control\" style=\"height: 5.5rem\"></textarea>
                         </div>
                     </div>
                 </div>
@@ -232,20 +242,20 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
                                             <br/>
                                             <ul class=\"list-group\" id=\"monday-workout-exercises\">
                                                 ";
-        // line 149
+        // line 153
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["exercises"] ?? $this->getContext($context, "exercises")));
         foreach ($context['_seq'] as $context["_key"] => $context["exercise"]) {
-            // line 150
+            // line 154
             echo "                                                    <li>
                                                         <input type=\"checkbox\" value=\"";
-            // line 151
+            // line 155
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"monday_workout_exercises[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "][]\">
                                                         ";
-            // line 152
+            // line 156
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "
                                                     </li>
@@ -254,7 +264,7 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['exercise'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 155
+        // line 159
         echo "                                            </ul>
                                             <label for=\"monday-workout-notes\">Observaciones:</label>
                                             <textarea type=\"text\" id=\"monday-workout-notes\" name=\"monday_workout_notes\" class=\"form-control\" style=\"height: 80px\"></textarea>
@@ -357,20 +367,20 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
                                             <br/>
                                             <ul class=\"list-group\" id=\"tuesday-workout-exercises\">
                                                 ";
-        // line 256
+        // line 260
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["exercises"] ?? $this->getContext($context, "exercises")));
         foreach ($context['_seq'] as $context["_key"] => $context["exercise"]) {
-            // line 257
+            // line 261
             echo "                                                    <li>
                                                         <input type=\"checkbox\" value=\"";
-            // line 258
+            // line 262
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"tuesday_workout_exercises[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "][]\">
                                                         ";
-            // line 259
+            // line 263
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "
                                                     </li>
@@ -379,7 +389,7 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['exercise'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 262
+        // line 266
         echo "                                            </ul>
                                             <label for=\"tuesday-workout-notes\">Observaciones:</label>
                                             <textarea type=\"text\" id=\"tuesday-workout-notes\" name=\"tuesday_workout_notes\" class=\"form-control\" style=\"height: 80px\"></textarea>
@@ -483,20 +493,20 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
                                             <br/>
                                             <ul class=\"list-group\" id=\"wednesday-workout-exercises\">
                                                 ";
-        // line 364
+        // line 368
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["exercises"] ?? $this->getContext($context, "exercises")));
         foreach ($context['_seq'] as $context["_key"] => $context["exercise"]) {
-            // line 365
+            // line 369
             echo "                                                    <li>
                                                         <input type=\"checkbox\" value=\"";
-            // line 366
+            // line 370
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"wednesday_workout_exercises[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "][]\">
                                                         ";
-            // line 367
+            // line 371
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "
                                                     </li>
@@ -505,7 +515,7 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['exercise'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 370
+        // line 374
         echo "                                            </ul>
                                             <label for=\"wednesday-workout-notes\">Observaciones:</label>
                                             <textarea type=\"text\" id=\"wednesday-workout-notes\" name=\"wednesday_workout_notes\" class=\"form-control\" style=\"height: 80px\"></textarea>
@@ -609,20 +619,20 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
                                             <br/>
                                             <ul class=\"list-group\" id=\"thursday-workout-exercises\">
                                                 ";
-        // line 472
+        // line 476
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["exercises"] ?? $this->getContext($context, "exercises")));
         foreach ($context['_seq'] as $context["_key"] => $context["exercise"]) {
-            // line 473
+            // line 477
             echo "                                                    <li>
                                                         <input type=\"checkbox\" value=\"";
-            // line 474
+            // line 478
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"thursday_workout_exercises[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "][]\">
                                                         ";
-            // line 475
+            // line 479
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "
                                                     </li>
@@ -631,7 +641,7 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['exercise'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 478
+        // line 482
         echo "                                            </ul>
                                             <label for=\"thursday-workout-notes\">Observaciones:</label>
                                             <textarea type=\"text\" id=\"thursday-workout-notes\" name=\"thursday_workout_notes\" class=\"form-control\" style=\"height: 80px\"></textarea>
@@ -735,20 +745,20 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
                                             <br/>
                                             <ul class=\"list-group\" id=\"friday-workout-exercises\">
                                                 ";
-        // line 580
+        // line 584
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["exercises"] ?? $this->getContext($context, "exercises")));
         foreach ($context['_seq'] as $context["_key"] => $context["exercise"]) {
-            // line 581
+            // line 585
             echo "                                                    <li>
                                                         <input type=\"checkbox\" value=\"";
-            // line 582
+            // line 586
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"friday_workout_exercises[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "][]\">
                                                         ";
-            // line 583
+            // line 587
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "
                                                     </li>
@@ -757,7 +767,7 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['exercise'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 586
+        // line 590
         echo "                                            </ul>
                                             <label for=\"friday-workout-notes\">Observaciones:</label>
                                             <textarea type=\"text\" id=\"friday-workout-notes\" name=\"friday_workout_notes\" class=\"form-control\" style=\"height: 80px\"></textarea>
@@ -861,20 +871,20 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
                                             <br/>
                                             <ul class=\"list-group\" id=\"saturday-workout-exercises\">
                                                 ";
-        // line 688
+        // line 692
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["exercises"] ?? $this->getContext($context, "exercises")));
         foreach ($context['_seq'] as $context["_key"] => $context["exercise"]) {
-            // line 689
+            // line 693
             echo "                                                    <li>
                                                         <input type=\"checkbox\" value=\"";
-            // line 690
+            // line 694
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"saturday_workout_exercises[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "][]\">
                                                         ";
-            // line 691
+            // line 695
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "
                                                     </li>
@@ -883,7 +893,7 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['exercise'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 694
+        // line 698
         echo "                                            </ul>
                                             <label for=\"saturday-workout-notes\">Observaciones:</label>
                                             <textarea type=\"text\" id=\"saturday-workout-notes\" name=\"saturday_workout_notes\" class=\"form-control\" style=\"height: 80px\"></textarea>
@@ -987,20 +997,20 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
                                             <br/>
                                             <ul class=\"list-group\" id=\"sunday-workout-exercises\">
                                                 ";
-        // line 796
+        // line 800
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["exercises"] ?? $this->getContext($context, "exercises")));
         foreach ($context['_seq'] as $context["_key"] => $context["exercise"]) {
-            // line 797
+            // line 801
             echo "                                                    <li>
                                                         <input type=\"checkbox\" value=\"";
-            // line 798
+            // line 802
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"sunday_workout_exercises[";
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "idExercise", []), "html", null, true);
             echo "][]\">
                                                         ";
-            // line 799
+            // line 803
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "
                                                     </li>
@@ -1009,7 +1019,7 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['exercise'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 802
+        // line 806
         echo "                                            </ul>
                                             <label for=\"sunday-workout-notes\">Observaciones:</label>
                                             <textarea type=\"text\" id=\"sunday-workout-notes\" name=\"sunday_workout_notes\" class=\"form-control\" style=\"height: 80px\"></textarea>
@@ -1039,7 +1049,7 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
 
     public function getDebugInfo()
     {
-        return array (  1013 => 802,  1004 => 799,  998 => 798,  995 => 797,  991 => 796,  887 => 694,  878 => 691,  872 => 690,  869 => 689,  865 => 688,  761 => 586,  752 => 583,  746 => 582,  743 => 581,  739 => 580,  635 => 478,  626 => 475,  620 => 474,  617 => 473,  613 => 472,  509 => 370,  500 => 367,  494 => 366,  491 => 365,  487 => 364,  383 => 262,  374 => 259,  368 => 258,  365 => 257,  361 => 256,  258 => 155,  249 => 152,  243 => 151,  240 => 150,  236 => 149,  117 => 32,  106 => 30,  102 => 29,  94 => 24,  90 => 22,  80 => 18,  76 => 16,  72 => 15,  66 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  1023 => 806,  1014 => 803,  1008 => 802,  1005 => 801,  1001 => 800,  897 => 698,  888 => 695,  882 => 694,  879 => 693,  875 => 692,  771 => 590,  762 => 587,  756 => 586,  753 => 585,  749 => 584,  645 => 482,  636 => 479,  630 => 478,  627 => 477,  623 => 476,  519 => 374,  510 => 371,  504 => 370,  501 => 369,  497 => 368,  393 => 266,  384 => 263,  378 => 262,  375 => 261,  371 => 260,  268 => 159,  259 => 156,  253 => 155,  250 => 154,  246 => 153,  127 => 36,  116 => 33,  110 => 32,  107 => 31,  103 => 30,  94 => 24,  90 => 22,  80 => 18,  76 => 16,  72 => 15,  66 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -1079,17 +1089,21 @@ class __TwigTemplate_b2a6e26fe4ca9d748a596732063a043fd4399191540bf862ee5132f522a
                 <div class=\"col-sm-12\">
                     <div id=\"weekly-plan-content-block\" style=\"height: 15rem; margin-bottom: 20px\">
                         <div class=\"col-sm-6\">
-                            <label for=\"plan_tags\">Tag:</label><select name=\"plan_tags\" id=\"plan_tags\">
+                            <label>Tags:</label>
+                            <ul class=\"list-group\" id=\"weekly_plan_tags\">
                                 {% for tag in tags %}
-                                    <option value=\"{{ tag.idTag }}\">{{ tag.name }}</option>
+                                    <li>
+                                        <input type=\"checkbox\" value=\"{{ tag.idTag }}\" style=\"width: fit-content; margin-bottom: 5px; margin-top: 5px\" name=\"add_tags[{{ tag.idTag }}][]\">
+                                        Nivel {{ tag.level }} - {{ tag.name }}
+                                    </li>
                                 {% endfor %}
-                            </select>
-                            <br/><br/>
-                            <label for=\"plan_title\">Tile:</label>
-                            <textarea type=\"text\" id=\"plan_title\" name=\"plan_title\" class=\"form-control\"></textarea>
+                            </ul>
                         </div>
                         <div class=\"col-sm-6\">
-                            <label for=\"plan_description\">Descripción:</label><textarea type=\"text\" id=\"plan_description\" name=\"plan_description\" class=\"form-control\" style=\"height: 100px\"></textarea>
+                            <label for=\"plan_title\">Tile:</label>
+                            <textarea type=\"text\" id=\"plan_title\" name=\"plan_title\" class=\"form-control\"></textarea>
+                            <label for=\"plan_description\">Descripción:</label>
+                            <textarea type=\"text\" id=\"plan_description\" name=\"plan_description\" class=\"form-control\" style=\"height: 5.5rem\"></textarea>
                         </div>
                     </div>
                 </div>

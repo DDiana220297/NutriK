@@ -117,11 +117,11 @@
                                                     {{ log.context }}
                                                 </div>
                                             {% elseif 'delete' in log.source %}
-                                                <div class="alert alert-danger" role="alert" style="margin-bottom: 0; padding: 10px"">
+                                                <div class="alert alert-danger" role="alert" style="margin-bottom: 0; padding: 10px">
                                                     {{ log.context }}
                                                 </div>
                                             {% else %}
-                                                <div class="alert alert-info" role="alert" style="margin-bottom: 0; padding: 10px"">
+                                                <div class="alert alert-info" role="alert" style="margin-bottom: 0; padding: 10px">
                                                     {{ log.context }}
                                                 </div>
                                             {% endif %}
@@ -142,6 +142,7 @@
                                         <input class="calendar_event_start" value="{{ calendar_event['start']|date('Y-m-d H:i:s') }}"/>
                                         <input class="calendar_event_end" value="{{ calendar_event['end']|date('Y-m-d H:i:s') }}"/>
                                         <input class="calendar_event_url" value="{{ calendar_event['url'] }}"/>
+                                        <input class="calendar_event_type" value="{{ calendar_event['type'] }}"/>
                                     </div>
                                 {% endfor %}
                                 <div id='wrap'>

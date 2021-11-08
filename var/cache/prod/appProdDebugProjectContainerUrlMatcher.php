@@ -158,6 +158,16 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
                     return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAppointmentsAction',  '_route' => 'nutritionist_appointments',);
                 }
 
+                // nutritionist_assign_plans
+                if ('/nutritionist-assign-plans' === $pathinfo) {
+                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAssignPlansAction',  '_route' => 'nutritionist_assign_plans',);
+                }
+
+                // nutritionist_assigned_customer_plans
+                if (0 === strpos($pathinfo, '/nutritionist-assigned-customer-plans') && preg_match('#^/nutritionist\\-assigned\\-customer\\-plans/(?P<id_customer>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'nutritionist_assigned_customer_plans']), array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistAssignedCustomerPlansAction',));
+                }
+
             }
 
             elseif (0 === strpos($pathinfo, '/nutritionist-edit-')) {
@@ -297,8 +307,8 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
         }
 
         // customer_messenger
-        if ('/messenger' === $pathinfo) {
-            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::messengerAction',  '_route' => 'customer_messenger',);
+        if (0 === strpos($pathinfo, '/messenger') && preg_match('#^/messenger/(?P<id_message>[^/]++)$#sD', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, ['_route' => 'customer_messenger']), array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::messengerAction',));
         }
 
         // customs_homepage

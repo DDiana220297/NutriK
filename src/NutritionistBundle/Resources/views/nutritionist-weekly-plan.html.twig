@@ -25,17 +25,21 @@
                 <div class="col-sm-12">
                     <div id="weekly-plan-content-block" style="height: 15rem; margin-bottom: 20px">
                         <div class="col-sm-6">
-                            <label for="plan_tags">Tag:</label><select name="plan_tags" id="plan_tags">
+                            <label>Tags:</label>
+                            <ul class="list-group" id="weekly_plan_tags">
                                 {% for tag in tags %}
-                                    <option value="{{ tag.idTag }}">{{ tag.name }}</option>
+                                    <li>
+                                        <input type="checkbox" value="{{ tag.idTag }}" style="width: fit-content; margin-bottom: 5px; margin-top: 5px" name="add_tags[{{ tag.idTag }}][]">
+                                        Nivel {{ tag.level }} - {{ tag.name }}
+                                    </li>
                                 {% endfor %}
-                            </select>
-                            <br/><br/>
-                            <label for="plan_title">Tile:</label>
-                            <textarea type="text" id="plan_title" name="plan_title" class="form-control"></textarea>
+                            </ul>
                         </div>
                         <div class="col-sm-6">
-                            <label for="plan_description">Descripción:</label><textarea type="text" id="plan_description" name="plan_description" class="form-control" style="height: 100px"></textarea>
+                            <label for="plan_title">Tile:</label>
+                            <textarea type="text" id="plan_title" name="plan_title" class="form-control"></textarea>
+                            <label for="plan_description">Descripción:</label>
+                            <textarea type="text" id="plan_description" name="plan_description" class="form-control" style="height: 5.5rem"></textarea>
                         </div>
                     </div>
                 </div>

@@ -23,6 +23,17 @@ td.fc-today {
     font-weight:500 !important;
 
 }
+
+.fc-event-inner-diary{
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #8d8d8d 0%, #bdbdbd 100%);
+    border-color: #00A295;
+    color: #FFF!important;
+    font-size: 12px!important;
+    font-weight: 500!important;
+    padding: 5px 0px!important;
+}
+
 .fc-event-inner {
     font-family: 'Roboto', sans-serif;
     background: #26a69a!important;
@@ -152,7 +163,7 @@ span.fc-button {
 .fc-view {
     width: 100%;
     overflow: hidden;
-    height: 50rem;
+    height: 56rem;
 }
 
 

@@ -85,5 +85,6 @@
     height: 55.5rem;
     width: 96%;
     margin: 14px;
+    overflow-y: scroll;
     padding: 0;
 }

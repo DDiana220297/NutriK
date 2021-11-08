@@ -53,3 +53,20 @@ function categoryFilter(idCategory) {
     let button = document.getElementById('categorySearch');
     button.click()
 }
+
+function replyMessage(){
+    let button = document.getElementById('repply_message');
+    button.click();
+}
+
+function changeInboxGroup(){
+    let inboxGroup = document.getElementById("inbox-group");
+    if(inboxGroup.value === 'sent'){
+        $('#inbox_received').hide();
+        $('#inbox_sent').show();
+    }
+    if(inboxGroup.value === 'received'){
+        $('#inbox_received').show();
+        $('#inbox_sent').hide();
+    }
+}

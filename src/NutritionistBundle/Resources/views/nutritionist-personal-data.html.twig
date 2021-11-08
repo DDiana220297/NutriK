@@ -63,9 +63,11 @@
                 <div class="col-sm-6" style="display: inline-flex">
                     <div class="personal-data-fields" style="margin-top: 18%; width: 100%; margin-left: 0; padding: 3px">
                         <label for="bibliografia">Descripción / Bibliografía:</label>
-                        <textarea type="text" id="bibliografia" name="_bibliografia" class="form-control" style="height: 160px">{{ app.user.description }}</textarea>
+                        <textarea type="text" id="bibliografia" name="_bibliografia" class="form-control" style="height: 10rem">{{ app.user.description }}</textarea>
                         <label for="estudios">Estudios:</label>
-                        <textarea type="text" id="estudios" name="_estudios" class="form-control" style="height: 100px">{{ app.user.studies }}</textarea>
+                        <textarea type="text" id="estudios" name="_estudios" class="form-control" style="height: 7rem">{{ app.user.studies }}</textarea>
+                        <label for="antiquity">Antiguedad (años):</label>
+                        <input type="number" id="antiquity" name="_antiquity" class="form-control" value="{{ app.user.antiquity }}" style="width: 85%"/>
                         <label for="n_colegiado">Número de Colegiado:</label>
                         <input type="number" id="n_colegiado" name="_n_colegiado" class="form-control" value="{{ app.user.collegiate_number }}" style="width: 85%"/>
                         <strong>

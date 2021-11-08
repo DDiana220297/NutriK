@@ -18,12 +18,16 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="image" type="text" column="image" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="content" type="text" column="content" length="65535" nullable="false">
       <options>
         <option name="fixed"/>
       </options>
     </field>
-    <field name="image" type="text" column="image" length="65535" nullable="true"/>
     <field name="active" type="boolean" column="active" nullable="false">
       <options>
         <option name="default">1</option>

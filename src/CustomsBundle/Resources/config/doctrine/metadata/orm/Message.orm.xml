@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Message" table="message">
+    <id name="idMessage" type="integer" column="id_message">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idUserFrom" type="integer" column="id_user_from" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idUserTo" type="integer" column="id_user_to" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="content" type="text" column="content" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="subject" type="text" column="subject" length="65535" nullable="false">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="messageRead" type="boolean" column="message_read" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
+    <field name="dateRead" type="datetime" column="date_read" nullable="true"/>
+    <field name="dateAdd" type="datetime" column="date_add" nullable="false"/>
+  </entity>
+</doctrine-mapping>

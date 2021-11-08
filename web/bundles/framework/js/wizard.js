@@ -67,13 +67,12 @@ document.addEventListener('DOMContentLoaded', function(){
     var today = new Date(),
         year = today.getFullYear(),
         month = today.getMonth(),
-        monthTag =["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+        monthTag =["En","Feb","Mar","Apr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
         day = today.getDate(),
         days = document.getElementsByTagName('td'),
         selectedDay,
         setDate,
         daysLen = days.length;
-    // options should like '2014-01-01'
     function Calendar(selector, options) {
         this.options = options;
         this.draw();

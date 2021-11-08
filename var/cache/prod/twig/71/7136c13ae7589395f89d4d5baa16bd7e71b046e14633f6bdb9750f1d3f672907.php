@@ -120,49 +120,42 @@ class __TwigTemplate_9ea655a641077fdf7a63b02735e1433725fc7ab0ef16d61da28ab5813e8
                             </svg>
                         </div>
                     </div>
-                    <div class=\"col-sm-12\">
-                        <nav class=\"navbar navbar-light bg-light\">
-                            <div class=\"container-fluid\">
-                                <form class=\"form customers-finder\" action=\"";
-        // line 51
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_all_customers");
-        echo "\" method=\"post\">
-                                    <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar Cliente\" aria-label=\"Search\" name=\"customer_search\">
-                                    <button class=\"btn btn-outline-success\" type=\"submit\" style=\"float: right\">Buscar</button>
-                                </form>
-                            </div>
-                        </nav>
-                    </div>
                     <form class=\"form customers-finder\" action=\"";
-        // line 58
+        // line 48
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_all_customers");
         echo "\" method=\"post\">
-                        <div class=\"col-sm-12 customers-create-dependency\">
-                            <button class=\"btn btn-outline-success\" style=\"margin: 0 15px; float: right; width: 25%\" type=\"submit\">Crear relación con clientes seleccionados</button>
+                        <div class=\"col-sm-12\">
+                            <nav class=\"navbar navbar-light bg-light\">
+                                <div class=\"container-fluid\">
+                                    <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar Cliente\" aria-label=\"Search\" name=\"customer_search\">
+                                    <button class=\"btn btn-outline-success\" type=\"submit\">Buscar</button>
+                                    <button class=\"btn btn-outline-success\" style=\"width: 17.3%\" type=\"submit\">Crear relación con clientes seleccionados</button>
+                                </div>
+                            </nav>
                         </div>
                         <div class=\"col-sm-12 customers-list\">
                             ";
-        // line 63
+        // line 59
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["customers"] ?? $this->getContext($context, "customers")));
         foreach ($context['_seq'] as $context["_key"] => $context["customer"]) {
-            // line 64
+            // line 60
             echo "                                <div class=\"customer-entry\">
                                     <div class=\"col-sm-11 customer-entry-resume\">
                                         <div class=\"col-sm-3\"><input type=\"checkbox\" value=\"";
-            // line 66
+            // line 62
             echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "idUser", []), "html", null, true);
             echo "\" style=\"width: fit-content; margin-bottom: 10px;\" name=\"customer_dependency_ids[]\"/></div>
                                         <div class=\"col-sm-3\">";
-            // line 67
+            // line 63
             echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "firstname", []), "html", null, true);
             echo "</div>
                                         <div class=\"col-sm-3\">";
-            // line 68
+            // line 64
             echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "lastname", []), "html", null, true);
             echo "</div>
                                         <div class=\"col-sm-3\">";
-            // line 69
+            // line 65
             echo twig_escape_filter($this->env, $this->getAttribute($context["customer"], "email", []), "html", null, true);
             echo "</div>
                                     </div>
@@ -172,7 +165,7 @@ class __TwigTemplate_9ea655a641077fdf7a63b02735e1433725fc7ab0ef16d61da28ab5813e8
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['customer'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 73
+        // line 69
         echo "                        </div>
                     </form>
                 </div>
@@ -193,7 +186,7 @@ class __TwigTemplate_9ea655a641077fdf7a63b02735e1433725fc7ab0ef16d61da28ab5813e8
 
     public function getDebugInfo()
     {
-        return array (  176 => 73,  166 => 69,  162 => 68,  158 => 67,  154 => 66,  150 => 64,  146 => 63,  138 => 58,  128 => 51,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  169 => 69,  159 => 65,  155 => 64,  151 => 63,  147 => 62,  143 => 60,  139 => 59,  125 => 48,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -253,19 +246,15 @@ class __TwigTemplate_9ea655a641077fdf7a63b02735e1433725fc7ab0ef16d61da28ab5813e8
                             </svg>
                         </div>
                     </div>
-                    <div class=\"col-sm-12\">
-                        <nav class=\"navbar navbar-light bg-light\">
-                            <div class=\"container-fluid\">
-                                <form class=\"form customers-finder\" action=\"{{ path(\"nutritionist_all_customers\") }}\" method=\"post\">
-                                    <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar Cliente\" aria-label=\"Search\" name=\"customer_search\">
-                                    <button class=\"btn btn-outline-success\" type=\"submit\" style=\"float: right\">Buscar</button>
-                                </form>
-                            </div>
-                        </nav>
-                    </div>
                     <form class=\"form customers-finder\" action=\"{{ path(\"nutritionist_all_customers\") }}\" method=\"post\">
-                        <div class=\"col-sm-12 customers-create-dependency\">
-                            <button class=\"btn btn-outline-success\" style=\"margin: 0 15px; float: right; width: 25%\" type=\"submit\">Crear relación con clientes seleccionados</button>
+                        <div class=\"col-sm-12\">
+                            <nav class=\"navbar navbar-light bg-light\">
+                                <div class=\"container-fluid\">
+                                    <input class=\"form-control me-2\" type=\"search\" placeholder=\"Buscar Cliente\" aria-label=\"Search\" name=\"customer_search\">
+                                    <button class=\"btn btn-outline-success\" type=\"submit\">Buscar</button>
+                                    <button class=\"btn btn-outline-success\" style=\"width: 17.3%\" type=\"submit\">Crear relación con clientes seleccionados</button>
+                                </div>
+                            </nav>
                         </div>
                         <div class=\"col-sm-12 customers-list\">
                             {% for customer in customers %}

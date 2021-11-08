@@ -439,11 +439,228 @@
     border-color: #00A295;
     border-width: thin;
     border-radius: 0.5rem;
-    height: 80rem;
+    color: black;
+    height: 83rem;
     padding: 50px;
     background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
 }
 
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 73rem;
+    padding: 20px 20px 30px;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+    overflow-y: auto;
+}
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header{
+    color: white;
+    margin-bottom: 10px;
+    padding: 0;
+}
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .new-inbox{
+    float: left;
+    font-size: 16px;
+    color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+    padding: 10px;
+    text-align: center;
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 3.5rem;
+}
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .new-inbox:hover{
+    opacity: 0.5;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-inbox-item{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    padding: 15px;
+    color: black;
+    background: linear-gradient(to top, #f8f8f8 0%, white 100%);
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-inbox-item:hover,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header>select:hover{
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-inbox-item .inbox-details{
+    padding: 0;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-inbox-item .inbox-actions>svg:hover{
+    opacity: 0.5;
+}
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header>select{
+    font-size: 16px;
+    color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal{
+    color: black;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog{
+    margin: 30px 25%;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content{
+    height:65rem;
+    width:100rem;
+    padding: 40px 30px;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_receivers,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_content,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_subject,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_send,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_content,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_send{
+    padding: 0;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_subject>textarea{
+    background: transparent;
+    height: 4rem;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_content>textarea{
+    height: 22rem;
+}
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_subject>textarea:hover,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_content>textarea:hover,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_receivers>ul>li:hover,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_content>textarea:hover,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-left:hover,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-right:hover{
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_receivers>ul{
+    overflow-y: auto;
+    box-shadow: none;
+    height: 10rem;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_receivers>ul>li{
+    padding: 0 15px;
+    height: 28px;
+    font-size: 15px;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_send>input{
+    font-weight: 500;
+    height: 40px;
+    width: 100%;
+    --text-opacity: 1;
+    color: white;
+    margin-top: 15px;
+    border-bottom-width: 4px;
+    --border-opacity: 1;
+    border-color: #00A295;
+    border-radius: .25rem;
+    position: relative;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_send>input:hover{
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 73rem;
+    width: 102rem;
+    padding: 0;
+    margin-left: 10px;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages{
+    height: 67.3rem;
+    padding: 15px 10px;
+    overflow-y: auto;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-left,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-right{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    background: linear-gradient(to bottom, #f8f8f8 0%, white 100%);
+    margin: 20px 0;
+    padding: 10px;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-right .message-icon{
+    width: 5%;
+    display: inline-block;
+    text-align: end;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-left .message-icon{
+    width: 5%;
+    display: inline-block;
+    text-align: start;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-right .message-content{
+    width: 94%;
+    display: inline-block;
+    text-align: end;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-left .message-content{
+    width: 94%;
+    display: inline-block;
+    text-align: start;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_content{
+    width: 93.6%;
+    display: inline-block;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_content>textarea{
+    height: 55px;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_send{
+    width: 6%;
+    display: inline-block;
+}
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_send>button{
+    width: 100%;
+    height: 55px;
+    margin-bottom: 48px;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_send>button:hover{
+    opacity: 0.5;
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
+}
 /* CUSTOMER PROGRESS */
 
 #customer-progress .container{

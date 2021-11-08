@@ -49,8 +49,18 @@
                         {% for event in events %}
                             <div class="event-entry">
                                 <div class="col-sm-11 event-entry-resume">
-                                    <h4>{{ event.title}}</h4>
+                                    <h4>
+                                        {% if event.idEvent in events_tags|keys %}
+                                            <span>
+                                                {% for tag in events_tags[event.idEvent] %}
+                                                    {{ tag.name }} <span style="color: #00766c">></span>
+                                                {% endfor %}
+                                            </span>
+                                        {% endif %}
+                                        <strong style="color: #00766c">{{ event.title}}</strong>
+                                    </h4>
                                     <p>{{ event.description }}</p>
+                                    <strong {% if event.date|date('Y-m-d H:i:s') < now|date('Y-m-d H:i:s') %} style="color: #a94442" {% else %} style="color: #3c763d" {% endif %}>{{ event.date|date('Y-m-d H:i:s') }}</strong>
                                 </div>
                                 <div class="col-sm-1 event-entry-actions">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="margin-right: -35px;"
