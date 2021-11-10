@@ -2,176 +2,87 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90679569-6512-4917-b454-f5ba0a5de6e4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/views/nutritionist-assign-plans.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-assign-plans.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-assigned-customer-plans.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/bundles/framework/css/wizard-customer-plan-form.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/bundles/framework/js/wizard-customer-plan.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/views/nutritionist-config.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-config.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/header.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Resources/views/lateralmenu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/Resources/views/lateralmenu.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htdocs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/app/Resources/views/header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/app/Resources/views/header.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/app/Resources/views/lateralmenu.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/app/Resources/views/lateralmenu.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Controller/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Controller/CustomerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/config/routing.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/views/messenger-services.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomerBundle/Resources/views/messenger-services.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Entity/Logs.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Entity/Logs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Entity/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Entity/Tag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/CustomerMetrics.orm.yml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/CustomerMetrics.orm.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/Entry.orm.yml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/Entry.orm.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/Tag.orm.yml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/Tag.orm.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/metadata/orm/Category.orm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/metadata/orm/CustomerMetrics.orm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/metadata/orm/Entry.orm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/metadata/orm/Logs.orm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/metadata/orm/Tag.orm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/metadata/orm/User.orm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/views/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/views/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/User.orm.yml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/User.orm.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/metadata/orm/User.orm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/CustomsBundle/Resources/config/doctrine/metadata/orm/User.orm.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Controller/NutritionistController.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Controller/NutritionistController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Entity/Appointment.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Entity/Appointment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Entity/Ingredients.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Entity/Ingredients.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Entity/IngredientsRecipes.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Entity/IngredientsRecipes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Entity/Recipes.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Entity/Recipes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/config/doctrine/Recipes.orm.yml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/config/doctrine/Recipes.orm.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/config/doctrine/metadata/orm/Recipes.orm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/config/doctrine/metadata/orm/Recipes.orm.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/views/nutritionist-add-recipe.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/views/nutritionist-add-recipe.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/views/nutritionist-edit-recipe.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/views/nutritionist-edit-recipe.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/dev/appDevDebugProjectContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/dev/appDevDebugProjectContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/dev/appDevDebugProjectContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/dev/appDevDebugProjectContainer.php.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/dev/appDevDebugProjectContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/dev/appDevDebugProjectContainer.xml.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/appProdDebugProjectContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/appProdDebugProjectContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/appProdDebugProjectContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/appProdDebugProjectContainer.php.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/appProdDebugProjectContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/appProdDebugProjectContainer.xml.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/config/routing.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/views/nutritionist-assign-plans.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/views/nutritionist-assign-plans.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/views/nutritionist-assigned-customer-plans.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/src/NutritionistBundle/Resources/views/nutritionist-assigned-customer-plans.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/appProdDebugProjectContainerUrlGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/appProdDebugProjectContainerUrlGenerator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/appProdDebugProjectContainerUrlMatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/appProdDebugProjectContainerUrlMatcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/A/P/CMUSAX4wMzEbK1-J34gm" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/A/P/CMUSAX4wMzEbK1-J34gm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/A/V/yQwtILm0Q3cMCMa3mOkw" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/A/V/yQwtILm0Q3cMCMa3mOkw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/H/O/Dwr-VMB316dmaqQFYYMI" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/H/O/Dwr-VMB316dmaqQFYYMI" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/doctrine/orm/Proxies/__CG__CustomsBundleEntityUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/doctrine/orm/Proxies/__CG__CustomsBundleEntityUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/2/F/2UcEBUz6cl1TpHU0Dx0E" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/2/F/2UcEBUz6cl1TpHU0Dx0E" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/7/6/NlOLKv9EQ80Qa1DCzkPJ" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/7/6/NlOLKv9EQ80Qa1DCzkPJ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/A/C/BunpM+vPUK1xrhzrIS7f" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/A/C/BunpM+vPUK1xrhzrIS7f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/C/N/i+NlSFkOrWjXGqHXcBeL" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/C/N/i+NlSFkOrWjXGqHXcBeL" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/H/L/sIbAYLY-z4sh1yttLxqZ" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/H/L/sIbAYLY-z4sh1yttLxqZ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/I/J/Z0fPerxNEJASnlQrvfVN" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/I/J/Z0fPerxNEJASnlQrvfVN" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/J/5/2eTPLj8VvC7yP48rs2Qw" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/J/5/2eTPLj8VvC7yP48rs2Qw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/J/N/dpBavTeyrFO7heJHUswo" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/J/N/dpBavTeyrFO7heJHUswo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/J/O/2LiZ+3y6izQfd8nuGP-9" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/J/O/2LiZ+3y6izQfd8nuGP-9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/K/R/AQVxVK3UpTgwoGwmKdyz" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/K/R/AQVxVK3UpTgwoGwmKdyz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/M/Q/Cw9HApMK1YqMI-6A9dag" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/M/Q/Cw9HApMK1YqMI-6A9dag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/N/R/H9ugH29R0iFRXw8BiVu3" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/N/R/H9ugH29R0iFRXw8BiVu3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/S/C/O1OXaY7b8EG3tLS-rYMH" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/S/C/O1OXaY7b8EG3tLS-rYMH" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/53/538bd91198d6b4690dad4889912243d7c6805db7c5a97d3567c221e05c7ef0f6.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/53/538bd91198d6b4690dad4889912243d7c6805db7c5a97d3567c221e05c7ef0f6.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/7a/7af5a0ed5772d208a4c1acdce145030a9bc7a0d039a353532c066631b0282ca3.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/7a/7af5a0ed5772d208a4c1acdce145030a9bc7a0d039a353532c066631b0282ca3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/7f/7f8c35e1add2d5a979084702feb19c88ac03cc2bce26f1d0c48b409a17b3afbf.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/7f/7f8c35e1add2d5a979084702feb19c88ac03cc2bce26f1d0c48b409a17b3afbf.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/97/976414557482c42084c505aab82fbcba9213cc1fa85287b0678dff34e483b498.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/97/976414557482c42084c505aab82fbcba9213cc1fa85287b0678dff34e483b498.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/f4/f42eba40e35c42fb8584b01bd97d88cdc4f88673b50480782ada71ee54d2f57f.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/f4/f42eba40e35c42fb8584b01bd97d88cdc4f88673b50480782ada71ee54d2f57f.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/f8/f868f0cec38be3c70c66b31269a97a75d7618a11d5905c3b299a63e7d690dd02.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/f8/f868f0cec38be3c70c66b31269a97a75d7618a11d5905c3b299a63e7d690dd02.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/logs/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/logs/dev.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/K/Z/S1h-cRNQikycu8M1-Efs" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/K/Z/S1h-cRNQikycu8M1-Efs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/N/+/f0ZJ0VRpD1ZbM9T1spfv" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/N/+/f0ZJ0VRpD1ZbM9T1spfv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/O/Y/1rYRmwqbZZgVTZxnxJ6o" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/O/Y/1rYRmwqbZZgVTZxnxJ6o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/R/D/IVkYeOlcN0YLP48huzMp" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/R/D/IVkYeOlcN0YLP48huzMp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/U/I/vNuhMZhXeY5l4lqacieU" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/U/I/vNuhMZhXeY5l4lqacieU" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/V/H/Ah9bz1RGKxExDdwkowQ7" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/V/H/Ah9bz1RGKxExDdwkowQ7" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/V/M/S9cMcExv-WwXlwTdAnsu" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/V/M/S9cMcExv-WwXlwTdAnsu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/V/Y/NQ0ME4BETTbhLIJUh7he" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/V/Y/NQ0ME4BETTbhLIJUh7he" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/Z/R/o93+TDsmAbQc7u8AJrsW" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/pools/yHxYFAKmMm/Z/R/o93+TDsmAbQc7u8AJrsW" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/1c/1c12a34cad61fefbf7f10957077ec7298876ee33a6b257eb0c3bee137b433a7f.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/1c/1c12a34cad61fefbf7f10957077ec7298876ee33a6b257eb0c3bee137b433a7f.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/41/4179272fbae332ef82b288d2dd2d8c9ba40e1d8170b676614be819ef6c17ea43.php" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/cache/prod/twig/41/4179272fbae332ef82b288d2dd2d8c9ba40e1d8170b676614be819ef6c17ea43.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/htdocs/var/logs/prod.log" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/logs/prod.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/var/sessions/prod/sess_0a984775228210899e9fe54c421d8df6" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/var/sessions/prod/sess_0a984775228210899e9fe54c421d8df6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/web/bundles/framework/css/customerpages.css" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/web/bundles/framework/css/customerpages.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/web/bundles/framework/css/home-calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/web/bundles/framework/css/home-calendar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/web/bundles/framework/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/web/bundles/framework/css/homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/var/sessions/prod/sess_767b1c7e48945f1ce87db5057cb8ccd2" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/htdocs/web/bundles/framework/css/nutritionistpages.css" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/web/bundles/framework/css/nutritionistpages.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/web/public/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/web/public/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/htdocs/web/public/js/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/web/public/js/chart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomerBundle/Controller/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerBundle/Controller/CustomerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomerBundle/Resources/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerBundle/Resources/config/routing.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/messenger-services.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomerBundle/Resources/views/messenger-services.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomsBundle/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Entity/Logs.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomsBundle/Entity/Logs.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Entity/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomsBundle/Entity/Tag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/web/bundles/framework/js/customs.js" beforeDir="false" afterPath="$PROJECT_DIR$/htdocs/web/bundles/framework/js/customs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomsBundle/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/CustomerMetrics.orm.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/CustomerMetrics.orm.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Entry.orm.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Entry.orm.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Tag.orm.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Tag.orm.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/User.orm.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/User.orm.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/metadata/orm/Category.orm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/metadata/orm/CustomerMetrics.orm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/metadata/orm/Entry.orm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/metadata/orm/Logs.orm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/metadata/orm/Tag.orm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/metadata/orm/User.orm.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Resources/views/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomsBundle/Resources/views/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/metadata/orm/User.orm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/metadata/orm/User.orm.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Controller/NutritionistController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Controller/NutritionistController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Entity/Appointment.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Entity/Appointment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Entity/Ingredients.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Entity/Ingredients.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Entity/IngredientsRecipes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Entity/IngredientsRecipes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Entity/Recipes.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Entity/Recipes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/config/doctrine/Recipes.orm.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/config/doctrine/Recipes.orm.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/config/doctrine/metadata/orm/Recipes.orm.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/config/doctrine/metadata/orm/Recipes.orm.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/config/routing.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/config/routing.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/add-customer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/add-customer.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/add-didactic-content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/add-didactic-content.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/edit-customer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/edit-customer.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/edit-didactic-content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/edit-didactic-content.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-account.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-account.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-add-event.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-add-event.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-add-recipe.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-add-recipe.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-all-customers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-all-customers.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-appointments.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-appointments.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-customers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-customers.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-didactic-content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-didactic-content.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-edit-event.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-edit-event.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-assign-plans.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-assign-plans.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-assigned-customer-plans.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-assigned-customer-plans.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-edit-recipe.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-edit-recipe.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-edit-weekly-plan.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-edit-weekly-plan.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-events.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-events.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-personal-data.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-personal-data.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-plans.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-plans.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-recipes.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-recipes.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-weekly-plan.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-weekly-plan.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/schedule-appointment.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/schedule-appointment.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.php.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/appDevDebugProjectContainer.xml.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/appProdDebugProjectContainer.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/appProdDebugProjectContainer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/appProdDebugProjectContainer.php.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/appProdDebugProjectContainer.php.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/appProdDebugProjectContainer.xml.meta" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/appProdDebugProjectContainer.xml.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/prod/appProdDebugProjectContainerUrlGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/appProdDebugProjectContainerUrlGenerator.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/prod/appProdDebugProjectContainerUrlMatcher.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/appProdDebugProjectContainerUrlMatcher.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/A/P/CMUSAX4wMzEbK1-J34gm" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/A/P/CMUSAX4wMzEbK1-J34gm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/A/V/yQwtILm0Q3cMCMa3mOkw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/A/V/yQwtILm0Q3cMCMa3mOkw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/H/O/Dwr-VMB316dmaqQFYYMI" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/H/O/Dwr-VMB316dmaqQFYYMI" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/doctrine/orm/Proxies/__CG__CustomsBundleEntityUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/doctrine/orm/Proxies/__CG__CustomsBundleEntityUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/2/F/2UcEBUz6cl1TpHU0Dx0E" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/2/F/2UcEBUz6cl1TpHU0Dx0E" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/7/6/NlOLKv9EQ80Qa1DCzkPJ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/7/6/NlOLKv9EQ80Qa1DCzkPJ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/A/C/BunpM+vPUK1xrhzrIS7f" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/A/C/BunpM+vPUK1xrhzrIS7f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/C/N/i+NlSFkOrWjXGqHXcBeL" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/C/N/i+NlSFkOrWjXGqHXcBeL" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/H/L/sIbAYLY-z4sh1yttLxqZ" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/H/L/sIbAYLY-z4sh1yttLxqZ" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/I/J/Z0fPerxNEJASnlQrvfVN" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/I/J/Z0fPerxNEJASnlQrvfVN" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/J/5/2eTPLj8VvC7yP48rs2Qw" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/J/5/2eTPLj8VvC7yP48rs2Qw" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/J/N/dpBavTeyrFO7heJHUswo" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/J/N/dpBavTeyrFO7heJHUswo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/J/O/2LiZ+3y6izQfd8nuGP-9" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/J/O/2LiZ+3y6izQfd8nuGP-9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/K/R/AQVxVK3UpTgwoGwmKdyz" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/K/R/AQVxVK3UpTgwoGwmKdyz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/M/Q/Cw9HApMK1YqMI-6A9dag" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/M/Q/Cw9HApMK1YqMI-6A9dag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/N/R/H9ugH29R0iFRXw8BiVu3" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/N/R/H9ugH29R0iFRXw8BiVu3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/S/C/O1OXaY7b8EG3tLS-rYMH" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/S/C/O1OXaY7b8EG3tLS-rYMH" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/13/13087cb947f0b8b67adc8448869e37688e0e9bf74ad881450cea4a4a9ffbf33a.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/13/13087cb947f0b8b67adc8448869e37688e0e9bf74ad881450cea4a4a9ffbf33a.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/2e/2e33c8107e9e7641cb1ea399f0d563ce78a4eca293fb83af804502085f9f0d0c.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/2e/2e33c8107e9e7641cb1ea399f0d563ce78a4eca293fb83af804502085f9f0d0c.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/2f/2f094f7b0afcee300419936091ba9155fa6c9d49642863adf312db18c6ba92f3.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/2f/2f094f7b0afcee300419936091ba9155fa6c9d49642863adf312db18c6ba92f3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/37/37a1bf97c4323f89da5465ccaaae996cca468f9d11707b1c046cfdb9664ec935.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/37/37a1bf97c4323f89da5465ccaaae996cca468f9d11707b1c046cfdb9664ec935.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/4a/4adc47da515d6dee3df183499ace0f4615d5ec1b44f3cf22bc86a57b955d1804.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/4a/4adc47da515d6dee3df183499ace0f4615d5ec1b44f3cf22bc86a57b955d1804.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/K/Z/S1h-cRNQikycu8M1-Efs" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/K/Z/S1h-cRNQikycu8M1-Efs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/N/+/f0ZJ0VRpD1ZbM9T1spfv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/N/+/f0ZJ0VRpD1ZbM9T1spfv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/O/Y/1rYRmwqbZZgVTZxnxJ6o" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/O/Y/1rYRmwqbZZgVTZxnxJ6o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/R/D/IVkYeOlcN0YLP48huzMp" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/R/D/IVkYeOlcN0YLP48huzMp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/U/I/vNuhMZhXeY5l4lqacieU" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/U/I/vNuhMZhXeY5l4lqacieU" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/V/H/Ah9bz1RGKxExDdwkowQ7" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/V/H/Ah9bz1RGKxExDdwkowQ7" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/V/M/S9cMcExv-WwXlwTdAnsu" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/V/M/S9cMcExv-WwXlwTdAnsu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/V/Y/NQ0ME4BETTbhLIJUh7he" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/V/Y/NQ0ME4BETTbhLIJUh7he" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/Z/R/o93+TDsmAbQc7u8AJrsW" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/pools/yHxYFAKmMm/Z/R/o93+TDsmAbQc7u8AJrsW" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/1c/1c12a34cad61fefbf7f10957077ec7298876ee33a6b257eb0c3bee137b433a7f.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/1c/1c12a34cad61fefbf7f10957077ec7298876ee33a6b257eb0c3bee137b433a7f.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/41/4179272fbae332ef82b288d2dd2d8c9ba40e1d8170b676614be819ef6c17ea43.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/41/4179272fbae332ef82b288d2dd2d8c9ba40e1d8170b676614be819ef6c17ea43.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/4b/4b237594bdbc4aa3f437fa0d4b05d13fd07d7850c0ccd0c0801232e1268cebbe.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/4b/4b237594bdbc4aa3f437fa0d4b05d13fd07d7850c0ccd0c0801232e1268cebbe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/52/52483e722caaefb30b6010262dc0c8971fabef86fcb980a29821723320fce0e2.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/52/52483e722caaefb30b6010262dc0c8971fabef86fcb980a29821723320fce0e2.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/52/5284d8ba4431b6f02e41f164a93d661cc9d0718060b5b6c6af42cb814afb95ad.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/52/5284d8ba4431b6f02e41f164a93d661cc9d0718060b5b6c6af42cb814afb95ad.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/53/538bd91198d6b4690dad4889912243d7c6805db7c5a97d3567c221e05c7ef0f6.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/53/538bd91198d6b4690dad4889912243d7c6805db7c5a97d3567c221e05c7ef0f6.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/6c/6c2136f901f011681f8eabbbf946852b8bd230838b0d2696fd4056c8eb2f97ea.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/6c/6c2136f901f011681f8eabbbf946852b8bd230838b0d2696fd4056c8eb2f97ea.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/70/7059f187507ba1d73d96931e13ae43a3a018bd5e08f26f8cabb8c755dbf9c92d.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/70/7059f187507ba1d73d96931e13ae43a3a018bd5e08f26f8cabb8c755dbf9c92d.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/71/7136c13ae7589395f89d4d5baa16bd7e71b046e14633f6bdb9750f1d3f672907.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/71/7136c13ae7589395f89d4d5baa16bd7e71b046e14633f6bdb9750f1d3f672907.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/7a/7af5a0ed5772d208a4c1acdce145030a9bc7a0d039a353532c066631b0282ca3.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/7a/7af5a0ed5772d208a4c1acdce145030a9bc7a0d039a353532c066631b0282ca3.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/7f/7f8c35e1add2d5a979084702feb19c88ac03cc2bce26f1d0c48b409a17b3afbf.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/7f/7f8c35e1add2d5a979084702feb19c88ac03cc2bce26f1d0c48b409a17b3afbf.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/97/976414557482c42084c505aab82fbcba9213cc1fa85287b0678dff34e483b498.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/97/976414557482c42084c505aab82fbcba9213cc1fa85287b0678dff34e483b498.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/ba/ba71afa9484270af4356e958691fc2dd1b1bced61bc3716ec7a1ea73bb27891e.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/ba/ba71afa9484270af4356e958691fc2dd1b1bced61bc3716ec7a1ea73bb27891e.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/ce/ce18002fd2f530e145fa678342077025cb6647afd878f8bce3d9cc5ffc9e12b5.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/ce/ce18002fd2f530e145fa678342077025cb6647afd878f8bce3d9cc5ffc9e12b5.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/ce/ce795cc1934dba817e30e789f06648acca0974fddbcd21b7137cc9fe3948d15e.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/ce/ce795cc1934dba817e30e789f06648acca0974fddbcd21b7137cc9fe3948d15e.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/e7/e787a49481db87cfcb1360e00b6791bfe741e6186b9a7b9b0c82169aa85861d5.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/e7/e787a49481db87cfcb1360e00b6791bfe741e6186b9a7b9b0c82169aa85861d5.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/ef/ef5d76edc665cd36a134ccb2a467aeb6e9d6e56d3008cfed51a440a15439c8cd.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/ef/ef5d76edc665cd36a134ccb2a467aeb6e9d6e56d3008cfed51a440a15439c8cd.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/ef/ef7e086503a07d1486db32f171ceba4cfb1d7561b3623adb23d86a7b93f75192.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/ef/ef7e086503a07d1486db32f171ceba4cfb1d7561b3623adb23d86a7b93f75192.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/f1/f1ccd735beee56a746e09134c4d710d6f5c6726ee0cea90e3a26059379648d40.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/f1/f1ccd735beee56a746e09134c4d710d6f5c6726ee0cea90e3a26059379648d40.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/f4/f42eba40e35c42fb8584b01bd97d88cdc4f88673b50480782ada71ee54d2f57f.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/f4/f42eba40e35c42fb8584b01bd97d88cdc4f88673b50480782ada71ee54d2f57f.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/f8/f868f0cec38be3c70c66b31269a97a75d7618a11d5905c3b299a63e7d690dd02.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/f8/f868f0cec38be3c70c66b31269a97a75d7618a11d5905c3b299a63e7d690dd02.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/logs/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/logs/dev.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/var/logs/prod.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/logs/prod.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/sessions/prod/sess_0a984775228210899e9fe54c421d8df6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/bundles/framework/css/customerpages.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/bundles/framework/css/customerpages.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/bundles/framework/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/bundles/framework/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/bundles/framework/css/home-calendar.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/bundles/framework/css/home-calendar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/bundles/framework/css/homepage.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/bundles/framework/css/homepage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/sessions/prod/sess_767b1c7e48945f1ce87db5057cb8ccd2" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/bundles/framework/css/nutritionistpages.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/bundles/framework/css/nutritionistpages.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/bundles/framework/css/wizard-form.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/bundles/framework/css/wizard-form.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/bundles/framework/js/customs.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/bundles/framework/js/customs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/bundles/framework/js/wizard.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/bundles/framework/js/wizard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/js/calendar.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/public/js/calendar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/public/js/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/public/js/chart.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,48 +115,48 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/add-didactic-content.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/edit-didactic-content.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/loginpagemodal.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/config/services.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Entry.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/views/personal-data.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-plans.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-account.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-didactic-content.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/web/public/js/calendar.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-personal-data.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/config/parameters.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/header.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/loginpagemodal.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/views/news.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Category.orm.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/add-didactic-content.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/User.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-recipes.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/carousel.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Controller/DefaultController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Controller/NutritionistController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/header.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Category.orm.yml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/AppCache.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Entity/DiaryPages.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/Resources/views/login.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/carousel.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Category.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Controller/DefaultController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/views/progress.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/AppKernel.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Tag.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Controller/AuthController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Controller/NutritionistController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/config/services.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/AppCache.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/views/index.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Entry.orm.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Entry.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/composer.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/views/personal-data.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/customerheader.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/config/security.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/CustomsBundle.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/config/parameters.yml.dist" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Category.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/customerheader.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Controller/CustomerController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/config/parameters.yml.dist" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/config/services.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/AppKernel.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/edit-didactic-content.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-account.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/web/public/js/calendar.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-personal-data.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-didactic-content.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/composer.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Tag.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Entry.orm.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Controller/AuthController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/config/parameters.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-recipes.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/config/services.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/CustomsBundle.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/views/index.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="PhpServers">
     <servers>
@@ -392,6 +303,7 @@
       <workItem from="1636026602640" duration="11237000" />
       <workItem from="1636199419998" duration="26125000" />
       <workItem from="1636280015881" duration="40405000" />
+      <workItem from="1636470533641" duration="26097000" />
     </task>
     <servers />
   </component>
@@ -450,7 +362,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/web/bundles/framework/js/customs.js</url>
-          <line>52</line>
+          <line>60</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>

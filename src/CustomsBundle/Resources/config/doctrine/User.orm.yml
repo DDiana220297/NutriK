@@ -84,6 +84,24 @@ CustomsBundle\Entity\User:
             length: 65535
             options:
                 fixed: false
+        image:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        socialMedia:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        presentation:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
         antiquity:
             type: integer
             nullable: true

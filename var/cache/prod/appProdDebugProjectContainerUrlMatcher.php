@@ -208,14 +208,27 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
                 return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistEventsAction',  '_route' => 'nutritionist_events',);
             }
 
-            // nutritionist_customers
-            if ('/nutritionist-customers' === $pathinfo) {
-                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistCustomersAction',  '_route' => 'nutritionist_customers',);
-            }
+            if (0 === strpos($pathinfo, '/nutritionist-c')) {
+                // nutritionist_customers
+                if ('/nutritionist-customers' === $pathinfo) {
+                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistCustomersAction',  '_route' => 'nutritionist_customers',);
+                }
 
-            // nutritionist_calendar
-            if ('/nutritionist-calendar' === $pathinfo) {
-                return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistCalendarAction',  '_route' => 'nutritionist_calendar',);
+                // nutritionist_customer_delete_weekly_plan
+                if ('/nutritionist-customer-delete-weekly-plan' === $pathinfo) {
+                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistCustomerDeleteWeeklyPlanAction',  '_route' => 'nutritionist_customer_delete_weekly_plan',);
+                }
+
+                // nutritionist_calendar
+                if ('/nutritionist-calendar' === $pathinfo) {
+                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistCalendarAction',  '_route' => 'nutritionist_calendar',);
+                }
+
+                // nutritionist_configuration
+                if ('/nutritionist-config' === $pathinfo) {
+                    return array (  '_controller' => 'NutritionistBundle\\Controller\\NutritionistController::nutritionistConfigurationAction',  '_route' => 'nutritionist_configuration',);
+                }
+
             }
 
             // nutritionist_recipes

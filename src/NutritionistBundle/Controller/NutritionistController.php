@@ -3382,7 +3382,7 @@ class NutritionistController extends Controller
                     SELECT r FROM NutritionistBundle:Recipes r
                     WHERE
                       (r.idUser = ".$user->getIdUser()." OR r.idUser = 0)
-                      AND r.name LIKE '%$key%'
+                      AND (r.name LIKE '%$key%' OR r.description LIKE '%$key%')
                 ");
                 $recipes = $dql_query->getResult();
             }
@@ -3838,7 +3838,11 @@ class NutritionistController extends Controller
         );
     }
 
-
+    /**
+     * @param Request $request
+     * @return Response|null
+     * @throws \Exception
+     */
     public function nutritionistAssignPlansAction(Request $request){
         $customers = array();
 
@@ -3889,19 +3893,19 @@ class NutritionistController extends Controller
                             $customer_plan->setDateAdd(new \DateTime('NOW'));
                             $em->persist($customer_plan);
                             if(!empty($em->flush())){
-                                $this->session->getFlashBag()->add('assignPlanstKOStatus',"Se ha producido un error. No se ha podido crear la asociación, intentelo de nuevo o contacte con el servicio de NutriK.");
+                                $this->session->getFlashBag()->add('assignPlansKOStatus',"Se ha producido un error. No se ha podido crear la asociación, intentelo de nuevo o contacte con el servicio de NutriK.");
                             }
                             else{
-                                $this->session->getFlashBag()->add('assignPlanstOKStatus',"La asociacion se ha realizado con exito.");
+                                $this->session->getFlashBag()->add('customerPlanOKStatus',"La asociación se ha realizado con exito.");
                             }
                         }
                         else{
-                            $this->session->getFlashBag()->add('assignPlanstKOStatus','Se ha producido un error. Debes indicar un rango de fechas para todas las planficaciones seleccionadas');
+                            $this->session->getFlashBag()->add('assignPlansKOStatus','Se ha producido un error. Debes indicar un rango de fechas para todas las planficaciones seleccionadas');
                         }
                     }
                 }
                 else{
-                    $this->session->getFlashBag()->add('assignPlanstKOStatus','Se ha producido un error. Debes indicar un cliente y al menos un plan para la asignación');
+                    $this->session->getFlashBag()->add('assignPlansKOStatus','Se ha producido un error. Debes indicar un cliente y al menos un plan para la asignación');
                 }
             }
 
@@ -3923,7 +3927,13 @@ class NutritionistController extends Controller
         );
     }
 
-    public function nutritionistAssignedCustomerPlansAction($id_customer){
+    /**
+     * @param Request $request
+     * @param $id_customer
+     * @return Response|null
+     * @throws \Exception
+     */
+    public function nutritionistAssignedCustomerPlansAction(Request $request, $id_customer){
         /**
          * Instanciamos el user con el email del usuario logeado
          */
@@ -3931,22 +3941,126 @@ class NutritionistController extends Controller
         $em = $this->getDoctrine()->getManager();
         $user_repository = $em->getRepository('CustomsBundle:User');
         $users = $user_repository->findBy(array("idUser" => $id_customer));
+        $customer_plan_repo = $em->getRepository('NutritionistBundle:CustomerPlans');
         if(count($users)>0){
             $customer = reset($users);
+
+            if($request->isMethod('POST')){
+                $id_plan = $request->request->get('plan_dates_id');
+                $date_from = $request->request->get('plan_date_from');
+                $date_from = new \DateTime($date_from);
+                $date_to = $request->request->get('plan_date_to');
+                $date_to = new \DateTime($date_to);
+
+                $interval = $date_to->diff($date_from);
+                if($interval->days <= 7 && $interval->days > 0){
+                    $customer_plan_obj = $customer_plan_repo->findBy(array("idCustomer" => $id_customer, "idPlan" => $id_plan));
+                    $customer_plan_obj = reset($customer_plan_obj);
+                    $customer_plan_obj->setDateFrom($date_from);
+                    $customer_plan_obj->setDateTo($date_to);
+                    $customer_plan_obj->setDateAdd(new \DateTime('NOW'));
+                    $em->persist($customer_plan_obj);
+                    if(!empty($em->flush())){
+                        $this->session->getFlashBag()->add('customerPlanKOStatus',"Se ha producido un error. No se ha podido crear la asociación, intentelo de nuevo o contacte con el servicio de NutriK.");
+                    }
+                    else{
+                        $this->session->getFlashBag()->add('customerPlanOKStatus',"La asociacion se ha realizado con exito.");
+                    }
+                }
+                else{
+                    $this->session->getFlashBag()->add('customerPlanKOStatus',"Se ha producido un error. El rango de días no puede superar los 7 días ni la fecha de inicio puede ser anterior al día de hoy");
+                }
+            }
+
+            /**
+             * Customer plans
+             */
             $dql_query = $em->createQuery("
-                    SELECT wp, cp FROM NutritionistBundle:WeeklyPlan wp
+                    SELECT wp FROM NutritionistBundle:WeeklyPlan wp
                     INNER JOIN NutritionistBundle:CustomerPlans cp WITH cp.idPlan = wp.idPlan
                     WHERE cp.idCustomer = ". $id_customer ."
                     ORDER BY cp.dateAdd DESC");
             $plans = $dql_query->getResult();
-        }
 
+            /**
+             * Consultamos los tags de los contenidos didacticos y los rangos de fechas
+             */
+            $weekly_plans_tags = $weekly_plans_dates = array();
+            foreach ($plans as $plan){
+                $dql_query = $em->createQuery("
+                    SELECT t FROM CustomsBundle:Tag t
+                    INNER JOIN NutritionistBundle:WeeklyPlanTag wpt WITH wpt.idTag = t.idTag
+                    WHERE wpt.idWeeklyPlan = ". $plan->getIdPlan() ."
+                    ORDER BY t.level ASC");
+                $tags = $dql_query->getResult();
+                if (count($tags)>0){
+                    $weekly_plans_tags[$plan->getIdPlan()] = $tags;
+                }
+                $customer_plan = $customer_plan_repo->findBy(array("idCustomer" => $id_customer, "idPlan" => $plan->getIdPlan()));
+                $customer_plan = reset($customer_plan);
+                $weekly_plans_dates[$plan->getIdPlan()] = [
+                    "date_from" => $customer_plan->getDateFrom(),
+                    "date_to" => $customer_plan->getDateTo()
+                ];
+            }
+
+            /**
+             * Customer last metrics
+             */
+            $metrics_query = $em->createQuery("
+                    SELECT cm FROM CustomsBundle:CustomerMetrics cm
+                    WHERE cm.idCustomer = ". $id_customer ."
+                    ORDER BY cm.dateAdd DESC");
+            $metrics = $metrics_query->getResult();
+            if(count($metrics)>0) {
+                $metrics = reset($metrics);
+            }
+        }
 
         return $this->render('@Nutritionist/nutritionist-assigned-customer-plans.html.twig',
             [
+                "id_customer" => $id_customer,
                 "customer" => $customer,
                 "plans" => $plans,
+                "metrics" => $metrics,
+                "weekly_plans_tags" => $weekly_plans_tags,
+                "weekly_plans_dates" => $weekly_plans_dates,
                 'pending_inbox' => $this->checkPendingInbox()
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function nutritionistCustomerDeleteWeeklyPlanAction(Request $request){
+        if($request->isMethod('POST')){
+            $id_plan = $request->request->get('customer_plan_delete');
+            $id_customer = $request->request->get('customer_delete');
+
+            $em = $this->getDoctrine()->getManager();
+            $entries = $em->getRepository("NutritionistBundle:CustomerPlans");
+            $plan = $entries->findBy(['idPlan' => $id_plan, 'idCustomer' => $id_customer]);
+            if(count($plan)>0){
+                $plan = reset($plan);
+                $em->remove($plan);
+                $flush = $em->flush();
+                if(!empty($flush)){
+                    $this->session->getFlashBag()->add('customerPlanKOStatus',"Se ha producido un error. No hemos podido eliminar la asociación del plan semanal, intentelo de nuevo o contacte con el servicio de NutriK.");
+                }
+                else {
+                    $this->session->getFlashBag()->add('customerPlanOKStatus',"El plan semanal se ha desvinculado correctamnente");
+                }
+            }
+            else{
+                $this->session->getFlashBag()->add('customerPlanOKStatus',"El plan semanal se ha desvinculado correctamnente");
+            }
+
+        }
+        return $this->redirectToRoute('nutritionist_assigned_customer_plans',
+            [
+                'id_customer' => $id_customer
             ]
         );
     }
@@ -4289,5 +4403,44 @@ class NutritionistController extends Controller
         $em->flush();
     }
 
+    public function nutritionistConfigurationAction(Request $request){
+        $recipes = $categories = $tags = array();
+        $social_media = false;
 
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+
+            /**
+             * Cargamos las categorias
+             */
+            $categories_repo = $em->getRepository("CustomsBundle:Category");
+            $categories = $categories_repo->findAll();
+
+            /**
+             * Cargamos los tags
+             */
+            $tags_repo = $em->getRepository("CustomsBundle:Tag");
+            $tags = $tags_repo->findAll();
+
+            /**
+             * Social Media
+             */
+            if($user->getSocialMedia() != ""){
+                $social_media = json_decode($user->getSocialMedia(), true);
+            }
+        }
+
+
+        return $this->render('@Nutritionist/nutritionist-config.html.twig',
+            [
+                'categories' => $categories,
+                'tags' => $tags,
+                'social_media' => $social_media,
+                'pending_inbox' => $this->checkPendingInbox()
+            ]
+        );
+    }
 }

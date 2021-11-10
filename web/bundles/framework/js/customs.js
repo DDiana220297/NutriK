@@ -25,6 +25,10 @@ function deleteWeeklyPlan(idPlan){
     document.getElementById("plan_delete_"+idPlan).click();
 }
 
+function deleteCustomerWeeklyPlan(idPlan){
+    document.getElementById("customer_plan_delete_"+idPlan).click();
+}
+
 function deleteEvent(idEvent){
     document.getElementById("event_delete_"+idEvent).click();
 }
@@ -35,6 +39,10 @@ function deleteCustomerDependency(idCustomer){
 
 function deleteRecipe( idRecipe){
     document.getElementById("recipe_delete_"+idRecipe).click();
+}
+
+function changeRecipeVisibility(idRecipe){
+    document.getElementById("recipe_visibility_"+idRecipe).click();
 }
 
 function deleteAppointment(idAppointment){

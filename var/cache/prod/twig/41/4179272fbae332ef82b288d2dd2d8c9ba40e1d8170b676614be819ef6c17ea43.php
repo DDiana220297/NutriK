@@ -70,7 +70,7 @@ class __TwigTemplate_10702a9f65803063b0e67aaeb8ea329fec0365435fab1f0ae0897a40134
         ";
         // line 15
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "assignPlanstKOStatus"], "method"));
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "assignPlansKOStatus"], "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
             // line 16
             echo "            <div class=\"row\" style=\"width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: -10px;\">
@@ -255,7 +255,7 @@ class __TwigTemplate_10702a9f65803063b0e67aaeb8ea329fec0365435fab1f0ae0897a40134
         <script src=\"{{ asset('bundles/framework/js/wizard-customer-plan.js') }}\"></script>
     </section>
     <section id=\"nutritionist-assign-plan\">
-        {% for message in  app.session.flashbag().get('assignPlanstKOStatus') %}
+        {% for message in  app.session.flashbag().get('assignPlansKOStatus') %}
             <div class=\"row\" style=\"width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: -10px;\">
                 <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
                     {{ message }}

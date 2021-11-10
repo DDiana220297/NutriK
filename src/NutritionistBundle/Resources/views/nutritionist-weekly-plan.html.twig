@@ -19,6 +19,13 @@
                 </div>
             </div>
         {% endfor %}
+        {% for message in  app.session.flashbag().get('editWeeklyPlanWarnings') %}
+            <div class="row" style="width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: 0;">
+                <div class="alert alert-warning" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class="container">
             <!-- Añadimos un novalidate debido a los contenedores ocultos, mostraremos el error con la variable de sesion -->
             <form id="msform" class="form" action="{{ path("nutritionist_add_plan") }}" method="post" novalidate>

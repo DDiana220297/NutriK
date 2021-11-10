@@ -129,3 +129,11 @@ nutritionist_assign_plans:
 nutritionist_assigned_customer_plans:
     path: /nutritionist-assigned-customer-plans/{id_customer}
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistAssignedCustomerPlans }
+
+nutritionist_customer_delete_weekly_plan:
+    path: /nutritionist-customer-delete-weekly-plan
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistCustomerDeleteWeeklyPlan }
+
+nutritionist_configuration:
+    path: /nutritionist-config
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistConfiguration }

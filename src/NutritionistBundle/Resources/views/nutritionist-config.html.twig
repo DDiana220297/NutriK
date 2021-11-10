@@ -1,0 +1,163 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <!-- Login Page stylesheet -->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/nutritionistpages.css') }}" />
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    <section id="nutritionist-configuration-section">
+        {% for message in  app.session.flashbag().get('configKOStatus') %}
+            <div class="row" style="width: 93.5%; margin-left: 3.3%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="container">
+            <div class="col-sm-12 configuration-block">
+                <form class="form" action="{{ path("nutritionist_configuration") }}" method="post">
+                    <div class="col-sm-5 nutritionist-presentation-page">
+                        <div class="col-sm-12"><h3 style="text-align: center"><strong style="color: #00766c">Configura tu página de presentación</strong></h3></div>
+                        <div class="col-sm-12 nutritionist-presentation" style="margin-top: 15px">
+                            <label for="presentacion">Presentación:</label>
+                            <textarea type="text" id="presentacion" name="presentacion" class="form-control" >{{ app.user.presentation }}</textarea>
+                        </div>
+                        <div class="col-sm-12 nutritionist-bibliography" style="margin-top: 15px">
+                            <label for="bibliografia">Descripción / Bibliografía:</label>
+                            <textarea type="text" id="bibliografia" name="bibliografia" class="form-control" >{{ app.user.description }}</textarea>
+                        </div>
+                        <div class="col-sm-12 nutritionist-social-media" style="margin-top: 15px">
+                            <label>Redes sociales:</label>
+                            <div class="input-group">
+                                <div class="input-group-addon input-label">NutriK</div>
+                                <div class="input-group-addon input-prefix">https://nutrik.test/web/presentation/</div>
+                                <input type="text" class="form-control input-social-media" id="nutrik_media" placeholder="" value="{{ app.user.idUser }}" disabled>
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-addon input-label">Facebook</div>
+                                <div class="input-group-addon input-prefix">https://facebook.com/</div>
+                                <input type="text" class="form-control input-social-media" id="facebook_media" placeholder="">
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-addon input-label">Instagram</div>
+                                <div class="input-group-addon input-prefix">https://instagram.com/</div>
+                                <input type="text" class="form-control input-social-media" id="instagram_media" placeholder="">
+                            </div>
+                            <div class="input-group">
+                                <div class="input-group-addon input-label">Linkedin</div>
+                                <div class="input-group-addon input-prefix">https://www.linkedin.com/</div>
+                                <input type="text" class="form-control input-social-media" id="linkedin_media" placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 save-button-item" style="width: 100%;">
+                            <input class="btn save-button" type="submit" name="submit" value="Guardar Presentacion"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 nutritionist-tools">
+                        <div class="col-sm-12"><h3 style="text-align: center"><strong style="color: #00766c">Configura tu área de trabajo</strong></h3></div>
+                        <label style="float: left; padding-left: 15px">Categorias:</label>
+                        <label class="add-category" style="float: right; padding-right: 15px" onclick="openModal('openCreateCategoryModal')">Añadir nueva categoria</label>
+                        <button style="display: none" type="button" class="btn btn-primary" id="openCreateCategoryModal" data-toggle="modal" data-target="#createCategoryModal"></button>
+                        <div class="modal fade" id="createCategoryModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="height: 15rem;width: 50rem;padding: 40px 30px;">
+                                    <!-- Modal body -->
+                                    <form class="form" action="{{ path("nutritionist_configuration") }}" method="post">
+                                        <h4 style="text-align: center; color: #00766c">Añadir nueva etiqueta</h4>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 nutritionist-categories">
+                            {% for category in categories %}
+                                <div class="category-entry">
+                                    <div class="col-sm-11">
+                                        <h4 style="color: #00766c">{{ category.name }}</h4>
+                                        <p>{{ category.descriptionShort }}</p>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16" style="margin-bottom:-15px;width: 2rem;height: 2rem;"
+                                            onclick="openModal('openEditCategoryModal')">
+                                            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                        </svg>
+                                        <button style="display: none" type="button" class="btn btn-primary" id="openEditCategoryModal" data-toggle="modal" data-target="#editCategoryModal"></button>
+                                        <div class="modal fade" id="editCategoryModal">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content" style="height: 15rem;width: 50rem;padding: 40px 30px;">
+                                                    <!-- Modal body -->
+                                                    <form class="form" action="{{ path("nutritionist_configuration") }}" method="post">
+                                                        <h4 style="text-align: center; color: #00766c">Editar categoria</h4>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <label style="float: left; padding-left: 15px">Tags:
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16" style="width: 17px; height: 17px; margin-bottom: -3px"
+                                 onclick="openModal('openMyInfoTagsModal')">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                            </svg>
+                            <button style="display: none" type="button" class="btn btn-primary" id="openMyInfoTagsModal" data-toggle="modal" data-target="#infoTagsModal"></button>
+                            <div class="modal fade" id="infoTagsModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content" style="height: 15rem;width: 50rem;padding: 40px 30px;">
+                                        <!-- Modal body -->
+                                        <span>El nivel de una etiqueta esta relacionado con la jerarquía, por ejemplo, el tag <strong>Celíaco</strong> con nivel 3. esta incluido dentro del tag <strong>Intolerancias</strong></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                        <label class="add-tag" style="float: right; padding-right: 15px" onclick="openModal('openCreateTagModal')">Añadir nuevo tag</label>
+                        <button style="display: none" type="button" class="btn btn-primary" id="openCreateTagModal" data-toggle="modal" data-target="#createTagModal"></button>
+                        <div class="modal fade" id="createTagModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="height: 15rem;width: 50rem;padding: 40px 30px;">
+                                    <!-- Modal body -->
+                                    <form class="form" action="{{ path("nutritionist_configuration") }}" method="post">
+                                        <h4 style="text-align: center; color: #00766c">Añadir nueva etiqueta</h4>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 nutritionist-tags">
+                            {% for tag in tags %}
+                                <div class="tag-entry" style="height: 9rem">
+                                    <div class="col-sm-11 tag-resume">
+                                        <h4 style="color: #00766c">{{ tag.name }}</h4>
+                                        <p>{{ tag.description }}</p>
+                                        <p><strong>Nivel:</strong>{{ tag.level }}</p>
+                                    </div>
+                                    <div class="col-sm-1 tag-actions">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16" style="margin-bottom:-25px;width: 2rem;height: 2rem;"
+                                            onclick="openModal('openEditTagModal')">
+                                            <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                        </svg>
+                                        <button style="display: none" type="button" class="btn btn-primary" id="openEditTagModal" data-toggle="modal" data-target="#editTagModal"></button>
+                                        <div class="modal fade" id="editTagModal">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content" style="height: 15rem;width: 50rem;padding: 40px 30px;">
+                                                    <!-- Modal body -->
+                                                    <form class="form" action="{{ path("nutritionist_configuration") }}" method="post">
+                                                        <h4 style="text-align: center; color: #00766c">Modificar etiqueta</h4>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    </html>
+{% endblock %}

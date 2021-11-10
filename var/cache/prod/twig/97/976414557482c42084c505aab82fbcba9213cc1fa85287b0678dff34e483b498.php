@@ -130,7 +130,7 @@ class __TwigTemplate_cb28e53a7b719f2f14c51e957f0a07ff05be5d9ec517f30d50bb7dd1415
                                             <div class=\"modal-dialog\">
                                                 <div class=\"modal-content\" style=\"height: 15rem;width: 50rem;padding: 40px 30px;\">
                                                     <!-- Modal body -->
-                                                    <span>Etiqueta tus recetas añadiendo los tags deseados. Para obtener más informacion sobre un tag, modificar o crear uno accede a la configuracion de tu perfil o haz click <a href=\"#\">aqui</a></span>
+                                                    <span>Etiqueta tus recetas añadiendo los tags deseados por nivel. Para obtener más informacion sobre un tag, modificar o crear uno accede a la configuracion de tu perfil o haz click <a href=\"#\">aqui</a></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -335,7 +335,7 @@ class __TwigTemplate_cb28e53a7b719f2f14c51e957f0a07ff05be5d9ec517f30d50bb7dd1415
                                             <div class=\"modal-dialog\">
                                                 <div class=\"modal-content\" style=\"height: 15rem;width: 50rem;padding: 40px 30px;\">
                                                     <!-- Modal body -->
-                                                    <span>Etiqueta tus recetas añadiendo los tags deseados. Para obtener más informacion sobre un tag, modificar o crear uno accede a la configuracion de tu perfil o haz click <a href=\"#\">aqui</a></span>
+                                                    <span>Etiqueta tus recetas añadiendo los tags deseados por nivel. Para obtener más informacion sobre un tag, modificar o crear uno accede a la configuracion de tu perfil o haz click <a href=\"#\">aqui</a></span>
                                                 </div>
                                             </div>
                                         </div>

@@ -12,7 +12,7 @@
         <script src="{{ asset('bundles/framework/js/wizard-customer-plan.js') }}"></script>
     </section>
     <section id="nutritionist-assign-plan">
-        {% for message in  app.session.flashbag().get('assignPlanstKOStatus') %}
+        {% for message in  app.session.flashbag().get('assignPlansKOStatus') %}
             <div class="row" style="width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: -10px;">
                 <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
                     {{ message }}

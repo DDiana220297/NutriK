@@ -802,10 +802,10 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         if ((($context["wednesday_snack"] ?? $this->getContext($context, "wednesday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_snack"] ?? $this->getContext($context, "wednesday_snack")), "mealNotes", []), "html", null, true);
         }
-        echo "/textarea>
+        echo "</textarea>
                                             </div>
                                         </div>
-                                        <div class=\"day-plan-lunch day-plan day-meal-hidden\">
+                                        <div class=\"day-plan-lunch day-plan\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"lunch_hour_wednesday\" value=\"";
         // line 327
@@ -2405,10 +2405,10 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_wednesday\" class=\"form-control\" style=\"height: 225px\">{% if wednesday_snack != false %}{{ wednesday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
-                                                <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_wednesday\" class=\"form-control\" style=\"height: 186px\"><{% if wednesday_snack != false %}{{ wednesday_snack.mealNotes }}{% endif %}/textarea>
+                                                <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_wednesday\" class=\"form-control\" style=\"height: 186px\"><{% if wednesday_snack != false %}{{ wednesday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
                                         </div>
-                                        <div class=\"day-plan-lunch day-plan day-meal-hidden\">
+                                        <div class=\"day-plan-lunch day-plan\">
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
                                                 <label for=\"hora\" style=\"margin-right: 10px\">Hora:</label><input style=\"width: 20%; margin: 0\" type=\"time\" id=\"hora\" name=\"lunch_hour_wednesday\" value=\"{% if wednesday_lunch != false %}{{ wednesday_lunch.hour }}{% else %}14:00{% endif %}\" min=\"09:00\" max=\"18:00\" required>
                                                 <br/><br/>
