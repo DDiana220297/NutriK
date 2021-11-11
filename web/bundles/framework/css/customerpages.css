@@ -343,7 +343,6 @@
 #recipes .container .form .col-sm-12 .container-fluid #recipes-content{
     border-style: solid;
     border-color: #00A295;
-
     border-width: thin;
     border-radius: 0.5rem;
     height: 70rem;
@@ -590,7 +589,7 @@
     border-width: thin;
     border-radius: 0.5rem;
     height: 73rem;
-    width: 102rem;
+    width: 115rem;
     padding: 0;
     margin-left: 10px;
     background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
@@ -927,3 +926,57 @@
     font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
     color: black;
 }
+
+
+/* ASSIGNED PLANS LIST */
+#assigned-plans .container{
+    width: 95%;
+    margin-top: 1.5%;
+}
+
+#assigned-plans .container .assigned-plans-block{
+    margin-bottom: 10px;
+    border-radius: 2.5rem;
+    padding: 15px;
+    height: 85rem;
+    font-size: 16px;
+    color: white;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#assigned-plans .container .assigned-plans-block .plans{
+    overflow-y: auto;
+}
+
+#assigned-plans .container .assigned-plans-block .plans .plan-entry{
+    border-style: solid;
+    margin-bottom: 10px;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    padding: 60px 10px 15px 15px;
+    color: black;
+    background: linear-gradient(to top, #f8f8f8 0%, white 100%);
+}
+
+#assigned-plans .container .assigned-plans-block .plans .plan-entry .weekly-plan-resume{
+    margin-top: -45px;
+}
+
+#assigned-plans .container .assigned-plans-block .plans .plan-entry .weekly-plan-actions{
+    margin-top: -30px;
+}
+
+#assigned-plans .container .assigned-plans-block .plans .plan-entry .weekly-plan-actions>svg{
+    width: 3rem;
+    font-size: 10px;
+    height: 3em;
+    float: right;
+    margin-top: 15px;
+}
+
+#assigned-plans .container .assigned-plans-block .plans .plan-entry .weekly-plan-actions>svg:hover{
+    opacity: 0.5;
+}
+
+/* PLAN VIEW */

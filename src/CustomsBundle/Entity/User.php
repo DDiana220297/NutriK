@@ -116,6 +116,12 @@ class User implements UserInterface
     /**
      * @var string
      */
+    private $rate;
+
+
+    /**
+     * @var string
+     */
     private $socialMedia;
 
     /**
@@ -639,5 +645,21 @@ class User implements UserInterface
     public function setPresentation(string $presentation): void
     {
         $this->presentation = $presentation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRate()
+    {
+        return $this->rate;
+    }
+
+    /**
+     * @param string $rate
+     */
+    public function setRate(string $rate): void
+    {
+        $this->rate = $rate;
     }
 }

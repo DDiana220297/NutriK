@@ -96,6 +96,12 @@ CustomsBundle\Entity\User:
             length: 65535
             options:
                 fixed: false
+        rate:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
         presentation:
             type: text
             nullable: true

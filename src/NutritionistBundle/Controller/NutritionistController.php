@@ -6,6 +6,7 @@ use CustomsBundle\Entity\Entry;
 use CustomsBundle\Entity\EntryTag;
 use CustomsBundle\Entity\Logs;
 use CustomsBundle\Entity\NutritionistCustomerCard;
+use CustomsBundle\Entity\Tag;
 use CustomsBundle\Entity\User;
 use CustomsBundle\Form\UserType;
 use CustomsBundle\Entity\CustomerMetrics;
@@ -3110,7 +3111,7 @@ class NutritionistController extends Controller
                         ]
                     );
 
-                    if(count($customer_nutritionist_dependencies) == 0 && $customer_nutritionist_dependencies != false){
+                    if(count($customer_nutritionist_dependencies) == 0){
                         $customer_nutritionist_dependency = new CustomerNutritionist();
                         $customer_nutritionist_dependency->setIdCustomer($dependency);
                         $customer_nutritionist_dependency->setIdNutritionist($user->getIdUser());
@@ -3877,6 +3878,7 @@ class NutritionistController extends Controller
                     $plans_dates_from = $request->request->get('plan_date_from');
                     $plans_dates_to = $request->request->get('plan_date_to');
                     $plan_notes = $request->request->get('plan_notes');
+                    $status = true;
                     foreach ($plans as $plan){
                         if(in_array($plan, array_keys($plans_dates_from)) && in_array($plan, array_keys($plans_dates_to))){
                             $customer_plan = new CustomerPlans();
@@ -3894,6 +3896,7 @@ class NutritionistController extends Controller
                             $em->persist($customer_plan);
                             if(!empty($em->flush())){
                                 $this->session->getFlashBag()->add('assignPlansKOStatus',"Se ha producido un error. No se ha podido crear la asociación, intentelo de nuevo o contacte con el servicio de NutriK.");
+                                $status = false;
                             }
                             else{
                                 $this->session->getFlashBag()->add('customerPlanOKStatus',"La asociación se ha realizado con exito.");
@@ -3902,6 +3905,11 @@ class NutritionistController extends Controller
                         else{
                             $this->session->getFlashBag()->add('assignPlansKOStatus','Se ha producido un error. Debes indicar un rango de fechas para todas las planficaciones seleccionadas');
                         }
+                    }
+                    if($status){
+                        return $this->redirectToRoute('nutritionist_assigned_customer_plans', [
+                            'id_customer' => $customer
+                        ]);
                     }
                 }
                 else{
@@ -4403,26 +4411,131 @@ class NutritionistController extends Controller
         $em->flush();
     }
 
+    /**
+     * Fn que se encarga de los ajustes de configuracion de un nutricionista
+     * @param Request $request
+     * @return Response|null
+     */
     public function nutritionistConfigurationAction(Request $request){
-        $recipes = $categories = $tags = array();
+        $categories = $tags = array();
         $social_media = false;
 
         $em = $this->getDoctrine()->getManager();
+        $tags_repo = $em->getRepository("CustomsBundle:Tag");
         $user_repository = $em->getRepository('CustomsBundle:User');
+        $categories_repo = $em->getRepository("CustomsBundle:Category");
+        $exercises_repo = $em->getRepository("NutritionistBundle:Exercise");
         $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
         if(count($users) > 0) {
             $user = reset($users);
 
             /**
+             * Guardar Presentacion
+             */
+            if($request->isMethod('POST') && ($request->request->get('submit') == "Guardar Presentacion")) {
+                $presentation = $request->request->get('presentacion');
+                $bilbiography = $request->request->get('bibliografia');
+                $rate = $request->request->get('rate');
+
+                $social_media = array(
+                    'instagram' => $request->request->get('instagram_media'),
+                    'facebook' => $request->request->get('facebook_media'),
+                    'linkedin' => $request->request->get('linkedin_media'),
+                );
+
+                $user->setPresentation($presentation);
+                $user->setDescription($bilbiography);
+                $user->setRate($rate);
+                $user->setSocialMedia(json_encode($social_media));
+                $em->persist($user);
+                $em->flush();
+                $this->session->getFlashBag()->add('configOKStatus',"La ficha de presentacion se ha actualizado correctamente.");
+                $this->redirectToRoute('nutritionist_configuration');
+            }
+            /**
+             * Modificar tag
+             */
+            elseif ($request->isMethod('POST') && ($request->request->get('submit') == "Guardar etiqueta")) {
+                $tag_name = $request->request->get('tag_name');
+                $tag_description = $request->request->get('tag_description');
+                $tag_level = $request->request->get('tag_level');
+                if($tag_name != "" && $tag_level != "" && $tag_description != ""){
+                    $tag = new Tag();
+                    $tag->setName($tag_name);
+                    $tag->setDescription($tag_description);
+                    $tag->setLevel($tag_level);
+                    $tag->setVisible(1);
+                    $em->persist($tag);
+                    $em->flush();
+                    $this->session->getFlashBag()->add('configOKStatus',"El nuevo tag se ha creado correctamente");
+                }
+                else{
+                    $this->session->getFlashBag()->add('configOKStatus',"Debes indicar todos los datos para el nuevo tag");
+                }
+
+            }
+            /**
+             * Crear tag
+             */
+            elseif ($request->isMethod('POST') && ($request->request->get('submit') == "Modificar etiqueta")) {
+                $tag_name = $request->request->get('tag_name');
+                $tag_description = $request->request->get('tag_description');
+                $tag_level = $request->request->get('tag_level');
+                if($tag_name != "" && $tag_level != "" && $tag_description != ""){
+                    $tag_id = $request->request->get('id_tag_edit');
+                    $tags_repo = $em->getRepository("CustomsBundle:Tag");
+                    $tag = $tags_repo->findBy(['idTag' => $tag_id]);
+                    if (count($tag)>0){
+                        $tag = reset($tag);
+                        $tag->setName($tag_name);
+                        $tag->setDescription($tag_description);
+                        $tag->setLevel($tag_level);
+                        $tag->setVisible(1);
+                        $em->persist($tag);
+                        $em->flush();
+                        $this->session->getFlashBag()->add('configOKStatus',"El tag se ha modificado correctamente");
+                    }
+                    else{
+                        $this->session->getFlashBag()->add('configKOStatus',"Se ha producido un error, inténtelo más tarde o contacte con el servicio de NutriK");
+                    }
+                }
+                else{
+                    $this->session->getFlashBag()->add('configOKStatus',"Debes indicar todos los datos para el nuevo tag");
+                }
+
+            }
+            /**
+             * Modificar categoria
+             */
+            elseif ($request->isMethod('POST') && ($request->request->get('submit') == "Guardar ejercicio")) {
+
+            }
+            /**
+             * Crear categoria
+             */
+            elseif ($request->isMethod('POST') && ($request->request->get('submit') == "Modificar ejercicio")) {
+
+            }
+            /**
+             * Modificar ejercicio
+             */
+            elseif ($request->isMethod('POST') && ($request->request->get('submit') == "Guardar categoria")) {
+
+            }
+            /**
+             * Crear ejercicio
+             */
+            elseif ($request->isMethod('POST') && ($request->request->get('submit') == "Modificar categoria")) {
+
+            }
+            /**
              * Cargamos las categorias
              */
-            $categories_repo = $em->getRepository("CustomsBundle:Category");
             $categories = $categories_repo->findAll();
 
             /**
              * Cargamos los tags
              */
-            $tags_repo = $em->getRepository("CustomsBundle:Tag");
             $tags = $tags_repo->findAll();
 
             /**
@@ -4430,7 +4543,15 @@ class NutritionistController extends Controller
              */
             if($user->getSocialMedia() != ""){
                 $social_media = json_decode($user->getSocialMedia(), true);
+                $facebook_media = $social_media['facebook'];
+                $instagram_media = $social_media['instagram'];
+                $linkedin_media = $social_media['linkedin'];
             }
+
+            /**
+             * Cargamos los ejercicios
+             */
+            $exercises = $exercises_repo->findAll();
         }
 
 
@@ -4439,6 +4560,10 @@ class NutritionistController extends Controller
                 'categories' => $categories,
                 'tags' => $tags,
                 'social_media' => $social_media,
+                "exercises" => $exercises,
+                "facebook_media" => $facebook_media,
+                "instagram_media" => $instagram_media,
+                "linkedin_media" => $linkedin_media,
                 'pending_inbox' => $this->checkPendingInbox()
             ]
         );

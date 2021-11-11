@@ -857,4 +857,242 @@ class CustomerController extends Controller
         }
         return $customers;
     }
+
+
+    public function plansAction(){
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $plans = $weekly_plans_tags = $weekly_plans_dates = array();
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $customer_plan_repo = $em->getRepository('NutritionistBundle:CustomerPlans');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users)>0){
+            $user = reset($users);
+
+            /**
+             * Customer plans
+             */
+            $dql_query = $em->createQuery("
+                    SELECT wp FROM NutritionistBundle:WeeklyPlan wp
+                    INNER JOIN NutritionistBundle:CustomerPlans cp WITH cp.idPlan = wp.idPlan
+                    WHERE cp.idCustomer = ". $user->getIdUser() ."
+                    ORDER BY cp.dateAdd DESC");
+            $plans = $dql_query->getResult();
+
+            /**
+             * Consultamos los tags de los contenidos didacticos y los rangos de fechas
+             */
+            foreach ($plans as $plan){
+                $dql_query = $em->createQuery("
+                    SELECT t FROM CustomsBundle:Tag t
+                    INNER JOIN NutritionistBundle:WeeklyPlanTag wpt WITH wpt.idTag = t.idTag
+                    WHERE wpt.idWeeklyPlan = ". $plan->getIdPlan() ."
+                    ORDER BY t.level ASC");
+                $tags = $dql_query->getResult();
+                if (count($tags)>0){
+                    $weekly_plans_tags[$plan->getIdPlan()] = $tags;
+                }
+                $customer_plan = $customer_plan_repo->findBy(array("idCustomer" => $user->getIdUser(), "idPlan" => $plan->getIdPlan()));
+                $customer_plan = reset($customer_plan);
+                $weekly_plans_dates[$plan->getIdPlan()] = [
+                    "date_from" => $customer_plan->getDateFrom(),
+                    "date_to" => $customer_plan->getDateTo()
+                ];
+            }
+
+        }
+        return $this->render('@Customer/weekly-plans.html.twig',
+            [
+                'now' => new \DateTime('NOW'),
+                'plans' => $plans,
+                "weekly_plans_tags" => $weekly_plans_tags,
+                "weekly_plans_dates" => $weekly_plans_dates,
+                'pending_inbox' => $this->checkPendingInbox()
+            ]
+        );
+    }
+
+    public function viewPlanAction($id_plan){
+        /**
+         * Cargamos la entrada
+         */
+        $em = $this->getDoctrine()->getManager();
+        $entries = $em->getRepository("NutritionistBundle:WeeklyPlan");
+        $plan = $entries->find($id_plan);
+
+        /**
+         * Cargamos los ejercicios
+         */
+        $em = $this->getDoctrine()->getManager();
+        $exercises_repo = $em->getRepository("NutritionistBundle:Exercise");
+        $exercises = $exercises_repo->findAll();
+
+        /**
+         * Cargamos los planes de alimentacion
+         */
+        $meals_repo = $em->getRepository("NutritionistBundle:Meal");
+
+        /**
+         * Cargamos los tags asociados al plan
+         */
+        $weekly_plan_tags_repo = $em->getRepository('NutritionistBundle:WeeklyPlanTag');
+
+        /**
+         * Desayunos
+         */
+        $monday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Lunes"]);
+        $tuesday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Martes"]);
+        $wednesday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Miercoles"]);
+        $thursday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Jueves"]);
+        $friday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Viernes"]);
+        $saturday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Sabado"]);
+        $sunday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Domingo"]);
+
+        /**
+         * Snack
+         */
+        $monday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Lunes"]);
+        $tuesday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Martes"]);
+        $wednesday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Miercoles"]);
+        $thursday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Jueves"]);
+        $friday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Viernes"]);
+        $saturday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Sabado"]);
+        $sunday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Domingo"]);
+
+        /**
+         * Almuerzos
+         */
+        $monday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Lunes"]);
+        $tuesday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Martes"]);
+        $wednesday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Miercoles"]);
+        $thursday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Jueves"]);
+        $friday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Viernes"]);
+        $saturday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Sabado"]);
+        $sunday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Domingo"]);
+
+        /**
+         * Meriendas
+         */
+        $monday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Lunes"]);
+        $tuesday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Martes"]);
+        $wednesday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Miercoles"]);
+        $thursday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Jueves"]);
+        $friday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Viernes"]);
+        $saturday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Sabado"]);
+        $sunday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Domingo"]);
+
+        /**
+         * Cenas
+         */
+        $monday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Lunes"]);
+        $tuesday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Martes"]);
+        $wednesday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Miercoles"]);
+        $thursday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Jueves"]);
+        $friday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Viernes"]);
+        $saturday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Sabado"]);
+        $sunday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Domingo"]);
+
+        /**
+         * Cargamos los entrenamientos
+         */
+        $workouts_repo = $em->getRepository("NutritionistBundle:Workout");
+        $monday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Lunes"]);
+        $mondayWorkout = reset($monday_workout);
+        $tuesday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Martes"]);
+        $tuesdayWorkout = reset($tuesday_workout);
+        $wednesday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Miercoles"]);
+        $wednesdayWorkout = reset($wednesday_workout);
+        $thursday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Jueves"]);
+        $thursdayWorkout = reset($thursday_workout);
+        $friday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Viernes"]);
+        $fridayWorkout = reset($friday_workout);
+        $saturday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Sabado"]);
+        $saturdayWorkout = reset($saturday_workout);
+        $sunday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Domingo"]);
+        $sundayWorkout = reset($sunday_workout);
+
+        /**
+         * Cargamos los tags
+         */
+        $tags_repo = $em->getRepository("CustomsBundle:Tag");
+        $tags = $tags_repo->findAll();
+
+        /**
+         * Cargamos los tags asociados a la receta
+         */
+        $weekly_plans_tags = $weekly_plan_tags_repo->findBy(['idWeeklyPlan' => $id_plan]);
+        $weekly_plan_tags_keys = array();
+        if(count($weekly_plans_tags)>0){
+            foreach ($weekly_plans_tags as $tag){
+                $weekly_plan_tags_keys[] = (string)$tag->getIdTag();
+            }
+        }
+
+        return $this->render('@Customer/plan.html.twig',
+            [
+                "id_plan" => $id_plan,
+                "weeklyPlan" => $plan,
+                "exercises" => $exercises,
+                "tags" => $tags,
+                "weekly_plans_tags" => $weekly_plans_tags,
+                'weekly_plan_tags_keys' => $weekly_plan_tags_keys,
+                'pending_inbox' => $this->checkPendingInbox(),
+
+                //Meals
+                "monday_breakfast" => reset($monday_breakfast),
+                "tuesday_breakfast" => reset($tuesday_breakfast),
+                "wednesday_breakfast" => reset($wednesday_breakfast),
+                "thursday_breakfast" => reset($thursday_breakfast),
+                "friday_breakfast" => reset($friday_breakfast),
+                "saturday_breakfast" => reset($saturday_breakfast),
+                "sunday_breakfast" => reset($sunday_breakfast),
+                "monday_snack" => reset($monday_snack),
+                "tuesday_snack" => reset($tuesday_snack),
+                "wednesday_snack" => reset($wednesday_snack),
+                "thursday_snack" => reset($thursday_snack),
+                "friday_snack" => reset($friday_snack),
+                "saturday_snack" => reset($saturday_snack),
+                "sunday_snack" => reset($sunday_snack),
+                "monday_lunch" => reset($monday_lunch),
+                "tuesday_lunch" => reset($tuesday_lunch),
+                "wednesday_lunch" => reset($wednesday_lunch),
+                "thursday_lunch" => reset($thursday_lunch),
+                "friday_lunch" => reset($friday_lunch),
+                "saturday_lunch" => reset($saturday_lunch),
+                "sunday_lunch" => reset($sunday_lunch),
+                "monday_afternoon" => reset($monday_afternoon),
+                "tuesday_afternoon" => reset($tuesday_afternoon),
+                "wednesday_afternoon" => reset($wednesday_afternoon),
+                "thursday_afternoon" => reset($thursday_afternoon),
+                "friday_afternoon" => reset($friday_afternoon),
+                "saturday_afternoon" => reset($saturday_afternoon),
+                "sunday_afternoon" => reset($sunday_afternoon),
+                "monday_dinner" => reset($monday_dinner),
+                "tuesday_dinner" => reset($tuesday_dinner),
+                "wednesday_dinner" => reset($wednesday_dinner),
+                "thursday_dinner" => reset($thursday_dinner),
+                "friday_dinner" => reset($friday_dinner),
+                "saturday_dinner" => reset($saturday_dinner),
+                "sunday_dinner" => reset($sunday_dinner),
+
+                //Workouts
+                "monday_workout" => $mondayWorkout,
+                "monday_workout_exercises" => $mondayWorkout != false ? $mondayWorkout->getWorkoutExercises() : [],
+                "tuesday_workout" => $tuesdayWorkout,
+                "tuesday_workout_exercises" => $tuesdayWorkout != false ? $tuesdayWorkout->getWorkoutExercises() : [],
+                "wednesday_workout" => $wednesdayWorkout,
+                "wednesday_workout_exercises" => $wednesdayWorkout != false ? $wednesdayWorkout->getWorkoutExercises() : [],
+                "thursday_workout" => $thursdayWorkout,
+                "thursday_workout_exercises" => $thursdayWorkout != false ? $thursdayWorkout->getWorkoutExercises() : [],
+                "friday_workout" => $fridayWorkout,
+                "friday_workout_exercises" => $fridayWorkout != false ? $fridayWorkout->getWorkoutExercises() : [],
+                "saturday_workout" => $saturdayWorkout,
+                "saturday_workout_exercises" => $saturdayWorkout != false ? $saturdayWorkout->getWorkoutExercises() : [],
+                "sunday_workout" => $sundayWorkout,
+                "sunday_workout_exercises" => $sundayWorkout != false ? $sundayWorkout->getWorkoutExercises() : [],
+            ]
+        );
+    }
 }

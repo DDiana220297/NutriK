@@ -227,7 +227,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_monday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_monday\" class=\"form-control\" style=\"height: 225px\">";
         // line 93
         if ((($context["monday_breakfast"] ?? $this->getContext($context, "monday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_breakfast"] ?? $this->getContext($context, "monday_breakfast")), "mealShoppingList", []), "html", null, true);
@@ -261,7 +261,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_monday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_monday\" class=\"form-control\" style=\"height: 225px\">";
         // line 105
         if ((($context["monday_snack"] ?? $this->getContext($context, "monday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_snack"] ?? $this->getContext($context, "monday_snack")), "mealShoppingList", []), "html", null, true);
@@ -295,7 +295,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_monday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_monday\" class=\"form-control\" style=\"height: 225px\">";
         // line 117
         if ((($context["monday_lunch"] ?? $this->getContext($context, "monday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_lunch"] ?? $this->getContext($context, "monday_lunch")), "mealShoppingList", []), "html", null, true);
@@ -329,7 +329,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_monday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_monday\" class=\"form-control\" style=\"height: 225px\">";
         // line 129
         if ((($context["monday_afternoon"] ?? $this->getContext($context, "monday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_afternoon"] ?? $this->getContext($context, "monday_afternoon")), "mealShoppingList", []), "html", null, true);
@@ -363,7 +363,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_monday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_monday\" class=\"form-control\" style=\"height: 225px\">";
         // line 141
         if ((($context["monday_dinner"] ?? $this->getContext($context, "monday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["monday_dinner"] ?? $this->getContext($context, "monday_dinner")), "mealShoppingList", []), "html", null, true);
@@ -491,7 +491,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
         // line 200
         if ((($context["tuesday_breakfast"] ?? $this->getContext($context, "tuesday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_breakfast"] ?? $this->getContext($context, "tuesday_breakfast")), "mealShoppingList", []), "html", null, true);
@@ -525,7 +525,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
         // line 212
         if ((($context["tuesday_snack"] ?? $this->getContext($context, "tuesday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_snack"] ?? $this->getContext($context, "tuesday_snack")), "mealShoppingList", []), "html", null, true);
@@ -559,7 +559,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
         // line 224
         if ((($context["tuesday_lunch"] ?? $this->getContext($context, "tuesday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_lunch"] ?? $this->getContext($context, "tuesday_lunch")), "mealShoppingList", []), "html", null, true);
@@ -593,7 +593,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
         // line 236
         if ((($context["tuesday_afternoon"] ?? $this->getContext($context, "tuesday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_afternoon"] ?? $this->getContext($context, "tuesday_afternoon")), "mealShoppingList", []), "html", null, true);
@@ -627,7 +627,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_tuesday\" class=\"form-control\" style=\"height: 225px\">";
         // line 248
         if ((($context["tuesday_dinner"] ?? $this->getContext($context, "tuesday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["tuesday_dinner"] ?? $this->getContext($context, "tuesday_dinner")), "mealShoppingList", []), "html", null, true);
@@ -756,7 +756,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
         // line 308
         if ((($context["wednesday_breakfast"] ?? $this->getContext($context, "wednesday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_breakfast"] ?? $this->getContext($context, "wednesday_breakfast")), "mealShoppingList", []), "html", null, true);
@@ -790,7 +790,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
         // line 320
         if ((($context["wednesday_snack"] ?? $this->getContext($context, "wednesday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_snack"] ?? $this->getContext($context, "wednesday_snack")), "mealShoppingList", []), "html", null, true);
@@ -824,7 +824,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
         // line 332
         if ((($context["wednesday_lunch"] ?? $this->getContext($context, "wednesday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_lunch"] ?? $this->getContext($context, "wednesday_lunch")), "mealShoppingList", []), "html", null, true);
@@ -858,7 +858,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
         // line 344
         if ((($context["wednesday_afternoon"] ?? $this->getContext($context, "wednesday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_afternoon"] ?? $this->getContext($context, "wednesday_afternoon")), "mealShoppingList", []), "html", null, true);
@@ -892,7 +892,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_wednesday\" class=\"form-control\" style=\"height: 225px\">";
         // line 356
         if ((($context["wednesday_dinner"] ?? $this->getContext($context, "wednesday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["wednesday_dinner"] ?? $this->getContext($context, "wednesday_dinner")), "mealShoppingList", []), "html", null, true);
@@ -1021,7 +1021,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
         // line 416
         if ((($context["thursday_breakfast"] ?? $this->getContext($context, "thursday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_breakfast"] ?? $this->getContext($context, "thursday_breakfast")), "mealShoppingList", []), "html", null, true);
@@ -1055,7 +1055,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
         // line 428
         if ((($context["thursday_snack"] ?? $this->getContext($context, "thursday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_snack"] ?? $this->getContext($context, "thursday_snack")), "mealShoppingList", []), "html", null, true);
@@ -1089,7 +1089,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
         // line 440
         if ((($context["thursday_lunch"] ?? $this->getContext($context, "thursday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_lunch"] ?? $this->getContext($context, "thursday_lunch")), "mealShoppingList", []), "html", null, true);
@@ -1123,7 +1123,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
         // line 452
         if ((($context["thursday_afternoon"] ?? $this->getContext($context, "thursday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_afternoon"] ?? $this->getContext($context, "thursday_afternoon")), "mealShoppingList", []), "html", null, true);
@@ -1157,7 +1157,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_thursday\" class=\"form-control\" style=\"height: 225px\">";
         // line 464
         if ((($context["thursday_dinner"] ?? $this->getContext($context, "thursday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["thursday_dinner"] ?? $this->getContext($context, "thursday_dinner")), "mealShoppingList", []), "html", null, true);
@@ -1286,7 +1286,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_friday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_friday\" class=\"form-control\" style=\"height: 225px\">";
         // line 524
         if ((($context["friday_breakfast"] ?? $this->getContext($context, "friday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_breakfast"] ?? $this->getContext($context, "friday_breakfast")), "mealShoppingList", []), "html", null, true);
@@ -1320,7 +1320,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_friday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_friday\" class=\"form-control\" style=\"height: 225px\">";
         // line 536
         if ((($context["friday_snack"] ?? $this->getContext($context, "friday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_snack"] ?? $this->getContext($context, "friday_snack")), "mealShoppingList", []), "html", null, true);
@@ -1354,7 +1354,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_friday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_friday\" class=\"form-control\" style=\"height: 225px\">";
         // line 548
         if ((($context["friday_lunch"] ?? $this->getContext($context, "friday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_lunch"] ?? $this->getContext($context, "friday_lunch")), "mealShoppingList", []), "html", null, true);
@@ -1388,7 +1388,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_friday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_friday\" class=\"form-control\" style=\"height: 225px\">";
         // line 560
         if ((($context["friday_afternoon"] ?? $this->getContext($context, "friday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_afternoon"] ?? $this->getContext($context, "friday_afternoon")), "mealShoppingList", []), "html", null, true);
@@ -1422,7 +1422,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_friday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_friday\" class=\"form-control\" style=\"height: 225px\">";
         // line 572
         if ((($context["friday_dinner"] ?? $this->getContext($context, "friday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["friday_dinner"] ?? $this->getContext($context, "friday_dinner")), "mealShoppingList", []), "html", null, true);
@@ -1551,7 +1551,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
         // line 632
         if ((($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")), "mealShoppingList", []), "html", null, true);
@@ -1585,7 +1585,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
         // line 644
         if ((($context["saturday_breakfast"] ?? $this->getContext($context, "saturday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_snack"] ?? $this->getContext($context, "saturday_snack")), "mealShoppingList", []), "html", null, true);
@@ -1619,7 +1619,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
         // line 656
         if ((($context["saturday_lunch"] ?? $this->getContext($context, "saturday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_lunch"] ?? $this->getContext($context, "saturday_lunch")), "mealShoppingList", []), "html", null, true);
@@ -1653,7 +1653,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
         // line 668
         if ((($context["saturday_afternoon"] ?? $this->getContext($context, "saturday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_afternoon"] ?? $this->getContext($context, "saturday_afternoon")), "mealShoppingList", []), "html", null, true);
@@ -1687,7 +1687,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_saturday\" class=\"form-control\" style=\"height: 225px\">";
         // line 680
         if ((($context["saturday_dinner"] ?? $this->getContext($context, "saturday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["saturday_dinner"] ?? $this->getContext($context, "saturday_dinner")), "mealShoppingList", []), "html", null, true);
@@ -1816,7 +1816,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
         // line 740
         if ((($context["sunday_breakfast"] ?? $this->getContext($context, "sunday_breakfast")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_breakfast"] ?? $this->getContext($context, "sunday_breakfast")), "mealShoppingList", []), "html", null, true);
@@ -1850,7 +1850,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
         // line 752
         if ((($context["sunday_snack"] ?? $this->getContext($context, "sunday_snack")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_snack"] ?? $this->getContext($context, "sunday_snack")), "mealShoppingList", []), "html", null, true);
@@ -1884,7 +1884,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
         // line 764
         if ((($context["sunday_lunch"] ?? $this->getContext($context, "sunday_lunch")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_lunch"] ?? $this->getContext($context, "sunday_lunch")), "mealShoppingList", []), "html", null, true);
@@ -1918,7 +1918,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
         // line 776
         if ((($context["sunday_afternoon"] ?? $this->getContext($context, "sunday_afternoon")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_afternoon"] ?? $this->getContext($context, "sunday_afternoon")), "mealShoppingList", []), "html", null, true);
@@ -1952,7 +1952,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
         echo "</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_sunday\" class=\"form-control\" style=\"height: 225px\">";
         // line 788
         if ((($context["sunday_dinner"] ?? $this->getContext($context, "sunday_dinner")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["sunday_dinner"] ?? $this->getContext($context, "sunday_dinner")), "mealShoppingList", []), "html", null, true);
@@ -2176,7 +2176,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"breakfast_menu_monday\" class=\"form-control\" style=\"height: 430px\">{% if monday_breakfast != false %}{{ monday_breakfast.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_monday\" class=\"form-control\" style=\"height: 225px\">{% if monday_breakfast != false %}{{ monday_breakfast.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_monday\" class=\"form-control\" style=\"height: 225px\">{% if monday_breakfast != false %}{{ monday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"breakfast_comments_monday\" class=\"form-control\" style=\"height: 186px\">{% if monday_breakfast != false %}{{ monday_breakfast.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2188,7 +2188,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"snack_menu_monday\" class=\"form-control\" style=\"height: 430px\">{% if monday_snack != false %}{{ monday_snack.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_monday\" class=\"form-control\" style=\"height: 225px\">{% if monday_snack != false %}{{ monday_snack.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_monday\" class=\"form-control\" style=\"height: 225px\">{% if monday_snack != false %}{{ monday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_monday\" class=\"form-control\" style=\"height: 186px\">{% if monday_snack != false %}{{ monday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2200,7 +2200,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"lunch_menu_monday\" class=\"form-control\" style=\"height: 430px\">{% if monday_lunch != false %}{{ monday_lunch.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_monday\" class=\"form-control\" style=\"height: 225px\">{% if monday_lunch != false %}{{ monday_lunch.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_monday\" class=\"form-control\" style=\"height: 225px\">{% if monday_lunch != false %}{{ monday_lunch.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"lunch_comments_monday\" class=\"form-control\" style=\"height: 186px\">{% if monday_lunch != false %}{{ monday_lunch.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2212,7 +2212,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"afternoon_menu_monday\" class=\"form-control\" style=\"height: 430px\">{% if monday_afternoon != false %}{{ monday_afternoon.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_monday\" class=\"form-control\" style=\"height: 225px\">{% if monday_afternoon != false %}{{ monday_afternoon.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_monday\" class=\"form-control\" style=\"height: 225px\">{% if monday_afternoon != false %}{{ monday_afternoon.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"afternoon_comments_monday\" class=\"form-control\" style=\"height: 186px\">{% if monday_afternoon != false %}{{ monday_afternoon.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2224,7 +2224,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"dinner_menu_monday\" class=\"form-control\" style=\"height: 430px\">{% if monday_dinner != false %}{{ monday_dinner.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_monday\" class=\"form-control\" style=\"height: 225px\">{% if monday_dinner != false %}{{ monday_dinner.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_monday\" class=\"form-control\" style=\"height: 225px\">{% if monday_dinner != false %}{{ monday_dinner.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"dinner_comments_monday\" class=\"form-control\" style=\"height: 186px\">{% if monday_dinner != false %}{{ monday_dinner.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2283,7 +2283,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"breakfast_menu_tuesday\" class=\"form-control\" style=\"height: 430px\">{% if tuesday_breakfast != false %}{{ tuesday_breakfast.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_tuesday\" class=\"form-control\" style=\"height: 225px\">{% if tuesday_breakfast != false %}{{ tuesday_breakfast.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_tuesday\" class=\"form-control\" style=\"height: 225px\">{% if tuesday_breakfast != false %}{{ tuesday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"breakfast_comments_tuesday\" class=\"form-control\" style=\"height: 186px\">{% if tuesday_breakfast != false %}{{ tuesday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                             </div>
@@ -2295,7 +2295,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"snack_menu_tuesday\" class=\"form-control\" style=\"height: 430px\">{% if tuesday_snack != false %}{{ tuesday_snack.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_tuesday\" class=\"form-control\" style=\"height: 225px\">{% if tuesday_snack != false %}{{ tuesday_snack.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_tuesday\" class=\"form-control\" style=\"height: 225px\">{% if tuesday_snack != false %}{{ tuesday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_tuesday\" class=\"form-control\" style=\"height: 186px\">{% if tuesday_snack != false %}{{ tuesday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2307,7 +2307,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"lunch_menu_tuesday\" class=\"form-control\" style=\"height: 430px\">{% if tuesday_lunch != false %}{{ tuesday_lunch.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_tuesday\" class=\"form-control\" style=\"height: 225px\">{% if tuesday_lunch != false %}{{ tuesday_lunch.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_tuesday\" class=\"form-control\" style=\"height: 225px\">{% if tuesday_lunch != false %}{{ tuesday_lunch.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"lunch_comments_tuesday\" class=\"form-control\" style=\"height: 186px\">{% if tuesday_lunch != false %}{{ tuesday_lunch.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2319,7 +2319,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"afternoon_menu_tuesday\" class=\"form-control\" style=\"height: 430px\">{% if tuesday_afternoon != false %}{{ tuesday_afternoon.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_tuesday\" class=\"form-control\" style=\"height: 225px\">{% if tuesday_afternoon != false %}{{ tuesday_afternoon.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_tuesday\" class=\"form-control\" style=\"height: 225px\">{% if tuesday_afternoon != false %}{{ tuesday_afternoon.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"afternoon_comments_tuesday\" class=\"form-control\" style=\"height: 186px\">{% if tuesday_afternoon != false %}{{ tuesday_afternoon.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2331,7 +2331,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"dinner_menu_tuesday\" class=\"form-control\" style=\"height: 430px\">{% if tuesday_dinner != false %}{{ tuesday_dinner.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_tuesday\" class=\"form-control\" style=\"height: 225px\">{% if tuesday_dinner != false %}{{ tuesday_dinner.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_tuesday\" class=\"form-control\" style=\"height: 225px\">{% if tuesday_dinner != false %}{{ tuesday_dinner.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"dinner_comments_tuesday\" class=\"form-control\" style=\"height: 186px\">{% if tuesday_dinner != false %}{{ tuesday_dinner.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2391,7 +2391,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"breakfast_menu_wednesday\" class=\"form-control\" style=\"height: 430px\">{% if wednesday_breakfast != false %}{{ wednesday_breakfast.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_wednesday\" class=\"form-control\" style=\"height: 225px\">{% if wednesday_breakfast != false %}{{ wednesday_breakfast.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_wednesday\" class=\"form-control\" style=\"height: 225px\">{% if wednesday_breakfast != false %}{{ wednesday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"breakfast_comments_wednesday\" class=\"form-control\" style=\"height: 186px\">{% if wednesday_breakfast != false %}{{ wednesday_breakfast.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2403,7 +2403,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"snack_menu_wednesday\" class=\"form-control\" style=\"height: 430px\">{% if wednesday_snack != false %}{{ wednesday_snack.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_wednesday\" class=\"form-control\" style=\"height: 225px\">{% if wednesday_snack != false %}{{ wednesday_snack.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_wednesday\" class=\"form-control\" style=\"height: 225px\">{% if wednesday_snack != false %}{{ wednesday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_wednesday\" class=\"form-control\" style=\"height: 186px\"><{% if wednesday_snack != false %}{{ wednesday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2415,7 +2415,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"lunch_menu_wednesday\" class=\"form-control\" style=\"height: 430px\">{% if wednesday_lunch != false %}{{ wednesday_lunch.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_wednesday\" class=\"form-control\" style=\"height: 225px\">{% if wednesday_lunch != false %}{{ wednesday_lunch.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_wednesday\" class=\"form-control\" style=\"height: 225px\">{% if wednesday_lunch != false %}{{ wednesday_lunch.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"lunch_comments_wednesday\" class=\"form-control\" style=\"height: 186px\">{% if wednesday_lunch != false %}{{ wednesday_lunch.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2427,7 +2427,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"afternoon_menu_wednesday\" class=\"form-control\" style=\"height: 430px\">{% if wednesday_afternoon != false %}{{ wednesday_afternoon.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_wednesday\" class=\"form-control\" style=\"height: 225px\">{% if wednesday_afternoon != false %}{{ wednesday_afternoon.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_wednesday\" class=\"form-control\" style=\"height: 225px\">{% if wednesday_afternoon != false %}{{ wednesday_afternoon.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"afternoon_comments_wednesday\" class=\"form-control\" style=\"height: 186px\">{% if wednesday_afternoon != false %}{{ wednesday_afternoon.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2439,7 +2439,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"dinner_menu_wednesday\" class=\"form-control\" style=\"height: 430px\">{% if wednesday_dinner != false %}{{ wednesday_dinner.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_wednesday\" class=\"form-control\" style=\"height: 225px\">{% if wednesday_dinner != false %}{{ wednesday_dinner.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_wednesday\" class=\"form-control\" style=\"height: 225px\">{% if wednesday_dinner != false %}{{ wednesday_dinner.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"dinner_comments_wednesday\" class=\"form-control\" style=\"height: 186px\">{% if wednesday_dinner != false %}{{ wednesday_dinner.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2499,7 +2499,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"breakfast_menu_thursday\" class=\"form-control\" style=\"height: 430px\">{% if thursday_breakfast != false %}{{ thursday_breakfast.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_thursday\" class=\"form-control\" style=\"height: 225px\">{% if thursday_breakfast != false %}{{ thursday_breakfast.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_thursday\" class=\"form-control\" style=\"height: 225px\">{% if thursday_breakfast != false %}{{ thursday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"breakfast_comments_thursday\" class=\"form-control\" style=\"height: 186px\">{% if thursday_breakfast != false %}{{ thursday_breakfast.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2511,7 +2511,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"snack_menu_thursday\" class=\"form-control\" style=\"height: 430px\">{% if thursday_snack != false %}{{ thursday_snack.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_thursday\" class=\"form-control\" style=\"height: 225px\">{% if thursday_snack != false %}{{ thursday_snack.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_thursday\" class=\"form-control\" style=\"height: 225px\">{% if thursday_snack != false %}{{ thursday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_thursday\" class=\"form-control\" style=\"height: 186px\">{% if thursday_snack != false %}{{ thursday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2523,7 +2523,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"lunch_menu_thursday\" class=\"form-control\" style=\"height: 430px\">{% if thursday_lunch != false %}{{ thursday_lunch.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_thursday\" class=\"form-control\" style=\"height: 225px\">{% if thursday_lunch != false %}{{ thursday_lunch.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_thursday\" class=\"form-control\" style=\"height: 225px\">{% if thursday_lunch != false %}{{ thursday_lunch.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"lunch_comments_thursday\" class=\"form-control\" style=\"height: 186px\">{% if thursday_lunch != false %}{{ thursday_lunch.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2535,7 +2535,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"afternoon_menu_thursday\" class=\"form-control\" style=\"height: 430px\">{% if thursday_afternoon != false %}{{ thursday_afternoon.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_thursday\" class=\"form-control\" style=\"height: 225px\">{% if thursday_afternoon != false %}{{ thursday_afternoon.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_thursday\" class=\"form-control\" style=\"height: 225px\">{% if thursday_afternoon != false %}{{ thursday_afternoon.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"afternoon_comments_thursday\" class=\"form-control\" style=\"height: 186px\">{% if thursday_afternoon != false %}{{ thursday_afternoon.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2547,7 +2547,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"dinner_menu_thursday\" class=\"form-control\" style=\"height: 430px\">{% if thursday_dinner != false %}{{ thursday_dinner.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_thursday\" class=\"form-control\" style=\"height: 225px\">{% if thursday_dinner != false %}{{ thursday_dinner.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_thursday\" class=\"form-control\" style=\"height: 225px\">{% if thursday_dinner != false %}{{ thursday_dinner.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"dinner_comments_thursday\" class=\"form-control\" style=\"height: 186px\">{% if thursday_dinner != false %}{{ thursday_dinner.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2607,7 +2607,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"breakfast_menu_friday\" class=\"form-control\" style=\"height: 430px\">{% if friday_breakfast != false %}{{ friday_breakfast.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_friday\" class=\"form-control\" style=\"height: 225px\">{% if friday_breakfast != false %}{{ friday_breakfast.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_friday\" class=\"form-control\" style=\"height: 225px\">{% if friday_breakfast != false %}{{ friday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"breakfast_comments_friday\" class=\"form-control\" style=\"height: 186px\">{% if friday_breakfast != false %}{{ friday_breakfast.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2619,7 +2619,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"snack_menu_friday\" class=\"form-control\" style=\"height: 430px\">{% if friday_snack != false %}{{ friday_snack.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_friday\" class=\"form-control\" style=\"height: 225px\">{% if friday_snack != false %}{{ friday_snack.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_friday\" class=\"form-control\" style=\"height: 225px\">{% if friday_snack != false %}{{ friday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_friday\" class=\"form-control\" style=\"height: 186px\">{% if friday_snack != false %}{{ friday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2631,7 +2631,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"lunch_menu_friday\" class=\"form-control\" style=\"height: 430px\">{% if friday_lunch != false %}{{ friday_lunch.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_friday\" class=\"form-control\" style=\"height: 225px\">{% if friday_lunch != false %}{{ friday_lunch.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_friday\" class=\"form-control\" style=\"height: 225px\">{% if friday_lunch != false %}{{ friday_lunch.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"lunch_comments_friday\" class=\"form-control\" style=\"height: 186px\">{% if friday_lunch != false %}{{ friday_lunch.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2643,7 +2643,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"afternoon_menu_friday\" class=\"form-control\" style=\"height: 430px\">{% if friday_afternoon != false %}{{ friday_afternoon.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_friday\" class=\"form-control\" style=\"height: 225px\">{% if friday_afternoon != false %}{{ friday_afternoon.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_friday\" class=\"form-control\" style=\"height: 225px\">{% if friday_afternoon != false %}{{ friday_afternoon.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"afternoon_comments_friday\" class=\"form-control\" style=\"height: 186px\">{% if friday_afternoon != false %}{{ friday_afternoon.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2655,7 +2655,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"dinner_menu_friday\" class=\"form-control\" style=\"height: 430px\">{% if friday_dinner != false %}{{ friday_dinner.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_friday\" class=\"form-control\" style=\"height: 225px\">{% if friday_dinner != false %}{{ friday_dinner.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_friday\" class=\"form-control\" style=\"height: 225px\">{% if friday_dinner != false %}{{ friday_dinner.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"dinner_comments_friday\" class=\"form-control\" style=\"height: 186px\">{% if friday_dinner != false %}{{ friday_dinner.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2715,7 +2715,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"breakfast_menu_saturday\" class=\"form-control\" style=\"height: 430px\">{% if saturday_breakfast != false %}{{ saturday_breakfast.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_saturday\" class=\"form-control\" style=\"height: 225px\">{% if saturday_breakfast != false %}{{ saturday_breakfast.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_saturday\" class=\"form-control\" style=\"height: 225px\">{% if saturday_breakfast != false %}{{ saturday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"breakfast_comments_saturday\" class=\"form-control\" style=\"height: 186px\">{% if saturday_breakfast != false %}{{ saturday_breakfast.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2727,7 +2727,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"snack_menu_saturday\" class=\"form-control\" style=\"height: 430px\">{% if saturday_breakfast != false  %}{{ saturday_snack.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_saturday\" class=\"form-control\" style=\"height: 225px\">{% if saturday_breakfast != false  %}{{ saturday_snack.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_saturday\" class=\"form-control\" style=\"height: 225px\">{% if saturday_breakfast != false  %}{{ saturday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_saturday\" class=\"form-control\" style=\"height: 186px\">{% if saturday_breakfast != false  %}{{ saturday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2739,7 +2739,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"lunch_menu_saturday\" class=\"form-control\" style=\"height: 430px\">{% if saturday_lunch != false  %}{{ saturday_lunch.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_saturday\" class=\"form-control\" style=\"height: 225px\">{% if saturday_lunch != false  %}{{ saturday_lunch.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_saturday\" class=\"form-control\" style=\"height: 225px\">{% if saturday_lunch != false  %}{{ saturday_lunch.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"lunch_comments_saturday\" class=\"form-control\" style=\"height: 186px\">{% if saturday_lunch != false  %}{{ saturday_lunch.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2751,7 +2751,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"afternoon_menu_saturday\" class=\"form-control\" style=\"height: 430px\">{% if saturday_afternoon != false  %}{{ saturday_afternoon.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_saturday\" class=\"form-control\" style=\"height: 225px\">{% if saturday_afternoon != false  %}{{ saturday_afternoon.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_saturday\" class=\"form-control\" style=\"height: 225px\">{% if saturday_afternoon != false  %}{{ saturday_afternoon.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"afternoon_comments_saturday\" class=\"form-control\" style=\"height: 186px\">{% if saturday_afternoon != false  %}{{ saturday_afternoon.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2763,7 +2763,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"dinner_menu_saturday\" class=\"form-control\" style=\"height: 430px\">{% if saturday_dinner != false  %}{{ saturday_dinner.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_saturday\" class=\"form-control\" style=\"height: 225px\">{% if saturday_dinner != false  %}{{ saturday_dinner.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_saturday\" class=\"form-control\" style=\"height: 225px\">{% if saturday_dinner != false  %}{{ saturday_dinner.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"dinner_comments_saturday\" class=\"form-control\" style=\"height: 186px\">{% if saturday_dinner != false  %}{{ saturday_dinner.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2823,7 +2823,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"breakfast_menu_sunday\" class=\"form-control\" style=\"height: 430px\">{% if sunday_breakfast != false %}{{ sunday_breakfast.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_sunday\" class=\"form-control\" style=\"height: 225px\">{% if sunday_breakfast != false %}{{ sunday_breakfast.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"breakfast_list_sunday\" class=\"form-control\" style=\"height: 225px\">{% if sunday_breakfast != false %}{{ sunday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"breakfast_comments_sunday\" class=\"form-control\" style=\"height: 186px\">{% if sunday_breakfast != false %}{{ sunday_breakfast.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2835,7 +2835,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"snack_menu_sunday\" class=\"form-control\" style=\"height: 430px\">{% if sunday_snack != false %}{{ sunday_snack.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_sunday\" class=\"form-control\" style=\"height: 225px\">{% if sunday_snack != false %}{{ sunday_snack.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"snack_list_sunday\" class=\"form-control\" style=\"height: 225px\">{% if sunday_snack != false %}{{ sunday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"snack_comments_sunday\" class=\"form-control\" style=\"height: 186px\">{% if sunday_snack != false %}{{ sunday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2847,7 +2847,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"lunch_menu_sunday\" class=\"form-control\" style=\"height: 430px\">{% if sunday_lunch != false %}{{ sunday_lunch.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_sunday\" class=\"form-control\" style=\"height: 225px\">{% if sunday_lunch != false %}{{ sunday_lunch.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"lunch_list_sunday\" class=\"form-control\" style=\"height: 225px\">{% if sunday_lunch != false %}{{ sunday_lunch.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"lunch_comments_sunday\" class=\"form-control\" style=\"height: 186px\">{% if sunday_lunch != false %}{{ sunday_lunch.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2859,7 +2859,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"afternoon_menu_sunday\" class=\"form-control\" style=\"height: 430px\">{% if sunday_afternoon != false %}{{ sunday_afternoon.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_sunday\" class=\"form-control\" style=\"height: 225px\">{% if sunday_afternoon != false %}{{ sunday_afternoon.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"afternoon_list_sunday\" class=\"form-control\" style=\"height: 225px\">{% if sunday_afternoon != false %}{{ sunday_afternoon.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"afternoon_comments_sunday\" class=\"form-control\" style=\"height: 186px\">{% if sunday_afternoon != false %}{{ sunday_afternoon.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -2871,7 +2871,7 @@ class __TwigTemplate_994d2b40d36aef124eaac7dc814bbc9ecfb813c2581bb8d07bb32a61195
                                                 <label for=\"menu\">Menú:</label><textarea type=\"text\" id=\"menu\" name=\"dinner_menu_sunday\" class=\"form-control\" style=\"height: 430px\">{% if sunday_dinner != false %}{{ sunday_dinner.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class=\"col-sm-6\" style=\"padding: 20px\">
-                                                <label for=\"list\">Lista:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_sunday\" class=\"form-control\" style=\"height: 225px\">{% if sunday_dinner != false %}{{ sunday_dinner.mealShoppingList }}{% endif %}</textarea>
+                                                <label for=\"list\">Lista de la compra:</label><textarea type=\"text\" id=\"list\" name=\"dinner_list_sunday\" class=\"form-control\" style=\"height: 225px\">{% if sunday_dinner != false %}{{ sunday_dinner.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for=\"comments\">Comentarios:</label><textarea type=\"text\" id=\"comments\" name=\"dinner_comments_sunday\" class=\"form-control\" style=\"height: 186px\">{% if sunday_dinner != false %}{{ sunday_dinner.mealNotes }}{% endif %}</textarea>
                                             </div>

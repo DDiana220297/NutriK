@@ -129,7 +129,7 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                             </div>
                             <div class=\"col-sm-8\">
                                 <br/>
-                                <p><strong style=\"font-size: 22px\">Clientes</strong></p>
+                                <p><strong style=\"font-size: 22px\">Mis Clientes</strong></p>
                                 <p>Accede aquí para ver tus clientes. Una manera facil para acceder a la información de tus clientes</p>
                             </div>
                         </div>
@@ -292,7 +292,7 @@ class __TwigTemplate_4e04517f7fde1c524f492cc6d99a629e2499a3cfa69f1bea970d2dfc6d9
                             </div>
                             <div class=\"col-sm-8\">
                                 <br/>
-                                <p><strong style=\"font-size: 22px\">Clientes</strong></p>
+                                <p><strong style=\"font-size: 22px\">Mis Clientes</strong></p>
                                 <p>Accede aquí para ver tus clientes. Una manera facil para acceder a la información de tus clientes</p>
                             </div>
                         </div>

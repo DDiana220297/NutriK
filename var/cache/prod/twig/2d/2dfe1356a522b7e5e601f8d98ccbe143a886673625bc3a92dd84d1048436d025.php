@@ -29,11 +29,6 @@ class __TwigTemplate_407e9f5dffd41d20b3947c985fadcf68e26ab10e39cceac7a3da544f8d7
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "footer.html.twig"));
 
-        // line 1
-        echo "<footer>
-    TFG
-</footer>
-";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -46,7 +41,7 @@ class __TwigTemplate_407e9f5dffd41d20b3947c985fadcf68e26ab10e39cceac7a3da544f8d7
 
     public function getDebugInfo()
     {
-        return array (  33 => 1,);
+        return array ();
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -59,9 +54,6 @@ class __TwigTemplate_407e9f5dffd41d20b3947c985fadcf68e26ab10e39cceac7a3da544f8d7
 
     public function getSourceContext()
     {
-        return new Source("<footer>
-    TFG
-</footer>
-", "footer.html.twig", "/shared/httpd/nutrik/app/Resources/views/footer.html.twig");
+        return new Source("", "footer.html.twig", "/shared/httpd/nutrik/app/Resources/views/footer.html.twig");
     }
 }

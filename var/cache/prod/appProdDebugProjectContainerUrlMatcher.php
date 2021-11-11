@@ -307,6 +307,19 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
 
             }
 
+            elseif (0 === strpos($pathinfo, '/plan')) {
+                // customer_plans
+                if ('/plans' === $pathinfo) {
+                    return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::plansAction',  '_route' => 'customer_plans',);
+                }
+
+                // customer_plan
+                if (preg_match('#^/plan/(?P<id_plan>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'customer_plan']), array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::viewPlanAction',));
+                }
+
+            }
+
         }
 
         // customer_recipes

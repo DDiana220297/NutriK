@@ -967,7 +967,7 @@ body{
 #nutritionist-weekly-plan .container .form .col-sm-12 #weekly-plan-content-block .col-sm-12 fieldset .form-card .col-sm-9 #meals-buttons .day-meal-button{
     font-weight: 500;
     height: 45px;
-    width: 225px;
+    width: 253px;
     border-color: #00766c;
     background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
 }
@@ -1207,7 +1207,7 @@ body{
 #nutritionist-add-event .container #add-event-block .col-sm-4 .save-button-item,
 #nutritionist-edit-event .container #edit-event-block .col-sm-4 .save-button-item{
     width: 100%;
-    margin-top: 5%;
+    margin-top: -2%;
 }
 
 #nutritionist-add-event .container #add-event-block .col-sm-4 .save-button-item>input,
@@ -1668,9 +1668,7 @@ body{
 }
 
 #assigned-customer-plans-section .container .assigned-customer-plans .customer-info{
-
     margin-bottom: 10px;
-
     border-radius: 2.5rem;
     padding: 15px;
     width: 30rem;
@@ -1747,7 +1745,7 @@ body{
 /* NUTRITIONIST CONFIGURATION */
 #nutritionist-configuration-section .container{
     width: 95%;
-    margin-top: 1%;
+    margin-top: 2%;
 }
 
 #nutritionist-configuration-section .container .configuration-block{
@@ -1778,6 +1776,10 @@ body{
     height: 7rem;
 }
 #nutritionist-configuration-section .container .configuration-block .form .nutritionist-presentation-page .nutritionist-bibliography>textarea{
+    height: 10rem;
+}
+
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-presentation-page .nutritionist-rate>textarea{
     height: 15rem;
 }
 
@@ -1790,14 +1792,20 @@ body{
     border-width: thin;
 }
 #nutritionist-configuration-section .container .configuration-block .form .nutritionist-presentation-page .nutritionist-social-media .input-group .input-social-media{
-    width: 256px;
+    width: 345px;
 }
 #nutritionist-configuration-section .container .configuration-block .form .nutritionist-presentation-page .nutritionist-social-media .input-group .input-prefix{
     width: 25rem;
     text-align: start;
 }
 
-#nutritionist-configuration-section .container .configuration-block .form .nutritionist-presentation-page .save-button-item .save-button{
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-categories .category-entry .category-actions #editCategoryModal .modal-dialog .modal-content .save-button,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-tags .tag-entry .tag-actions #editTagModal .modal-dialog .modal-content .save-button,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-exercises .exercise-entry .exercise-actions #editExerciseModal .modal-dialog .modal-content .save-button,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-presentation-page .save-button-item .save-button,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools #createTagModal .modal-dialog .modal-content .save-button,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools #createCategoryModal .modal-dialog .modal-content .save-button,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools #createExerciseModal .modal-dialog .modal-content .save-button{
     margin-top: 25px;
     height: 40px;
     width: 60%;
@@ -1810,19 +1818,27 @@ body{
     background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
 }
 
-#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .nutritionist-categories,
-#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .nutritionist-tags{
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools{
     overflow-y: auto;
-    height: 25rem;
 }
 
-#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools>label>svg:hover,
-#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .add-tag:hover,
-#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .add-category:hover{
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-categories,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-tags,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-exercises{
+    overflow-y: auto;
+    height: 25rem;
+    margin-bottom: 5%;
+}
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-presentation-page .nutritionist-rate>label>svg:hover,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools>label>svg:hover,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .add-tag:hover,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .add-category:hover,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .add-exercise:hover{
     color: #00766c;
 }
-#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .nutritionist-categories .category-entry,
-#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .nutritionist-tags .tag-entry{
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-categories .category-entry,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-tags .tag-entry,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-exercises .exercise-entry{
     border-style: solid;
     margin-bottom: 10px;
     border-color: #00A295;
@@ -1834,14 +1850,17 @@ body{
     background: linear-gradient(to top, #f8f8f8 0%, white 100%);
 }
 
-#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .nutritionist-categories .category-entry .col-sm-11>h4,
-#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .nutritionist-categories .category-entry .col-sm-11>p,
-#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .nutritionist-tags .tag-entry .col-sm-11>h4,
-#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .nutritionist-tags .tag-entry .col-sm-11>p{
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-categories .category-entry .col-sm-11>h4,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-categories .category-entry .col-sm-11>p,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-tags .tag-entry .col-sm-11>h4,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-tags .tag-entry .col-sm-11>p,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-exercises .exercise-entry .col-sm-11>h4,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-exercises .exercise-entry .col-sm-11>p{
     margin: 0;
 }
 
-#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .nutritionist-tags .tag-entry .col-sm-1>svg:hover,
-#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .nutritionist-categories .category-entry .col-sm-1>svg:hover{
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-tags .tag-entry .col-sm-1>svg:hover,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-categories .category-entry .col-sm-1>svg:hover,
+#nutritionist-configuration-section .container .configuration-block .form .nutritionist-tools .tools .nutritionist-exercises .exercise-entry .col-sm-1>svg:hover{
     opacity: 0.5;
 }

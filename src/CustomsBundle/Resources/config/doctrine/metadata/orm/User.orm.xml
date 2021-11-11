@@ -72,6 +72,11 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="rate" type="text" column="rate" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="presentation" type="text" column="presentation" length="65535" nullable="true">
       <options>
         <option name="fixed"/>
