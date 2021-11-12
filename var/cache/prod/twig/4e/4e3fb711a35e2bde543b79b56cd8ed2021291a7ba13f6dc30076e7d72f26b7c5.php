@@ -212,7 +212,7 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
                             <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openCreateTagModal\" data-toggle=\"modal\" data-target=\"#createTagModal\"></button>
                             <div class=\"modal fade\" id=\"createTagModal\">
                                 <div class=\"modal-dialog\">
-                                    <div class=\"modal-content\" style=\"height: 40rem;width: 50rem;padding: 40px 30px;\">
+                                    <div class=\"modal-content\" style=\"height: 50rem;width: 50rem;padding: 40px 30px;\">
                                         <!-- Modal body -->
                                         <form class=\"form\" action=\"";
         // line 118
@@ -221,8 +221,8 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
                                             <h4 style=\"text-align: center; color: #00766c\">Añadir nueva etiqueta</h4>
                                             <hr/>
                                             <label for=\"tag_name\">Nombre:</label><input type=\"text\" id=\"tag_name\" name=\"tag_name\" class=\"form-control\">
-                                            <label for=\"tag_description\">Descripción:</label><textarea type=\"text\" id=\"tag_description\" name=\"tag_description\" class=\"form-control\"></textarea>
-                                            <label for=\"tag_level\">Nivel:</label><input type=\"number\" id=\"tag_level\" name=\"tag_description\" class=\"form-control\">
+                                            <label for=\"tag_description\">Descripción:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"tag_description\" name=\"tag_description\" class=\"form-control\"></textarea>
+                                            <label for=\"tag_level\">Nivel:</label><input type=\"number\" id=\"tag_level\" name=\"tag_level\" class=\"form-control\">
                                             <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Guardar etiqueta\"/>
                                         </form>
                                     </div>
@@ -259,7 +259,7 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
                                             <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openEditTagModal\" data-toggle=\"modal\" data-target=\"#editTagModal\"></button>
                                             <div class=\"modal fade\" id=\"editTagModal\">
                                                 <div class=\"modal-dialog\">
-                                                    <div class=\"modal-content\" style=\"height: 40rem;width: 50rem;padding: 40px 30px;\">
+                                                    <div class=\"modal-content\" style=\"height: 50rem;width: 50rem;padding: 40px 30px;\">
                                                         <!-- Modal body -->
                                                         <form class=\"form\" action=\"";
             // line 148
@@ -271,7 +271,7 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
             // line 151
             echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "name", []), "html", null, true);
             echo "\">
-                                                            <label for=\"tag_description\">Descripción:</label><textarea type=\"text\" id=\"tag_description\" name=\"tag_description\" class=\"form-control\">";
+                                                            <label for=\"tag_description\">Descripción:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"tag_description\" name=\"tag_description\" class=\"form-control\">";
             // line 152
             echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "description", []), "html", null, true);
             echo "</textarea>
@@ -303,7 +303,7 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
                             <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openCreateExerciseModal\" data-toggle=\"modal\" data-target=\"#createExerciseModal\"></button>
                             <div class=\"modal fade\" id=\"createExerciseModal\">
                                 <div class=\"modal-dialog\">
-                                    <div class=\"modal-content\" style=\"height: 40rem;width: 50rem;padding: 40px 30px;\">
+                                    <div class=\"modal-content\" style=\"height: 50rem;width: 50rem;padding: 40px 30px;\">
                                         <!-- Modal body -->
                                         <form class=\"form\" action=\"";
         // line 172
@@ -311,8 +311,8 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
         echo "\" method=\"post\">
                                             <h4 style=\"text-align: center; color: #00766c\">Añadir nuevo ejercicio</h4>
                                             <label for=\"exercise_title\">Nombre:</label><input type=\"text\" id=\"exercise_title\" name=\"exercise_title\" class=\"form-control\">
-                                            <label for=\"exercise_description\">Descripción:</label><textarea type=\"text\" id=\"exercise_description\" name=\"exercise_description\" class=\"form-control\"></textarea>
-                                            <label for=\"exercise_muscles\">Músculos trabajados:</label><textarea type=\"text\" id=\"exercise_muscles\" name=\"exercise_muscles\" class=\"form-control\"></textarea>
+                                            <label for=\"exercise_description\">Descripción:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"exercise_description\" name=\"exercise_description\" class=\"form-control\"></textarea>
+                                            <label for=\"exercise_muscles\">Músculos trabajados:</label><textarea style=\"height: 7rem\" type=\"text\" id=\"exercise_muscles\" name=\"exercise_muscles\" class=\"form-control\"></textarea>
                                             <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Guardar ejercicio\"/>
                                         </form>
                                     </div>
@@ -345,7 +345,7 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
                                             <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openEditExerciseModal\" data-toggle=\"modal\" data-target=\"#editExerciseModal\"></button>
                                             <div class=\"modal fade\" id=\"editExerciseModal\">
                                                 <div class=\"modal-dialog\">
-                                                    <div class=\"modal-content\" style=\"height: 40rem;width: 50rem;padding: 40px 30px;\">
+                                                    <div class=\"modal-content\" style=\"height: 50rem;width: 50rem;padding: 40px 30px;\">
                                                         <!-- Modal body -->
                                                         <form class=\"form\" action=\"";
             // line 200
@@ -356,11 +356,11 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
             // line 202
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "title", []), "html", null, true);
             echo "\">
-                                                            <label for=\"exercise_description\">Descripción:</label><textarea type=\"text\" id=\"exercise_description\" name=\"exercise_description\" class=\"form-control\">";
+                                                            <label for=\"exercise_description\">Descripción:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"exercise_description\" name=\"exercise_description\" class=\"form-control\">";
             // line 203
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "description", []), "html", null, true);
             echo "</textarea>
-                                                            <label for=\"exercise_muscles\">Músculos trabajados:</label><textarea type=\"text\" id=\"exercise_muscles\" name=\"exercise_muscles\" class=\"form-control\">";
+                                                            <label for=\"exercise_muscles\">Músculos trabajados:</label><textarea style=\"height: 7rem\" type=\"text\" id=\"exercise_muscles\" name=\"exercise_muscles\" class=\"form-control\">";
             // line 204
             echo twig_escape_filter($this->env, $this->getAttribute($context["exercise"], "muscles", []), "html", null, true);
             echo "</textarea>
@@ -387,7 +387,7 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
                             <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openCreateCategoryModal\" data-toggle=\"modal\" data-target=\"#createCategoryModal\"></button>
                             <div class=\"modal fade\" id=\"createCategoryModal\">
                                 <div class=\"modal-dialog\">
-                                    <div class=\"modal-content\" style=\"height: 40rem;width: 50rem;padding: 40px 30px;\">
+                                    <div class=\"modal-content\" style=\"height: 60rem;width: 50rem;padding: 40px 30px;\">
                                         <!-- Modal body -->
                                         <form class=\"form\" action=\"";
         // line 222
@@ -395,8 +395,8 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
         echo "\" method=\"post\">
                                             <h4 style=\"text-align: center; color: #00766c\">Añadir nueva categoría</h4>
                                             <label for=\"category_name\">Nombre:</label><input type=\"text\" id=\"category_name\" name=\"category_name\" class=\"form-control\">
-                                            <label for=\"category_description_short\">Descripción corta:</label><textarea type=\"text\" id=\"category_description_short\" name=\"category_description_short\" class=\"form-control\"></textarea>
-                                            <label for=\"category_description\">Descripción larga:</label><textarea type=\"text\" id=\"category_description\" name=\"category_description\" class=\"form-control\"></textarea>
+                                            <label for=\"category_description_short\">Descripción corta:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"category_description_short\" name=\"category_description_short\" class=\"form-control\"></textarea>
+                                            <label for=\"category_description\">Descripción larga:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"category_description\" name=\"category_description\" class=\"form-control\"></textarea>
                                             <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Guardar categoria\"/>
                                         </form>
                                     </div>
@@ -428,7 +428,7 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
                                             <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openEditCategoryModal\" data-toggle=\"modal\" data-target=\"#editCategoryModal\"></button>
                                             <div class=\"modal fade\" id=\"editCategoryModal\">
                                                 <div class=\"modal-dialog\">
-                                                    <div class=\"modal-content\" style=\"height: 40rem;width: 50rem;padding: 40px 30px;\">
+                                                    <div class=\"modal-content\" style=\"height: 60rem;width: 50rem;padding: 40px 30px;\">
                                                         <!-- Modal body -->
                                                         <form class=\"form\" action=\"";
             // line 249
@@ -439,11 +439,11 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
             // line 251
             echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "name", []), "html", null, true);
             echo "\">
-                                                            <label for=\"category_description_short\">Descripción corta:</label><textarea type=\"text\" id=\"category_description_short\" name=\"category_description_short\" class=\"form-control\">";
+                                                            <label for=\"category_description_short\">Descripción corta:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"category_description_short\" name=\"category_description_short\" class=\"form-control\">";
             // line 252
             echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "descriptionShort", []), "html", null, true);
             echo "</textarea>
-                                                            <label for=\"category_description\">Descripción larga:</label><textarea type=\"text\" id=\"category_description\" name=\"category_description\" class=\"form-control\">";
+                                                            <label for=\"category_description\">Descripción larga:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"category_description\" name=\"category_description\" class=\"form-control\">";
             // line 253
             echo twig_escape_filter($this->env, $this->getAttribute($context["category"], "description", []), "html", null, true);
             echo "</textarea>
@@ -613,14 +613,14 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
                             <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openCreateTagModal\" data-toggle=\"modal\" data-target=\"#createTagModal\"></button>
                             <div class=\"modal fade\" id=\"createTagModal\">
                                 <div class=\"modal-dialog\">
-                                    <div class=\"modal-content\" style=\"height: 40rem;width: 50rem;padding: 40px 30px;\">
+                                    <div class=\"modal-content\" style=\"height: 50rem;width: 50rem;padding: 40px 30px;\">
                                         <!-- Modal body -->
                                         <form class=\"form\" action=\"{{ path(\"nutritionist_configuration\") }}\" method=\"post\">
                                             <h4 style=\"text-align: center; color: #00766c\">Añadir nueva etiqueta</h4>
                                             <hr/>
                                             <label for=\"tag_name\">Nombre:</label><input type=\"text\" id=\"tag_name\" name=\"tag_name\" class=\"form-control\">
-                                            <label for=\"tag_description\">Descripción:</label><textarea type=\"text\" id=\"tag_description\" name=\"tag_description\" class=\"form-control\"></textarea>
-                                            <label for=\"tag_level\">Nivel:</label><input type=\"number\" id=\"tag_level\" name=\"tag_description\" class=\"form-control\">
+                                            <label for=\"tag_description\">Descripción:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"tag_description\" name=\"tag_description\" class=\"form-control\"></textarea>
+                                            <label for=\"tag_level\">Nivel:</label><input type=\"number\" id=\"tag_level\" name=\"tag_level\" class=\"form-control\">
                                             <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Guardar etiqueta\"/>
                                         </form>
                                     </div>
@@ -643,13 +643,13 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
                                             <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openEditTagModal\" data-toggle=\"modal\" data-target=\"#editTagModal\"></button>
                                             <div class=\"modal fade\" id=\"editTagModal\">
                                                 <div class=\"modal-dialog\">
-                                                    <div class=\"modal-content\" style=\"height: 40rem;width: 50rem;padding: 40px 30px;\">
+                                                    <div class=\"modal-content\" style=\"height: 50rem;width: 50rem;padding: 40px 30px;\">
                                                         <!-- Modal body -->
                                                         <form class=\"form\" action=\"{{ path(\"nutritionist_configuration\") }}\" method=\"post\">
                                                             <h4 style=\"text-align: center; color: #00766c\">Modificar etiqueta</h4>
                                                             <hr/>
                                                             <label for=\"tag_name\">Nombre:</label><input type=\"text\" id=\"tag_name\" name=\"tag_name\" class=\"form-control\" value=\"{{ tag.name }}\">
-                                                            <label for=\"tag_description\">Descripción:</label><textarea type=\"text\" id=\"tag_description\" name=\"tag_description\" class=\"form-control\">{{ tag.description }}</textarea>
+                                                            <label for=\"tag_description\">Descripción:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"tag_description\" name=\"tag_description\" class=\"form-control\">{{ tag.description }}</textarea>
                                                             <label for=\"tag_level\">Nivel:</label><input type=\"number\" id=\"tag_level\" name=\"tag_description\" class=\"form-control\" value=\"{{ tag.level }}\">
                                                             <input type=\"hidden\" id=\"id_tag_edit\" name=\"id_tag_edit\" value=\"{{ tag.idTag }}\">
                                                             <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Modificar etiqueta\"/>
@@ -667,13 +667,13 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
                             <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openCreateExerciseModal\" data-toggle=\"modal\" data-target=\"#createExerciseModal\"></button>
                             <div class=\"modal fade\" id=\"createExerciseModal\">
                                 <div class=\"modal-dialog\">
-                                    <div class=\"modal-content\" style=\"height: 40rem;width: 50rem;padding: 40px 30px;\">
+                                    <div class=\"modal-content\" style=\"height: 50rem;width: 50rem;padding: 40px 30px;\">
                                         <!-- Modal body -->
                                         <form class=\"form\" action=\"{{ path(\"nutritionist_configuration\") }}\" method=\"post\">
                                             <h4 style=\"text-align: center; color: #00766c\">Añadir nuevo ejercicio</h4>
                                             <label for=\"exercise_title\">Nombre:</label><input type=\"text\" id=\"exercise_title\" name=\"exercise_title\" class=\"form-control\">
-                                            <label for=\"exercise_description\">Descripción:</label><textarea type=\"text\" id=\"exercise_description\" name=\"exercise_description\" class=\"form-control\"></textarea>
-                                            <label for=\"exercise_muscles\">Músculos trabajados:</label><textarea type=\"text\" id=\"exercise_muscles\" name=\"exercise_muscles\" class=\"form-control\"></textarea>
+                                            <label for=\"exercise_description\">Descripción:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"exercise_description\" name=\"exercise_description\" class=\"form-control\"></textarea>
+                                            <label for=\"exercise_muscles\">Músculos trabajados:</label><textarea style=\"height: 7rem\" type=\"text\" id=\"exercise_muscles\" name=\"exercise_muscles\" class=\"form-control\"></textarea>
                                             <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Guardar ejercicio\"/>
                                         </form>
                                     </div>
@@ -695,13 +695,13 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
                                             <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openEditExerciseModal\" data-toggle=\"modal\" data-target=\"#editExerciseModal\"></button>
                                             <div class=\"modal fade\" id=\"editExerciseModal\">
                                                 <div class=\"modal-dialog\">
-                                                    <div class=\"modal-content\" style=\"height: 40rem;width: 50rem;padding: 40px 30px;\">
+                                                    <div class=\"modal-content\" style=\"height: 50rem;width: 50rem;padding: 40px 30px;\">
                                                         <!-- Modal body -->
                                                         <form class=\"form\" action=\"{{ path(\"nutritionist_configuration\") }}\" method=\"post\">
                                                             <h4 style=\"text-align: center; color: #00766c\">Editar ejercicio</h4>
                                                             <label for=\"exercise_title\">Nombre:</label><input type=\"text\" id=\"exercise_title\" name=\"exercise_title\" class=\"form-control\" value=\"{{ exercise.title }}\">
-                                                            <label for=\"exercise_description\">Descripción:</label><textarea type=\"text\" id=\"exercise_description\" name=\"exercise_description\" class=\"form-control\">{{ exercise.description }}</textarea>
-                                                            <label for=\"exercise_muscles\">Músculos trabajados:</label><textarea type=\"text\" id=\"exercise_muscles\" name=\"exercise_muscles\" class=\"form-control\">{{ exercise.muscles }}</textarea>
+                                                            <label for=\"exercise_description\">Descripción:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"exercise_description\" name=\"exercise_description\" class=\"form-control\">{{ exercise.description }}</textarea>
+                                                            <label for=\"exercise_muscles\">Músculos trabajados:</label><textarea style=\"height: 7rem\" type=\"text\" id=\"exercise_muscles\" name=\"exercise_muscles\" class=\"form-control\">{{ exercise.muscles }}</textarea>
                                                             <input type=\"hidden\" id=\"id_exercise_edit\" name=\"id_exercise_edit\" value=\"{{ exercise.idExercise }}\">
                                                             <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Modificar ejercicio\"/>
                                                         </form>
@@ -717,13 +717,13 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
                             <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openCreateCategoryModal\" data-toggle=\"modal\" data-target=\"#createCategoryModal\"></button>
                             <div class=\"modal fade\" id=\"createCategoryModal\">
                                 <div class=\"modal-dialog\">
-                                    <div class=\"modal-content\" style=\"height: 40rem;width: 50rem;padding: 40px 30px;\">
+                                    <div class=\"modal-content\" style=\"height: 60rem;width: 50rem;padding: 40px 30px;\">
                                         <!-- Modal body -->
                                         <form class=\"form\" action=\"{{ path(\"nutritionist_configuration\") }}\" method=\"post\">
                                             <h4 style=\"text-align: center; color: #00766c\">Añadir nueva categoría</h4>
                                             <label for=\"category_name\">Nombre:</label><input type=\"text\" id=\"category_name\" name=\"category_name\" class=\"form-control\">
-                                            <label for=\"category_description_short\">Descripción corta:</label><textarea type=\"text\" id=\"category_description_short\" name=\"category_description_short\" class=\"form-control\"></textarea>
-                                            <label for=\"category_description\">Descripción larga:</label><textarea type=\"text\" id=\"category_description\" name=\"category_description\" class=\"form-control\"></textarea>
+                                            <label for=\"category_description_short\">Descripción corta:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"category_description_short\" name=\"category_description_short\" class=\"form-control\"></textarea>
+                                            <label for=\"category_description\">Descripción larga:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"category_description\" name=\"category_description\" class=\"form-control\"></textarea>
                                             <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Guardar categoria\"/>
                                         </form>
                                     </div>
@@ -744,13 +744,13 @@ class __TwigTemplate_c0946575b213ed7c4e108932b588f17b326291e9538c6f9f6569eb9948c
                                             <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openEditCategoryModal\" data-toggle=\"modal\" data-target=\"#editCategoryModal\"></button>
                                             <div class=\"modal fade\" id=\"editCategoryModal\">
                                                 <div class=\"modal-dialog\">
-                                                    <div class=\"modal-content\" style=\"height: 40rem;width: 50rem;padding: 40px 30px;\">
+                                                    <div class=\"modal-content\" style=\"height: 60rem;width: 50rem;padding: 40px 30px;\">
                                                         <!-- Modal body -->
                                                         <form class=\"form\" action=\"{{ path(\"nutritionist_configuration\") }}\" method=\"post\">
                                                             <h4 style=\"text-align: center; color: #00766c\">Editar categoria</h4>
                                                             <label for=\"category_name\">Nombre:</label><input type=\"text\" id=\"category_name\" name=\"category_name\" class=\"form-control\" value=\"{{ category.name }}\">
-                                                            <label for=\"category_description_short\">Descripción corta:</label><textarea type=\"text\" id=\"category_description_short\" name=\"category_description_short\" class=\"form-control\">{{ category.descriptionShort }}</textarea>
-                                                            <label for=\"category_description\">Descripción larga:</label><textarea type=\"text\" id=\"category_description\" name=\"category_description\" class=\"form-control\">{{ category.description }}</textarea>
+                                                            <label for=\"category_description_short\">Descripción corta:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"category_description_short\" name=\"category_description_short\" class=\"form-control\">{{ category.descriptionShort }}</textarea>
+                                                            <label for=\"category_description\">Descripción larga:</label><textarea style=\"height: 15rem\" type=\"text\" id=\"category_description\" name=\"category_description\" class=\"form-control\">{{ category.description }}</textarea>
                                                             <input type=\"hidden\" id=\"id_category_edit\" name=\"id_category_edit\" value=\"{{ category.idCategory }}\">
                                                             <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Modificar categoria\"/>
                                                         </form>

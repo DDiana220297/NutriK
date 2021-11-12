@@ -105,16 +105,17 @@ class __TwigTemplate_f24db6b9a320eb4fc8e1c93c77d7639453f5426d9958f1e70b7f74ea4ee
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 29
         echo "            <div class=\"assigned-customer-plans\">
+                <h2 style=\"margin-top: -15px; margin-bottom: 15px; color: #00766c\">Planificaciones asociadas</h2>
                 <div class=\"col-sm-3 customer-info\">
                     <div class=\"col-sm-12\" style=\"padding-left: 50px\">
                         <img src=\"";
-        // line 32
+        // line 33
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl($this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "image", [])), "html", null, true);
         echo "\" alt=\"\">
                     </div>
                     <div class=\"col-sm-12\">
                         <p><strong style=\"font-size: 35px;\">";
-        // line 35
+        // line 36
         echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "firstname", []), "html", null, true);
         echo " ";
         echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "lastname", []), "html", null, true);
@@ -122,12 +123,8 @@ class __TwigTemplate_f24db6b9a320eb4fc8e1c93c77d7639453f5426d9958f1e70b7f74ea4ee
                     </div>
                     <div class=\"col-sm-12\">
                         <p><strong>Email:</strong> ";
-        // line 38
-        echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "email", []), "html", null, true);
-        echo "</p>
-                        <p><strong>Bilbliografía:</strong> ";
         // line 39
-        echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "description", []), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "email", []), "html", null, true);
         echo "</p>
                         ";
         // line 40
@@ -326,7 +323,7 @@ class __TwigTemplate_f24db6b9a320eb4fc8e1c93c77d7639453f5426d9958f1e70b7f74ea4ee
 
     public function getDebugInfo()
     {
-        return array (  315 => 120,  313 => 119,  307 => 115,  287 => 103,  283 => 102,  279 => 101,  272 => 97,  256 => 84,  248 => 81,  242 => 80,  238 => 79,  231 => 75,  222 => 71,  218 => 70,  212 => 68,  208 => 66,  199 => 64,  195 => 63,  192 => 62,  190 => 61,  185 => 58,  181 => 57,  177 => 55,  171 => 52,  167 => 51,  163 => 50,  159 => 49,  155 => 48,  151 => 47,  148 => 46,  146 => 45,  142 => 43,  136 => 41,  134 => 40,  130 => 39,  126 => 38,  118 => 35,  112 => 32,  107 => 29,  97 => 25,  93 => 23,  88 => 22,  78 => 18,  74 => 16,  70 => 15,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  312 => 120,  310 => 119,  304 => 115,  284 => 103,  280 => 102,  276 => 101,  269 => 97,  253 => 84,  245 => 81,  239 => 80,  235 => 79,  228 => 75,  219 => 71,  215 => 70,  209 => 68,  205 => 66,  196 => 64,  192 => 63,  189 => 62,  187 => 61,  182 => 58,  178 => 57,  174 => 55,  168 => 52,  164 => 51,  160 => 50,  156 => 49,  152 => 48,  148 => 47,  145 => 46,  143 => 45,  139 => 43,  133 => 41,  131 => 40,  127 => 39,  119 => 36,  113 => 33,  107 => 29,  97 => 25,  93 => 23,  88 => 22,  78 => 18,  74 => 16,  70 => 15,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -368,6 +365,7 @@ class __TwigTemplate_f24db6b9a320eb4fc8e1c93c77d7639453f5426d9958f1e70b7f74ea4ee
                 </div>
             {% endfor %}
             <div class=\"assigned-customer-plans\">
+                <h2 style=\"margin-top: -15px; margin-bottom: 15px; color: #00766c\">Planificaciones asociadas</h2>
                 <div class=\"col-sm-3 customer-info\">
                     <div class=\"col-sm-12\" style=\"padding-left: 50px\">
                         <img src=\"{{ asset(customer.image) }}\" alt=\"\">
@@ -377,7 +375,6 @@ class __TwigTemplate_f24db6b9a320eb4fc8e1c93c77d7639453f5426d9958f1e70b7f74ea4ee
                     </div>
                     <div class=\"col-sm-12\">
                         <p><strong>Email:</strong> {{ customer.email }}</p>
-                        <p><strong>Bilbliografía:</strong> {{ customer.description }}</p>
                         {% if metrics != false %}
                             <p><strong>Objetivos:</strong> {{ metrics.goals }}</p>
                         {% endif %}

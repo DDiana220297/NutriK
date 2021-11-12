@@ -41,21 +41,110 @@
         {% include 'header.html.twig' %}
     </section>
     {% if not is_granted('ROLE_NUTR') %}
-        <section id="customer-header">
-            {% include 'customerheader.html.twig' %}
-        </section>
         <section id="customer-homepage">
-            <div class="container">
-                <div class="row" style="justify-content: center; color: black; text-align: center; padding: 20px">
-                    <img src="{{ asset('home-banner.jpg') }}" style="border-radius: 10%;width: 100%;height: 45rem;">
+            {% if app.user != null %}
+                <section id="customer-header">
+                    {% include 'customerheader.html.twig' %}
+                </section>
+                <div class="container">
+                    <div class="row" style="justify-content: center; color: black; text-align: center; padding: 20px">
+                        <img src="{{ asset('home-banner.jpg') }}" style="border-radius: 10%;width: 100%;height: 45rem;">
+                    </div>
+                    <div class="row" style="justify-content: center; color: black; text-align: center; padding: 20px">
+                        <p style="font-size: 17px;">
+                            En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                            Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                        </p>
+                    </div>
                 </div>
-                <div class="row" style="justify-content: center; color: black; text-align: center; padding: 20px">
-                    <p style="font-size: 17px;">
-                        En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
-                        Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
-                    </p>
+            {% else %}
+                <div class="container landing">
+                    <div class="row" style="justify-content: center; color: white; text-align: center;">
+                        <div class="col-sm-12 landing-header">
+                            <h1><strong>Software de nutrición para profesionales y plataforma para clientes</strong></h1>
+                            <br>
+                            <h3><strong>NutriK es un software de nutrición y dietética profesional que te ayudará</strong></h3>
+                            <h3><strong>a ser más organizado y a ahorrarte tiempo</strong></h3>
+                            <button class="btn btn-primary nutrik-button" type="button" onclick="redirectTo('register')">Regístrate</button>
+                        </div>
+                    </div>
+                    <div class="row" style="justify-content: center; color: black; text-align: center; padding: 20px">
+                        <div class="col-sm-6">
+                            <p style="font-size: 17px;">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="{{ asset('home4.jpg') }}" style="border-radius: 10%;width: 100%;height: 45rem;">
+                        </div>
+                    </div>
+                    <div class="row" style="justify-content: center; color: black; text-align: center; padding: 20px">
+                        <div class="col-sm-6">
+                            <img src="{{ asset('calendar.png') }}" style="border-radius: 10%;width: 100%;height: 45rem;">
+                        </div>
+                        <div class="col-sm-6">
+                            <p style="font-size: 17px;">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" style="justify-content: center; color: black; text-align: center; padding: 20px">
+                        <div class="col-sm-6">
+                            <p style="font-size: 17px;">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="{{ asset('img7.jpg') }}" style="border-radius: 10%;width: 100%;height: 45rem;">
+                        </div>
+                    </div>
+                    <div class="row" style="justify-content: center; color: black; text-align: center; padding: 20px">
+                        <div class="col-sm-6">
+                            <img src="{{ asset('img9.jpg') }}" style="border-radius: 10%;width: 100%;height: 45rem;">
+                        </div>
+                        <div class="col-sm-6">
+                            <p style="font-size: 17px;">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" style="justify-content: center; color: black; text-align: center; padding: 20px">
+                        <div class="col-sm-6">
+                            <p style="font-size: 17px;">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                        <div class="col-sm-6">
+                            <img src="{{ asset('appointment.png') }}" style="border-radius: 10%;width: 100%;height: 45rem;">
+                        </div>
+                    </div>
+                    <div class="row" style="justify-content: center; color: black; text-align: center; padding: 20px">
+                        <div class="col-sm-6">
+                            <img src="{{ asset('home.jpg') }}" style="border-radius: 10%;width: 100%;height: 45rem;">
+                        </div>
+                        <div class="col-sm-6">
+                            <p style="font-size: 17px;">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row" style="justify-content: center; color: white; text-align: center;">
+                        <div class="col-sm-12 landing-footer">
+                            <h1><strong style="font-size: 60px">NutriK</strong></h1>
+                            <h2>Comienza a mejorar tu negocio de nutrición ya!</h2>
+                            <h3><strong>Alexandra Diana Dumitru</strong></h3>
+                            <p style="font-size: 20px;">Universidad de Granada</p>
+                            <p style="font-size: 20px;">Escuela Tecnica Superior de Ingeniería Informática y Telecomunicaciones © Todos los Derechos Reservados 2021</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </section>
     {% else %}
         <section id="nutritionist-homepage">

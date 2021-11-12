@@ -113,7 +113,23 @@ class __TwigTemplate_1b6ec685781314c59d6b095abc4297a9bcafda0dffa8b0e7dcff02d6767
                             </svg>
                         </div>
                         <div class=\"col-sm-10\">
-                            <h3 style=\"display: inline-flex; margin-top: 2px; margin-left: -50px\">Mis Consultas</h3>
+                            <h3 style=\"display: inline-flex; margin-top: 7px; margin-left: -100px\">Mis Consultas
+                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\" style=\"width: 2rem; height: 2rem; margin-top: 3px; margin-left: 8px\"
+                                     onclick=\"openModal('openMyInfoModal')\">
+                                    <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
+                                    <path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\"/>
+                                </svg>
+                            </h3>
+                            <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openMyInfoModal\" data-toggle=\"modal\" data-target=\"#infoModal\"></button>
+                            <div class=\"modal fade\" id=\"infoModal\">
+                                <div class=\"modal-dialog\">
+                                    <div class=\"modal-content\" style=\"height: 15rem;width: 50rem;padding: 40px 30px;\">
+                                        <!-- Modal body -->
+                                        <span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class=\"col-sm-1\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-plus-circle\" viewBox=\"0 0 16 16\" style=\"margin-right: -15px; float: right\"
@@ -125,15 +141,15 @@ class __TwigTemplate_1b6ec685781314c59d6b095abc4297a9bcafda0dffa8b0e7dcff02d6767
                     </div>
                     <div class=\"col-sm-12 appointments-entries\">
                         ";
-        // line 49
+        // line 65
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["appointments"] ?? $this->getContext($context, "appointments")));
         foreach ($context['_seq'] as $context["_key"] => $context["appointment"]) {
-            // line 50
+            // line 66
             echo "                            <div class=\"appointments-entry\">
                                 <div class=\"col-sm-11 appointments-entry-resume\">
                                     <h4><strong>";
-            // line 52
+            // line 68
             echo twig_escape_filter($this->env, $this->getAttribute(($context["appointments_dates"] ?? $this->getContext($context, "appointments_dates")), $this->getAttribute($context["appointment"], "idAppointment", []), [], "array"), "html", null, true);
             echo "</strong><a href=\"";
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_customer", ["id_user" => $this->getAttribute($context["appointment"], "idCustomer", [])]), "html", null, true);
@@ -141,25 +157,25 @@ class __TwigTemplate_1b6ec685781314c59d6b095abc4297a9bcafda0dffa8b0e7dcff02d6767
             echo twig_escape_filter($this->env, $this->getAttribute(($context["appointments_customer"] ?? $this->getContext($context, "appointments_customer")), $this->getAttribute($context["appointment"], "idAppointment", []), [], "array"), "html", null, true);
             echo "</a></h4>
                                     <p>";
-            // line 53
+            // line 69
             echo twig_escape_filter($this->env, $this->getAttribute($context["appointment"], "description", []), "html", null, true);
             echo "</p>
                                 </div>
                                 <div class=\"col-sm-1 appointments-entry-actions\">
                                     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash\" viewBox=\"0 0 16 16\" style=\"margin-right: -35px;\"
                                          onclick=\"deleteAppointment(";
-            // line 57
+            // line 73
             echo twig_escape_filter($this->env, $this->getAttribute($context["appointment"], "idAppointment", []), "html", null, true);
             echo ")\">
                                         <path d=\"M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z\"/>
                                         <path fill-rule=\"evenodd\" d=\"M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z\"/>
                                     </svg>
                                     <form class=\"form\" action=\"";
-            // line 61
+            // line 77
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_delete_appointment");
             echo "\" method=\"post\">
                                         <input type=\"submit\" class=\"hidden\" name=\"appointment_delete\" id=\"appointment_delete_";
-            // line 62
+            // line 78
             echo twig_escape_filter($this->env, $this->getAttribute($context["appointment"], "idAppointment", []), "html", null, true);
             echo "\" value=\"";
             echo twig_escape_filter($this->env, $this->getAttribute($context["appointment"], "idAppointment", []), "html", null, true);
@@ -167,7 +183,7 @@ class __TwigTemplate_1b6ec685781314c59d6b095abc4297a9bcafda0dffa8b0e7dcff02d6767
                                     </form>
                                     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-pencil-square\" viewBox=\"0 0 16 16\"
                                          onclick=\"redirectTo('nutritionist-edit-appointment','/'+";
-            // line 65
+            // line 81
             echo twig_escape_filter($this->env, $this->getAttribute($context["appointment"], "idAppointment", []), "html", null, true);
             echo ")\">
                                         <path d=\"M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z\"/>
@@ -180,7 +196,7 @@ class __TwigTemplate_1b6ec685781314c59d6b095abc4297a9bcafda0dffa8b0e7dcff02d6767
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['appointment'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 72
+        // line 88
         echo "                    </div>
                 </div>
             </div>
@@ -200,7 +216,7 @@ class __TwigTemplate_1b6ec685781314c59d6b095abc4297a9bcafda0dffa8b0e7dcff02d6767
 
     public function getDebugInfo()
     {
-        return array (  184 => 72,  171 => 65,  163 => 62,  159 => 61,  152 => 57,  145 => 53,  137 => 52,  133 => 50,  129 => 49,  106 => 28,  96 => 24,  92 => 22,  87 => 21,  77 => 17,  73 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  200 => 88,  187 => 81,  179 => 78,  175 => 77,  168 => 73,  161 => 69,  153 => 68,  149 => 66,  145 => 65,  106 => 28,  96 => 24,  92 => 22,  87 => 21,  77 => 17,  73 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -250,7 +266,23 @@ class __TwigTemplate_1b6ec685781314c59d6b095abc4297a9bcafda0dffa8b0e7dcff02d6767
                             </svg>
                         </div>
                         <div class=\"col-sm-10\">
-                            <h3 style=\"display: inline-flex; margin-top: 2px; margin-left: -50px\">Mis Consultas</h3>
+                            <h3 style=\"display: inline-flex; margin-top: 7px; margin-left: -100px\">Mis Consultas
+                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\" style=\"width: 2rem; height: 2rem; margin-top: 3px; margin-left: 8px\"
+                                     onclick=\"openModal('openMyInfoModal')\">
+                                    <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
+                                    <path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\"/>
+                                </svg>
+                            </h3>
+                            <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openMyInfoModal\" data-toggle=\"modal\" data-target=\"#infoModal\"></button>
+                            <div class=\"modal fade\" id=\"infoModal\">
+                                <div class=\"modal-dialog\">
+                                    <div class=\"modal-content\" style=\"height: 15rem;width: 50rem;padding: 40px 30px;\">
+                                        <!-- Modal body -->
+                                        <span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class=\"col-sm-1\">
                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-plus-circle\" viewBox=\"0 0 16 16\" style=\"margin-right: -15px; float: right\"

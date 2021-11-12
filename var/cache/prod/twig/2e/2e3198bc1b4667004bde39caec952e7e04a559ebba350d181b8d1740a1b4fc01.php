@@ -186,17 +186,43 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
                 // line 74
                 echo "                                    <div class=\"recipe\">
                                         <div class=\"col-sm-11 recipe-name\">
-                                            <a href=\"";
+                                            ";
                 // line 76
+                if (twig_in_filter($this->getAttribute($context["recipe_object"], "idRecipe", []), twig_get_array_keys_filter(($context["recipes_tags"] ?? $this->getContext($context, "recipes_tags"))))) {
+                    // line 77
+                    echo "                                                <span style=\"font-size: 20px\">
+                                                    ";
+                    // line 78
+                    $context['_parent'] = $context;
+                    $context['_seq'] = twig_ensure_traversable($this->getAttribute(($context["recipes_tags"] ?? $this->getContext($context, "recipes_tags")), $this->getAttribute($context["recipe_object"], "idRecipe", []), [], "array"));
+                    foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
+                        // line 79
+                        echo "                                                        ";
+                        echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "name", []), "html", null, true);
+                        echo " <span style=\"color: #00766c\">></span>
+                                                    ";
+                    }
+                    $_parent = $context['_parent'];
+                    unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
+                    $context = array_intersect_key($context, $_parent) + $_parent;
+                    // line 81
+                    echo "                                                </span>
+                                            ";
+                }
+                // line 83
+                echo "                                            <a style=\"font-size: 22px; color: #00766c\" href=\"";
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_recipes", ["id_recipe" => $this->getAttribute($context["recipe_object"], "idRecipe", [])]), "html", null, true);
-                echo "\">";
+                echo "\">
+                                                ";
+                // line 84
                 echo twig_escape_filter($this->env, $this->getAttribute($context["recipe_object"], "name", []), "html", null, true);
-                echo "</a>
+                echo "
+                                            </a>
                                         </div>
                                         <div class=\"col-sm-1 recipe-actions\">
                                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\"
                                                 onclick=\"redirectTo('recipes','/'+";
-                // line 80
+                // line 89
                 echo twig_escape_filter($this->env, $this->getAttribute($context["recipe_object"], "idRecipe", []), "html", null, true);
                 echo ")\">
                                                 <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z\"/>
@@ -208,20 +234,20 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['recipe_object'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 86
+            // line 95
             echo "                            </div>
                         ";
         }
-        // line 88
+        // line 97
         echo "                    </div>
                 </div>
             </form>
         </div>
     </section>
     ";
-        // line 93
-        $this->loadTemplate("footer.html.twig", "@Customer/recipes.html.twig", 93)->display($context);
-        // line 94
+        // line 102
+        $this->loadTemplate("footer.html.twig", "@Customer/recipes.html.twig", 102)->display($context);
+        // line 103
         echo "    </html>
 ";
         
@@ -236,7 +262,7 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
 
     public function getDebugInfo()
     {
-        return array (  225 => 94,  223 => 93,  216 => 88,  212 => 86,  200 => 80,  191 => 76,  187 => 74,  183 => 73,  180 => 72,  172 => 66,  163 => 63,  160 => 62,  156 => 61,  143 => 51,  137 => 48,  131 => 45,  127 => 44,  123 => 43,  116 => 39,  110 => 35,  108 => 34,  96 => 25,  93 => 24,  83 => 20,  79 => 18,  75 => 17,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  251 => 103,  249 => 102,  242 => 97,  238 => 95,  226 => 89,  218 => 84,  213 => 83,  209 => 81,  200 => 79,  196 => 78,  193 => 77,  191 => 76,  187 => 74,  183 => 73,  180 => 72,  172 => 66,  163 => 63,  160 => 62,  156 => 61,  143 => 51,  137 => 48,  131 => 45,  127 => 44,  123 => 43,  116 => 39,  110 => 35,  108 => 34,  96 => 25,  93 => 24,  83 => 20,  79 => 18,  75 => 17,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -324,7 +350,16 @@ class __TwigTemplate_dd83441250aad273f9d83fd0daf663af6003d2bc2a554cf1d03599b4417
                                 {% for recipe_object in recipes %}
                                     <div class=\"recipe\">
                                         <div class=\"col-sm-11 recipe-name\">
-                                            <a href=\"{{ path(\"customer_recipes\", {\"id_recipe\":recipe_object.idRecipe}) }}\">{{ recipe_object.name }}</a>
+                                            {% if recipe_object.idRecipe in recipes_tags|keys %}
+                                                <span style=\"font-size: 20px\">
+                                                    {% for tag in recipes_tags[recipe_object.idRecipe] %}
+                                                        {{ tag.name }} <span style=\"color: #00766c\">></span>
+                                                    {% endfor %}
+                                                </span>
+                                            {% endif %}
+                                            <a style=\"font-size: 22px; color: #00766c\" href=\"{{ path(\"customer_recipes\", {\"id_recipe\":recipe_object.idRecipe}) }}\">
+                                                {{ recipe_object.name }}
+                                            </a>
                                         </div>
                                         <div class=\"col-sm-1 recipe-actions\">
                                             <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\"

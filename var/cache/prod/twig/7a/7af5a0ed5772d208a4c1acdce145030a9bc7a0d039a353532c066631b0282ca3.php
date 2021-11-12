@@ -122,46 +122,160 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
         // line 43
         if ( !$this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_NUTR")) {
             // line 44
-            echo "        <section id=\"customer-header\">
+            echo "        <section id=\"customer-homepage\">
             ";
             // line 45
-            $this->loadTemplate("customerheader.html.twig", "@Customs/index.html.twig", 45)->display($context);
-            // line 46
+            if (($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []) != null)) {
+                // line 46
+                echo "                <section id=\"customer-header\">
+                    ";
+                // line 47
+                $this->loadTemplate("customerheader.html.twig", "@Customs/index.html.twig", 47)->display($context);
+                // line 48
+                echo "                </section>
+                <div class=\"container\">
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <img src=\"";
+                // line 51
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("home-banner.jpg"), "html", null, true);
+                echo "\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <p style=\"font-size: 17px;\">
+                            En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                            Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                        </p>
+                    </div>
+                </div>
+            ";
+            } else {
+                // line 61
+                echo "                <div class=\"container landing\">
+                    <div class=\"row\" style=\"justify-content: center; color: white; text-align: center;\">
+                        <div class=\"col-sm-12 landing-header\">
+                            <h1><strong>Software de nutrición para profesionales y plataforma para clientes</strong></h1>
+                            <br>
+                            <h3><strong>NutriK es un software de nutrición y dietética profesional que te ayudará</strong></h3>
+                            <h3><strong>a ser más organizado y a ahorrarte tiempo</strong></h3>
+                            <button class=\"btn btn-primary nutrik-button\" type=\"button\" onclick=\"redirectTo('register')\">Regístrate</button>
+                        </div>
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <div class=\"col-sm-6\">
+                            <p style=\"font-size: 17px;\">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <img src=\"";
+                // line 79
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("home4.jpg"), "html", null, true);
+                echo "\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                        </div>
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <div class=\"col-sm-6\">
+                            <img src=\"";
+                // line 84
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("calendar.png"), "html", null, true);
+                echo "\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <p style=\"font-size: 17px;\">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <div class=\"col-sm-6\">
+                            <p style=\"font-size: 17px;\">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <img src=\"";
+                // line 101
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img7.jpg"), "html", null, true);
+                echo "\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                        </div>
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <div class=\"col-sm-6\">
+                            <img src=\"";
+                // line 106
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img9.jpg"), "html", null, true);
+                echo "\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <p style=\"font-size: 17px;\">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <div class=\"col-sm-6\">
+                            <p style=\"font-size: 17px;\">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <img src=\"";
+                // line 123
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("appointment.png"), "html", null, true);
+                echo "\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                        </div>
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <div class=\"col-sm-6\">
+                            <img src=\"";
+                // line 128
+                echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("home.jpg"), "html", null, true);
+                echo "\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <p style=\"font-size: 17px;\">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: white; text-align: center;\">
+                        <div class=\"col-sm-12 landing-footer\">
+                            <h1><strong style=\"font-size: 60px\">NutriK</strong></h1>
+                            <h2>Comienza a mejorar tu negocio de nutrición ya!</h2>
+                            <h3><strong>Alexandra Diana Dumitru</strong></h3>
+                            <p style=\"font-size: 20px;\">Universidad de Granada</p>
+                            <p style=\"font-size: 20px;\">Escuela Tecnica Superior de Ingeniería Informática y Telecomunicaciones © Todos los Derechos Reservados 2021</p>
+                        </div>
+                    </div>
+                </div>
+            ";
+            }
+            // line 148
             echo "        </section>
-        <section id=\"customer-homepage\">
-            <div class=\"container\">
-                <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
-                    <img src=\"";
-            // line 50
-            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("home-banner.jpg"), "html", null, true);
-            echo "\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
-                </div>
-                <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
-                    <p style=\"font-size: 17px;\">
-                        En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
-                        Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
-                    </p>
-                </div>
-            </div>
-        </section>
     ";
         } else {
-            // line 61
+            // line 150
             echo "        <section id=\"nutritionist-homepage\">
             <header>
                 <!-- Calendar Page stylesheet -->
                 <link rel=\"stylesheet\" href=\"";
-            // line 64
+            // line 153
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/css/home-calendar.css"), "html", null, true);
             echo "\" />
                 <!-- Calendar JS -->
                 <script src=\"";
-            // line 66
+            // line 155
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("public/js/calendar.js"), "html", null, true);
             echo "\"></script>
                 <!-- NutriK Calendar JS -->
                 <script src=\"";
-            // line 68
+            // line 157
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/js/nutrik-calendar.js"), "html", null, true);
             echo "\"></script>
             </header>
@@ -209,56 +323,56 @@ class __TwigTemplate_56478fd077e167e798a3e2c89e800687a612fe349df65e611bf6605a2d1
 
                                 <div style=\"overflow-y: auto; height: 29rem\">
                                     ";
-            // line 113
+            // line 202
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["logs"] ?? $this->getContext($context, "logs")));
             foreach ($context['_seq'] as $context["_key"] => $context["log"]) {
-                // line 114
+                // line 203
                 echo "                                        <div class=\"row\">
                                             ";
-                // line 115
+                // line 204
                 if (twig_in_filter("add", $this->getAttribute($context["log"], "source", []))) {
-                    // line 116
+                    // line 205
                     echo "                                                <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\">
                                                     ";
-                    // line 117
+                    // line 206
                     echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
                     echo "
                                                 </div>
                                             ";
-                } elseif (twig_in_filter("delete", $this->getAttribute(                // line 119
+                } elseif (twig_in_filter("delete", $this->getAttribute(                // line 208
 $context["log"], "source", []))) {
-                    // line 120
+                    // line 209
                     echo "                                                <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\">
                                                     ";
-                    // line 121
+                    // line 210
                     echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
                     echo "
                                                 </div>
                                             ";
                 } else {
-                    // line 124
+                    // line 213
                     echo "                                                <div class=\"alert alert-info\" role=\"alert\" style=\"margin-bottom: 0; padding: 10px\">
                                                     ";
-                    // line 125
+                    // line 214
                     echo twig_escape_filter($this->env, $this->getAttribute($context["log"], "context", []), "html", null, true);
                     echo "
                                                 </div>
                                             ";
                 }
-                // line 128
+                // line 217
                 echo "                                        </div>
                                     ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['log'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 130
+            // line 219
             echo "                                </div>
                             </div>
                             <div class=\"col-sm-12 nutritionist-kpis\">
                                 <img src=\"";
-            // line 133
+            // line 222
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("chart.png"), "html", null, true);
             echo "\">
                             </div>
@@ -266,34 +380,34 @@ $context["log"], "source", []))) {
                         <div class=\"col-sm-6\">
                             <div class=\"col-sm-12 nutritionist-calendar\">
                                 ";
-            // line 138
+            // line 227
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["calendar_events"] ?? $this->getContext($context, "calendar_events")));
             foreach ($context['_seq'] as $context["_key"] => $context["calendar_event"]) {
-                // line 139
+                // line 228
                 echo "                                    <div class=\"calendar_event\" style=\"color: black; display: none\">
                                         <input class=\"calendar_event_id\" value=\"";
-                // line 140
+                // line 229
                 echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "id", [], "array"), "html", null, true);
                 echo "\"/>
                                         <input class=\"calendar_event_title\" value=\"";
-                // line 141
+                // line 230
                 echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "title", [], "array"), "html", null, true);
                 echo "\"/>
                                         <input class=\"calendar_event_start\" value=\"";
-                // line 142
+                // line 231
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["calendar_event"], "start", [], "array"), "Y-m-d H:i:s"), "html", null, true);
                 echo "\"/>
                                         <input class=\"calendar_event_end\" value=\"";
-                // line 143
+                // line 232
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["calendar_event"], "end", [], "array"), "Y-m-d H:i:s"), "html", null, true);
                 echo "\"/>
                                         <input class=\"calendar_event_url\" value=\"";
-                // line 144
+                // line 233
                 echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "url", [], "array"), "html", null, true);
                 echo "\"/>
                                         <input class=\"calendar_event_type\" value=\"";
-                // line 145
+                // line 234
                 echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "type", [], "array"), "html", null, true);
                 echo "\"/>
                                     </div>
@@ -302,7 +416,7 @@ $context["log"], "source", []))) {
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['calendar_event'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 148
+            // line 237
             echo "                                <div id='wrap'>
                                     <div id='calendar'></div>
                                     <div style='clear:both'></div>
@@ -313,20 +427,20 @@ $context["log"], "source", []))) {
                                 <hr style=\"margin-top: 10px; margin-bottom: 10px\"/>
                                 <div class=\"nutritionist-appointments\">
                                     ";
-            // line 157
+            // line 246
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["appointments"] ?? $this->getContext($context, "appointments")));
             foreach ($context['_seq'] as $context["_key"] => $context["appointment"]) {
-                // line 158
+                // line 247
                 echo "                                        <p>
                                             <span>
                                                 Consulta:
                                                 <strong>";
-                // line 161
+                // line 250
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["appointment"], "date", []), "Y-m-d H:i:s"), "html", null, true);
                 echo ":</strong>
                                                 <a href=\"";
-                // line 162
+                // line 251
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_appointment", ["id_appointment" => $this->getAttribute($context["appointment"], "idAppointment", [])]), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["appointment"], "description", []), "html", null, true);
@@ -338,21 +452,21 @@ $context["log"], "source", []))) {
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['appointment'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 166
+            // line 255
             echo "                                    ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable(($context["events"] ?? $this->getContext($context, "events")));
             foreach ($context['_seq'] as $context["_key"] => $context["event"]) {
-                // line 167
+                // line 256
                 echo "                                        <p>
                                             <span>
                                                 Evento:
                                                 <strong>";
-                // line 170
+                // line 259
                 echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["event"], "date", []), "Y-m-d H:i:s"), "html", null, true);
                 echo ":</strong>
                                                 <a href=\"";
-                // line 171
+                // line 260
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_edit_event", ["id_event" => $this->getAttribute($context["event"], "idEvent", [])]), "html", null, true);
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->getAttribute($context["event"], "title", []), "html", null, true);
@@ -364,7 +478,7 @@ $context["log"], "source", []))) {
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['event'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 175
+            // line 264
             echo "                                </div>
                             </div>
                         </div>
@@ -374,10 +488,10 @@ $context["log"], "source", []))) {
         </section>
     ";
         }
-        // line 183
+        // line 272
         echo "    ";
-        $this->loadTemplate("footer.html.twig", "@Customs/index.html.twig", 183)->display($context);
-        // line 184
+        $this->loadTemplate("footer.html.twig", "@Customs/index.html.twig", 272)->display($context);
+        // line 273
         echo "    </html>
 ";
         
@@ -404,7 +518,7 @@ $context["log"], "source", []))) {
 
     public function getDebugInfo()
     {
-        return array (  389 => 7,  381 => 184,  378 => 183,  368 => 175,  356 => 171,  352 => 170,  347 => 167,  342 => 166,  330 => 162,  326 => 161,  321 => 158,  317 => 157,  306 => 148,  297 => 145,  293 => 144,  289 => 143,  285 => 142,  281 => 141,  277 => 140,  274 => 139,  270 => 138,  262 => 133,  257 => 130,  250 => 128,  244 => 125,  241 => 124,  235 => 121,  232 => 120,  230 => 119,  225 => 117,  222 => 116,  220 => 115,  217 => 114,  213 => 113,  165 => 68,  160 => 66,  155 => 64,  150 => 61,  136 => 50,  130 => 46,  128 => 45,  125 => 44,  123 => 43,  120 => 42,  118 => 41,  112 => 38,  106 => 35,  100 => 32,  94 => 29,  88 => 26,  82 => 23,  76 => 20,  67 => 14,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
+        return array (  503 => 7,  495 => 273,  492 => 272,  482 => 264,  470 => 260,  466 => 259,  461 => 256,  456 => 255,  444 => 251,  440 => 250,  435 => 247,  431 => 246,  420 => 237,  411 => 234,  407 => 233,  403 => 232,  399 => 231,  395 => 230,  391 => 229,  388 => 228,  384 => 227,  376 => 222,  371 => 219,  364 => 217,  358 => 214,  355 => 213,  349 => 210,  346 => 209,  344 => 208,  339 => 206,  336 => 205,  334 => 204,  331 => 203,  327 => 202,  279 => 157,  274 => 155,  269 => 153,  264 => 150,  260 => 148,  237 => 128,  229 => 123,  209 => 106,  201 => 101,  181 => 84,  173 => 79,  153 => 61,  140 => 51,  135 => 48,  133 => 47,  130 => 46,  128 => 45,  125 => 44,  123 => 43,  120 => 42,  118 => 41,  112 => 38,  106 => 35,  100 => 32,  94 => 29,  88 => 26,  82 => 23,  76 => 20,  67 => 14,  60 => 10,  56 => 8,  54 => 7,  47 => 2,  35 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -460,21 +574,110 @@ $context["log"], "source", []))) {
         {% include 'header.html.twig' %}
     </section>
     {% if not is_granted('ROLE_NUTR') %}
-        <section id=\"customer-header\">
-            {% include 'customerheader.html.twig' %}
-        </section>
         <section id=\"customer-homepage\">
-            <div class=\"container\">
-                <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
-                    <img src=\"{{ asset('home-banner.jpg') }}\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+            {% if app.user != null %}
+                <section id=\"customer-header\">
+                    {% include 'customerheader.html.twig' %}
+                </section>
+                <div class=\"container\">
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <img src=\"{{ asset('home-banner.jpg') }}\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <p style=\"font-size: 17px;\">
+                            En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                            Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                        </p>
+                    </div>
                 </div>
-                <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
-                    <p style=\"font-size: 17px;\">
-                        En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
-                        Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
-                    </p>
+            {% else %}
+                <div class=\"container landing\">
+                    <div class=\"row\" style=\"justify-content: center; color: white; text-align: center;\">
+                        <div class=\"col-sm-12 landing-header\">
+                            <h1><strong>Software de nutrición para profesionales y plataforma para clientes</strong></h1>
+                            <br>
+                            <h3><strong>NutriK es un software de nutrición y dietética profesional que te ayudará</strong></h3>
+                            <h3><strong>a ser más organizado y a ahorrarte tiempo</strong></h3>
+                            <button class=\"btn btn-primary nutrik-button\" type=\"button\" onclick=\"redirectTo('register')\">Regístrate</button>
+                        </div>
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <div class=\"col-sm-6\">
+                            <p style=\"font-size: 17px;\">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <img src=\"{{ asset('home4.jpg') }}\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                        </div>
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <div class=\"col-sm-6\">
+                            <img src=\"{{ asset('calendar.png') }}\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <p style=\"font-size: 17px;\">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <div class=\"col-sm-6\">
+                            <p style=\"font-size: 17px;\">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <img src=\"{{ asset('img7.jpg') }}\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                        </div>
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <div class=\"col-sm-6\">
+                            <img src=\"{{ asset('img9.jpg') }}\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <p style=\"font-size: 17px;\">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <div class=\"col-sm-6\">
+                            <p style=\"font-size: 17px;\">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <img src=\"{{ asset('appointment.png') }}\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                        </div>
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 20px\">
+                        <div class=\"col-sm-6\">
+                            <img src=\"{{ asset('home.jpg') }}\" style=\"border-radius: 10%;width: 100%;height: 45rem;\">
+                        </div>
+                        <div class=\"col-sm-6\">
+                            <p style=\"font-size: 17px;\">
+                                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
+                            </p>
+                        </div>
+                    </div>
+                    <div class=\"row\" style=\"justify-content: center; color: white; text-align: center;\">
+                        <div class=\"col-sm-12 landing-footer\">
+                            <h1><strong style=\"font-size: 60px\">NutriK</strong></h1>
+                            <h2>Comienza a mejorar tu negocio de nutrición ya!</h2>
+                            <h3><strong>Alexandra Diana Dumitru</strong></h3>
+                            <p style=\"font-size: 20px;\">Universidad de Granada</p>
+                            <p style=\"font-size: 20px;\">Escuela Tecnica Superior de Ingeniería Informática y Telecomunicaciones © Todos los Derechos Reservados 2021</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         </section>
     {% else %}
         <section id=\"nutritionist-homepage\">

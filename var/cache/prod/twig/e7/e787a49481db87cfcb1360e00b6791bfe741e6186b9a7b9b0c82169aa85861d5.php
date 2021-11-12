@@ -150,7 +150,7 @@ class __TwigTemplate_d0273891bf47bca5262db9be914ae5d9ae5866a00b2ef59a3b7710066a3
                                 <div class=\"modal-dialog\">
                                     <div class=\"modal-content\" style=\"height: 15rem;width: 50rem;padding: 40px 30px;\">
                                         <!-- Modal body -->
-                                        <span>Etiqueta tus recetas añadiendo los tags deseados. Para obtener más informacion sobre un tag, modificar o crear uno accede a la configuracion de tu perfil o haz click <a href=\"#\">aqui</a></span>
+                                        <span>Etiqueta tus recetas añadiendo los tags deseados por nivel. Para obtener más informacion sobre un tag, modificar o crear uno accede a la configuracion de tu perfil o haz click <a href=\"#\">aqui</a></span>
                                     </div>
                                 </div>
                             </div>
@@ -289,7 +289,7 @@ class __TwigTemplate_d0273891bf47bca5262db9be914ae5d9ae5866a00b2ef59a3b7710066a3
                                 <div class=\"modal-dialog\">
                                     <div class=\"modal-content\" style=\"height: 15rem;width: 50rem;padding: 40px 30px;\">
                                         <!-- Modal body -->
-                                        <span>Etiqueta tus recetas añadiendo los tags deseados. Para obtener más informacion sobre un tag, modificar o crear uno accede a la configuracion de tu perfil o haz click <a href=\"#\">aqui</a></span>
+                                        <span>Etiqueta tus recetas añadiendo los tags deseados por nivel. Para obtener más informacion sobre un tag, modificar o crear uno accede a la configuracion de tu perfil o haz click <a href=\"#\">aqui</a></span>
                                     </div>
                                 </div>
                             </div>

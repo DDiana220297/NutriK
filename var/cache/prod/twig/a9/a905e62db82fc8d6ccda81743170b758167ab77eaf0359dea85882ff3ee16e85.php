@@ -81,51 +81,40 @@ class __TwigTemplate_e82600ad69d66975bf32b69ac68a054b0a6b20bf1f67dc2f210cc398155
                     <li data-target=\"#carouselLoginPage\" data-slide-to=\"0\" class=\"active\"></li>
                     <li data-target=\"#carouselLoginPage\" data-slide-to=\"1\"></li>
                     <li data-target=\"#carouselLoginPage\" data-slide-to=\"2\"></li>
-                    <li data-target=\"#carouselLoginPage\" data-slide-to=\"3\"></li>
                 </ol>
 
                 <div class=\"carousel-inner\" role=\"listbox\">
                     <div class=\"item active\">
                         <img src=\"";
-        // line 39
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("carousel4.jpeg"), "html", null, true);
+        // line 38
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("banner1.jpg"), "html", null, true);
         echo "\">
                         <div class=\"carousel-caption\">
-                            <strong style=\"font-size: 22px\">Comer es una necesidad, pero comer de forma inteligente es un arte</strong>
-                            <p style=\"font-size: 18px\"> No solo hay que comer para alimentarnos, como necesidad. Hay que comer de forma inteligente. Esto lo lleva a la categoría de arte y razón no le falta. </p>
+                            <strong style=\"font-size: 22px; color: black\">Comer es una necesidad, pero comer de forma inteligente es un arte</strong>
+                            <p style=\"font-size: 18px; color: black\"> No solo hay que comer para alimentarnos, como necesidad. Hay que comer de forma inteligente. Esto lo lleva a la categoría de arte y razón no le falta. </p>
+                        </div>
+                    </div>
+";
+        // line 51
+        echo "                    <div class=\"item\">
+                        <img src=\"";
+        // line 52
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img6.jpg"), "html", null, true);
+        echo "\">
+                        <div class=\"carousel-caption\">
+                            <strong style=\"font-size: 22px; color: white\">Nuestra comida debería ser nuestra medicina y nuestra medicina debería ser nuestra comida.</strong>
+                            <p style=\"font-size: 18px; color: white\"> Desde tiempos antiguos la comida no solo ha servido para alimentarse. También ha servido para curar enfermedades. Todo consiste en aprovechar bien los nutrientes que tengan los productos que consumimos en nuestra dieta.</p>
                         </div>
                     </div>
 
                     <div class=\"item\">
                         <img src=\"";
-        // line 47
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("carousel1.jpg"), "html", null, true);
+        // line 60
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img9.jpg"), "html", null, true);
         echo "\">
                         <div class=\"carousel-caption\">
-                            <strong style=\"font-size: 22px\">Aquellos que piensan que no tienen tiempo para una alimentación saludable tarde o temprano encontrarán tiempo para la enfermedad</strong>
-                            <p style=\"font-size: 18px\">Es recurrente pensar que para tener una alimentación saludable necesitamos que el día tenga más horas. Pero Stanley da con la clave: sacar tiempo para comer mejor es ganarle la partida a la enfermedad.</p>
-                        </div>
-                    </div>
-
-                    <div class=\"item\">
-                        <img src=\"";
-        // line 55
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("carousel2.jpg"), "html", null, true);
-        echo "\">
-                        <div class=\"carousel-caption\">
-                            <strong style=\"font-size: 22px\">Nuestra comida debería ser nuestra medicina y nuestra medicina debería ser nuestra comida.</strong>
-                            <p style=\"font-size: 18px\"> Desde tiempos antiguos la comida no solo ha servido para alimentarse. También ha servido para curar enfermedades. Todo consiste en aprovechar bien los nutrientes que tengan los productos que consumimos en nuestra dieta.</p>
-                        </div>
-                    </div>
-
-                    <div class=\"item\">
-                        <img src=\"";
-        // line 63
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("carousel5.jpg"), "html", null, true);
-        echo "\">
-                        <div class=\"carousel-caption\">
-                            <strong style=\"font-size: 22px\">Nos preocupamos por tu salud.</strong>
-                            <p style=\"font-size: 18px\">Cuando la dieta es incorrecta, la medicina no sirve para nada. Cuando la dieta es correcta, la medicina no es necesaria.</p>
+                            <strong style=\"font-size: 22px; color: white\">Nos preocupamos por tu salud.</strong>
+                            <p style=\"font-size: 18px; color: white\">Cuando la dieta es incorrecta, la medicina no sirve para nada. Cuando la dieta es correcta, la medicina no es necesaria.</p>
                         </div>
                     </div>
                 </div>
@@ -162,7 +151,7 @@ class __TwigTemplate_e82600ad69d66975bf32b69ac68a054b0a6b20bf1f67dc2f210cc398155
 
     public function getDebugInfo()
     {
-        return array (  124 => 63,  113 => 55,  102 => 47,  91 => 39,  72 => 23,  66 => 20,  60 => 17,  51 => 11,  45 => 8,  41 => 7,  33 => 1,);
+        return array (  113 => 60,  102 => 52,  99 => 51,  90 => 38,  72 => 23,  66 => 20,  60 => 17,  51 => 11,  45 => 8,  41 => 7,  33 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -208,39 +197,36 @@ class __TwigTemplate_e82600ad69d66975bf32b69ac68a054b0a6b20bf1f67dc2f210cc398155
                     <li data-target=\"#carouselLoginPage\" data-slide-to=\"0\" class=\"active\"></li>
                     <li data-target=\"#carouselLoginPage\" data-slide-to=\"1\"></li>
                     <li data-target=\"#carouselLoginPage\" data-slide-to=\"2\"></li>
-                    <li data-target=\"#carouselLoginPage\" data-slide-to=\"3\"></li>
                 </ol>
 
                 <div class=\"carousel-inner\" role=\"listbox\">
                     <div class=\"item active\">
-                        <img src=\"{{ asset('carousel4.jpeg') }}\">
+                        <img src=\"{{ asset('banner1.jpg') }}\">
                         <div class=\"carousel-caption\">
-                            <strong style=\"font-size: 22px\">Comer es una necesidad, pero comer de forma inteligente es un arte</strong>
-                            <p style=\"font-size: 18px\"> No solo hay que comer para alimentarnos, como necesidad. Hay que comer de forma inteligente. Esto lo lleva a la categoría de arte y razón no le falta. </p>
+                            <strong style=\"font-size: 22px; color: black\">Comer es una necesidad, pero comer de forma inteligente es un arte</strong>
+                            <p style=\"font-size: 18px; color: black\"> No solo hay que comer para alimentarnos, como necesidad. Hay que comer de forma inteligente. Esto lo lleva a la categoría de arte y razón no le falta. </p>
+                        </div>
+                    </div>
+{#                    <div class=\"item\">#}
+{#                        <img src=\"{{ asset('img5.jpg') }}\">#}
+{#                        <div class=\"carousel-caption\">#}
+{#                            <strong style=\"font-size: 22px\">Aquellos que piensan que no tienen tiempo para una alimentación saludable tarde o temprano encontrarán tiempo para la enfermedad</strong>#}
+{#                            <p style=\"font-size: 18px\">Es recurrente pensar que para tener una alimentación saludable necesitamos que el día tenga más horas. Pero Stanley da con la clave: sacar tiempo para comer mejor es ganarle la partida a la enfermedad.</p>#}
+{#                        </div>#}
+{#                    </div>#}
+                    <div class=\"item\">
+                        <img src=\"{{ asset('img6.jpg') }}\">
+                        <div class=\"carousel-caption\">
+                            <strong style=\"font-size: 22px; color: white\">Nuestra comida debería ser nuestra medicina y nuestra medicina debería ser nuestra comida.</strong>
+                            <p style=\"font-size: 18px; color: white\"> Desde tiempos antiguos la comida no solo ha servido para alimentarse. También ha servido para curar enfermedades. Todo consiste en aprovechar bien los nutrientes que tengan los productos que consumimos en nuestra dieta.</p>
                         </div>
                     </div>
 
                     <div class=\"item\">
-                        <img src=\"{{ asset('carousel1.jpg') }}\">
+                        <img src=\"{{ asset('img9.jpg') }}\">
                         <div class=\"carousel-caption\">
-                            <strong style=\"font-size: 22px\">Aquellos que piensan que no tienen tiempo para una alimentación saludable tarde o temprano encontrarán tiempo para la enfermedad</strong>
-                            <p style=\"font-size: 18px\">Es recurrente pensar que para tener una alimentación saludable necesitamos que el día tenga más horas. Pero Stanley da con la clave: sacar tiempo para comer mejor es ganarle la partida a la enfermedad.</p>
-                        </div>
-                    </div>
-
-                    <div class=\"item\">
-                        <img src=\"{{ asset('carousel2.jpg') }}\">
-                        <div class=\"carousel-caption\">
-                            <strong style=\"font-size: 22px\">Nuestra comida debería ser nuestra medicina y nuestra medicina debería ser nuestra comida.</strong>
-                            <p style=\"font-size: 18px\"> Desde tiempos antiguos la comida no solo ha servido para alimentarse. También ha servido para curar enfermedades. Todo consiste en aprovechar bien los nutrientes que tengan los productos que consumimos en nuestra dieta.</p>
-                        </div>
-                    </div>
-
-                    <div class=\"item\">
-                        <img src=\"{{ asset('carousel5.jpg') }}\">
-                        <div class=\"carousel-caption\">
-                            <strong style=\"font-size: 22px\">Nos preocupamos por tu salud.</strong>
-                            <p style=\"font-size: 18px\">Cuando la dieta es incorrecta, la medicina no sirve para nada. Cuando la dieta es correcta, la medicina no es necesaria.</p>
+                            <strong style=\"font-size: 22px; color: white\">Nos preocupamos por tu salud.</strong>
+                            <p style=\"font-size: 18px; color: white\">Cuando la dieta es incorrecta, la medicina no sirve para nada. Cuando la dieta es correcta, la medicina no es necesaria.</p>
                         </div>
                     </div>
                 </div>

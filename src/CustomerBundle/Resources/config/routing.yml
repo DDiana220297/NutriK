@@ -2,9 +2,13 @@ customer_news:
   path:   /news
   defaults: { _controller: CustomerBundle:Customer:news }
 
-customer_services:
-  path: /services
-  defaults: { _controller: CustomerBundle:Customer:services }
+customer_professionals:
+  path: /professionals
+  defaults: { _controller: CustomerBundle:Customer:professionals }
+
+customer_packages:
+  path: /packages
+  defaults: { _controller: CustomerBundle:Customer:packages }
 
 customer_about:
     path: /about

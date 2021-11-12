@@ -58,13 +58,45 @@ class CustomerController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response|null
      */
-    public function servicesAction(Request $request)
+    public function professionalsAction(Request $request)
     {
-        if ($request->isMethod('POST')){
-            $this->session->getFlashBag()->add('servicesOKStatus',"Recibirás un correo para seguir con el proceso de contratacion del servicio elegido");
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $professionals = $user_repository->findBy(array('role' => 'ROLE_NUTR'));
+
+            /**
+             * Cargamos su social media data
+             */
+            $professionals_social_media = array();
+            foreach ($professionals as $professional){
+                $professionals_social_media[$professional->getIdUser()] = json_decode($professional->getSocialMedia(), true);
+            }
+
+            if ($request->isMethod('POST')){
+                $this->session->getFlashBag()->add('professionalsOKStatus',"Gracias por confiar en NutriK, recibirás un correo para seguir con el proceso de contratación del servicio elegido");
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('professionalsKOStatus',"Ha ocurrido un error, no hemos podido obtener los datos para este usuario, inténtelo más tarde o contácte con el servicio de NutriK");
         }
 
-        return $this->render('@Customer/services.html.twig',
+        return $this->render('@Customer/professionals.html.twig',
+            [
+                'professionals' => $professionals,
+                'professionals_social_media' => $professionals_social_media,
+                'pending_inbox' => $this->checkPendingInbox()
+            ]
+        );
+    }
+
+    /**
+     * Fn que se encarga de mostrar los distintos paquetes de servicios de NutriK
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function packagesAction(){
+        return $this->render('@Customer/packages.html.twig',
             [
                 'pending_inbox' => $this->checkPendingInbox()
             ]
@@ -358,7 +390,7 @@ class CustomerController extends Controller
      */
     public function recipesAction(Request $request, $id_recipe = 0){
         $em = $this->getDoctrine()->getManager();
-        $recipe_ingredients = $nutritional_info = array();
+        $recipe_ingredients = $nutritional_info = $recipes_tags = array();
         /**
          * Comprobamos si se debe renderizar una receta en concreto
          */
@@ -402,9 +434,37 @@ class CustomerController extends Controller
                     WHERE r.name LIKE '%$key%'
                 ");
             $recipes = $dql_query->getResult();
+            /**
+             * Consultamos los tags de las recetas
+             */
+            foreach ($recipes as $recipe){
+                $dql_query = $em->createQuery("
+                    SELECT t FROM CustomsBundle:Tag t
+                    INNER JOIN NutritionistBundle:RecipeTag rt WITH rt.idTag = t.idTag
+                    WHERE rt.idRecipe = ".$recipe->getIdRecipe()."
+                    ORDER BY t.level ASC");
+                $tags = $dql_query->getResult();
+                if (count($tags)>0){
+                    $recipes_tags[$recipe->getIdRecipe()]= $tags;
+                }
+            }
             $recipe = false;
         }
         elseif($request->isMethod('POST')){
+            /**
+             * Consultamos los tags de las recetas
+             */
+            foreach ($recipes as $recipe){
+                $dql_query = $em->createQuery("
+                    SELECT t FROM CustomsBundle:Tag t
+                    INNER JOIN NutritionistBundle:RecipeTag rt WITH rt.idTag = t.idTag
+                    WHERE rt.idRecipe = ".$recipe->getIdRecipe()."
+                    ORDER BY t.level ASC");
+                $tags = $dql_query->getResult();
+                if (count($tags)>0){
+                    $recipes_tags[$recipe->getIdRecipe()]= $tags;
+                }
+            }
             $recipe = false;
         }
 
@@ -414,6 +474,7 @@ class CustomerController extends Controller
                 "id_recipe" => $id_recipe,
                 "recipe" => $recipe,
                 "recipes" => $recipes,
+                "recipes_tags" => $recipes_tags,
                 'recipe_ingredients' => $recipe_ingredients,
                 'nutritional_info' => $nutritional_info,
                 'pending_inbox' => $this->checkPendingInbox()
@@ -515,6 +576,13 @@ class CustomerController extends Controller
             $events = $events_repo->findBy(array("idUser" => $user->getIdUser()));
 
             /**
+             * Diary Pages
+             */
+            $diary_pages_repo = $em->getRepository('NutritionistBundle:DiaryPages');
+            $diary_pages = $diary_pages_repo->findBy(['idUser' =>$user->getIdUser()]);
+
+
+            /**
              * Format appointments as calendar events
              */
             foreach ($appointments as $appointment){
@@ -527,7 +595,8 @@ class CustomerController extends Controller
                     'title' => $appointment->getDescription(),
                     'start' => $start_date,
                     'end' => $end_date,
-                    'url' => '/web/nutritionist-edit-appointment/'.$id_appointment
+                    'url' => '/web/nutritionist-edit-appointment/'.$id_appointment,
+                    'type' => 'event'
                 ];
             }
 
@@ -544,7 +613,24 @@ class CustomerController extends Controller
                     'title' => $event->getTitle(),
                     'start' => $start_date,
                     'end' => $end_date,
-                    'url' => '/web/nutritionist-edit-event/'.$id_event
+                    'url' => '/web/nutritionist-edit-event/'.$id_event,
+                    'type' => 'event'
+                ];
+            }
+
+            /**
+             * Format diary pages as calendar events
+             */
+            foreach ($diary_pages as $page){
+                $id_diary_page = $page->getIdDiaryPage();
+                $start_date = $page->getDate();
+                $calendar_events[] = [
+                    'id' => $id_diary_page,
+                    'title' => "Notas agenda personal",
+                    'start' => $start_date,
+                    'end' => $start_date,
+                    'url' => '/web/nutritionist-diary/'.$id_diary_page,
+                    'type' => 'diary'
                 ];
             }
         }
@@ -670,7 +756,7 @@ class CustomerController extends Controller
                      */
                     $reply_message = new \CustomsBundle\Entity\Message();
                     $reply_message->setIdUserFrom($user->getIdUser());
-                    $reply_message->setIdUserTo($message->getIdUserFrom());
+                    $reply_message->setIdUserTo($message->getIdUserFrom() == $user->getIdUser() ? $message->getIdUserTo() : $message->getIdUserFrom());
                     $reply_message->setContent($request->request->get('reply_message_content'));
                     $reply_message->setDateAdd(new \DateTime('NOW'));
 
@@ -735,7 +821,7 @@ class CustomerController extends Controller
                 $threads = $dql_query->getResult();
                 if(count($threads)>0 && $threads != false){
                     foreach ($threads as $thread){
-                        $inbox_threads[$in->getIdMessage()][] = [
+                        $inbox_threads[$in->getIdMessage()][$thread->getIdMessage()] = [
                             'date_add' => $thread->getDateAdd(),
                             'date_read' => $thread->getDateRead(),
                             'content' => $thread->getContent(),
@@ -768,7 +854,7 @@ class CustomerController extends Controller
                 $threads = $dql_query->getResult();
                 if(count($threads)>0 && $threads != false){
                     foreach ($threads as $thread){
-                        $sent_inbox_threads[$out->getIdMessage()][] = [
+                        $sent_inbox_threads[$out->getIdMessage()][$thread->getIdMessage()] = [
                             'date_add' => $thread->getDateAdd(),
                             'date_read' => $thread->getDateRead(),
                             'content' => $thread->getContent(),
@@ -816,6 +902,11 @@ class CustomerController extends Controller
                     $inbox_users = array_merge($inbox_users, $nutrik_customers);
                 }
             }
+
+            $inbox_users_images = array();
+            foreach ($inbox_users as $iu){
+                $inbox_users_images[$iu->getIdUser()] = $iu->getImage();
+            }
         }
         else {
             $this->session->getFlashBag()->add('messengerKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
@@ -829,6 +920,7 @@ class CustomerController extends Controller
                 'inbox_threads' => $inbox_threads,
                 'sent_inbox' => $sent_inbox,
                 'sent_inbox_threads' => $sent_inbox_threads,
+                'inbox_users_images' => $inbox_users_images,
                 'pending_inbox' => $this->checkPendingInbox()
             ]
         );
@@ -858,7 +950,10 @@ class CustomerController extends Controller
         return $customers;
     }
 
-
+    /**
+     * Fn que se encarga de renderizar el listado de planificaciones asociadas a un cliente
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
     public function plansAction(){
         /**
          * Instanciamos el user con el email del usuario logeado
@@ -914,6 +1009,11 @@ class CustomerController extends Controller
         );
     }
 
+    /**
+     * Fn que se encarga de ofrecer la vista completa de un plan semanal
+     * @param $id_plan
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
     public function viewPlanAction($id_plan){
         /**
          * Cargamos la entrada

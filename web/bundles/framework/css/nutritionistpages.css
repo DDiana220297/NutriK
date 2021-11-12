@@ -57,7 +57,7 @@
 
 #nutritionist-personal-data .container{
     width: 95%;
-    height: 800px;
+    height: 84rem;
     color: black;
     padding: 20px;
     margin-top: 25px;
@@ -69,55 +69,61 @@
     margin-top: 3%;
 }
 
-#nutritionist-personal-data .container .col-sm-6 .personal-data-header>svg{
-    width: 1em;
+#nutritionist-personal-data .container .col-sm-6 .personal-data-header>img{
+    width: 2em;
     font-size: 50px;
-    height: 0.75em;
-    display: inline-flex;
+    height: 2em;
+    border-radius: 10rem;
+}
+
+#nutritionist-personal-data .container .col-sm-6 .personal-data-header>svg{
+    width: 2em;
+    font-size: 50px;
+    height: 2em;
     margin-right: 8px;
-    vertical-align: -8px;
+    vertical-align: -4rem;
 }
 
 #nutritionist-personal-data .container .col-sm-6 .form-check{
-    padding: 10px;
-    margin-left: 10%;
+padding: 10px;
+margin-left: 10%;
 }
 
 #nutritionist-personal-data .container .col-sm-6 .personal-data-fields{
-    padding: 10px;
-    margin-left: 10%;
+padding: 10px;
+margin-left: 10%;
 }
 
 #nutritionist-personal-data .container .col-sm-6 .personal-data-fields>input{
-    padding: 5px;
-    height: 45px;
-    width: 95%;
-    margin-bottom: 20px;
+padding: 5px;
+height: 45px;
+width: 95%;
+margin-bottom: 20px;
 }
 
 #nutritionist-personal-data .container .col-sm-6 .personal-data-fields>input:hover,
 #nutritionist-personal-data .container .col-sm-6 .personal-data-fields>textarea:hover{
-    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
+box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
 }
 
 #nutritionist-personal-data .container .col-sm-6 .personal-data-fields>textarea{
-    width: 85%;
-    margin-bottom: 20px;
+width: 85%;
+margin-bottom: 20px;
 }
 
 #nutritionist-personal-data .container .col-sm-6 .personal-data-fields .save-button-item .save-button{
-    font-weight: 500;
-    height: 40px;
-    width: 20%;
-    margin-top: 15px;
-    --text-opacity: 1;
-    color: white;
-    border-bottom-width: 4px;
-    --border-opacity: 1;
-    border-color: #00A295;
-    border-radius: .25rem;
-    position: relative;
-    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+font-weight: 500;
+height: 40px;
+width: 20%;
+margin-top: 15px;
+--text-opacity: 1;
+color: white;
+border-bottom-width: 4px;
+--border-opacity: 1;
+border-color: #00A295;
+border-radius: .25rem;
+position: relative;
+background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
 }
 
 /* NUTRITIONIST PAYMENT DATA */
@@ -419,7 +425,9 @@
 #nutritionist-diary .container .col-sm-12 #diary-block .col-sm-6 #todays-tasks>textarea{
     background: transparent;
     height: 50rem;
-    border: 0 solid #ccc;
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
     width: 100%;
     padding: 10px;
     font: oblique normal 14px cursive;
@@ -465,7 +473,9 @@
 #nutritionist-diary .container .col-sm-12 #diary-block .col-sm-6 #todays-events>textarea{
     background: transparent;
     height: 18rem;
-    border: 0 solid #ccc;
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
     width: 100%;
     padding: 10px;
     font: oblique normal 14px cursive;
@@ -505,7 +515,9 @@
 #nutritionist-diary .container .col-sm-12 #diary-block .col-sm-6 #todays-memos>textarea{
     background: transparent;
     height: 20rem;
-    border: 0 solid #ccc;
+    border-style: solid;
+    border-color: #ccc;
+    border-width: thin;
     width: 100%;
     color: white;
     padding: 10px;
@@ -1661,7 +1673,7 @@ body{
     border-color: #00A295;
     border-width: thin;
     width: 80%;
-    height: 82rem;
+    height: 86rem;
     background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
     padding: 50px;
     margin-left: 10%;

@@ -84,11 +84,11 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
                     <div class=\"item active\">
                         <img src=\"";
         // line 29
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("carousel1.jpg"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img3.jpg"), "html", null, true);
         echo "\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
                             <strong style=\"font-size: 22px\">Comer es una necesidad, pero comer de forma inteligente es un arte</strong>
-                            <p style=\"font-size: 18px\"> No solo hay que comer para alimentarnos, como necesidad. Hay que comer de forma inteligente. Esto lo lleva a la categoría de arte y razón no le falta. </p>
+                            <p style=\"font-size: 18px; color: black\"> No solo hay que comer para alimentarnos, como necesidad. Hay que comer de forma inteligente. Esto lo lleva a la categoría de arte y razón no le falta. </p>
                         </div>
                     </div>
 
@@ -99,7 +99,7 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
         echo "\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
                             <strong style=\"font-size: 22px\">Aquellos que piensan que no tienen tiempo para una alimentación saludable tarde o temprano encontrarán tiempo para la enfermedad</strong>
-                            <p style=\"font-size: 18px\">Es recurrente pensar que para tener una alimentación saludable necesitamos que el día tenga más horas. Pero Stanley da con la clave: sacar tiempo para comer mejor es ganarle la partida a la enfermedad.</p>
+                            <p style=\"font-size: 18px; color: black\">Es recurrente pensar que para tener una alimentación saludable necesitamos que el día tenga más horas. Pero Stanley da con la clave: sacar tiempo para comer mejor es ganarle la partida a la enfermedad.</p>
                         </div>
                     </div>
 
@@ -110,7 +110,7 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
         echo "\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
                             <strong style=\"font-size: 22px\">Nuestra comida debería ser nuestra medicina y nuestra medicina debería ser nuestra comida.</strong>
-                            <p style=\"font-size: 18px\"> Desde tiempos antiguos la comida no solo ha servido para alimentarse. También ha servido para curar enfermedades. Todo consiste en aprovechar bien los nutrientes que tengan los productos que consumimos en nuestra dieta.</p>
+                            <p style=\"font-size: 18px; color: black\"> Desde tiempos antiguos la comida no solo ha servido para alimentarse. También ha servido para curar enfermedades. Todo consiste en aprovechar bien los nutrientes que tengan los productos que consumimos en nuestra dieta.</p>
                         </div>
                     </div>
 
@@ -121,7 +121,7 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
         echo "\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
                             <strong style=\"font-size: 22px\">Nos preocupamos por tu salud.</strong>
-                            <p style=\"font-size: 18px\">Cuando la dieta es incorrecta, la medicina no sirve para nada. Cuando la dieta es correcta, la medicina no es necesaria.</p>
+                            <p style=\"font-size: 18px; color: black\">Cuando la dieta es incorrecta, la medicina no sirve para nada. Cuando la dieta es correcta, la medicina no es necesaria.</p>
                         </div>
                     </div>
 
@@ -132,36 +132,34 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
         echo "\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
                             <strong style=\"font-size: 22px\">Dime lo que comes y te diré quién eres.</strong>
-                            <p style=\"font-size: 18px\"> Igual que nuestros actos vienen definidos por nuestra personalidad, la dieta que sigamos es importante para convertirnos en lo que somos. Mente sana en cuerpo sano y la alimentación es vital para eso.</p>
+                            <p style=\"font-size: 18px; color: black\"> Igual que nuestros actos vienen definidos por nuestra personalidad, la dieta que sigamos es importante para convertirnos en lo que somos. Mente sana en cuerpo sano y la alimentación es vital para eso.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Controls -->
-                <a class=\"left carousel-control\" href=\"#about-carousel-section\" role=\"button\" data-slide=\"prev\" style=\"border-radius: 10%;\">
+                <a class=\"left carousel-control\" href=\"#about-carousel-section\" role=\"button\" data-slide=\"prev\" style=\"border-radius: 10%; height: 40rem\">
                     <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>
                     <span class=\"sr-only\">Previous</span>
                 </a>
 
-                <a class=\"right carousel-control\" href=\"#about-carousel-section\" role=\"button\" data-slide=\"next\" style=\"border-radius: 10%;\">
+                <a class=\"right carousel-control\" href=\"#about-carousel-section\" role=\"button\" data-slide=\"next\" style=\"border-radius: 10%; height: 40rem\">
                     <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>
                     <span class=\"sr-only\">Next</span>
                 </a>
             </div>
         </div>
-        <div class=\"container\">
-            <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
-                <p style=\"font-size: 17px;\">
-                    En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
-                    Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
-                </p>
+        <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
+            <div class=\"col-sm-8\" style=\"font-size: 17px; margin-left: 17%\">
+                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
             </div>
         </div>
     </section>
     ";
-        // line 90
-        $this->loadTemplate("footer.html.twig", "@Customer/about.html.twig", 90)->display($context);
-        // line 91
+        // line 88
+        $this->loadTemplate("footer.html.twig", "@Customer/about.html.twig", 88)->display($context);
+        // line 89
         echo "    </html>
 ";
         
@@ -176,7 +174,7 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
 
     public function getDebugInfo()
     {
-        return array (  165 => 91,  163 => 90,  131 => 61,  120 => 53,  109 => 45,  98 => 37,  87 => 29,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  163 => 89,  161 => 88,  131 => 61,  120 => 53,  109 => 45,  98 => 37,  87 => 29,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -217,10 +215,10 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
                 <!-- Wrapper for slides -->
                 <div class=\"carousel-inner\" role=\"listbox\">
                     <div class=\"item active\">
-                        <img src=\"{{ asset('carousel1.jpg') }}\" style=\"border-radius: 10%;\">
+                        <img src=\"{{ asset('img3.jpg') }}\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
                             <strong style=\"font-size: 22px\">Comer es una necesidad, pero comer de forma inteligente es un arte</strong>
-                            <p style=\"font-size: 18px\"> No solo hay que comer para alimentarnos, como necesidad. Hay que comer de forma inteligente. Esto lo lleva a la categoría de arte y razón no le falta. </p>
+                            <p style=\"font-size: 18px; color: black\"> No solo hay que comer para alimentarnos, como necesidad. Hay que comer de forma inteligente. Esto lo lleva a la categoría de arte y razón no le falta. </p>
                         </div>
                     </div>
 
@@ -228,7 +226,7 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
                         <img src=\"{{ asset('carousel2.jpg') }}\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
                             <strong style=\"font-size: 22px\">Aquellos que piensan que no tienen tiempo para una alimentación saludable tarde o temprano encontrarán tiempo para la enfermedad</strong>
-                            <p style=\"font-size: 18px\">Es recurrente pensar que para tener una alimentación saludable necesitamos que el día tenga más horas. Pero Stanley da con la clave: sacar tiempo para comer mejor es ganarle la partida a la enfermedad.</p>
+                            <p style=\"font-size: 18px; color: black\">Es recurrente pensar que para tener una alimentación saludable necesitamos que el día tenga más horas. Pero Stanley da con la clave: sacar tiempo para comer mejor es ganarle la partida a la enfermedad.</p>
                         </div>
                     </div>
 
@@ -236,7 +234,7 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
                         <img src=\"{{ asset('carousel3.jpg') }}\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
                             <strong style=\"font-size: 22px\">Nuestra comida debería ser nuestra medicina y nuestra medicina debería ser nuestra comida.</strong>
-                            <p style=\"font-size: 18px\"> Desde tiempos antiguos la comida no solo ha servido para alimentarse. También ha servido para curar enfermedades. Todo consiste en aprovechar bien los nutrientes que tengan los productos que consumimos en nuestra dieta.</p>
+                            <p style=\"font-size: 18px; color: black\"> Desde tiempos antiguos la comida no solo ha servido para alimentarse. También ha servido para curar enfermedades. Todo consiste en aprovechar bien los nutrientes que tengan los productos que consumimos en nuestra dieta.</p>
                         </div>
                     </div>
 
@@ -244,7 +242,7 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
                         <img src=\"{{ asset('carousel4.jpeg') }}\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
                             <strong style=\"font-size: 22px\">Nos preocupamos por tu salud.</strong>
-                            <p style=\"font-size: 18px\">Cuando la dieta es incorrecta, la medicina no sirve para nada. Cuando la dieta es correcta, la medicina no es necesaria.</p>
+                            <p style=\"font-size: 18px; color: black\">Cuando la dieta es incorrecta, la medicina no sirve para nada. Cuando la dieta es correcta, la medicina no es necesaria.</p>
                         </div>
                     </div>
 
@@ -252,29 +250,27 @@ class __TwigTemplate_6e9eb6d3b897f42b41fa23a8c77f2454169996d491000403cbb3e29f85e
                         <img src=\"{{ asset('carousel5.jpg') }}\" style=\"border-radius: 10%;\">
                         <div class=\"carousel-caption\">
                             <strong style=\"font-size: 22px\">Dime lo que comes y te diré quién eres.</strong>
-                            <p style=\"font-size: 18px\"> Igual que nuestros actos vienen definidos por nuestra personalidad, la dieta que sigamos es importante para convertirnos en lo que somos. Mente sana en cuerpo sano y la alimentación es vital para eso.</p>
+                            <p style=\"font-size: 18px; color: black\"> Igual que nuestros actos vienen definidos por nuestra personalidad, la dieta que sigamos es importante para convertirnos en lo que somos. Mente sana en cuerpo sano y la alimentación es vital para eso.</p>
                         </div>
                     </div>
                 </div>
 
                 <!-- Controls -->
-                <a class=\"left carousel-control\" href=\"#about-carousel-section\" role=\"button\" data-slide=\"prev\" style=\"border-radius: 10%;\">
+                <a class=\"left carousel-control\" href=\"#about-carousel-section\" role=\"button\" data-slide=\"prev\" style=\"border-radius: 10%; height: 40rem\">
                     <span class=\"glyphicon glyphicon-chevron-left\" aria-hidden=\"true\"></span>
                     <span class=\"sr-only\">Previous</span>
                 </a>
 
-                <a class=\"right carousel-control\" href=\"#about-carousel-section\" role=\"button\" data-slide=\"next\" style=\"border-radius: 10%;\">
+                <a class=\"right carousel-control\" href=\"#about-carousel-section\" role=\"button\" data-slide=\"next\" style=\"border-radius: 10%; height: 40rem\">
                     <span class=\"glyphicon glyphicon-chevron-right\" aria-hidden=\"true\"></span>
                     <span class=\"sr-only\">Next</span>
                 </a>
             </div>
         </div>
-        <div class=\"container\">
-            <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
-                <p style=\"font-size: 17px;\">
-                    En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
-                    Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
-                </p>
+        <div class=\"row\" style=\"justify-content: center; color: black; text-align: center; padding: 100px\">
+            <div class=\"col-sm-8\" style=\"font-size: 17px; margin-left: 17%\">
+                En NutriK vas a encontrar profesionales sanitarios expertos en alimentación, nutrición y dietética.
+                Nos encargamos principalmente del diagnóstico nutricional-dietético general y específico, así como del tratamiento nutricional-dietético de enfermedades, como por ejemplo diabetes, malnutrición, insuficiencia renal, obesidad, enfermedad de Crohn, del tratamiento con nutrición artificial enteral y parenteral en hospitales, o a domicilio, de la prevención de patologías mediante la alimentación, nutrición y dietética, decidir colaborativamente en el tratamiento del paciente oncológico etc., además de adecuar la alimentación, nutrición y dietética de cada persona a cualquier situación fisiológica, como embarazo, lactancia, deporte, etc, y patológica con carácter de primera intención, como facultativo en su área propia de conocimiento, cual es la Nutrición y la Dietética.
             </div>
         </div>
     </section>

@@ -27,6 +27,7 @@
                 </div>
             {% endfor %}
             <div class="assigned-customer-plans">
+                <h2 style="margin-top: -15px; margin-bottom: 15px; color: #00766c">Planificaciones asociadas</h2>
                 <div class="col-sm-3 customer-info">
                     <div class="col-sm-12" style="padding-left: 50px">
                         <img src="{{ asset(customer.image) }}" alt="">
@@ -36,7 +37,6 @@
                     </div>
                     <div class="col-sm-12">
                         <p><strong>Email:</strong> {{ customer.email }}</p>
-                        <p><strong>Bilbliografía:</strong> {{ customer.description }}</p>
                         {% if metrics != false %}
                             <p><strong>Objetivos:</strong> {{ metrics.goals }}</p>
                         {% endif %}

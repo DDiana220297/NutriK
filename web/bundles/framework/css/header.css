@@ -2,9 +2,9 @@
 
 /* Global header */
 .global-header{
-    background: #00766c;
     border-radius: 0px;
     border-color: #00766c;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
     padding: 20px;
 }
 

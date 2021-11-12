@@ -1,9 +1,9 @@
 /* NEWS PAGE */
 #carousel-section{
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 #carousel-section .container{
-    height: 375px;
+    height: 60rem
 }
 
 #carousel-section .container .carousel{
@@ -25,7 +25,7 @@
 
 #carousel-section .container .carousel .carousel-inner .item>img{
     width: 100%;
-    height: 100%;
+    height: 40rem;
 }
 
 /* DIDACTIC CONTENT PAGE */
@@ -113,24 +113,30 @@
 
 #customer-personal-data .container{
     width: 95%;
-    height: 765px;
+    height: 84rem;
     color: black;
     padding: 20px;
     margin-top: 25px;
-    background-color: lightgray;
+    background: linear-gradient(to bottom, #E2E2E2 0%, #bdbdbd 100%);
 }
+
 #customer-personal-data .container .form .col-sm-6 .personal-data-header{
     margin-left: 10%;
     margin-top: 3%;
 }
 
-#customer-personal-data .container .form .col-sm-6 .personal-data-header>svg{
-    width: 1em;
+#customer-personal-data .container .form .col-sm-6 .personal-data-header>img{
+    width: 2em;
     font-size: 50px;
-    height: 0.75em;
-    display: inline-flex;
+    height: 2em;
+    border-radius: 10rem;
+}
+#customer-personal-data .container .form .col-sm-6 .personal-data-header>svg{
+    width: 2em;
+    font-size: 50px;
+    height: 2em;
     margin-right: 8px;
-    vertical-align: -8px;
+    vertical-align: -4rem;
 }
 
 #customer-personal-data .container .form .col-sm-6 .form-check,
@@ -213,7 +219,9 @@
 #customer-diary .container .form .col-sm-6 #todays-tasks>textarea{
     background: transparent;
     height: 50rem;
-    border: 0 solid #ccc;
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
     width: 100%;
     padding: 10px;
     font: oblique normal 14px cursive;
@@ -231,7 +239,7 @@
     width: 100%;
     margin-top: 10px;
     --text-opacity: 1;
-    color: black;
+    color: white;
     border-bottom-width: 4px;
     --border-opacity: 1;
     border-color: #00A295;
@@ -260,7 +268,9 @@
 #customer-diary .container .form .col-sm-6 #todays-events>textarea{
     background: transparent;
     height: 18rem;
-    border: 0 solid #ccc;
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
     width: 100%;
     padding: 10px;
     font: oblique normal 14px cursive;
@@ -279,6 +289,7 @@
     display: inline-flex;
     margin-top: -4px;
     height: 33px;
+    color: white;
     background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
 }
 
@@ -300,7 +311,9 @@
 #customer-diary .container .form .col-sm-6 #todays-memos>textarea{
     background: transparent;
     height: 20rem;
-    border: 0 solid #ccc;
+    border-style: solid;
+    border-color: #ccc;
+    border-width: thin;
     width: 100%;
     color: white;
     padding: 10px;
@@ -414,7 +427,7 @@
 }
 
 #recipes .container .form .col-sm-12 .container-fluid #recipes-content .recipe .recipe-name{
-    margin-top: -10px;
+    margin-top: -15px;
 }
 
 #recipes .container .form .col-sm-12 .container-fluid #recipes-content .recipe .recipe-name>a{
@@ -728,7 +741,7 @@
     margin-top: 1%;
 }
 
-#customer-services .container .form .container-services-block{
+#customer-services .container .container-services-block{
     border-style: solid;
     border-color: #00A295;
     border-width: thin;
@@ -738,7 +751,7 @@
     background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
 }
 
-#customer-services .container .form .container-services-block .col-sm-4{
+#customer-services .container .container-services-block .col-sm-4{
     border-style: solid;
     border-color: #00A295;
     border-width: thin;
@@ -749,22 +762,141 @@
     color: black;
     text-align: center; padding: 100px
 }
-#customer-services .container .form .container-services-block .col-sm-4>strong{
+#customer-services .container .container-services-block .col-sm-4>strong{
     height: 5rem;
     font-size: 22px;
 }
-#customer-services .container .form .container-services-block .col-sm-4>p{
+#customer-services .container .container-services-block .col-sm-4>p{
     height: 25rem;
 }
 
-#customer-services .container .form .container-services-block .col-sm-4>input{
+#customer-services .container .container-services-block .col-sm-4>input{
     width: 80%;
     justify-content: center;
     display: inline-flex;
     font-size: 16px;
     margin-top: -3px;
-    height: 33px;
+    height: 40px;
     background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+/* PROFESSIONALS */
+#professionals-section .container{
+    width: 65%;
+    margin-top: 1.5%;
+}
+
+#professionals-section .container .professionals-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 85rem;
+    padding: 50px 100px;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#professionals-section .container .professionals-block .professionals{
+    overflow-y: auto;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 20rem;
+    padding: 25px;
+    color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .professional-entry-image>img{
+    width: 15rem;
+    height: 15rem;
+    border-radius: 10rem;
+}
+#professionals-section .container .professionals-block .professionals .professional-entry .professional-entry-resume{
+    font-size: 20px;
+    padding: 25px;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .professional-entry-actions{
+    margin-top: -30px;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .professional-entry-actions>svg{
+    width: 3rem;
+    height: 3rem;
+    margin-top: 85px;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .professional-entry-actions>svg:hover{
+    opacity: 0.5;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog{
+    width: 100rem;
+    margin: 30px 25%;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content{
+    height: 80rem;
+    width: 105rem;
+    padding: 40px 30px;
+    color: black;
+    font-size: 16px;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content .col-sm-4{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 71rem;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content .col-sm-4 .col-sm-12{
+    text-align: center;
+    color: white;
+}
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content .col-sm-8 .col-sm-12{
+    text-align: center;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content .col-sm-8 .col-sm-12>input{
+    width: 100%;
+    justify-content: center;
+    display: inline-flex;
+    font-size: 16px;
+    margin-top: 29.4rem;
+    height: 40px;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content .col-sm-4 .col-sm-12>img{
+    width: 17rem;
+    height: 17rem;
+    margin-top: 2rem;
+    border-radius: 10rem;
+}
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content .col-sm-8 .col-sm-12 .input-group .input-label{
+    width: 10rem;
+    color: white;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+}
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content .col-sm-8 .col-sm-12 .input-group .input-prefix{
+    width: 50rem;
+    text-align: start;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+    border-style: solid;
+    height: 40px;
+    border-color: #f8f8f8;
+    border-width: thin;
 }
 
 /* CUSTOMER ADD EVENT */
@@ -937,7 +1069,7 @@
 #assigned-plans .container .assigned-plans-block{
     margin-bottom: 10px;
     border-radius: 2.5rem;
-    padding: 15px;
+    padding: 30px 80px;
     height: 85rem;
     font-size: 16px;
     color: white;

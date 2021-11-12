@@ -219,18 +219,18 @@ $context["inb"], "idUserTo", []) == ($context["id_user"] ?? $this->getContext($c
                                             <div class=\"col-sm-11\">
                                                 <p style=\"margin: 0\"> <strong>";
             // line 98
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["inbox_threads"] ?? $this->getContext($context, "inbox_threads")), $this->getAttribute($context["inb"], "idMessage", []), [], "array"), 0, [], "array"), "subject", [], "array"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["inbox_threads"] ?? $this->getContext($context, "inbox_threads")), $this->getAttribute($context["inb"], "idMessage", []), [], "array"), $this->getAttribute($context["inb"], "idMessage", []), [], "array"), "subject", [], "array"), "html", null, true);
             echo "</strong>
                                                     <span>
                                             ";
             // line 100
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["inbox_threads"] ?? $this->getContext($context, "inbox_threads")), $this->getAttribute($context["inb"], "idMessage", []), [], "array"), 0, [], "array"), "firstname_user_from", [], "array"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["inbox_threads"] ?? $this->getContext($context, "inbox_threads")), $this->getAttribute($context["inb"], "idMessage", []), [], "array"), $this->getAttribute($context["inb"], "idMessage", []), [], "array"), "firstname_user_from", [], "array"), "html", null, true);
             echo " ";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["inbox_threads"] ?? $this->getContext($context, "inbox_threads")), $this->getAttribute($context["inb"], "idMessage", []), [], "array"), 0, [], "array"), "lastname_user_from", [], "array"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["inbox_threads"] ?? $this->getContext($context, "inbox_threads")), $this->getAttribute($context["inb"], "idMessage", []), [], "array"), $this->getAttribute($context["inb"], "idMessage", []), [], "array"), "lastname_user_from", [], "array"), "html", null, true);
             echo "
                                             -  ";
             // line 101
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["inbox_threads"] ?? $this->getContext($context, "inbox_threads")), $this->getAttribute($context["inb"], "idMessage", []), [], "array"), 0, [], "array"), "email_user_from", [], "array"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["inbox_threads"] ?? $this->getContext($context, "inbox_threads")), $this->getAttribute($context["inb"], "idMessage", []), [], "array"), $this->getAttribute($context["inb"], "idMessage", []), [], "array"), "email_user_from", [], "array"), "html", null, true);
             echo "
                                             </span></p>
                                                 <strong style=\"float: left\"> ";
@@ -280,18 +280,18 @@ $context["inb"], "idUserTo", []) == ($context["id_user"] ?? $this->getContext($c
                                             <div class=\"col-sm-11\">
                                                 <p style=\"margin: 0\"> <strong>";
             // line 127
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["sent_inbox_threads"] ?? $this->getContext($context, "sent_inbox_threads")), $this->getAttribute($context["out"], "idMessage", []), [], "array"), 0, [], "array"), "subject", [], "array"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["sent_inbox_threads"] ?? $this->getContext($context, "sent_inbox_threads")), $this->getAttribute($context["out"], "idMessage", []), [], "array"), $this->getAttribute($context["out"], "idMessage", []), [], "array"), "subject", [], "array"), "html", null, true);
             echo "</strong>
                                                     <span>
                                             ";
             // line 129
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["sent_inbox_threads"] ?? $this->getContext($context, "sent_inbox_threads")), $this->getAttribute($context["out"], "idMessage", []), [], "array"), 0, [], "array"), "firstname_user_from", [], "array"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["sent_inbox_threads"] ?? $this->getContext($context, "sent_inbox_threads")), $this->getAttribute($context["out"], "idMessage", []), [], "array"), $this->getAttribute($context["out"], "idMessage", []), [], "array"), "firstname_user_from", [], "array"), "html", null, true);
             echo " ";
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["sent_inbox_threads"] ?? $this->getContext($context, "sent_inbox_threads")), $this->getAttribute($context["out"], "idMessage", []), [], "array"), 0, [], "array"), "lastname_user_from", [], "array"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["sent_inbox_threads"] ?? $this->getContext($context, "sent_inbox_threads")), $this->getAttribute($context["out"], "idMessage", []), [], "array"), $this->getAttribute($context["out"], "idMessage", []), [], "array"), "lastname_user_from", [], "array"), "html", null, true);
             echo "
                                             -  ";
             // line 130
-            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["sent_inbox_threads"] ?? $this->getContext($context, "sent_inbox_threads")), $this->getAttribute($context["out"], "idMessage", []), [], "array"), 0, [], "array"), "email_user_from", [], "array"), "html", null, true);
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute(($context["sent_inbox_threads"] ?? $this->getContext($context, "sent_inbox_threads")), $this->getAttribute($context["out"], "idMessage", []), [], "array"), $this->getAttribute($context["out"], "idMessage", []), [], "array"), "email_user_from", [], "array"), "html", null, true);
             echo "
                                             </span></p>
                                                 <strong style=\"float: left\"> ";
@@ -334,124 +334,174 @@ $context["inb"], "idUserTo", []) == ($context["id_user"] ?? $this->getContext($c
                     // line 150
                     echo "                                                <div class=\"message-left\">
                                                     <div class=\"message-icon\">
-                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
-                                                            <path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>
-                                                        </svg>
-                                                    </div>
+                                                            ";
+                    // line 152
+                    if (twig_in_filter($this->getAttribute($context["message"], "id_user_to", [], "array"), twig_get_array_keys_filter(($context["inbox_users_images"] ?? $this->getContext($context, "inbox_users_images"))))) {
+                        // line 153
+                        echo "                                                                <img src=\"";
+                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl($this->getAttribute(($context["inbox_users_images"] ?? $this->getContext($context, "inbox_users_images")), $this->getAttribute($context["message"], "id_user_to", [], "array"), [], "array")), "html", null, true);
+                        echo "\" alt=\"\" style=\"width: 4rem;height: 4rem; border-radius: 10rem; margin-top: -15px\">
+                                                            ";
+                    } else {
+                        // line 155
+                        echo "                                                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
+                                                                <path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>
+                                                            </svg>
+                                                        ";
+                    }
+                    // line 159
+                    echo "                                                    </div>
                                                     <div class=\"message-content\">
                                                         <strong>";
-                    // line 157
+                    // line 161
                     echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["message"], "date_add", [], "array"), "Y-m-d H:i:s"), "html", null, true);
                     echo "</strong>
                                                         <p>";
-                    // line 158
+                    // line 162
                     echo twig_escape_filter($this->env, $this->getAttribute($context["message"], "content", [], "array"), "html", null, true);
                     echo "</p>
-
                                                     </div>
                                                 </div>
                                             ";
                 } else {
-                    // line 163
+                    // line 166
                     echo "                                                <div class=\"message-right\">
                                                     <div class=\"message-content\">
                                                         <strong>";
-                    // line 165
+                    // line 168
                     echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["message"], "date_add", [], "array"), "Y-m-d H:i:s"), "html", null, true);
                     echo "</strong>
                                                         <p>";
-                    // line 166
+                    // line 169
                     echo twig_escape_filter($this->env, $this->getAttribute($context["message"], "content", [], "array"), "html", null, true);
                     echo "</p>
                                                     </div>
                                                     <div class=\"message-icon\">
-                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-fill\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
-                                                            <path d=\"M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z\"/>
-                                                        </svg>
-                                                    </div>
+                                                        ";
+                    // line 172
+                    if (($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "image", []) != "")) {
+                        // line 173
+                        echo "                                                            <img src=\"";
+                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "image", [])), "html", null, true);
+                        echo "\" alt=\"\" style=\"width: 4rem;height: 4rem; border-radius: 10rem; margin-top: -15px\">
+                                                        ";
+                    } else {
+                        // line 175
+                        echo "                                                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-fill\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
+                                                                <path d=\"M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z\"/>
+                                                            </svg>
+                                                        ";
+                    }
+                    // line 179
+                    echo "                                                    </div>
                                                 </div>
                                             ";
                 }
-                // line 175
+                // line 182
                 echo "                                    ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 176
+            // line 183
             echo "                                ";
         } elseif (((($context["id_message"] ?? $this->getContext($context, "id_message")) != 0) && twig_in_filter(($context["id_message"] ?? $this->getContext($context, "id_message")), twig_get_array_keys_filter(($context["sent_inbox_threads"] ?? $this->getContext($context, "sent_inbox_threads")))))) {
-            // line 177
+            // line 184
             echo "                                    ";
             $context['_parent'] = $context;
             $context['_seq'] = twig_ensure_traversable($this->getAttribute(($context["sent_inbox_threads"] ?? $this->getContext($context, "sent_inbox_threads")), ($context["id_message"] ?? $this->getContext($context, "id_message")), [], "array"));
             foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
-                // line 178
+                // line 185
                 echo "                                        ";
                 if (($this->getAttribute($context["message"], "id_user_from", [], "array") == ($context["id_user"] ?? $this->getContext($context, "id_user")))) {
-                    // line 179
+                    // line 186
                     echo "                                            <div class=\"message-left\">
                                                 <div class=\"message-icon\">
-                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
-                                                        <path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>
-                                                    </svg>
-                                                </div>
+                                                    ";
+                    // line 188
+                    if (twig_in_filter($this->getAttribute($context["message"], "id_user_to", [], "array"), twig_get_array_keys_filter(($context["inbox_users_images"] ?? $this->getContext($context, "inbox_users_images"))))) {
+                        // line 189
+                        echo "                                                        <img src=\"";
+                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl($this->getAttribute(($context["inbox_users_images"] ?? $this->getContext($context, "inbox_users_images")), $this->getAttribute($context["message"], "id_user_to", [], "array"), [], "array")), "html", null, true);
+                        echo "\" alt=\"\" style=\"width: 4rem;height: 4rem; border-radius: 10rem; margin-top: -15px\">
+                                                    ";
+                    } else {
+                        // line 191
+                        echo "                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
+                                                            <path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>
+                                                        </svg>
+                                                    ";
+                    }
+                    // line 195
+                    echo "                                                </div>
                                                 <div class=\"message-content\">
                                                     <strong>";
-                    // line 186
+                    // line 197
                     echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["message"], "date_add", [], "array"), "Y-m-d H:i:s"), "html", null, true);
                     echo "</strong>
                                                     <p>";
-                    // line 187
+                    // line 198
                     echo twig_escape_filter($this->env, $this->getAttribute($context["message"], "content", [], "array"), "html", null, true);
                     echo "</p>
-
                                                 </div>
                                             </div>
                                         ";
                 } else {
-                    // line 192
+                    // line 202
                     echo "                                            <div class=\"message-right\">
                                                 <div class=\"message-content\">
                                                     <strong>";
-                    // line 194
+                    // line 204
                     echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["message"], "date_add", [], "array"), "Y-m-d H:i:s"), "html", null, true);
                     echo "</strong>
                                                     <p>";
-                    // line 195
+                    // line 205
                     echo twig_escape_filter($this->env, $this->getAttribute($context["message"], "content", [], "array"), "html", null, true);
                     echo "</p>
                                                 </div>
                                                 <div class=\"message-icon\">
-                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-fill\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
-                                                        <path d=\"M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z\"/>
-                                                    </svg>
-                                                </div>
+                                                    ";
+                    // line 208
+                    if (($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "image", []) != "")) {
+                        // line 209
+                        echo "                                                        <img src=\"";
+                        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "image", [])), "html", null, true);
+                        echo "\" alt=\"\" style=\"width: 4rem;height: 4rem; border-radius: 10rem; margin-top: -15px\">
+                                                    ";
+                    } else {
+                        // line 211
+                        echo "                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-fill\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
+                                                            <path d=\"M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z\"/>
+                                                        </svg>
+                                                    ";
+                    }
+                    // line 215
+                    echo "                                                </div>
                                             </div>
                                         ";
                 }
-                // line 204
+                // line 218
                 echo "                                    ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 205
+            // line 219
             echo "                                ";
         }
-        // line 206
+        // line 220
         echo "                            </div>
                             <div class=\"col-sm-12 message-reply\">
                                 ";
-        // line 208
+        // line 222
         if ((($context["id_message"] ?? $this->getContext($context, "id_message")) != 0)) {
-            // line 209
+            // line 223
             echo "                                    <div class=\"inbox_content\">
                                         <textarea type=\"text\" id=\"reply_message_content\" name=\"reply_message_content\" class=\"form-control\" placeholder=\"Indica cuerpo del mensaje\"></textarea>
                                     </div>
                                     <div class=\"inbox_send\">
                                         <input type=\"hidden\" name=\"repply_id_message\" value=\"";
-            // line 213
+            // line 227
             echo twig_escape_filter($this->env, ($context["id_message"] ?? $this->getContext($context, "id_message")), "html", null, true);
             echo "\">
                                         <input type=\"submit\" name=\"submit\" id=\"repply_message\" class=\"btn btn-primary\" style=\"display: none\" value=\"Responder\"/>
@@ -463,7 +513,7 @@ $context["inb"], "idUserTo", []) == ($context["id_user"] ?? $this->getContext($c
                                     </div>
                                 ";
         }
-        // line 222
+        // line 236
         echo "                            </div>
                         </div>
                     </div>
@@ -473,8 +523,8 @@ $context["inb"], "idUserTo", []) == ($context["id_user"] ?? $this->getContext($c
     </section>
     </html>
     ";
-        // line 230
-        $this->loadTemplate("footer.html.twig", "@Customer/messenger-services.html.twig", 230)->display($context);
+        // line 244
+        $this->loadTemplate("footer.html.twig", "@Customer/messenger-services.html.twig", 244)->display($context);
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -487,7 +537,7 @@ $context["inb"], "idUserTo", []) == ($context["id_user"] ?? $this->getContext($c
 
     public function getDebugInfo()
     {
-        return array (  477 => 230,  467 => 222,  455 => 213,  449 => 209,  447 => 208,  443 => 206,  440 => 205,  434 => 204,  422 => 195,  418 => 194,  414 => 192,  406 => 187,  402 => 186,  393 => 179,  390 => 178,  385 => 177,  382 => 176,  376 => 175,  364 => 166,  360 => 165,  356 => 163,  348 => 158,  344 => 157,  335 => 150,  332 => 149,  327 => 148,  325 => 147,  319 => 143,  307 => 137,  299 => 132,  294 => 130,  288 => 129,  283 => 127,  279 => 125,  273 => 121,  271 => 120,  266 => 117,  262 => 116,  258 => 114,  246 => 108,  238 => 103,  233 => 101,  227 => 100,  222 => 98,  218 => 96,  212 => 92,  210 => 91,  205 => 88,  203 => 87,  198 => 84,  194 => 83,  174 => 65,  161 => 62,  157 => 61,  154 => 60,  150 => 59,  122 => 34,  119 => 33,  109 => 29,  105 => 27,  100 => 26,  90 => 22,  86 => 20,  82 => 19,  79 => 18,  75 => 16,  73 => 15,  70 => 14,  68 => 13,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  527 => 244,  517 => 236,  505 => 227,  499 => 223,  497 => 222,  493 => 220,  490 => 219,  484 => 218,  479 => 215,  473 => 211,  467 => 209,  465 => 208,  459 => 205,  455 => 204,  451 => 202,  444 => 198,  440 => 197,  436 => 195,  430 => 191,  424 => 189,  422 => 188,  418 => 186,  415 => 185,  410 => 184,  407 => 183,  401 => 182,  396 => 179,  390 => 175,  384 => 173,  382 => 172,  376 => 169,  372 => 168,  368 => 166,  361 => 162,  357 => 161,  353 => 159,  347 => 155,  341 => 153,  339 => 152,  335 => 150,  332 => 149,  327 => 148,  325 => 147,  319 => 143,  307 => 137,  299 => 132,  294 => 130,  288 => 129,  283 => 127,  279 => 125,  273 => 121,  271 => 120,  266 => 117,  262 => 116,  258 => 114,  246 => 108,  238 => 103,  233 => 101,  227 => 100,  222 => 98,  218 => 96,  212 => 92,  210 => 91,  205 => 88,  203 => 87,  198 => 84,  194 => 83,  174 => 65,  161 => 62,  157 => 61,  154 => 60,  150 => 59,  122 => 34,  119 => 33,  109 => 29,  105 => 27,  100 => 26,  90 => 22,  86 => 20,  82 => 19,  79 => 18,  75 => 16,  73 => 15,  70 => 14,  68 => 13,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -597,10 +647,10 @@ $context["inb"], "idUserTo", []) == ($context["id_user"] ?? $this->getContext($c
                                                 {% endif %}
                                             </div>
                                             <div class=\"col-sm-11\">
-                                                <p style=\"margin: 0\"> <strong>{{ inbox_threads[inb.idMessage][0]['subject'] }}</strong>
+                                                <p style=\"margin: 0\"> <strong>{{ inbox_threads[inb.idMessage][inb.idMessage]['subject'] }}</strong>
                                                     <span>
-                                            {{ inbox_threads[inb.idMessage][0]['firstname_user_from'] }} {{ inbox_threads[inb.idMessage][0]['lastname_user_from'] }}
-                                            -  {{ inbox_threads[inb.idMessage][0]['email_user_from'] }}
+                                            {{ inbox_threads[inb.idMessage][inb.idMessage]['firstname_user_from'] }} {{ inbox_threads[inb.idMessage][inb.idMessage]['lastname_user_from'] }}
+                                            -  {{ inbox_threads[inb.idMessage][inb.idMessage]['email_user_from'] }}
                                             </span></p>
                                                 <strong style=\"float: left\"> {{ inb.dateAdd|date('Y-m-d H:i:s') }}</strong>
                                             </div>
@@ -626,10 +676,10 @@ $context["inb"], "idUserTo", []) == ($context["id_user"] ?? $this->getContext($c
                                                 {% endif %}
                                             </div>
                                             <div class=\"col-sm-11\">
-                                                <p style=\"margin: 0\"> <strong>{{ sent_inbox_threads[out.idMessage][0]['subject'] }}</strong>
+                                                <p style=\"margin: 0\"> <strong>{{ sent_inbox_threads[out.idMessage][out.idMessage]['subject'] }}</strong>
                                                     <span>
-                                            {{ sent_inbox_threads[out.idMessage][0]['firstname_user_from'] }} {{ sent_inbox_threads[out.idMessage][0]['lastname_user_from'] }}
-                                            -  {{ sent_inbox_threads[out.idMessage][0]['email_user_from'] }}
+                                            {{ sent_inbox_threads[out.idMessage][out.idMessage]['firstname_user_from'] }} {{ sent_inbox_threads[out.idMessage][out.idMessage]['lastname_user_from'] }}
+                                            -  {{ sent_inbox_threads[out.idMessage][out.idMessage]['email_user_from'] }}
                                             </span></p>
                                                 <strong style=\"float: left\"> {{ out.dateAdd|date('Y-m-d H:i:s') }}</strong>
                                             </div>
@@ -648,17 +698,20 @@ $context["inb"], "idUserTo", []) == ($context["id_user"] ?? $this->getContext($c
                             <div class=\"col-sm-12 messages\">
                                 {% if id_message != 0 and id_message in inbox_threads|keys%}
                                     {% for message in inbox_threads[id_message] %}
-                                            {% if  message['id_user_from'] == id_user %}
+                                            {% if message['id_user_from'] == id_user %}
                                                 <div class=\"message-left\">
                                                     <div class=\"message-icon\">
-                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
-                                                            <path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>
-                                                        </svg>
+                                                            {% if message['id_user_to'] in inbox_users_images|keys %}
+                                                                <img src=\"{{ asset(inbox_users_images[message['id_user_to']]) }}\" alt=\"\" style=\"width: 4rem;height: 4rem; border-radius: 10rem; margin-top: -15px\">
+                                                            {% else %}
+                                                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
+                                                                <path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>
+                                                            </svg>
+                                                        {% endif %}
                                                     </div>
                                                     <div class=\"message-content\">
                                                         <strong>{{ message['date_add']|date('Y-m-d H:i:s') }}</strong>
                                                         <p>{{ message['content'] }}</p>
-
                                                     </div>
                                                 </div>
                                             {% else %}
@@ -668,9 +721,13 @@ $context["inb"], "idUserTo", []) == ($context["id_user"] ?? $this->getContext($c
                                                         <p>{{ message['content'] }}</p>
                                                     </div>
                                                     <div class=\"message-icon\">
-                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-fill\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
-                                                            <path d=\"M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z\"/>
-                                                        </svg>
+                                                        {% if app.user.image != \"\" %}
+                                                            <img src=\"{{ asset(app.user.image) }}\" alt=\"\" style=\"width: 4rem;height: 4rem; border-radius: 10rem; margin-top: -15px\">
+                                                        {% else %}
+                                                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-fill\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
+                                                                <path d=\"M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z\"/>
+                                                            </svg>
+                                                        {% endif %}
                                                     </div>
                                                 </div>
                                             {% endif %}
@@ -680,14 +737,17 @@ $context["inb"], "idUserTo", []) == ($context["id_user"] ?? $this->getContext($c
                                         {% if  message['id_user_from'] == id_user %}
                                             <div class=\"message-left\">
                                                 <div class=\"message-icon\">
-                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
-                                                        <path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>
-                                                    </svg>
+                                                    {% if message['id_user_to'] in inbox_users_images|keys %}
+                                                        <img src=\"{{ asset(inbox_users_images[message['id_user_to']]) }}\" alt=\"\" style=\"width: 4rem;height: 4rem; border-radius: 10rem; margin-top: -15px\">
+                                                    {% else %}
+                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
+                                                            <path d=\"M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z\"/>
+                                                        </svg>
+                                                    {% endif %}
                                                 </div>
                                                 <div class=\"message-content\">
                                                     <strong>{{ message['date_add']|date('Y-m-d H:i:s') }}</strong>
                                                     <p>{{ message['content'] }}</p>
-
                                                 </div>
                                             </div>
                                         {% else %}
@@ -697,9 +757,13 @@ $context["inb"], "idUserTo", []) == ($context["id_user"] ?? $this->getContext($c
                                                     <p>{{ message['content'] }}</p>
                                                 </div>
                                                 <div class=\"message-icon\">
-                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-fill\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
-                                                        <path d=\"M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z\"/>
-                                                    </svg>
+                                                    {% if app.user.image != \"\" %}
+                                                        <img src=\"{{ asset(app.user.image) }}\" alt=\"\" style=\"width: 4rem;height: 4rem; border-radius: 10rem; margin-top: -15px\">
+                                                    {% else %}
+                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-fill\" viewBox=\"0 0 16 16\" style=\"width: 25px;height: 25px\">
+                                                            <path d=\"M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z\"/>
+                                                        </svg>
+                                                    {% endif %}
                                                 </div>
                                             </div>
                                         {% endif %}

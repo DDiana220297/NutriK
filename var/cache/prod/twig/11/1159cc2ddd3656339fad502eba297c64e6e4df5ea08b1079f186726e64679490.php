@@ -160,13 +160,17 @@ class __TwigTemplate_b0fac4865740c31f074c20327c8138723af5d9acd11de8846dfbde412c9
             // line 52
             echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "url", [], "array"), "html", null, true);
             echo "\"/>
+                        <input class=\"calendar_event_type\" value=\"";
+            // line 53
+            echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "type", [], "array"), "html", null, true);
+            echo "\"/>
                     </div>
                 ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['calendar_event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 55
+        // line 56
         echo "                <div id=\"calendar-block\" style=\"margin: 20px\">
                     <div id='wrap'>
                         <div id='calendar'></div>
@@ -177,9 +181,9 @@ class __TwigTemplate_b0fac4865740c31f074c20327c8138723af5d9acd11de8846dfbde412c9
         </div>
     </section>
     ";
-        // line 64
-        $this->loadTemplate("footer.html.twig", "@Customer/calendar.html.twig", 64)->display($context);
         // line 65
+        $this->loadTemplate("footer.html.twig", "@Customer/calendar.html.twig", 65)->display($context);
+        // line 66
         echo "    </html>
 ";
         
@@ -194,7 +198,7 @@ class __TwigTemplate_b0fac4865740c31f074c20327c8138723af5d9acd11de8846dfbde412c9
 
     public function getDebugInfo()
     {
-        return array (  183 => 65,  181 => 64,  170 => 55,  161 => 52,  157 => 51,  153 => 50,  149 => 49,  145 => 48,  142 => 47,  138 => 46,  134 => 44,  124 => 40,  120 => 38,  115 => 37,  105 => 33,  101 => 31,  97 => 30,  87 => 23,  82 => 21,  77 => 19,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  187 => 66,  185 => 65,  174 => 56,  165 => 53,  161 => 52,  157 => 51,  153 => 50,  149 => 49,  145 => 48,  142 => 47,  138 => 46,  134 => 44,  124 => 40,  120 => 38,  115 => 37,  105 => 33,  101 => 31,  97 => 30,  87 => 23,  82 => 21,  77 => 19,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -259,6 +263,7 @@ class __TwigTemplate_b0fac4865740c31f074c20327c8138723af5d9acd11de8846dfbde412c9
                         <input class=\"calendar_event_start\" value=\"{{ calendar_event['start']|date('Y-m-d H:i:s') }}\"/>
                         <input class=\"calendar_event_end\" value=\"{{ calendar_event['end']|date('Y-m-d H:i:s') }}\"/>
                         <input class=\"calendar_event_url\" value=\"{{ calendar_event['url'] }}\"/>
+                        <input class=\"calendar_event_type\" value=\"{{ calendar_event['type'] }}\"/>
                     </div>
                 {% endfor %}
                 <div id=\"calendar-block\" style=\"margin: 20px\">

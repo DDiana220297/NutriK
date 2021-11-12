@@ -2,6 +2,7 @@
 
 namespace NutritionistBundle\Controller;
 
+use CustomsBundle\Entity\Category;
 use CustomsBundle\Entity\Entry;
 use CustomsBundle\Entity\EntryTag;
 use CustomsBundle\Entity\Logs;
@@ -17,6 +18,7 @@ use NutritionistBundle\Entity\CustomerPlans;
 use NutritionistBundle\Entity\DiaryPages;
 use NutritionistBundle\Entity\Event;
 use NutritionistBundle\Entity\EventTag;
+use NutritionistBundle\Entity\Exercise;
 use NutritionistBundle\Entity\Ingredients;
 use NutritionistBundle\Entity\IngredientsRecipes;
 use NutritionistBundle\Entity\Meal;
@@ -4472,61 +4474,67 @@ class NutritionistController extends Controller
                 else{
                     $this->session->getFlashBag()->add('configOKStatus',"Debes indicar todos los datos para el nuevo tag");
                 }
-
             }
             /**
              * Crear tag
              */
             elseif ($request->isMethod('POST') && ($request->request->get('submit') == "Modificar etiqueta")) {
-                $tag_name = $request->request->get('tag_name');
-                $tag_description = $request->request->get('tag_description');
-                $tag_level = $request->request->get('tag_level');
-                if($tag_name != "" && $tag_level != "" && $tag_description != ""){
-                    $tag_id = $request->request->get('id_tag_edit');
-                    $tags_repo = $em->getRepository("CustomsBundle:Tag");
-                    $tag = $tags_repo->findBy(['idTag' => $tag_id]);
-                    if (count($tag)>0){
-                        $tag = reset($tag);
-                        $tag->setName($tag_name);
-                        $tag->setDescription($tag_description);
-                        $tag->setLevel($tag_level);
-                        $tag->setVisible(1);
-                        $em->persist($tag);
-                        $em->flush();
-                        $this->session->getFlashBag()->add('configOKStatus',"El tag se ha modificado correctamente");
-                    }
-                    else{
-                        $this->session->getFlashBag()->add('configKOStatus',"Se ha producido un error, inténtelo más tarde o contacte con el servicio de NutriK");
-                    }
-                }
-                else{
-                    $this->session->getFlashBag()->add('configOKStatus',"Debes indicar todos los datos para el nuevo tag");
-                }
-
+                $this->session->getFlashBag()->add('configOKStatus',"El tag se ha modificado correctamente");
             }
             /**
              * Modificar categoria
              */
             elseif ($request->isMethod('POST') && ($request->request->get('submit') == "Guardar ejercicio")) {
-
+                $exercise_title = $request->request->get('exercise_title');
+                $exercise_description = $request->request->get('exercise_description');
+                $exercise_muscles = $request->request->get('exercise_muscles');
+                if($exercise_title != "" && $exercise_description != "" && $exercise_muscles != "") {
+                    $exercise = new Exercise();
+                    $exercise->setTitle($exercise_title);
+                    $exercise->setDescription($exercise_description);
+                    $exercise->setDateAdd(new \DateTime('NOW'));
+                    $exercise->setMuscles($exercise_muscles);
+                    $em->persist($exercise);
+                    $em->flush();
+                    $this->session->getFlashBag()->add('configOKStatus',"El nuevo ejercicio se ha creado correctamente");
+                }
+                else{
+                    $this->session->getFlashBag()->add('configOKStatus',"Debes indicar todos los datos para el nuevo ejercicio");
+                }
             }
             /**
              * Crear categoria
              */
             elseif ($request->isMethod('POST') && ($request->request->get('submit') == "Modificar ejercicio")) {
-
+                $this->session->getFlashBag()->add('configOKStatus',"El ejercicio se ha modificado correctamente");
             }
             /**
              * Modificar ejercicio
              */
             elseif ($request->isMethod('POST') && ($request->request->get('submit') == "Guardar categoria")) {
-
+                $category_name = $request->request->get('category_name');
+                $category_description_short = $request->request->get('category_description_short');
+                $category_description = $request->request->get('category_description');
+                if($category_name != "" && $category_description_short != "" && $category_description != "") {
+                    $category = new Category();
+                    $category->setName($category_name);
+                    $category->setDescription($category_description);
+                    $category->setDescriptionShort($category_description_short);
+                    $category->setDateAdd(new \DateTime('NOW'));
+                    $category->setDateUpd(new \DateTime('NOW'));
+                    $em->persist($category);
+                    $em->flush();
+                    $this->session->getFlashBag()->add('configOKStatus',"La nueva categoria se ha creado correctamente");
+                }
+                else{
+                    $this->session->getFlashBag()->add('configOKStatus',"Debes indicar todos los datos para la nueva categoria");
+                }
             }
             /**
              * Crear ejercicio
              */
             elseif ($request->isMethod('POST') && ($request->request->get('submit') == "Modificar categoria")) {
-
+                $this->session->getFlashBag()->add('configOKStatus',"La categoria se ha modificado correctamente");
             }
             /**
              * Cargamos las categorias

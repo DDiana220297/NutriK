@@ -248,9 +248,61 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
             return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::newsAction',  '_route' => 'customer_news',);
         }
 
-        // customer_services
-        if ('/services' === $pathinfo) {
-            return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::servicesAction',  '_route' => 'customer_services',);
+        if (0 === strpos($pathinfo, '/p')) {
+            if (0 === strpos($pathinfo, '/pr')) {
+                // customer_professionals
+                if ('/professionals' === $pathinfo) {
+                    return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::professionalsAction',  '_route' => 'customer_professionals',);
+                }
+
+                // customer_progress
+                if ('/progress' === $pathinfo) {
+                    return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::progressAction',  '_route' => 'customer_progress',);
+                }
+
+                if (0 === strpos($pathinfo, '/pruebas')) {
+                    // pruebas_form
+                    if ('/pruebas/form' === $pathinfo) {
+                        return array (  '_controller' => 'AppBundle\\Controller\\PruebasController::formAction',  '_route' => 'pruebas_form',);
+                    }
+
+                    // pruebas_create
+                    if ('/pruebas/add' === $pathinfo) {
+                        return array (  '_controller' => 'AppBundle\\Controller\\PruebasController::addAction',  '_route' => 'pruebas_create',);
+                    }
+
+                    // pruebas_validate
+                    if (0 === strpos($pathinfo, '/pruebas/validarEmail') && preg_match('#^/pruebas/validarEmail/(?P<email>[^/]++)$#sD', $pathinfo, $matches)) {
+                        return $this->mergeDefaults(array_replace($matches, ['_route' => 'pruebas_validate']), array (  '_controller' => 'AppBundle\\Controller\\PruebasController::validarEmailAction',));
+                    }
+
+                }
+
+            }
+
+            // customer_packages
+            if ('/packages' === $pathinfo) {
+                return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::packagesAction',  '_route' => 'customer_packages',);
+            }
+
+            // customer_personal_data
+            if ('/personal-data' === $pathinfo) {
+                return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::personalDataAction',  '_route' => 'customer_personal_data',);
+            }
+
+            if (0 === strpos($pathinfo, '/plan')) {
+                // customer_plans
+                if ('/plans' === $pathinfo) {
+                    return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::plansAction',  '_route' => 'customer_plans',);
+                }
+
+                // customer_plan
+                if (preg_match('#^/plan/(?P<id_plan>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'customer_plan']), array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::viewPlanAction',));
+                }
+
+            }
+
         }
 
         // customer_event_view
@@ -276,50 +328,6 @@ class appProdDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBun
         // customer_calendar
         if ('/calendar' === $pathinfo) {
             return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::calendarAction',  '_route' => 'customer_calendar',);
-        }
-
-        if (0 === strpos($pathinfo, '/p')) {
-            // customer_personal_data
-            if ('/personal-data' === $pathinfo) {
-                return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::personalDataAction',  '_route' => 'customer_personal_data',);
-            }
-
-            // customer_progress
-            if ('/progress' === $pathinfo) {
-                return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::progressAction',  '_route' => 'customer_progress',);
-            }
-
-            if (0 === strpos($pathinfo, '/pruebas')) {
-                // pruebas_form
-                if ('/pruebas/form' === $pathinfo) {
-                    return array (  '_controller' => 'AppBundle\\Controller\\PruebasController::formAction',  '_route' => 'pruebas_form',);
-                }
-
-                // pruebas_create
-                if ('/pruebas/add' === $pathinfo) {
-                    return array (  '_controller' => 'AppBundle\\Controller\\PruebasController::addAction',  '_route' => 'pruebas_create',);
-                }
-
-                // pruebas_validate
-                if (0 === strpos($pathinfo, '/pruebas/validarEmail') && preg_match('#^/pruebas/validarEmail/(?P<email>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'pruebas_validate']), array (  '_controller' => 'AppBundle\\Controller\\PruebasController::validarEmailAction',));
-                }
-
-            }
-
-            elseif (0 === strpos($pathinfo, '/plan')) {
-                // customer_plans
-                if ('/plans' === $pathinfo) {
-                    return array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::plansAction',  '_route' => 'customer_plans',);
-                }
-
-                // customer_plan
-                if (preg_match('#^/plan/(?P<id_plan>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, ['_route' => 'customer_plan']), array (  '_controller' => 'CustomerBundle\\Controller\\CustomerController::viewPlanAction',));
-                }
-
-            }
-
         }
 
         // customer_recipes

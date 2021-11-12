@@ -73,7 +73,7 @@
             today: 'hoy',
             month: 'mes',
             week: 'semana',
-            day: 'día'
+            day: 'día',
         },
 
         // jquery-ui theming
