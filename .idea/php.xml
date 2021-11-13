@@ -48,5 +48,5 @@
       <interpreter id="aa08205f-dcd4-413c-874c-ed3b9788a45c" name="PHP" home="" debugger_id="php.debugger.XDebug" />
     </interpreters>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />
+  <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
 </project>

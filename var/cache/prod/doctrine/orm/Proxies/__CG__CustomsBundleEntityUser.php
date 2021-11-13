@@ -64,10 +64,10 @@ class User extends \CustomsBundle\Entity\User implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'idUser', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'idGender', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'age', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'firstname', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'lastname', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'email', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'lastPasswordGen', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'birthday', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'sms', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'active', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'deleted', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'dateAdd', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'dateUpd'];
+            return ['__isInitialized__', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'idUser', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'idGender', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'age', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'firstname', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'lastname', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'email', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'lastPasswordGen', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'birthday', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'sms', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'active', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'deleted', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'dateAdd', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'dateUpd', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'role', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'studies', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'antiquity', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'collegiateNumber', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'description', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'image', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'presentation', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'rate', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'socialMedia'];
         }
 
-        return ['__isInitialized__', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'idUser', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'idGender', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'age', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'firstname', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'lastname', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'email', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'lastPasswordGen', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'birthday', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'sms', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'active', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'deleted', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'dateAdd', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'dateUpd'];
+        return ['__isInitialized__', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'idUser', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'idGender', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'age', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'firstname', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'lastname', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'email', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'password', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'lastPasswordGen', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'birthday', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'sms', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'active', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'deleted', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'dateAdd', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'dateUpd', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'role', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'studies', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'antiquity', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'collegiateNumber', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'description', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'image', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'presentation', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'rate', '' . "\0" . 'CustomsBundle\\Entity\\User' . "\0" . 'socialMedia'];
     }
 
     /**
@@ -472,6 +472,270 @@ class User extends \CustomsBundle\Entity\User implements \Doctrine\ORM\Proxy\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDateUpd', []);
 
         return parent::getDateUpd();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRole($role)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRole', [$role]);
+
+        return parent::setRole($role);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRole()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRole', []);
+
+        return parent::getRole();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getStudies()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStudies', []);
+
+        return parent::getStudies();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setStudies($studies)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStudies', [$studies]);
+
+        return parent::setStudies($studies);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDescription()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
+
+        return parent::getDescription();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDescription($description)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
+
+        return parent::setDescription($description);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCollegiate_Number()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCollegiate_Number', []);
+
+        return parent::getCollegiate_Number();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCollegiate_Number($collegiate_number)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCollegiate_Number', [$collegiate_number]);
+
+        return parent::setCollegiate_Number($collegiate_number);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRoles()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRoles', []);
+
+        return parent::getRoles();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSalt()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSalt', []);
+
+        return parent::getSalt();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getUsername()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUsername', []);
+
+        return parent::getUsername();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function eraseCredentials()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'eraseCredentials', []);
+
+        return parent::eraseCredentials();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setCollegiateNumber($collegiateNumber)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCollegiateNumber', [$collegiateNumber]);
+
+        return parent::setCollegiateNumber($collegiateNumber);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCollegiateNumber()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCollegiateNumber', []);
+
+        return parent::getCollegiateNumber();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAntiquity(): int
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAntiquity', []);
+
+        return parent::getAntiquity();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAntiquity(int $antiquity): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAntiquity', [$antiquity]);
+
+        parent::setAntiquity($antiquity);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getImage()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getImage', []);
+
+        return parent::getImage();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setImage(string $image): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setImage', [$image]);
+
+        parent::setImage($image);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getSocialMedia()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSocialMedia', []);
+
+        return parent::getSocialMedia();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setSocialMedia(string $socialMedia): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSocialMedia', [$socialMedia]);
+
+        parent::setSocialMedia($socialMedia);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPresentation()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPresentation', []);
+
+        return parent::getPresentation();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPresentation(string $presentation): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPresentation', [$presentation]);
+
+        parent::setPresentation($presentation);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getRate()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRate', []);
+
+        return parent::getRate();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setRate(string $rate): void
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRate', [$rate]);
+
+        parent::setRate($rate);
     }
 
 }

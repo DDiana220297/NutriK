@@ -59,7 +59,7 @@ class __TwigTemplate_b5eb8dbafac79e7c320c6a68b1557ad119f390e36af161100562afa2cee
         echo "\">¿Quiénes somos?</a></li>
                             <li><a href=\"";
         // line 16
-        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_services");
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_packages");
         echo "\">Servicios NutriK</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
@@ -116,7 +116,7 @@ class __TwigTemplate_b5eb8dbafac79e7c320c6a68b1557ad119f390e36af161100562afa2cee
                             <li><a href=\"{{ path('customer_news') }}\">Novedades</a></li>
                             <li><a href=\"{{ path('customer_didactic_content') }}\">Contenido Didáctico</a></li>
                             <li><a href=\"{{ path('customer_about') }}\">¿Quiénes somos?</a></li>
-                            <li><a href=\"{{ path('customer_services') }}\">Servicios NutriK</a></li>
+                            <li><a href=\"{{ path('customer_packages') }}\">Servicios NutriK</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->

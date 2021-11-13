@@ -2,17 +2,29 @@ customer_news:
   path:   /news
   defaults: { _controller: CustomerBundle:Customer:news }
 
+customer_professionals:
+  path: /professionals
+  defaults: { _controller: CustomerBundle:Customer:professionals }
+
+customer_packages:
+  path: /packages
+  defaults: { _controller: CustomerBundle:Customer:packages }
+
 customer_about:
-  path:   /about
-  defaults: { _controller: CustomerBundle:Customer:about }
+    path: /about
+    defaults: { _controller: CustomerBundle:Customer:about }
+
+customer_event_view:
+  path: /event/{id_event}
+  defaults: { _controller: CustomerBundle:Customer:eventView }
+
+customer_didactic_content_view:
+  path: /didactic_content/{id_entry}
+  defaults: { _controller: CustomerBundle:Customer:didactiContentView }
 
 customer_didactic_content:
   path: /content
   defaults: { _controller: CustomerBundle:Customer:didacticContent }
-
-customer_services:
-  path: /services
-  defaults: { _controller: CustomerBundle:Customer:services }
 
 customer_personal_data:
   path: /personal-data
@@ -26,8 +38,12 @@ customer_calendar:
   path: /calendar
   defaults: { _controller: CustomerBundle:Customer:calendar }
 
+customer_add_event:
+  path: /add-event
+  defaults: { _controller: CustomerBundle:Customer:addEvent }
+
 customer_recipes:
-  path: /recipes
+  path: /recipes/{id_recipe}
   defaults: { _controller: CustomerBundle:Customer:recipes }
 
 customer_progress:
@@ -35,5 +51,14 @@ customer_progress:
   defaults: { _controller: CustomerBundle:Customer:progress }
 
 customer_messenger:
-  path: /messenger
+  path: /messenger/{id_message}
   defaults: { _controller: CustomerBundle:Customer:messenger }
+
+customer_plans:
+  path: /plans
+  defaults: { _controller: CustomerBundle:Customer:plans }
+
+customer_plan:
+  path: /plan/{id_plan}
+  defaults: { _controller: CustomerBundle:Customer:viewPlan }
+

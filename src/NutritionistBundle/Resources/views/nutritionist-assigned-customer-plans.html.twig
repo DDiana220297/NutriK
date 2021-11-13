@@ -1,0 +1,121 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <!-- Login Page stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/nutritionistpages.css') }}" />
+        <!-- Footer stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/footer.css') }}" />
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    <section id="assigned-customer-plans-section">
+        <div class="container">
+            {% for message in  app.session.flashbag().get('customerPlanKOStatus') %}
+                <div class="row" style="width: 80%; margin-left: 10%; margin-top: -10px; margin-bottom: 10px;">
+                    <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                        {{ message }}
+                    </div>
+                </div>
+            {% endfor %}
+            {% for message in  app.session.flashbag().get('customerPlanOKStatus') %}
+                <div class="row" style="width: 80%; margin-left: 10%; margin-top: -10px; margin-bottom: 10px;">
+                    <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                        {{ message }}
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="assigned-customer-plans">
+                <h2 style="margin-top: -15px; margin-bottom: 15px; color: #00766c">Planificaciones asociadas</h2>
+                <div class="col-sm-3 customer-info">
+                    <div class="col-sm-12" style="padding-left: 50px">
+                        <img src="{{ asset(customer.image) }}" alt="">
+                    </div>
+                    <div class="col-sm-12">
+                        <p><strong style="font-size: 35px;">{{ customer.firstname }} {{ customer.lastname }}</strong></p>
+                    </div>
+                    <div class="col-sm-12">
+                        <p><strong>Email:</strong> {{ customer.email }}</p>
+                        {% if metrics != false %}
+                            <p><strong>Objetivos:</strong> {{ metrics.goals }}</p>
+                        {% endif %}
+                    </div>
+
+                    {% if metrics != false %}
+                        <div class="col-sm-12">
+                            <p><strong>Edad:</strong> {{ metrics.age }}</p>
+                            <p><strong>Peso:</strong> {{ metrics.weight }}</p>
+                            <p><strong>Edad:</strong> {{ metrics.weight }}</p>
+                            <p><strong>% Grasa corporal:</strong> {{ metrics.fatPercentage }}</p>
+                            <p><strong>% Masa muscular:</strong> {{ metrics.musclePercentage }}</p>
+                            <p><strong>% Líquidos:</strong> {{ metrics.liquidPercentage }}</p>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-sm-9 customer-plans">
+                    {% for plan in plans %}
+                        <div class="col-sm-12 plan-entry">
+                            <div class="col-sm-11 weekly-plan-resume">
+                                <h4>
+                                    {% if plan.idPlan in weekly_plans_tags|keys %}
+                                        <span>
+                                                {% for tag in weekly_plans_tags[plan.idPlan] %}
+                                                    {{ tag.name }} <span style="color: #00766c">></span>
+                                                {% endfor %}
+                                            </span>
+                                    {% endif %}
+                                    <strong style="color: #00766c">{{ plan.title}}</strong>
+                                </h4>
+                                <p>{{ plan.description }}</p>
+                                <strong>{{ weekly_plans_dates[plan.idPlan]['date_from']|date('Y-m-d')}} - {{ weekly_plans_dates[plan.idPlan]['date_to']|date('Y-m-d')}}</strong>
+                            </div>
+                            <div class="col-sm-1 weekly-plan-actions">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-slash-circle" viewBox="0 0 16 16" style="margin-bottom: 15px;"
+                                    onclick="deleteCustomerWeeklyPlan({{ plan.idPlan }})">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="M11.354 4.646a.5.5 0 0 0-.708 0l-6 6a.5.5 0 0 0 .708.708l6-6a.5.5 0 0 0 0-.708z"/>
+                                </svg>
+                                <form class="form" action="{{ path("nutritionist_customer_delete_weekly_plan") }}" method="post">
+                                    <input type="submit" class="hidden" name="customer_plan_delete" id="customer_plan_delete_{{ plan.idPlan }}" value="{{ plan.idPlan }}">
+                                    <input type="hidden" class="hidden" name="customer_delete" id="customer_delete_{{ customer.idUser }}" value="{{ customer.idUser }}">
+                                </form>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16" style="margin-bottom: 15px;"
+                                     onclick="redirectTo('nutritionist-edit-weekly-plan','/'+{{ plan.idPlan }})">>
+                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-week" viewBox="0 0 16 16"
+                                    onclick="openModal('openChangeDatesModal')">
+                                    <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                                </svg>
+                                <button style="display: none" type="button" class="btn btn-primary" id="openChangeDatesModal" data-toggle="modal" data-target="#changePlanDatesModal"></button>
+                                <div class="modal fade" id="changePlanDatesModal">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <form id="msform" action="{{ path("nutritionist_assigned_customer_plans",{"id_customer":customer.idUser}) }}" method="post" novalidate>
+                                                <!-- Modal body -->
+                                                <h3 style="color: #00766c; text-align: center">Modificar el rango de fechas</h3>
+                                                <div class="col-sm-12" style="padding: 15px; text-align: center">
+                                                    <p><label for="plan_date_from" style="width: 10rem">Fecha inicio:</label><input name="plan_date_from" id="plan_date_from" value="{{ weekly_plans_dates[plan.idPlan]['date_from']|date('Y-m-d')}}" type="date" style="margin: 0 0 10px 10px;width: 22rem;"/></p>
+                                                    <p><label for="plan_date_to" style="width: 10rem">Fecha fin:</label><input name="plan_date_to" id="plan_date_to" value="{{ weekly_plans_dates[plan.idPlan]['date_to']|date('Y-m-d')}}" type="date" style="margin: 0 0 0 10px;width: 22rem;"/></p>
+                                                    <input type="hidden" class="hidden" name="plan_dates_id" id="customer_delete_{{ plan.idPlan }}" value="{{ plan.idPlan }}">
+                                                </div>
+                                                <div class="col-sm-12 inbox_send">
+                                                    <input type="submit" name="submit" class="btn btn-primary" value="Modificar fechas"/>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'footer.html.twig' %}
+    </html>
+{% endblock %}

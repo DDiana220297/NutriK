@@ -1,0 +1,93 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <!-- Login Page stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/nutritionistpages.css') }}" />
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    <section id="nutritionist-customers">
+        {% for message in  app.session.flashbag().get('customersKOStatus') %}
+            <div class="row" style="width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: -40px;">
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        {% for message in  app.session.flashbag().get('customersOKStatus') %}
+            <div class="row" style="width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: -40px;">
+                <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="container">
+            <div class="col-sm-12">
+                <div id="customers-block">
+                    <div class="col-sm-12 customers-header">
+                        <div class="col-sm-1" style="padding: 15px 0; color: white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                <path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/>
+                                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/>
+                            </svg>
+                        </div>
+                        <div class="col-sm-10" style="padding: 20px 0;color: white;">
+                            <h3 style="display: inline-flex; margin-top: 7px; margin-left: -85px">Clientes
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16" style="width: 2rem; height: 2rem; margin-top: 3px; margin-left: 8px"
+                                     onclick="openModal('openMyInfoModal')">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg>
+                            </h3>
+                            <button style="display: none" type="button" class="btn btn-primary" id="openMyInfoModal" data-toggle="modal" data-target="#infoModal"></button>
+                            <div class="modal fade" id="infoModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content" style="height: 15rem;width: 50rem;padding: 40px 30px;">
+                                        <!-- Modal body -->
+                                        <span>
+
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-1" style="padding: 15px 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus-fill" viewBox="0 0 16 16" style="float: right; color: white"
+                                 onclick="redirectTo('nutritionist-add-customer')">
+                                <path d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                                <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <form class="form customers-finder" action="{{ path("nutritionist_all_customers") }}" method="post">
+                        <div class="col-sm-12">
+                            <nav class="navbar navbar-light bg-light">
+                                <div class="container-fluid">
+                                    <input class="form-control me-2" type="search" placeholder="Buscar Cliente" aria-label="Search" name="customer_search">
+                                    <button class="btn btn-outline-success" type="submit">Buscar</button>
+                                    <button class="btn btn-outline-success" style="width: 17.3%" type="submit">Crear relación con clientes seleccionados</button>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="col-sm-12 customers-list">
+                            {% for customer in customers %}
+                                <div class="customer-entry">
+                                    <div class="col-sm-11 customer-entry-resume">
+                                        <div class="col-sm-3"><input type="checkbox" value="{{ customer.idUser }}" style="width: fit-content; margin-bottom: 10px;" name="customer_dependency_ids[]"/></div>
+                                        <div class="col-sm-3">{{ customer.firstname }}</div>
+                                        <div class="col-sm-3">{{ customer.lastname }}</div>
+                                        <div class="col-sm-3">{{ customer.email }}</div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    </html>
+{% endblock %}

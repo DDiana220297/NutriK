@@ -81,51 +81,40 @@ class __TwigTemplate_e82600ad69d66975bf32b69ac68a054b0a6b20bf1f67dc2f210cc398155
                     <li data-target=\"#carouselLoginPage\" data-slide-to=\"0\" class=\"active\"></li>
                     <li data-target=\"#carouselLoginPage\" data-slide-to=\"1\"></li>
                     <li data-target=\"#carouselLoginPage\" data-slide-to=\"2\"></li>
-                    <li data-target=\"#carouselLoginPage\" data-slide-to=\"3\"></li>
                 </ol>
 
                 <div class=\"carousel-inner\" role=\"listbox\">
                     <div class=\"item active\">
                         <img src=\"";
-        // line 39
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img1.jpg"), "html", null, true);
-        echo "\" class=\"d-block w-100\" alt=\"...\">
+        // line 38
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("banner1.jpg"), "html", null, true);
+        echo "\">
                         <div class=\"carousel-caption\">
-                            <h4>Bootstrap caption example</h4>
-                            <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
+                            <strong style=\"font-size: 22px; color: black\">Comer es una necesidad, pero comer de forma inteligente es un arte</strong>
+                            <p style=\"font-size: 18px; color: black\"> No solo hay que comer para alimentarnos, como necesidad. Hay que comer de forma inteligente. Esto lo lleva a la categoría de arte y razón no le falta. </p>
+                        </div>
+                    </div>
+";
+        // line 51
+        echo "                    <div class=\"item\">
+                        <img src=\"";
+        // line 52
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img6.jpg"), "html", null, true);
+        echo "\">
+                        <div class=\"carousel-caption\">
+                            <strong style=\"font-size: 22px; color: white\">Nuestra comida debería ser nuestra medicina y nuestra medicina debería ser nuestra comida.</strong>
+                            <p style=\"font-size: 18px; color: white\"> Desde tiempos antiguos la comida no solo ha servido para alimentarse. También ha servido para curar enfermedades. Todo consiste en aprovechar bien los nutrientes que tengan los productos que consumimos en nuestra dieta.</p>
                         </div>
                     </div>
 
                     <div class=\"item\">
                         <img src=\"";
-        // line 47
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img2.jpeg"), "html", null, true);
-        echo "\" class=\"d-block w-100\" alt=\"...\">
+        // line 60
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img9.jpg"), "html", null, true);
+        echo "\">
                         <div class=\"carousel-caption\">
-                            <h4>Bootstrap caption example</h4>
-                            <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
-                        </div>
-                    </div>
-
-                    <div class=\"item\">
-                        <img src=\"";
-        // line 55
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img3.jpg"), "html", null, true);
-        echo "\" class=\"d-block w-100\" alt=\"...\">
-                        <div class=\"carousel-caption\">
-                            <h4>Bootstrap caption example</h4>
-                            <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
-                        </div>
-                    </div>
-
-                    <div class=\"item\">
-                        <img src=\"";
-        // line 63
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("img4.jpg"), "html", null, true);
-        echo "\" class=\"d-block w-100\" alt=\"...\">
-                        <div class=\"carousel-caption\">
-                            <h4>Bootstrap caption example</h4>
-                            <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
+                            <strong style=\"font-size: 22px; color: white\">Nos preocupamos por tu salud.</strong>
+                            <p style=\"font-size: 18px; color: white\">Cuando la dieta es incorrecta, la medicina no sirve para nada. Cuando la dieta es correcta, la medicina no es necesaria.</p>
                         </div>
                     </div>
                 </div>
@@ -162,7 +151,7 @@ class __TwigTemplate_e82600ad69d66975bf32b69ac68a054b0a6b20bf1f67dc2f210cc398155
 
     public function getDebugInfo()
     {
-        return array (  124 => 63,  113 => 55,  102 => 47,  91 => 39,  72 => 23,  66 => 20,  60 => 17,  51 => 11,  45 => 8,  41 => 7,  33 => 1,);
+        return array (  113 => 60,  102 => 52,  99 => 51,  90 => 38,  72 => 23,  66 => 20,  60 => 17,  51 => 11,  45 => 8,  41 => 7,  33 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -208,39 +197,36 @@ class __TwigTemplate_e82600ad69d66975bf32b69ac68a054b0a6b20bf1f67dc2f210cc398155
                     <li data-target=\"#carouselLoginPage\" data-slide-to=\"0\" class=\"active\"></li>
                     <li data-target=\"#carouselLoginPage\" data-slide-to=\"1\"></li>
                     <li data-target=\"#carouselLoginPage\" data-slide-to=\"2\"></li>
-                    <li data-target=\"#carouselLoginPage\" data-slide-to=\"3\"></li>
                 </ol>
 
                 <div class=\"carousel-inner\" role=\"listbox\">
                     <div class=\"item active\">
-                        <img src=\"{{ asset('img1.jpg') }}\" class=\"d-block w-100\" alt=\"...\">
+                        <img src=\"{{ asset('banner1.jpg') }}\">
                         <div class=\"carousel-caption\">
-                            <h4>Bootstrap caption example</h4>
-                            <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
+                            <strong style=\"font-size: 22px; color: black\">Comer es una necesidad, pero comer de forma inteligente es un arte</strong>
+                            <p style=\"font-size: 18px; color: black\"> No solo hay que comer para alimentarnos, como necesidad. Hay que comer de forma inteligente. Esto lo lleva a la categoría de arte y razón no le falta. </p>
+                        </div>
+                    </div>
+{#                    <div class=\"item\">#}
+{#                        <img src=\"{{ asset('img5.jpg') }}\">#}
+{#                        <div class=\"carousel-caption\">#}
+{#                            <strong style=\"font-size: 22px\">Aquellos que piensan que no tienen tiempo para una alimentación saludable tarde o temprano encontrarán tiempo para la enfermedad</strong>#}
+{#                            <p style=\"font-size: 18px\">Es recurrente pensar que para tener una alimentación saludable necesitamos que el día tenga más horas. Pero Stanley da con la clave: sacar tiempo para comer mejor es ganarle la partida a la enfermedad.</p>#}
+{#                        </div>#}
+{#                    </div>#}
+                    <div class=\"item\">
+                        <img src=\"{{ asset('img6.jpg') }}\">
+                        <div class=\"carousel-caption\">
+                            <strong style=\"font-size: 22px; color: white\">Nuestra comida debería ser nuestra medicina y nuestra medicina debería ser nuestra comida.</strong>
+                            <p style=\"font-size: 18px; color: white\"> Desde tiempos antiguos la comida no solo ha servido para alimentarse. También ha servido para curar enfermedades. Todo consiste en aprovechar bien los nutrientes que tengan los productos que consumimos en nuestra dieta.</p>
                         </div>
                     </div>
 
                     <div class=\"item\">
-                        <img src=\"{{ asset('img2.jpeg') }}\" class=\"d-block w-100\" alt=\"...\">
+                        <img src=\"{{ asset('img9.jpg') }}\">
                         <div class=\"carousel-caption\">
-                            <h4>Bootstrap caption example</h4>
-                            <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
-                        </div>
-                    </div>
-
-                    <div class=\"item\">
-                        <img src=\"{{ asset('img3.jpg') }}\" class=\"d-block w-100\" alt=\"...\">
-                        <div class=\"carousel-caption\">
-                            <h4>Bootstrap caption example</h4>
-                            <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
-                        </div>
-                    </div>
-
-                    <div class=\"item\">
-                        <img src=\"{{ asset('img4.jpg') }}\" class=\"d-block w-100\" alt=\"...\">
-                        <div class=\"carousel-caption\">
-                            <h4>Bootstrap caption example</h4>
-                            <p>Bootstrap 3.4.1 is not so old, but you can use Bootstrap 4 already.</p>
+                            <strong style=\"font-size: 22px; color: white\">Nos preocupamos por tu salud.</strong>
+                            <p style=\"font-size: 18px; color: white\">Cuando la dieta es incorrecta, la medicina no sirve para nada. Cuando la dieta es correcta, la medicina no es necesaria.</p>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,121 @@
+/* LANDING PAGE */
+#customer-homepage .landing{
+    width: 70%;
+    height: 374rem;
+    border-style: solid;
+    margin-top: 10px;
+    border-color: #00A295;
+    border-width: thin;
+}
+
+#customer-homepage .landing .row .landing-header{
+    height: 40rem;
+    background: linear-gradient(to bottom, #00766c 0%, white 100%);
+    padding: 50px;
+}
+
+#customer-homepage .landing .row .landing-header>button{
+    width: 25%;
+    height: 50px;
+    margin-top: 20px;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+    font-size: 18px;
+}
+
+#customer-homepage .landing .row .landing-footer{
+    height: 40rem;
+    background: linear-gradient(to bottom, white 0%, #00766c 100%);
+    padding: 50px;
+}
+
+
+#nutritionist-homepage .container{
+    width: 90%;
+    margin-top: 2.2rem;
+}
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 82rem;
+    color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6 .nutritionist-appointments-events{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    font-size: 20px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    height: 22rem;
+    width: 96.5%;
+    margin: 0 15px;
+    color: white;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+    padding: 10px 40px;
+}
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6  .nutritionist-appointments-events .nutritionist-appointments{
+    width: 100%;
+    overflow-y: scroll;
+}
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6  .nutritionist-appointments-events .nutritionist-appointments>p>span{
+    font-size: 15px;
+}
+
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6  .nutritionist-appointments-events .nutritionist-appointments>p>span>a{
+    color: white;
+}
+
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6 .nutritionist-kpis{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 38rem;
+    margin: 15px;
+    color: black;
+    background: transparent;
+    padding: 0;
+}
+
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6 .nutritionist-kpis>img{
+    height: 38rem;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6 .nutritionist-notifications{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 38rem;
+    width: 100%;
+    margin: 14px;
+    color: black;
+    background: transparent;
+    padding: 10px 40px;
+}
+
+
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6 .nutritionist-notifications>h3>svg:hover{
+    color: #00766c;
+}
+
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6 .nutritionist-notifications .row{
+    margin: 5px 0;
+}
+#nutritionist-homepage .container .col-sm-12 #nutritionist-homepage-block .col-sm-6 .nutritionist-calendar{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 55.5rem;
+    width: 96%;
+    margin: 14px;
+    overflow-y: scroll;
+    padding: 0;
+}

@@ -4,8 +4,6 @@ function redirectTo(path, params = ""){
 }
 
 function checkIdGender(id, value){
-    // alert(id);
-    // debugger;
     if($('#idGenderFemale').attr('checked') === 'checked' && id !== 'idGenderFemale'){
         $('#idCustomerGenderFemale').removeAttr("checked");
     }
@@ -20,6 +18,63 @@ function checkIdGender(id, value){
 }
 
 function deleteEntry(idEntry){
-    debugger;
     document.getElementById("entry_delete_"+idEntry).click();
+}
+
+function deleteWeeklyPlan(idPlan){
+    document.getElementById("plan_delete_"+idPlan).click();
+}
+
+function deleteCustomerWeeklyPlan(idPlan){
+    document.getElementById("customer_plan_delete_"+idPlan).click();
+}
+
+function deleteEvent(idEvent){
+    document.getElementById("event_delete_"+idEvent).click();
+}
+
+function deleteCustomerDependency(idCustomer){
+    document.getElementById("customer_dependency_delete_"+idCustomer).click();
+}
+
+function deleteRecipe( idRecipe){
+    document.getElementById("recipe_delete_"+idRecipe).click();
+}
+
+function changeRecipeVisibility(idRecipe){
+    document.getElementById("recipe_visibility_"+idRecipe).click();
+}
+
+function deleteAppointment(idAppointment){
+    document.getElementById("appointment_delete_"+idAppointment).click();
+}
+
+function openModal(modalName){
+    let button = document.getElementById(modalName);
+    button.click()
+}
+
+function categoryFilter(idCategory) {
+    let category = document.getElementById('category');
+    category.value = idCategory;
+
+    let button = document.getElementById('categorySearch');
+    button.click()
+}
+
+function replyMessage(){
+    let button = document.getElementById('repply_message');
+    button.click();
+}
+
+function changeInboxGroup(){
+    let inboxGroup = document.getElementById("inbox-group");
+    if(inboxGroup.value === 'sent'){
+        $('#inbox_received').hide();
+        $('#inbox_sent').show();
+    }
+    if(inboxGroup.value === 'received'){
+        $('#inbox_received').show();
+        $('#inbox_sent').hide();
+    }
 }

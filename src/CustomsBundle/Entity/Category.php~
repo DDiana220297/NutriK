@@ -248,4 +248,3 @@ class Category
         return $this->entries;
     }
 }
-

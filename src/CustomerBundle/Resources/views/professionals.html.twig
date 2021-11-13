@@ -1,0 +1,135 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <!-- Login Page stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/customerpages.css') }}" />
+        <!-- Footer stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/footer.css') }}" />
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    <section id="customer-header">
+        {% include 'customerheader.html.twig' %}
+    </section>
+    <section id="professionals-section">
+        {% for message in  app.session.flashbag().get('professionalsOKStatus') %}
+            <div class="row" style="width: 63.5%;margin-left: 18.3%;margin-top: 10px;margin-bottom: -25px;">
+                <div class="alert alert-success" role="alert" style="margin-bottom: 0; text-align: center">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="container">
+            <form class="form" action="{{ path("customer_professionals") }}" method="post">
+                <div class="professionals-block">
+                    <h3 style="text-align: center">Elije el profesional que más se adapte a tus necesidades
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16" style="width: 17px; height: 17px; margin-bottom: -3px"
+                             onclick="openModal('openMyInfoProfessionalModal')">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                        </svg>
+                        <button style="display: none" type="button" class="btn btn-primary" id="openMyInfoProfessionalModal" data-toggle="modal" data-target="#infoProfessionalModal"></button>
+                        <div class="modal fade" id="infoProfessionalModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content" style="height: 15rem;width: 50rem;padding: 40px 30px; color: black; font-size: 16px">
+                                    <!-- Modal body -->
+                                    <p>En este paso debes elegir el profesional que mas se adapte a tus necesidades</p>
+                                    <p>Una vez contratado el paquete podŕas solicitar un cambio en caso de desearlo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </h3>
+                    <div class="professionals">
+                        {% for professional in professionals %}
+                            <div class="professional-entry">
+                                <div class="col-sm-2 professional-entry-image">
+                                    <img src="{{ asset(professional.image) }}" alt="">
+                                </div>
+                                <div class="col-sm-9 professional-entry-resume">
+                                    <strong>{{ professional.firstname }} {{ professional.lastname }}</strong>
+                                    <p>{{ professional.email }}</p>
+                                    <p style="font-size: 18px; margin: 0">Ha estudiado en: <strong>{{ professional.studies }}</strong></p>
+                                    <p style="font-size: 18px; margin: 0">Lleva trabajando en el sector: <strong>{{ professional.antiquity }}</strong> años</p>
+                                </div>
+                                <div class="col-sm-1 professional-entry-actions">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"
+                                         onclick="openModal('openProfessionalViewModal')">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                    </svg>
+                                </div>
+                                <button style="display: none" type="button" class="btn btn-primary" id="openProfessionalViewModal" data-toggle="modal" data-target="#viewProfessionalModal"></button>
+                                <div class="modal fade" id="viewProfessionalModal">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal body -->
+                                            <div class="col-sm-4">
+                                                <div class="col-sm-12">
+                                                    <img src="{{ asset(professional.image) }}" alt="">
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <p><strong style="font-size: 35px;">{{ professional.firstname }} {{ professional.lastname }}</strong></p>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <p><strong>{{ professional.email }}</strong></p>
+                                                </div>
+                                                <div class="col-sm-12" style="border: thin solid #e7e7e7; margin-bottom: 15px; padding: 15px">
+                                                    <p><strong>Numero de colegiado:</strong></p>
+                                                    <p>{{ professional.collegiateNumber }}</p>
+                                                    <strong><a style="color: white" target="_blank" href="https://www.consejodietistasnutricionistas.com/que-es-un-dietista-nutricionista/registro-nacional-de-dietistas-nutricionistas/">
+                                                            Obtener más información acerca del perfil de colegiado</a>
+                                                    </strong>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <p style="font-size: 18px; margin: 0">Lleva trabajando en el sector: <strong>{{ professional.antiquity }}</strong> años</p>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <p><strong>Tarifa de precios:</strong></p>
+                                                    <p>{{ professional.rate }}</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                {% if professional.idUser in professionals_social_media|keys %}
+                                                    <div class="col-sm-12">
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon input-label">NutriK</div>
+                                                            <div class="input-group-addon input-prefix">https://nutrik.test/web/presentation/{{ professional.idUser }}</div>
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon input-label">Facebook</div>
+                                                            <div class="input-group-addon input-prefix">https://facebook.com/{{ professionals_social_media[professional.idUser]['facebook']}}</div>
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon input-label">Instagram</div>
+                                                            <div class="input-group-addon input-prefix">https://instagram.com/{{ professionals_social_media[professional.idUser]['instagram']}}</div>
+                                                        </div>
+                                                        <div class="input-group">
+                                                            <div class="input-group-addon input-label">Linkedin</div>
+                                                            <div class="input-group-addon input-prefix">https://www.linkedin.com/{{ professionals_social_media[professional.idUser]['linkedin']}}</div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                                <div class="col-sm-12" style="padding: 20px">
+                                                    <strong>{{ professional.presentation }}</strong>
+                                                </div>
+                                                <div class="col-sm-12" style="padding: 50px">
+                                                    <p>{{ professional.description }}</p>
+                                                </div>
+                                                <div class="col-sm-12">
+                                                    <input type="submit" name="submit" class="btn btn-primary" value="Contratar" onclick="redirectTo('professionals')"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {%  endfor %}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    {% include 'footer.html.twig' %}
+    </html>
+{% endblock %}

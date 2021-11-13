@@ -60,26 +60,19 @@ $(document).ready(function(){
         $(this).parent().find('.radio').removeClass('selected');
         $(this).addClass('selected');
     });
-
-    $(".submit").click(function(){
-        return false;
-    })
-
 });
-
 
 // CALENDAR PAGE 1
 document.addEventListener('DOMContentLoaded', function(){
     var today = new Date(),
         year = today.getFullYear(),
         month = today.getMonth(),
-        monthTag =["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+        monthTag =["En","Feb","Mar","Apr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
         day = today.getDate(),
         days = document.getElementsByTagName('td'),
         selectedDay,
         setDate,
         daysLen = days.length;
-    // options should like '2014-01-01'
     function Calendar(selector, options) {
         this.options = options;
         this.draw();
@@ -156,6 +149,15 @@ document.addEventListener('DOMContentLoaded', function(){
         this.drawHeader(o.innerHTML);
         this.setCookie('selected_day', 1);
 
+        /**
+         * Guardamos la fecha de la consulta para el formulario
+         */
+        var mm = month;
+        if(month < 10){
+            mm = '0'+month;
+        }
+        var appointmentDay = document.getElementById('appointment_date');
+        appointmentDay.value = year +'-'+mm+'-'+o.innerHTML;
     };
 
     Calendar.prototype.preMonth = function() {

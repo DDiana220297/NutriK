@@ -9,36 +9,116 @@
         {% include 'header.html.twig' %}
     </section>
     <section id="nutritionist-recipes">
+        {% for message in  app.session.flashbag().get('recipesKOStatus') %}
+            <div class="row" style="width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        {% for message in  app.session.flashbag().get('recipesOKStatus') %}
+            <div class="row" style="width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class="container">
             <div class="col-sm-12">
                 <div id="recipes-content-block">
-                    <nav class="navbar navbar-light bg-light">
-                        <div class="container-fluid">
-                            <form class="d-flex recipes-finder">
-                                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Buscar</button>
-                            </form>
+                    <div class="col-sm-12 recipes-header">
+                        <div class="col-sm-1" style="padding: 0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                            </svg>
                         </div>
-                    </nav>
-                    <div class="container-fluid">
-                        <div class="col-sm-7">
-                            <div id="recipe-content">
-                                <div id="recipe-title">
-                                </div>
-                                <div id="recipe-nutritional-info">
-                                </div>
-                                <div id="recipe-images">
-                                </div>
-                                <div id="recipe-steps">
+                        <div class="col-sm-10">
+                            <h3 style="display: inline-flex; margin-top: 7px; margin-left: -100px; font-size: 28px">Recetas
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16" style="width: 2rem; height: 2rem; margin-top: 5px; margin-left: 10px"
+                                     onclick="openModal('openMyInfoModal')">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg>
+                            </h3>
+                            <button style="display: none" type="button" class="btn btn-primary" id="openMyInfoModal" data-toggle="modal" data-target="#infoModal"></button>
+                            <div class="modal fade" id="infoModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content" style="height: 15rem;font-size: 16px;width: 20rem;padding: 30px;margin-left: 20rem; color: black">
+                                        <!-- Modal body -->
+                                        <span>
+                                            <p>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16" style="width: 2rem;height: 2rem;margin-bottom: -5px;margin-right: 5px">
+                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                                </svg>
+                                                Crear
+                                            </p>
+                                            <p>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="width: 2rem;height: 2rem;margin-bottom: -5px;margin-right: 5px">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                                </svg>
+                                                Borrar
+                                            </p>
+                                            <p>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16" style="width: 2rem;height: 2rem;margin-bottom: -5px;margin-right: 5px">
+                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                </svg>
+                                                Modificar
+                                            </p>
+
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-5">
-                            <div id="recipe-content">
-                                <div id="recipe-ingredients">
+                        <div class="col-sm-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16" style="margin-right: -15px; float: right"
+                                 onclick="redirectTo('nutritionist-add-recipe')">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="container-fluid recipes-finder">
+                        <form class="form" action="{{ path("nutritionist_recipes") }}" method="post">
+                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="recipe_search">
+                            <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        </form>
+                    </div>
+                    <div class="col-sm-12 recipes">
+                        {% for recipe in recipes %}
+                            <div class="recipe">
+                                <div class="col-sm-11 recipe-name">
+                                    <h4>
+                                        {% if recipe.idRecipe in recipes_tags|keys %}
+                                            <span>
+                                                {% for tag in recipes_tags[recipe.idRecipe] %}
+                                                    {{ tag.name }} <span style="color: #00766c">></span>
+                                                {% endfor %}
+                                            </span>
+                                        {% endif %}
+                                        <strong style="color: #00766c">{{ recipe.name }}</strong>
+                                    </h4>
+                                </div>
+                                <div class="col-sm-1 didactic-entry-actions">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16" style="margin-right: -35px;"
+                                         onclick="deleteRecipe({{ recipe.idRecipe }})">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                                    </svg>
+                                    <form class="form" action="{{ path("nutritionist_delete_recipe") }}" method="post">
+                                        <input type="submit" class="hidden" name="recipe_delete" id="recipe_delete_{{ recipe.idRecipe }}" value="{{ recipe.idRecipe  }}">
+                                    </form>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"
+                                         onclick="redirectTo('nutritionist-edit-recipe','/'+{{ recipe.idRecipe }})">
+                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                    </svg>
                                 </div>
                             </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

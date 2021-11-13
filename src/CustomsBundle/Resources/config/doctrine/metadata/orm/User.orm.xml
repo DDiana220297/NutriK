@@ -62,6 +62,31 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="image" type="text" column="image" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="socialMedia" type="text" column="social_media" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="rate" type="text" column="rate" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="presentation" type="text" column="presentation" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="antiquity" type="integer" column="antiquity" nullable="false">
+      <options>
+        <option name="default">0</option>
+      </options>
+    </field>
     <field name="description" type="text" column="description" length="65535" nullable="true">
       <options>
         <option name="fixed"/>

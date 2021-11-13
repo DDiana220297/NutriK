@@ -15,8 +15,7 @@ class UserType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    public function buildForm(FormBuilderInterface $builder, array $options){
         $builder->add('firstname', TextType::class, array("required" => "required", "attr" => array(
                 "class" => "form-firstname form-control",
                 "style" => "height:45px"
@@ -50,7 +49,9 @@ class UserType extends AbstractType
                             margin-top: 20px;
                             height:45px"
             )));
-    }/**
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

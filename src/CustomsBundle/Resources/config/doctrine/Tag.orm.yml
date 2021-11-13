@@ -29,4 +29,10 @@ CustomsBundle\Entity\Tag:
             nullable: false
             options:
                 default: '1'
+        level:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+                default: '1'
     lifecycleCallbacks: {  }

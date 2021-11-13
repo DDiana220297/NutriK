@@ -109,5 +109,33 @@ class Tag
     {
         return $this->visible;
     }
-}
+    /**
+     * @var integer
+     */
+    private $level = '1';
 
+
+    /**
+     * Set level
+     *
+     * @param integer $level
+     *
+     * @return Tag
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get level
+     *
+     * @return integer
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+}

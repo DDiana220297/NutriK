@@ -1,0 +1,59 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <!-- Login Page stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/customerpages.css') }}" />
+        <!-- Footer stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/footer.css') }}" />
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+    </section>
+    <section id="customer-header">
+        {% include 'customerheader.html.twig' %}
+    </section>
+    <section id="assigned-plans">
+        {% for message in  app.session.flashbag().get('plansOKStatus') %}
+            <div class="row" style="width: 88.5%; margin-left: 5.7%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="container">
+            <div class="assigned-plans-block">
+                <div class="plans">
+                    {% for plan in plans %}
+                        <div class="col-sm-12 plan-entry">
+                            <div class="col-sm-11 weekly-plan-resume">
+                                <h4>
+                                    {% if plan.idPlan in weekly_plans_tags|keys %}
+                                        <span>
+                                                {% for tag in weekly_plans_tags[plan.idPlan] %}
+                                                    {{ tag.name }} <span style="color: #00766c">></span>
+                                                {% endfor %}
+                                            </span>
+                                    {% endif %}
+                                    <strong style="color: #00766c">{{ plan.title}}</strong>
+                                </h4>
+                                <p>{{ plan.description }}</p>
+                                <strong{% if weekly_plans_dates[plan.idPlan]['date_to']|date('Y-m-d') < now|date('Y-m-d H:i:s') %} style="color: #a94442" {% else %} style="color: #3c763d" {% endif %}>
+                                    {{ weekly_plans_dates[plan.idPlan]['date_from']|date('Y-m-d')}} - {{ weekly_plans_dates[plan.idPlan]['date_to']|date('Y-m-d')}}
+                                </strong>
+                            </div>
+                            <div class="col-sm-1 weekly-plan-actions">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"
+                                    onclick="redirectTo('plan','/'+{{ plan.idPlan }})">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'footer.html.twig' %}
+    </html>
+{% endblock %}

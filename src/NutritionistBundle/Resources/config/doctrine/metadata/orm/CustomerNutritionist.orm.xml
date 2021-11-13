@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CustomerNutritionist" table="customer_nutritionist">
+    <id name="idCustomerNutritionist" type="integer" column="id_customer_nutritionist">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idNutritionist" type="integer" column="id_nutritionist" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="idCustomer" type="integer" column="id_customer" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="dateAdd" type="datetime" column="date_add" nullable="false"/>
+  </entity>
+</doctrine-mapping>

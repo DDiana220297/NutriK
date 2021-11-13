@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EntryTag" table="entry_tag">
+    <indexes>
+      <index name="fk_entry_tag_entry" columns="id_entry"/>
+      <index name="fk_entry_tag_tag" columns="id_tag"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="idEntry" type="integer" column="id_entry" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+    <field name="idTag" type="integer" column="id_tag" nullable="true">
+      <options>
+        <option name="unsigned">1</option>
+      </options>
+    </field>
+  </entity>
+</doctrine-mapping>

@@ -18,6 +18,11 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="image" type="text" column="image" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <field name="content" type="text" column="content" length="65535" nullable="false">
       <options>
         <option name="fixed"/>

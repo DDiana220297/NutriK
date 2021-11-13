@@ -1,0 +1,101 @@
+{% block content %}
+    <!DOCTYPE HTML>
+    <html lang="es">
+    <header>
+        <!-- Login Page stylesheet-->
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/nutritionistpages.css') }}" />
+    </header>
+    <section id="default-header">
+        {% include 'header.html.twig' %}
+        <link rel="stylesheet" href="{{ asset('bundles/framework/css/wizard-customer-plan-form.css') }}" />
+        <!-- Wizard Form JS -->
+        <script src="{{ asset('bundles/framework/js/wizard-customer-plan.js') }}"></script>
+    </section>
+    <section id="nutritionist-assign-plan">
+        {% for message in  app.session.flashbag().get('assignPlansKOStatus') %}
+            <div class="row" style="width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: -10px;">
+                <div class="alert alert-danger" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="container">
+            <div class="col-sm-12">
+                <div id="assign-plan-content-block">
+                    <div class="col-sm-12">
+                        <h2>Asignar planificaciones</h2>
+                        <form id="msform" action="{{ path("nutritionist_assign_plans") }}" method="post" novalidate>
+                            <!-- progressbar -->
+                            <ul id="progressbar">
+                                <li class="active" id="assign-customer"><strong>Elige el Cliente</strong></li>
+                                <li id="assign-plans"><strong>Elige la planificación</strong></li>
+                                <li id="confirm"><strong>Confirmación</strong></li>
+                            </ul> <!-- fieldsets -->
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 style="color: #00766c; text-align: center">Selecciona el cliente</h2>
+                                    <nav class="navbar navbar-light bg-light" style="height: 7rem;">
+                                        <div class="container-fluid">
+                                            <div class="d-flex customers-finder" style="margin: 15px 0;">
+                                                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="appointment_customer_search"
+                                                       style="width: 68.5%; display: inline-flex; margin-left: 14.3%;border: 1px solid #00766c;border-radius: 5px;"/>
+                                                <button class="btn btn-outline-success" id="appointment-customer-search-button" name="submit" value="Buscar">Buscar</button>
+                                            </div>
+                                        </div>
+                                    </nav>
+                                    <div id="appointment-customers-block">
+                                        {% for customer in customers %}
+                                            <div class="customer-entry">
+                                                <div class="col-sm-11 customer-entry-resume">
+                                                    <div class="col-sm-2"><input type="checkbox" value="{{ customer.idUser }}" style="width: 15px; height: 15px" name="plan_customer" id="plan_customer"></div>
+                                                    <div class="col-sm-3" style="text-align: start">{{ customer.firstname }}</div>
+                                                    <div class="col-sm-3" style="text-align: center">{{ customer.lastname }}</div>
+                                                    <div class="col-sm-4" style="text-align: end">{{ customer.email }}</div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <input type="button" name="next" class="next action-button" value="Siguiente"/>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 style="color: #00766c; text-align: center">Selecciona las planificaciones</h2>
+                                    <ul id="weekly-plans-block">
+                                        {% for plan in plans %}
+                                            <li class="plan-entry">
+                                                <div class="col-sm-8">
+                                                    <div class="col-sm-1"><input type="checkbox" value="{{ plan.idPlan }}" style="width: 20px;margin-top: 25px;height: 15px;" name="assign_plans[]"></div>
+                                                    <div class="col-sm-11"><strong>{{ plan.dateAdd|date('Y-m-d H:i:s') }}</strong><p>{{ plan.description }}</p></div>
+                                                </div>
+                                                <div class="col-sm-4" style="padding: 0">
+                                                    <div class="col-sm-12" style="padding: 0">
+                                                        <label for="plan_date_from" style="width: 10rem">Fecha inicio:</label><input name="plan_date_from[{{ plan.idPlan }}]" id="plan_date_from" value="" type="date" style="margin: 0 0 10px 10px;width: 22rem;"/>
+                                                        <label for="plan_date_to" style="width: 10rem">Fecha fin:</label><input name="plan_date_to[{{ plan.idPlan }}]" id="plan_date_to" value="" type="date" style="margin: 0 0 0 10px;width: 22rem;"/>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previo"/>
+                                <input type="button" name="next" class="next action-button" value="Siguiente"/>
+                            </fieldset>
+                            <fieldset>
+                                <div class="form-card">
+                                    <h2 style="color: #00766c; text-align: center">Notas adicionales</h2>
+                                    <div class="col-sm-6" style="margin-left: 25%">
+                                        <input type="text" id="plan_notes" name="plan_notes" class="form-control"/>
+                                    </div>
+                                </div>
+                                <input type="button" name="previous" class="previous action-button-previous" value="Previo"/>
+                                <input type="submit" name="submit" class="action-button" value="Confirmar"/>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </html>
+{% endblock %}

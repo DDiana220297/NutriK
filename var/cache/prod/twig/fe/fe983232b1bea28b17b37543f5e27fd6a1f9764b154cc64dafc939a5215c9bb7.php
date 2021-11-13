@@ -76,9 +76,72 @@ class __TwigTemplate_abc7b005f94cd9909ad2cd3bcd471be0470516adb84e628f74b0482ad9f
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/js/nutrik-calendar.js"), "html", null, true);
         echo "\"></script>
         </header>
-        <div class=\"container\">
+        <div class=\"row\" id=\"event_type_alert\" style=\"width: 93.5%; margin-left: 3.3%; margin-top: 10px; margin-bottom: -10px; display: none\">
+            <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
+                El tipo de evento no es correcto, indica si se trata de una Consulta o de un Evento
+            </div>
+        </div>
+        ";
+        // line 25
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "calendarKOStatus"], "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 26
+            echo "            <div class=\"row\" style=\"width: 93.5%; margin-left: 3.3%; margin-top: 10px; margin-bottom: -10px;\">
+                <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
+                    ";
+            // line 28
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+                </div>
+            </div>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 32
+        echo "        <div class=\"container\">
             <div class=\"col-sm-12\">
-                <div id=\"calendar-block\">
+                ";
+        // line 34
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["calendar_events"] ?? $this->getContext($context, "calendar_events")));
+        foreach ($context['_seq'] as $context["_key"] => $context["calendar_event"]) {
+            // line 35
+            echo "                    <div class=\"calendar_event\" style=\"color: black; display: none\">
+                        <input class=\"calendar_event_id\" value=\"";
+            // line 36
+            echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "id", [], "array"), "html", null, true);
+            echo "\"/>
+                        <input class=\"calendar_event_title\" value=\"";
+            // line 37
+            echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "title", [], "array"), "html", null, true);
+            echo "\"/>
+                        <input class=\"calendar_event_start\" value=\"";
+            // line 38
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["calendar_event"], "start", [], "array"), "Y-m-d H:i:s"), "html", null, true);
+            echo "\"/>
+                        <input class=\"calendar_event_end\" value=\"";
+            // line 39
+            echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["calendar_event"], "end", [], "array"), "Y-m-d H:i:s"), "html", null, true);
+            echo "\"/>
+                        <input class=\"calendar_event_url\" value=\"";
+            // line 40
+            echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "url", [], "array"), "html", null, true);
+            echo "\"/>
+                        <input class=\"calendar_event_type\" value=\"";
+            // line 41
+            echo twig_escape_filter($this->env, $this->getAttribute($context["calendar_event"], "type", [], "array"), "html", null, true);
+            echo "\"/>
+                    </div>
+                ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['calendar_event'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 44
+        echo "                <div id=\"calendar-block\">
                     <div id='wrap'>
                         <div id='calendar'></div>
                         <div style='clear:both'></div>
@@ -101,7 +164,7 @@ class __TwigTemplate_abc7b005f94cd9909ad2cd3bcd471be0470516adb84e628f74b0482ad9f
 
     public function getDebugInfo()
     {
-        return array (  76 => 18,  71 => 16,  66 => 14,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  144 => 44,  135 => 41,  131 => 40,  127 => 39,  123 => 38,  119 => 37,  115 => 36,  112 => 35,  108 => 34,  104 => 32,  94 => 28,  90 => 26,  86 => 25,  76 => 18,  71 => 16,  66 => 14,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -133,8 +196,30 @@ class __TwigTemplate_abc7b005f94cd9909ad2cd3bcd471be0470516adb84e628f74b0482ad9f
             <!-- NutriK Calendar JS -->
             <script src=\"{{ asset('bundles/framework/js/nutrik-calendar.js') }}\"></script>
         </header>
+        <div class=\"row\" id=\"event_type_alert\" style=\"width: 93.5%; margin-left: 3.3%; margin-top: 10px; margin-bottom: -10px; display: none\">
+            <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
+                El tipo de evento no es correcto, indica si se trata de una Consulta o de un Evento
+            </div>
+        </div>
+        {% for message in  app.session.flashbag().get('calendarKOStatus') %}
+            <div class=\"row\" style=\"width: 93.5%; margin-left: 3.3%; margin-top: 10px; margin-bottom: -10px;\">
+                <div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0\">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class=\"container\">
             <div class=\"col-sm-12\">
+                {% for calendar_event in calendar_events %}
+                    <div class=\"calendar_event\" style=\"color: black; display: none\">
+                        <input class=\"calendar_event_id\" value=\"{{ calendar_event['id'] }}\"/>
+                        <input class=\"calendar_event_title\" value=\"{{ calendar_event['title'] }}\"/>
+                        <input class=\"calendar_event_start\" value=\"{{ calendar_event['start']|date('Y-m-d H:i:s') }}\"/>
+                        <input class=\"calendar_event_end\" value=\"{{ calendar_event['end']|date('Y-m-d H:i:s') }}\"/>
+                        <input class=\"calendar_event_url\" value=\"{{ calendar_event['url'] }}\"/>
+                        <input class=\"calendar_event_type\" value=\"{{ calendar_event['type'] }}\"/>
+                    </div>
+                {% endfor %}
                 <div id=\"calendar-block\">
                     <div id='wrap'>
                         <div id='calendar'></div>

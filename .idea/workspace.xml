@@ -3,10 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="90679569-6512-4917-b454-f5ba0a5de6e4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Controller/NutritionistController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Controller/NutritionistController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/edit-didactic-content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/edit-didactic-content.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/e7/e787a49481db87cfcb1360e00b6791bfe741e6186b9a7b9b0c82169aa85861d5.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/e7/e787a49481db87cfcb1360e00b6791bfe741e6186b9a7b9b0c82169aa85861d5.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/var/logs/prod.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/logs/prod.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/htdocs/web/carousel2.jpg.crdownload" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-appointments.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-appointments.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-customers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-customers.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-didactic-content.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-didactic-content.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-events.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-events.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-plans.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-plans.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-recipes.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-recipes.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/13/13087cb947f0b8b67adc8448869e37688e0e9bf74ad881450cea4a4a9ffbf33a.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/13/13087cb947f0b8b67adc8448869e37688e0e9bf74ad881450cea4a4a9ffbf33a.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/ce/ce18002fd2f530e145fa678342077025cb6647afd878f8bce3d9cc5ffc9e12b5.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/ce/ce18002fd2f530e145fa678342077025cb6647afd878f8bce3d9cc5ffc9e12b5.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/ce/ce795cc1934dba817e30e789f06648acca0974fddbcd21b7137cc9fe3948d15e.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/ce/ce795cc1934dba817e30e789f06648acca0974fddbcd21b7137cc9fe3948d15e.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/prod/twig/ef/ef7e086503a07d1486db32f171ceba4cfb1d7561b3623adb23d86a7b93f75192.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/prod/twig/ef/ef7e086503a07d1486db32f171ceba4cfb1d7561b3623adb23d86a7b93f75192.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/sessions/prod/sess_d9285bede831d180f6124ef16ca145c3" beforeDir="false" afterPath="$PROJECT_DIR$/var/sessions/prod/sess_d9285bede831d180f6124ef16ca145c3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/carousel2.jpg.crdownload" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -39,55 +48,49 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/app/AppKernel.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Tag.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/customerheader.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/config/services.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Controller/AuthController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/config/services.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/web/bundles/framework/js/customs.js" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/views/progress.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/config/parameters.yml.dist" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Entry.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/views/personal-data.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-personal-data.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/web/bundles/framework/css/nutritionistpages.css" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/User.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/pruebas/form.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/config/parameters.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/pruebas/index.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/views/news.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/loginpagemodal.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Controller/DefaultController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/carousel.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/AppCache.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-recipes.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Entry.orm.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/add-didactic-content.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-didactic-content.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-plans.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/header.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-account.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Category.orm.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/edit-didactic-content.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/composer.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Resources/views/login.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Category.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/loginpagemodal.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/views/news.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/add-didactic-content.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/User.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/carousel.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Controller/DefaultController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Controller/NutritionistController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Controller/CustomerController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/CustomsBundle.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/AppBundle/Controller/PruebasController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/header.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/base.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Category.orm.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/AppCache.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Entity/DiaryPages.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/login.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/views/progress.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/config/security.yml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/AppBundle/AppBundle.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/AppBundle/Resources/config/validation.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Category.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/customerheader.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Controller/CustomerController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/config/parameters.yml.dist" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomerBundle/Resources/config/services.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/AppKernel.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Resources/views/default/index.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/edit-didactic-content.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-account.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/web/public/js/calendar.js" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-personal-data.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-didactic-content.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/composer.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Entity/Tag.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/config/routing.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/Entry.orm.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Controller/AuthController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/config/parameters.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-recipes.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/config/services.yml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/CustomsBundle.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CustomsBundle/Resources/views/index.html.twig" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
     <servers>
       <server host="nutrik.test" id="6d9380a9-1c38-4196-bd8c-3b96a75770db" name="nutrik.test" use_path_mappings="true">
@@ -157,23 +160,24 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/NutritionistBundle/Resources/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/bundles/framework/css" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
-    <property name="settings.editor.selected.configurable" value="settings.php.debug.servers" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/web/bundles/framework/css" />
       <recent name="$PROJECT_DIR$/src/NutritionistBundle/Resources/views" />
       <recent name="$PROJECT_DIR$/app/Resources/views" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/NutritionistBundle/Entity" />
-      <recent name="$PROJECT_DIR$/src/NutritionistBundle/Resources/config/doctrine" />
-      <recent name="$PROJECT_DIR$/src/NutritionistBundle/Resources/config/doctrine/metadata" />
       <recent name="$PROJECT_DIR$/src/NutritionistBundle/Resources/config/doctrine/metadata/orm" />
+      <recent name="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine" />
+      <recent name="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/metadata" />
+      <recent name="$PROJECT_DIR$/src/CustomsBundle/Resources/config/doctrine/metadata/orm" />
       <recent name="$PROJECT_DIR$/src/CustomsBundle/Entity" />
     </key>
   </component>
@@ -210,12 +214,50 @@
       <workItem from="1634671648511" duration="5751000" />
       <workItem from="1634682035918" duration="1390000" />
       <workItem from="1634683467260" duration="18109000" />
-      <workItem from="1634757409174" duration="1341000" />
+      <workItem from="1634757409174" duration="2120000" />
+      <workItem from="1634846795450" duration="5716000" />
+      <workItem from="1634927591202" duration="9404000" />
+      <workItem from="1634979516386" duration="4163000" />
+      <workItem from="1635077328329" duration="29859000" />
+      <workItem from="1635156009907" duration="23272000" />
+      <workItem from="1635226162949" duration="4896000" />
+      <workItem from="1635349014597" duration="6372000" />
+      <workItem from="1635426436948" duration="6678000" />
+      <workItem from="1635442681861" duration="789000" />
+      <workItem from="1635444352179" duration="584000" />
+      <workItem from="1635445058858" duration="93000" />
+      <workItem from="1635445158831" duration="22681000" />
+      <workItem from="1635512557615" duration="20049000" />
+      <workItem from="1635587088463" duration="30663000" />
+      <workItem from="1635676366599" duration="8351000" />
+      <workItem from="1635816768543" duration="199000" />
+      <workItem from="1635877924003" duration="4826000" />
+      <workItem from="1635950484378" duration="3058000" />
+      <workItem from="1636026602640" duration="11237000" />
+      <workItem from="1636199419998" duration="26125000" />
+      <workItem from="1636280015881" duration="40405000" />
+      <workItem from="1636470533641" duration="26097000" />
+      <workItem from="1636568100314" duration="13024000" />
+      <workItem from="1636623825484" duration="5607000" />
+      <workItem from="1636667287207" duration="8284000" />
+      <workItem from="1636694300978" duration="960000" />
+      <workItem from="1636743990941" duration="10587000" />
+      <workItem from="1636809598457" duration="2293000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -253,14 +295,29 @@
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/NutritionistBundle/Controller/NutritionistController.php</url>
-          <line>40</line>
+          <url>file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-calendar.html.twig</url>
+          <line>10</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/NutritionistBundle/Controller/NutritionistController.php</url>
-          <line>27</line>
-          <option name="timeStamp" value="12" />
+          <url>file://$PROJECT_DIR$/app/AppKernel.php</url>
+          <line>10</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-recipes.html.twig</url>
+          <line>93</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/NutritionistBundle/Resources/views/nutritionist-customers.html.twig</url>
+          <line>38</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/web/bundles/framework/js/customs.js</url>
+          <line>60</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
