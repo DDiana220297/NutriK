@@ -118,9 +118,31 @@ class __TwigTemplate_2cea6f2f4fde4a3272253273b397491e15f118049922cb78e7f1667616a
                             <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openMyInfoModal\" data-toggle=\"modal\" data-target=\"#infoModal\"></button>
                             <div class=\"modal fade\" id=\"infoModal\">
                                 <div class=\"modal-dialog\">
-                                    <div class=\"modal-content\" style=\"height: 15rem;width: 50rem;padding: 40px 30px;\">
+                                    <div class=\"modal-content\" style=\"height: 15rem;font-size: 16px;width: 20rem;padding: 30px;margin-left: 20rem;\">
                                         <!-- Modal body -->
                                         <span>
+                                            <p>
+                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-plus-circle\" viewBox=\"0 0 16 16\" style=\"width: 2rem;height: 2rem;margin-bottom: -5px;margin-right: 5px\">
+                                                    <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
+                                                    <path d=\"M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z\"/>
+                                                </svg>
+                                                Crear
+                                            </p>
+                                            <p>
+                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash\" viewBox=\"0 0 16 16\" style=\"width: 2rem;height: 2rem;margin-bottom: -5px;margin-right: 5px\">
+                                                    <path d=\"M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z\"/>
+                                                    <path fill-rule=\"evenodd\" d=\"M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z\"/>
+                                                </svg>
+                                                Borrar
+                                            </p>
+                                            <p>
+                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-pencil-square\" viewBox=\"0 0 16 16\" style=\"width: 2rem;height: 2rem;margin-bottom: -5px;margin-right: 5px\">
+                                                    <path d=\"M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z\"/>
+                                                    <path fill-rule=\"evenodd\" d=\"M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z\"/>
+                                                </svg>
+                                                Modificar
+                                            </p>
+
                                         </span>
                                     </div>
                                 </div>
@@ -136,25 +158,25 @@ class __TwigTemplate_2cea6f2f4fde4a3272253273b397491e15f118049922cb78e7f1667616a
                     </div>
                     <div class=\"col-sm-12 weekly-plans\">
                         ";
-        // line 63
+        // line 85
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["weeklyPlans"] ?? $this->getContext($context, "weeklyPlans")));
         foreach ($context['_seq'] as $context["_key"] => $context["plan"]) {
-            // line 64
+            // line 86
             echo "                            <div class=\"weekly-plan\">
                                 <div class=\"col-sm-11 weekly-plan-resume\">
                                     <h4>
                                         ";
-            // line 67
+            // line 89
             if (twig_in_filter($this->getAttribute($context["plan"], "idPlan", []), twig_get_array_keys_filter(($context["weekly_plans_tags"] ?? $this->getContext($context, "weekly_plans_tags"))))) {
-                // line 68
+                // line 90
                 echo "                                            <span>
                                                 ";
-                // line 69
+                // line 91
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable($this->getAttribute(($context["weekly_plans_tags"] ?? $this->getContext($context, "weekly_plans_tags")), $this->getAttribute($context["plan"], "idPlan", []), [], "array"));
                 foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
-                    // line 70
+                    // line 92
                     echo "                                                    ";
                     echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "name", []), "html", null, true);
                     echo " <span style=\"color: #00766c\">></span>
@@ -163,39 +185,39 @@ class __TwigTemplate_2cea6f2f4fde4a3272253273b397491e15f118049922cb78e7f1667616a
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 72
+                // line 94
                 echo "                                            </span>
                                         ";
             }
-            // line 74
+            // line 96
             echo "                                        <strong style=\"color: #00766c\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["plan"], "title", []), "html", null, true);
             echo "</strong>
                                     </h4>
                                     <p>";
-            // line 76
+            // line 98
             echo twig_escape_filter($this->env, $this->getAttribute($context["plan"], "description", []), "html", null, true);
             echo "</p>
                                     <strong>";
-            // line 77
+            // line 99
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["plan"], "dateAdd", []), "Y-m-d H:i:s"), "html", null, true);
             echo "</strong>
                                 </div>
                                 <div class=\"col-sm-1 weekly-plan-actions\">
                                     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash\" viewBox=\"0 0 16 16\" style=\"margin-right: -35px;\"
                                          onclick=\"deleteWeeklyPlan(";
-            // line 81
+            // line 103
             echo twig_escape_filter($this->env, $this->getAttribute($context["plan"], "idPlan", []), "html", null, true);
             echo ")\">
                                         <path d=\"M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z\"/>
                                         <path fill-rule=\"evenodd\" d=\"M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z\"/>
                                     </svg>
                                     <form class=\"form\" action=\"";
-            // line 85
+            // line 107
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_delete_weekly_plan");
             echo "\" method=\"post\">
                                         <input type=\"submit\" class=\"hidden\" name=\"_plan_delete\" id=\"plan_delete_";
-            // line 86
+            // line 108
             echo twig_escape_filter($this->env, $this->getAttribute($context["plan"], "idPlan", []), "html", null, true);
             echo "\" value=\"";
             echo twig_escape_filter($this->env, $this->getAttribute($context["plan"], "idPlan", []), "html", null, true);
@@ -203,7 +225,7 @@ class __TwigTemplate_2cea6f2f4fde4a3272253273b397491e15f118049922cb78e7f1667616a
                                     </form>
                                     <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-pencil-square\" viewBox=\"0 0 16 16\"
                                          onclick=\"redirectTo('nutritionist-edit-weekly-plan','/'+";
-            // line 89
+            // line 111
             echo twig_escape_filter($this->env, $this->getAttribute($context["plan"], "idPlan", []), "html", null, true);
             echo ")\">>
                                         <path d=\"M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z\"/>
@@ -216,7 +238,7 @@ class __TwigTemplate_2cea6f2f4fde4a3272253273b397491e15f118049922cb78e7f1667616a
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['plan'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 96
+        // line 118
         echo "                    </div>
                 </div>
             </div>
@@ -236,7 +258,7 @@ class __TwigTemplate_2cea6f2f4fde4a3272253273b397491e15f118049922cb78e7f1667616a
 
     public function getDebugInfo()
     {
-        return array (  220 => 96,  207 => 89,  199 => 86,  195 => 85,  188 => 81,  181 => 77,  177 => 76,  171 => 74,  167 => 72,  158 => 70,  154 => 69,  151 => 68,  149 => 67,  144 => 64,  140 => 63,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  242 => 118,  229 => 111,  221 => 108,  217 => 107,  210 => 103,  203 => 99,  199 => 98,  193 => 96,  189 => 94,  180 => 92,  176 => 91,  173 => 90,  171 => 89,  166 => 86,  162 => 85,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -294,9 +316,31 @@ class __TwigTemplate_2cea6f2f4fde4a3272253273b397491e15f118049922cb78e7f1667616a
                             <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openMyInfoModal\" data-toggle=\"modal\" data-target=\"#infoModal\"></button>
                             <div class=\"modal fade\" id=\"infoModal\">
                                 <div class=\"modal-dialog\">
-                                    <div class=\"modal-content\" style=\"height: 15rem;width: 50rem;padding: 40px 30px;\">
+                                    <div class=\"modal-content\" style=\"height: 15rem;font-size: 16px;width: 20rem;padding: 30px;margin-left: 20rem;\">
                                         <!-- Modal body -->
                                         <span>
+                                            <p>
+                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-plus-circle\" viewBox=\"0 0 16 16\" style=\"width: 2rem;height: 2rem;margin-bottom: -5px;margin-right: 5px\">
+                                                    <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
+                                                    <path d=\"M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z\"/>
+                                                </svg>
+                                                Crear
+                                            </p>
+                                            <p>
+                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash\" viewBox=\"0 0 16 16\" style=\"width: 2rem;height: 2rem;margin-bottom: -5px;margin-right: 5px\">
+                                                    <path d=\"M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z\"/>
+                                                    <path fill-rule=\"evenodd\" d=\"M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z\"/>
+                                                </svg>
+                                                Borrar
+                                            </p>
+                                            <p>
+                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-pencil-square\" viewBox=\"0 0 16 16\" style=\"width: 2rem;height: 2rem;margin-bottom: -5px;margin-right: 5px\">
+                                                    <path d=\"M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z\"/>
+                                                    <path fill-rule=\"evenodd\" d=\"M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z\"/>
+                                                </svg>
+                                                Modificar
+                                            </p>
+
                                         </span>
                                     </div>
                                 </div>
