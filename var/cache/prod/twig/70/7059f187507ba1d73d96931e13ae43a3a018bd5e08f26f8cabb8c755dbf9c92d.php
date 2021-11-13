@@ -54,7 +54,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
         <!-- Customs JS -->
         <script src=\"";
         // line 8
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework//js/customs.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("bundles/framework/js/customs.js"), "html", null, true);
         echo "\"></script>
     </header>
     <section id=\"default-header\">
@@ -110,11 +110,24 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
         echo "            <div class=\"container\">
                 <div class=\"col-sm-6\" style=\"padding-left: 2%\">
                     <div class=\"personal-data-header\">
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-circle\" viewBox=\"0 0 16 16\">
-                            <path d=\"M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z\"/>
-                            <path fill-rule=\"evenodd\" d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z\"/>
-                        </svg>
-                        <h3 style=\"display: inline-flex\">Mis Datos Personales</h3>
+                        ";
+        // line 32
+        if (($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "image", []) != "")) {
+            // line 33
+            echo "                            <img src=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "image", [])), "html", null, true);
+            echo "\" alt=\"\">
+                        ";
+        } else {
+            // line 35
+            echo "                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-circle\" viewBox=\"0 0 16 16\">
+                                <path d=\"M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z\"/>
+                                <path fill-rule=\"evenodd\" d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z\"/>
+                            </svg>
+                        ";
+        }
+        // line 40
+        echo "                        <h3 style=\"display: inline-flex; margin-left: 10px;\">Mis Datos Personales</h3>
                     </div>
                     <br/>
                     <div class=\"form-check\">
@@ -122,7 +135,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                             Otro
                         </label>
                         <input class=\"form-check-input\" type=\"checkbox\" value=\"0\" id=\"idGenderOther\" ";
-        // line 43
+        // line 47
         if (($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "idGender", []) == 0)) {
             echo " checked=\"checked\" ";
         }
@@ -131,7 +144,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                             Sra.
                         </label>
                         <input class=\"form-check-input\" type=\"checkbox\" value=\"1\" id=\"idGenderFemale\" ";
-        // line 47
+        // line 51
         if (($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "idGender", []) == 1)) {
             echo " checked=\"checked\" ";
         }
@@ -140,7 +153,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                             Sr.
                         </label>
                         <input class=\"form-check-input\" type=\"checkbox\" value=\"2\" id=\"idGenderMale\" ";
-        // line 51
+        // line 55
         if (($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "idGender", []) == 2)) {
             echo " checked=\"checked\" ";
         }
@@ -149,42 +162,69 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                     </div>
                     <div class=\"personal-data-fields\">
                         <label for=\"firstname\">Nombre:</label><input type=\"text\" id=\"firstname\" name=\"_firstname\" class=\"form-control\" value=\"";
-        // line 55
+        // line 59
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "firstname", []), "html", null, true);
         echo "\"/>
                         <label for=\"lastname\">Apellidos:</label><input type=\"text\" id=\"lastname\" name=\"_lastname\" class=\"form-control\" value=\"";
-        // line 56
+        // line 60
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "lastname", []), "html", null, true);
         echo "\"/>
                         <label for=\"email\">Email:</label><input type=\"email\" id=\"email\" name=\"_email\" class=\"form-control\" value=\"";
-        // line 57
+        // line 61
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "email", []), "html", null, true);
         echo "\"/>
                         <label for=\"password\">Contraseña:</label><input type=\"password\" id=\"password\" name=\"_password\" class=\"form-control\"/>
                         <label for=\"confirm_password\">Confirmar Contraseña:</label><input type=\"password\" id=\"confirm_password\" name=\"_confirm_password\" class=\"form-control\"/>
                         <label for=\"birthday\">Fecha de nacimiento:</label><input type=\"date\" id=\"birthday\" name=\"_birthday\" class=\"form-control\" value=\"";
-        // line 60
+        // line 64
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "birthday", []), "Y-m-d"), "html", null, true);
         echo "\"/>
                     </div>
                 </div>
                 <div class=\"col-sm-6\" style=\"display: inline-flex\">
-                    <div class=\"personal-data-fields\" style=\"margin-top: 18%; width: 100%; margin-left: 0; padding: 3px\">
+                    <div class=\"personal-data-fields\" style=\"margin-top: 21%; width: 100%; margin-left: 0; padding: 3px\">
                         <label for=\"bibliografia\">Descripción / Bibliografía:</label>
-                        <textarea type=\"text\" id=\"bibliografia\" name=\"_bibliografia\" class=\"form-control\" style=\"height: 160px\">";
-        // line 66
+                        <textarea type=\"text\" id=\"bibliografia\" name=\"_bibliografia\" class=\"form-control\" style=\"height: 10rem\">";
+        // line 70
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "description", []), "html", null, true);
         echo "</textarea>
                         <label for=\"estudios\">Estudios:</label>
-                        <textarea type=\"text\" id=\"estudios\" name=\"_estudios\" class=\"form-control\" style=\"height: 100px\">";
-        // line 68
+                        <textarea type=\"text\" id=\"estudios\" name=\"_estudios\" class=\"form-control\" style=\"height: 7rem\">";
+        // line 72
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "studies", []), "html", null, true);
         echo "</textarea>
+                        <label for=\"antiquity\">Antiguedad (años):</label>
+                        <input type=\"number\" id=\"antiquity\" name=\"_antiquity\" class=\"form-control\" value=\"";
+        // line 74
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "antiquity", []), "html", null, true);
+        echo "\" style=\"width: 85%\"/>
                         <label for=\"n_colegiado\">Número de Colegiado:</label>
                         <input type=\"number\" id=\"n_colegiado\" name=\"_n_colegiado\" class=\"form-control\" value=\"";
-        // line 70
+        // line 76
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "collegiate_number", []), "html", null, true);
         echo "\" style=\"width: 85%\"/>
+                        <strong>
+                            Obtener más informacion acerca de tu perfil de colegiado
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\" style=\"width: 2rem; height: 2rem; margin-bottom: -6px\"
+                                 onclick=\"openModal('openCollegiateNumberModal')\">
+                                <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
+                                <path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\"/>
+                            </svg>
+                        </strong>
+                        <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openCollegiateNumberModal\" data-toggle=\"modal\" data-target=\"#infoCollegiateNumberModal\"></button>
+                        <div class=\"modal fade\" id=\"infoCollegiateNumberModal\">
+                            <div class=\"modal-dialog\" style=\"margin: 5rem 22rem;\">
+                                <div class=\"modal-content\" style=\"width: 150rem; height: 90rem\">
+                                    <!-- Modal body -->
+                                    <iframe id=\"inlineFrameExample\"
+                                            title=\"Inline Frame Example\"
+                                            width=\"100%\"
+                                            height=\"100%\"
+                                            src=\"https://www.consejodietistasnutricionistas.com/que-es-un-dietista-nutricionista/registro-nacional-de-dietistas-nutricionistas/\">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
                         <div class=\"save-button-item\" style=\"width: 100%;\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>
@@ -207,7 +247,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
 
     public function getDebugInfo()
     {
-        return array (  186 => 70,  181 => 68,  176 => 66,  167 => 60,  161 => 57,  157 => 56,  153 => 55,  144 => 51,  135 => 47,  126 => 43,  110 => 29,  100 => 25,  96 => 23,  91 => 22,  81 => 18,  77 => 16,  73 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  204 => 76,  199 => 74,  194 => 72,  189 => 70,  180 => 64,  174 => 61,  170 => 60,  166 => 59,  157 => 55,  148 => 51,  139 => 47,  130 => 40,  123 => 35,  117 => 33,  115 => 32,  110 => 29,  100 => 25,  96 => 23,  91 => 22,  81 => 18,  77 => 16,  73 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -227,7 +267,7 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
         <!-- Login Page stylesheet-->
         <link rel=\"stylesheet\" href=\"{{ asset('bundles/framework/css/nutritionistpages.css') }}\" />
         <!-- Customs JS -->
-        <script src=\"{{ asset('bundles/framework//js/customs.js') }}\"></script>
+        <script src=\"{{ asset('bundles/framework/js/customs.js') }}\"></script>
     </header>
     <section id=\"default-header\">
         {% include 'header.html.twig' %}
@@ -251,11 +291,15 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
             <div class=\"container\">
                 <div class=\"col-sm-6\" style=\"padding-left: 2%\">
                     <div class=\"personal-data-header\">
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-circle\" viewBox=\"0 0 16 16\">
-                            <path d=\"M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z\"/>
-                            <path fill-rule=\"evenodd\" d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z\"/>
-                        </svg>
-                        <h3 style=\"display: inline-flex\">Mis Datos Personales</h3>
+                        {% if app.user.image != \"\" %}
+                            <img src=\"{{ asset(app.user.image) }}\" alt=\"\">
+                        {% else %}
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-circle\" viewBox=\"0 0 16 16\">
+                                <path d=\"M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z\"/>
+                                <path fill-rule=\"evenodd\" d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z\"/>
+                            </svg>
+                        {% endif %}
+                        <h3 style=\"display: inline-flex; margin-left: 10px;\">Mis Datos Personales</h3>
                     </div>
                     <br/>
                     <div class=\"form-check\">
@@ -283,13 +327,37 @@ class __TwigTemplate_526808bfdf98f115c0c32d1a35b5933f300daa945767194dd88e9a84eff
                     </div>
                 </div>
                 <div class=\"col-sm-6\" style=\"display: inline-flex\">
-                    <div class=\"personal-data-fields\" style=\"margin-top: 18%; width: 100%; margin-left: 0; padding: 3px\">
+                    <div class=\"personal-data-fields\" style=\"margin-top: 21%; width: 100%; margin-left: 0; padding: 3px\">
                         <label for=\"bibliografia\">Descripción / Bibliografía:</label>
-                        <textarea type=\"text\" id=\"bibliografia\" name=\"_bibliografia\" class=\"form-control\" style=\"height: 160px\">{{ app.user.description }}</textarea>
+                        <textarea type=\"text\" id=\"bibliografia\" name=\"_bibliografia\" class=\"form-control\" style=\"height: 10rem\">{{ app.user.description }}</textarea>
                         <label for=\"estudios\">Estudios:</label>
-                        <textarea type=\"text\" id=\"estudios\" name=\"_estudios\" class=\"form-control\" style=\"height: 100px\">{{ app.user.studies }}</textarea>
+                        <textarea type=\"text\" id=\"estudios\" name=\"_estudios\" class=\"form-control\" style=\"height: 7rem\">{{ app.user.studies }}</textarea>
+                        <label for=\"antiquity\">Antiguedad (años):</label>
+                        <input type=\"number\" id=\"antiquity\" name=\"_antiquity\" class=\"form-control\" value=\"{{ app.user.antiquity }}\" style=\"width: 85%\"/>
                         <label for=\"n_colegiado\">Número de Colegiado:</label>
                         <input type=\"number\" id=\"n_colegiado\" name=\"_n_colegiado\" class=\"form-control\" value=\"{{ app.user.collegiate_number }}\" style=\"width: 85%\"/>
+                        <strong>
+                            Obtener más informacion acerca de tu perfil de colegiado
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\" style=\"width: 2rem; height: 2rem; margin-bottom: -6px\"
+                                 onclick=\"openModal('openCollegiateNumberModal')\">
+                                <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
+                                <path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\"/>
+                            </svg>
+                        </strong>
+                        <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openCollegiateNumberModal\" data-toggle=\"modal\" data-target=\"#infoCollegiateNumberModal\"></button>
+                        <div class=\"modal fade\" id=\"infoCollegiateNumberModal\">
+                            <div class=\"modal-dialog\" style=\"margin: 5rem 22rem;\">
+                                <div class=\"modal-content\" style=\"width: 150rem; height: 90rem\">
+                                    <!-- Modal body -->
+                                    <iframe id=\"inlineFrameExample\"
+                                            title=\"Inline Frame Example\"
+                                            width=\"100%\"
+                                            height=\"100%\"
+                                            src=\"https://www.consejodietistasnutricionistas.com/que-es-un-dietista-nutricionista/registro-nacional-de-dietistas-nutricionistas/\">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
                         <div class=\"save-button-item\" style=\"width: 100%;\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>

@@ -25,6 +25,10 @@ function deleteWeeklyPlan(idPlan){
     document.getElementById("plan_delete_"+idPlan).click();
 }
 
+function deleteCustomerWeeklyPlan(idPlan){
+    document.getElementById("customer_plan_delete_"+idPlan).click();
+}
+
 function deleteEvent(idEvent){
     document.getElementById("event_delete_"+idEvent).click();
 }
@@ -37,12 +41,16 @@ function deleteRecipe( idRecipe){
     document.getElementById("recipe_delete_"+idRecipe).click();
 }
 
+function changeRecipeVisibility(idRecipe){
+    document.getElementById("recipe_visibility_"+idRecipe).click();
+}
+
 function deleteAppointment(idAppointment){
     document.getElementById("appointment_delete_"+idAppointment).click();
 }
 
-function openModal(){
-    let button = document.getElementById('openMyIngredientModal');
+function openModal(modalName){
+    let button = document.getElementById(modalName);
     button.click()
 }
 
@@ -52,4 +60,21 @@ function categoryFilter(idCategory) {
 
     let button = document.getElementById('categorySearch');
     button.click()
+}
+
+function replyMessage(){
+    let button = document.getElementById('repply_message');
+    button.click();
+}
+
+function changeInboxGroup(){
+    let inboxGroup = document.getElementById("inbox-group");
+    if(inboxGroup.value === 'sent'){
+        $('#inbox_received').hide();
+        $('#inbox_sent').show();
+    }
+    if(inboxGroup.value === 'received'){
+        $('#inbox_received').show();
+        $('#inbox_sent').hide();
+    }
 }

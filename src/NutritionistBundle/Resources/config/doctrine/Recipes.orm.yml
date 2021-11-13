@@ -32,12 +32,11 @@ NutritionistBundle\Entity\Recipes:
             options:
                 fixed: false
         image:
-            type: string
+            type: text
             nullable: false
-            length: 248
+            length: 65535
             options:
                 fixed: false
-
         dateAdd:
             type: datetime
             nullable: false

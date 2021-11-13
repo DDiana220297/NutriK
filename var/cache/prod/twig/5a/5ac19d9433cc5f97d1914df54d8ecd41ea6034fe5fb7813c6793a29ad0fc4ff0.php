@@ -59,7 +59,7 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
     ";
         // line 16
         $this->displayBlock('content', $context, $blocks);
-        // line 60
+        // line 63
         echo "</body>
 
 ";
@@ -152,6 +152,9 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
             // line 52
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("register");
             echo "\"> Registrate </a></p>
+                            <div class=\"login-button-item\">
+                                <button class=\"btn btn-primary nutrik-button\" type=\"button\" onclick=\"redirectTo('home')\">Visita NutriK</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -159,7 +162,7 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
             <div class=\"clearfix\"></div>
         ";
         }
-        // line 59
+        // line 62
         echo "    ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -178,7 +181,7 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
 
     public function getDebugInfo()
     {
-        return array (  163 => 59,  153 => 52,  142 => 44,  137 => 42,  133 => 40,  122 => 35,  117 => 32,  113 => 31,  109 => 29,  107 => 28,  99 => 22,  93 => 18,  90 => 17,  84 => 16,  72 => 7,  63 => 60,  61 => 16,  55 => 13,  49 => 10,  45 => 8,  43 => 7,  35 => 1,);
+        return array (  166 => 62,  153 => 52,  142 => 44,  137 => 42,  133 => 40,  122 => 35,  117 => 32,  113 => 31,  109 => 29,  107 => 28,  99 => 22,  93 => 18,  90 => 17,  84 => 16,  72 => 7,  63 => 63,  61 => 16,  55 => 13,  49 => 10,  45 => 8,  43 => 7,  35 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -243,6 +246,9 @@ class __TwigTemplate_0c54f725aafa8623222bb44f3c56c3861e819f74e7907fcf72834a67970
                             </div>
                             <p style=\"text-align: center\"> ó </p>
                             <p><a href=\"{{ path('register') }}\"> Registrate </a></p>
+                            <div class=\"login-button-item\">
+                                <button class=\"btn btn-primary nutrik-button\" type=\"button\" onclick=\"redirectTo('home')\">Visita NutriK</button>
+                            </div>
                         </form>
                     </div>
                 </div>

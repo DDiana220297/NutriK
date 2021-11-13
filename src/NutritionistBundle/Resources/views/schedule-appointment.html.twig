@@ -22,18 +22,44 @@
         {% endfor %}
         <div class="container">
             <div class="col-sm-12">
-                <input type="hidden" id="modal_page" value="{{ modal_page }}"/>
                 <div id="appointment-content-block">
                         <div class="col-sm-12">
                             <h2>Programar Consulta</h2>
-                            <form id="msform" action="{{ path("nutritionist_schedule_appointment") }}" method="post">
+                            <form id="msform" action="{{ path("nutritionist_schedule_appointment") }}" method="post" novalidate>
                                 <!-- progressbar -->
                                 <ul id="progressbar">
-                                    <li class="active" id="appointment-date"><strong>Fecha Consulta</strong></li>
+                                    <li class="active" id="appointment-customer"><strong>Cliente Consulta</strong></li>
+                                    <li id="appointment-date"><strong>Fecha Consulta</strong></li>
                                     <li id="appointment-hour"><strong>Hora Consulta</strong></li>
-                                    <li id="appointment-customer"><strong>Cliente Consulta</strong></li>
                                     <li id="confirm"><strong>Confirmación</strong></li>
                                 </ul> <!-- fieldsets -->
+                                <fieldset>
+                                    <div class="form-card">
+                                        <h2 style="color: #00766c; text-align: center">Selecciona el cliente</h2>
+                                        <nav class="navbar navbar-light bg-light" style="height: 7rem;">
+                                            <div class="container-fluid">
+                                                <div class="d-flex customers-finder" style="margin: 15px 0;">
+                                                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="appointment_customer_search"
+                                                           style="width: 68.5%; display: inline-flex; margin-left: 14.3%;border: 1px solid #00766c;border-radius: 5px;"/>
+                                                    <button class="btn btn-outline-success" id="appointment-customer-search-button" name="submit" value="Buscar">Buscar</button>
+                                                </div>
+                                            </div>
+                                        </nav>
+                                        <div id="appointment-customers-block">
+                                            {% for customer in customers %}
+                                                <div class="customer-entry">
+                                                    <div class="col-sm-11 customer-entry-resume">
+                                                        <div class="col-sm-2"><input type="checkbox" value="{{ customer.idUser }}" style="width: 15px; height: 15px" name="appointment_customer" id="appointment-customer"></div>
+                                                        <div class="col-sm-3" style="text-align: start">{{ customer.firstname }}</div>
+                                                        <div class="col-sm-3" style="text-align: center">{{ customer.lastname }}</div>
+                                                        <div class="col-sm-4" style="text-align: end">{{ customer.email }}</div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <input type="button" name="next" class="next action-button" value="Siguiente"/>
+                                </fieldset>
                                 <fieldset>
                                     <div class="form-card">
                                         <body>
@@ -72,6 +98,7 @@
                                         </div>
                                         </body>
                                     </div>
+                                    <input type="button" name="previous" class="previous action-button-previous" value="Previo"/>
                                     <input type="button" name="next" class="next action-button" value="Siguiente"/>
                                 </fieldset>
                                 <fieldset>
@@ -83,34 +110,6 @@
                                         <p style="text-align: center; font-size: 20px;"> Indica una breve descripción para la consulta</p>
                                         <label for="appointment_description" style="margin-right: 10px"></label>
                                         <input type="text" class="form-control" id="appointment_description" name="appointment_description" style="width: 60%;margin-left: 21%;height: 10rem;border: 1px solid #ccc;border-radius: 10px;"  required="required">
-                                    </div>
-                                    <input type="button" name="previous" class="previous action-button-previous" value="Previo"/>
-                                    <input type="button" name="next" class="next action-button" value="Siguiente"/>
-                                </fieldset>
-                                <fieldset>
-                                    <div class="form-card">
-                                        <h2 style="color: #00766c; text-align: center">Selecciona el cliente</h2>
-                                        <nav class="navbar navbar-light bg-light" style="height: 7rem;">
-                                            <div class="container-fluid">
-                                                <div class="d-flex customers-finder" style="margin: 15px 0;">
-                                                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="appointment_customer_search"
-                                                           style="width: 68.5%; display: inline-flex; margin-left: 14.3%;border: 1px solid #00766c;border-radius: 5px;"/>
-                                                    <button class="btn btn-outline-success" id="appointment-customer-search-button" name="submit" value="Buscar">Buscar</button>
-                                                </div>
-                                            </div>
-                                        </nav>
-                                        <div id="appointment-customers-block">
-                                            {% for customer in customers %}
-                                                <div class="customer-entry">
-                                                    <div class="col-sm-11 customer-entry-resume">
-                                                        <div class="col-sm-2"><input type="checkbox" value="{{ customer.idUser }}" style="width: 15px; height: 15px" name="appointment_customer" id="appointment-customer"></div>
-                                                        <div class="col-sm-3" style="text-align: start">{{ customer.firstname }}</div>
-                                                        <div class="col-sm-3" style="text-align: center">{{ customer.lastname }}</div>
-                                                        <div class="col-sm-4" style="text-align: end">{{ customer.email }}</div>
-                                                    </div>
-                                                </div>
-                                            {% endfor %}
-                                        </div>
                                     </div>
                                     <input type="button" name="previous" class="previous action-button-previous" value="Previo"/>
                                     <input type="button" name="next" class="next action-button" value="Siguiente"/>

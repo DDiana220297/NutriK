@@ -53,7 +53,7 @@ class __TwigTemplate_bf6a48f16e122a1e9b8da870c314dde88c5bce26fcec8f06a07210f3d1b
 ";
         // line 13
         $this->displayBlock('content', $context, $blocks);
-        // line 43
+        // line 45
         echo "</body>
 
 ";
@@ -127,6 +127,11 @@ class __TwigTemplate_bf6a48f16e122a1e9b8da870c314dde88c5bce26fcec8f06a07210f3d1b
         // line 37
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock(($context["form"] ?? $this->getContext($context, "form")), 'form_end');
         echo "
+                <p style=\"text-align: center; margin:15px\"> ó </p>
+                <p style=\"text-align: center\"><a style=\"color: #00766c; font-size: 16px\" href=\"";
+        // line 39
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("login");
+        echo "\"> Inicia Sesión </a></p>
             </div>
         </div>
     </div>
@@ -149,7 +154,7 @@ class __TwigTemplate_bf6a48f16e122a1e9b8da870c314dde88c5bce26fcec8f06a07210f3d1b
 
     public function getDebugInfo()
     {
-        return array (  128 => 37,  124 => 36,  119 => 33,  108 => 28,  103 => 25,  99 => 24,  94 => 21,  92 => 20,  84 => 14,  78 => 13,  66 => 7,  57 => 43,  55 => 13,  49 => 10,  45 => 8,  43 => 7,  35 => 1,);
+        return array (  133 => 39,  128 => 37,  124 => 36,  119 => 33,  108 => 28,  103 => 25,  99 => 24,  94 => 21,  92 => 20,  84 => 14,  78 => 13,  66 => 7,  57 => 45,  55 => 13,  49 => 10,  45 => 8,  43 => 7,  35 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -199,6 +204,8 @@ class __TwigTemplate_bf6a48f16e122a1e9b8da870c314dde88c5bce26fcec8f06a07210f3d1b
             <div class=\"col-sm-6\">
                 {{ form_start(form) }}
                 {{ form_end(form) }}
+                <p style=\"text-align: center; margin:15px\"> ó </p>
+                <p style=\"text-align: center\"><a style=\"color: #00766c; font-size: 16px\" href=\"{{ path('login') }}\"> Inicia Sesión </a></p>
             </div>
         </div>
     </div>

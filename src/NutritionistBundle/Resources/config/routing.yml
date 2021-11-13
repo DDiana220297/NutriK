@@ -83,7 +83,7 @@ nutritionist_delete_customer:
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistDeleteCustomer }
 
 nutritionist_diary:
-    path: /nutritionist-diary
+    path: /nutritionist-diary/{id_diary_page}
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistDiary }
 
 nutritionist_recipes:
@@ -121,3 +121,19 @@ nutritionist_edit_appointment:
 nutritionist_calendar:
     path: /nutritionist-calendar
     defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistCalendar }
+
+nutritionist_assign_plans:
+    path: /nutritionist-assign-plans
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistAssignPlans }
+
+nutritionist_assigned_customer_plans:
+    path: /nutritionist-assigned-customer-plans/{id_customer}
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistAssignedCustomerPlans }
+
+nutritionist_customer_delete_weekly_plan:
+    path: /nutritionist-customer-delete-weekly-plan
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistCustomerDeleteWeeklyPlan }
+
+nutritionist_configuration:
+    path: /nutritionist-config
+    defaults: { _controller: NutritionistBundle:Nutritionist:nutritionistConfiguration }

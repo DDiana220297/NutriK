@@ -157,7 +157,7 @@ select.list-dt:focus {
     position: relative
 }
 
-#progressbar #appointment-date:before {
+#progressbar #appointment-customer:before {
     font-family: FontAwesome;
     content: "\f023"
 }
@@ -167,7 +167,7 @@ select.list-dt:focus {
     content: "\f007"
 }
 
-#progressbar #appointment-customer:before {
+#progressbar #appointment-date:before {
     font-family: FontAwesome;
     content: "\f09d"
 }

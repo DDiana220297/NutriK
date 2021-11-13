@@ -73,7 +73,16 @@
                                 {% for recipe_object in recipes %}
                                     <div class="recipe">
                                         <div class="col-sm-11 recipe-name">
-                                            <a href="{{ path("customer_recipes", {"id_recipe":recipe_object.idRecipe}) }}">{{ recipe_object.name }}</a>
+                                            {% if recipe_object.idRecipe in recipes_tags|keys %}
+                                                <span style="font-size: 20px">
+                                                    {% for tag in recipes_tags[recipe_object.idRecipe] %}
+                                                        {{ tag.name }} <span style="color: #00766c">></span>
+                                                    {% endfor %}
+                                                </span>
+                                            {% endif %}
+                                            <a style="font-size: 22px; color: #00766c" href="{{ path("customer_recipes", {"id_recipe":recipe_object.idRecipe}) }}">
+                                                {{ recipe_object.name }}
+                                            </a>
                                         </div>
                                         <div class="col-sm-1 recipe-actions">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"

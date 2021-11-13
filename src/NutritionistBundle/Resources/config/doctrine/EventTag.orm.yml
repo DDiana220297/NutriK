@@ -1,0 +1,27 @@
+NutritionistBundle\Entity\EventTag:
+    type: entity
+    table: event_tag
+    id:
+        idEventTag:
+            type: integer
+            nullable: false
+            options:
+                unsigned: true
+            id: true
+            column: id_event_tag
+            generator:
+                strategy: IDENTITY
+    fields:
+        idEvent:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_event
+        idTag:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_tag
+    lifecycleCallbacks: {  }

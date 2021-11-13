@@ -61,19 +61,19 @@
         // locale
         isRTL: false,
         firstDay: 0,
-        monthNames: ['January','February','March','April','May','June','July','August','September','October','November','December'],
-        monthNamesShort: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-        dayNames: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-        dayNamesShort: ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+        monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+        monthNamesShort: ['En','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dec'],
+        dayNames: ['Domigo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+        dayNamesShort: ['Do','Lu','Ma','Mi','Ju','Vi','Sa'],
         buttonText: {
             prev: "<span class='fc-text-arrow'>‹</span>",
             next: "<span class='fc-text-arrow'>›</span>",
             prevYear: "<span class='fc-text-arrow'>«</span>",
             nextYear: "<span class='fc-text-arrow'>»</span>",
-            today: 'today',
-            month: 'month',
-            week: 'week',
-            day: 'day'
+            today: 'hoy',
+            month: 'mes',
+            week: 'semana',
+            day: 'día',
         },
 
         // jquery-ui theming
@@ -2647,10 +2647,6 @@ function enableTextSelection(element) {
         function clearEvents() {
             t.getDaySegmentContainer().empty();
         }
-
-
-        // TODO: have this class (and AgendaEventRenderer) be responsible for creating the event container div
-
     }
 
     ;;
@@ -3956,6 +3952,12 @@ function enableTextSelection(element) {
 
 
         function slotSegHtml(event, seg) {
+            var type = event.type
+            var type_class = '"<div class=\'fc-event-inner\'>"';
+            if(type === 'diary'){
+                var type_class = '"<div class=\'fc-event-inner-diary\'>"';
+            }
+
             var html = "<";
             var url = event.url;
             var skinCss = getSkinCss(event, opt);
@@ -3988,7 +3990,7 @@ function enableTextSelection(element) {
                 skinCss +
                 "'" +
                 ">" +
-                "<div class='fc-event-inner'>" +
+                type_class +
                 "<div class='fc-event-time'>" +
                 htmlEscape(formatDates(event.start, event.end, opt('timeFormat'))) +
                 "</div>" +
@@ -5341,6 +5343,10 @@ function enableTextSelection(element) {
             }else{
                 html += "<div";
             }
+            var type_class = "<div class='fc-event-inner'>";
+            if(event.type === 'diary'){
+                type_class = "<div class='fc-event-inner-diary'>";
+            }
             html +=
                 " class='" + classNames.join(' ') + "'" +
                 " style=" +
@@ -5350,7 +5356,7 @@ function enableTextSelection(element) {
                 skinCss +
                 "'" +
                 ">" +
-                "<div class='fc-event-inner'>";
+                type_class;
             if (!event.allDay && segment.isStart) {
                 html +=
                     "<span class='fc-event-time'>" +

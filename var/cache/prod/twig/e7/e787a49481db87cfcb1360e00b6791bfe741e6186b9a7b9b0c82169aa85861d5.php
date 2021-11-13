@@ -137,10 +137,61 @@ class __TwigTemplate_d0273891bf47bca5262db9be914ae5d9ae5866a00b2ef59a3b7710066a3
         // line 39
         echo "                        </select>
                         <br/>
+                        <div id=\"didactic-tags\" class=\"col-sm-12\">
+                            <strong>Tags:
+                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\" style=\"width: 15px; height: 15px; margin-bottom: -3px\"
+                                     onclick=\"openModal('openMyInfoTagsModal')\">
+                                    <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
+                                    <path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\"/>
+                                </svg>
+                            </strong>
+                            <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openMyInfoTagsModal\" data-toggle=\"modal\" data-target=\"#infoTagsModal\"></button>
+                            <div class=\"modal fade\" id=\"infoTagsModal\">
+                                <div class=\"modal-dialog\">
+                                    <div class=\"modal-content\" style=\"height: 15rem;width: 50rem;padding: 40px 30px;\">
+                                        <!-- Modal body -->
+                                        <span>Etiqueta tus recetas añadiendo los tags deseados por nivel. Para obtener más informacion sobre un tag, modificar o crear uno accede a la configuracion de tu perfil o haz click <a href=\"#\">aqui</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class=\"list-group\" id=\"add_tags\">
+                                ";
+        // line 59
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(($context["tags"] ?? $this->getContext($context, "tags")));
+        foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
+            // line 60
+            echo "                                    <li>
+                                        <input type=\"checkbox\" value=\"";
+            // line 61
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "idTag", []), "html", null, true);
+            echo "\" ";
+            if (twig_in_filter($this->getAttribute($context["tag"], "idTag", []), twig_get_array_keys_filter(($context["entry_tags_keys"] ?? $this->getContext($context, "entry_tags_keys"))))) {
+                echo " checked ";
+            }
+            // line 62
+            echo "                                               style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"add_tags[";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "idTag", []), "html", null, true);
+            echo "][]\">
+                                        Nivel ";
+            // line 63
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "level", []), "html", null, true);
+            echo " - ";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "name", []), "html", null, true);
+            echo "
+                                    </li>
+                                ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 66
+        echo "                            </ul>
+                        </div>
                         <label for=\"description\">Descripción:</label>
                         <br/>
                         <textarea type=\"text\" id=\"description\" name=\"_description\" class=\"form-control\" required=\"required\">";
-        // line 43
+        // line 70
         echo twig_escape_filter($this->env, $this->getAttribute(($context["entry"] ?? $this->getContext($context, "entry")), "description", []), "html", null, true);
         echo "</textarea>
                         <div class=\"save-button-item\" style=\"width: 100%;\">
@@ -150,7 +201,7 @@ class __TwigTemplate_d0273891bf47bca5262db9be914ae5d9ae5866a00b2ef59a3b7710066a3
                     <div class=\"col-sm-8\">
                         <label for=\"content\">Contenido:</label>
                         <textarea type=\"text\" id=\"content\" name=\"_content\" class=\"form-control\" required=\"required\">";
-        // line 50
+        // line 77
         echo twig_escape_filter($this->env, $this->getAttribute(($context["entry"] ?? $this->getContext($context, "entry")), "content", []), "html", null, true);
         echo "</textarea>
                     </div>
@@ -172,7 +223,7 @@ class __TwigTemplate_d0273891bf47bca5262db9be914ae5d9ae5866a00b2ef59a3b7710066a3
 
     public function getDebugInfo()
     {
-        return array (  154 => 50,  144 => 43,  138 => 39,  123 => 37,  119 => 36,  111 => 31,  105 => 28,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  205 => 77,  195 => 70,  189 => 66,  178 => 63,  173 => 62,  167 => 61,  164 => 60,  160 => 59,  138 => 39,  123 => 37,  119 => 36,  111 => 31,  105 => 28,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -225,6 +276,33 @@ class __TwigTemplate_d0273891bf47bca5262db9be914ae5d9ae5866a00b2ef59a3b7710066a3
                             {% endfor %}
                         </select>
                         <br/>
+                        <div id=\"didactic-tags\" class=\"col-sm-12\">
+                            <strong>Tags:
+                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-info-circle\" viewBox=\"0 0 16 16\" style=\"width: 15px; height: 15px; margin-bottom: -3px\"
+                                     onclick=\"openModal('openMyInfoTagsModal')\">
+                                    <path d=\"M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z\"/>
+                                    <path d=\"m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z\"/>
+                                </svg>
+                            </strong>
+                            <button style=\"display: none\" type=\"button\" class=\"btn btn-primary\" id=\"openMyInfoTagsModal\" data-toggle=\"modal\" data-target=\"#infoTagsModal\"></button>
+                            <div class=\"modal fade\" id=\"infoTagsModal\">
+                                <div class=\"modal-dialog\">
+                                    <div class=\"modal-content\" style=\"height: 15rem;width: 50rem;padding: 40px 30px;\">
+                                        <!-- Modal body -->
+                                        <span>Etiqueta tus recetas añadiendo los tags deseados por nivel. Para obtener más informacion sobre un tag, modificar o crear uno accede a la configuracion de tu perfil o haz click <a href=\"#\">aqui</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class=\"list-group\" id=\"add_tags\">
+                                {% for tag in tags %}
+                                    <li>
+                                        <input type=\"checkbox\" value=\"{{ tag.idTag }}\" {% if tag.idTag in entry_tags_keys|keys %} checked {% endif %}
+                                               style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"add_tags[{{ tag.idTag }}][]\">
+                                        Nivel {{ tag.level }} - {{ tag.name }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                         <label for=\"description\">Descripción:</label>
                         <br/>
                         <textarea type=\"text\" id=\"description\" name=\"_description\" class=\"form-control\" required=\"required\">{{ entry.description }}</textarea>

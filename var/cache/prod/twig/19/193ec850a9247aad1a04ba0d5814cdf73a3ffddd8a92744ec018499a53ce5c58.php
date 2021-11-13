@@ -11,7 +11,7 @@ use Twig\Sandbox\SecurityNotAllowedFunctionError;
 use Twig\Source;
 use Twig\Template;
 
-/* @Customer/services.html.twig */
+/* @Customer/packages.html.twig */
 class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f317b77 extends \Twig\Template
 {
     public function __construct(Environment $env)
@@ -28,11 +28,11 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
     protected function doDisplay(array $context, array $blocks = [])
     {
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "@Customer/services.html.twig"));
+        $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "@Customer/packages.html.twig"));
 
         // line 1
         $this->displayBlock('content', $context, $blocks);
-        
+
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
     }
@@ -60,13 +60,13 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
     <section id=\"default-header\">
         ";
         // line 11
-        $this->loadTemplate("header.html.twig", "@Customer/services.html.twig", 11)->display($context);
+        $this->loadTemplate("header.html.twig", "@Customer/packages.html.twig", 11)->display($context);
         // line 12
         echo "    </section>
     <section id=\"customer-header\">
         ";
         // line 14
-        $this->loadTemplate("customerheader.html.twig", "@Customer/services.html.twig", 14)->display($context);
+        $this->loadTemplate("customerheader.html.twig", "@Customer/packages.html.twig", 14)->display($context);
         // line 15
         echo "    </section>
     <section id=\"customer-services\">
@@ -99,21 +99,21 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
                     <div class=\"col-sm-4\">
                         <p style=\"height: 8rem; font-size: 22px; font-weight: bold\">Paquete planes de alimentación</p>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Con este paquete podrás elegir aquellos planes de alimentación que mejor se adapten a ti. NutriK te ofrece una primera consulta con el profesional que elijas para asesorarte y explicarte los distintos planes de alimentacion.
                         </p>
                         <input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Contratar\"/>
                     </div>
                     <div class=\"col-sm-4\">
                         <p style=\"height: 8rem; font-size: 22px; font-weight: bold\">Paquete planes de acompañamiento</p>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Con este paquete disfrutas de un acompañamiento por parte del profesional de NutriK que elijas. NutriK te ofrece una primera consulta con el profesional que elijas para asesorarte y explicarte los distintos planes de alimentacion, y a partir de esta se elije la frecuencia de las consultas y el plan mensual.
                         </p>
                         <input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Contratar\"/>
                     </div>
                     <div class=\"col-sm-4\">
                         <p style=\"height: 8rem; font-size: 22px; font-weight: bold\">Paquete Premium</p>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Con este paquete disfurtas de todas las ventajas de NutriK, desde consultas nutricionales libres con los profesionales que elijas, con diferentes especialidades que se adaptan a tus necesidades, hasta consultas con entrenadores colaboradores con NutriK, piscologos, etc. No te lo pienses!
                         </p>
                         <input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Contratar\"/>
                     </div>
@@ -123,18 +123,18 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
     </section>
     ";
         // line 52
-        $this->loadTemplate("footer.html.twig", "@Customer/services.html.twig", 52)->display($context);
+        $this->loadTemplate("footer.html.twig", "@Customer/packages.html.twig", 52)->display($context);
         // line 53
         echo "    </html>
 ";
-        
+
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
     }
 
     public function getTemplateName()
     {
-        return "@Customer/services.html.twig";
+        return "@Customer/packages.html.twig";
     }
 
     public function getDebugInfo()
@@ -181,21 +181,21 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
                     <div class=\"col-sm-4\">
                         <p style=\"height: 8rem; font-size: 22px; font-weight: bold\">Paquete planes de alimentación</p>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Con este paquete podrás elegir aquellos planes de alimentación que mejor se adapten a ti. NutriK te ofrece una primera consulta con el profesional que elijas para asesorarte y explicarte los distintos planes de alimentacion.
                         </p>
                         <input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Contratar\"/>
                     </div>
                     <div class=\"col-sm-4\">
                         <p style=\"height: 8rem; font-size: 22px; font-weight: bold\">Paquete planes de acompañamiento</p>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Con este paquete disfrutas de un acompañamiento por parte del profesional de NutriK que elijas. NutriK te ofrece una primera consulta con el profesional que elijas para asesorarte y explicarte los distintos planes de alimentacion, y a partir de esta se elije la frecuencia de las consultas y el plan mensual.
                         </p>
                         <input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Contratar\"/>
                     </div>
                     <div class=\"col-sm-4\">
                         <p style=\"height: 8rem; font-size: 22px; font-weight: bold\">Paquete Premium</p>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Con este paquete disfurtas de todas las ventajas de NutriK, desde consultas nutricionales libres con los profesionales que elijas, con diferentes especialidades que se adaptan a tus necesidades, hasta consultas con entrenadores colaboradores con NutriK, piscologos, etc. No te lo pienses!
                         </p>
                         <input type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Contratar\"/>
                     </div>
@@ -206,6 +206,6 @@ class __TwigTemplate_9049d37f2986277462a19c43d0d94ab3750c5e2c2387fe125c3e8c6b3f3
     {% include 'footer.html.twig' %}
     </html>
 {% endblock %}
-", "@Customer/services.html.twig", "/shared/httpd/nutrik/src/CustomerBundle/Resources/views/services.html.twig");
+", "@Customer/packages.html.twig", "/shared/httpd/nutrik/src/CustomerBundle/Resources/views/packages.html.twig");
     }
 }

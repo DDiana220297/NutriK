@@ -89,6 +89,11 @@ class User implements UserInterface
     private $studies;
 
     /**
+     * @var integer
+     */
+    private $antiquity = 0;
+
+    /**
      * @var string
      */
     private $collegiateNumber;
@@ -97,6 +102,27 @@ class User implements UserInterface
      * @var string
      */
     private $description;
+
+    /**
+     * @var string
+     */
+    private $image;
+
+    /**
+     * @var string
+     */
+    private $presentation;
+
+    /**
+     * @var string
+     */
+    private $rate;
+
+
+    /**
+     * @var string
+     */
+    private $socialMedia;
 
     /**
      * Get idUser
@@ -555,5 +581,85 @@ class User implements UserInterface
     public function getCollegiateNumber()
     {
         return $this->collegiateNumber;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAntiquity(): int
+    {
+        return $this->antiquity;
+    }
+
+    /**
+     * @param int $antiquity
+     */
+    public function setAntiquity(int $antiquity): void
+    {
+        $this->antiquity = $antiquity;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage(string $image): void
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSocialMedia()
+    {
+        return $this->socialMedia;
+    }
+
+    /**
+     * @param string $socialMedia
+     */
+    public function setSocialMedia(string $socialMedia): void
+    {
+        $this->socialMedia = $socialMedia;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPresentation()
+    {
+        return $this->presentation;
+    }
+
+    /**
+     * @param string $presentation
+     */
+    public function setPresentation(string $presentation): void
+    {
+        $this->presentation = $presentation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRate()
+    {
+        return $this->rate;
+    }
+
+    /**
+     * @param string $rate
+     */
+    public function setRate(string $rate): void
+    {
+        $this->rate = $rate;
     }
 }

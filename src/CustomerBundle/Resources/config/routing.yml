@@ -2,9 +2,13 @@ customer_news:
   path:   /news
   defaults: { _controller: CustomerBundle:Customer:news }
 
-customer_services:
-  path: /services
-  defaults: { _controller: CustomerBundle:Customer:services }
+customer_professionals:
+  path: /professionals
+  defaults: { _controller: CustomerBundle:Customer:professionals }
+
+customer_packages:
+  path: /packages
+  defaults: { _controller: CustomerBundle:Customer:packages }
 
 customer_about:
     path: /about
@@ -47,5 +51,14 @@ customer_progress:
   defaults: { _controller: CustomerBundle:Customer:progress }
 
 customer_messenger:
-  path: /messenger
+  path: /messenger/{id_message}
   defaults: { _controller: CustomerBundle:Customer:messenger }
+
+customer_plans:
+  path: /plans
+  defaults: { _controller: CustomerBundle:Customer:plans }
+
+customer_plan:
+  path: /plan/{id_plan}
+  defaults: { _controller: CustomerBundle:Customer:viewPlan }
+

@@ -1,9 +1,9 @@
 /* NEWS PAGE */
 #carousel-section{
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 #carousel-section .container{
-    height: 375px;
+    height: 60rem
 }
 
 #carousel-section .container .carousel{
@@ -25,7 +25,7 @@
 
 #carousel-section .container .carousel .carousel-inner .item>img{
     width: 100%;
-    height: 100%;
+    height: 40rem;
 }
 
 /* DIDACTIC CONTENT PAGE */
@@ -113,24 +113,30 @@
 
 #customer-personal-data .container{
     width: 95%;
-    height: 765px;
+    height: 84rem;
     color: black;
     padding: 20px;
     margin-top: 25px;
-    background-color: lightgray;
+    background: linear-gradient(to bottom, #E2E2E2 0%, #bdbdbd 100%);
 }
+
 #customer-personal-data .container .form .col-sm-6 .personal-data-header{
     margin-left: 10%;
     margin-top: 3%;
 }
 
-#customer-personal-data .container .form .col-sm-6 .personal-data-header>svg{
-    width: 1em;
+#customer-personal-data .container .form .col-sm-6 .personal-data-header>img{
+    width: 2em;
     font-size: 50px;
-    height: 0.75em;
-    display: inline-flex;
+    height: 2em;
+    border-radius: 10rem;
+}
+#customer-personal-data .container .form .col-sm-6 .personal-data-header>svg{
+    width: 2em;
+    font-size: 50px;
+    height: 2em;
     margin-right: 8px;
-    vertical-align: -8px;
+    vertical-align: -4rem;
 }
 
 #customer-personal-data .container .form .col-sm-6 .form-check,
@@ -213,7 +219,9 @@
 #customer-diary .container .form .col-sm-6 #todays-tasks>textarea{
     background: transparent;
     height: 50rem;
-    border: 0 solid #ccc;
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
     width: 100%;
     padding: 10px;
     font: oblique normal 14px cursive;
@@ -231,7 +239,7 @@
     width: 100%;
     margin-top: 10px;
     --text-opacity: 1;
-    color: black;
+    color: white;
     border-bottom-width: 4px;
     --border-opacity: 1;
     border-color: #00A295;
@@ -260,7 +268,9 @@
 #customer-diary .container .form .col-sm-6 #todays-events>textarea{
     background: transparent;
     height: 18rem;
-    border: 0 solid #ccc;
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
     width: 100%;
     padding: 10px;
     font: oblique normal 14px cursive;
@@ -279,6 +289,7 @@
     display: inline-flex;
     margin-top: -4px;
     height: 33px;
+    color: white;
     background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
 }
 
@@ -300,7 +311,9 @@
 #customer-diary .container .form .col-sm-6 #todays-memos>textarea{
     background: transparent;
     height: 20rem;
-    border: 0 solid #ccc;
+    border-style: solid;
+    border-color: #ccc;
+    border-width: thin;
     width: 100%;
     color: white;
     padding: 10px;
@@ -343,7 +356,6 @@
 #recipes .container .form .col-sm-12 .container-fluid #recipes-content{
     border-style: solid;
     border-color: #00A295;
-
     border-width: thin;
     border-radius: 0.5rem;
     height: 70rem;
@@ -415,7 +427,7 @@
 }
 
 #recipes .container .form .col-sm-12 .container-fluid #recipes-content .recipe .recipe-name{
-    margin-top: -10px;
+    margin-top: -15px;
 }
 
 #recipes .container .form .col-sm-12 .container-fluid #recipes-content .recipe .recipe-name>a{
@@ -439,11 +451,228 @@
     border-color: #00A295;
     border-width: thin;
     border-radius: 0.5rem;
-    height: 80rem;
+    color: black;
+    height: 83rem;
     padding: 50px;
     background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
 }
 
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 73rem;
+    padding: 20px 20px 30px;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+    overflow-y: auto;
+}
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header{
+    color: white;
+    margin-bottom: 10px;
+    padding: 0;
+}
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .new-inbox{
+    float: left;
+    font-size: 16px;
+    color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+    padding: 10px;
+    text-align: center;
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 3.5rem;
+}
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .new-inbox:hover{
+    opacity: 0.5;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-inbox-item{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    padding: 15px;
+    color: black;
+    background: linear-gradient(to top, #f8f8f8 0%, white 100%);
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-inbox-item:hover,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header>select:hover{
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-inbox-item .inbox-details{
+    padding: 0;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-inbox-item .inbox-actions>svg:hover{
+    opacity: 0.5;
+}
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header>select{
+    font-size: 16px;
+    color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 0.5rem;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal{
+    color: black;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog{
+    margin: 30px 25%;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content{
+    height:65rem;
+    width:100rem;
+    padding: 40px 30px;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_receivers,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_content,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_subject,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_send,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_content,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_send{
+    padding: 0;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_subject>textarea{
+    background: transparent;
+    height: 4rem;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_content>textarea{
+    height: 22rem;
+}
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_subject>textarea:hover,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_content>textarea:hover,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_receivers>ul>li:hover,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_content>textarea:hover,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-left:hover,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-right:hover{
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_receivers>ul{
+    overflow-y: auto;
+    box-shadow: none;
+    height: 10rem;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_receivers>ul>li{
+    padding: 0 15px;
+    height: 28px;
+    font-size: 15px;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    margin: 5px 0;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_send>input{
+    font-weight: 500;
+    height: 40px;
+    width: 100%;
+    --text-opacity: 1;
+    color: white;
+    margin-top: 15px;
+    border-bottom-width: 4px;
+    --border-opacity: 1;
+    border-color: #00A295;
+    border-radius: .25rem;
+    position: relative;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-inbox .messenger-block-header .modal .modal-dialog .modal-content .inbox_send>input:hover{
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 73rem;
+    width: 115rem;
+    padding: 0;
+    margin-left: 10px;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages{
+    height: 67.3rem;
+    padding: 15px 10px;
+    overflow-y: auto;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-left,
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-right{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    background: linear-gradient(to bottom, #f8f8f8 0%, white 100%);
+    margin: 20px 0;
+    padding: 10px;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-right .message-icon{
+    width: 5%;
+    display: inline-block;
+    text-align: end;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-left .message-icon{
+    width: 5%;
+    display: inline-block;
+    text-align: start;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-right .message-content{
+    width: 94%;
+    display: inline-block;
+    text-align: end;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .messages .message-left .message-content{
+    width: 94%;
+    display: inline-block;
+    text-align: start;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_content{
+    width: 93.6%;
+    display: inline-block;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_content>textarea{
+    height: 55px;
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_send{
+    width: 6%;
+    display: inline-block;
+}
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_send>button{
+    width: 100%;
+    height: 55px;
+    margin-bottom: 48px;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#messenger .container .col-sm-12 #messenger-block .messenger-block-thread .message-reply .inbox_send>button:hover{
+    opacity: 0.5;
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.2);
+}
 /* CUSTOMER PROGRESS */
 
 #customer-progress .container{
@@ -512,7 +741,7 @@
     margin-top: 1%;
 }
 
-#customer-services .container .form .container-services-block{
+#customer-services .container .container-services-block{
     border-style: solid;
     border-color: #00A295;
     border-width: thin;
@@ -522,7 +751,7 @@
     background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
 }
 
-#customer-services .container .form .container-services-block .col-sm-4{
+#customer-services .container .container-services-block .col-sm-4{
     border-style: solid;
     border-color: #00A295;
     border-width: thin;
@@ -533,22 +762,141 @@
     color: black;
     text-align: center; padding: 100px
 }
-#customer-services .container .form .container-services-block .col-sm-4>strong{
+#customer-services .container .container-services-block .col-sm-4>strong{
     height: 5rem;
     font-size: 22px;
 }
-#customer-services .container .form .container-services-block .col-sm-4>p{
+#customer-services .container .container-services-block .col-sm-4>p{
     height: 25rem;
 }
 
-#customer-services .container .form .container-services-block .col-sm-4>input{
+#customer-services .container .container-services-block .col-sm-4>input{
     width: 80%;
     justify-content: center;
     display: inline-flex;
     font-size: 16px;
     margin-top: -3px;
-    height: 33px;
+    height: 40px;
     background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+/* PROFESSIONALS */
+#professionals-section .container{
+    width: 65%;
+    margin-top: 1.5%;
+}
+
+#professionals-section .container .professionals-block{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 85rem;
+    padding: 50px 100px;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#professionals-section .container .professionals-block .professionals{
+    overflow-y: auto;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 20rem;
+    padding: 25px;
+    color: black;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .professional-entry-image>img{
+    width: 15rem;
+    height: 15rem;
+    border-radius: 10rem;
+}
+#professionals-section .container .professionals-block .professionals .professional-entry .professional-entry-resume{
+    font-size: 20px;
+    padding: 25px;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .professional-entry-actions{
+    margin-top: -30px;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .professional-entry-actions>svg{
+    width: 3rem;
+    height: 3rem;
+    margin-top: 85px;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .professional-entry-actions>svg:hover{
+    opacity: 0.5;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog{
+    width: 100rem;
+    margin: 30px 25%;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content{
+    height: 80rem;
+    width: 105rem;
+    padding: 40px 30px;
+    color: black;
+    font-size: 16px;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content .col-sm-4{
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    height: 71rem;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content .col-sm-4 .col-sm-12{
+    text-align: center;
+    color: white;
+}
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content .col-sm-8 .col-sm-12{
+    text-align: center;
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content .col-sm-8 .col-sm-12>input{
+    width: 100%;
+    justify-content: center;
+    display: inline-flex;
+    font-size: 16px;
+    margin-top: 29.4rem;
+    height: 40px;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content .col-sm-4 .col-sm-12>img{
+    width: 17rem;
+    height: 17rem;
+    margin-top: 2rem;
+    border-radius: 10rem;
+}
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content .col-sm-8 .col-sm-12 .input-group .input-label{
+    width: 10rem;
+    color: white;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+    border-style: solid;
+    border-color: #00A295;
+    border-width: thin;
+}
+#professionals-section .container .professionals-block .professionals .professional-entry .modal .modal-dialog .modal-content .col-sm-8 .col-sm-12 .input-group .input-prefix{
+    width: 50rem;
+    text-align: start;
+    background: linear-gradient(to bottom, #f8f8f8 0%, #e7e7e7 100%);
+    border-style: solid;
+    height: 40px;
+    border-color: #f8f8f8;
+    border-width: thin;
 }
 
 /* CUSTOMER ADD EVENT */
@@ -710,3 +1058,57 @@
     font-family: "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
     color: black;
 }
+
+
+/* ASSIGNED PLANS LIST */
+#assigned-plans .container{
+    width: 95%;
+    margin-top: 1.5%;
+}
+
+#assigned-plans .container .assigned-plans-block{
+    margin-bottom: 10px;
+    border-radius: 2.5rem;
+    padding: 30px 80px;
+    height: 85rem;
+    font-size: 16px;
+    color: white;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
+}
+
+#assigned-plans .container .assigned-plans-block .plans{
+    overflow-y: auto;
+}
+
+#assigned-plans .container .assigned-plans-block .plans .plan-entry{
+    border-style: solid;
+    margin-bottom: 10px;
+    border-color: #00A295;
+    border-width: thin;
+    border-radius: 0.5rem;
+    padding: 60px 10px 15px 15px;
+    color: black;
+    background: linear-gradient(to top, #f8f8f8 0%, white 100%);
+}
+
+#assigned-plans .container .assigned-plans-block .plans .plan-entry .weekly-plan-resume{
+    margin-top: -45px;
+}
+
+#assigned-plans .container .assigned-plans-block .plans .plan-entry .weekly-plan-actions{
+    margin-top: -30px;
+}
+
+#assigned-plans .container .assigned-plans-block .plans .plan-entry .weekly-plan-actions>svg{
+    width: 3rem;
+    font-size: 10px;
+    height: 3em;
+    float: right;
+    margin-top: 15px;
+}
+
+#assigned-plans .container .assigned-plans-block .plans .plan-entry .weekly-plan-actions>svg:hover{
+    opacity: 0.5;
+}
+
+/* PLAN VIEW */

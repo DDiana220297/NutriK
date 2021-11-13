@@ -42,13 +42,16 @@
                             {% endfor %}
                         </select>
                         <br/>
-                        <label for="event_tag">Tag:</label>
+                        <label>Tags:</label>
                         <br/>
-                        <select name="event_tag" id="event_tag">
+                        <ul class="list-group" id="event_tags">
                             {% for tag in tags %}
-                                <option value="{{ tag.idTag }}">{{ tag.name }}</option>
+                                <li>
+                                    <input type="checkbox" value="{{ tag.idTag }}" style="width: fit-content; margin-bottom: 10px; margin-top: 10px" name="add_tags[{{ tag.idTag }}][]">
+                                    Nivel {{ tag.level }} - {{ tag.name }}
+                                </li>
                             {% endfor %}
-                        </select>
+                        </ul>
                         <div class="save-button-item">
                             <input class="btn save-button" type="submit" value="Guardar"/>
                         </div>

@@ -18,25 +18,89 @@ class CustomerController extends Controller
     }
 
     /**
+     * Fn auxiliar para comprobar si el cliente tiene correo pendiente
+     * @return int|void
+     */
+    public function checkPendingInbox(){
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $user = reset($users);
+            $messages_query = $em->createQuery("
+                    SELECT m FROM CustomsBundle:Message m
+                    WHERE m.idUserTo = ".$user->getIdUser()." AND m.messageRead = 0
+                ");
+            $messages = $messages_query->getResult();
+            if(count($messages)>0){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+        }
+    }
+
+    /**
      * Fn que se encarga de renderizar la vista "about" de NutriK
      * @return \Symfony\Component\HttpFoundation\Response|null
      */
     public function aboutAction()
     {
-        return $this->render('@Customer/about.html.twig');
+        return $this->render('@Customer/about.html.twig',
+            [
+                'pending_inbox' => $this->checkPendingInbox()
+            ]
+        );
     }
 
     /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response|null
      */
-    public function servicesAction(Request $request)
+    public function professionalsAction(Request $request)
     {
-        if ($request->isMethod('POST')){
-            $this->session->getFlashBag()->add('servicesOKStatus',"Recibirás un correo para seguir con el proceso de contratacion del servicio elegido");
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0){
+            $professionals = $user_repository->findBy(array('role' => 'ROLE_NUTR'));
+
+            /**
+             * Cargamos su social media data
+             */
+            $professionals_social_media = array();
+            foreach ($professionals as $professional){
+                $professionals_social_media[$professional->getIdUser()] = json_decode($professional->getSocialMedia(), true);
+            }
+
+            if ($request->isMethod('POST')){
+                $this->session->getFlashBag()->add('professionalsOKStatus',"Gracias por confiar en NutriK, recibirás un correo para seguir con el proceso de contratación del servicio elegido");
+            }
+        }
+        else{
+            $this->session->getFlashBag()->add('professionalsKOStatus',"Ha ocurrido un error, no hemos podido obtener los datos para este usuario, inténtelo más tarde o contácte con el servicio de NutriK");
         }
 
-        return $this->render('@Customer/services.html.twig');
+        return $this->render('@Customer/professionals.html.twig',
+            [
+                'professionals' => $professionals,
+                'professionals_social_media' => $professionals_social_media,
+                'pending_inbox' => $this->checkPendingInbox()
+            ]
+        );
+    }
+
+    /**
+     * Fn que se encarga de mostrar los distintos paquetes de servicios de NutriK
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function packagesAction(){
+        return $this->render('@Customer/packages.html.twig',
+            [
+                'pending_inbox' => $this->checkPendingInbox()
+            ]
+        );
     }
 
     /**
@@ -73,7 +137,8 @@ class CustomerController extends Controller
         return $this->render('@Customer/news.html.twig',
             [
                 'new_events' => $new_events,
-                'new_didactic_contents' => $new_didactic_contents
+                'new_didactic_contents' => $new_didactic_contents,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -109,7 +174,8 @@ class CustomerController extends Controller
         return $this->render('@Customer/didactic-content.html.twig',
             [
                 'categories' => $categories,
-                'entries' => $entries
+                'entries' => $entries,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -132,7 +198,8 @@ class CustomerController extends Controller
         return $this->render('@Customer/event-view.html.twig',
             [
                 'id_event' => $id_event,
-                'event' => $event
+                'event' => $event,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -156,7 +223,8 @@ class CustomerController extends Controller
         return $this->render('@Customer/didactic-content-view.html.twig',
             [
                 'id_entry' => $id_entry,
-                'entry' => $entry
+                'entry' => $entry,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -250,7 +318,8 @@ class CustomerController extends Controller
         return $this->render('@Customer/personal-data.html.twig',
             [
                 "customer" => $user,
-                "customer_metrics" => reset($customer_metrics)
+                "customer_metrics" => reset($customer_metrics),
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -307,7 +376,8 @@ class CustomerController extends Controller
         return $this->render('@Customer/diary.html.twig',
             [
                 "today_datetime" => $today_datetime,
-                "diaryPage" => $diary_page
+                "diaryPage" => $diary_page,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -320,7 +390,7 @@ class CustomerController extends Controller
      */
     public function recipesAction(Request $request, $id_recipe = 0){
         $em = $this->getDoctrine()->getManager();
-        $recipe_ingredients = $nutritional_info = array();
+        $recipe_ingredients = $nutritional_info = $recipes_tags = array();
         /**
          * Comprobamos si se debe renderizar una receta en concreto
          */
@@ -364,9 +434,37 @@ class CustomerController extends Controller
                     WHERE r.name LIKE '%$key%'
                 ");
             $recipes = $dql_query->getResult();
+            /**
+             * Consultamos los tags de las recetas
+             */
+            foreach ($recipes as $recipe){
+                $dql_query = $em->createQuery("
+                    SELECT t FROM CustomsBundle:Tag t
+                    INNER JOIN NutritionistBundle:RecipeTag rt WITH rt.idTag = t.idTag
+                    WHERE rt.idRecipe = ".$recipe->getIdRecipe()."
+                    ORDER BY t.level ASC");
+                $tags = $dql_query->getResult();
+                if (count($tags)>0){
+                    $recipes_tags[$recipe->getIdRecipe()]= $tags;
+                }
+            }
             $recipe = false;
         }
         elseif($request->isMethod('POST')){
+            /**
+             * Consultamos los tags de las recetas
+             */
+            foreach ($recipes as $recipe){
+                $dql_query = $em->createQuery("
+                    SELECT t FROM CustomsBundle:Tag t
+                    INNER JOIN NutritionistBundle:RecipeTag rt WITH rt.idTag = t.idTag
+                    WHERE rt.idRecipe = ".$recipe->getIdRecipe()."
+                    ORDER BY t.level ASC");
+                $tags = $dql_query->getResult();
+                if (count($tags)>0){
+                    $recipes_tags[$recipe->getIdRecipe()]= $tags;
+                }
+            }
             $recipe = false;
         }
 
@@ -376,8 +474,10 @@ class CustomerController extends Controller
                 "id_recipe" => $id_recipe,
                 "recipe" => $recipe,
                 "recipes" => $recipes,
+                "recipes_tags" => $recipes_tags,
                 'recipe_ingredients' => $recipe_ingredients,
                 'nutritional_info' => $nutritional_info,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -443,7 +543,8 @@ class CustomerController extends Controller
 
         return $this->render('@Customer/progress.html.twig',
             [
-                "customer_metrics" => $customer_metrics
+                "customer_metrics" => $customer_metrics,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -475,6 +576,13 @@ class CustomerController extends Controller
             $events = $events_repo->findBy(array("idUser" => $user->getIdUser()));
 
             /**
+             * Diary Pages
+             */
+            $diary_pages_repo = $em->getRepository('NutritionistBundle:DiaryPages');
+            $diary_pages = $diary_pages_repo->findBy(['idUser' =>$user->getIdUser()]);
+
+
+            /**
              * Format appointments as calendar events
              */
             foreach ($appointments as $appointment){
@@ -487,7 +595,8 @@ class CustomerController extends Controller
                     'title' => $appointment->getDescription(),
                     'start' => $start_date,
                     'end' => $end_date,
-                    'url' => '/web/nutritionist-edit-appointment/'.$id_appointment
+                    'url' => '/web/nutritionist-edit-appointment/'.$id_appointment,
+                    'type' => 'event'
                 ];
             }
 
@@ -504,7 +613,24 @@ class CustomerController extends Controller
                     'title' => $event->getTitle(),
                     'start' => $start_date,
                     'end' => $end_date,
-                    'url' => '/web/nutritionist-edit-event/'.$id_event
+                    'url' => '/web/nutritionist-edit-event/'.$id_event,
+                    'type' => 'event'
+                ];
+            }
+
+            /**
+             * Format diary pages as calendar events
+             */
+            foreach ($diary_pages as $page){
+                $id_diary_page = $page->getIdDiaryPage();
+                $start_date = $page->getDate();
+                $calendar_events[] = [
+                    'id' => $id_diary_page,
+                    'title' => "Notas agenda personal",
+                    'start' => $start_date,
+                    'end' => $start_date,
+                    'url' => '/web/nutritionist-diary/'.$id_diary_page,
+                    'type' => 'diary'
                 ];
             }
         }
@@ -514,7 +640,8 @@ class CustomerController extends Controller
 
         return $this->render('@Customer/calendar.html.twig',
             [
-                "calendar_events" => $calendar_events
+                "calendar_events" => $calendar_events,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -575,7 +702,8 @@ class CustomerController extends Controller
         }
         return $this->render('@Customer/customer-add-event.html.twig',
             [
-                "events" => $events
+                "events" => $events,
+                'pending_inbox' => $this->checkPendingInbox()
             ]
         );
     }
@@ -584,7 +712,487 @@ class CustomerController extends Controller
      * Fn que se encarga de la mensajeria entre usuarios
      * @return \Symfony\Component\HttpFoundation\Response|null
      */
-    public function messengerAction(){
-        return $this->render('@Customer/messenger-services.html.twig');
+    public function messengerAction(Request $request, $id_message = 0){
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $customer_nutritionist_dependencies_repo = $em->getRepository("NutritionistBundle:CustomerNutritionist");
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+            $inbox_users = $inbox = $sent_inbox = $sent_inbox_threads = $inbox_threads = array();
+            $message_repo = $em->getRepository('CustomsBundle:Message');
+
+            /**
+             * Si estamos abriendo un mensaje, vamos a marcarlo como leido
+             */
+            if($id_message != 0){
+                $message = $message_repo->findBy(array('idMessage' => $id_message));
+                if(count($message)>0){
+                    $message = reset($message);
+                    if($message->getIdUserTo() == $user->getIdUser()){
+                        $message->setDateRead(new \DateTime('NOW'));
+                        $message->setMessageRead(1);
+                        $em->persist($message);
+                        $em->flush();
+                    }
+                }
+            }
+
+            if($request->isMethod('POST')  && $request->request->get('submit') == "Responder"){
+                /**
+                 * Cargamos los datos del mensaje al que estamos respondiendo
+                 */
+                $id_message_reply = $request->request->get('repply_id_message');
+                $message = $message_repo->findBy(array('idMessage' => $id_message_reply));
+                $message = reset($message);
+
+                $reply_message_content = $request->request->get('reply_message_content');
+                if ($reply_message_content != ""){
+                    /**
+                     * Construimos el nuevo mensaje
+                     */
+                    $reply_message = new \CustomsBundle\Entity\Message();
+                    $reply_message->setIdUserFrom($user->getIdUser());
+                    $reply_message->setIdUserTo($message->getIdUserFrom() == $user->getIdUser() ? $message->getIdUserTo() : $message->getIdUserFrom());
+                    $reply_message->setContent($request->request->get('reply_message_content'));
+                    $reply_message->setDateAdd(new \DateTime('NOW'));
+
+                    /**
+                     * Reply Subject
+                     */
+                    $subject = $message->getSubject();
+                    $subject = 0 == strpos($subject, '[Re]') ? $message->getSubject() :  '[Re]' . $message->getSubject();
+                    $reply_message->setSubject($subject);
+
+                    $em->persist($reply_message);
+                    $em->flush();
+                    $this->session->getFlashBag()->add('messengerOKStatus','Mensaje respondido correctamente.');
+                }
+                else{
+                    $this->session->getFlashBag()->add('messengerKOStatus','Debes indicar el contenido de la respuesta.');
+                }
+            }
+            elseif ($request->isMethod('POST')  && $request->request->get('submit') == "Enviar"){
+                $new_inbox_receivers = $request->request->get('new_inbox_receivers');
+                $message_content = $request->request->get('message_content');
+                $message_subject = $request->request->get('message_subject');
+                if($new_inbox_receivers != ""){
+                    if($message_content != "" && $message_subject != ""){
+                        foreach ($new_inbox_receivers  as $new_inbox_receiver){
+                            $message = new \CustomsBundle\Entity\Message();
+                            $message->setIdUserFrom($user->getIdUser());
+                            $message->setIdUserTo($new_inbox_receiver);
+                            $message->setContent($message_content);
+                            $message->setSubject($message_subject);
+                            $message->setDateAdd(new \DateTime('NOW'));
+                            $em->persist($message);
+                            $em->flush();
+                        }
+                        $this->session->getFlashBag()->add('messengerOKStatus','Mensaje enviado correctamente.');
+                    }
+                    else{
+                        $this->session->getFlashBag()->add('messengerKOStatus','Debes indicar el contenido y asunto para el nuevo mensaje.');
+                    }
+                }
+                else{
+                    $this->session->getFlashBag()->add('messengerKOStatus','Debes indicar al menos un destinatario para el nuevo mensaje.');
+                }
+            }
+
+
+            /**
+             * Para cada mensaje recibido, consultamos el hilo mantenido con el remitente y cargamos los datos del mismo
+             */
+            $inbox = $message_repo->findBy(array('idUserTo' => $user->getIdUser()));
+            foreach ($inbox as $in){
+                $from = $user_repository->findBy(array('idUser' => $in->getIdUserFrom()));
+                $from = reset($from);
+
+                $dql_query = $em->createQuery("
+                    SELECT m FROM CustomsBundle:Message m
+                    WHERE
+                      (m.idUserFrom = ".$in->getIdUserFrom()." AND m.idUserTo = ".$user->getIdUser().")
+                      OR (m.idUserFrom = ".$user->getIdUser()." AND m.idUserTo = ".$in->getIdUserFrom().")
+                      ORDER BY m.dateAdd ASC
+                ");
+                $threads = $dql_query->getResult();
+                if(count($threads)>0 && $threads != false){
+                    foreach ($threads as $thread){
+                        $inbox_threads[$in->getIdMessage()][$thread->getIdMessage()] = [
+                            'date_add' => $thread->getDateAdd(),
+                            'date_read' => $thread->getDateRead(),
+                            'content' => $thread->getContent(),
+                            'subject' => $thread->getSubject(),
+                            'id_user_to' => $thread->getIdUserFrom(),
+                            'id_user_from' => $thread->getIdUserTo(),
+                            'firstname_user_from' => $from->getFirstname(),
+                            'lastname_user_from' => $from->getLastname(),
+                            'email_user_from' => $from->getEmail()
+                        ];
+                    }
+                }
+            }
+
+            /**
+             * Para cada mensaje enviado, consultamos el hilo mantenido con el remitente y cargamos los datos del mismo
+             */
+            $sent_inbox = $message_repo->findBy(array('idUserFrom' => $user->getIdUser()));
+            foreach ($sent_inbox as $out){
+                $to = $user_repository->findBy(array('idUser' => $out->getIdUserTo()));
+                $to = reset($to);
+
+                $dql_query = $em->createQuery("
+                    SELECT m FROM CustomsBundle:Message m
+                    WHERE
+                      (m.idUserFrom = ".$out->getIdUserTo()." AND m.idUserTo = ".$user->getIdUser().")
+                      OR (m.idUserFrom = ".$user->getIdUser()." AND m.idUserTo = ".$out->getIdUserTo().")
+                      ORDER BY m.dateAdd ASC
+                ");
+                $threads = $dql_query->getResult();
+                if(count($threads)>0 && $threads != false){
+                    foreach ($threads as $thread){
+                        $sent_inbox_threads[$out->getIdMessage()][$thread->getIdMessage()] = [
+                            'date_add' => $thread->getDateAdd(),
+                            'date_read' => $thread->getDateRead(),
+                            'content' => $thread->getContent(),
+                            'subject' => $thread->getSubject(),
+                            'id_user_to' => $thread->getIdUserFrom(),
+                            'id_user_from' => $thread->getIdUserTo(),
+                            'firstname_user_from' => $to->getFirstname(),
+                            'lastname_user_from' => $to->getLastname(),
+                            'email_user_from' => $to->getEmail()
+                        ];
+                    }
+                }
+            }
+
+            if($user->getRole() == 'ROLE_NUTR'){
+                /**
+                 * El nutricionista podrá mantener un servicio de mensajeria con los clientes con los que tiene relacion
+                 */
+                $customer_nutritionist_dependencies = $customer_nutritionist_dependencies_repo->findBy(array("idNutritionist" => $user->getIdUser()));
+                if (count($customer_nutritionist_dependencies)>0){
+                    foreach ($customer_nutritionist_dependencies as $dependency){
+                        $customers = $user_repository->findBy(array("idUser" => $dependency->getIdCustomer()));
+                        if(count($customers)>0){
+                            $inbox_users = array_merge($inbox_users, $customers);
+                        }
+                    }
+                }
+            }
+            else{
+                /**
+                 * El cliente podrá mantener un servicio de mensajeria con los nutricionistas contratados y con otros usuarios de la web
+                 */
+                $customer_nutritionist_dependencies = $customer_nutritionist_dependencies_repo->findBy(array("idCustomer" => $user->getIdUser()));
+                if (count($customer_nutritionist_dependencies)>0){
+                    foreach ($customer_nutritionist_dependencies as $dependency){
+                        $customers = $user_repository->findBy(array("idUser" => $dependency->getIdNutritionist()));
+                        if(count($customers)>0){
+                            $inbox_users = array_merge($inbox_users, $customers);
+                        }
+                    }
+                }
+
+                $nutrik_customers = $user_repository->findBy(array('role' => 'ROLE_CUSTOMER'));
+                if(count($nutrik_customers)>0){
+                    $inbox_users = array_merge($inbox_users, $nutrik_customers);
+                }
+            }
+
+            $inbox_users_images = array();
+            foreach ($inbox_users as $iu){
+                $inbox_users_images[$iu->getIdUser()] = $iu->getImage();
+            }
+        }
+        else {
+            $this->session->getFlashBag()->add('messengerKOStatus',"Se ha producido un error. No hemos podido cargar los datos para este usuario, intentelo de nuevo o contacte con el servicio de NutriK.");
+        }
+        return $this->render('@Customer/messenger-services.html.twig',
+            [
+                'id_message' => $id_message,
+                'id_user' => $user->getIdUser(),
+                'inbox_users' => $inbox_users,
+                'inbox' => $inbox,
+                'inbox_threads' => $inbox_threads,
+                'sent_inbox' => $sent_inbox,
+                'sent_inbox_threads' => $sent_inbox_threads,
+                'inbox_users_images' => $inbox_users_images,
+                'pending_inbox' => $this->checkPendingInbox()
+            ]
+        );
+    }
+
+    /**
+     * Fn auxiliar que busca los clientes asocidos al nutricionista loggeado por una key
+     * @param $key
+     * @return array
+     */
+    public function findCustomerByKey($key){
+        $customers = array();
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users) > 0) {
+            $user = reset($users);
+            $dql_query = $em->createQuery("
+                SELECT u FROM CustomsBundle:User u
+                INNER JOIN NutritionistBundle:CustomerNutritionist nc WITH nc.idCustomer = u.idUser
+                WHERE
+                  nc.idNutritionist = ".$user->getIdUser()."
+                  AND (u.firstname LIKE '%$key%' OR u.lastname LIKE '%$key%' OR u.email LIKE '%$key%')
+            ");
+            $customers = $dql_query->getResult();
+        }
+        return $customers;
+    }
+
+    /**
+     * Fn que se encarga de renderizar el listado de planificaciones asociadas a un cliente
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function plansAction(){
+        /**
+         * Instanciamos el user con el email del usuario logeado
+         */
+        $plans = $weekly_plans_tags = $weekly_plans_dates = array();
+        $em = $this->getDoctrine()->getManager();
+        $user_repository = $em->getRepository('CustomsBundle:User');
+        $customer_plan_repo = $em->getRepository('NutritionistBundle:CustomerPlans');
+        $users = $user_repository->findBy(array("email" => $this->getUser()->getUsername()));
+        if(count($users)>0){
+            $user = reset($users);
+
+            /**
+             * Customer plans
+             */
+            $dql_query = $em->createQuery("
+                    SELECT wp FROM NutritionistBundle:WeeklyPlan wp
+                    INNER JOIN NutritionistBundle:CustomerPlans cp WITH cp.idPlan = wp.idPlan
+                    WHERE cp.idCustomer = ". $user->getIdUser() ."
+                    ORDER BY cp.dateAdd DESC");
+            $plans = $dql_query->getResult();
+
+            /**
+             * Consultamos los tags de los contenidos didacticos y los rangos de fechas
+             */
+            foreach ($plans as $plan){
+                $dql_query = $em->createQuery("
+                    SELECT t FROM CustomsBundle:Tag t
+                    INNER JOIN NutritionistBundle:WeeklyPlanTag wpt WITH wpt.idTag = t.idTag
+                    WHERE wpt.idWeeklyPlan = ". $plan->getIdPlan() ."
+                    ORDER BY t.level ASC");
+                $tags = $dql_query->getResult();
+                if (count($tags)>0){
+                    $weekly_plans_tags[$plan->getIdPlan()] = $tags;
+                }
+                $customer_plan = $customer_plan_repo->findBy(array("idCustomer" => $user->getIdUser(), "idPlan" => $plan->getIdPlan()));
+                $customer_plan = reset($customer_plan);
+                $weekly_plans_dates[$plan->getIdPlan()] = [
+                    "date_from" => $customer_plan->getDateFrom(),
+                    "date_to" => $customer_plan->getDateTo()
+                ];
+            }
+
+        }
+        return $this->render('@Customer/weekly-plans.html.twig',
+            [
+                'now' => new \DateTime('NOW'),
+                'plans' => $plans,
+                "weekly_plans_tags" => $weekly_plans_tags,
+                "weekly_plans_dates" => $weekly_plans_dates,
+                'pending_inbox' => $this->checkPendingInbox()
+            ]
+        );
+    }
+
+    /**
+     * Fn que se encarga de ofrecer la vista completa de un plan semanal
+     * @param $id_plan
+     * @return \Symfony\Component\HttpFoundation\Response|null
+     */
+    public function viewPlanAction($id_plan){
+        /**
+         * Cargamos la entrada
+         */
+        $em = $this->getDoctrine()->getManager();
+        $entries = $em->getRepository("NutritionistBundle:WeeklyPlan");
+        $plan = $entries->find($id_plan);
+
+        /**
+         * Cargamos los ejercicios
+         */
+        $em = $this->getDoctrine()->getManager();
+        $exercises_repo = $em->getRepository("NutritionistBundle:Exercise");
+        $exercises = $exercises_repo->findAll();
+
+        /**
+         * Cargamos los planes de alimentacion
+         */
+        $meals_repo = $em->getRepository("NutritionistBundle:Meal");
+
+        /**
+         * Cargamos los tags asociados al plan
+         */
+        $weekly_plan_tags_repo = $em->getRepository('NutritionistBundle:WeeklyPlanTag');
+
+        /**
+         * Desayunos
+         */
+        $monday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Lunes"]);
+        $tuesday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Martes"]);
+        $wednesday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Miercoles"]);
+        $thursday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Jueves"]);
+        $friday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Viernes"]);
+        $saturday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Sabado"]);
+        $sunday_breakfast = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Desayuno", "day" => "Domingo"]);
+
+        /**
+         * Snack
+         */
+        $monday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Lunes"]);
+        $tuesday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Martes"]);
+        $wednesday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Miercoles"]);
+        $thursday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Jueves"]);
+        $friday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Viernes"]);
+        $saturday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Sabado"]);
+        $sunday_snack = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Snack", "day" => "Domingo"]);
+
+        /**
+         * Almuerzos
+         */
+        $monday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Lunes"]);
+        $tuesday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Martes"]);
+        $wednesday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Miercoles"]);
+        $thursday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Jueves"]);
+        $friday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Viernes"]);
+        $saturday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Sabado"]);
+        $sunday_lunch = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Almuerzo", "day" => "Domingo"]);
+
+        /**
+         * Meriendas
+         */
+        $monday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Lunes"]);
+        $tuesday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Martes"]);
+        $wednesday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Miercoles"]);
+        $thursday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Jueves"]);
+        $friday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Viernes"]);
+        $saturday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Sabado"]);
+        $sunday_afternoon = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Merienda", "day" => "Domingo"]);
+
+        /**
+         * Cenas
+         */
+        $monday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Lunes"]);
+        $tuesday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Martes"]);
+        $wednesday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Miercoles"]);
+        $thursday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Jueves"]);
+        $friday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Viernes"]);
+        $saturday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Sabado"]);
+        $sunday_dinner = $meals_repo->findBy(["idPlan" => $id_plan, "mealSort" => "Cena", "day" => "Domingo"]);
+
+        /**
+         * Cargamos los entrenamientos
+         */
+        $workouts_repo = $em->getRepository("NutritionistBundle:Workout");
+        $monday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Lunes"]);
+        $mondayWorkout = reset($monday_workout);
+        $tuesday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Martes"]);
+        $tuesdayWorkout = reset($tuesday_workout);
+        $wednesday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Miercoles"]);
+        $wednesdayWorkout = reset($wednesday_workout);
+        $thursday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Jueves"]);
+        $thursdayWorkout = reset($thursday_workout);
+        $friday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Viernes"]);
+        $fridayWorkout = reset($friday_workout);
+        $saturday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Sabado"]);
+        $saturdayWorkout = reset($saturday_workout);
+        $sunday_workout = $workouts_repo->findBy(["idPlan" => $id_plan, "day" => "Domingo"]);
+        $sundayWorkout = reset($sunday_workout);
+
+        /**
+         * Cargamos los tags
+         */
+        $tags_repo = $em->getRepository("CustomsBundle:Tag");
+        $tags = $tags_repo->findAll();
+
+        /**
+         * Cargamos los tags asociados a la receta
+         */
+        $weekly_plans_tags = $weekly_plan_tags_repo->findBy(['idWeeklyPlan' => $id_plan]);
+        $weekly_plan_tags_keys = array();
+        if(count($weekly_plans_tags)>0){
+            foreach ($weekly_plans_tags as $tag){
+                $weekly_plan_tags_keys[] = (string)$tag->getIdTag();
+            }
+        }
+
+        return $this->render('@Customer/plan.html.twig',
+            [
+                "id_plan" => $id_plan,
+                "weeklyPlan" => $plan,
+                "exercises" => $exercises,
+                "tags" => $tags,
+                "weekly_plans_tags" => $weekly_plans_tags,
+                'weekly_plan_tags_keys' => $weekly_plan_tags_keys,
+                'pending_inbox' => $this->checkPendingInbox(),
+
+                //Meals
+                "monday_breakfast" => reset($monday_breakfast),
+                "tuesday_breakfast" => reset($tuesday_breakfast),
+                "wednesday_breakfast" => reset($wednesday_breakfast),
+                "thursday_breakfast" => reset($thursday_breakfast),
+                "friday_breakfast" => reset($friday_breakfast),
+                "saturday_breakfast" => reset($saturday_breakfast),
+                "sunday_breakfast" => reset($sunday_breakfast),
+                "monday_snack" => reset($monday_snack),
+                "tuesday_snack" => reset($tuesday_snack),
+                "wednesday_snack" => reset($wednesday_snack),
+                "thursday_snack" => reset($thursday_snack),
+                "friday_snack" => reset($friday_snack),
+                "saturday_snack" => reset($saturday_snack),
+                "sunday_snack" => reset($sunday_snack),
+                "monday_lunch" => reset($monday_lunch),
+                "tuesday_lunch" => reset($tuesday_lunch),
+                "wednesday_lunch" => reset($wednesday_lunch),
+                "thursday_lunch" => reset($thursday_lunch),
+                "friday_lunch" => reset($friday_lunch),
+                "saturday_lunch" => reset($saturday_lunch),
+                "sunday_lunch" => reset($sunday_lunch),
+                "monday_afternoon" => reset($monday_afternoon),
+                "tuesday_afternoon" => reset($tuesday_afternoon),
+                "wednesday_afternoon" => reset($wednesday_afternoon),
+                "thursday_afternoon" => reset($thursday_afternoon),
+                "friday_afternoon" => reset($friday_afternoon),
+                "saturday_afternoon" => reset($saturday_afternoon),
+                "sunday_afternoon" => reset($sunday_afternoon),
+                "monday_dinner" => reset($monday_dinner),
+                "tuesday_dinner" => reset($tuesday_dinner),
+                "wednesday_dinner" => reset($wednesday_dinner),
+                "thursday_dinner" => reset($thursday_dinner),
+                "friday_dinner" => reset($friday_dinner),
+                "saturday_dinner" => reset($saturday_dinner),
+                "sunday_dinner" => reset($sunday_dinner),
+
+                //Workouts
+                "monday_workout" => $mondayWorkout,
+                "monday_workout_exercises" => $mondayWorkout != false ? $mondayWorkout->getWorkoutExercises() : [],
+                "tuesday_workout" => $tuesdayWorkout,
+                "tuesday_workout_exercises" => $tuesdayWorkout != false ? $tuesdayWorkout->getWorkoutExercises() : [],
+                "wednesday_workout" => $wednesdayWorkout,
+                "wednesday_workout_exercises" => $wednesdayWorkout != false ? $wednesdayWorkout->getWorkoutExercises() : [],
+                "thursday_workout" => $thursdayWorkout,
+                "thursday_workout_exercises" => $thursdayWorkout != false ? $thursdayWorkout->getWorkoutExercises() : [],
+                "friday_workout" => $fridayWorkout,
+                "friday_workout_exercises" => $fridayWorkout != false ? $fridayWorkout->getWorkoutExercises() : [],
+                "saturday_workout" => $saturdayWorkout,
+                "saturday_workout_exercises" => $saturdayWorkout != false ? $saturdayWorkout->getWorkoutExercises() : [],
+                "sunday_workout" => $sundayWorkout,
+                "sunday_workout_exercises" => $sundayWorkout != false ? $sundayWorkout->getWorkoutExercises() : [],
+            ]
+        );
     }
 }

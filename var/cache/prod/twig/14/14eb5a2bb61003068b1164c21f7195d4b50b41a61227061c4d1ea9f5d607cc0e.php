@@ -116,11 +116,25 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
         echo "\" method=\"post\">
                 <div class=\"col-sm-6\">
                     <div class=\"personal-data-header\">
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-circle\" viewBox=\"0 0 16 16\">
-                            <path d=\"M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z\"/>
-                            <path fill-rule=\"evenodd\" d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z\"/>
-                        </svg>
-                        <h3 style=\"display: inline-flex\">Mis Datos Personales</h3>
+";
+        // line 39
+        echo "                        ";
+        if (($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "image", []) != "")) {
+            // line 40
+            echo "                            <img src=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", []), "image", [])), "html", null, true);
+            echo "\" alt=\"\">
+                        ";
+        } else {
+            // line 42
+            echo "                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-circle\" viewBox=\"0 0 16 16\">
+                                <path d=\"M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z\"/>
+                                <path fill-rule=\"evenodd\" d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z\"/>
+                            </svg>
+                        ";
+        }
+        // line 47
+        echo "                        <h3 style=\"display: inline-flex\">Mis Datos Personales</h3>
                     </div>
                     <br/>
                     <div class=\"form-check\">
@@ -128,7 +142,7 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                             Otro
                         </label>
                         <input class=\"form-check-input\" type=\"checkbox\" value=\"0\" id=\"idCustomerGenderOther\" ";
-        // line 46
+        // line 54
         if (($this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "idGender", []) == 0)) {
             echo " checked ";
         }
@@ -137,7 +151,7 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                             Sra.
                         </label>
                         <input class=\"form-check-input\" type=\"checkbox\" value=\"1\" id=\"idCustomerGenderFemale\" ";
-        // line 50
+        // line 58
         if (($this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "idGender", []) == 1)) {
             echo " checked ";
         }
@@ -146,7 +160,7 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                             Sr.
                         </label>
                         <input class=\"form-check-input\" type=\"checkbox\" value=\"2\" id=\"idCustomerGenderMale\" ";
-        // line 54
+        // line 62
         if (($this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "idGender", []) == 2)) {
             echo " checked ";
         }
@@ -154,33 +168,33 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                     </div>
                     <div class=\"personal-data-fields\">
                         <label for=\"firstname\">Nombre:</label><input type=\"text\" id=\"firstname\" name=\"firstname\" class=\"form-control\" value=\"";
-        // line 57
+        // line 65
         echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "firstname", []), "html", null, true);
         echo "\"/>
                         <label for=\"lastname\">Apellidos:</label><input type=\"text\" id=\"lastname\" name=\"lastname\" class=\"form-control\" value=\"";
-        // line 58
+        // line 66
         echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "lastname", []), "html", null, true);
         echo "\"/>
                         <label for=\"email\">Email:</label><input type=\"email\" id=\"email\" name=\"email\" class=\"form-control\" value=\"";
-        // line 59
+        // line 67
         echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "email", []), "html", null, true);
         echo "\"/>
                         <label for=\"password\">Contraseña:</label><input type=\"password\" id=\"password\" name=\"password\" class=\"form-control\"/>
                         <label for=\"confirm_password\">Confirmar Contraseña:</label><input type=\"password\" id=\"confirm_password\" name=\"confirm_password\" class=\"form-control\"/>
                         <label for=\"birthday\">Fecha de nacimiento:</label><input type=\"date\" id=\"birthday\" name=\"birthday\" class=\"form-control\" value=\"";
-        // line 62
+        // line 70
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "birthday", []), "Y-m-d"), "html", null, true);
         echo "\"/>
                     </div>
                 </div>
                 <div class=\"col-sm-6\" style=\"display: inline-flex\">
-                    <div class=\"personal-data-fields\" style=\"margin-top: 17.5%; width: 100%\">
+                    <div class=\"personal-data-fields\" style=\"margin-top: 20%; width: 100%\">
                         <label for=\"bibliografia\">Descripción / Bibliografía:</label><textarea type=\"text\" id=\"bibliografia\" name=\"bibliografia\" class=\"form-control\" style=\"height: 160px\">";
-        // line 67
+        // line 75
         echo twig_escape_filter($this->env, $this->getAttribute(($context["customer"] ?? $this->getContext($context, "customer")), "description", []), "html", null, true);
         echo "</textarea>
                         <label for=\"objetivos\">Objetivos:</label><textarea type=\"text\" id=\"objetivos\" name=\"objetivos\" class=\"form-control\" style=\"height: 100px\">";
-        // line 68
+        // line 76
         if ((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "goals", []), "html", null, true);
         }
@@ -188,19 +202,19 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                         <p><strong>Metricas:</strong></p>
                         <div id=\"metricas\" style=\"display: inline-flex; width: 85%\">
                             <label for=\"peso\"></label><input type=\"number\" id=\"peso\" name=\"peso\" class=\"form-control\" placeholder=\"kg\" value=\"";
-        // line 71
+        // line 79
         if ((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "weight", []), "html", null, true);
         }
         echo "\"/>
                             <label for=\"altura\"></label><input type=\"number\" id=\"altura\" name=\"altura\" class=\"form-control\" placeholder=\"cm\" value=\"";
-        // line 72
+        // line 80
         if ((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "height", []), "html", null, true);
         }
         echo "\"/>
                             <label for=\"edad\"></label><input type=\"number\" id=\"edad\" name=\"edad\" class=\"form-control\" placeholder=\"años\" value=\"";
-        // line 73
+        // line 81
         if ((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false)) {
             echo twig_escape_filter($this->env, $this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "age", []), "html", null, true);
         }
@@ -211,25 +225,25 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                             <label for=\"actividad\"></label>
                             <select id=\"actividad\" name=\"actividad\" class=\"form-select\">
                                 <option value=\"1\" ";
-        // line 79
+        // line 87
         if (((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false) && ($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 1))) {
             echo " selected ";
         }
         echo ">Bajo</option>
                                 <option value=\"2\" ";
-        // line 80
+        // line 88
         if (((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false) && ($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 2))) {
             echo " selected ";
         }
         echo ">Moderado</option>
                                 <option value=\"3\" ";
-        // line 81
+        // line 89
         if (((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false) && ($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 3))) {
             echo " selected ";
         }
         echo ">Activo</option>
                                 <option value=\"3\" ";
-        // line 82
+        // line 90
         if (((($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")) != false) && ($this->getAttribute(($context["customer_metrics"] ?? $this->getContext($context, "customer_metrics")), "movement", []) == 4))) {
             echo " selected ";
         }
@@ -243,9 +257,9 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
         </div>
     </section>
     ";
-        // line 91
-        $this->loadTemplate("footer.html.twig", "@Customer/personal-data.html.twig", 91)->display($context);
-        // line 92
+        // line 99
+        $this->loadTemplate("footer.html.twig", "@Customer/personal-data.html.twig", 99)->display($context);
+        // line 100
         echo "    </html>
 ";
         
@@ -260,7 +274,7 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
 
     public function getDebugInfo()
     {
-        return array (  249 => 92,  247 => 91,  233 => 82,  227 => 81,  221 => 80,  215 => 79,  204 => 73,  198 => 72,  192 => 71,  184 => 68,  180 => 67,  172 => 62,  166 => 59,  162 => 58,  158 => 57,  150 => 54,  141 => 50,  132 => 46,  115 => 32,  112 => 31,  102 => 27,  98 => 25,  93 => 24,  83 => 20,  79 => 18,  75 => 17,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  263 => 100,  261 => 99,  247 => 90,  241 => 89,  235 => 88,  229 => 87,  218 => 81,  212 => 80,  206 => 79,  198 => 76,  194 => 75,  186 => 70,  180 => 67,  176 => 66,  172 => 65,  164 => 62,  155 => 58,  146 => 54,  137 => 47,  130 => 42,  124 => 40,  121 => 39,  115 => 32,  112 => 31,  102 => 27,  98 => 25,  93 => 24,  83 => 20,  79 => 18,  75 => 17,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -307,10 +321,18 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                 <form class=\"form\" action=\"{{ path(\"customer_personal_data\") }}\" method=\"post\">
                 <div class=\"col-sm-6\">
                     <div class=\"personal-data-header\">
-                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-circle\" viewBox=\"0 0 16 16\">
-                            <path d=\"M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z\"/>
-                            <path fill-rule=\"evenodd\" d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z\"/>
-                        </svg>
+{#                        <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-circle\" viewBox=\"0 0 16 16\">#}
+{#                            <path d=\"M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z\"/>#}
+{#                            <path fill-rule=\"evenodd\" d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z\"/>#}
+{#                        </svg>#}
+                        {% if app.user.image != \"\" %}
+                            <img src=\"{{ asset(app.user.image) }}\" alt=\"\">
+                        {% else %}
+                            <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-circle\" viewBox=\"0 0 16 16\">
+                                <path d=\"M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z\"/>
+                                <path fill-rule=\"evenodd\" d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z\"/>
+                            </svg>
+                        {% endif %}
                         <h3 style=\"display: inline-flex\">Mis Datos Personales</h3>
                     </div>
                     <br/>
@@ -338,7 +360,7 @@ class __TwigTemplate_eb42f12b8ecede66c9f165bd4bcdacd7cca00d2a5c8ea3c1fab5aba1595
                     </div>
                 </div>
                 <div class=\"col-sm-6\" style=\"display: inline-flex\">
-                    <div class=\"personal-data-fields\" style=\"margin-top: 17.5%; width: 100%\">
+                    <div class=\"personal-data-fields\" style=\"margin-top: 20%; width: 100%\">
                         <label for=\"bibliografia\">Descripción / Bibliografía:</label><textarea type=\"text\" id=\"bibliografia\" name=\"bibliografia\" class=\"form-control\" style=\"height: 160px\">{{ customer.description }}</textarea>
                         <label for=\"objetivos\">Objetivos:</label><textarea type=\"text\" id=\"objetivos\" name=\"objetivos\" class=\"form-control\" style=\"height: 100px\">{% if customer_metrics != false %}{{ customer_metrics.goals }}{% endif %}</textarea>
                         <p><strong>Metricas:</strong></p>

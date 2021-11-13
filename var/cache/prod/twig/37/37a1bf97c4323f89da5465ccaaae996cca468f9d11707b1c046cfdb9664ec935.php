@@ -122,27 +122,36 @@ class __TwigTemplate_b17063c9bb2f82b15f60bc714c7c7d1addfff7e08e7408689c2535b52c8
         // line 43
         echo "                        </select>
                         <br/>
-                        <label for=\"event_tag\">Tag:</label>
+                        <label>Tags:</label>
                         <br/>
-                        <select name=\"event_tag\" id=\"event_tag\">
+                        <ul class=\"list-group\" id=\"event_tags\">
                             ";
         // line 48
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["tags"] ?? $this->getContext($context, "tags")));
         foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
             // line 49
-            echo "                                <option value=\"";
+            echo "                                <li>
+                                    <input type=\"checkbox\" value=\"";
+            // line 50
             echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "idTag", []), "html", null, true);
-            echo "\">";
+            echo "\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"add_tags[";
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "idTag", []), "html", null, true);
+            echo "][]\">
+                                    Nivel ";
+            // line 51
+            echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "level", []), "html", null, true);
+            echo " - ";
             echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "name", []), "html", null, true);
-            echo "</option>
+            echo "
+                                </li>
                             ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 51
-        echo "                        </select>
+        // line 54
+        echo "                        </ul>
                         <div class=\"save-button-item\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>
@@ -174,7 +183,7 @@ class __TwigTemplate_b17063c9bb2f82b15f60bc714c7c7d1addfff7e08e7408689c2535b52c8
 
     public function getDebugInfo()
     {
-        return array (  145 => 51,  134 => 49,  130 => 48,  123 => 43,  112 => 41,  108 => 40,  86 => 21,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  154 => 54,  143 => 51,  137 => 50,  134 => 49,  130 => 48,  123 => 43,  112 => 41,  108 => 40,  86 => 21,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -231,13 +240,16 @@ class __TwigTemplate_b17063c9bb2f82b15f60bc714c7c7d1addfff7e08e7408689c2535b52c8
                             {% endfor %}
                         </select>
                         <br/>
-                        <label for=\"event_tag\">Tag:</label>
+                        <label>Tags:</label>
                         <br/>
-                        <select name=\"event_tag\" id=\"event_tag\">
+                        <ul class=\"list-group\" id=\"event_tags\">
                             {% for tag in tags %}
-                                <option value=\"{{ tag.idTag }}\">{{ tag.name }}</option>
+                                <li>
+                                    <input type=\"checkbox\" value=\"{{ tag.idTag }}\" style=\"width: fit-content; margin-bottom: 10px; margin-top: 10px\" name=\"add_tags[{{ tag.idTag }}][]\">
+                                    Nivel {{ tag.level }} - {{ tag.name }}
+                                </li>
                             {% endfor %}
-                        </select>
+                        </ul>
                         <div class=\"save-button-item\">
                             <input class=\"btn save-button\" type=\"submit\" value=\"Guardar\"/>
                         </div>

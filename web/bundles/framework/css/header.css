@@ -2,9 +2,9 @@
 
 /* Global header */
 .global-header{
-    background: #00766c;
     border-radius: 0px;
     border-color: #00766c;
+    background: linear-gradient(to bottom, #00766c 0%, #00A295 100%);
     padding: 20px;
 }
 
@@ -69,6 +69,9 @@ body {
 
 .global-header .navbar-brand {
     font-size: 50px;
+}
+.global-header .container-fluid .navbar-collapse .navbar-right>li #svg-messenger:hover{
+    opacity: 0.5;
 }
 
 .container-fluid>.navbar-collapse, .container-fluid>.navbar-header, .container>.navbar-collapse, .container>.navbar-header {

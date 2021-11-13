@@ -26,25 +26,35 @@
                 </div>
             </div>
         {% endfor %}
+        {% for message in app.session.flashbag().get('editWeeklyPlanOKStatus') %}
+            <div class="row" style="width: 92%; margin-left: 4%; margin-top: 10px; margin-bottom: 0;">
+                <div class="alert alert-success" role="alert" style="margin-bottom: 0">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class="container">
             <!-- Añadimos un novalidate debido a los contenedores ocultos, mostraremos el error con la variable de sesion -->
             <form id="msform" class="form" action="{{ path("nutritionist_edit_weekly_plan", {id_plan:weeklyPlan.idPlan}) }}" method="post" novalidate>
                 <div class="col-sm-12">
                     <div id="weekly-plan-content-block" style="height: 15rem; margin-bottom: 20px">
                         <div class="col-sm-6">
-                            <label for="plan_tags">Tag:</label>
-                            <select name="plan_tags" id="plan_tags">
+                            <label>Tags:</label>
+                            <ul class="list-group" id="weekly_plan_tags">
                                 {% for tag in tags %}
-                                    <option value="{{ tag.idTag }}" {% if tag.idTag == weeklyPlan.idTag %} selected {% endif %}>{{ tag.name }}</option>
+                                    <li>
+                                        <input type="checkbox" value="{{ tag.idTag }}" {% if tag.idTag in weekly_plan_tags_keys %} checked {% endif %}
+                                               style="width: fit-content; margin-bottom: 5px; margin-top: 5px" name="add_tags[{{ tag.idTag }}][]">
+                                        Nivel {{ tag.level }} - {{ tag.name }}
+                                    </li>
                                 {% endfor %}
-                            </select>
-                            <br/><br/>
-                            <label for="plan_title">Tile:</label>
-                            <textarea type="text" id="plan_title" name="plan_title" class="form-control">{{ weeklyPlan.title }}</textarea>
+                            </ul>
                         </div>
                         <div class="col-sm-6">
+                            <label for="plan_title">Tile:</label>
+                            <textarea type="text" id="plan_title" name="plan_title" class="form-control">{{ weeklyPlan.title }}</textarea>
                             <label for="plan_description">Descripción:</label>
-                            <textarea type="text" id="plan_description" name="plan_description" class="form-control" style="height: 100px">{{ weeklyPlan.description }}</textarea>
+                            <textarea type="text" id="plan_description" name="plan_description" class="form-control" style="height: 5.5rem">{{ weeklyPlan.description }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -80,7 +90,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="breakfast_menu_monday" class="form-control" style="height: 430px">{% if monday_breakfast != false %}{{ monday_breakfast.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="breakfast_list_monday" class="form-control" style="height: 225px">{% if monday_breakfast != false %}{{ monday_breakfast.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="breakfast_list_monday" class="form-control" style="height: 225px">{% if monday_breakfast != false %}{{ monday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="breakfast_comments_monday" class="form-control" style="height: 186px">{% if monday_breakfast != false %}{{ monday_breakfast.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -92,7 +102,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="snack_menu_monday" class="form-control" style="height: 430px">{% if monday_snack != false %}{{ monday_snack.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="snack_list_monday" class="form-control" style="height: 225px">{% if monday_snack != false %}{{ monday_snack.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="snack_list_monday" class="form-control" style="height: 225px">{% if monday_snack != false %}{{ monday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="snack_comments_monday" class="form-control" style="height: 186px">{% if monday_snack != false %}{{ monday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -104,7 +114,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="lunch_menu_monday" class="form-control" style="height: 430px">{% if monday_lunch != false %}{{ monday_lunch.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="lunch_list_monday" class="form-control" style="height: 225px">{% if monday_lunch != false %}{{ monday_lunch.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="lunch_list_monday" class="form-control" style="height: 225px">{% if monday_lunch != false %}{{ monday_lunch.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="lunch_comments_monday" class="form-control" style="height: 186px">{% if monday_lunch != false %}{{ monday_lunch.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -116,7 +126,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="afternoon_menu_monday" class="form-control" style="height: 430px">{% if monday_afternoon != false %}{{ monday_afternoon.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="afternoon_list_monday" class="form-control" style="height: 225px">{% if monday_afternoon != false %}{{ monday_afternoon.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="afternoon_list_monday" class="form-control" style="height: 225px">{% if monday_afternoon != false %}{{ monday_afternoon.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="afternoon_comments_monday" class="form-control" style="height: 186px">{% if monday_afternoon != false %}{{ monday_afternoon.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -128,7 +138,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="dinner_menu_monday" class="form-control" style="height: 430px">{% if monday_dinner != false %}{{ monday_dinner.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="dinner_list_monday" class="form-control" style="height: 225px">{% if monday_dinner != false %}{{ monday_dinner.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="dinner_list_monday" class="form-control" style="height: 225px">{% if monday_dinner != false %}{{ monday_dinner.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="dinner_comments_monday" class="form-control" style="height: 186px">{% if monday_dinner != false %}{{ monday_dinner.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -187,7 +197,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="breakfast_menu_tuesday" class="form-control" style="height: 430px">{% if tuesday_breakfast != false %}{{ tuesday_breakfast.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="breakfast_list_tuesday" class="form-control" style="height: 225px">{% if tuesday_breakfast != false %}{{ tuesday_breakfast.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="breakfast_list_tuesday" class="form-control" style="height: 225px">{% if tuesday_breakfast != false %}{{ tuesday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="breakfast_comments_tuesday" class="form-control" style="height: 186px">{% if tuesday_breakfast != false %}{{ tuesday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                             </div>
@@ -199,7 +209,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="snack_menu_tuesday" class="form-control" style="height: 430px">{% if tuesday_snack != false %}{{ tuesday_snack.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="snack_list_tuesday" class="form-control" style="height: 225px">{% if tuesday_snack != false %}{{ tuesday_snack.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="snack_list_tuesday" class="form-control" style="height: 225px">{% if tuesday_snack != false %}{{ tuesday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="snack_comments_tuesday" class="form-control" style="height: 186px">{% if tuesday_snack != false %}{{ tuesday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -211,7 +221,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="lunch_menu_tuesday" class="form-control" style="height: 430px">{% if tuesday_lunch != false %}{{ tuesday_lunch.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="lunch_list_tuesday" class="form-control" style="height: 225px">{% if tuesday_lunch != false %}{{ tuesday_lunch.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="lunch_list_tuesday" class="form-control" style="height: 225px">{% if tuesday_lunch != false %}{{ tuesday_lunch.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="lunch_comments_tuesday" class="form-control" style="height: 186px">{% if tuesday_lunch != false %}{{ tuesday_lunch.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -223,7 +233,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="afternoon_menu_tuesday" class="form-control" style="height: 430px">{% if tuesday_afternoon != false %}{{ tuesday_afternoon.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="afternoon_list_tuesday" class="form-control" style="height: 225px">{% if tuesday_afternoon != false %}{{ tuesday_afternoon.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="afternoon_list_tuesday" class="form-control" style="height: 225px">{% if tuesday_afternoon != false %}{{ tuesday_afternoon.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="afternoon_comments_tuesday" class="form-control" style="height: 186px">{% if tuesday_afternoon != false %}{{ tuesday_afternoon.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -235,7 +245,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="dinner_menu_tuesday" class="form-control" style="height: 430px">{% if tuesday_dinner != false %}{{ tuesday_dinner.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="dinner_list_tuesday" class="form-control" style="height: 225px">{% if tuesday_dinner != false %}{{ tuesday_dinner.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="dinner_list_tuesday" class="form-control" style="height: 225px">{% if tuesday_dinner != false %}{{ tuesday_dinner.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="dinner_comments_tuesday" class="form-control" style="height: 186px">{% if tuesday_dinner != false %}{{ tuesday_dinner.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -295,7 +305,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="breakfast_menu_wednesday" class="form-control" style="height: 430px">{% if wednesday_breakfast != false %}{{ wednesday_breakfast.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="breakfast_list_wednesday" class="form-control" style="height: 225px">{% if wednesday_breakfast != false %}{{ wednesday_breakfast.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="breakfast_list_wednesday" class="form-control" style="height: 225px">{% if wednesday_breakfast != false %}{{ wednesday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="breakfast_comments_wednesday" class="form-control" style="height: 186px">{% if wednesday_breakfast != false %}{{ wednesday_breakfast.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -307,19 +317,19 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="snack_menu_wednesday" class="form-control" style="height: 430px">{% if wednesday_snack != false %}{{ wednesday_snack.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="snack_list_wednesday" class="form-control" style="height: 225px">{% if wednesday_snack != false %}{{ wednesday_snack.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="snack_list_wednesday" class="form-control" style="height: 225px">{% if wednesday_snack != false %}{{ wednesday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
-                                                <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="snack_comments_wednesday" class="form-control" style="height: 186px"><{% if wednesday_snack != false %}{{ wednesday_snack.mealNotes }}{% endif %}/textarea>
+                                                <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="snack_comments_wednesday" class="form-control" style="height: 186px"><{% if wednesday_snack != false %}{{ wednesday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
                                         </div>
-                                        <div class="day-plan-lunch day-plan day-meal-hidden">
+                                        <div class="day-plan-lunch day-plan">
                                             <div class="col-sm-6" style="padding: 20px">
                                                 <label for="hora" style="margin-right: 10px">Hora:</label><input style="width: 20%; margin: 0" type="time" id="hora" name="lunch_hour_wednesday" value="{% if wednesday_lunch != false %}{{ wednesday_lunch.hour }}{% else %}14:00{% endif %}" min="09:00" max="18:00" required>
                                                 <br/><br/>
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="lunch_menu_wednesday" class="form-control" style="height: 430px">{% if wednesday_lunch != false %}{{ wednesday_lunch.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="lunch_list_wednesday" class="form-control" style="height: 225px">{% if wednesday_lunch != false %}{{ wednesday_lunch.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="lunch_list_wednesday" class="form-control" style="height: 225px">{% if wednesday_lunch != false %}{{ wednesday_lunch.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="lunch_comments_wednesday" class="form-control" style="height: 186px">{% if wednesday_lunch != false %}{{ wednesday_lunch.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -331,7 +341,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="afternoon_menu_wednesday" class="form-control" style="height: 430px">{% if wednesday_afternoon != false %}{{ wednesday_afternoon.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="afternoon_list_wednesday" class="form-control" style="height: 225px">{% if wednesday_afternoon != false %}{{ wednesday_afternoon.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="afternoon_list_wednesday" class="form-control" style="height: 225px">{% if wednesday_afternoon != false %}{{ wednesday_afternoon.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="afternoon_comments_wednesday" class="form-control" style="height: 186px">{% if wednesday_afternoon != false %}{{ wednesday_afternoon.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -343,7 +353,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="dinner_menu_wednesday" class="form-control" style="height: 430px">{% if wednesday_dinner != false %}{{ wednesday_dinner.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="dinner_list_wednesday" class="form-control" style="height: 225px">{% if wednesday_dinner != false %}{{ wednesday_dinner.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="dinner_list_wednesday" class="form-control" style="height: 225px">{% if wednesday_dinner != false %}{{ wednesday_dinner.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="dinner_comments_wednesday" class="form-control" style="height: 186px">{% if wednesday_dinner != false %}{{ wednesday_dinner.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -403,7 +413,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="breakfast_menu_thursday" class="form-control" style="height: 430px">{% if thursday_breakfast != false %}{{ thursday_breakfast.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="breakfast_list_thursday" class="form-control" style="height: 225px">{% if thursday_breakfast != false %}{{ thursday_breakfast.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="breakfast_list_thursday" class="form-control" style="height: 225px">{% if thursday_breakfast != false %}{{ thursday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="breakfast_comments_thursday" class="form-control" style="height: 186px">{% if thursday_breakfast != false %}{{ thursday_breakfast.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -415,7 +425,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="snack_menu_thursday" class="form-control" style="height: 430px">{% if thursday_snack != false %}{{ thursday_snack.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="snack_list_thursday" class="form-control" style="height: 225px">{% if thursday_snack != false %}{{ thursday_snack.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="snack_list_thursday" class="form-control" style="height: 225px">{% if thursday_snack != false %}{{ thursday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="snack_comments_thursday" class="form-control" style="height: 186px">{% if thursday_snack != false %}{{ thursday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -427,7 +437,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="lunch_menu_thursday" class="form-control" style="height: 430px">{% if thursday_lunch != false %}{{ thursday_lunch.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="lunch_list_thursday" class="form-control" style="height: 225px">{% if thursday_lunch != false %}{{ thursday_lunch.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="lunch_list_thursday" class="form-control" style="height: 225px">{% if thursday_lunch != false %}{{ thursday_lunch.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="lunch_comments_thursday" class="form-control" style="height: 186px">{% if thursday_lunch != false %}{{ thursday_lunch.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -439,7 +449,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="afternoon_menu_thursday" class="form-control" style="height: 430px">{% if thursday_afternoon != false %}{{ thursday_afternoon.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="afternoon_list_thursday" class="form-control" style="height: 225px">{% if thursday_afternoon != false %}{{ thursday_afternoon.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="afternoon_list_thursday" class="form-control" style="height: 225px">{% if thursday_afternoon != false %}{{ thursday_afternoon.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="afternoon_comments_thursday" class="form-control" style="height: 186px">{% if thursday_afternoon != false %}{{ thursday_afternoon.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -451,7 +461,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="dinner_menu_thursday" class="form-control" style="height: 430px">{% if thursday_dinner != false %}{{ thursday_dinner.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="dinner_list_thursday" class="form-control" style="height: 225px">{% if thursday_dinner != false %}{{ thursday_dinner.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="dinner_list_thursday" class="form-control" style="height: 225px">{% if thursday_dinner != false %}{{ thursday_dinner.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="dinner_comments_thursday" class="form-control" style="height: 186px">{% if thursday_dinner != false %}{{ thursday_dinner.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -511,7 +521,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="breakfast_menu_friday" class="form-control" style="height: 430px">{% if friday_breakfast != false %}{{ friday_breakfast.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="breakfast_list_friday" class="form-control" style="height: 225px">{% if friday_breakfast != false %}{{ friday_breakfast.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="breakfast_list_friday" class="form-control" style="height: 225px">{% if friday_breakfast != false %}{{ friday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="breakfast_comments_friday" class="form-control" style="height: 186px">{% if friday_breakfast != false %}{{ friday_breakfast.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -523,7 +533,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="snack_menu_friday" class="form-control" style="height: 430px">{% if friday_snack != false %}{{ friday_snack.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="snack_list_friday" class="form-control" style="height: 225px">{% if friday_snack != false %}{{ friday_snack.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="snack_list_friday" class="form-control" style="height: 225px">{% if friday_snack != false %}{{ friday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="snack_comments_friday" class="form-control" style="height: 186px">{% if friday_snack != false %}{{ friday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -535,7 +545,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="lunch_menu_friday" class="form-control" style="height: 430px">{% if friday_lunch != false %}{{ friday_lunch.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="lunch_list_friday" class="form-control" style="height: 225px">{% if friday_lunch != false %}{{ friday_lunch.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="lunch_list_friday" class="form-control" style="height: 225px">{% if friday_lunch != false %}{{ friday_lunch.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="lunch_comments_friday" class="form-control" style="height: 186px">{% if friday_lunch != false %}{{ friday_lunch.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -547,7 +557,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="afternoon_menu_friday" class="form-control" style="height: 430px">{% if friday_afternoon != false %}{{ friday_afternoon.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="afternoon_list_friday" class="form-control" style="height: 225px">{% if friday_afternoon != false %}{{ friday_afternoon.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="afternoon_list_friday" class="form-control" style="height: 225px">{% if friday_afternoon != false %}{{ friday_afternoon.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="afternoon_comments_friday" class="form-control" style="height: 186px">{% if friday_afternoon != false %}{{ friday_afternoon.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -559,7 +569,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="dinner_menu_friday" class="form-control" style="height: 430px">{% if friday_dinner != false %}{{ friday_dinner.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="dinner_list_friday" class="form-control" style="height: 225px">{% if friday_dinner != false %}{{ friday_dinner.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="dinner_list_friday" class="form-control" style="height: 225px">{% if friday_dinner != false %}{{ friday_dinner.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="dinner_comments_friday" class="form-control" style="height: 186px">{% if friday_dinner != false %}{{ friday_dinner.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -619,7 +629,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="breakfast_menu_saturday" class="form-control" style="height: 430px">{% if saturday_breakfast != false %}{{ saturday_breakfast.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="breakfast_list_saturday" class="form-control" style="height: 225px">{% if saturday_breakfast != false %}{{ saturday_breakfast.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="breakfast_list_saturday" class="form-control" style="height: 225px">{% if saturday_breakfast != false %}{{ saturday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="breakfast_comments_saturday" class="form-control" style="height: 186px">{% if saturday_breakfast != false %}{{ saturday_breakfast.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -631,7 +641,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="snack_menu_saturday" class="form-control" style="height: 430px">{% if saturday_breakfast != false  %}{{ saturday_snack.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="snack_list_saturday" class="form-control" style="height: 225px">{% if saturday_breakfast != false  %}{{ saturday_snack.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="snack_list_saturday" class="form-control" style="height: 225px">{% if saturday_breakfast != false  %}{{ saturday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="snack_comments_saturday" class="form-control" style="height: 186px">{% if saturday_breakfast != false  %}{{ saturday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -643,7 +653,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="lunch_menu_saturday" class="form-control" style="height: 430px">{% if saturday_lunch != false  %}{{ saturday_lunch.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="lunch_list_saturday" class="form-control" style="height: 225px">{% if saturday_lunch != false  %}{{ saturday_lunch.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="lunch_list_saturday" class="form-control" style="height: 225px">{% if saturday_lunch != false  %}{{ saturday_lunch.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="lunch_comments_saturday" class="form-control" style="height: 186px">{% if saturday_lunch != false  %}{{ saturday_lunch.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -655,7 +665,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="afternoon_menu_saturday" class="form-control" style="height: 430px">{% if saturday_afternoon != false  %}{{ saturday_afternoon.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="afternoon_list_saturday" class="form-control" style="height: 225px">{% if saturday_afternoon != false  %}{{ saturday_afternoon.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="afternoon_list_saturday" class="form-control" style="height: 225px">{% if saturday_afternoon != false  %}{{ saturday_afternoon.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="afternoon_comments_saturday" class="form-control" style="height: 186px">{% if saturday_afternoon != false  %}{{ saturday_afternoon.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -667,7 +677,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="dinner_menu_saturday" class="form-control" style="height: 430px">{% if saturday_dinner != false  %}{{ saturday_dinner.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="dinner_list_saturday" class="form-control" style="height: 225px">{% if saturday_dinner != false  %}{{ saturday_dinner.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="dinner_list_saturday" class="form-control" style="height: 225px">{% if saturday_dinner != false  %}{{ saturday_dinner.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="dinner_comments_saturday" class="form-control" style="height: 186px">{% if saturday_dinner != false  %}{{ saturday_dinner.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -727,7 +737,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="breakfast_menu_sunday" class="form-control" style="height: 430px">{% if sunday_breakfast != false %}{{ sunday_breakfast.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="breakfast_list_sunday" class="form-control" style="height: 225px">{% if sunday_breakfast != false %}{{ sunday_breakfast.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="breakfast_list_sunday" class="form-control" style="height: 225px">{% if sunday_breakfast != false %}{{ sunday_breakfast.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="breakfast_comments_sunday" class="form-control" style="height: 186px">{% if sunday_breakfast != false %}{{ sunday_breakfast.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -739,7 +749,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="snack_menu_sunday" class="form-control" style="height: 430px">{% if sunday_snack != false %}{{ sunday_snack.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="snack_list_sunday" class="form-control" style="height: 225px">{% if sunday_snack != false %}{{ sunday_snack.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="snack_list_sunday" class="form-control" style="height: 225px">{% if sunday_snack != false %}{{ sunday_snack.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="snack_comments_sunday" class="form-control" style="height: 186px">{% if sunday_snack != false %}{{ sunday_snack.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -751,7 +761,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="lunch_menu_sunday" class="form-control" style="height: 430px">{% if sunday_lunch != false %}{{ sunday_lunch.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="lunch_list_sunday" class="form-control" style="height: 225px">{% if sunday_lunch != false %}{{ sunday_lunch.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="lunch_list_sunday" class="form-control" style="height: 225px">{% if sunday_lunch != false %}{{ sunday_lunch.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="lunch_comments_sunday" class="form-control" style="height: 186px">{% if sunday_lunch != false %}{{ sunday_lunch.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -763,7 +773,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="afternoon_menu_sunday" class="form-control" style="height: 430px">{% if sunday_afternoon != false %}{{ sunday_afternoon.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="afternoon_list_sunday" class="form-control" style="height: 225px">{% if sunday_afternoon != false %}{{ sunday_afternoon.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="afternoon_list_sunday" class="form-control" style="height: 225px">{% if sunday_afternoon != false %}{{ sunday_afternoon.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="afternoon_comments_sunday" class="form-control" style="height: 186px">{% if sunday_afternoon != false %}{{ sunday_afternoon.mealNotes }}{% endif %}</textarea>
                                             </div>
@@ -775,7 +785,7 @@
                                                 <label for="menu">Menú:</label><textarea type="text" id="menu" name="dinner_menu_sunday" class="form-control" style="height: 430px">{% if sunday_dinner != false %}{{ sunday_dinner.meal }}{% endif %}</textarea>
                                             </div>
                                             <div class="col-sm-6" style="padding: 20px">
-                                                <label for="list">Lista:</label><textarea type="text" id="list" name="dinner_list_sunday" class="form-control" style="height: 225px">{% if sunday_dinner != false %}{{ sunday_dinner.mealShoppingList }}{% endif %}</textarea>
+                                                <label for="list">Lista de la compra:</label><textarea type="text" id="list" name="dinner_list_sunday" class="form-control" style="height: 225px">{% if sunday_dinner != false %}{{ sunday_dinner.mealShoppingList }}{% endif %}</textarea>
                                                 <br/><br/>
                                                 <label for="comments">Comentarios:</label><textarea type="text" id="comments" name="dinner_comments_sunday" class="form-control" style="height: 186px">{% if sunday_dinner != false %}{{ sunday_dinner.mealNotes }}{% endif %}</textarea>
                                             </div>

@@ -79,71 +79,51 @@ class __TwigTemplate_f39c04bfb3dc95d4cef00dc7299f0965f10dc4289b3634ac216bd96137b
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
         // line 19
+        echo "        ";
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "session", []), "flashbag", [], "method"), "get", [0 => "addCustomerOKStatus"], "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 20
+            echo "            <div class=\"row\" style=\"width: 91.3%; margin-left: 4.3%; margin-top: 10px; margin-bottom: -35px;\">
+                <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
+                    ";
+            // line 22
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+                </div>
+            </div>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 26
         echo "        <div class=\"container\">
             <div class=\"col-sm-12\">
-                <div id=\"add-customer-block\">
+                <div id=\"invite-customer-block\" style=\"width: 50%; margin-left: 25%; height: 70rem; margin-top: 5rem\">
                     <form class=\"form\" action=\"";
-        // line 22
+        // line 29
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("nutritionist_add_customer");
         echo "\" method=\"post\" novalidate>
-                        <div class=\"col-sm-6\">
+                        <div class=\"col-sm-12\">
                             <div class=\"personal-data-header\">
                                 <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-circle\" viewBox=\"0 0 16 16\">
                                     <path d=\"M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z\"/>
                                     <path fill-rule=\"evenodd\" d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z\"/>
                                 </svg>
-                                <h3 style=\"display: inline-flex\">Dar de alta Cliente</h3>
+                                <h3 style=\"display: inline-flex\">Invitar Cliente</h3>
                             </div>
                             <br/>
-                            <div class=\"form-check\">
-                                <label class=\"form-check-label\" for=\"idCustomerGenderOther\">
-                                    Otro
-                                </label>
-                                <input class=\"form-check-input\" type=\"checkbox\" value=\"0\" id=\"idCustomerGenderOther\">
-                                <label class=\"form-check-label\" for=\"idCustomerGenderFemale\">
-                                    Sra.
-                                </label>
-                                <input class=\"form-check-input\" type=\"checkbox\" value=\"1\" id=\"idCustomerGenderFemale\">
-                                <label class=\"form-check-label\" for=\"idCustomerGenderMale\">
-                                    Sr.
-                                </label>
-                                <input class=\"form-check-input\" type=\"checkbox\" value=\"2\" id=\"idCustomerGenderMale\">
-                            </div>
                             <div class=\"personal-data-fields\">
                                 <label for=\"firstname\">Nombre:</label><input type=\"text\" id=\"firstname\" name=\"firstname\" class=\"form-control\" required/>
                                 <label for=\"lastname\">Apellidos:</label><input type=\"text\" id=\"lastname\" name=\"lastname\" class=\"form-control\" required/>
                                 <label for=\"email\">Email:</label><input type=\"email\" id=\"email\" name=\"email\" class=\"form-control\" required/>
-                                <label for=\"password\">Contraseña:</label><input type=\"password\" id=\"password\" name=\"password\" class=\"form-control\"/>
-                                <label for=\"confirm_password\">Confirmar Contraseña:</label><input type=\"password\" id=\"confirm_password\" name=\"confirm_password\" class=\"form-control\"/>
-                                <label for=\"birthday\">Fecha de nacimiento:</label><input type=\"date\" id=\"birthday\" name=\"birthday\" class=\"form-control\"/>
+                                <label for=\"invitation\">Invitación:</label><textarea type=\"text\" id=\"invitation\" name=\"invitation\" class=\"form-control\" style=\"height: 160px\"></textarea>
                             </div>
                         </div>
-                        <div class=\"col-sm-6\" style=\"display: inline-flex\">
-                            <div class=\"personal-data-fields\" style=\"margin-top: 18%; width: 100%; margin-left: 0\">
-                                <label for=\"bibliografia\">Descripción / Bibliografía:</label><textarea type=\"text\" id=\"bibliografia\" name=\"bibliografia\" class=\"form-control\" style=\"height: 160px\"></textarea>
-                                <label for=\"objetivos\">Objetivos:</label><textarea type=\"text\" id=\"objetivos\" name=\"objetivos\" class=\"form-control\" style=\"height: 100px\"></textarea>
-                                <p><strong>Metricas:</strong></p>
-                                <div id=\"metricas\" style=\"display: inline-flex; width: 90%\">
-                                    <label for=\"peso\"></label><input type=\"number\" id=\"peso\" name=\"peso\" class=\"form-control\" placeholder=\"peso\"/>
-                                    <label for=\"altura\"></label><input type=\"number\" id=\"altura\" name=\"altura\" class=\"form-control\" placeholder=\"altura\"/>
-                                    <label for=\"edad\"></label><input type=\"number\" id=\"edad\" name=\"edad\" class=\"form-control\" placeholder=\"edad\"/>
-                                </div>
-                                <p><strong>Rendimiento deportivo:</strong></p>
-                                <div id=\"actividad\" style=\"display: inline-flex; width: 85%\">
-                                    <label for=\"actividad\"></label>
-                                    <select id=\"actividad\" name=\"actividad\" class=\"form-select\">
-                                        <option value=\"1\">Bajo</option>
-                                        <option value=\"2\" selected>Moderado</option>
-                                        <option value=\"3\">Activo</option>
-                                        <option value=\"3\">Muy Activo</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class=\"col-sm-12\" style=\"display: inline-flex\">
-                            <div class=\"save-button-item\" style=\"width: 100%; padding: 10px\">
-                                <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Guardar\"/>
-                                <input class=\"btn search-button\" type=\"button\" name=\"submit\" value=\"Buscar Cliente\" onclick=\"redirectTo('nutritionist-all-customers')\"/>
+                        <div class=\"col-sm-12\">
+                            <div class=\"save-button-item\">
+                                <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Invitar\"/>
                             </div>
                         </div>
                     </form>
@@ -165,7 +145,7 @@ class __TwigTemplate_f39c04bfb3dc95d4cef00dc7299f0965f10dc4289b3634ac216bd96137b
 
     public function getDebugInfo()
     {
-        return array (  87 => 22,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  106 => 29,  101 => 26,  91 => 22,  87 => 20,  82 => 19,  72 => 15,  68 => 13,  64 => 12,  60 => 10,  58 => 9,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -196,68 +176,36 @@ class __TwigTemplate_f39c04bfb3dc95d4cef00dc7299f0965f10dc4289b3634ac216bd96137b
                 </div>
             </div>
         {% endfor %}
+        {% for message in  app.session.flashbag().get('addCustomerOKStatus') %}
+            <div class=\"row\" style=\"width: 91.3%; margin-left: 4.3%; margin-top: 10px; margin-bottom: -35px;\">
+                <div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0\">
+                    {{ message }}
+                </div>
+            </div>
+        {% endfor %}
         <div class=\"container\">
             <div class=\"col-sm-12\">
-                <div id=\"add-customer-block\">
+                <div id=\"invite-customer-block\" style=\"width: 50%; margin-left: 25%; height: 70rem; margin-top: 5rem\">
                     <form class=\"form\" action=\"{{ path(\"nutritionist_add_customer\") }}\" method=\"post\" novalidate>
-                        <div class=\"col-sm-6\">
+                        <div class=\"col-sm-12\">
                             <div class=\"personal-data-header\">
                                 <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-person-circle\" viewBox=\"0 0 16 16\">
                                     <path d=\"M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z\"/>
                                     <path fill-rule=\"evenodd\" d=\"M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z\"/>
                                 </svg>
-                                <h3 style=\"display: inline-flex\">Dar de alta Cliente</h3>
+                                <h3 style=\"display: inline-flex\">Invitar Cliente</h3>
                             </div>
                             <br/>
-                            <div class=\"form-check\">
-                                <label class=\"form-check-label\" for=\"idCustomerGenderOther\">
-                                    Otro
-                                </label>
-                                <input class=\"form-check-input\" type=\"checkbox\" value=\"0\" id=\"idCustomerGenderOther\">
-                                <label class=\"form-check-label\" for=\"idCustomerGenderFemale\">
-                                    Sra.
-                                </label>
-                                <input class=\"form-check-input\" type=\"checkbox\" value=\"1\" id=\"idCustomerGenderFemale\">
-                                <label class=\"form-check-label\" for=\"idCustomerGenderMale\">
-                                    Sr.
-                                </label>
-                                <input class=\"form-check-input\" type=\"checkbox\" value=\"2\" id=\"idCustomerGenderMale\">
-                            </div>
                             <div class=\"personal-data-fields\">
                                 <label for=\"firstname\">Nombre:</label><input type=\"text\" id=\"firstname\" name=\"firstname\" class=\"form-control\" required/>
                                 <label for=\"lastname\">Apellidos:</label><input type=\"text\" id=\"lastname\" name=\"lastname\" class=\"form-control\" required/>
                                 <label for=\"email\">Email:</label><input type=\"email\" id=\"email\" name=\"email\" class=\"form-control\" required/>
-                                <label for=\"password\">Contraseña:</label><input type=\"password\" id=\"password\" name=\"password\" class=\"form-control\"/>
-                                <label for=\"confirm_password\">Confirmar Contraseña:</label><input type=\"password\" id=\"confirm_password\" name=\"confirm_password\" class=\"form-control\"/>
-                                <label for=\"birthday\">Fecha de nacimiento:</label><input type=\"date\" id=\"birthday\" name=\"birthday\" class=\"form-control\"/>
+                                <label for=\"invitation\">Invitación:</label><textarea type=\"text\" id=\"invitation\" name=\"invitation\" class=\"form-control\" style=\"height: 160px\"></textarea>
                             </div>
                         </div>
-                        <div class=\"col-sm-6\" style=\"display: inline-flex\">
-                            <div class=\"personal-data-fields\" style=\"margin-top: 18%; width: 100%; margin-left: 0\">
-                                <label for=\"bibliografia\">Descripción / Bibliografía:</label><textarea type=\"text\" id=\"bibliografia\" name=\"bibliografia\" class=\"form-control\" style=\"height: 160px\"></textarea>
-                                <label for=\"objetivos\">Objetivos:</label><textarea type=\"text\" id=\"objetivos\" name=\"objetivos\" class=\"form-control\" style=\"height: 100px\"></textarea>
-                                <p><strong>Metricas:</strong></p>
-                                <div id=\"metricas\" style=\"display: inline-flex; width: 90%\">
-                                    <label for=\"peso\"></label><input type=\"number\" id=\"peso\" name=\"peso\" class=\"form-control\" placeholder=\"peso\"/>
-                                    <label for=\"altura\"></label><input type=\"number\" id=\"altura\" name=\"altura\" class=\"form-control\" placeholder=\"altura\"/>
-                                    <label for=\"edad\"></label><input type=\"number\" id=\"edad\" name=\"edad\" class=\"form-control\" placeholder=\"edad\"/>
-                                </div>
-                                <p><strong>Rendimiento deportivo:</strong></p>
-                                <div id=\"actividad\" style=\"display: inline-flex; width: 85%\">
-                                    <label for=\"actividad\"></label>
-                                    <select id=\"actividad\" name=\"actividad\" class=\"form-select\">
-                                        <option value=\"1\">Bajo</option>
-                                        <option value=\"2\" selected>Moderado</option>
-                                        <option value=\"3\">Activo</option>
-                                        <option value=\"3\">Muy Activo</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class=\"col-sm-12\" style=\"display: inline-flex\">
-                            <div class=\"save-button-item\" style=\"width: 100%; padding: 10px\">
-                                <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Guardar\"/>
-                                <input class=\"btn search-button\" type=\"button\" name=\"submit\" value=\"Buscar Cliente\" onclick=\"redirectTo('nutritionist-all-customers')\"/>
+                        <div class=\"col-sm-12\">
+                            <div class=\"save-button-item\">
+                                <input class=\"btn save-button\" type=\"submit\" name=\"submit\" value=\"Invitar\"/>
                             </div>
                         </div>
                     </form>

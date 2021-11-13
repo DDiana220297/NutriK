@@ -38,6 +38,7 @@
                         <input class="calendar_event_start" value="{{ calendar_event['start']|date('Y-m-d H:i:s') }}"/>
                         <input class="calendar_event_end" value="{{ calendar_event['end']|date('Y-m-d H:i:s') }}"/>
                         <input class="calendar_event_url" value="{{ calendar_event['url'] }}"/>
+                        <input class="calendar_event_type" value="{{ calendar_event['type'] }}"/>
                     </div>
                 {% endfor %}
                 <div id="calendar-block">

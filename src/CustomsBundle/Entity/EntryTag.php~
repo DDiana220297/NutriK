@@ -13,12 +13,12 @@ class EntryTag
     private $id;
 
     /**
-     * @var \CustomsBundle\Entity\Entry
+     * @var integer
      */
     private $idEntry;
 
     /**
-     * @var \CustomsBundle\Entity\Tag
+     * @var integer
      */
     private $idTag;
 
@@ -36,11 +36,11 @@ class EntryTag
     /**
      * Set idEntry
      *
-     * @param \CustomsBundle\Entity\Entry $idEntry
+     * @param integer $idEntry
      *
      * @return EntryTag
      */
-    public function setIdEntry(\CustomsBundle\Entity\Entry $idEntry = null)
+    public function setIdEntry($idEntry)
     {
         $this->idEntry = $idEntry;
 
@@ -50,7 +50,7 @@ class EntryTag
     /**
      * Get idEntry
      *
-     * @return \CustomsBundle\Entity\Entry
+     * @return integer
      */
     public function getIdEntry()
     {
@@ -60,11 +60,11 @@ class EntryTag
     /**
      * Set idTag
      *
-     * @param \CustomsBundle\Entity\Tag $idTag
+     * @param integer $idTag
      *
      * @return EntryTag
      */
-    public function setIdTag(\CustomsBundle\Entity\Tag $idTag = null)
+    public function setIdTag($idTag)
     {
         $this->idTag = $idTag;
 
@@ -74,7 +74,7 @@ class EntryTag
     /**
      * Get idTag
      *
-     * @return \CustomsBundle\Entity\Tag
+     * @return integer
      */
     public function getIdTag()
     {
