@@ -26,6 +26,7 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-inner" role="listbox">
+                            {% if new_events|length > 0 %}
                             <div class="item active">
                                 <img src="{{ asset(random(['banner1.jpg', 'banner3.jpg', 'carousel1.jpg'])) }}" style="border-radius: 10%;">
                                 <div class="carousel-caption">
@@ -33,6 +34,7 @@
                                     <p style="font-size: 18px">{{ new_events[0].description }}</p>
                                 </div>
                             </div>
+                            {% endif %}
                             {% for new_event in new_events %}
                                 <div class="item">
                                     <img src="{{ asset(random(['carousel3.jpg', 'carousel5.jpg','img4.jpg'])) }}" style="border-radius: 10%;">
