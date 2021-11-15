@@ -92,27 +92,28 @@ class __TwigTemplate_886eb32ebdd0b5cba62ddd4b554cb0d6928122f60903dcb424e734497c5
         // line 24
         echo "        <div class=\"container\">
             <div class=\"assigned-plans-block\">
+                <h2 style=\"text-align: center\">Mis planificaciones semanales</h2>
                 <div class=\"plans\">
                     ";
-        // line 27
+        // line 28
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["plans"] ?? $this->getContext($context, "plans")));
         foreach ($context['_seq'] as $context["_key"] => $context["plan"]) {
-            // line 28
+            // line 29
             echo "                        <div class=\"col-sm-12 plan-entry\">
                             <div class=\"col-sm-11 weekly-plan-resume\">
                                 <h4>
                                     ";
-            // line 31
+            // line 32
             if (twig_in_filter($this->getAttribute($context["plan"], "idPlan", []), twig_get_array_keys_filter(($context["weekly_plans_tags"] ?? $this->getContext($context, "weekly_plans_tags"))))) {
-                // line 32
+                // line 33
                 echo "                                        <span>
                                                 ";
-                // line 33
+                // line 34
                 $context['_parent'] = $context;
                 $context['_seq'] = twig_ensure_traversable($this->getAttribute(($context["weekly_plans_tags"] ?? $this->getContext($context, "weekly_plans_tags")), $this->getAttribute($context["plan"], "idPlan", []), [], "array"));
                 foreach ($context['_seq'] as $context["_key"] => $context["tag"]) {
-                    // line 34
+                    // line 35
                     echo "                                                    ";
                     echo twig_escape_filter($this->env, $this->getAttribute($context["tag"], "name", []), "html", null, true);
                     echo " <span style=\"color: #00766c\">></span>
@@ -121,21 +122,21 @@ class __TwigTemplate_886eb32ebdd0b5cba62ddd4b554cb0d6928122f60903dcb424e734497c5
                 $_parent = $context['_parent'];
                 unset($context['_seq'], $context['_iterated'], $context['_key'], $context['tag'], $context['_parent'], $context['loop']);
                 $context = array_intersect_key($context, $_parent) + $_parent;
-                // line 36
+                // line 37
                 echo "                                            </span>
                                     ";
             }
-            // line 38
+            // line 39
             echo "                                    <strong style=\"color: #00766c\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["plan"], "title", []), "html", null, true);
             echo "</strong>
                                 </h4>
                                 <p>";
-            // line 40
+            // line 41
             echo twig_escape_filter($this->env, $this->getAttribute($context["plan"], "description", []), "html", null, true);
             echo "</p>
                                 <strong";
-            // line 41
+            // line 42
             if ((twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute(($context["weekly_plans_dates"] ?? $this->getContext($context, "weekly_plans_dates")), $this->getAttribute($context["plan"], "idPlan", []), [], "array"), "date_to", [], "array"), "Y-m-d") < twig_date_format_filter($this->env, ($context["now"] ?? $this->getContext($context, "now")), "Y-m-d H:i:s"))) {
                 echo " style=\"color: #a94442\" ";
             } else {
@@ -143,7 +144,7 @@ class __TwigTemplate_886eb32ebdd0b5cba62ddd4b554cb0d6928122f60903dcb424e734497c5
             }
             echo ">
                                     ";
-            // line 42
+            // line 43
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute(($context["weekly_plans_dates"] ?? $this->getContext($context, "weekly_plans_dates")), $this->getAttribute($context["plan"], "idPlan", []), [], "array"), "date_from", [], "array"), "Y-m-d"), "html", null, true);
             echo " - ";
             echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($this->getAttribute(($context["weekly_plans_dates"] ?? $this->getContext($context, "weekly_plans_dates")), $this->getAttribute($context["plan"], "idPlan", []), [], "array"), "date_to", [], "array"), "Y-m-d"), "html", null, true);
@@ -153,7 +154,7 @@ class __TwigTemplate_886eb32ebdd0b5cba62ddd4b554cb0d6928122f60903dcb424e734497c5
                             <div class=\"col-sm-1 weekly-plan-actions\">
                                 <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-search\" viewBox=\"0 0 16 16\"
                                     onclick=\"redirectTo('plan','/'+";
-            // line 47
+            // line 48
             echo twig_escape_filter($this->env, $this->getAttribute($context["plan"], "idPlan", []), "html", null, true);
             echo ")\">
                                     <path d=\"M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z\"/>
@@ -165,15 +166,15 @@ class __TwigTemplate_886eb32ebdd0b5cba62ddd4b554cb0d6928122f60903dcb424e734497c5
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['plan'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 53
+        // line 54
         echo "                </div>
             </div>
         </div>
     </section>
     ";
-        // line 57
-        $this->loadTemplate("footer.html.twig", "@Customer/weekly-plans.html.twig", 57)->display($context);
         // line 58
+        $this->loadTemplate("footer.html.twig", "@Customer/weekly-plans.html.twig", 58)->display($context);
+        // line 59
         echo "    </html>
 ";
         
@@ -188,7 +189,7 @@ class __TwigTemplate_886eb32ebdd0b5cba62ddd4b554cb0d6928122f60903dcb424e734497c5
 
     public function getDebugInfo()
     {
-        return array (  177 => 58,  175 => 57,  169 => 53,  157 => 47,  147 => 42,  139 => 41,  135 => 40,  129 => 38,  125 => 36,  116 => 34,  112 => 33,  109 => 32,  107 => 31,  102 => 28,  98 => 27,  93 => 24,  83 => 20,  79 => 18,  75 => 17,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  178 => 59,  176 => 58,  170 => 54,  158 => 48,  148 => 43,  140 => 42,  136 => 41,  130 => 39,  126 => 37,  117 => 35,  113 => 34,  110 => 33,  108 => 32,  103 => 29,  99 => 28,  93 => 24,  83 => 20,  79 => 18,  75 => 17,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -226,6 +227,7 @@ class __TwigTemplate_886eb32ebdd0b5cba62ddd4b554cb0d6928122f60903dcb424e734497c5
         {% endfor %}
         <div class=\"container\">
             <div class=\"assigned-plans-block\">
+                <h2 style=\"text-align: center\">Mis planificaciones semanales</h2>
                 <div class=\"plans\">
                     {% for plan in plans %}
                         <div class=\"col-sm-12 plan-entry\">
