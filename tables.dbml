@@ -1,0 +1,252 @@
+Table user as U {
+  id_user int [pk, increment] // auto-increment
+  id_gender varchar
+  age int
+  firstname varchar
+  lastname varchar
+  email varchar
+  password varchar
+  role varchar
+  last_password_gen datetime
+  birthday date
+  sms tinyint
+  active tinyint
+  collegiate_number int
+  studies varchar
+  description text
+  deleted tinyint
+  date_add datetime
+  date_upd datetime
+}
+
+Table tag {
+  id_tag int [pk, increment] // auto-increment
+	name text 
+	description text 
+	visible tinyint
+}
+
+Table logs {
+	id_log int [pk, increment] // auto-increment
+	id_user int
+	source varchar
+	context text 
+	date_add datetime 
+}
+
+Ref: logs.id_user > user.id_user
+
+
+Table meal {
+  id_meal int 
+	id_plan int 
+	meal_sort varchar 
+	day varchar 
+	hour varchar 
+	meal text 
+	meal_shopping_list text 
+	meal_notes text 
+	date_add datetime 
+}
+
+Ref: meal.id_plan > weekly_plan.id_plan
+
+Table weekly_plan {
+  id_plan int [pk, increment] // auto-increment
+  id_user int  
+  id_tag int
+  title varchar
+  description text
+  date_add datetime
+  date_upd datetime
+}
+
+Ref: weekly_plan.id_user > user.id_user
+Ref: weekly_plan.id_tag > tag.id_tag
+
+Table entry {
+	id_entry int 
+	id_user int 
+	id_category int 
+	title text 
+	description text 
+	image text 
+	content text 
+	active tinyint 
+	date_add datetime 
+	date_upd datetime 
+} 
+
+Ref: entry.id_user > user.id_user
+Ref: entry.id_category > category.id_category
+
+Table event {
+	id_event int 
+	id_user int 
+	id_category int 
+	id_tag int 
+	title varchar 
+	description text 
+	event_link varchar 
+	date datetime 
+	frecuency varchar 
+	duration int 
+	date_add datetime 
+	date_upd datetime 
+} 
+
+Ref: event.id_user > user.id_user
+Ref: event.id_category > category.id_category
+Ref: event.id_tag > tag.id_tag
+
+Table recipes {
+	id_recipe int 
+	id_user int 
+	name varchar 
+	description text 
+	image text 
+	date_add datetime 
+	date_upd datetime 
+} 
+
+Ref: recipes.id_user > user.id_user
+
+Table workout {
+	id_workout int 
+	id_plan int 
+	workout_sort varchar 
+	day varchar 
+	hour time 
+	workout text 
+	workout_exercises text 
+	workout_notes text 
+	date_add datetime 
+} 
+
+Ref: workout.id_plan > weekly_plan.id_plan
+Ref: workout.workout_exercises > exercise.id_exercise
+Table category {
+	id_category int 
+	name text 
+	title_seo text 
+	description_short text 
+	description text 
+	link_rewrite varchar 
+	date_add datetime 
+	date_upd datetime 
+} 
+
+Table exercise {
+	id_exercise int 
+	title varchar 
+	description text 
+	muscles text 
+	date_add datetime 
+} 
+
+Table appointment {
+	id_appointment int 
+	id_nutritionist int 
+	id_customer int 
+	date datetime 
+	duration int 
+	description text 
+	appointment_type varchar 
+	appointment_link varchar 
+	date_add datetime 
+	date_upd datetime 
+} 
+
+Ref: appointment.id_nutritionist > user.id_user
+Ref: appointment.id_customer > user.id_user
+
+Table diary_pages {
+	id_diary_page int 
+	id_user int 
+	date date 
+	tasks text 
+	events text 
+	memos_and_notes text 
+	date_add datetime 
+	date_upd datetime 
+} 
+
+Ref: diary_pages.id_user > user.id_user
+
+Table ingredients {
+	id_ingredient int 
+	name varchar 
+	carbohydrates float 
+	fats float 
+	protein float 
+	date_add datetime 
+	date_upd datetime 
+} 
+
+Table customer_metrics {
+	id_customer_metrics int 
+	id_customer int 
+	weight float 
+	height float 
+	age int 
+	fat_percentage float 
+	muscle_percentage float 
+	liquid_percentage float 
+	movement varchar 
+	goals text 
+	date_add datetime 
+} 
+
+Ref: customer_metrics.id_customer > user.id_user
+
+Table ingredients_recipes {
+	id_ingredient_recipe int 
+	id_ingredient int 
+	id_recipe int 
+	date_add datetime 
+} 
+
+Ref: ingredients_recipes.id_ingredient > ingredients.id_ingredient
+Ref: ingredients_recipes.id_recipe > recipes.id_recipe
+
+Table nutritionist_receipt {
+	id_receipt int 
+	id_user int 
+	id_customer int 
+	id_transaction int 
+	id_invoice int 
+	amount float 
+	status varchar 
+	description text 
+	date_add datetime 
+	date_upd datetime 
+} 
+
+Ref: nutritionist_receipt.id_user > user.id_user
+Ref: nutritionist_receipt.id_customer > user.id_user
+
+Table customer_nutritionist {
+	id_customer_nutritionist int 
+	id_nutritionist int 
+	id_customer int 
+	date_add datetime 
+} 
+
+Ref: customer_nutritionist.id_nutritionist > user.id_user
+Ref: customer_nutritionist.id_customer > user.id_user
+
+Table nutritionist_customer_card {
+	id_card int 
+	id_user int 
+	name varchar 
+	nc_digits varchar 
+	nc_last_digits int 
+	nc_exp_month int 
+	nc_exp_year int 
+	active tinyint 
+	brand varchar 
+	date_add datetime 
+	date_upd datetime 
+} 
+
+Ref: nutritionist_customer_card.id_user > user.id_user
