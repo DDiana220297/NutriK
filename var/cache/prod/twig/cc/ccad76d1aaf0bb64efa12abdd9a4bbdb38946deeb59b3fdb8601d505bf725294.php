@@ -82,44 +82,50 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
                     <!-- Wrapper for slides -->
                     <div class=\"carousel-inner\" role=\"listbox\">
                         <div class=\"carousel-inner\" role=\"listbox\">
-                            <div class=\"item active\">
+                            ";
+        // line 29
+        if ((twig_length_filter($this->env, ($context["new_events"] ?? $this->getContext($context, "new_events"))) > 0)) {
+            // line 30
+            echo "                            <div class=\"item active\">
                                 <img src=\"";
-        // line 30
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(twig_random($this->env, [0 => "banner1.jpg", 1 => "banner3.jpg", 2 => "carousel1.jpg"])), "html", null, true);
-        echo "\" style=\"border-radius: 10%;\">
+            // line 31
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(twig_random($this->env, [0 => "banner1.jpg", 1 => "banner3.jpg", 2 => "carousel1.jpg"])), "html", null, true);
+            echo "\" style=\"border-radius: 10%;\">
                                 <div class=\"carousel-caption\">
                                     <a href=\"";
-        // line 32
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_event_view", ["id_event" => $this->getAttribute($this->getAttribute(($context["new_events"] ?? $this->getContext($context, "new_events")), 0, [], "array"), "idEvent", [])]), "html", null, true);
-        echo "\" style=\"font-size: 22px; font-weight: bold; color: #00766c\">";
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["new_events"] ?? $this->getContext($context, "new_events")), 0, [], "array"), "title", []), "html", null, true);
-        echo "</a>
+            // line 33
+            echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_event_view", ["id_event" => $this->getAttribute($this->getAttribute(($context["new_events"] ?? $this->getContext($context, "new_events")), 0, [], "array"), "idEvent", [])]), "html", null, true);
+            echo "\" style=\"font-size: 22px; font-weight: bold; color: #00766c\">";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["new_events"] ?? $this->getContext($context, "new_events")), 0, [], "array"), "title", []), "html", null, true);
+            echo "</a>
                                     <p style=\"font-size: 18px\">";
-        // line 33
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["new_events"] ?? $this->getContext($context, "new_events")), 0, [], "array"), "description", []), "html", null, true);
-        echo "</p>
+            // line 34
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute(($context["new_events"] ?? $this->getContext($context, "new_events")), 0, [], "array"), "description", []), "html", null, true);
+            echo "</p>
                                 </div>
                             </div>
                             ";
-        // line 36
+        }
+        // line 38
+        echo "                            ";
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["new_events"] ?? $this->getContext($context, "new_events")));
         foreach ($context['_seq'] as $context["_key"] => $context["new_event"]) {
-            // line 37
+            // line 39
             echo "                                <div class=\"item\">
                                     <img src=\"";
-            // line 38
+            // line 40
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(twig_random($this->env, [0 => "carousel3.jpg", 1 => "carousel5.jpg", 2 => "img4.jpg"])), "html", null, true);
             echo "\" style=\"border-radius: 10%;\">
                                     <div class=\"carousel-caption\">
                                         <a href=\"";
-            // line 40
+            // line 42
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_event_view", ["id_event" => $this->getAttribute($context["new_event"], "idEvent", [])]), "html", null, true);
             echo "\" style=\"font-size: 22px; font-weight: bold; color: #00766c\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["new_event"], "title", []), "html", null, true);
             echo "</a>
                                         <p style=\"font-size: 18px\">";
-            // line 41
+            // line 43
             echo twig_escape_filter($this->env, $this->getAttribute($context["new_event"], "description", []), "html", null, true);
             echo "</p>
                                     </div>
@@ -129,26 +135,26 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['new_event'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 45
+        // line 47
         echo "                            ";
         $context['_parent'] = $context;
         $context['_seq'] = twig_ensure_traversable(($context["new_didactic_contents"] ?? $this->getContext($context, "new_didactic_contents")));
         foreach ($context['_seq'] as $context["_key"] => $context["new_didactic_content"]) {
-            // line 46
+            // line 48
             echo "                                <div class=\"item\">
                                     <img src=\"";
-            // line 47
+            // line 49
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl(twig_random($this->env, [0 => "img3.jpg", 1 => "carousel4.jpeg", 2 => "carousel5.jpg"])), "html", null, true);
             echo "\" style=\"border-radius: 10%;\">
                                     <div class=\"carousel-caption\">
                                         <a href=\"";
-            // line 49
+            // line 51
             echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("customer_didactic_content_view", ["id_entry" => $this->getAttribute($context["new_didactic_content"], "idEntry", [])]), "html", null, true);
             echo "\" style=\"font-size: 22px; font-weight: bold; color: #00766c\">";
             echo twig_escape_filter($this->env, $this->getAttribute($context["new_didactic_content"], "title", []), "html", null, true);
             echo "</a>
                                         <p style=\"font-size: 18px\">";
-            // line 50
+            // line 52
             echo twig_escape_filter($this->env, $this->getAttribute($context["new_didactic_content"], "description", []), "html", null, true);
             echo "</p>
                                     </div>
@@ -158,7 +164,7 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['new_didactic_content'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 54
+        // line 56
         echo "                        </div>
                     </div>
 
@@ -187,9 +193,9 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
             </div>
         </section>
         ";
-        // line 81
-        $this->loadTemplate("footer.html.twig", "@Customer/news.html.twig", 81)->display($context);
-        // line 82
+        // line 83
+        $this->loadTemplate("footer.html.twig", "@Customer/news.html.twig", 83)->display($context);
+        // line 84
         echo "    </html>
 ";
         
@@ -204,7 +210,7 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
 
     public function getDebugInfo()
     {
-        return array (  193 => 82,  191 => 81,  162 => 54,  152 => 50,  146 => 49,  141 => 47,  138 => 46,  133 => 45,  123 => 41,  117 => 40,  112 => 38,  109 => 37,  105 => 36,  99 => 33,  93 => 32,  88 => 30,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
+        return array (  199 => 84,  197 => 83,  168 => 56,  158 => 52,  152 => 51,  147 => 49,  144 => 48,  139 => 47,  129 => 43,  123 => 42,  118 => 40,  115 => 39,  110 => 38,  103 => 34,  97 => 33,  92 => 31,  89 => 30,  87 => 29,  71 => 15,  69 => 14,  65 => 12,  63 => 11,  57 => 8,  52 => 6,  46 => 2,  34 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -245,6 +251,7 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
                     <!-- Wrapper for slides -->
                     <div class=\"carousel-inner\" role=\"listbox\">
                         <div class=\"carousel-inner\" role=\"listbox\">
+                            {% if new_events|length > 0 %}
                             <div class=\"item active\">
                                 <img src=\"{{ asset(random(['banner1.jpg', 'banner3.jpg', 'carousel1.jpg'])) }}\" style=\"border-radius: 10%;\">
                                 <div class=\"carousel-caption\">
@@ -252,6 +259,7 @@ class __TwigTemplate_179229d0a02a8f2e666c3fa2ea4bf0566205728721c82b6855979045039
                                     <p style=\"font-size: 18px\">{{ new_events[0].description }}</p>
                                 </div>
                             </div>
+                            {% endif %}
                             {% for new_event in new_events %}
                                 <div class=\"item\">
                                     <img src=\"{{ asset(random(['carousel3.jpg', 'carousel5.jpg','img4.jpg'])) }}\" style=\"border-radius: 10%;\">
