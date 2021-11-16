@@ -277,7 +277,7 @@ class Entry
     /**
      * @return string
      */
-    public function getImage(): string
+    public function getImage()
     {
         return $this->image;
     }

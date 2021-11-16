@@ -3804,9 +3804,12 @@ class NutritionistController extends Controller
                 $appointment_duration = $request->request->get('appointment_duration');
                 $appointment_link = $request->request->get('appointment_link');
                 $appointment_description = $request->request->get('appointment_description');
+
                 if($customer != "" && $appointment_hour != "" && $appointment_date != "" && $appointment_type != ""  && $appointment_duration != ""){
                     $appointment = new Appointment();
-                    $appointment->setDate(new \DateTime($appointment_date .' '.$appointment_hour));
+                    $date = new \DateTime($appointment_date .' '.$appointment_hour);
+                    $date = $date->modify('+1 month');
+                    $appointment->setDate($date);
                     $appointment->setIdNutritionist($user->getIdUser());
                     $appointment->setIdCustomer($customer);
                     $appointment->setDescription($appointment_description);
